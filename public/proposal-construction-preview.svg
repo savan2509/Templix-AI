@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#fff7ed"/>
+  <!-- Construction layout coordinates watermark grid details in background -->
+  <line x1="330" y1="15" x2="330" y2="75" stroke="#fed7aa" stroke-width="0.5" stroke-dasharray="1 1"/>
+  <line x1="300" y1="45" x2="360" y2="45" stroke="#fed7aa" stroke-width="0.5" stroke-dasharray="1 1"/>
+  
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#ea580c" stroke-width="1.5"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="'Impact', Arial Black, sans-serif" font-size="15" font-weight="bold" fill="#ea580c" letter-spacing="0.5">CONSTRUCTION BID &amp; PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#431407">PROJECT ESTIMATES | SITE STRUCTURE, LABOR SCHEDULE &amp; MATERIALS</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#fed7aa" stroke-width="1"/>
+  
+  <!-- Site details -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#ea580c">SITE LOCATION ADDRESS:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">Plot 4, Sector G-5, USA</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#ea580c">BUILDING STRUCTURE TYPE:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">Residential Timber Framing</text>
+  </g>
+  
+  <!-- Materials and permitting -->
+  <g transform="translate(35, 128)">
+    <rect x="0" y="0" width="330" height="42" rx="3" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#ea580c">MATERIAL ESTIMATES &amp; PERMITTING DETAILS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#431407">Materials: <tspan font-weight="bold">Timber supports, deck components</tspan> | Permits: <tspan font-weight="bold">Building permit approved</tspan></text>
+  </g>
+  
+  <!-- Scheduled costs -->
+  <g transform="translate(35, 182)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#ea580c">PROJECT LABOR HOURS &amp; ESTIMATED COSTS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#ffedd5" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Scheduled Project Labor Hours</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1c1917" text-anchor="end">120 Hours</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#fff7ed" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Total Estimated Project Bid Price</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#ea580c" text-anchor="end">$9,500.00</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7.5" fill="#fdb874">Pricing fixed for 45 days from proposal bid date. Subject to structural audits.</text>
+</svg>

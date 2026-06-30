@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#eff6ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  
+  <!-- HR Business branding bar on left -->
+  <rect x="15" y="15" width="12" height="270" fill="#2563eb" rx="4"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(45, 35)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#1e3b8a">OFFICIAL EMPLOYMENT CONTRACT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#475569">Corporate Hiring Agreement &amp; Benefits Structure</text>
+  </g>
+  
+  <line x1="45" y1="70" x2="365" y2="70" stroke="#dbeafe" stroke-width="1"/>
+  
+  <!-- Client Detail Grid -->
+  <g transform="translate(45, 82)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">EMPLOYER PARTNER:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">Vanguard Corporation LLC</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">EMPLOYEE ASSOCIATE:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">John Doe Associate</text>
+  </g>
+  
+  <!-- HR Checklist section -->
+  <g transform="translate(45, 120)">
+    <rect x="0" y="0" width="310" height="42" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">POSITION &amp; PROBATION DETAILS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Title: <tspan font-weight="bold">Lead Architect</tspan> | Start: <tspan font-weight="bold">2026-07-01</tspan> | Probation: <tspan font-weight="bold">3 Months</tspan></text>
+  </g>
+  
+  <!-- Table Details of compensation -->
+  <g transform="translate(45, 178)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#2563eb">ANNUAL SALARY &amp; HR BENEFITS</text>
+    <line x1="0" y1="13" x2="310" y2="13" stroke="#dbeafe" stroke-width="1.5"/>
+    
+    <text x="0" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Base Salary Compensation Per Annum</text>
+    <text x="310" y="26" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b" text-anchor="end">$120,000.00</text>
+    <line x1="0" y1="34" x2="310" y2="34" stroke="#f1f5f9" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Benefits: Health, Dental, 401(k) Matching &amp; Paid Time Off</text>
+    <text x="310" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#2563eb" text-anchor="end">Included</text>
+  </g>
+  
+  <text x="45" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Subject to standard labor rules. At-will employment terms.</text>
+</svg>

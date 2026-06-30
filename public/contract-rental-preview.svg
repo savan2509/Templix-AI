@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#faf5ff"/>
+  <!-- Classic house outline watermark top right -->
+  <g transform="translate(325, 30)" fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.12">
+    <path d="M0 25 L0 12 L15 0 L30 12 L30 25 Z"/>
+    <rect x="10" y="15" width="10" height="10"/>
+  </g>
+  
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#d8b4fe" stroke-width="1.2"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#4c1d95">RESIDENTIAL LEASE AGREEMENT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#6b21a8">Tenancy Term: 12 Months | Premises Lease Terms &amp; Security Deposits</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#d8b4fe" stroke-width="1"/>
+  
+  <!-- Landlord & Tenant details -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">PROPERTY LANDLORD:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Arthur Pendelton Landlord</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">TENANT RESIDENT:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Sarah Jenkins Tenant</text>
+  </g>
+  
+  <!-- Lease Premises Address -->
+  <g transform="translate(35, 128)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">LEASE PREMISES ADDRESS:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">104 Oakwood Villa, Apartment 2B, USA</text>
+  </g>
+  
+  <!-- Rent and Deposit Details Table -->
+  <g transform="translate(35, 162)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#7c3aed">MONTHLY RENT &amp; SECURITY DEPOSITS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#f3e8ff" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Monthly Rent Payment Cost</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">$1,850.00/mo</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#faf5ff" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Refundable Security Deposit | Pet Policy</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#7c3aed" text-anchor="end">$2,000.00 | Pets OK</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#c084fc">Late fees apply after 5th of month. Eviction notices subject to local ordinances.</text>
+</svg>

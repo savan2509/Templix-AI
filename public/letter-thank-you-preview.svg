@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#fff1f2"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#fbcfe8" stroke-width="1.2"/>
+  
+  <!-- Little ribbon/heart icon top right background -->
+  <g transform="translate(325, 30)" fill="none" stroke="#db2777" stroke-width="1.2" opacity="0.15">
+    <path d="M12 5 C12 0 0 0 0 10 C0 18 12 25 12 25 C12 25 24 18 24 10 C24 0 12 0 12 5 Z"/>
+  </g>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="'Georgia', serif" font-weight="bold" font-size="14" fill="#db2777">LETTER OF APPRECIATION</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#9d174d">Personalized Thank You Note | Expressing Sincere Gratitude &amp; Impact</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#fbcfe8" stroke-width="1"/>
+  
+  <!-- Sender and recipient details -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">THANK YOU FROM:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">Sarah Jenkins Associate</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">GRATITUDE TO:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">Marcus Pendelton Director</text>
+  </g>
+  
+  <!-- Appreciated event -->
+  <g transform="translate(35, 128)">
+    <rect x="0" y="0" width="330" height="38" rx="4" fill="#fff1f2" stroke="#fbcfe8" stroke-width="0.5"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">APPRECIATED GIFT OR EVENT:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1f2937">Event/Gift: <tspan font-weight="bold">Technical Mentorship Program Sponsorship</tspan></text>
+  </g>
+  
+  <!-- Impact Details -->
+  <g transform="translate(35, 182)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#db2777">1. INDIVIDUAL SOCIAL &amp; CAREER IMPACT</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#fbcfe8" stroke-width="1.5"/>
+    
+    <text x="0" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">"The training materials helped me clear my Lead Cloud dev exam."</text>
+    
+    <text x="0" y="42" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">Follow Up: <tspan font-weight="semibold">Looking forward to contributing to the Q3 solar grid project.</tspan></text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#f472b6">With warm regards and appreciation.</text>
+</svg>

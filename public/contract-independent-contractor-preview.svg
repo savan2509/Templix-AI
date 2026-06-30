@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f1f5f9"/>
+  <!-- Bold Legal Border -->
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+  <rect x="20" y="20" width="360" height="260" rx="2" fill="none" stroke="#64748b" stroke-width="0.5"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="bold" fill="#0f172a">INDEPENDENT CONTRACTOR AGREEMENT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#475569">Agreement Term: 12 Months | Engagement Type: Non-Exclusive Retainer</text>
+  </g>
+  
+  <line x1="35" y1="80" x2="365" y2="80" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Contractor details grid -->
+  <g transform="translate(35, 93)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#334155">INDEPENDENT CONTRACTOR:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Marcus Jenkins Consulting</text>
+    <text x="0" y="29" font-family="system-ui, sans-serif" font-size="7" fill="#64748b">Tax ID: #XX-XXX-9012</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#334155">CLIENT AGENCY:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Global Enterprise Partners LLC</text>
+  </g>
+  
+  <!-- Confidentiality Clause Callout Box -->
+  <g transform="translate(35, 142)">
+    <rect x="0" y="0" width="330" height="42" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+    <text x="10" y="14" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#334155">SECTION 4: CONFIDENTIALITY &amp; NDA TERMS</text>
+    <text x="10" y="27" font-family="system-ui, sans-serif" font-size="7.5" fill="#475569" font-style="italic">"Contractor agrees to hold all proprietary project details, database structures,</text>
+    <text x="10" y="35" font-family="system-ui, sans-serif" font-size="7.5" fill="#475569" font-style="italic">and marketing schemas strictly confidential for the duration of the term."</text>
+  </g>
+  
+  <!-- Services Rendered -->
+  <g transform="translate(35, 202)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#334155">1. SERVICES RENDERED &amp; COMPENSATIONS</text>
+    <text x="0" y="20" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Professional services retainer details: <tspan font-weight="bold">$4,500.00 Retainer Fee</tspan></text>
+    <rect x="0" y="26" width="330" height="3" rx="1.5" fill="#f1f5f9"/>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#64748b">Governed by standard laws. Independent contractor status applies.</text>
+</svg>

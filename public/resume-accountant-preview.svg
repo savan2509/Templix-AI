@@ -1,34 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="20" y="20" width="110" height="260" rx="0" fill="#2563eb" opacity="0.05"/>
-  <line x1="130" y1="20" x2="130" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
-  <circle cx="75" cy="65" r="22" fill="#2563eb" opacity="0.2"/>
-  <circle cx="75" cy="65" r="18" fill="#2563eb"/>
-  <circle cx="75" cy="60" r="6" fill="#ffffff"/>
-  <path d="M62 76 Q75 68 88 76" stroke="#ffffff" stroke-width="2" fill="none"/>
-  <rect x="40" y="105" width="70" height="6" rx="3" fill="#cbd5e1"/>
-  <rect x="40" y="118" width="70" height="4" rx="2" fill="#e2e8f0"/>
-  <rect x="40" y="128" width="55" height="4" rx="2" fill="#e2e8f0"/>
-  <text x="40" y="160" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#2563eb">FINANCE</text>
-  <rect x="40" y="170" width="65" height="10" rx="3" fill="#2563eb" opacity="0.1"/>
-  <text x="45" y="178" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#2563eb">QuickBooks &amp; Xero</text>
-  <rect x="40" y="186" width="65" height="10" rx="3" fill="#2563eb" opacity="0.1"/>
-  <text x="45" y="194" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#2563eb">GAAP Standards</text>
-  <rect x="40" y="202" width="65" height="10" rx="3" fill="#2563eb" opacity="0.1"/>
-  <text x="45" y="210" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#2563eb">Tax Compliance</text>
-  <text x="145" y="52" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Matthew Sterling</text>
-  <text x="145" y="66" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#2563eb">Accountant (CPA)</text>
-  <text x="145" y="90" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">PROFESSIONAL SUMMARY</text>
-  <line x1="145" y1="96" x2="360" y2="96" stroke="#f1f5f9" stroke-width="1.5"/>
-  <rect x="145" y="104" width="215" height="5" rx="2" fill="#94a3b8" opacity="0.6"/>
-  <rect x="145" y="114" width="180" height="5" rx="2" fill="#cbd5e1" opacity="0.6"/>
-  <text x="145" y="142" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">WORK EXPERIENCE</text>
-  <line x1="145" y1="148" x2="360" y2="148" stroke="#f1f5f9" stroke-width="1.5"/>
-  <text x="145" y="162" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#334155">Senior Accountant - Ledger Group</text>
-  <text x="360" y="162" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">2023 - Pres</text>
-  <circle cx="147" cy="178" r="2" fill="#2563eb"/>
-  <rect x="155" y="175" width="205" height="4" rx="2" fill="#cbd5e1"/>
-  <circle cx="147" cy="188" r="2" fill="#2563eb"/>
-  <rect x="155" y="185" width="185" height="4" rx="2" fill="#cbd5e1"/>
+  <rect width="100%" height="100%" fill="#eff6ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+  
+  <!-- Classic accounting double underline accent decoration top right -->
+  <line x1="300" y1="35" x2="365" y2="35" stroke="#2563eb" stroke-width="1"/>
+  <line x1="300" y1="38" x2="365" y2="38" stroke="#2563eb" stroke-width="1"/>
+  <text x="365" y="48" font-family="'Courier New', Courier, monospace" font-size="7.5" font-weight="bold" fill="#2563eb" text-anchor="end">AUDIT STATUS: CPA ACTIVE</text>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 30)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">Marcus Jenkins, CPA</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#2563eb">Senior Accountant &amp; Financial Auditor</text>
+    <text x="0" y="34" font-family="system-ui, sans-serif" font-size="7.5" fill="#475569">CPA License #: #CPA-902381-NY | Email: marcus@jenkins-cpa.com</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#dbeafe" stroke-width="1.5"/>
+  
+  <!-- Accounting tools and ledgers display box -->
+  <g transform="translate(35, 82)">
+    <rect x="0" y="0" width="330" height="38" rx="3" fill="#f8fafc" stroke="#dbeafe" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">ACCOUNTING SYSTEMS &amp; STANDARDS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Ledgers: <tspan font-weight="bold">QuickBooks, Xero, ERP Oracle</tspan> | Standards: <tspan font-weight="bold">GAAP Compliance, Audits</tspan></text>
+  </g>
+  
+  <!-- Core Accountant Details -->
+  <g transform="translate(35, 132)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#2563eb" letter-spacing="0.5">FINANCIAL PROFILE SUMMARY</text>
+    <line x1="0" y1="13" x2="330" y2="13" stroke="#dbeafe" stroke-width="1"/>
+    <text x="0" y="23" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Certified Public Accountant (CPA) with 7+ years managing corporate taxes, conducting internal audits,</text>
+    <text x="0" y="32" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">maintaining general ledgers under GAAP guidelines, and optimizing financial reporting workflows.</text>
+    
+    <text x="0" y="52" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#2563eb" letter-spacing="0.5">PROFESSIONAL ACCOUNTING HISTORY</text>
+    <line x1="0" y1="57" x2="330" y2="57" stroke="#dbeafe" stroke-width="1"/>
+    
+    <!-- Experience 1 -->
+    <text x="0" y="69" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b">Senior Corporate Accountant — Vanguard Finance</text>
+    <text x="330" y="69" font-family="system-ui, sans-serif" font-size="7" fill="#2563eb" text-anchor="end">2022 - Present</text>
+    <text x="0" y="80" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">✦ Managed General Ledger reports for $10M+ annual revenue entities</text>
+    <text x="0" y="89" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">✦ Coordinated corporate tax compliance audits with IRS representatives</text>
+    
+    <!-- Experience 2 -->
+    <text x="0" y="108" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b">Audit Associate — Deloitte &amp; Touche</text>
+  </g>
 </svg>

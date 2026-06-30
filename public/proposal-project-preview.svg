@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#eff6ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#1d4ed8">PROJECT IMPLEMENTATION PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">Project Charter | Execution Scope &amp; Gantt Delivery Timeline</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#dbeafe" stroke-width="1"/>
+  
+  <!-- Client info -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#3b82f6">PROJECT CLIENT:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">St. Jude Medical Group</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#3b82f6">PROJECT NAME:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">EHR System Deployment</text>
+  </g>
+  
+  <!-- Gantt Chart timeline diagram representation in SVG -->
+  <g transform="translate(35, 125)">
+    <rect x="0" y="0" width="330" height="60" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#3b82f6">ESTIMATED GANTT TIMELINE:</text>
+    
+    <!-- Gantt rows -->
+    <!-- Row 1: Discovery -->
+    <rect x="10" y="22" width="60" height="8" rx="2" fill="#3b82f6"/>
+    <text x="75" y="29" font-family="system-ui, sans-serif" font-size="6.5" fill="#64748b">Discovery (W1-W3)</text>
+    
+    <!-- Row 2: Dev -->
+    <rect x="90" y="34" width="110" height="8" rx="2" fill="#1d4ed8"/>
+    <text x="205" y="41" font-family="system-ui, sans-serif" font-size="6.5" fill="#64748b">Development (W4-W9)</text>
+    
+    <!-- Row 3: Launch -->
+    <rect x="220" y="46" width="50" height="8" rx="2" fill="#3b82f6"/>
+    <text x="275" y="53" font-family="system-ui, sans-serif" font-size="6.5" fill="#64748b">Deployment (W10-W12)</text>
+  </g>
+  
+  <!-- Budget details -->
+  <g transform="translate(35, 200)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#3b82f6">PROJECT RESOURCE &amp; BUDGET DETAILS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#dbeafe" stroke-width="1.5"/>
+    
+    <text x="0" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Total Delivery Resources (Allocated Roles)</text>
+    <text x="330" y="26" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b" text-anchor="end">8 Devs / 2 PMs</text>
+    <line x1="0" y1="34" x2="330" y2="34" stroke="#f8fafc" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Grand Total Project Budget Required (USD)</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="end">$145,000.00</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#93c5fd">Milestones subject to change upon steering committee sign-off details.</text>
+</svg>

@@ -1,0 +1,414 @@
+  {
+    id: "freelance-agreement",
+    slug: "freelance-agreement",
+    title: "Freelance Service Agreement",
+    description: "Standard service contract detailing scope of work, timeline, and payment terms.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Freelance Service Agreement",
+      fields: ["freelancerName", "businessName", "freelancerAddress", "freelancerEmail", "freelancerPhone", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "projectTitle", "projectDescription", "deliverables", "timeline", "startDate", "endDate", "paymentTerms", "totalProjectFee", "depositAmount", "paymentSchedule", "lateFee", "ownershipRights", "confidentialityClause", "revisionsIncluded", "cancellationPolicy", "freelancerSignature", "clientSignature"],
+      layout: {
+        header: "FREELANCE AGREEMENT",
+        footer: "Executed as a legally binding contract between Freelancer and Client."
+      },
+      styles: {
+        primaryColor: "#0f172a",
+        secondaryColor: "#475569"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "FREELANCE SERVICE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerName}} ({{businessName}}) | Address: {{freelancerAddress}} | Contact: {{freelancerEmail}} | {{freelancerPhone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}} | Contact: {{clientEmail}} | {{clientPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Project Scope & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectTitle}} | Description: {{projectDescription}} | Key Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}} | Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Late Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Terms: {{paymentTerms}} | Total Fee: {{totalProjectFee}} | Deposit: {{depositAmount}} | Schedule: {{paymentSchedule}} | Late Fee Rate: {{lateFee}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. IP Ownership & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Ownership: {{ownershipRights}} | Confidentiality: {{confidentialityClause}} | Revisions: {{revisionsIncluded}} | Cancellation: {{cancellationPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer Signature: {{freelancerSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "employment-contract",
+    slug: "employment-contract",
+    title: "Employment Contract Template",
+    description: "Standard corporate hiring contract mapping salary, reporting lines, benefit packages, and policies.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Employment Agreement",
+      fields: ["companyLogo", "companyName", "companyAddress", "hrRepresentative", "hrEmail", "hrPhone", "employeeFullName", "employeeAddress", "employeeEmail", "employeePhone", "jobTitle", "department", "employmentType", "startDate", "endDate", "workLocation", "reportingManager", "salary", "bonus", "benefits", "payFrequency", "workingHours", "probationPeriod", "leavePolicy", "noticePeriod", "confidentialityClause", "nonCompeteClause", "employerSignature", "employeeSignature", "signatureDate"],
+      layout: {
+        header: "EMPLOYMENT AGREEMENT",
+        footer: "Subject to governing labor laws. Copy retained by both parties."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1d4ed8"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "EMPLOYMENT CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employer: {{companyName}} (Logo: {{companyLogo}}) | Address: {{companyAddress}} | Rep: {{hrRepresentative}} ({{hrEmail}} / {{hrPhone}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employee: {{employeeFullName}} | Address: {{employeeAddress}} | Email: {{employeeEmail}} | Phone: {{employeePhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Position, Scope & Schedule" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Role: {{jobTitle}} | Dept: {{department}} | Status: {{employmentType}} | Location: {{workLocation}} | Manager: {{reportingManager}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Start Date: {{startDate}} | End Date: {{endDate}} | Weekly Hours: {{workingHours}} | Probation: {{probationPeriod}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Remuneration & Benefits" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Base Salary: {{salary}} | Pay Frequency: {{payFrequency}} | Bonus Plan: {{bonus}} | Health & Benefits: {{benefits}} | Leave Policy: {{leavePolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Terms & Covenants" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Notice Period: {{noticePeriod}} | Confidentiality: {{confidentialityClause}} | Non-Compete: {{nonCompeteClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorization Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employer: {{employerSignature}} | Employee: {{employeeSignature}} | Date Signed: {{signatureDate}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "freelance-contract",
+    slug: "freelance-contract",
+    title: "Freelance Contract Template",
+    description: "Detailed freelance agreement mapping client project specifications, late fees, and copyrights.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Freelance Services Contract",
+      fields: ["freelancerName", "businessName", "freelancerAddress", "freelancerEmail", "freelancerPhone", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "projectTitle", "projectDescription", "deliverables", "timeline", "startDate", "endDate", "paymentTerms", "totalProjectFee", "depositAmount", "paymentSchedule", "lateFee", "ownershipRights", "confidentialityClause", "revisionsIncluded", "cancellationPolicy", "freelancerSignature", "clientSignature"],
+      layout: {
+        header: "FREELANCE CONTRACT",
+        footer: "Governed by mutually agreed independent service terms."
+      },
+      styles: {
+        primaryColor: "#475569",
+        secondaryColor: "#1e293b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "FREELANCE SERVICES CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerName}} ({{businessName}}) | Address: {{freelancerAddress}} | Contact: {{freelancerEmail}} | {{freelancerPhone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}} | Contact: {{clientEmail}} | {{clientPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Works & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectTitle}} | Description: {{projectDescription}} | Key Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}} | Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Late Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Terms: {{paymentTerms}} | Total Fee: {{totalProjectFee}} | Deposit: {{depositAmount}} | Schedule: {{paymentSchedule}} | Late Fee Rate: {{lateFee}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Intellectual Property & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Ownership: {{ownershipRights}} | Confidentiality: {{confidentialityClause}} | Revisions: {{revisionsIncluded}} | Cancellation: {{cancellationPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerSignature}} | Client: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "independent-contractor-agreement",
+    slug: "independent-contractor-agreement",
+    title: "Independent Contractor Agreement",
+    description: "Detailed independent contractor agreement specifying service terms, tax compliance, and liability exclusions.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Independent Contractor Agreement",
+      fields: ["contractorName", "contractorCompany", "contractorAddress", "contractorContact", "clientName", "clientCompanyName", "clientAddress", "servicesProvided", "projectDuration", "deliverables", "paymentTerms", "taxResponsibility", "insuranceRequirement", "independentContractorStatus", "confidentialityClause", "terminationClause", "disputeResolution", "contractorSignature", "clientSignature"],
+      layout: {
+        header: "INDEPENDENT CONTRACTOR AGREEMENT",
+        footer: "Contractor is solely responsible for self-employment taxes and business insurances."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#115e59"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "INDEPENDENT CONTRACTOR AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor: {{contractorName}} | Company: {{contractorCompany}} | Address: {{contractorAddress}} | Contact: {{contractorContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Services & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Services Provided: {{servicesProvided}} | Duration: {{projectDuration}} | Deliverables: {{deliverables}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Compensation & Taxes" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Payment Terms: {{paymentTerms}} | Tax Responsibility: {{taxResponsibility}} | Insurance Requirement: {{insuranceRequirement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Status & Terms" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Status: {{independentContractorStatus}} | NDA: {{confidentialityClause}} | Termination: {{terminationClause}} | Dispute Resolution: {{disputeResolution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor Signature: {{contractorSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "service-agreement",
+    slug: "service-agreement",
+    title: "Service Agreement Template",
+    description: "Legal agreement mapping service level agreements (SLAs), provider obligations, and client responsibilities.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Service Agreement",
+      fields: ["providerCompanyName", "providerAddress", "providerContactPerson", "clientName", "clientCompanyName", "clientAddress", "serviceDescription", "serviceScope", "serviceFrequency", "startDate", "endDate", "serviceFee", "paymentMethod", "paymentDueDate", "slaTerms", "cancellationPolicy", "liabilityLimit", "confidentialityClause", "providerSignature", "clientSignature"],
+      layout: {
+        header: "MASTER SERVICE AGREEMENT",
+        footer: "Subject to the Service Level Agreement (SLA) metrics included herein."
+      },
+      styles: {
+        primaryColor: "#4f46e5",
+        secondaryColor: "#312e81"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MASTER SERVICE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Provider: {{providerCompanyName}} | Address: {{providerAddress}} | Contact: {{providerContactPerson}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Description of Services" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Service Description: {{serviceDescription}} | Scope: {{serviceScope}} | Frequency: {{serviceFrequency}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Service Fees & Payment Rules" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Fee: {{serviceFee}} | Method: {{paymentMethod}} | Due Date: {{paymentDueDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Service Level & Cancellation Policies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "SLA Terms: {{slaTerms}} | Cancellation: {{cancellationPolicy}} | Liability: {{liabilityLimit}} | Confidentiality: {{confidentialityClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Provider Signature: {{providerSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "nda-template",
+    slug: "nda-template",
+    title: "Non-Disclosure Agreement (NDA) Template",
+    description: "Standard confidentiality agreement layout to protect proprietary business data, trade secrets, and assets.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Non-Disclosure Agreement",
+      fields: ["partyAName", "partyACompany", "partyAAddress", "partyBName", "partyBCompany", "partyBAddress", "effectiveDate", "purposeOfAgreement", "confidentialInformation", "exclusions", "agreementDuration", "obligations", "permittedDisclosures", "governingLaw", "partyASignature", "partyBSignature"],
+      layout: {
+        header: "CONFIDENTIALITY DEED",
+        footer: "Governed under state laws. Signatures authenticate mutual obligations."
+      },
+      styles: {
+        primaryColor: "#be123c",
+        secondaryColor: "#881337"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MUTUAL NON-DISCLOSURE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "First Party (A): {{partyAName}} ({{partyACompany}}) | Address: {{partyAAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Second Party (B): {{partyBName}} ({{partyBCompany}}) | Address: {{partyBAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Agreement Purpose & Date" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Effective Date: {{effectiveDate}} | Purpose: {{purposeOfAgreement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Definition of Confidential Material" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidential Information: {{confidentialInformation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Exclusions: {{exclusions}} | Duration: {{agreementDuration}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Obligations & Legal Remedies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Obligations: {{obligations}} | Permitted Disclosures: {{permittedDisclosures}} | Law: {{governingLaw}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Party A: {{partyASignature}} | Party B: {{partyBSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "consulting-agreement",
+    slug: "consulting-agreement",
+    title: "Consulting Agreement Template",
+    description: "Detailed consulting agreement mapping project scope, timelines, hourly or fixed rate fees.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Consulting Agreement",
+      fields: ["consultantName", "consultantCompany", "consultantContact", "clientName", "clientCompanyName", "clientContact", "projectName", "scopeOfWork", "deliverables", "timeline", "hourlyRate", "fixedFee", "expenses", "paymentSchedule", "confidentialityClause", "intellectualProperty", "terminationClause", "consultantSignature", "clientSignature"],
+      layout: {
+        header: "CONSULTING CONTRACT",
+        footer: "Independent consultant relationship template."
+      },
+      styles: {
+        primaryColor: "#d97706",
+        secondaryColor: "#78350f"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CONSULTING AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant: {{consultantName}} | Company: {{consultantCompany}} | Contact: {{consultantContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Contact: {{clientContact}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Consulting & Work Title" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectName}} | Scope: {{scopeOfWork}} | Deliverables: {{deliverables}} | Timeline: {{timeline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Fees, Fixed Rates & Expenses" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hourly Rate: {{hourlyRate}} | Fixed Fee: {{fixedFee}} | Expenses: {{expenses}} | Schedule: {{paymentSchedule}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Covenants & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidentiality: {{confidentialityClause}} | Intellectual Property: {{intellectualProperty}} | Termination: {{terminationClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant Signature: {{consultantSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "rental-agreement",
+    slug: "rental-agreement",
+    title: "Rental Agreement Template",
+    description: "Property lease contract mapping monthly rents, security deposits, smoking policies, and utility rules.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Residential Rental Agreement",
+      fields: ["landlordName", "landlordAddress", "landlordContact", "tenantName", "tenantAddress", "tenantPhone", "propertyAddress", "propertyType", "leaseStartDate", "leaseEndDate", "monthlyRent", "securityDeposit", "rentDueDate", "paymentMethod", "utilities", "maintenance", "petsPolicy", "smokingPolicy", "landlordSignature", "tenantSignature"],
+      layout: {
+        header: "LEASE AGREEMENT",
+        footer: "This document is binding under local landlord-tenant regulations."
+      },
+      styles: {
+        primaryColor: "#059669",
+        secondaryColor: "#064e3b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "RESIDENTIAL LEASE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Landlord: {{landlordName}} | Address: {{landlordAddress}} | Phone: {{landlordContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Tenant: {{tenantName}} | Former Address: {{tenantAddress}} | Phone: {{tenantPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Property & Lease Duration" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Leased Address: {{propertyAddress}} | Type: {{propertyType}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Lease Period: {{leaseStartDate}} to {{leaseEndDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Monthly Rents & Security Deposits" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Rent Amount: {{monthlyRent}} | Deposit: {{securityDeposit}} | Due Date: {{rentDueDate}} | Method: {{paymentMethod}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Utilities & Maintenance Policies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Utilities: {{utilities}} | Maintenance: {{maintenance}} | Pets: {{petsPolicy}} | Smoking: {{smokingPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Lease Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Landlord Signature: {{landlordSignature}} | Tenant Signature: {{tenantSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "sales-contract",
+    slug: "sales-contract",
+    title: "Sales Contract Template",
+    description: "Standard business bill of sale mapping merchandise details, quantities, and return policies.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Commercial Sales Agreement",
+      fields: ["sellerName", "sellerCompany", "sellerAddress", "buyerName", "buyerCompany", "buyerAddress", "productName", "quantity", "unitPrice", "totalAmount", "deliveryDate", "shippingMethod", "deliveryAddress", "paymentMethod", "paymentDueDate", "warrantyTerms", "returnPolicy", "governingLaw", "sellerSignature", "buyerSignature"],
+      layout: {
+        header: "BILL OF SALE",
+        footer: "Merchandise title transfers to Buyer upon receipt of total contract value."
+      },
+      styles: {
+        primaryColor: "#ea580c",
+        secondaryColor: "#7c2d12"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "COMMERCIAL SALES CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Seller: {{sellerName}} ({{sellerCompany}}) | Address: {{sellerAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Buyer: {{buyerName}} ({{buyerCompany}}) | Address: {{buyerAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Merchandises details & Costs Breakdown" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Item: {{productName}} | Qty: {{quantity}} | Unit Price: {{unitPrice}} | Total: {{totalAmount}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Shipping & Payment Terms" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Delivery Date: {{deliveryDate}} | Method: {{shippingMethod}} | Destination: {{deliveryAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Payment Method: {{paymentMethod}} | Payment Due Date: {{paymentDueDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Warranty & Legal Exclusions" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Warranty: {{warrantyTerms}} | Returns: {{returnPolicy}} | Law: {{governingLaw}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Sales Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Seller Signature: {{sellerSignature}} | Buyer Signature: {{buyerSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "partnership-agreement",
+    slug: "partnership-agreement",
+    title: "Partnership Agreement Template",
+    description: "Standard business partnership contract outlining ownership ratios, capital investment, and exit terms.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Business Partnership Agreement",
+      fields: ["partner1Name", "partner1Address", "partner1Ownership", "partner2Name", "partner2Address", "partner2Ownership", "businessName", "businessAddress", "industryType", "capitalContribution", "profitSharing", "partnerResponsibilities", "decisionMaking", "exitStrategy", "partner1Signature", "partner2Signature"],
+      layout: {
+        header: "PARTNERSHIP DEED",
+        footer: "This partnership operates in mutual trust and alignment on common business goals."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#311042"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PARTNERSHIP AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 1: {{partner1Name}} | Address: {{partner1Address}} | Ownership Share: {{partner1Ownership}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 2: {{partner2Name}} | Address: {{partner2Address}} | Ownership Share: {{partner2Ownership}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Business Details" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Business Name: {{businessName}} | Address: {{businessAddress}} | Industry: {{industryType}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Financial Structure & Capital" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Capital Contribution: {{capitalContribution}} | Profit Sharing Terms: {{profitSharing}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Roles, Decisions & Exit Strategy" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{partnerResponsibilities}} | Decision Rule: {{decisionMaking}} | Exit Plan: {{exitStrategy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Partnership Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 1 Signature: {{partner1Signature}} | Partner 2 Signature: {{partner2Signature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "vendor-agreement",
+    slug: "vendor-agreement",
+    title: "Vendor Agreement Template",
+    description: "Trade contract outlining merchandise quantities, quality controls, and client payouts.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Vendor Services Agreement",
+      fields: ["vendorName", "vendorCompany", "vendorAddress", "clientName", "clientCompanyName", "clientAddress", "productsServices", "quantity", "deliverySchedule", "qualityStandards", "contractValue", "paymentTerms", "invoiceSchedule", "confidentialityClause", "terminationClause", "warrantyTerms", "liabilityLimit", "vendorSignature", "clientSignature"],
+      layout: {
+        header: "VENDOR CONTRACT",
+        footer: "This contract defines the supply conditions between Client and Supplier."
+      },
+      styles: {
+        primaryColor: "#0284c7",
+        secondaryColor: "#075985"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "VENDOR SERVICES AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Vendor: {{vendorName}} ({{vendorCompany}}) | Address: {{vendorAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Products & Delivery" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Services/Goods: {{productsServices}} | Qty: {{quantity}} | Delivery Schedule: {{deliverySchedule}} | Quality Rules: {{qualityStandards}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Valuation" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Value: {{contractValue}} | Terms: {{paymentTerms}} | Invoice Schedule: {{invoiceSchedule}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Terms & Guarantees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidentiality: {{confidentialityClause}} | Termination: {{terminationClause}} | Warranty: {{warrantyTerms}} | Liability Cap: {{liabilityLimit}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Vendor Signature: {{vendorSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },

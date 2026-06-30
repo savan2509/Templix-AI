@@ -1,34 +1,91 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="20" y="20" width="110" height="260" rx="0" fill="#db2777" opacity="0.05"/>
-  <line x1="130" y1="20" x2="130" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
-  <circle cx="75" cy="65" r="22" fill="#db2777" opacity="0.2"/>
-  <circle cx="75" cy="65" r="18" fill="#db2777"/>
-  <circle cx="75" cy="60" r="6" fill="#ffffff"/>
-  <path d="M62 76 Q75 68 88 76" stroke="#ffffff" stroke-width="2" fill="none"/>
-  <rect x="40" y="105" width="70" height="6" rx="3" fill="#cbd5e1"/>
-  <rect x="40" y="118" width="70" height="4" rx="2" fill="#e2e8f0"/>
-  <rect x="40" y="128" width="55" height="4" rx="2" fill="#e2e8f0"/>
-  <text x="40" y="160" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#db2777">CREATIVE</text>
-  <rect x="40" y="170" width="65" height="10" rx="3" fill="#db2777" opacity="0.1"/>
-  <text x="45" y="178" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#db2777">Photoshop &amp; AI</text>
-  <rect x="40" y="186" width="65" height="10" rx="3" fill="#db2777" opacity="0.1"/>
-  <text x="45" y="194" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#db2777">Figma UI Design</text>
-  <rect x="40" y="202" width="65" height="10" rx="3" fill="#db2777" opacity="0.1"/>
-  <text x="45" y="210" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#db2777">Vector Art</text>
-  <text x="145" y="52" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Sophia Rodriguez</text>
-  <text x="145" y="66" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#db2777">Senior Graphic Designer</text>
-  <text x="145" y="90" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">PROFESSIONAL SUMMARY</text>
-  <line x1="145" y1="96" x2="360" y2="96" stroke="#f1f5f9" stroke-width="1.5"/>
-  <rect x="145" y="104" width="215" height="5" rx="2" fill="#94a3b8" opacity="0.6"/>
-  <rect x="145" y="114" width="180" height="5" rx="2" fill="#cbd5e1" opacity="0.6"/>
-  <text x="145" y="142" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">WORK EXPERIENCE</text>
-  <line x1="145" y1="148" x2="360" y2="148" stroke="#f1f5f9" stroke-width="1.5"/>
-  <text x="145" y="162" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#334155">Lead Artist - Spark Studios</text>
-  <text x="360" y="162" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">2022 - Pres</text>
-  <circle cx="147" cy="178" r="2" fill="#db2777"/>
-  <rect x="155" y="175" width="205" height="4" rx="2" fill="#cbd5e1"/>
-  <circle cx="147" cy="188" r="2" fill="#db2777"/>
-  <rect x="155" y="185" width="185" height="4" rx="2" fill="#cbd5e1"/>
+  <!-- Creative pinkish-violet canvas background -->
+  <rect width="100%" height="100%" fill="#fff5f7"/>
+  <rect x="15" y="15" width="370" height="270" rx="16" fill="#ffffff" stroke="#fce7f3" stroke-width="1.5"/>
+  
+  <!-- Abstract Design Graphic top right -->
+  <path d="M385 15 L330 15 L385 70 Z" fill="#db2777" opacity="0.15"/>
+  <path d="M385 70 L300 15 L320 15 L385 50 Z" fill="#db2777" opacity="0.08"/>
+  
+  <!-- Creative Profile Header -->
+  <g transform="translate(35, 35)">
+    <!-- Initials Avatar Frame -->
+    <rect x="0" y="0" width="32" height="32" rx="8" fill="#db2777"/>
+    <text x="16" y="21" font-family="'Georgia', serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle">D</text>
+    
+    <!-- Title details -->
+    <text x="42" y="13" font-family="'Georgia', serif" font-weight="bold" font-size="13" fill="#0f172a">Dianne Vance</text>
+    <text x="42" y="25" font-family="system-ui, sans-serif" font-weight="bold" font-size="8" fill="#db2777">Art Director &amp; Visual UI Designer</text>
+    <text x="42" y="34" font-family="system-ui, sans-serif" font-size="7" fill="#9ca3af">portfolio: dianne-design.co | behance: behance.net/diannev</text>
+  </g>
+  
+  <line x1="35" y1="82" x2="365" y2="82" stroke="#fbcfe8" stroke-width="1"/>
+  
+  <!-- Two columns layout -->
+  <!-- Left Side: Design Software Skills (pink dots indicator) -->
+  <g transform="translate(35, 95)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#db2777" letter-spacing="0.5">DESIGN TOOLKIT</text>
+    
+    <!-- Skill 1 -->
+    <text x="0" y="22" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Adobe Photoshop</text>
+    <circle cx="85" cy="20" r="2.5" fill="#db2777"/>
+    <circle cx="93" cy="20" r="2.5" fill="#db2777"/>
+    <circle cx="101" cy="20" r="2.5" fill="#db2777"/>
+    <circle cx="109" cy="20" r="2.5" fill="#db2777"/>
+    <circle cx="117" cy="20" r="2.5" fill="#db2777" opacity="0.2"/>
+    
+    <!-- Skill 2 -->
+    <text x="0" y="36" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Adobe Illustrator</text>
+    <circle cx="85" cy="34" r="2.5" fill="#db2777"/>
+    <circle cx="93" cy="34" r="2.5" fill="#db2777"/>
+    <circle cx="101" cy="34" r="2.5" fill="#db2777"/>
+    <circle cx="109" cy="34" r="2.5" fill="#db2777"/>
+    <circle cx="117" cy="34" r="2.5" fill="#db2777"/>
+    
+    <!-- Skill 3 -->
+    <text x="0" y="50" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Figma (UI Design)</text>
+    <circle cx="85" cy="48" r="2.5" fill="#db2777"/>
+    <circle cx="93" cy="48" r="2.5" fill="#db2777"/>
+    <circle cx="101" cy="48" r="2.5" fill="#db2777"/>
+    <circle cx="109" cy="48" r="2.5" fill="#db2777"/>
+    <circle cx="117" cy="48" r="2.5" fill="#db2777" opacity="0.2"/>
+    
+    <!-- Skill 4 -->
+    <text x="0" y="64" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Adobe InDesign</text>
+    <circle cx="85" cy="62" r="2.5" fill="#db2777"/>
+    <circle cx="93" cy="62" r="2.5" fill="#db2777"/>
+    <circle cx="101" cy="62" r="2.5" fill="#db2777"/>
+    <circle cx="109" cy="62" r="2.5" fill="#db2777" opacity="0.2"/>
+    <circle cx="117" cy="62" r="2.5" fill="#db2777" opacity="0.2"/>
+    
+    <!-- Design Specialties block -->
+    <rect x="0" y="80" width="125" height="85" rx="8" fill="#fff5f7" stroke="#fce7f3" stroke-width="1"/>
+    <text x="10" y="93" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">SPECIALTIES</text>
+    <text x="10" y="107" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Brand Identity systems</text>
+    <text x="10" y="120" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Vector illustration</text>
+    <text x="10" y="133" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Mobile UI prototyping</text>
+    <text x="10" y="146" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Print publication layouts</text>
+  </g>
+  
+  <line x1="175" y1="95" x2="175" y2="265" stroke="#fce7f3" stroke-width="1"/>
+  
+  <!-- Right Side: Profile Summary & Exp -->
+  <g transform="translate(190, 95)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#db2777" letter-spacing="0.5">CREATIVE VISION</text>
+    <text x="0" y="20" font-family="'Georgia', serif" font-size="7.5" fill="#4b5563" font-style="italic">"Passionate visual designer focused on constructing cohesive brand</text>
+    <text x="0" y="29" font-family="'Georgia', serif" font-size="7.5" fill="#4b5563" font-style="italic">identities and dynamic vector illustrations that increase user trust."</text>
+    
+    <text x="0" y="52" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#db2777" letter-spacing="0.5">EXPERT EXPERIENCE</text>
+    <line x1="0" y1="58" x2="175" y2="58" stroke="#fce7f3" stroke-width="1"/>
+    
+    <!-- Job 1 -->
+    <text x="0" y="70" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#0f172a">Senior Graphic Lead — Pixel Agency</text>
+    <text x="0" y="80" font-family="system-ui, sans-serif" font-size="7" fill="#db2777">2023 - Present</text>
+    <text x="0" y="91" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Managed redesign of 12+ corporate client brand assets.</text>
+    
+    <!-- Job 2 -->
+    <text x="0" y="112" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#0f172a">Visual UI Designer — CreativeLab</text>
+    <text x="0" y="122" font-family="system-ui, sans-serif" font-size="7" fill="#db2777">2020 - 2023</text>
+    <text x="0" y="133" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Built interactive mobile UI prototypes using figma.</text>
+  </g>
 </svg>

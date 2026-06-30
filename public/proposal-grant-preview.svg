@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f0fdf4"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
+  
+  <!-- Emerald green funding agency top banner header -->
+  <rect x="15" y="15" width="370" height="42" rx="4" fill="#059669"/>
+  <!-- Leaf icon graphic representing social value/growth -->
+  <path d="M350 36 C350 26 362 20 362 20 C362 20 368 28 358 36 Z M353 35 L360 28" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+  
+  <text x="35" y="32" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="#ffffff">GRANT FUNDING APPLICATION</text>
+  <text x="35" y="44" font-family="system-ui, sans-serif" font-size="7.5" font-weight="semibold" fill="#a7f3d0">NONPROFIT PROJECT BID &amp; COMMUNITY SOCIAL IMPACT GOALS</text>
+  
+  <!-- Left Column: Funding stats -->
+  <g transform="translate(35, 75)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#059669" letter-spacing="0.5">FUNDING AGENCY:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">Green Planet Trust</text>
+    
+    <!-- Community goals boxes -->
+    <rect x="0" y="32" width="110" height="126" rx="4" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="0.75"/>
+    <text x="10" y="45" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">SOCIAL IMPACT:</text>
+    
+    <text x="10" y="59" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Carbon offset</text>
+    <text x="10" y="71" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Solar grid panels</text>
+    <text x="10" y="83" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ School gardens</text>
+    <text x="10" y="95" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">✦ Clean water</text>
+    
+    <text x="10" y="115" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">TIMELINE TERM:</text>
+    <text x="10" y="127" font-family="system-ui, sans-serif" font-size="7.5" font-weight="semibold" fill="#1f2937">18 Months Scope</text>
+  </g>
+  
+  <line x1="165" y1="75" x2="165" y2="265" stroke="#a7f3d0" stroke-width="1"/>
+  
+  <!-- Right Column: Project Title & Details -->
+  <g transform="translate(180, 75)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#059669" letter-spacing="0.5">PROJECT TITLE &amp; PROPOSAL</text>
+    <line x1="0" y1="14" x2="185" y2="14" stroke="#a7f3d0" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1f2937">Community Solar Power Initiatives</text>
+    <text x="0" y="38" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Requesting Organization: GreenFuture NGO</text>
+    
+    <circle cx="3" cy="55" r="1.5" fill="#059669"/>
+    <text x="10" y="58" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">Deployment of 50 solar panels in schools</text>
+    
+    <circle cx="3" cy="67" r="1.5" fill="#059669"/>
+    <text x="10" y="70" font-family="system-ui, sans-serif" font-size="7.5" fill="#374151">Estimated annual energy savings: 35%</text>
+    
+    <text x="0" y="93" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#059669" letter-spacing="0.5">FUNDING REQUESTED BUDGET</text>
+    <line x1="0" y1="99" x2="185" y2="99" stroke="#a7f3d0" stroke-width="1.5"/>
+    
+    <text x="0" y="112" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Operational project delivery materials</text>
+    <text x="185" y="112" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1c1917" text-anchor="end">$45,000.00</text>
+    <line x1="0" y1="120" x2="185" y2="120" stroke="#fafafa" stroke-width="1"/>
+    
+    <text x="0" y="132" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Total Grant Funding Requested</text>
+    <text x="185" y="132" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#059669" text-anchor="end">$75,000.00</text>
+  </g>
+</svg>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
@@ -40,9 +39,37 @@ const TEMPLATE_IMAGES: Record<string, string> = {
   "resume-customer-service":     "/resume-customer-service-preview.svg",
   "resume-accountant":           "/resume-accountant-preview.svg",
   "resume-sales-representative": "/resume-sales-representative-preview.svg",
-  "freelance-agreement":         "/contract-template-preview.png",
-  "business-proposal":           "/proposal-template-preview.png",
-  "cover-letter":                "/cover-letter-template-preview.png",
+  "freelance-agreement":         "/contract-freelance-agreement-preview.svg",
+  "employment-contract":         "/contract-employment-preview.svg",
+  "freelance-contract":          "/contract-freelance-contract-preview.svg",
+  "independent-contractor-agreement": "/contract-independent-contractor-preview.svg",
+  "service-agreement":           "/contract-service-agreement-preview.svg",
+  "nda-template":                "/contract-nda-preview.svg",
+  "consulting-agreement":        "/contract-consulting-agreement-preview.svg",
+  "rental-agreement":            "/contract-rental-preview.svg",
+  "sales-contract":              "/contract-sales-preview.svg",
+  "partnership-agreement":       "/contract-partnership-preview.svg",
+  "vendor-agreement":            "/contract-vendor-preview.svg",
+  "business-proposal":           "/proposal-business-preview.svg",
+  "project-proposal":            "/proposal-project-preview.svg",
+  "marketing-proposal":           "/proposal-marketing-preview.svg",
+  "web-design-proposal":          "/proposal-web-design-preview.svg",
+  "software-development-proposal": "/proposal-software-development-preview.svg",
+  "consulting-proposal":          "/proposal-consulting-preview.svg",
+  "digital-marketing-proposal":   "/proposal-digital-marketing-preview.svg",
+  "construction-proposal":        "/proposal-construction-preview.svg",
+  "event-proposal":               "/proposal-event-preview.svg",
+  "grant-proposal":               "/proposal-grant-preview.svg",
+  "cover-letter":                "/letter-cover-preview.svg",
+  "resignation-letter":          "/letter-resignation-preview.svg",
+  "recommendation-letter":       "/letter-recommendation-preview.svg",
+  "offer-letter":                "/letter-offer-preview.svg",
+  "business-letter":             "/letter-business-preview.svg",
+  "complaint-letter":            "/letter-complaint-preview.svg",
+  "thank-you-letter":            "/letter-thank-you-preview.svg",
+  "request-letter":              "/letter-request-preview.svg",
+  "appointment-letter":          "/letter-appointment-preview.svg",
+  "experience-letter":           "/letter-experience-preview.svg",
 };
 
 // Category-level fallback images — now using rich illustrated covers
@@ -201,17 +228,14 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       <>
         <Navbar />
         <main className="flex-1 bg-zinc-50 dark:bg-zinc-950/20 py-10 transition-colors">
-          <Script
-            id="breadcrumb-jsonld"
+          {/* JSON-LD structured data — native script tag per Next.js JSON-LD guide */}
+          <script
             type="application/ld+json"
-            strategy="beforeInteractive"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJson) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJson).replace(/</g, "\\u003c") }}
           />
-          <Script
-            id="template-jsonld"
+          <script
             type="application/ld+json"
-            strategy="beforeInteractive"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaJson) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaJson).replace(/</g, "\\u003c") }}
           />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
@@ -448,11 +472,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       <Navbar />
 
       <main className="flex-1 bg-zinc-50 dark:bg-zinc-950/20 py-10 transition-colors">
-        <Script
-          id="category-breadcrumb-jsonld"
+        {/* JSON-LD structured data — native script tag per Next.js JSON-LD guide */}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
         />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">

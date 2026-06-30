@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f0fdf4"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
+  
+  <!-- Left accent bar -->
+  <line x1="25" y1="15" x2="25" y2="285" stroke="#059669" stroke-width="2.5"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(45, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#065f46">STRATEGY CONSULTING PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">Management Advisory | Focus: Corporate Operations &amp; Tech Integrations</text>
+  </g>
+  
+  <line x1="45" y1="74" x2="365" y2="74" stroke="#a7f3d0" stroke-width="1"/>
+  
+  <!-- Client Detail Grid -->
+  <g transform="translate(45, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">PROPOSED FOR PARTNER:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Vanguard Capital Management</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">ADVISORY PERIOD:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">6 Months (Retainer Scope)</text>
+  </g>
+  
+  <!-- Deliverable Outlines -->
+  <g transform="translate(45, 128)">
+    <rect x="0" y="0" width="310" height="42" rx="4" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#059669">CORE ADVISORY DELIVERABLES:</text>
+    <text x="10" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Outlines: <tspan font-weight="bold">Audits, operational charts &amp; cloud strategy guides</tspan></text>
+  </g>
+  
+  <!-- Retainer fee and KPIs -->
+  <g transform="translate(45, 188)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#059669">FEES &amp; SUCCESS PERFORMANCE METRICS</text>
+    <line x1="0" y1="14" x2="310" y2="14" stroke="#a7f3d0" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Monthly Advisory Retainer Services Fee</text>
+    <text x="310" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">$6,000.00/mo</text>
+    <line x1="0" y1="35" x2="310" y2="35" stroke="#f0fdf4" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Target KPI Metrics (Operations efficiency lift)</text>
+    <text x="310" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#059669" text-anchor="end">25% Increase</text>
+  </g>
+  
+  <text x="45" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#6ee7b7">Advisory progress reports and analysis charts shared at monthly sprints.</text>
+</svg>

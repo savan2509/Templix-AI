@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#faf5ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.5"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 35)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#581c87">FREELANCE SERVICES CONTRACT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="7.5" fill="#6b21a8">Effective Date: October 24, 2026 | Term: Project Completion</text>
+  </g>
+  
+  <line x1="35" y1="72" x2="365" y2="72" stroke="#f3e8ff" stroke-width="1.5"/>
+  
+  <!-- Parties Details -->
+  <g transform="translate(35, 85)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">CLIENT COMPANY:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Apex Enterprise Partners</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">CONTRACTOR/DEV:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Sarah Jenkins Freelancing</text>
+  </g>
+  
+  <!-- Milestone Progress flow graphic -->
+  <g transform="translate(35, 122)">
+    <rect x="0" y="0" width="330" height="42" rx="4" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">MILESTONE PAYMENT SCHEDULES:</text>
+    
+    <!-- Circles connected by line representing progress milestone -->
+    <line x1="25" y1="26" x2="285" y2="26" stroke="#e9d5ff" stroke-width="2"/>
+    <circle cx="25" cy="26" r="6" fill="#7c3aed"/>
+    <text x="25" y="36" font-family="system-ui, sans-serif" font-size="6" fill="#6b21a8" text-anchor="middle">M1 (20%)</text>
+    
+    <circle cx="155" cy="26" r="6" fill="#7c3aed"/>
+    <text x="155" y="36" font-family="system-ui, sans-serif" font-size="6" fill="#6b21a8" text-anchor="middle">M2 (50%)</text>
+    
+    <circle cx="285" cy="26" r="6" fill="#c084fc"/>
+    <text x="285" y="36" font-family="system-ui, sans-serif" font-size="6" fill="#6b21a8" text-anchor="middle">M3 (30%)</text>
+  </g>
+  
+  <!-- Contract Scope clauses -->
+  <g transform="translate(35, 185)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#7c3aed">1. SCOPE OF PROFESSIONAL SERVICES</text>
+    <rect x="0" y="14" width="330" height="3" rx="1.5" fill="#f3e8ff"/>
+    <rect x="0" y="21" width="310" height="3" rx="1.5" fill="#f8fafc"/>
+    
+    <text x="0" y="38" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#7c3aed">2. TERMINATION NOTICE CLAUSE</text>
+    <text x="0" y="49" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">Either party may terminate with <tspan font-weight="bold">30 Days</tspan> written notice.</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#c084fc">Intellectual Property rights transferred post-final milestone payment clearance.</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#e0f2f1"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
+  
+  <!-- Teal top decoration banner -->
+  <rect x="15" y="15" width="12" height="270" fill="#0d9488" rx="4"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(45, 35)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#0f766e">OFFER OF APPOINTMENT</text>
+    <text x="0" y="22" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">Appointment confirmation and reporting structure terms</text>
+  </g>
+  
+  <line x1="45" y1="64" x2="365" y2="64" stroke="#a7f3d0" stroke-width="1"/>
+  
+  <!-- Candidate detail grid -->
+  <g transform="translate(45, 76)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#0d9488">APPOINTED CANDIDATE:</text>
+    <text x="0" y="18" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">John Doe Engineer</text>
+    
+    <text x="170" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#0d9488">PROPOSED ROLE:</text>
+    <text x="170" y="18" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Cloud Infrastructure Lead</text>
+  </g>
+  
+  <!-- Table details of appointment structures -->
+  <g transform="translate(45, 115)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#0d9488">1. APPOINTMENT TERMS &amp; REPORTING STRUCTURE</text>
+    <rect x="0" y="14" width="310" height="42" rx="4" fill="#faf5ff" stroke="#ddd6fe" stroke-width="0.5"/>
+    <text x="10" y="14" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Reporting Manager: <tspan font-weight="bold" fill="#0f172a">Marcus Jenkins (VP Cloud)</tspan></text>
+    <text x="10" y="25" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Work Location: <tspan font-weight="bold" fill="#0f172a">NYC Head Office (Hybrid)</tspan></text>
+    <text x="10" y="36" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Probation Terms: <tspan font-weight="bold" fill="#0f172a">6 Months Standard</tspan></text>
+  </g>
+  
+  <!-- Compensation -->
+  <g transform="translate(45, 185)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0d9488">2. APPOINTMENT COMPENSATION PACKAGE</text>
+    <line x1="0" y1="14" x2="310" y2="14" stroke="#a7f3d0" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Annual Salary Package (Gross Compensation)</text>
+    <text x="310" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b" text-anchor="end">$135,000.00/yr</text>
+  </g>
+  
+  <text x="45" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#6ee7b7">This appointment letter must be signed and returned within 10 days.</text>
+</svg>

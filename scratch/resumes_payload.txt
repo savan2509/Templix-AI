@@ -1,0 +1,408 @@
+  {
+    id: "resume-software-engineer",
+    slug: "resume-software-engineer",
+    title: "Software Engineer Resume Template",
+    description: "ATS-friendly developer resume layout highlighting technical skills, languages, software projects, and work history.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Software Engineer Resume Template",
+      fields: ["fullName", "jobTitle", "profilePhoto", "email", "phone", "location", "linkedin", "github", "portfolio", "summary", "careerSummary", "programmingLanguages", "frameworks", "databases", "cloudPlatforms", "devOpsTools", "versionControl", "softSkills", "companyName", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectName", "projectDescription", "technologiesUsed", "githubLink", "liveDemo", "degree", "university", "graduationYear", "gpa", "certificationName", "organization", "year", "languagesKnown", "awardsAchievements", "hobbiesInterests"],
+      layout: {
+        header: "SOFTWARE ENGINEER CURRICULUM VITAE",
+        footer: "References available upon request."
+      },
+      styles: {
+        primaryColor: "#0284c7",
+        secondaryColor: "#1e293b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Title: {{jobTitle}} | Photo: {{profilePhoto}} | Email: {{email}} | Phone: {{phone}} | Location: {{location}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "LinkedIn: {{linkedin}} | GitHub: {{github}} | Portfolio: {{portfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional & Career Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{careerSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills Breakdown" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{programmingLanguages}} | Frameworks: {{frameworks}} | Databases: {{databases}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cloud Platforms: {{cloudPlatforms}} | DevOps Tools: {{devOpsTools}} | Version Control: {{versionControl}} | Soft Skills: {{softSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Work & Employment Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Software Projects Portfolio" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project: {{projectName}} | Tech Stack: {{technologiesUsed}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Details: {{projectDescription}} | Code: {{githubLink}} | Demo: {{liveDemo}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Academic & Education Background" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} | Grad Year: {{graduationYear}} | GPA: {{gpa}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Languages: {{languagesKnown}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Awards & Hobbies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Awards: {{awardsAchievements}} | Interests: {{hobbiesInterests}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-data-analyst",
+    slug: "resume-data-analyst",
+    title: "Data Analyst Resume Template",
+    description: "Data professional resume highlighting SQL, Python, metrics visualization, and database query experience.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Data Analyst Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "sqlSkills", "excelSkills", "powerBi", "tableau", "python", "dataVisualization", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "analyticsProjects", "certificationName", "organization", "year", "degree", "university", "graduationYear", "languagesKnown", "referenceName", "referencePosition", "referenceCompany", "referenceContact"],
+      layout: {
+        header: "DATA ANALYST PORTFOLIO",
+        footer: "Additional certifications shared upon request."
+      },
+      styles: {
+        primaryColor: "#0d9488",
+        secondaryColor: "#115e59"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Analytics Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Data & BI Tool Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "SQL Proficiency: {{sqlSkills}} | Excel Competency: {{excelSkills}} | Python: {{python}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "BI Software: Power BI ({{powerBi}}), Tableau ({{tableau}}) | Visualization: {{dataVisualization}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Analytics Professional Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Data Analysis Projects Portfolio" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Analytics Projects: {{analyticsProjects}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Languages & Professional References" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Reference: {{referenceName}} ({{referencePosition}} at {{referenceCompany}} — {{referenceContact}})" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-project-manager",
+    slug: "resume-project-manager",
+    title: "Project Manager Resume Template",
+    description: "Structured resume layout showing project scope, agile methodologies, and scrum certifications.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Project Manager Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "leadershipSkills", "pmMethodologies", "pmTools", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectPortfolio", "pmpCertified", "scrumCertified", "degree", "university", "graduationYear", "languagesKnown", "awardsAchievements"],
+      layout: {
+        header: "PROJECT MANAGER PROFILE",
+        footer: "PMP Certified. Agile Methodology Expert."
+      },
+      styles: {
+        primaryColor: "#334155",
+        secondaryColor: "#0f172a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Leadership & Management Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Management Skills & Software Tools" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Leadership: {{leadershipSkills}} | Methodologies: {{pmMethodologies}} | Tools: {{pmTools}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Management Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Portfolio & Accomplishments" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Portfolio Details: {{projectPortfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Certifications: PMP ({{pmpCertified}}), Scrum ({{scrumCertified}}) | Degree: {{degree}} | School: {{university}} ({{graduationYear}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Languages & Special Awards" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Awards: {{awardsAchievements}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-graphic-designer",
+    slug: "resume-graphic-designer",
+    title: "Graphic Designer Resume Template",
+    description: "Creative resume layout highlighting branding, illustration, UI design, and visual art portfolios.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Graphic Designer Resume Template",
+      fields: ["fullName", "profilePhoto", "email", "phone", "portfolio", "behanceProfile", "dribbbleProfile", "summary", "adobeCreativeSuite", "figma", "brandingExperience", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectName", "projectDescription", "behanceLink", "awardsAchievements", "degree", "university", "graduationYear"],
+      layout: {
+        header: "CREATIVE RESUME",
+        footer: "View full online design portfolio at personal website."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#4d0728"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Photo: {{profilePhoto}} | Email: {{email}} | Phone: {{phone}} | Portfolio: {{portfolio}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Behance: {{behanceProfile}} | Dribbble: {{dribbbleProfile}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative & Design Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Software & Studio Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Adobe Suite: {{adobeCreativeSuite}} | UI/UX Tools: {{figma}} | Branding: {{brandingExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative Work Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Projects & Case Studies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project: {{projectName}} | Details: {{projectDescription}} | Link: {{behanceLink}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Awards & Creative Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Awards: {{awardsAchievements}} | Degree: {{degree}} | Institution: {{university}} ({{graduationYear}})" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-registered-nurse",
+    slug: "resume-registered-nurse",
+    title: "Registered Nurse Resume Template",
+    description: "Clinical resume format highlighting nurse licensing, emergency care, and patient advocacy.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Registered Nurse Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "nursingLicenseNumber", "medicalCertifications", "clinicalSkills", "hospitalExperience", "patientCareExperience", "degree", "university", "graduationYear", "languagesKnown", "awardsAchievements"],
+      layout: {
+        header: "CLINICAL NURSE CV",
+        footer: "Registered Nurse (RN) License in good standing."
+      },
+      styles: {
+        primaryColor: "#059669",
+        secondaryColor: "#064e3b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Nursing Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Nursing License & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "License #: {{nursingLicenseNumber}} | Certifications: {{medicalCertifications}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Skills & Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clinicalSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Hospital & Patient Care Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hospital Experience: {{hospitalExperience}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Patient Care: {{patientCareExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education, Languages & Awards" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Education: {{degree}} from {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Achievements: {{awardsAchievements}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-teacher",
+    slug: "resume-teacher",
+    title: "Teacher Resume Template",
+    description: "Academic educator resume template focusing on lesson plans, student guidance, and classroom management.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Teacher Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "teachingSubjects", "gradeLevels", "classroomManagementSkills", "teachingExperience", "certificationName", "organization", "year", "degree", "university", "graduationYear", "workshopsAttended", "languagesKnown"],
+      layout: {
+        header: "EDUCATOR PROFILE",
+        footer: "State Certified Educator. References available."
+      },
+      styles: {
+        primaryColor: "#d97706",
+        secondaryColor: "#451a03"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Teaching Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Classroom Scope & Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Subjects Taught: {{teachingSubjects}} | Grade Levels: {{gradeLevels}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Classroom Management: {{classroomManagementSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Teaching Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{teachingExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Certificate: {{certificationName}} ({{organization}} — {{year}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Workshops & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Workshops: {{workshopsAttended}} | Languages: {{languagesKnown}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-marketing-manager",
+    slug: "resume-marketing-manager",
+    title: "Marketing Manager Resume Template",
+    description: "Metrics-focused marketing resume showing ROI performance, SEO growth, and digital ads campaigns.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Marketing Manager Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "marketingSkills", "seoSkills", "semSkills", "googleAds", "metaAds", "emailMarketing", "crmTools", "campaignExperience", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "MARKETING PROFESSIONAL CV",
+        footer: "ROI metrics documented in online campaign case studies."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#2e1065"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Marketing Profile" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Marketing Competencies & Ad Tools" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Skills: {{marketingSkills}} | SEO: {{seoSkills}} | SEM: {{semSkills}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Advertising: Google Ads ({{googleAds}}), Meta Ads ({{metaAds}}) | Email: {{emailMarketing}} | CRM: {{crmTools}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Campaign & Leadership Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Major Campaigns: {{campaignExperience}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Cert: {{certificationName}} ({{organization}} — {{year}})" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-customer-service",
+    slug: "resume-customer-service",
+    title: "Customer Service Resume Template",
+    description: "Support roles resume template highlighting ticketing software, SLAs, and customer retention metrics.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Customer Service Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "customerSupportSkills", "crmSoftware", "communicationSkills", "problemSolving", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "languagesKnown"],
+      layout: {
+        header: "CUSTOMER SUPPORT SPECIALIST",
+        footer: "Available for shifts. Bilingual support agent."
+      },
+      styles: {
+        primaryColor: "#4f46e5",
+        secondaryColor: "#1e1b4b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Customer Support Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Service Core Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Skills: {{customerSupportSkills}} | Helpdesk CRM: {{crmSoftware}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Communication: {{communicationSkills}} | Problem Solving: {{problemSolving}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Customer Service History" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Languages: {{languagesKnown}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-accountant",
+    slug: "resume-accountant",
+    title: "Accountant Resume Template",
+    description: "Finance resume layout detailing corporate taxes, audits, general ledgers, and accounting programs.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Accountant Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "accountingSoftware", "bookkeeping", "taxPreparation", "financialReporting", "payroll", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "cpaCertified", "otherCertifications", "degree", "university", "graduationYear", "languagesKnown"],
+      layout: {
+        header: "ACCOUNTING & FINANCE PROFILE",
+        footer: "CPA Candidate. Audit Ready."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1e3a8a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Finance Profile" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Accounting & Software Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Accounting Platforms: {{accountingSoftware}} | Bookkeeping: {{bookkeeping}} | Tax Preparation: {{taxPreparation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reporting: {{financialReporting}} | Payroll Management: {{payroll}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Accounting Work Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Credentials & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "CPA Status: {{cpaCertified}} | Other Certs: {{otherCertifications}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Languages: {{languagesKnown}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-sales-representative",
+    slug: "resume-sales-representative",
+    title: "Sales Representative Resume Template",
+    description: "Sales representative resume mapping CRM tracking, pipeline growth, and closing ratios.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Sales Representative Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "salesSkills", "crmTools", "leadGen", "negotiationSkills", "salesAchievements", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "certificationName", "organization", "year", "languagesKnown"],
+      layout: {
+        header: "SALES PROFESSIONAL PROFILE",
+        footer: "Consistent over-achiever in pipeline sales targets."
+      },
+      styles: {
+        primaryColor: "#ea580c",
+        secondaryColor: "#431407"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Sales Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Pipeline & CRM Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sales Skills: {{salesSkills}} | CRM Software: {{crmTools}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Lead Generation: {{leadGen}} | Negotiation Skills: {{negotiationSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Milestones & Achievements" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Track Record: {{salesAchievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education, Certifications & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Languages: {{languagesKnown}}" }] }
+        ]
+      }
+    }
+  },

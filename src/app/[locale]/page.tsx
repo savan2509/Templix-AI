@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
@@ -419,12 +418,10 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* FAQs JSON-LD structured data */}
-        <Script
-          id="faq-jsonld"
+        {/* FAQs JSON-LD — native script tag per Next.js JSON-LD guide */}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
         />
         <FAQ locale={locale} />
       </main>

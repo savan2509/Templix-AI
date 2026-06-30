@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f0fdf4"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
+  <!-- Left accent bar -->
+  <line x1="25" y1="15" x2="25" y2="285" stroke="#059669" stroke-width="2"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(45, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#065f46">CONSULTING SERVICES AGREEMENT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">Professional Retainer Contract | Governing State: New York</text>
+  </g>
+  
+  <line x1="45" y1="74" x2="365" y2="74" stroke="#a7f3d0" stroke-width="1"/>
+  
+  <!-- Client Detail Grid -->
+  <g transform="translate(45, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">CONSULTING FIRM:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Apex Advisory Group LLC</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#059669">CLIENT PARTNER:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Global Capital Holdings</text>
+  </g>
+  
+  <!-- Billing rates display -->
+  <g transform="translate(45, 128)">
+    <rect x="0" y="0" width="310" height="42" rx="4" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#059669">ADVISORY FEES &amp; RETAINER SUMMARY:</text>
+    <text x="10" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Hourly Advisory Rate: <tspan font-weight="bold">$150.00/hr</tspan> | Weekly Cap Hours: <tspan font-weight="bold">20 Hrs</tspan> | Deposit: <tspan font-weight="bold">$1,000.00</tspan></text>
+  </g>
+  
+  <!-- Services Scope details -->
+  <g transform="translate(45, 188)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#059669">1. ADVISORY SCOPE &amp; BUSINESS NICHE</text>
+    <text x="0" y="20" font-family="system-ui, sans-serif" font-size="8" fill="#334155">Consultant will advise client on: <tspan font-weight="bold">Corporate strategy &amp; IT infrastructure.</tspan></text>
+    <line x1="0" y1="28" x2="310" y2="28" stroke="#f0fdf4" stroke-width="1.5"/>
+    
+    <text x="0" y="42" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#059669">2. INTELLECTUAL PROPERTY &amp; OWNERSHIP</text>
+    <text x="0" y="53" font-family="system-ui, sans-serif" font-size="8" fill="#334155">All advisory deliverables and charts owned by client post payments.</text>
+  </g>
+  
+  <text x="45" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#6ee7b7">This agreement is executed under the state courts jurisdiction of New York.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#fef2f2"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#fca5a5" stroke-width="1.2"/>
+  
+  <!-- Red alert accent stripe at top -->
+  <rect x="15" y="15" width="370" height="10" fill="#dc2626" rx="4"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 42)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#7f1d1d">FORMAL RESIGNATION NOTICE</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">Employee Resignation &amp; Exit Transition Statement</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#fee2e2" stroke-width="1.2"/>
+  
+  <!-- Employee and Manager details -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">RESIGNING EMPLOYEE:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#111827">John Doe Associate</text>
+    <text x="0" y="29" font-family="system-ui, sans-serif" font-size="7" fill="#6b7280">Role: Senior Account Manager</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">REPORTING MANAGER:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#111827">Marcus Jenkins Director</text>
+    <text x="180" y="29" font-family="system-ui, sans-serif" font-size="7" fill="#6b7280">Company: Vanguard Corporation</text>
+  </g>
+  
+  <!-- Letter context box -->
+  <g transform="translate(35, 138)">
+    <rect x="0" y="0" width="330" height="42" rx="4" fill="#fafafa" stroke="#e5e7eb" stroke-dasharray="2 2"/>
+    <text x="10" y="14" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">SECTION 1: LAST WORKING DATE</text>
+    <text x="10" y="28" font-family="system-ui, sans-serif" font-size="8" fill="#111827">Last Working Date: <tspan font-weight="bold">November 30, 2026</tspan> | Transition Notice: <tspan font-weight="bold">30 Days</tspan></text>
+  </g>
+  
+  <!-- Reason block -->
+  <g transform="translate(35, 198)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626">REASON FOR DEPARTURE:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8" fill="#4b5563">"Accepted a new career growth opportunity closer to family residency."</text>
+    <rect x="0" y="26" width="330" height="3" rx="1.5" fill="#fef2f2"/>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#9ca3af">This notice is submitted in compliance with employee handbook guidelines.</text>
+</svg>

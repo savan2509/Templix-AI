@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#faf5ff"/>
+  <!-- Handshake watermark outline top right -->
+  <g transform="translate(320, 25)" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0.12">
+    <path d="M0 15 Q10 5 20 15 M5 20 Q15 10 25 20 M20 15 L30 25 M25 20 L30 30"/>
+    <circle cx="10" cy="15" r="2" fill="#8b5cf6"/>
+    <circle cx="20" cy="20" r="2" fill="#8b5cf6"/>
+  </g>
+  
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#4c1d95">GENERAL PARTNERSHIP AGREEMENT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#6d28d9">Business Venture Agreement | Capital Contributions &amp; Profit Distributions</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#ddd6fe" stroke-width="1"/>
+  
+  <!-- Partners info -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#8b5cf6">PARTNER ONE NAME:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Arthur Pendelton Partner</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#8b5cf6">PARTNER TWO NAME:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Sarah Jenkins Partner</text>
+  </g>
+  
+  <!-- Venture niche -->
+  <g transform="translate(35, 128)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#8b5cf6">PARTNERSHIP VENTURE NICHE:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">Software Development &amp; Cloud Licensing Distribution</text>
+  </g>
+  
+  <!-- Capital contributions & distribution ratio -->
+  <g transform="translate(35, 162)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#8b5cf6">CAPITAL INJECTION &amp; SHARE RATIOS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#f3e8ff" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Partner One Capital / Partner Two Capital</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">$50,000.00 / $50,000.00</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#faf5ff" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Profit &amp; Loss Distribution Share Ratio</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#8b5cf6" text-anchor="end">50% / 50% Mutual Split</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#c084fc">Partners have joint and several liabilities. Term is indefinite until dissolved.</text>
+</svg>

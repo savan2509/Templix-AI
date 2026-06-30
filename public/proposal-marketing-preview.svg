@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#faf5ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#e9d5ff" stroke-width="1.2"/>
+  
+  <!-- Right column accent visual: Funnel conversion representation -->
+  <g transform="translate(325, 30)" fill="#7c3aed" opacity="0.15">
+    <!-- Top wide funnel section -->
+    <polygon points="0,0 40,0 30,12 10,12"/>
+    <!-- Mid funnel section -->
+    <polygon points="10,14 30,14 26,26 14,26"/>
+    <!-- Bottom narrow section -->
+    <polygon points="14,28 26,28 22,40 18,40"/>
+  </g>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#581c87">GROWTH MARKETING PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#6b21a8">Campaign Channels Mix | Monthly Ad Spend &amp; Conversion ROI Plan</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#f3e8ff" stroke-width="1"/>
+  
+  <!-- Partner info -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">BRAND PARTNER:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Apex Apparel Group</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">DEMOGRAPHIC TARGET:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Young Adults (Ages 18-34)</text>
+  </g>
+  
+  <!-- Marketing Mix box -->
+  <g transform="translate(35, 128)">
+    <rect x="0" y="0" width="330" height="38" rx="4" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#7c3aed">CAMPAIGN MARKETING MIX CHANNELS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Channels: <tspan font-weight="bold">SEO keyword growth, Google Search Ads, TikTok Promotions</tspan></text>
+  </g>
+  
+  <!-- Cost & ROI breakdown -->
+  <g transform="translate(35, 182)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#7c3aed">BUDGET ALLOCATIONS &amp; TARGET RETURNS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#f3e8ff" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Proposed Monthly Google/Social Ad Spend</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">$12,000.00/mo</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#faf5ff" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Projected Monthly Leads | Campaign ROI Estimate</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#7c3aed" text-anchor="end">4,500 Leads | 320% ROI</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#c084fc">Campaign estimates based on active industry averages. SLA terms apply.</text>
+</svg>

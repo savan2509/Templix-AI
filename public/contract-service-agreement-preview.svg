@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#eff6ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+  
+  <!-- Grid lines in header for tech feel -->
+  <line x1="15" y1="58" x2="385" y2="58" stroke="#f1f5f9" stroke-width="1"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 42)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">SERVICE LEVEL AGREEMENT (SLA)</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#475569">Mutual Service Agreement Guarantees &amp; Subscription Terms</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#bfdbfe" stroke-width="1.2"/>
+  
+  <!-- Provider details -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">SERVICE PROVIDER:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">Cloud Hosting Services Inc</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#2563eb">CUSTOMER ORGANIZATION:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">Target Corp International</text>
+  </g>
+  
+  <!-- SLA Checklist list grid -->
+  <g transform="translate(35, 128)">
+    <rect x="0" y="0" width="330" height="42" rx="4" fill="#fafafa" stroke="#e4e4e7"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#2563eb">GUARANTEED SLA PERFORMANCE METRICS:</text>
+    
+    <text x="10" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#10b981">✔ 99.9% Cloud Uptime</text>
+    <text x="120" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#10b981">✔ 24/7 Ticketing Support</text>
+    <text x="240" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#10b981">✔ 1 hr Severity 1</text>
+  </g>
+  
+  <!-- Sub and cancellation policies -->
+  <g transform="translate(35, 188)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#2563eb">SUBSCRIPTION CYCLE &amp; FEES</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#dbeafe" stroke-width="1.5"/>
+    
+    <text x="0" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Monthly Subscription Infrastructure Fee</text>
+    <text x="330" y="26" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b" text-anchor="end">$2,500.00/mo</text>
+    <line x1="0" y1="34" x2="330" y2="34" stroke="#f8fafc" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Billing Cycle: 1st of Month | Cancellation Policy: 30 days notice</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#93c5fd">Notice: Standard service credit metrics apply for SLA defaults.</text>
+</svg>

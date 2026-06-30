@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Left column slate grey decorative accent bar -->
+  <rect x="15" y="15" width="10" height="270" fill="#0f172a" rx="2"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(40, 35)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">JOB APPLICATION COVER LETTER</text>
+    <text x="0" y="22" font-family="system-ui, sans-serif" font-size="7.5" fill="#64748b">Formal application layout with custom experience highlights</text>
+  </g>
+  
+  <line x1="40" y1="64" x2="365" y2="64" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Sender and recipient details -->
+  <g transform="translate(40, 76)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">SENDER PROFILE:</text>
+    <text x="0" y="18" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Sarah Jenkins Applicant</text>
+    
+    <text x="170" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">RECIPIENT PARTNER:</text>
+    <text x="170" y="18" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Vanguard Tech Recruiter</text>
+  </g>
+  
+  <!-- Simulated letter paragraph blocks (Clean grey rects) -->
+  <g transform="translate(40, 115)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#0f172a">Dear Hiring Representative,</text>
+    
+    <rect x="0" y="15" width="310" height="4" rx="2" fill="#f1f5f9"/>
+    <rect x="0" y="23" width="280" height="4" rx="2" fill="#f1f5f9"/>
+    
+    <!-- Experience highlights badge -->
+    <rect x="0" y="34" width="310" height="38" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.75"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#475569">APPLICATION PARAMETERS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#0f172a">Target Role: <tspan font-weight="bold">Senior Frontend Dev</tspan> | Industry Experience: <tspan font-weight="bold">6 Years</tspan></text>
+    
+    <!-- Key achievement callout -->
+    <text x="0" y="86" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Achievement: <tspan font-weight="semibold">Led responsive web conversion increasing page speed by 40%.</tspan></text>
+  </g>
+  
+  <!-- Bottom signatures -->
+  <g transform="translate(40, 225)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" fill="#64748b">Sincerely,</text>
+    <line x1="0" y1="24" x2="100" y2="24" stroke="#94a3b8" stroke-width="0.75"/>
+    <text x="0" y="32" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#0f172a">Sarah Jenkins</text>
+  </g>
+</svg>

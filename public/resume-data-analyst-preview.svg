@@ -1,34 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="20" y="20" width="110" height="260" rx="0" fill="#0d9488" opacity="0.05"/>
-  <line x1="130" y1="20" x2="130" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
-  <circle cx="75" cy="65" r="22" fill="#0d9488" opacity="0.2"/>
-  <circle cx="75" cy="65" r="18" fill="#0d9488"/>
-  <circle cx="75" cy="60" r="6" fill="#ffffff"/>
-  <path d="M62 76 Q75 68 88 76" stroke="#ffffff" stroke-width="2" fill="none"/>
-  <rect x="40" y="105" width="70" height="6" rx="3" fill="#cbd5e1"/>
-  <rect x="40" y="118" width="70" height="4" rx="2" fill="#e2e8f0"/>
-  <rect x="40" y="128" width="55" height="4" rx="2" fill="#e2e8f0"/>
-  <text x="40" y="160" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#0d9488">DATABASES</text>
-  <rect x="40" y="170" width="65" height="10" rx="3" fill="#0d9488" opacity="0.1"/>
-  <text x="45" y="178" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#0d9488">SQL (Postgres)</text>
-  <rect x="40" y="186" width="65" height="10" rx="3" fill="#0d9488" opacity="0.1"/>
-  <text x="45" y="194" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#0d9488">Python (Pandas)</text>
-  <rect x="40" y="202" width="65" height="10" rx="3" fill="#0d9488" opacity="0.1"/>
-  <text x="45" y="210" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" fill="#0d9488">Tableau BI</text>
-  <text x="145" y="52" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Jonathan Miller</text>
-  <text x="145" y="66" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0d9488">Senior Data Analyst</text>
-  <text x="145" y="90" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">PROFESSIONAL SUMMARY</text>
-  <line x1="145" y1="96" x2="360" y2="96" stroke="#f1f5f9" stroke-width="1.5"/>
-  <rect x="145" y="104" width="215" height="5" rx="2" fill="#94a3b8" opacity="0.6"/>
-  <rect x="145" y="114" width="180" height="5" rx="2" fill="#cbd5e1" opacity="0.6"/>
-  <text x="145" y="142" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#64748b" letter-spacing="1">WORK EXPERIENCE</text>
-  <line x1="145" y1="148" x2="360" y2="148" stroke="#f1f5f9" stroke-width="1.5"/>
-  <text x="145" y="162" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#334155">Lead Data Analyst - Apex Corp</text>
-  <text x="360" y="162" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">2024 - Pres</text>
-  <circle cx="147" cy="178" r="2" fill="#0d9488"/>
-  <rect x="155" y="175" width="205" height="4" rx="2" fill="#cbd5e1"/>
-  <circle cx="147" cy="188" r="2" fill="#0d9488"/>
-  <rect x="155" y="185" width="185" height="4" rx="2" fill="#cbd5e1"/>
+  <rect width="100%" height="100%" fill="#fcfdfd"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="1.2"/>
+  
+  <!-- Left Column: Databases & Skills (Teal theme) -->
+  <rect x="15" y="15" width="125" height="270" rx="0" fill="#0d9488" opacity="0.04"/>
+  <line x1="140" y1="15" x2="140" y2="285" stroke="#ccfbf1" stroke-width="1.2"/>
+  
+  <!-- Technical Database Dashboard graphic -->
+  <g transform="translate(30, 30)">
+    <!-- Simple Bar Chart graphic -->
+    <rect x="0" y="0" width="4" height="25" fill="#0d9488" rx="1"/>
+    <rect x="8" y="5" width="4" height="20" fill="#0d9488" rx="1"/>
+    <rect x="16" y="12" width="4" height="13" fill="#0d9488" rx="1"/>
+    <rect x="24" y="2" width="4" height="23" fill="#0d9488" rx="1"/>
+    <text x="36" y="16" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#0d9488">DATA PATH</text>
+  </g>
+  
+  <!-- Database Skills list -->
+  <g transform="translate(30, 75)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#0d9488" letter-spacing="0.5">DATABASES &amp; SQL</text>
+    
+    <rect x="0" y="10" width="85" height="12" rx="3" fill="#0d9488" opacity="0.1"/>
+    <text x="6" y="19" font-family="system-ui, sans-serif" font-size="6.5" font-weight="bold" fill="#0d9488">PostgreSQL / MySQL</text>
+    
+    <rect x="0" y="26" width="85" height="12" rx="3" fill="#0d9488" opacity="0.1"/>
+    <text x="6" y="35" font-family="system-ui, sans-serif" font-size="6.5" font-weight="bold" fill="#0d9488">Python (Pandas, Numpy)</text>
+    
+    <rect x="0" y="42" width="85" height="12" rx="3" fill="#0d9488" opacity="0.1"/>
+    <text x="6" y="51" font-family="system-ui, sans-serif" font-size="6.5" font-weight="bold" fill="#0d9488">Tableau / Power BI</text>
+    
+    <text x="0" y="72" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#475569" letter-spacing="0.5">CORE CONCEPTS</text>
+    <!-- Little status lines -->
+    <rect x="0" y="82" width="75" height="3" rx="1.5" fill="#cbd5e1"/>
+    <rect x="0" y="82" width="65" height="3" rx="1.5" fill="#0d9488"/>
+    <text x="0" y="93" font-family="system-ui, sans-serif" font-size="6" fill="#64748b">ETL Pipelines (Data Warehousing)</text>
+    
+    <rect x="0" y="104" width="75" height="3" rx="1.5" fill="#cbd5e1"/>
+    <rect x="0" y="104" width="55" height="3" rx="1.5" fill="#0d9488"/>
+    <text x="0" y="115" font-family="system-ui, sans-serif" font-size="6" fill="#64748b">Statistical Modeling &amp; A/B Tests</text>
+  </g>
+  
+  <!-- Right Column: Profile details -->
+  <g transform="translate(155, 30)">
+    <text x="0" y="14" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">Jonathan Miller</text>
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0d9488">Senior Data Analyst &amp; BI Engineer</text>
+    <text x="0" y="38" font-family="system-ui, sans-serif" font-size="7" fill="#64748b">jonathan@miller-data.io | linkedin.com/in/jonathan-miller</text>
+    
+    <text x="0" y="65" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#475569" letter-spacing="1">PROFESSIONAL RESUME SUMMARY</text>
+    <line x1="0" y1="71" x2="215" y2="71" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="0" y="83" font-family="system-ui, sans-serif" font-size="7" fill="#475569">Certified Data Analyst with 6+ years experience building ETL pipelines,</text>
+    <text x="0" y="93" font-family="system-ui, sans-serif" font-size="7" fill="#475569">managing databases, and engineering Tableau reports to drive business revenue.</text>
+    
+    <text x="0" y="118" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#475569" letter-spacing="1">WORK HISTORY &amp; METRICS</text>
+    <line x1="0" y1="124" x2="215" y2="124" stroke="#f1f5f9" stroke-width="1.5"/>
+    
+    <!-- Experience item -->
+    <text x="0" y="138" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b">Lead Data Analyst - Apex Corp</text>
+    <text x="215" y="138" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">2024 - Present</text>
+    <!-- Bullet points with teal dots -->
+    <circle cx="4" cy="150" r="1.5" fill="#0d9488"/>
+    <text x="12" y="153" font-family="system-ui, sans-serif" font-size="7.5" fill="#334155">Engineered SQL query modifications reducing dashboard lag by 40%</text>
+    
+    <circle cx="4" cy="162" r="1.5" fill="#0d9488"/>
+    <text x="12" y="165" font-family="system-ui, sans-serif" font-size="7.5" fill="#334155">Built Python notebooks mapping multi-channel ad spend conversion rates</text>
+    
+    <!-- Experience item 2 -->
+    <text x="0" y="188" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1e293b">Data Analyst II - Global Metrics</text>
+    <text x="215" y="188" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">2021 - 2024</text>
+    <circle cx="4" cy="200" r="1.5" fill="#0d9488"/>
+    <text x="12" y="203" font-family="system-ui, sans-serif" font-size="7.5" fill="#334155">Maintained Postgres server indexing &amp; designed Tableau sales widgets</text>
+  </g>
 </svg>

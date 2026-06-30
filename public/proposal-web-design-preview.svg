@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <!-- Soft grey canvas -->
+  <rect width="100%" height="100%" fill="#fef2f2"/>
+  <rect x="15" y="15" width="370" height="270" rx="12" fill="#ffffff" stroke="#fbcfe8" stroke-width="1.2"/>
+  
+  <!-- Right column wireframe mock layout -->
+  <g transform="translate(295, 30)" opacity="0.3">
+    <!-- Browser mockup window -->
+    <rect x="0" y="0" width="70" height="50" rx="2" fill="none" stroke="#db2777" stroke-width="0.75"/>
+    <line x1="0" y1="10" x2="70" y2="10" stroke="#db2777" stroke-width="0.75"/>
+    <!-- Wireframe content lines -->
+    <rect x="5" y="15" width="20" height="15" fill="none" stroke="#db2777" stroke-width="0.5"/>
+    <line x1="30" y1="18" x2="65" y2="18" stroke="#db2777" stroke-width="0.5"/>
+    <line x1="30" y1="24" x2="55" y2="24" stroke="#db2777" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="'Georgia', serif" font-weight="bold" font-size="14" fill="#db2777">WEB DESIGN &amp; UI/UX PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#9ca3af">Creative Agency Bid | Pages Scope, Revisions &amp; Figma Prototypes</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#fbcfe8" stroke-width="1"/>
+  
+  <!-- Client info -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">PROJECT CLIENT:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Brightside Media Agency</text>
+  </g>
+  
+  <!-- Design scope -->
+  <g transform="translate(35, 128)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#db2777">INTERFACE SCOPE &amp; PAGES:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">Pages: 12 Unique Templates | Focus: Responsive Figma Mobile Mockups</text>
+  </g>
+  
+  <!-- Revisions and totals -->
+  <g transform="translate(35, 168)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#db2777">CREATIVE REVISIONS &amp; SERVICES FEES</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#fbcfe8" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Figma Wireframe &amp; Design Revision Cycles</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">3 Cycles Included</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#fafafa" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Grand Total Design Services Cost</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#db2777" text-anchor="end">$4,500.00 Flat</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#fca5a5">Initial interactive Figma mockups shared within 10 days of project activation.</text>
+</svg>

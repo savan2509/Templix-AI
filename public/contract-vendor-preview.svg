@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f1f5f9"/>
+  <!-- Logistics shipping box outlines watermark top right -->
+  <g transform="translate(325, 28)" fill="none" stroke="#475569" stroke-width="1.2" opacity="0.12">
+    <path d="M0 10 L15 0 L30 10 L30 25 L15 35 L0 25 Z"/>
+    <path d="M0 10 L15 20 L30 10 M15 20 L15 35"/>
+  </g>
+  
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#334155">VENDOR SUPPLY AGREEMENT</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#475569">Wholesale Supply Contract | Terms of Goods Delivery &amp; Wholesale Unit Costs</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Company & Vendor info -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">ACQUISITION COMPANY:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">Target Corp Retail Distributors</text>
+    
+    <text x="180" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">WHOLESALE VENDOR:</text>
+    <text x="180" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e293b">Superior Goods Supply Ltd</text>
+  </g>
+  
+  <!-- Supply goods list -->
+  <g transform="translate(35, 128)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">WHOLESALE GOODS SUPPLIED LIST:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#18181b">Bulk Plastic Components &amp; Packing Enclosures</text>
+  </g>
+  
+  <!-- Pricing, MOQ and Delivery schedules -->
+  <g transform="translate(35, 162)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#475569">WHOLESALE PRICING &amp; MINIMUM ORDERS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#f1f5f9" stroke-width="1.5"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Wholesale Unit Cost / Minimum Order Qty (MOQ)</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#18181b" text-anchor="end">$4.50 per unit / 1,000 Units</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#fafafa" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#18181b">Delivery Schedule Schedule / Liability Caps</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#475569" text-anchor="end">14 Days Dispatch / Cap at $10k</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Subject to standard wholesale supply conditions. 30 days termination notice applies.</text>
+</svg>

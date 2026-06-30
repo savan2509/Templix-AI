@@ -1,30 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <path d="M20 28 L380 28 L380 20 Q380 20 380 20 L20 20 Z" fill="#d97706"/>
-  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Vivid Capture Studio</text>
-  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#64748b">shoots@vividcapture.com</text>
-  <text x="360" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#d97706" text-anchor="end">PHOTOGRAPHY INVOICE</text>
-  <text x="360" y="68" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">Ref: #INV-PHOTO-908</text>
-  <rect x="40" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="48" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#d97706">SESSION CLIENT:</text>
-  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Bright Future Co</text>
-  <rect x="215" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="223" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">SHOOT LOCATION:</text>
-  <text x="223" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Studio Room A, NY</text>
-  <rect x="40" y="140" width="320" height="18" fill="#d97706" rx="3" opacity="0.1"/>
-  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#d97706">Photography Package Services</text>
-  <text x="280" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#d97706" text-anchor="end">Hours</text>
-  <text x="352" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#d97706" text-anchor="end">Cost</text>
-  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Commercial Product Session Shoot</text>
-  <text x="280" y="176" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">4 hrs</text>
-  <text x="352" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$600.00</text>
-  <line x1="40" y1="188" x2="360" y2="188" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="48" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Image Color Correction &amp; Retouching</text>
-  <text x="280" y="202" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">Flat</text>
-  <text x="352" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$250.00</text>
-  <line x1="40" y1="214" x2="360" y2="214" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="280" y="244" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="end">Photography Total:</text>
-  <text x="352" y="244" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="end">$850.00</text>
-  <text x="40" y="265" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Digital gallery links delivered upon transaction clearance.</text>
+  <!-- Charcoal dark background -->
+  <rect width="100%" height="100%" fill="#18181b"/>
+  <rect x="15" y="15" width="370" height="270" rx="8" fill="#27272a" stroke="#3f3f46" stroke-width="1.5"/>
+  
+  <!-- Stylized camera lens line icon on top right background -->
+  <circle cx="340" cy="55" r="30" stroke="#d97706" stroke-width="1" fill="none" opacity="0.2"/>
+  <circle cx="340" cy="55" r="18" stroke="#d97706" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle cx="340" cy="55" r="8" fill="#d97706" opacity="0.15"/>
+  
+  <!-- Left Side Header Info -->
+  <text x="35" y="45" font-family="'Times New Roman', Times, Georgia, serif" font-size="15" font-weight="bold" fill="#d97706">GOLDEN HOUR IMAGES</text>
+  <text x="35" y="58" font-family="system-ui, sans-serif" font-size="8" fill="#a1a1aa">Professional Studio &amp; Venue Photography</text>
+  <text x="35" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#71717a">galleries@goldenhourimages.com</text>
+  
+  <text x="290" y="45" font-family="system-ui, sans-serif" font-weight="bold" font-size="10" fill="#d97706" text-anchor="end">SHOOT INVOICE</text>
+  <text x="290" y="58" font-family="system-ui, sans-serif" font-size="7.5" fill="#a1a1aa" text-anchor="end">Ref: #INV-PHOTO-902</text>
+  
+  <line x1="35" y1="80" x2="365" y2="80" stroke="#3f3f46" stroke-width="1"/>
+  
+  <!-- Shoot info row -->
+  <g transform="translate(35, 90)">
+    <text x="0" y="11" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#d97706">SESSION CLIENT:</text>
+    <text x="0" y="23" font-family="system-ui, sans-serif" font-size="9" font-weight="semibold" fill="#f4f4f5">Sarah Jenkins (Tech Event Shoot)</text>
+    <text x="0" y="33" font-family="system-ui, sans-serif" font-size="7.5" fill="#a1a1aa">Session Date: 2026-06-25 | Location: Sunset Studio</text>
+  </g>
+  
+  <!-- Thin dashed image frame mockup -->
+  <g transform="translate(265, 88)">
+    <rect x="0" y="0" width="100" height="38" rx="3" fill="#18181b" stroke="#d97706" stroke-width="0.75" stroke-dasharray="2 2"/>
+    <text x="50" y="22" font-family="system-ui, sans-serif" font-size="7" fill="#71717a" text-anchor="middle">[ Sunset Raw Frame ]</text>
+  </g>
+  
+  <!-- Billing items -->
+  <text x="35" y="152" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#d97706">PHOTOGRAPHY PACKAGE DETAILS</text>
+  <text x="365" y="152" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#d97706" text-anchor="end">COST</text>
+  <line x1="35" y1="158" x2="365" y2="158" stroke="#3f3f46" stroke-width="1.5"/>
+  
+  <!-- Item 1 -->
+  <text x="35" y="178" font-family="system-ui, sans-serif" font-size="8" fill="#e4e4e7">Creative Studio Package (3 hrs shooting + 50 high-res retouched)</text>
+  <text x="365" y="178" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#e4e4e7" text-anchor="end">$1,200.00</text>
+  <line x1="35" y1="187" x2="365" y2="187" stroke="#27272a" stroke-width="1"/>
+  
+  <!-- Item 2 -->
+  <text x="35" y="202" font-family="system-ui, sans-serif" font-size="8" fill="#e4e4e7">Extra Physical Prints Package (Premium Matte 8x10)</text>
+  <text x="365" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#e4e4e7" text-anchor="end">$150.00</text>
+  <line x1="35" y1="211" x2="365" y2="211" stroke="#27272a" stroke-width="1"/>
+  
+  <!-- Item 3 -->
+  <text x="35" y="226" font-family="system-ui, sans-serif" font-size="8" fill="#e4e4e7">Digital Retouching &amp; Expedited Delivery Charge</text>
+  <text x="365" y="226" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#e4e4e7" text-anchor="end">$100.00</text>
+  
+  <line x1="35" y1="236" x2="365" y2="236" stroke="#d97706" stroke-width="1"/>
+  
+  <!-- Total Due -->
+  <text x="240" y="254" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#a1a1aa" text-anchor="end">Total Amount Due:</text>
+  <text x="365" y="254" font-family="system-ui, sans-serif" font-size="12" font-weight="extrabold" fill="#d97706" text-anchor="end">$1,450.00</text>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7.5" fill="#71717a">Note: High-resolution digital download key delivered post payment clearance.</text>
 </svg>

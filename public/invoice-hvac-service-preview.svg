@@ -1,30 +1,55 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <path d="M20 28 L380 28 L380 20 Q380 20 380 20 L20 20 Z" fill="#dc2626"/>
-  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Polar Air HVAC Services</text>
-  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#64748b">service@polarairhvac.com</text>
-  <text x="360" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="end">HVAC SERVICE INVOICE</text>
-  <text x="360" y="68" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">Ref: #INV-HVAC-912</text>
-  <rect x="40" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="48" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">SERVICE FOR:</text>
-  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Brightside Market LLC</text>
-  <rect x="215" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="223" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">TECHNICIAN ID:</text>
-  <text x="223" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Tech #409 (Certified)</text>
-  <rect x="40" y="140" width="320" height="18" fill="#dc2626" rx="3" opacity="0.1"/>
-  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626">Parts &amp; Labor Repairs Log</text>
-  <text x="280" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="end">Qty</text>
-  <text x="352" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="end">Amount</text>
-  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Commercial AC Compressor Repair Kit</text>
-  <text x="280" y="176" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">1</text>
-  <text x="352" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$450.00</text>
-  <line x1="40" y1="188" x2="360" y2="188" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="48" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Refrigerant Refill &amp; System Tune-up</text>
-  <text x="280" y="202" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">Hourly</text>
-  <text x="352" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$280.00</text>
-  <line x1="40" y1="214" x2="360" y2="214" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="280" y="244" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="end">Total Balance Due:</text>
-  <text x="352" y="244" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="end">$730.00</text>
-  <text x="40" y="265" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Heating and cooling technicians certification guarantees apply.</text>
+  <rect width="100%" height="100%" fill="#fff5f5"/>
+  <!-- Technical mechanical layout border -->
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#fca5a5" stroke-width="1.5"/>
+  
+  <!-- Left Side Header Info -->
+  <text x="35" y="45" font-family="'Impact', Arial Black, sans-serif" font-size="15" font-weight="bold" fill="#dc2626">AIR-TEMP COMFORT SOLUTIONS</text>
+  <text x="35" y="58" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#4b5563">EPA CERTIFIED FIRM #EPA-HVAC-938</text>
+  <text x="35" y="68" font-family="system-ui, sans-serif" font-size="7.5" fill="#71717a">HVAC Heating &amp; AC Repairs, Ventilation Maintenance</text>
+  
+  <text x="365" y="45" font-family="system-ui, sans-serif" font-weight="bold" font-size="10" fill="#dc2626" text-anchor="end">SERVICE INVOICE</text>
+  <text x="365" y="58" font-family="system-ui, sans-serif" font-size="7.5" fill="#71717a" text-anchor="end">Ref: #INV-HVAC-930</text>
+  
+  <line x1="35" y1="80" x2="365" y2="80" stroke="#fca5a5" stroke-width="1"/>
+  
+  <!-- Repair site details -->
+  <text x="35" y="93" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#dc2626">CUSTOMER &amp; SYSTEM INFO:</text>
+  <text x="35" y="104" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1f2937">John Doe | Carrier AC Split unit, 2.5 Ton</text>
+  <text x="35" y="113" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">Technician: Mike Miller (Cert #EPA-1092)</text>
+  
+  <!-- Diagnostic checklist -->
+  <g transform="translate(35, 122)">
+    <rect x="0" y="0" width="330" height="35" rx="3" fill="#fef2f2" stroke="#fee2e2" stroke-width="1"/>
+    <text x="8" y="11" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">DIAGNOSTIC CHECKLIST STATUS:</text>
+    <!-- Statuses -->
+    <text x="8" y="25" font-family="system-ui, sans-serif" font-size="7.5" fill="#dc2626">Compressor: [OK] | Freon level: [REFILLED] | Filter: [REPLACED]</text>
+  </g>
+  
+  <!-- HVAC itemization list -->
+  <text x="35" y="172" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#dc2626">HVAC PARTS &amp; LABOR CHARGES</text>
+  <text x="365" y="172" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#dc2626" text-anchor="end">TOTAL</text>
+  <line x1="35" y1="178" x2="365" y2="178" stroke="#fee2e2" stroke-width="1.5"/>
+  
+  <!-- Row 1 -->
+  <text x="35" y="194" font-family="system-ui, sans-serif" font-size="8" fill="#374151">Carrier Condenser Fan Motor Replacement</text>
+  <text x="365" y="194" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#374151" text-anchor="end">$420.00</text>
+  <line x1="35" y1="202" x2="365" y2="202" stroke="#faf5f5" stroke-width="1"/>
+  
+  <!-- Row 2 -->
+  <text x="35" y="215" font-family="system-ui, sans-serif" font-size="8" fill="#374151">R410A Refrigerant Recharge (3 lbs)</text>
+  <text x="365" y="215" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#374151" text-anchor="end">$180.00</text>
+  <line x1="35" y1="223" x2="365" y2="223" stroke="#faf5f5" stroke-width="1"/>
+  
+  <!-- Row 3 -->
+  <text x="35" y="236" font-family="system-ui, sans-serif" font-size="8" fill="#374151">Emergency Service Dispatch Call Fee</text>
+  <text x="365" y="236" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#374151" text-anchor="end">$75.00</text>
+  
+  <line x1="35" y1="246" x2="365" y2="246" stroke="#dc2626" stroke-width="1"/>
+  
+  <!-- Total Due -->
+  <text x="240" y="262" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#4b5563" text-anchor="end">Total Balance Due:</text>
+  <text x="365" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="extrabold" fill="#dc2626" text-anchor="end">$675.00</text>
+  
+  <text x="35" y="280" font-family="system-ui, sans-serif" font-size="7.5" fill="#9ca3af">All service repairs carry a 90-day parts warranty. EPA regulations met.</text>
 </svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#faf5ff"/>
+  <rect x="15" y="15" width="370" height="270" rx="10" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
+  
+  <!-- SEO Traffic line chart watermark top right -->
+  <g transform="translate(300, 30)" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3">
+    <!-- Chart axes -->
+    <path d="M0 25 L40 25 M0 0 L0 25"/>
+    <!-- Line graph -->
+    <path d="M2 22 L10 18 L20 8 L30 14 L40 2" stroke-width="1.5"/>
+    <circle cx="40" cy="2" r="2" fill="#8b5cf6"/>
+  </g>
+  
+  <!-- Header Info -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#581c87">DIGITAL GROWTH &amp; SEO PROPOSAL</text>
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="8" fill="#6d28d9">Outbound Campaign Bid | Target Keywords, Ad Spend &amp; Growth Goals</text>
+  </g>
+  
+  <line x1="35" y1="74" x2="365" y2="74" stroke="#ddd6fe" stroke-width="1.5"/>
+  
+  <!-- Client Detail Box -->
+  <g transform="translate(35, 88)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#8b5cf6">PROPOSED CLIENT:</text>
+    <text x="0" y="19" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#1e1b4b">Lincoln Retail Group Ltd</text>
+  </g>
+  
+  <!-- Keyword and channel grid -->
+  <g transform="translate(35, 122)">
+    <rect x="0" y="0" width="330" height="42" rx="4" fill="#faf5ff" stroke="#ddd6fe" stroke-width="0.75"/>
+    <text x="10" y="12" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#8b5cf6">TARGET KEYWORDS &amp; OUTBOUND CHANNELS:</text>
+    <text x="10" y="26" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">SEO Keywords: <tspan font-weight="bold">"invoice creator, resume layout"</tspan> | Channels: <tspan font-weight="bold">Google / Meta Ads</tspan></text>
+  </g>
+  
+  <!-- Spend and metrics -->
+  <g transform="translate(35, 180)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#8b5cf6">CAMPAIGN BUDGETS &amp; GROWTH TARGETS</text>
+    <line x1="0" y1="14" x2="330" y2="14" stroke="#e879f9" stroke-width="1" opacity="0.3"/>
+    
+    <text x="0" y="27" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Proposed Monthly Google/Social Ad Spend</text>
+    <text x="330" y="27" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#1c1917" text-anchor="end">$4,500.00/mo</text>
+    <line x1="0" y1="35" x2="330" y2="35" stroke="#faf5ff" stroke-width="1"/>
+    
+    <text x="0" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#1c1917">Target Conversions Growth / Total Campaign Fee</text>
+    <text x="330" y="47" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#8b5cf6" text-anchor="end">45% Increase / $2,800.00</text>
+  </g>
+  
+  <text x="35" y="272" font-family="system-ui, sans-serif" font-size="7.5" fill="#c084fc">Detailed SEO audit files and competitor dashboards shared upon onboarding.</text>
+</svg>

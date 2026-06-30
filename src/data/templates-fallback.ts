@@ -504,9 +504,9 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Software Engineer Resume Template",
-      fields: ["fullName", "email", "phone", "github", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "jobTitle", "profilePhoto", "email", "phone", "location", "linkedin", "github", "portfolio", "summary", "careerSummary", "programmingLanguages", "frameworks", "databases", "cloudPlatforms", "devOpsTools", "versionControl", "softSkills", "companyName", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectName", "projectDescription", "technologiesUsed", "githubLink", "liveDemo", "degree", "university", "graduationYear", "gpa", "certificationName", "organization", "year", "languagesKnown", "awardsAchievements", "hobbiesInterests"],
       layout: {
-        header: "CURRICULUM VITAE",
+        header: "SOFTWARE ENGINEER CURRICULUM VITAE",
         footer: "References available upon request."
       },
       styles: {
@@ -517,9 +517,27 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | github.com/{{github}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] }
+          { type: "paragraph", content: [{ type: "text", text: "Title: {{jobTitle}} | Photo: {{profilePhoto}} | Email: {{email}} | Phone: {{phone}} | Location: {{location}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "LinkedIn: {{linkedin}} | GitHub: {{github}} | Portfolio: {{portfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional & Career Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{careerSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills Breakdown" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{programmingLanguages}} | Frameworks: {{frameworks}} | Databases: {{databases}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cloud Platforms: {{cloudPlatforms}} | DevOps Tools: {{devOpsTools}} | Version Control: {{versionControl}} | Soft Skills: {{softSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Work & Employment Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Software Projects Portfolio" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project: {{projectName}} | Tech Stack: {{technologiesUsed}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Details: {{projectDescription}} | Code: {{githubLink}} | Demo: {{liveDemo}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Academic & Education Background" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} | Grad Year: {{graduationYear}} | GPA: {{gpa}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Languages: {{languagesKnown}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Awards & Hobbies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Awards: {{awardsAchievements}} | Interests: {{hobbiesInterests}}" }] }
         ]
       }
     }
@@ -534,7 +552,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Data Analyst Resume Template",
-      fields: ["fullName", "email", "phone", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "sqlSkills", "excelSkills", "powerBi", "tableau", "python", "dataVisualization", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "analyticsProjects", "certificationName", "organization", "year", "degree", "university", "graduationYear", "languagesKnown", "referenceName", "referencePosition", "referenceCompany", "referenceContact"],
       layout: {
         header: "DATA ANALYST PORTFOLIO",
         footer: "Additional certifications shared upon request."
@@ -547,9 +565,21 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skillset" }] },
-          { type: "paragraph", content: [{ type: "text", text: "SQL (PostgreSQL), Python (Pandas, NumPy), Tableau, Power BI, Excel, ETL Pipelines." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Analytics Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Data & BI Tool Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "SQL Proficiency: {{sqlSkills}} | Excel Competency: {{excelSkills}} | Python: {{python}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "BI Software: Power BI ({{powerBi}}), Tableau ({{tableau}}) | Visualization: {{dataVisualization}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Analytics Professional Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Data Analysis Projects Portfolio" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Analytics Projects: {{analyticsProjects}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Languages & Professional References" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Reference: {{referenceName}} ({{referencePosition}} at {{referenceCompany}} — {{referenceContact}})" }] }
         ]
       }
     }
@@ -564,7 +594,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Project Manager Resume Template",
-      fields: ["fullName", "email", "phone", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "leadershipSkills", "pmMethodologies", "pmTools", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectPortfolio", "pmpCertified", "scrumCertified", "degree", "university", "graduationYear", "languagesKnown", "awardsAchievements"],
       layout: {
         header: "PROJECT MANAGER PROFILE",
         footer: "PMP Certified. Agile Methodology Expert."
@@ -577,9 +607,20 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Methodologies" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Agile, Scrum, Kanban, Prince2, Budget Allocation, Risk Mitigation, Team Management." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Leadership & Management Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Management Skills & Software Tools" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Leadership: {{leadershipSkills}} | Methodologies: {{pmMethodologies}} | Tools: {{pmTools}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Management Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Portfolio & Accomplishments" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Portfolio Details: {{projectPortfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Certifications: PMP ({{pmpCertified}}), Scrum ({{scrumCertified}}) | Degree: {{degree}} | School: {{university}} ({{graduationYear}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Languages & Special Awards" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Awards: {{awardsAchievements}}" }] }
         ]
       }
     }
@@ -594,7 +635,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Graphic Designer Resume Template",
-      fields: ["fullName", "email", "phone", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "profilePhoto", "email", "phone", "portfolio", "behanceProfile", "dribbbleProfile", "summary", "adobeCreativeSuite", "figma", "brandingExperience", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "projectName", "projectDescription", "behanceLink", "awardsAchievements", "degree", "university", "graduationYear"],
       layout: {
         header: "CREATIVE RESUME",
         footer: "View full online design portfolio at personal website."
@@ -607,9 +648,19 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Software Expertise" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Adobe Photoshop, Illustrator, Figma, InDesign, Premiere Pro, After Effects." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Photo: {{profilePhoto}} | Email: {{email}} | Phone: {{phone}} | Portfolio: {{portfolio}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Behance: {{behanceProfile}} | Dribbble: {{dribbbleProfile}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative & Design Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Software & Studio Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Adobe Suite: {{adobeCreativeSuite}} | UI/UX Tools: {{figma}} | Branding: {{brandingExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative Work Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Projects & Case Studies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project: {{projectName}} | Details: {{projectDescription}} | Link: {{behanceLink}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Awards & Creative Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Awards: {{awardsAchievements}} | Degree: {{degree}} | Institution: {{university}} ({{graduationYear}})" }] }
         ]
       }
     }
@@ -624,7 +675,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Registered Nurse Resume Template",
-      fields: ["fullName", "email", "phone", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "summary", "nursingLicenseNumber", "medicalCertifications", "clinicalSkills", "hospitalExperience", "patientCareExperience", "degree", "university", "graduationYear", "languagesKnown", "awardsAchievements"],
       layout: {
         header: "CLINICAL NURSE CV",
         footer: "Registered Nurse (RN) License in good standing."
@@ -637,9 +688,19 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Competencies" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Patient Care, Emergency Room Triage, ICU Support, Medication Administration, EHR." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Nursing Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Nursing License & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "License #: {{nursingLicenseNumber}} | Certifications: {{medicalCertifications}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Skills & Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clinicalSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Hospital & Patient Care Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hospital Experience: {{hospitalExperience}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Patient Care: {{patientCareExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education, Languages & Awards" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Education: {{degree}} from {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Languages: {{languagesKnown}} | Achievements: {{awardsAchievements}}" }] }
         ]
       }
     }
@@ -654,7 +715,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Teacher Resume Template",
-      fields: ["fullName", "email", "phone", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "summary", "teachingSubjects", "gradeLevels", "classroomManagementSkills", "teachingExperience", "certificationName", "organization", "year", "degree", "university", "graduationYear", "workshopsAttended", "languagesKnown"],
       layout: {
         header: "EDUCATOR PROFILE",
         footer: "State Certified Educator. References available."
@@ -667,9 +728,19 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Teaching Competencies" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Curriculum Planning, Classroom Management, Student Assessments, Remote Learning, Parent-Teacher conferences." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Teaching Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Classroom Scope & Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Subjects Taught: {{teachingSubjects}} | Grade Levels: {{gradeLevels}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Classroom Management: {{classroomManagementSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Teaching Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{teachingExperience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Certificate: {{certificationName}} ({{organization}} — {{year}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Workshops & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Workshops: {{workshopsAttended}} | Languages: {{languagesKnown}}" }] }
         ]
       }
     }
@@ -684,7 +755,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Marketing Manager Resume Template",
-      fields: ["fullName", "email", "phone", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "marketingSkills", "seoSkills", "semSkills", "googleAds", "metaAds", "emailMarketing", "crmTools", "campaignExperience", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
       layout: {
         header: "MARKETING PROFESSIONAL CV",
         footer: "ROI metrics documented in online campaign case studies."
@@ -697,9 +768,18 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Core Marketing Skills" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Search Engine Optimization (SEO), Paid Ads (Google/Meta), Content Strategy, ROI Analytics." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Marketing Profile" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Marketing Competencies & Ad Tools" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Skills: {{marketingSkills}} | SEO: {{seoSkills}} | SEM: {{semSkills}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Advertising: Google Ads ({{googleAds}}), Meta Ads ({{metaAds}}) | Email: {{emailMarketing}} | CRM: {{crmTools}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Campaign & Leadership Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Major Campaigns: {{campaignExperience}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Key Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Cert: {{certificationName}} ({{organization}} — {{year}})" }] }
         ]
       }
     }
@@ -714,7 +794,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Customer Service Resume Template",
-      fields: ["fullName", "email", "phone", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "summary", "customerSupportSkills", "crmSoftware", "communicationSkills", "problemSolving", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "languagesKnown"],
       layout: {
         header: "CUSTOMER SUPPORT SPECIALIST",
         footer: "Available for shifts. Bilingual support agent."
@@ -727,9 +807,17 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Support Qualifications" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Zendesk, Intercom, Live Chat, SLA compliance, Phone Support, CRM Logging, Conflict Resolution." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Customer Support Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Service Core Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Skills: {{customerSupportSkills}} | Helpdesk CRM: {{crmSoftware}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Communication: {{communicationSkills}} | Problem Solving: {{problemSolving}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Customer Service History" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Languages: {{languagesKnown}}" }] }
         ]
       }
     }
@@ -744,7 +832,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Accountant Resume Template",
-      fields: ["fullName", "email", "phone", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "summary", "accountingSoftware", "bookkeeping", "taxPreparation", "financialReporting", "payroll", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "cpaCertified", "otherCertifications", "degree", "university", "graduationYear", "languagesKnown"],
       layout: {
         header: "ACCOUNTING & FINANCE PROFILE",
         footer: "CPA Candidate. Audit Ready."
@@ -757,9 +845,18 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Financial Competencies" }] },
-          { type: "paragraph", content: [{ type: "text", text: "QuickBooks, Xero, GAAP Standards, Tax Compliance, Audit coordination, General Ledger." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Finance Profile" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Accounting & Software Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Accounting Platforms: {{accountingSoftware}} | Bookkeeping: {{bookkeeping}} | Tax Preparation: {{taxPreparation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reporting: {{financialReporting}} | Payroll Management: {{payroll}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Accounting Work Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Credentials & Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "CPA Status: {{cpaCertified}} | Other Certs: {{otherCertifications}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}}) | Languages: {{languagesKnown}}" }] }
         ]
       }
     }
@@ -774,7 +871,7 @@ export const allFallbackTemplates = [
     categoryName: "Resumes & CVs",
     content: {
       title: "Sales Representative Resume Template",
-      fields: ["fullName", "email", "phone", "linkedin", "jobTitle", "summary"],
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "salesSkills", "crmTools", "leadGen", "negotiationSkills", "salesAchievements", "companyName", "jobTitle", "employmentType", "startDate", "endDate", "responsibilities", "achievements", "degree", "university", "graduationYear", "certificationName", "organization", "year", "languagesKnown"],
       layout: {
         header: "SALES PROFESSIONAL PROFILE",
         footer: "Consistent over-achiever in pipeline sales targets."
@@ -787,13 +884,25 @@ export const allFallbackTemplates = [
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Pipeline Expertise" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Salesforce CRM, Cold Outreach, Deal Negotiation, Pipeline Management, Account Management." }] }
+          { type: "paragraph", content: [{ type: "text", text: "Email: {{email}} | Phone: {{phone}} | LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Sales Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Pipeline & CRM Competencies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sales Skills: {{salesSkills}} | CRM Software: {{crmTools}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Lead Generation: {{leadGen}} | Negotiation Skills: {{negotiationSkills}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Milestones & Achievements" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Track Record: {{salesAchievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sales Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} | Role: {{jobTitle}} ({{employmentType}}) | Duration: {{startDate}} to {{endDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{responsibilities}} | Achievements: {{achievements}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education, Certifications & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Degree: {{degree}} | University: {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cert: {{certificationName}} ({{organization}} — {{year}}) | Languages: {{languagesKnown}}" }] }
         ]
       }
     }
   },
+
   {
     id: "freelance-agreement",
     slug: "freelance-agreement",
@@ -804,10 +913,10 @@ export const allFallbackTemplates = [
     categoryName: "Contracts",
     content: {
       title: "Freelance Service Agreement",
-      fields: ["contractDate", "clientName", "freelancerName", "projectName", "paymentAmount", "projectScope"],
+      fields: ["freelancerName", "businessName", "freelancerAddress", "freelancerEmail", "freelancerPhone", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "projectTitle", "projectDescription", "deliverables", "timeline", "startDate", "endDate", "paymentTerms", "totalProjectFee", "depositAmount", "paymentSchedule", "lateFee", "ownershipRights", "confidentialityClause", "revisionsIncluded", "cancellationPolicy", "freelancerSignature", "clientSignature"],
       layout: {
-        header: "MUTUAL AGREEMENT",
-        footer: "Executed as an agreement by both signing parties."
+        header: "FREELANCE AGREEMENT",
+        footer: "Executed as a legally binding contract between Freelancer and Client."
       },
       styles: {
         primaryColor: "#0f172a",
@@ -816,49 +925,18 @@ export const allFallbackTemplates = [
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "FREELANCE SERVICE AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Agreement is entered into on " },
-              { type: "text", text: "{{contractDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " (hereinafter referred to as 'Client') and " },
-              { type: "text", text: "{{freelancerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " (hereinafter referred to as 'Freelancer')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Scope of Work" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Freelancer agrees to perform services for the project: " },
-              { type: "text", text: "{{projectName}}", marks: [{ type: "italic" }] },
-              { type: "text", text: ". The specific deliverables include: {{projectScope}}." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Payment Terms" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "In exchange for services rendered, Client agrees to pay Freelancer a flat project fee of " },
-              { type: "text", text: "{{paymentAmount}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " upon completion of final project review." }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "FREELANCE SERVICE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerName}} ({{businessName}}) | Address: {{freelancerAddress}} | Contact: {{freelancerEmail}} | {{freelancerPhone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}} | Contact: {{clientEmail}} | {{clientPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Project Scope & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectTitle}} | Description: {{projectDescription}} | Key Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}} | Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Late Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Terms: {{paymentTerms}} | Total Fee: {{totalProjectFee}} | Deposit: {{depositAmount}} | Schedule: {{paymentSchedule}} | Late Fee Rate: {{lateFee}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. IP Ownership & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Ownership: {{ownershipRights}} | Confidentiality: {{confidentialityClause}} | Revisions: {{revisionsIncluded}} | Cancellation: {{cancellationPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer Signature: {{freelancerSignature}} | Client Signature: {{clientSignature}}" }] }
         ]
       }
     }
@@ -866,373 +944,17 @@ export const allFallbackTemplates = [
   {
     id: "employment-contract",
     slug: "employment-contract",
-    title: "Employment Contract",
-    description: "Standard employment contract template for HR and employers outlining salary, job role, and employment terms.",
-    isPremium: true,
+    title: "Employment Contract Template",
+    description: "Standard corporate hiring contract mapping salary, reporting lines, benefit packages, and policies.",
+    isPremium: false,
     categorySlug: "contracts",
     categoryName: "Contracts",
     content: {
-      title: "Employment Contract",
-      fields: ["employerName", "employeeName", "jobTitle", "startDate", "salary", "reportingManager"],
+      title: "Employment Agreement",
+      fields: ["companyLogo", "companyName", "companyAddress", "hrRepresentative", "hrEmail", "hrPhone", "employeeFullName", "employeeAddress", "employeeEmail", "employeePhone", "jobTitle", "department", "employmentType", "startDate", "endDate", "workLocation", "reportingManager", "salary", "bonus", "benefits", "payFrequency", "workingHours", "probationPeriod", "leavePolicy", "noticePeriod", "confidentialityClause", "nonCompeteClause", "employerSignature", "employeeSignature", "signatureDate"],
       layout: {
         header: "EMPLOYMENT AGREEMENT",
-        footer: "This agreement is subject to the employment standards act."
-      },
-      styles: {
-        primaryColor: "#1e3a8a",
-        secondaryColor: "#3b82f6"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "EMPLOYMENT CONTRACT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Employment Contract (the 'Agreement') is made effective as of " },
-              { type: "text", text: "{{startDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{employerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Employer') and " },
-              { type: "text", text: "{{employeeName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Employee')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Position and Duties" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Employee shall serve in the position of " },
-              { type: "text", text: "{{jobTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " and shall report directly to " },
-              { type: "text", text: "{{reportingManager}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". Employee agrees to perform all duties associated with this role to the best of their ability." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Compensation" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "In consideration for the services rendered, Employee shall receive an annual base salary of " },
-              { type: "text", text: "{{salary}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", payable in accordance with the Employer's standard payroll schedule." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "freelance-contract",
-    slug: "freelance-contract",
-    title: "Freelance Contract",
-    description: "Professional freelance contract template for freelancers and clients to define project scope and payment.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Freelance Contract",
-      fields: ["clientName", "freelancerName", "projectName", "paymentAmount", "projectScope", "contractDate"],
-      layout: {
-        header: "FREELANCE CONTRACT",
-        footer: "Both parties agree to the terms outline in this document."
-      },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#115e59"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "FREELANCE CONTRACT AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Freelance Contract is entered into on " },
-              { type: "text", text: "{{contractDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Client') and " },
-              { type: "text", text: "{{freelancerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Freelancer')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Project Services" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Freelancer agrees to perform services for the project named " },
-              { type: "text", text: "{{projectName}}", marks: [{ type: "italic" }] },
-              { type: "text", text: ". The scope of services includes: " },
-              { type: "text", text: "{{projectScope}}" },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Compensation" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The Client agrees to pay Freelancer a project fee of " },
-              { type: "text", text: "{{paymentAmount}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " upon completion and delivery of the project." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "independent-contractor-agreement",
-    slug: "independent-contractor-agreement",
-    title: "Independent Contractor Agreement",
-    description: "Legally-sound independent contractor agreement for contract services, projects, and tax compliance.",
-    isPremium: true,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Independent Contractor Agreement",
-      fields: ["clientName", "contractorName", "servicesDescription", "hourlyRate", "effectiveDate"],
-      layout: {
-        header: "INDEPENDENT CONTRACTOR AGREEMENT",
-        footer: "Contractor is solely responsible for all tax liabilities."
-      },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#334155"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "INDEPENDENT CONTRACTOR AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Agreement is made effective as of " },
-              { type: "text", text: "{{effectiveDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Company') and " },
-              { type: "text", text: "{{contractorName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Contractor')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Services" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Contractor shall perform the following services for Company: " },
-              { type: "text", text: "{{servicesDescription}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Rate of Pay" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Company shall pay Contractor at the rate of " },
-              { type: "text", text: "{{hourlyRate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " for services performed under this Agreement." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "3. Relationship" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The relationship of Contractor to Company is that of an independent contractor, and nothing in this Agreement shall be construed to create an employer-employee relationship." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "service-agreement",
-    slug: "service-agreement",
-    title: "Service Agreement",
-    description: "Comprehensive service agreement template for agencies and businesses outlining service deliverables and SLA.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Service Agreement",
-      fields: ["providerName", "clientName", "servicesScope", "fee", "effectiveDate"],
-      layout: {
-        header: "SERVICE AGREEMENT",
-        footer: "Governed by the state regulations."
-      },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#312e81"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "MASTER SERVICE AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Service Agreement is made effective on " },
-              { type: "text", text: "{{effectiveDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", between " },
-              { type: "text", text: "{{providerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Provider') and " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Client')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Scope of Services" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Provider agrees to perform the services detailed in the scope of work: " },
-              { type: "text", text: "{{servicesScope}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Fees and Payments" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Client shall pay Provider the service fee of " },
-              { type: "text", text: "{{fee}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " for the duration of this Agreement." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "nda-template",
-    slug: "nda-template",
-    title: "Non-Disclosure Agreement (NDA)",
-    description: "Confidentiality and non-disclosure agreement template for startups and companies to protect proprietary information.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Non-Disclosure Agreement",
-      fields: ["disclosingParty", "receivingParty", "effectiveDate", "purposeDescription"],
-      layout: {
-        header: "CONFIDENTIALITY AGREEMENT",
-        footer: "All terms remain in effect for 3 years post termination."
-      },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#991b1b"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "MUTUAL NON-DISCLOSURE AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This NDA is entered into on " },
-              { type: "text", text: "{{effectiveDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", between " },
-              { type: "text", text: "{{disclosingParty}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Disclosing Party') and " },
-              { type: "text", text: "{{receivingParty}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Receiving Party')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Confidential Information" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The parties wish to exchange certain confidential information for the sole purpose of evaluating: " },
-              { type: "text", text: "{{purposeDescription}}", marks: [{ type: "italic" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Obligation of Confidentiality" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Receiving Party shall keep all disclosed information strictly confidential and shall not disclose it to any third party without prior written consent." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "consulting-agreement",
-    slug: "consulting-agreement",
-    title: "Consulting Agreement",
-    description: "Consulting services contract template for professional consultants and advisors detailing payment and scope.",
-    isPremium: true,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Consulting Agreement",
-      fields: ["consultantName", "clientName", "consultingFee", "scopeOfServices", "effectiveDate"],
-      layout: {
-        header: "CONSULTING SERVICES AGREEMENT",
-        footer: "Consultant represents that they have the requisite expertise to perform."
+        footer: "Subject to governing labor laws. Copy retained by both parties."
       },
       styles: {
         primaryColor: "#2563eb",
@@ -1241,1492 +963,111 @@ export const allFallbackTemplates = [
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "CONSULTING SERVICES AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Consulting Agreement is effective as of " },
-              { type: "text", text: "{{effectiveDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Client') and " },
-              { type: "text", text: "{{consultantName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Consultant')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Consulting Services" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Consultant agrees to provide consulting and advisory services related to: " },
-              { type: "text", text: "{{scopeOfServices}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Compensation" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Client shall pay Consultant a consulting fee of " },
-              { type: "text", text: "{{consultingFee}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " for services rendered under this agreement." }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "EMPLOYMENT CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employer: {{companyName}} (Logo: {{companyLogo}}) | Address: {{companyAddress}} | Rep: {{hrRepresentative}} ({{hrEmail}} / {{hrPhone}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employee: {{employeeFullName}} | Address: {{employeeAddress}} | Email: {{employeeEmail}} | Phone: {{employeePhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Position, Scope & Schedule" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Role: {{jobTitle}} | Dept: {{department}} | Status: {{employmentType}} | Location: {{workLocation}} | Manager: {{reportingManager}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Start Date: {{startDate}} | End Date: {{endDate}} | Weekly Hours: {{workingHours}} | Probation: {{probationPeriod}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Remuneration & Benefits" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Base Salary: {{salary}} | Pay Frequency: {{payFrequency}} | Bonus Plan: {{bonus}} | Health & Benefits: {{benefits}} | Leave Policy: {{leavePolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Terms & Covenants" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Notice Period: {{noticePeriod}} | Confidentiality: {{confidentialityClause}} | Non-Compete: {{nonCompeteClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorization Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employer: {{employerSignature}} | Employee: {{employeeSignature}} | Date Signed: {{signatureDate}}" }] }
         ]
       }
     }
   },
   {
-    id: "rental-agreement",
-    slug: "rental-agreement",
-    title: "Rental Agreement",
-    description: "Standard residential rental agreement template for landlords and tenants specifying rent, deposit, and terms.",
+    id: "freelance-contract",
+    slug: "freelance-contract",
+    title: "Freelance Contract Template",
+    description: "Detailed freelance agreement mapping client project specifications, late fees, and copyrights.",
     isPremium: false,
     categorySlug: "contracts",
     categoryName: "Contracts",
     content: {
-      title: "Rental Agreement",
-      fields: ["landlordName", "tenantName", "propertyAddress", "monthlyRent", "depositAmount", "leaseStart"],
+      title: "Freelance Services Contract",
+      fields: ["freelancerName", "businessName", "freelancerAddress", "freelancerEmail", "freelancerPhone", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "projectTitle", "projectDescription", "deliverables", "timeline", "startDate", "endDate", "paymentTerms", "totalProjectFee", "depositAmount", "paymentSchedule", "lateFee", "ownershipRights", "confidentialityClause", "revisionsIncluded", "cancellationPolicy", "freelancerSignature", "clientSignature"],
       layout: {
-        header: "RESIDENTIAL RENTAL AGREEMENT",
-        footer: "This document is subject to local landlord-tenant law."
-      },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#047857"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "RESIDENTIAL RENTAL AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Rental Agreement is entered into on " },
-              { type: "text", text: "{{leaseStart}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{landlordName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Landlord') and " },
-              { type: "text", text: "{{tenantName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Tenant')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Property" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Landlord leases to Tenant the residential property located at: " },
-              { type: "text", text: "{{propertyAddress}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Rent and Deposit" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Tenant shall pay Landlord a monthly rent of " },
-              { type: "text", text: "{{monthlyRent}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " and a security deposit of " },
-              { type: "text", text: "{{depositAmount}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " prior to move-in." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "sales-contract",
-    slug: "sales-contract",
-    title: "Sales Contract",
-    description: "Sales and purchase contract template for businesses and sales teams detailing goods description and delivery.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Sales Contract",
-      fields: ["sellerName", "buyerName", "goodsDescription", "purchasePrice", "deliveryDate"],
-      layout: {
-        header: "CONTRACT FOR SALE OF GOODS",
-        footer: "Risk of loss passes to Buyer upon delivery."
-      },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#c2410c"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "CONTRACT FOR SALE OF GOODS" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Sales Contract is entered into on " },
-              { type: "text", text: "{{deliveryDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", by and between " },
-              { type: "text", text: "{{sellerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Seller') and " },
-              { type: "text", text: "{{buyerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Buyer')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Goods Sold" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Seller agrees to sell and Buyer agrees to purchase the following goods: " },
-              { type: "text", text: "{{goodsDescription}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Purchase Price" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The total purchase price for the goods is " },
-              { type: "text", text: "{{purchasePrice}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", payable upon delivery." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "partnership-agreement",
-    slug: "partnership-agreement",
-    title: "Partnership Agreement",
-    description: "General partnership agreement template for business partners establishing ownership share and capital.",
-    isPremium: true,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Partnership Agreement",
-      fields: ["partnerOne", "partnerTwo", "businessName", "ownershipShare", "capitalContribution"],
-      layout: {
-        header: "PARTNERSHIP AGREEMENT",
-        footer: "Executed as a legal partnership under state laws."
-      },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#6d28d9"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "PARTNERSHIP AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Partnership Agreement is made to form a partnership under the business name " },
-              { type: "text", text: "{{businessName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " between the following partners: " },
-              { type: "text", text: "{{partnerOne}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " and " },
-              { type: "text", text: "{{partnerTwo}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Capital Contribution" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The partners agree to contribute an initial capital of " },
-              { type: "text", text: "{{capitalContribution}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " to start business operations." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Ownership Share" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The ownership share of the partnership profits and losses shall be distributed as follows: " },
-              { type: "text", text: "{{ownershipShare}}", marks: [{ type: "bold" }] }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "vendor-agreement",
-    slug: "vendor-agreement",
-    title: "Vendor Agreement",
-    description: "Standard vendor and supplier agreement template for companies detailing terms of supply and product list.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Vendor Agreement",
-      fields: ["companyName", "vendorName", "productDescription", "paymentTerms", "deliverySchedule"],
-      layout: {
-        header: "VENDOR AGREEMENT",
-        footer: "This agreement may be terminated by either party with 30 days notice."
+        header: "FREELANCE CONTRACT",
+        footer: "Governed by mutually agreed independent service terms."
       },
       styles: {
         primaryColor: "#475569",
-        secondaryColor: "#334155"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "VENDOR AGREEMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This Vendor Agreement is made between " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Company') and " },
-              { type: "text", text: "{{vendorName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " ('Vendor')." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Products Supplied" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Vendor agrees to supply Company with the following products: " },
-              { type: "text", text: "{{productDescription}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Payment and Delivery" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Company shall pay Vendor according to the payment terms: " },
-              { type: "text", text: "{{paymentTerms}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", and Vendor shall deliver according to schedule: " },
-              { type: "text", text: "{{deliverySchedule}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "business-proposal",
-    slug: "business-proposal",
-    title: "Business Proposal",
-    description: "Business proposal template for businesses and startups to pitch ventures, products, or services to potential investors or partners.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Business Project Proposal",
-      fields: ["clientCompany", "proposalDate", "solutionTitle", "estimatedTimeline", "totalInvestment"],
-      layout: {
-        header: "PROJECT PROPOSAL",
-        footer: "We look forward to working with you."
-      },
-      styles: {
-        primaryColor: "#2563eb",
         secondaryColor: "#1e293b"
       },
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "BUSINESS PROJECT PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Prepared for: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | Date: " },
-              { type: "text", text: "{{proposalDate}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "Executive Summary" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We are pleased to submit this proposal for our solution: " },
-              { type: "text", text: "{{solutionTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". Our approach is designed to meet your specific timelines of {{estimatedTimeline}} and optimize performance." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Total Estimated Investment: " },
-              { type: "text", text: "{{totalInvestment}}", marks: [{ type: "bold" }] }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "FREELANCE SERVICES CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerName}} ({{businessName}}) | Address: {{freelancerAddress}} | Contact: {{freelancerEmail}} | {{freelancerPhone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}} | Contact: {{clientEmail}} | {{clientPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Works & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectTitle}} | Description: {{projectDescription}} | Key Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}} | Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Late Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Terms: {{paymentTerms}} | Total Fee: {{totalProjectFee}} | Deposit: {{depositAmount}} | Schedule: {{paymentSchedule}} | Late Fee Rate: {{lateFee}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Intellectual Property & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Ownership: {{ownershipRights}} | Confidentiality: {{confidentialityClause}} | Revisions: {{revisionsIncluded}} | Cancellation: {{cancellationPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Freelancer: {{freelancerSignature}} | Client: {{clientSignature}}" }] }
         ]
       }
     }
   },
   {
-    id: "project-proposal",
-    slug: "project-proposal",
-    title: "Project Proposal",
-    description: "Project proposal template for project managers outlining project scope, timeline, budget, and key milestones.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Project Proposal",
-      fields: ["projectName", "managerName", "clientName", "projectObjective", "timeline", "budget"],
-      layout: {
-        header: "PROJECT CHARTER & PROPOSAL",
-        footer: "Confidential document for internal and select client review."
-      },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0369a1"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "PROJECT PROPOSAL: {{projectName}}" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Prepared by: " },
-              { type: "text", text: "{{managerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | For Client: " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Project Objective" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The primary objective of this project is: " },
-              { type: "text", text: "{{projectObjective}}" }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Estimated Timeline & Budget" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The project is scheduled to run over a period of " },
-              { type: "text", text: "{{timeline}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " with an allocated total budget of " },
-              { type: "text", text: "{{budget}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "marketing-proposal",
-    slug: "marketing-proposal",
-    title: "Marketing Proposal",
-    description: "Strategic marketing proposal template for marketing agencies to pitch campaigns, branding, and growth strategies.",
+    id: "independent-contractor-agreement",
+    slug: "independent-contractor-agreement",
+    title: "Independent Contractor Agreement",
+    description: "Detailed independent contractor agreement specifying service terms, tax compliance, and liability exclusions.",
     isPremium: true,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
+    categorySlug: "contracts",
+    categoryName: "Contracts",
     content: {
-      title: "Marketing Strategy Proposal",
-      fields: ["agencyName", "clientCompany", "campaignObjective", "channels", "monthlyRetainer"],
+      title: "Independent Contractor Agreement",
+      fields: ["contractorName", "contractorCompany", "contractorAddress", "contractorContact", "clientName", "clientCompanyName", "clientAddress", "servicesProvided", "projectDuration", "deliverables", "paymentTerms", "taxResponsibility", "insuranceRequirement", "independentContractorStatus", "confidentialityClause", "terminationClause", "disputeResolution", "contractorSignature", "clientSignature"],
       layout: {
-        header: "MARKETING CAMPAIGN PITCH",
-        footer: "Proposal valid for 30 days from presentation."
+        header: "INDEPENDENT CONTRACTOR AGREEMENT",
+        footer: "Contractor is solely responsible for self-employment taxes and business insurances."
       },
       styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#9d174d"
+        primaryColor: "#0f766e",
+        secondaryColor: "#115e59"
       },
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "MARKETING CAMPAIGN PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Created by: " },
-              { type: "text", text: "{{agencyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | Prepared for: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Campaign Objective" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Our campaign will focus on increasing brand awareness and driving conversions through: " },
-              { type: "text", text: "{{campaignObjective}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Target Channels" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The primary channels of execution will include: " },
-              { type: "text", text: "{{channels}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "3. Retainer & Investment" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The proposed services will be executed under a monthly retainer of " },
-              { type: "text", text: "{{monthlyRetainer}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "INDEPENDENT CONTRACTOR AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor: {{contractorName}} | Company: {{contractorCompany}} | Address: {{contractorAddress}} | Contact: {{contractorContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Services & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Services Provided: {{servicesProvided}} | Duration: {{projectDuration}} | Deliverables: {{deliverables}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Compensation & Taxes" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Payment Terms: {{paymentTerms}} | Tax Responsibility: {{taxResponsibility}} | Insurance Requirement: {{insuranceRequirement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Status & Terms" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Status: {{independentContractorStatus}} | NDA: {{confidentialityClause}} | Termination: {{terminationClause}} | Dispute Resolution: {{disputeResolution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor Signature: {{contractorSignature}} | Client Signature: {{clientSignature}}" }] }
         ]
       }
     }
   },
   {
-    id: "web-design-proposal",
-    slug: "web-design-proposal",
-    title: "Web Design Proposal",
-    description: "Creative web design proposal template for web designers outlining UI/UX design deliverables, pages, and website relaunch timeline.",
+    id: "service-agreement",
+    slug: "service-agreement",
+    title: "Service Agreement Template",
+    description: "Legal agreement mapping service level agreements (SLAs), provider obligations, and client responsibilities.",
     isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
+    categorySlug: "contracts",
+    categoryName: "Contracts",
     content: {
-      title: "Website UI/UX Design Proposal",
-      fields: ["designerName", "clientCompany", "websiteName", "numberPages", "projectCost", "completionTime"],
+      title: "Service Agreement",
+      fields: ["providerCompanyName", "providerAddress", "providerContactPerson", "clientName", "clientCompanyName", "clientAddress", "serviceDescription", "serviceScope", "serviceFrequency", "startDate", "endDate", "serviceFee", "paymentMethod", "paymentDueDate", "slaTerms", "cancellationPolicy", "liabilityLimit", "confidentialityClause", "providerSignature", "clientSignature"],
       layout: {
-        header: "WEBSITE RELAUNCH PROPOSAL",
-        footer: "All designs undergo two feedback iterations."
-      },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#4c1d95"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "WEB DESIGN & DEVELOPMENT PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Presented by: " },
-              { type: "text", text: "{{designerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | For Client: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Project Scope & Website" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We propose a fully responsive redesign of " },
-              { type: "text", text: "{{websiteName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", covering approximately " },
-              { type: "text", text: "{{numberPages}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " unique pages." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Cost & Timeline" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The total project cost is estimated at " },
-              { type: "text", text: "{{projectCost}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " with an expected completion timeline of " },
-              { type: "text", text: "{{completionTime}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "software-development-proposal",
-    slug: "software-development-proposal",
-    title: "Software Development Proposal",
-    description: "Technical software development proposal template for developers and IT companies outlining technology stack, deliverables, and software architecture.",
-    isPremium: true,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Software System Development Proposal",
-      fields: ["developerCompany", "clientCompany", "softwareTitle", "techStack", "developmentFee", "deliverySchedule"],
-      layout: {
-        header: "TECHNICAL PROJECT PITCH",
-        footer: "Includes 3 months of post-launch SLA support."
-      },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#0284c7"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "SOFTWARE DEVELOPMENT PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Presented by: " },
-              { type: "text", text: "{{developerCompany}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | For Client: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Software Architecture & Deliverables" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We propose to build the software application named " },
-              { type: "text", text: "{{softwareTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". The project will utilize the following tech stack: " },
-              { type: "text", text: "{{techStack}}", marks: [{ type: "italic" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Pricing & Delivery" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The development fee is " },
-              { type: "text", text: "{{developmentFee}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " and will be delivered according to the schedule: " },
-              { type: "text", text: "{{deliverySchedule}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "consulting-proposal",
-    slug: "consulting-proposal",
-    title: "Consulting Proposal",
-    description: "Professional consulting proposal template for consultants outlining consulting scope, diagnostic approach, and advisor fees.",
-    isPremium: true,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Consulting & Advisory Proposal",
-      fields: ["consultantName", "clientCompany", "consultingObjective", "methodology", "consultingFee"],
-      layout: {
-        header: "BUSINESS STRATEGY CONSULTING PITCH",
-        footer: "Ensuring maximum operational output and transformation."
-      },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "PROFESSIONAL CONSULTING PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Consultant: " },
-              { type: "text", text: "{{consultantName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | Prepared for: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Diagnostic Objective & Scope" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The primary objective of this engagement is to: " },
-              { type: "text", text: "{{consultingObjective}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Methodology" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Our approach will consist of the following framework: " },
-              { type: "text", text: "{{methodology}}", marks: [{ type: "italic" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "3. Advisor Fees" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The consulting fee for the entire engagement is " },
-              { type: "text", text: "{{consultingFee}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "digital-marketing-proposal",
-    slug: "digital-marketing-proposal",
-    title: "Digital Marketing Proposal",
-    description: "SEO and performance digital marketing proposal template for marketing professionals to pitch digital growth and campaign execution.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Digital Performance Marketing Proposal",
-      fields: ["proName", "clientCompany", "marketingChannels", "targetKPIs", "adSpend", "fee"],
-      layout: {
-        header: "DIGITAL MARKETING SERVICES PITCH",
-        footer: "KPI target metrics evaluated monthly."
-      },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#065f46"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "DIGITAL MARKETING SERVICES PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Prepared by: " },
-              { type: "text", text: "{{proName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | Prepared for: " },
-              { type: "text", text: "{{clientCompany}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Channels & Target KPIs" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We will target marketing on the following channels: " },
-              { type: "text", text: "{{marketingChannels}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", focusing on achieving critical KPIs: " },
-              { type: "text", text: "{{targetKPIs}}", marks: [{ type: "italic" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Ad Spend & Agency Fee" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The suggested monthly ad spend budget is " },
-              { type: "text", text: "{{adSpend}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " with an agency management fee of " },
-              { type: "text", text: "{{fee}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "construction-proposal",
-    slug: "construction-proposal",
-    title: "Construction Proposal",
-    description: "Detailed construction and remodeling proposal template for contractors and builders detailing materials, labor estimates, and permits.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Construction Project Bid Proposal",
-      fields: ["contractorName", "clientName", "siteAddress", "scopeOfWork", "materialsCost", "laborCost", "totalPrice"],
-      layout: {
-        header: "CONSTRUCTION BID PROPOSAL",
-        footer: "Bid is subject to standard construction permits."
-      },
-      styles: {
-        primaryColor: "#d97706",
-        secondaryColor: "#92400e"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "CONSTRUCTION PROJECT PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Contractor: " },
-              { type: "text", text: "{{contractorName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | For Client: " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Site Address & Scope of Work" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This construction proposal is for the site located at: " },
-              { type: "text", text: "{{siteAddress}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". The scope of remodeling/construction work covers: " },
-              { type: "text", text: "{{scopeOfWork}}" },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Cost Estimates" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The estimated cost breakdown includes: Materials Cost: " },
-              { type: "text", text: "{{materialsCost}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", and Labor Estimate: " },
-              { type: "text", text: "{{laborCost}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". The total bid price is " },
-              { type: "text", text: "{{totalPrice}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "event-proposal",
-    slug: "event-proposal",
-    title: "Event Proposal",
-    description: "Beautiful event planning and management proposal template for event planners detailing catering, venue options, and theme designs.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Event Organization & Coordination Proposal",
-      fields: ["plannerName", "clientName", "eventName", "eventDate", "venueOptions", "budget"],
-      layout: {
-        header: "EVENT COORDINATION PITCH",
-        footer: "We turn your dream events into reality."
-      },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#701a75"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "EVENT PLANNING PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Planner: " },
-              { type: "text", text: "{{plannerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | For Client: " },
-              { type: "text", text: "{{clientName}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Event Summary & Venue" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We propose to manage the event " },
-              { type: "text", text: "{{eventName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", scheduled for " },
-              { type: "text", text: "{{eventDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". Suggested venue choices include: " },
-              { type: "text", text: "{{venueOptions}}", marks: [{ type: "italic" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Budget & Coordination" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The coordinated event budget is set at " },
-              { type: "text", text: "{{budget}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "grant-proposal",
-    slug: "grant-proposal",
-    title: "Grant Proposal",
-    description: "Standard grant proposal template for nonprofits and organizations to request funding, outlining project description and social impact.",
-    isPremium: false,
-    categorySlug: "proposals",
-    categoryName: "Proposals",
-    content: {
-      title: "Funding & Grant Request Proposal",
-      fields: ["organizationName", "fundingAgency", "projectTitle", "fundingRequested", "communityImpact"],
-      layout: {
-        header: "GRANT APPLICATION PROPOSAL",
-        footer: "Ensuring transparency and social value creation."
-      },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#064e3b"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "GRANT APPLICATION & PROJECT PROPOSAL" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Requesting Organization: " },
-              { type: "text", text: "{{organizationName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | Submitted to: " },
-              { type: "text", text: "{{fundingAgency}}", marks: [{ type: "bold" }] }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "1. Project Title & Mission" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This proposal requests funding for the project: " },
-              { type: "text", text: "{{projectTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". The primary social impact is: " },
-              { type: "text", text: "{{communityImpact}}" },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "2. Funding Requested" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The total funding amount requested is " },
-              { type: "text", text: "{{fundingRequested}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " to cover project execution." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "cover-letter",
-    slug: "cover-letter",
-    title: "Cover Letter",
-    description: "Professional job application cover letter detailing experience, motivation, and hook.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Job Application Cover Letter",
-      fields: ["fullName", "recipientName", "companyName", "targetRole", "experienceYears"],
-      layout: {
-        header: "APPLICATION LETTER",
-        footer: "Sincerely, [Full Name]"
-      },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#475569"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "APPLICATION COVER LETTER" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{recipientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " at " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "I am writing to express my strong interest in the " },
-              { type: "text", text: "{{targetRole}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " position. I bring over " },
-              { type: "text", text: "{{experienceYears}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " years of dedicated experience and skills." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "resignation-letter",
-    slug: "resignation-letter",
-    title: "Resignation Letter",
-    description: "Formal resignation letter template for employees providing notice, last working day, and transition support details.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Formal Resignation Letter",
-      fields: ["employeeName", "managerName", "companyName", "lastDay", "roleTitle"],
-      layout: {
-        header: "RESIGNATION NOTICE",
-        footer: "Wishing the company continued success."
-      },
-      styles: {
-        primaryColor: "#1e293b",
-        secondaryColor: "#475569"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "RESIGNATION LETTER" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{managerName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Please accept this letter as formal notification that I am resigning from my position as " },
-              { type: "text", text: "{{roleTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " at " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". My last working day will be " },
-              { type: "text", text: "{{lastDay}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Thank you for the support and opportunities provided during my tenure. I am committed to assisting with the transition of my duties." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Sincerely," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{employeeName}}", marks: [{ type: "bold" }] }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "recommendation-letter",
-    slug: "recommendation-letter",
-    title: "Recommendation Letter",
-    description: "Letter of recommendation template for students and professionals highlighting character, work ethic, and achievements.",
-    isPremium: true,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Letter of Recommendation",
-      fields: ["writerName", "writerRole", "candidateName", "recipientName", "relationship", "keyStrengths"],
-      layout: {
-        header: "LETTER OF RECOMMENDATION",
-        footer: "Available for further questions if necessary."
-      },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0f172a"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "LETTER OF RECOMMENDATION" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{recipientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "It is my absolute pleasure to recommend " },
-              { type: "text", text: "{{candidateName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " for your organization. I have known them in my capacity as a " },
-              { type: "text", text: "{{writerRole}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", and our relationship was " },
-              { type: "text", text: "{{relationship}}", marks: [{ type: "italic" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "During our time together, they demonstrated exceptional skills and strengths, particularly in " },
-              { type: "text", text: "{{keyStrengths}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". I highly recommend them without reservation." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Sincerely," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{writerName}}", marks: [{ type: "bold" }] }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "offer-letter",
-    slug: "offer-letter",
-    title: "Offer Letter",
-    description: "Formal job offer letter template for HR and recruiters detailing position, salary, start date, and benefits.",
-    isPremium: true,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Job Offer Letter",
-      fields: ["companyName", "candidateName", "jobTitle", "salaryAmount", "startDate", "reportingManager"],
-      layout: {
-        header: "OFFER OF EMPLOYMENT",
-        footer: "Please sign and return a copy to confirm acceptance."
-      },
-      styles: {
-        primaryColor: "#1e3a8a",
-        secondaryColor: "#3b82f6"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "JOB OFFER LETTER" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{candidateName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "On behalf of " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", we are thrilled to offer you the position of " },
-              { type: "text", text: "{{jobTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". In this role, you will report directly to " },
-              { type: "text", text: "{{reportingManager}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " starting on " },
-              { type: "text", text: "{{startDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We are offering an annual starting salary of " },
-              { type: "text", text: "{{salaryAmount}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", paid on a regular payroll cycle. We are excited about the prospect of you joining our team." }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "business-letter",
-    slug: "business-letter",
-    title: "Business Letter",
-    description: "Standard professional business letter template for corporate correspondence, inquiries, or formal notifications.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Formal Business Letter",
-      fields: ["senderName", "senderCompany", "recipientName", "recipientCompany", "subjectLine", "letterBody"],
-      layout: {
-        header: "BUSINESS CORRESPONDENCE",
-        footer: "Confidentiality Notice applies."
-      },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#334155"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "From: " },
-              { type: "text", text: "{{senderName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | " },
-              { type: "text", text: "{{senderCompany}}" }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "To: " },
-              { type: "text", text: "{{recipientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " | " },
-              { type: "text", text: "{{recipientCompany}}" }
-            ]
-          },
-          {
-            type: "heading",
-            attrs: { level: 2 },
-            content: [{ type: "text", text: "Subject: {{subjectLine}}" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{letterBody}}" }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "complaint-letter",
-    slug: "complaint-letter",
-    title: "Complaint Letter",
-    description: "Formal complaint letter template for consumers to report product issues, poor service, or request refunds.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Consumer Complaint Letter",
-      fields: ["consumerName", "companyName", "purchaseDate", "productName", "issueDescription", "desiredResolution"],
-      layout: {
-        header: "CUSTOMER COMPLAINT DEPT",
-        footer: "Supporting documents and receipts attached."
-      },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#991b1b"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "FORMAL COMPLAINT LETTER" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "To Customer Relations at " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "I am writing to report an issue regarding the product/service " },
-              { type: "text", text: "{{productName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " purchased on " },
-              { type: "text", text: "{{purchaseDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "The primary issue encountered is: {{issueDescription}}." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "To resolve this problem, I would appreciate: " },
-              { type: "text", text: "{{desiredResolution}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Sincerely," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{consumerName}}", marks: [{ type: "bold" }] }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "thank-you-letter",
-    slug: "thank-you-letter",
-    title: "Thank You Letter",
-    description: "Professional thank you letter template for interview follow-ups, business partnerships, or mentorship appreciation.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Professional Thank You Letter",
-      fields: ["senderName", "recipientName", "interactionDate", "topicDiscussed", "companyName"],
-      layout: {
-        header: "LETTER OF APPRECIATION",
-        footer: "Looking forward to staying in touch."
-      },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#047857"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "LETTER OF APPRECIATION" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{recipientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Thank you so much for taking the time to meet with me on " },
-              { type: "text", text: "{{interactionDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". I thoroughly enjoyed our conversation about " },
-              { type: "text", text: "{{topicDiscussed}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " at " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "I appreciate your insights and look forward to our next interaction." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Best regards," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{senderName}}", marks: [{ type: "bold" }] }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    id: "request-letter",
-    slug: "request-letter",
-    title: "Request Letter",
-    description: "Formal request letter template for general users to request information, permissions, records, or meetings.",
-    isPremium: false,
-    categorySlug: "letters",
-    categoryName: "Letters",
-    content: {
-      title: "Official Request Letter",
-      fields: ["requesterName", "recipientName", "requestSubject", "detailExplanation", "deadlineDate"],
-      layout: {
-        header: "LETTER OF REQUEST",
-        footer: "Thank you for your prompt consideration."
+        header: "MASTER SERVICE AGREEMENT",
+        footer: "Subject to the Service Level Agreement (SLA) metrics included herein."
       },
       styles: {
         primaryColor: "#4f46e5",
@@ -2735,47 +1076,924 @@ export const allFallbackTemplates = [
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "REQUEST LETTER: {{requestSubject}}" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{recipientName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "I am writing to formally request your assistance or permission regarding: " },
-              { type: "text", text: "{{detailExplanation}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "If possible, I would appreciate it if this request could be reviewed by " },
-              { type: "text", text: "{{deadlineDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Sincerely," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "{{requesterName}}", marks: [{ type: "bold" }] }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MASTER SERVICE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Provider: {{providerCompanyName}} | Address: {{providerAddress}} | Contact: {{providerContactPerson}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Description of Services" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Service Description: {{serviceDescription}} | Scope: {{serviceScope}} | Frequency: {{serviceFrequency}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Start Date: {{startDate}} | End Date: {{endDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Service Fees & Payment Rules" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Fee: {{serviceFee}} | Method: {{paymentMethod}} | Due Date: {{paymentDueDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Service Level & Cancellation Policies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "SLA Terms: {{slaTerms}} | Cancellation: {{cancellationPolicy}} | Liability: {{liabilityLimit}} | Confidentiality: {{confidentialityClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Provider Signature: {{providerSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "nda-template",
+    slug: "nda-template",
+    title: "Non-Disclosure Agreement (NDA) Template",
+    description: "Standard confidentiality agreement layout to protect proprietary business data, trade secrets, and assets.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Non-Disclosure Agreement",
+      fields: ["partyAName", "partyACompany", "partyAAddress", "partyBName", "partyBCompany", "partyBAddress", "effectiveDate", "purposeOfAgreement", "confidentialInformation", "exclusions", "agreementDuration", "obligations", "permittedDisclosures", "governingLaw", "partyASignature", "partyBSignature"],
+      layout: {
+        header: "CONFIDENTIALITY DEED",
+        footer: "Governed under state laws. Signatures authenticate mutual obligations."
+      },
+      styles: {
+        primaryColor: "#be123c",
+        secondaryColor: "#881337"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MUTUAL NON-DISCLOSURE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "First Party (A): {{partyAName}} ({{partyACompany}}) | Address: {{partyAAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Second Party (B): {{partyBName}} ({{partyBCompany}}) | Address: {{partyBAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Agreement Purpose & Date" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Effective Date: {{effectiveDate}} | Purpose: {{purposeOfAgreement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Definition of Confidential Material" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidential Information: {{confidentialInformation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Exclusions: {{exclusions}} | Duration: {{agreementDuration}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Obligations & Legal Remedies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Obligations: {{obligations}} | Permitted Disclosures: {{permittedDisclosures}} | Law: {{governingLaw}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Party A: {{partyASignature}} | Party B: {{partyBSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "consulting-agreement",
+    slug: "consulting-agreement",
+    title: "Consulting Agreement Template",
+    description: "Detailed consulting agreement mapping project scope, timelines, hourly or fixed rate fees.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Consulting Agreement",
+      fields: ["consultantName", "consultantCompany", "consultantContact", "clientName", "clientCompanyName", "clientContact", "projectName", "scopeOfWork", "deliverables", "timeline", "hourlyRate", "fixedFee", "expenses", "paymentSchedule", "confidentialityClause", "intellectualProperty", "terminationClause", "consultantSignature", "clientSignature"],
+      layout: {
+        header: "CONSULTING CONTRACT",
+        footer: "Independent consultant relationship template."
+      },
+      styles: {
+        primaryColor: "#d97706",
+        secondaryColor: "#78350f"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CONSULTING AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant: {{consultantName}} | Company: {{consultantCompany}} | Contact: {{consultantContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Company: {{clientCompanyName}} | Contact: {{clientContact}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Consulting & Work Title" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectName}} | Scope: {{scopeOfWork}} | Deliverables: {{deliverables}} | Timeline: {{timeline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Fees, Fixed Rates & Expenses" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hourly Rate: {{hourlyRate}} | Fixed Fee: {{fixedFee}} | Expenses: {{expenses}} | Schedule: {{paymentSchedule}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Covenants & NDA" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidentiality: {{confidentialityClause}} | Intellectual Property: {{intellectualProperty}} | Termination: {{terminationClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant Signature: {{consultantSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "rental-agreement",
+    slug: "rental-agreement",
+    title: "Rental Agreement Template",
+    description: "Property lease contract mapping monthly rents, security deposits, smoking policies, and utility rules.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Residential Rental Agreement",
+      fields: ["landlordName", "landlordAddress", "landlordContact", "tenantName", "tenantAddress", "tenantPhone", "propertyAddress", "propertyType", "leaseStartDate", "leaseEndDate", "monthlyRent", "securityDeposit", "rentDueDate", "paymentMethod", "utilities", "maintenance", "petsPolicy", "smokingPolicy", "landlordSignature", "tenantSignature"],
+      layout: {
+        header: "LEASE AGREEMENT",
+        footer: "This document is binding under local landlord-tenant regulations."
+      },
+      styles: {
+        primaryColor: "#059669",
+        secondaryColor: "#064e3b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "RESIDENTIAL LEASE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Landlord: {{landlordName}} | Address: {{landlordAddress}} | Phone: {{landlordContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Tenant: {{tenantName}} | Former Address: {{tenantAddress}} | Phone: {{tenantPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Property & Lease Duration" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Leased Address: {{propertyAddress}} | Type: {{propertyType}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Lease Period: {{leaseStartDate}} to {{leaseEndDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Monthly Rents & Security Deposits" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Rent Amount: {{monthlyRent}} | Deposit: {{securityDeposit}} | Due Date: {{rentDueDate}} | Method: {{paymentMethod}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Utilities & Maintenance Policies" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Utilities: {{utilities}} | Maintenance: {{maintenance}} | Pets: {{petsPolicy}} | Smoking: {{smokingPolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Lease Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Landlord Signature: {{landlordSignature}} | Tenant Signature: {{tenantSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "sales-contract",
+    slug: "sales-contract",
+    title: "Sales Contract Template",
+    description: "Standard business bill of sale mapping merchandise details, quantities, and return policies.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Commercial Sales Agreement",
+      fields: ["sellerName", "sellerCompany", "sellerAddress", "buyerName", "buyerCompany", "buyerAddress", "productName", "quantity", "unitPrice", "totalAmount", "deliveryDate", "shippingMethod", "deliveryAddress", "paymentMethod", "paymentDueDate", "warrantyTerms", "returnPolicy", "governingLaw", "sellerSignature", "buyerSignature"],
+      layout: {
+        header: "BILL OF SALE",
+        footer: "Merchandise title transfers to Buyer upon receipt of total contract value."
+      },
+      styles: {
+        primaryColor: "#ea580c",
+        secondaryColor: "#7c2d12"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "COMMERCIAL SALES CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Seller: {{sellerName}} ({{sellerCompany}}) | Address: {{sellerAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Buyer: {{buyerName}} ({{buyerCompany}}) | Address: {{buyerAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Merchandises details & Costs Breakdown" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Item: {{productName}} | Qty: {{quantity}} | Unit Price: {{unitPrice}} | Total: {{totalAmount}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Shipping & Payment Terms" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Delivery Date: {{deliveryDate}} | Method: {{shippingMethod}} | Destination: {{deliveryAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Payment Method: {{paymentMethod}} | Payment Due Date: {{paymentDueDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Warranty & Legal Exclusions" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Warranty: {{warrantyTerms}} | Returns: {{returnPolicy}} | Law: {{governingLaw}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Sales Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Seller Signature: {{sellerSignature}} | Buyer Signature: {{buyerSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "partnership-agreement",
+    slug: "partnership-agreement",
+    title: "Partnership Agreement Template",
+    description: "Standard business partnership contract outlining ownership ratios, capital investment, and exit terms.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Business Partnership Agreement",
+      fields: ["partner1Name", "partner1Address", "partner1Ownership", "partner2Name", "partner2Address", "partner2Ownership", "businessName", "businessAddress", "industryType", "capitalContribution", "profitSharing", "partnerResponsibilities", "decisionMaking", "exitStrategy", "partner1Signature", "partner2Signature"],
+      layout: {
+        header: "PARTNERSHIP DEED",
+        footer: "This partnership operates in mutual trust and alignment on common business goals."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#311042"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PARTNERSHIP AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 1: {{partner1Name}} | Address: {{partner1Address}} | Ownership Share: {{partner1Ownership}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 2: {{partner2Name}} | Address: {{partner2Address}} | Ownership Share: {{partner2Ownership}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Business Details" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Business Name: {{businessName}} | Address: {{businessAddress}} | Industry: {{industryType}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Financial Structure & Capital" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Capital Contribution: {{capitalContribution}} | Profit Sharing Terms: {{profitSharing}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Roles, Decisions & Exit Strategy" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Responsibilities: {{partnerResponsibilities}} | Decision Rule: {{decisionMaking}} | Exit Plan: {{exitStrategy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Partnership Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner 1 Signature: {{partner1Signature}} | Partner 2 Signature: {{partner2Signature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "vendor-agreement",
+    slug: "vendor-agreement",
+    title: "Vendor Agreement Template",
+    description: "Trade contract outlining merchandise quantities, quality controls, and client payouts.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Vendor Services Agreement",
+      fields: ["vendorName", "vendorCompany", "vendorAddress", "clientName", "clientCompanyName", "clientAddress", "productsServices", "quantity", "deliverySchedule", "qualityStandards", "contractValue", "paymentTerms", "invoiceSchedule", "confidentialityClause", "terminationClause", "warrantyTerms", "liabilityLimit", "vendorSignature", "clientSignature"],
+      layout: {
+        header: "VENDOR CONTRACT",
+        footer: "This contract defines the supply conditions between Client and Supplier."
+      },
+      styles: {
+        primaryColor: "#0284c7",
+        secondaryColor: "#075985"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "VENDOR SERVICES AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Vendor: {{vendorName}} ({{vendorCompany}}) | Address: {{vendorAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Products & Delivery" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Services/Goods: {{productsServices}} | Qty: {{quantity}} | Delivery Schedule: {{deliverySchedule}} | Quality Rules: {{qualityStandards}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Payment Terms & Valuation" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Value: {{contractValue}} | Terms: {{paymentTerms}} | Invoice Schedule: {{invoiceSchedule}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Legal Terms & Guarantees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confidentiality: {{confidentialityClause}} | Termination: {{terminationClause}} | Warranty: {{warrantyTerms}} | Liability Cap: {{liabilityLimit}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorizing Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Vendor Signature: {{vendorSignature}} | Client Signature: {{clientSignature}}" }] }
+        ]
+      }
+    }
+  },
+
+  {
+    id: "business-proposal",
+    slug: "business-proposal",
+    title: "Business Proposal Template",
+    description: "Startups and business project proposal layout pitching products, pricing tiers, and milestones.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Business Proposal",
+      fields: ["companyLogo", "companyName", "businessAddress", "contactPerson", "emailAddress", "phoneNumber", "website", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "proposalTitle", "proposalNumber", "proposalDate", "validUntil", "executiveSummary", "businessOverview", "proposalObjective", "serviceName", "serviceDescription", "deliverables", "serviceCost", "tax", "discount", "totalPrice", "startDate", "completionDate", "milestones", "paymentTerms", "termsConditions", "companySignature", "clientSignature", "signatureDate"],
+      layout: {
+        header: "BUSINESS PROJECT PROPOSAL",
+        footer: "This proposal is subject to pricing validation within the validity period."
+      },
+      styles: {
+        primaryColor: "#0f172a",
+        secondaryColor: "#3b82f6"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "BUSINESS PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Proposal Title: {{proposalTitle}} | Number: {{proposalNumber}} | Date: {{proposalDate}} | Valid Until: {{validUntil}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Proposed By: {{companyName}} ({{contactPerson}}) | Address: {{businessAddress}} | Contact: {{emailAddress}} | {{phoneNumber}} | {{website}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared For: {{clientName}} ({{clientCompanyName}}) | Address: {{clientAddress}} | Contact: {{clientEmail}} | {{clientPhone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Executive Summary & Overview" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Executive Summary: {{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Business Overview: {{businessOverview}} | Objective: {{proposalObjective}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Services & Scope of Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Service Name: {{serviceName}} | Description: {{serviceDescription}} | Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Estimated Schedule: Start {{startDate}} | Completion {{completionDate}} | Key Milestones: {{milestones}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Pricing & Payment Terms" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cost: {{serviceCost}} | Tax: {{tax}} | Discount: {{discount}} | Total Proposal Investment: {{totalPrice}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Payment Terms: {{paymentTerms}} | General Conditions: {{termsConditions}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Proposal Authorization" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Proposer Signature: {{companySignature}} | Client Acceptance: {{clientSignature}} | Date: {{signatureDate}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "project-proposal",
+    slug: "project-proposal",
+    title: "Project Proposal Template",
+    description: "Detailed proposal structure detailing project goals, risk analysis, mitigation, resources, and budgets.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Project Proposal",
+      fields: ["companyName", "companyLogo", "contactPerson", "clientName", "clientCompanyName", "projectTitle", "projectDescription", "goals", "objectives", "scope", "deliverables", "startDate", "endDate", "milestones", "estimatedCost", "resourcesRequired", "riskAssessment", "mitigationPlan", "proposalSignature", "signatureDate"],
+      layout: {
+        header: "PROJECT IMPLEMENTATION PROPOSAL",
+        footer: "Confidential document for review by client sponsors only."
+      },
+      styles: {
+        primaryColor: "#0d9488",
+        secondaryColor: "#0f766e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PROJECT PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Title: {{projectTitle}} | Proposer: {{companyName}} ({{contactPerson}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared For: {{clientName}} ({{clientCompanyName}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope & Core Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Description: {{projectDescription}} | Goals: {{goals}} | Objectives: {{objectives}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Scope: {{scope}} | Deliverables: {{deliverables}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Schedule & Key Milestones" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Duration: {{startDate}} to {{endDate}} | Milestones: {{milestones}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Resources & Estimated Budgets" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Required Resources: {{resourcesRequired}} | Estimated Total Cost: {{estimatedCost}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Risk Management Plan" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Identified Risks: {{riskAssessment}} | Mitigation Strategy: {{mitigationPlan}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Approvals" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{proposalSignature}} | Date: {{signatureDate}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "marketing-proposal",
+    slug: "marketing-proposal",
+    title: "Marketing Proposal Template",
+    description: "Strategic marketing campaign layout covering SEO, PPC, social channels, and agency fees.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Marketing Proposal",
+      fields: ["agencyName", "companyLogo", "contactDetails", "clientName", "clientCompanyName", "campaignName", "objectives", "targetAudience", "marketingChannels", "seoStrategy", "ppcStrategy", "socialMediaStrategy", "emailMarketingStrategy", "contentMarketingStrategy", "monthlyBudget", "adSpend", "agencyFee", "campaignStart", "campaignEnd", "kpiTraffic", "kpiLeads", "kpiSales", "proposalSignature"],
+      layout: {
+        header: "MARKETING CAMPAIGN PROPOSAL",
+        footer: "Proposed KPIs are estimates based on initial market research metrics."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#6d28d9"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CAMPAIGN MARKETING PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Campaign Name: {{campaignName}} | Target: {{targetAudience}} | Channels: {{marketingChannels}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared By: {{agencyName}} ({{contactDetails}}) | Prepared For: {{clientName}} ({{clientCompanyName}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Strategy Overview & Channels" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Campaign Objectives: {{objectives}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Search Strategy (SEO): {{seoStrategy}} | Paid Ads (PPC): {{ppcStrategy}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Social Channels: {{socialMediaStrategy}} | Email Campaigns: {{emailMarketingStrategy}} | Content: {{contentMarketingStrategy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Monthly Budget & Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Monthly Total Budget: {{monthlyBudget}} | Direct Ad Spend: {{adSpend}} | Agency Management Fee: {{agencyFee}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Schedule & KPI Projections" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{campaignStart}} to {{campaignEnd}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Target Traffic Growth: {{kpiTraffic}} | Projected Leads: {{kpiLeads}} | Target Sales Conversion: {{kpiSales}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorization Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Agency Signature: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "web-design-proposal",
+    slug: "web-design-proposal",
+    title: "Web Design Proposal Template",
+    description: "Creative design proposal for developers showing design styles, CMS setups, timelines, and budgets.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Web Design Proposal",
+      fields: ["companyName", "designerName", "website", "clientName", "clientCompanyName", "websiteType", "numberOfPages", "designStyle", "responsiveDesign", "cmsPlatform", "featureContactForm", "featureBlog", "featureEcommerce", "featureSeo", "featureAnalytics", "designPhaseTimeline", "developmentPhaseTimeline", "launchDate", "designCost", "developmentCost", "hostingCost", "maintenanceCost", "proposalSignature"],
+      layout: {
+        header: "WEBSITE DEVELOPMENT PROPOSAL",
+        footer: "Standard design includes 30 days of post-launch technical support."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#be185d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "WEB DESIGN & DEVELOPMENT PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Agency: {{companyName}} (Designer: {{designerName}}) | Portfolio: {{website}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared For: {{clientName}} ({{clientCompanyName}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Website Structure & CMS Platform" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Website Type: {{websiteType}} | Pages: {{numberOfPages}} | Style: {{designStyle}} | Responsive Layouts: {{responsiveDesign}} | CMS: {{cmsPlatform}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Key Integration Features" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact Forms: {{featureContactForm}} | Blog: {{featureBlog}} | E-commerce Store: {{featureEcommerce}} | Built-in SEO: {{featureSeo}} | Analytics: {{featureAnalytics}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Design & Launch Schedule" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Design Phase: {{designPhaseTimeline}} | Development Sprint: {{developmentPhaseTimeline}} | Target Launch: {{launchDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Pricing Breakdowns" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Design Work: {{designCost}} | Development: {{developmentCost}} | Annual Hosting: {{hostingCost}} | Monthly Maintenance: {{maintenanceCost}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Authorization Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "software-development-proposal",
+    slug: "software-development-proposal",
+    title: "Software Development Proposal Template",
+    description: "Detailed tech stack proposal template showing software workflows, databases, discovery, and testing phases.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Software Development Proposal",
+      fields: ["companyName", "contactPerson", "clientName", "clientCompanyName", "projectName", "problemStatement", "proposedSolution", "platform", "technologyStack", "database", "apisIntegration", "securityMeasures", "phaseDiscovery", "phaseUiUx", "phaseDevelopment", "phaseTesting", "phaseDeployment", "developmentCost", "supportCost", "startDate", "deliveryDate", "proposalSignature"],
+      layout: {
+        header: "TECHNICAL SOFTWARE PROPOSAL",
+        footer: "Software architectures adhere to OWASP and standard cloud deployment security regulations."
+      },
+      styles: {
+        primaryColor: "#0284c7",
+        secondaryColor: "#0369a1"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SOFTWARE DEVELOPMENT PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Name: {{projectName}} | Proposer: {{companyName}} ({{contactPerson}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared For: {{clientName}} ({{clientCompanyName}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Problem & Proposed Technical Solution" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Problem Statement: {{problemStatement}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Proposed Solution: {{proposedSolution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Technology Stack & Security Architecture" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Platform Target: {{platform}} | Tech Stack: {{technologyStack}} | Database: {{database}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "APIs & Integrations: {{apisIntegration}} | Security Standards: {{securityMeasures}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Detailed Phase Execution Plan" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Discovery Phase: {{phaseDiscovery}} | UI/UX Wireframing: {{phaseUiUx}} | Active Development: {{phaseDevelopment}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "QA & Testing: {{phaseTesting}} | Production Deployment: {{phaseDeployment}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Development Timelines & Budgets" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Active Project: {{startDate}} to {{deliveryDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dev Cost: {{developmentCost}} | Annual Maintenance Support: {{supportCost}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Proposer Authorization" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "consulting-proposal",
+    slug: "consulting-proposal",
+    title: "Consulting Proposal Template",
+    description: "Professional consulting strategy layout specifying business challenges, scope of work, and fee structures.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Consulting Proposal",
+      fields: ["consultantName", "consultantCompany", "consultantContact", "clientName", "clientCompanyName", "businessChallenge", "objectives", "scopeOfWork", "deliverables", "hourlyRate", "fixedPrice", "expenses", "startDate", "completionDate", "proposalSignature"],
+      layout: {
+        header: "STRATEGY CONSULTING PROPOSAL",
+        footer: "Independent consulting services. Out-of-pocket expenses billed at cost."
+      },
+      styles: {
+        primaryColor: "#475569",
+        secondaryColor: "#334155"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "STRATEGIC CONSULTING PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant: {{consultantName}} ({{consultantCompany}}) | Contact: {{consultantContact}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared For: {{clientName}} ({{clientCompanyName}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Business Challenge & Core Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Identified Challenge: {{businessChallenge}} | Objectives: {{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Scope of Work & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consulting Scope: {{scopeOfWork}} | Key Deliverables: {{deliverables}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Schedule & Project Timelines" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consulting Duration: {{startDate}} to {{completionDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Professional Fees & Expenses" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hourly Consultation: {{hourlyRate}} | Fixed Price Project: {{fixedPrice}} | Reimbursable Expenses: {{expenses}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Acceptance Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Consultant Signature: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "digital-marketing-proposal",
+    slug: "digital-marketing-proposal",
+    title: "Digital Marketing Proposal Template",
+    description: "Detailed digital marketing campaign setup showing SEO channels, social ads spend, and lead targets.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Digital Marketing Proposal",
+      fields: ["agencyName", "companyLogo", "clientName", "clientWebsite", "seoMarketing", "googleAdsSpend", "metaAdsSpend", "emailMarketingStrategy", "contentMarketingStrategy", "socialMediaManagement", "goalBrandAwareness", "goalLeadGeneration", "goalSales", "goalWebsiteTraffic", "monthlyBudget", "adSpend", "agencyFee", "campaignDuration", "proposalSignature"],
+      layout: {
+        header: "DIGITAL MARKETING INITIATIVE",
+        footer: "Performance target metrics estimates based on initial keyword indices search volume."
+      },
+      styles: {
+        primaryColor: "#ea580c",
+        secondaryColor: "#c2410c"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "DIGITAL MARKETING SERVICES PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared By: {{agencyName}} (Logo: {{companyLogo}}) | For Client: {{clientName}} (Website: {{clientWebsite}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Marketing Services & Strategy" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Search (SEO): {{seoMarketing}} | Google Search Ads: {{googleAdsSpend}} | Meta Social Ads: {{metaAdsSpend}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Email Marketing: {{emailMarketingStrategy}} | Content: {{contentMarketingStrategy}} | Social Management: {{socialMediaManagement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Key Campaign Goals & Performance Metrics" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Awareness Target: {{goalBrandAwareness}} | Lead Target: {{goalLeadGeneration}} | Sales Target: {{goalSales}} | Traffic: {{goalWebsiteTraffic}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Retainers & Campaign Timelines" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Monthly Total Retainer: {{monthlyBudget}} | Client Direct Ad Spend: {{adSpend}} | Agency Fee: {{agencyFee}} | Period: {{campaignDuration}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Authorization Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Agency Signature: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "construction-proposal",
+    slug: "construction-proposal",
+    title: "Construction Proposal Template",
+    description: "Detailed construction and remodeling proposal mapping contractor license, materials, labor, and warranties.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Construction Services Proposal",
+      fields: ["companyName", "licenseNumber", "clientName", "propertyAddress", "projectName", "scopeOfWork", "materialsList", "equipmentList", "laborHours", "materialCost", "laborCost", "equipmentCost", "totalCost", "startDate", "endDate", "warrantyDetails", "proposalSignature"],
+      layout: {
+        header: "BUILD & CONSTRUCTION PROPOSAL",
+        footer: "Subject to structural permits, building codes, and inspections."
+      },
+      styles: {
+        primaryColor: "#059669",
+        secondaryColor: "#047857"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CONSTRUCTION SERVICES PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor: {{companyName}} | License #: {{licenseNumber}} | Project Name: {{projectName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Client: {{clientName}} | Property Address: {{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Work & Material Spec" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Scope of Work: {{scopeOfWork}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Materials Used: {{materialsList}} | Equipment Required: {{equipmentList}} | Est. Labor: {{laborHours}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Cost Estimates & Pricing" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Materials Cost: {{materialCost}} | Labor Cost: {{laborCost}} | Equipment Cost: {{equipmentCost}} | Total Estimated Cost: {{totalCost}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Timelines & Structural Warranties" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Sprint: {{startDate}} to {{endDate}} | Contractor Warranty: {{warrantyDetails}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Contractor Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contractor: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "event-proposal",
+    slug: "event-proposal",
+    title: "Event Proposal Template",
+    description: "Structured event planning proposal showing guest counts, catering details, entertainment, and decor.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Event Planning Proposal",
+      fields: ["companyName", "eventPlanner", "clientName", "eventName", "eventType", "eventDate", "venueLocation", "expectedGuests", "cateringDetails", "decorationDetails", "entertainmentDetails", "photographyDetails", "venueCost", "cateringCost", "decorationCost", "totalCost", "preparationSchedule", "proposalSignature"],
+      layout: {
+        header: "EVENT MANAGEMENT PROPOSAL",
+        footer: "Catering and venue costs subject to headcount confirmation 14 days prior."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#9d174d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "EVENT MANAGEMENT PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Organizer: {{companyName}} (Planner: {{eventPlanner}}) | Client Name: {{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Event Name: {{eventName}} | Type: {{eventType}} | Event Date: {{eventDate}} | Venue: {{venueLocation}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Guest Capacity & Event Services" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Expected Guests: {{expectedGuests}} | Catering: {{cateringDetails}} | Decor Style: {{decorationDetails}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Entertainment: {{entertainmentDetails}} | Photo/Video: {{photographyDetails}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Cost Estimates & Totals" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Venue Booking: {{venueCost}} | Catering: {{cateringCost}} | Decor: {{decorationCost}} | Total Estimated Cost: {{totalCost}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Preparation Schedule" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Preparation Roadmap: {{preparationSchedule}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Organizer Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Planner: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "grant-proposal",
+    slug: "grant-proposal",
+    title: "Grant Proposal Template",
+    description: "NGO and non-profit grant request template detailing funding details, objectives, and operational costs.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Grant Funding Proposal",
+      fields: ["organizationName", "registrationNumber", "contactPerson", "contactEmail", "grantTitle", "fundingRequested", "projectOverview", "problemStatement", "objectives", "targetBeneficiaries", "expectedOutcomes", "personnelBudget", "equipmentBudget", "operationalCost", "totalBudget", "startDate", "endDate", "evaluationMetrics", "proposalSignature"],
+      layout: {
+        header: "GRANT APPLICATION PROPOSAL",
+        footer: "Financial audits and registration certificates attached for validation."
+      },
+      styles: {
+        primaryColor: "#4f46e5",
+        secondaryColor: "#3730a3"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "GRANT APPLICATION PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Grant Title: {{grantTitle}} | Amount Requested: {{fundingRequested}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Applicant: {{organizationName}} (Reg #: {{registrationNumber}}) | Contact: {{contactPerson}} ({{contactEmail}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Problem Statement & Project Overview" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Overview: {{projectOverview}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Problem Statement: {{problemStatement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Objectives, Beneficiaries & Outcomes" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Objectives: {{objectives}} | Target Beneficiaries: {{targetBeneficiaries}} | Expected Outcomes: {{expectedOutcomes}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Detailed Budget Breakdown" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Personnel: {{personnelBudget}} | Equipment: {{equipmentBudget}} | Operations: {{operationalCost}} | Total Requested Budget: {{totalBudget}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Timelines & Evaluation Metrics" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Project Cycle: {{startDate}} to {{endDate}} | Success Metrics: {{evaluationMetrics}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Applicant Signature" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Authorized Applicant: {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+
+  {
+    id: "cover-letter",
+    slug: "cover-letter",
+    title: "Cover Letter Template",
+    description: "Standard job application cover letter detailing experience, motivation, achievements, and target role.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Cover Letter",
+      fields: ["fullName", "jobTitle", "senderAddress", "senderCity", "senderState", "senderZip", "senderCountry", "emailAddress", "phoneNumber", "linkedin", "portfolio", "recipientName", "companyName", "companyAddress", "recipientCity", "recipientState", "recipientZip", "letterDate", "letterSubject", "jobPosition", "jobReferenceNumber", "openingParagraph", "introduction", "whyInterested", "skillsExperience", "keyAchievements", "whyGoodFit", "closingParagraph", "complimentaryClosing", "signatureFullName"],
+      layout: {
+        header: "APPLICATION COVER LETTER",
+        footer: "Enclosures: Resume & Professional Portfolio References."
+      },
+      styles: {
+        primaryColor: "#0f172a",
+        secondaryColor: "#3b82f6"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Sender: {{fullName}} | {{jobTitle}} | Address: {{senderAddress}}, {{senderCity}}, {{senderState}} {{senderZip}}, {{senderCountry}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact: {{emailAddress}} | {{phoneNumber}} | LinkedIn: {{linkedin}} | Web: {{portfolio}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Subject: {{letterSubject}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Recipient: {{recipientName}} | {{companyName}} | Address: {{companyAddress}}, {{recipientCity}}, {{recipientState}} {{recipientZip}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Re: Application for {{jobPosition}} (Ref: {{jobReferenceNumber}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{openingParagraph}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{introduction}} | {{whyInterested}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{skillsExperience}} | Achievements: {{keyAchievements}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{whyGoodFit}} | {{closingParagraph}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resignation-letter",
+    slug: "resignation-letter",
+    title: "Resignation Letter Template",
+    description: "Formal letter template to notify employer of resignation and specify transition timelines.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Resignation Letter",
+      fields: ["fullName", "employeeId", "jobTitle", "department", "companyName", "emailAddress", "phoneNumber", "letterDate", "letterSubject", "managerName", "lastWorkingDay", "noticePeriod", "reasonForResignation", "appreciationMessage", "transitionSupport", "closingMessage", "complimentaryClosing", "signatureFullName"],
+      layout: {
+        header: "FORMAL RESIGNATION LETTER",
+        footer: "Copy filed with Human Resources Department."
+      },
+      styles: {
+        primaryColor: "#475569",
+        secondaryColor: "#334155"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Employee: {{fullName}} (ID: {{employeeId}}) | Title: {{jobTitle}} | Dept: {{department}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company Name: {{companyName}} | Email: {{emailAddress}} | Phone: {{phoneNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Subject: {{letterSubject}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{managerName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Please accept this letter as formal notification that I am resigning from my position as {{jobTitle}} at {{companyName}}. My last working day will be {{lastWorkingDay}}, satisfying my {{noticePeriod}} notice period." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reason (Optional): {{reasonForResignation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Appreciation: {{appreciationMessage}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Transition: {{transitionSupport}} | {{closingMessage}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "recommendation-letter",
+    slug: "recommendation-letter",
+    title: "Recommendation Letter Template",
+    description: "Detailed professional reference letter for former employees or academic candidates.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Letter of Recommendation",
+      fields: ["fullName", "jobTitle", "companyName", "emailAddress", "phoneNumber", "recipientName", "recipientOrganization", "recipientAddress", "candidateName", "relationship", "durationKnown", "candidateSkills", "candidateAchievements", "candidateStrengths", "candidateWorkEthic", "candidateCharacter", "recommendationStatement", "complimentaryClosing", "signatureFullName", "recommenderContactInfo"],
+      layout: {
+        header: "RECOMMENDATION LETTER",
+        footer: "Shared in confidence for candidate evaluation only."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#115e59"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Recommender: {{fullName}} | {{jobTitle}} at {{companyName}} | {{emailAddress}} | {{phoneNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Recipient: {{recipientName}} | {{recipientOrganization}} | Address: {{recipientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "It is my pleasure to recommend {{candidateName}} for your program or organization. I have known them in my capacity as {{relationship}} for a duration of {{durationKnown}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Skills & Achievements: {{candidateSkills}} | Achievements: {{candidateAchievements}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Strengths & Ethic: {{candidateStrengths}} | Work Ethic: {{candidateWorkEthic}} | Character: {{candidateCharacter}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recommendationStatement}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Contact Info: {{recommenderContactInfo}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "offer-letter",
+    slug: "offer-letter",
+    title: "Offer Letter Template",
+    description: "Formal hiring offer letter template mapping compensation, reporting lines, benefit details, and deadlines.",
+    isPremium: true,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Employment Offer Letter",
+      fields: ["companyLogo", "companyName", "companyAddress", "hrManagerName", "candidateFullName", "candidateAddress", "candidateEmail", "jobPosition", "department", "employmentType", "startDate", "salary", "workingHours", "reportingManager", "benefitsPackage", "probationPeriod", "noticePeriod", "acceptanceDeadline", "hrSignature", "candidateSignature", "signatureDate"],
+      layout: {
+        header: "OFFER OF EMPLOYMENT",
+        footer: "Subject to background reference verifications. Acme is an equal opportunity employer."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1d4ed8"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "EMPLOYMENT OFFER LETTER" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} (Logo: {{companyLogo}}) | Address: {{companyAddress}} | Manager: {{hrManagerName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Candidate: {{candidateFullName}} | Address: {{candidateAddress}} | Email: {{candidateEmail}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Position, Schedule & Reporting" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Position Offered: {{jobPosition}} | Department: {{department}} | Status: {{employmentType}} | Start Date: {{startDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reporting Manager: {{reportingManager}} | Working Hours: {{workingHours}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Remuneration & Benefits" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Base Salary: {{salary}} | Benefits: {{benefitsPackage}} | Probation: {{probationPeriod}} | Notice Period: {{noticePeriod}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Acceptance & Authorization" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This offer is valid until {{acceptanceDeadline}}. To accept, please sign and return." }] },
+          { type: "paragraph", content: [{ type: "text", text: "HR Signature: {{hrSignature}} | Candidate Acceptance: {{candidateSignature}} | Date: {{signatureDate}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "business-letter",
+    slug: "business-letter",
+    title: "Business Letter Template",
+    description: "Classic corporate formal letter structure for official communications, inquiries, and announcements.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Business Letter",
+      fields: ["companyName", "contactPerson", "senderAddress", "emailAddress", "phoneNumber", "recipientName", "recipientCompany", "recipientAddress", "letterDate", "letterSubject", "referenceNumber", "letterOpening", "letterPurpose", "mainContent", "letterClosing", "complimentaryClosing", "signatureFullName", "designation"],
+      layout: {
+        header: "BUSINESS CORRESPONDENCE",
+        footer: "Official document of the sender corporation."
+      },
+      styles: {
+        primaryColor: "#0f172a",
+        secondaryColor: "#475569"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Sender: {{companyName}} ({{contactPerson}}) | Address: {{senderAddress}} | Contact: {{emailAddress}} | {{phoneNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Recipient: {{recipientName}} ({{recipientCompany}}) | Address: {{recipientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Subject: {{letterSubject}} | Ref: {{referenceNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterOpening}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Purpose: {{letterPurpose}} | Content: {{mainContent}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterClosing}} | {{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}} | Title: {{designation}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "complaint-letter",
+    slug: "complaint-letter",
+    title: "Complaint Letter Template",
+    description: "Formal complaint layout documenting transactional order issues, damaged goods, or service disruptions.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Complaint Letter",
+      fields: ["fullName", "senderAddress", "emailAddress", "phoneNumber", "companyName", "customerServiceDept", "recipientAddress", "orderNumber", "purchaseDate", "productServiceName", "issueDescription", "resolutionRequested", "complimentaryClosing", "signatureFullName", "letterDate"],
+      layout: {
+        header: "FORMAL COMPLAINT RECORD",
+        footer: "Requires a formal response within 14 business days."
+      },
+      styles: {
+        primaryColor: "#be123c",
+        secondaryColor: "#881337"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Sender: {{fullName}} | Address: {{senderAddress}} | Email: {{emailAddress}} | Phone: {{phoneNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To: {{companyName}} ({{customerServiceDept}}) | Address: {{recipientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Re: Service/Product Complaint" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Order Details: Order #: {{orderNumber}} | Date of Purchase: {{purchaseDate}} | Item: {{productServiceName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear Customer Support," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Issue: {{issueDescription}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Resolution Requested: {{resolutionRequested}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "thank-you-letter",
+    slug: "thank-you-letter",
+    title: "Thank You Letter Template",
+    description: "Appreciation and gratitude letter structure for business partners, recruiters, or networking mentors.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Thank You Letter",
+      fields: ["fullName", "senderAddress", "emailAddress", "recipientName", "recipientCompany", "recipientAddress", "letterDate", "letterSubject", "appreciationMessage", "reasonForGratitude", "futureRelationship", "complimentaryClosing", "signatureFullName"],
+      layout: {
+        header: "LETTER OF APPRECIATION",
+        footer: "With sincere thanks and professional regards."
+      },
+      styles: {
+        primaryColor: "#059669",
+        secondaryColor: "#047857"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Sender: {{fullName}} | Address: {{senderAddress}} | Email: {{emailAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Recipient: {{recipientName}} ({{recipientCompany}}) | Address: {{recipientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Subject: {{letterSubject}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{appreciationMessage}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reason for Gratitude: {{reasonForGratitude}} | Future Outlook: {{futureRelationship}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "request-letter",
+    slug: "request-letter",
+    title: "Request Letter Template",
+    description: "Formal letter layout requesting records, permissions, budget reviews, or project sponsorships.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Formal Request Letter",
+      fields: ["fullName", "senderAddress", "contactDetails", "recipientName", "recipientOrganization", "recipientAddress", "requestType", "purposeOfRequest", "reasonForRequest", "supportingInformation", "complimentaryClosing", "signatureFullName", "letterDate"],
+      layout: {
+        header: "FORMAL REQUEST FOR ACTION",
+        footer: "Supporting documentation attached where applicable."
+      },
+      styles: {
+        primaryColor: "#4f46e5",
+        secondaryColor: "#3730a3"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "Sender: {{fullName}} | Address: {{senderAddress}} | Contact: {{contactDetails}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To: {{recipientName}} | Organization: {{recipientOrganization}} | Address: {{recipientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}} | Subject: Request for {{requestType}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Request Type: {{requestType}} | Purpose: {{purposeOfRequest}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reason: {{reasonForRequest}} | Supporting Details: {{supportingInformation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{complimentaryClosing}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "Signature: {{signatureFullName}}" }] }
         ]
       }
     }
@@ -2783,60 +2001,35 @@ export const allFallbackTemplates = [
   {
     id: "appointment-letter",
     slug: "appointment-letter",
-    title: "Appointment Letter",
-    description: "Official appointment letter template for HR departments to confirm employment terms and schedule.",
-    isPremium: false,
+    title: "Appointment Letter Template",
+    description: "Official job appointment letter outlining onboarding instructions, reporting dates, and compensation details.",
+    isPremium: true,
     categorySlug: "letters",
     categoryName: "Letters",
     content: {
-      title: "Employment Appointment Letter",
-      fields: ["companyName", "employeeName", "jobTitle", "salary", "appointmentDate", "reportingManager"],
+      title: "Onboarding Appointment Letter",
+      fields: ["companyLogo", "companyName", "hrManagerName", "employeeName", "employeeAddress", "employeeEmail", "jobPosition", "department", "startDate", "salary", "workLocation", "workingHours", "reportingManager", "employmentType", "probationPeriod", "leavePolicy", "hrSignature", "employeeSignature", "letterDate"],
       layout: {
-        header: "EMPLOYMENT APPOINTMENT",
-        footer: "Welcome to the organization!"
+        header: "APPOINTMENT CONFIRMATION",
+        footer: "Please return signed duplicate copy to HR department upon onboarding."
       },
       styles: {
-        primaryColor: "#475569",
-        secondaryColor: "#1e293b"
+        primaryColor: "#0284c7",
+        secondaryColor: "#0369a1"
       },
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "LETTER OF APPOINTMENT" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Dear " },
-              { type: "text", text: "{{employeeName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "," }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "We are pleased to appoint you as " },
-              { type: "text", text: "{{jobTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " at " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ". Your appointment is effective from " },
-              { type: "text", text: "{{appointmentDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " under the supervision of " },
-              { type: "text", text: "{{reportingManager}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "Your monthly compensation is set at " },
-              { type: "text", text: "{{salary}}", marks: [{ type: "bold" }] },
-              { type: "text", text: ", subject to applicable taxes and standard company policies." }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "OFFICIAL APPOINTMENT LETTER" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} (Logo: {{companyLogo}}) | HR Rep: {{hrManagerName}} | Date: {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Employee Appointee: {{employeeName}} | Address: {{employeeAddress}} | Email: {{employeeEmail}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Position details & Schedule" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Role: {{jobPosition}} | Department: {{department}} | Status: {{employmentType}} | Location: {{workLocation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Reporting Manager: {{reportingManager}} | Schedule: {{workingHours}} | Start Date: {{startDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Remuneration, Leave & Probation" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Salary: {{salary}} | Probation: {{probationPeriod}} | Leave Policy: {{leavePolicy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Agreement & Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", text: "HR Signature: {{hrSignature}} | Appointee Signature: {{employeeSignature}}" }] }
         ]
       }
     }
@@ -2844,14 +2037,14 @@ export const allFallbackTemplates = [
   {
     id: "experience-letter",
     slug: "experience-letter",
-    title: "Experience Letter",
-    description: "Formal experience letter and certificate template for employees confirming dates of employment and performance summary.",
+    title: "Experience Letter Template",
+    description: "Official work experience certification template confirming tenure, titles, and performance quality.",
     isPremium: false,
     categorySlug: "letters",
     categoryName: "Letters",
     content: {
       title: "Work Experience Certificate",
-      fields: ["companyName", "employeeName", "jobTitle", "startDate", "endDate", "performanceSummary"],
+      fields: ["companyLogo", "companyName", "companyAddress", "employeeName", "employeeId", "jobTitle", "department", "joiningDate", "lastWorkingDate", "totalExperience", "responsibilities", "performanceSummary", "hrName", "designation", "companySeal", "hrSignature", "letterDate"],
       layout: {
         header: "TO WHOM IT MAY CONCERN",
         footer: "We wish them all the best in future endeavors."
@@ -2863,37 +2056,16 @@ export const allFallbackTemplates = [
       editorState: {
         type: "doc",
         content: [
-          {
-            type: "heading",
-            attrs: { level: 1 },
-            content: [{ type: "text", text: "WORK EXPERIENCE CERTIFICATE" }]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "This is to certify that " },
-              { type: "text", text: "{{employeeName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " was employed with " },
-              { type: "text", text: "{{companyName}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " in the capacity of " },
-              { type: "text", text: "{{jobTitle}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " from " },
-              { type: "text", text: "{{startDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: " to " },
-              { type: "text", text: "{{endDate}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          },
-          {
-            type: "paragraph",
-            content: [
-              { type: "text", text: "During their tenure, they demonstrated key abilities and were described as: " },
-              { type: "text", text: "{{performanceSummary}}", marks: [{ type: "bold" }] },
-              { type: "text", text: "." }
-            ]
-          }
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "WORK EXPERIENCE CERTIFICATE" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Company: {{companyName}} (Logo: {{companyLogo}}) | Address: {{companyAddress}} | Date: {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This is to certify that appointee {{employeeName}} (ID: {{employeeId}}) was employed with {{companyName}} in the capacity of {{jobTitle}} in the {{department}} Department." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Tenure: Joining Date: {{joiningDate}} | Last Working Date: {{lastWorkingDate}} | Total Experience: {{totalExperience}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Key Responsibilities: {{responsibilities}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Performance Review: {{performanceSummary}} | Seal: {{companySeal}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "HR Representative: {{hrName}} ({{designation}}) | Signature: {{hrSignature}}" }] }
         ]
       }
     }
   }
+
 ];

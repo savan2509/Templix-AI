@@ -1,30 +1,88 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f8fafc"/>
-  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-  <path d="M20 28 L380 28 L380 20 Q380 20 380 20 L20 20 Z" fill="#dc2626"/>
-  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Brightside Market LLC</text>
-  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#64748b">billing@brightsidemarket.com</text>
-  <text x="360" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="end">RETAIL INVOICE</text>
-  <text x="360" y="68" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">Ref: #INV-SMB-930</text>
-  <rect x="40" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="48" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">BILLED TO:</text>
-  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">John Doe Customer</text>
-  <rect x="215" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
-  <text x="223" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">DATE OF ISSUE:</text>
-  <text x="223" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">2026-06-29 | Paid</text>
-  <rect x="40" y="140" width="320" height="18" fill="#dc2626" rx="3" opacity="0.1"/>
-  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626">Product Item</text>
-  <text x="280" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="end">Qty</text>
-  <text x="352" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="end">Price</text>
-  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Handmade Organic Soy Candle Set</text>
-  <text x="280" y="176" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">4</text>
-  <text x="352" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$25.00</text>
-  <line x1="40" y1="188" x2="360" y2="188" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="48" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Custom Engraved Wooden Gift Box</text>
-  <text x="280" y="202" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">2</text>
-  <text x="352" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$45.00</text>
-  <line x1="40" y1="214" x2="360" y2="214" stroke="#f1f5f9" stroke-width="1"/>
-  <text x="280" y="244" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="end">Total Charge Paid:</text>
-  <text x="352" y="244" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="end">$190.00</text>
-  <text x="40" y="265" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Thank you for supporting our local business! All items include taxes.</text>
+  <rect width="100%" height="100%" fill="#fcfcfd"/>
+  <!-- Thermal paper style card -->
+  <rect x="50" y="10" width="300" height="280" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 2"/>
+  
+  <!-- Receipt Header -->
+  <text x="200" y="35" font-family="Courier, monospace" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">SUPERIOR RETAIL LTD</text>
+  <text x="200" y="48" font-family="Courier, monospace" font-size="8" fill="#64748b" text-anchor="middle">100 Broadway St, New York, NY</text>
+  <text x="200" y="58" font-family="Courier, monospace" font-size="8" fill="#64748b" text-anchor="middle">Tel: (555) 019-2834</text>
+  
+  <!-- Dashed Divider -->
+  <line x1="60" y1="70" x2="340" y2="70" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  
+  <!-- Transaction Details -->
+  <text x="70" y="85" font-family="Courier, monospace" font-size="8" fill="#334155">INV: #INV-SMB-930</text>
+  <text x="330" y="85" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">DATE: 2026-06-29</text>
+  <text x="70" y="98" font-family="Courier, monospace" font-size="8" fill="#334155">CASHIER: #402 (M. Smith)</text>
+  <text x="330" y="98" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">TYPE: CHARGE SALE</text>
+  
+  <line x1="60" y1="108" x2="340" y2="108" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  
+  <!-- Billed To -->
+  <text x="70" y="122" font-family="Courier, monospace" font-size="8" font-weight="bold" fill="#e11d48">SOLD TO:</text>
+  <text x="120" y="122" font-family="Courier, monospace" font-size="8" fill="#0f172a">John Doe Customer (555-0199)</text>
+  
+  <line x1="60" y1="132" x2="340" y2="132" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Items Table -->
+  <text x="70" y="148" font-family="Courier, monospace" font-size="8" font-weight="bold" fill="#334155">ITEM DESCRIPTION</text>
+  <text x="250" y="148" font-family="Courier, monospace" font-size="8" font-weight="bold" fill="#334155" text-anchor="end">QTY</text>
+  <text x="330" y="148" font-family="Courier, monospace" font-size="8" font-weight="bold" fill="#334155" text-anchor="end">TOTAL</text>
+  
+  <!-- Item 1 -->
+  <text x="70" y="168" font-family="Courier, monospace" font-size="8" fill="#334155">Organic Soy Candle Set</text>
+  <text x="250" y="168" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">4</text>
+  <text x="330" y="168" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">$100.00</text>
+  
+  <!-- Item 2 -->
+  <text x="70" y="182" font-family="Courier, monospace" font-size="8" fill="#334155">Engraved Gift Box</text>
+  <text x="250" y="182" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">2</text>
+  <text x="330" y="182" font-family="Courier, monospace" font-size="8" fill="#334155" text-anchor="end">$90.00</text>
+  
+  <line x1="60" y1="195" x2="340" y2="195" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  
+  <!-- Totals Section -->
+  <text x="70" y="210" font-family="Courier, monospace" font-size="8" fill="#475569">SUBTOTAL:</text>
+  <text x="330" y="210" font-family="Courier, monospace" font-size="8" fill="#0f172a" text-anchor="end">$190.00</text>
+  <text x="70" y="222" font-family="Courier, monospace" font-size="8" fill="#475569">TAX (8.25%):</text>
+  <text x="330" y="222" font-family="Courier, monospace" font-size="8" fill="#0f172a" text-anchor="end">$15.68</text>
+  <text x="70" y="238" font-family="Courier, monospace" font-size="10" font-weight="bold" fill="#0f172a">TOTAL CHARGE:</text>
+  <text x="330" y="238" font-family="Courier, monospace" font-size="11" font-weight="bold" fill="#e11d48" text-anchor="end">$205.68</text>
+  
+  <line x1="60" y1="250" x2="340" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  
+  <!-- Simulated Barcode -->
+  <g fill="#0f172a">
+    <rect x="120" y="260" width="3" height="15"/>
+    <rect x="126" y="260" width="1" height="15"/>
+    <rect x="130" y="260" width="4" height="15"/>
+    <rect x="138" y="260" width="2" height="15"/>
+    <rect x="142" y="260" width="1" height="15"/>
+    <rect x="146" y="260" width="5" height="15"/>
+    <rect x="154" y="260" width="2" height="15"/>
+    <rect x="160" y="260" width="4" height="15"/>
+    <rect x="166" y="260" width="1" height="15"/>
+    <rect x="170" y="260" width="3" height="15"/>
+    <rect x="176" y="260" width="2" height="15"/>
+    <rect x="180" y="260" width="4" height="15"/>
+    <rect x="188" y="260" width="2" height="15"/>
+    <rect x="194" y="260" width="3" height="15"/>
+    <rect x="200" y="260" width="1" height="15"/>
+    <rect x="204" y="260" width="4" height="15"/>
+    <rect x="210" y="260" width="2" height="15"/>
+    <rect x="216" y="260" width="1" height="15"/>
+    <rect x="220" y="260" width="3" height="15"/>
+    <rect x="226" y="260" width="5" height="15"/>
+    <rect x="234" y="260" width="2" height="15"/>
+    <rect x="240" y="260" width="4" height="15"/>
+    <rect x="246" y="260" width="1" height="15"/>
+    <rect x="250" y="260" width="3" height="15"/>
+    <rect x="256" y="260" width="2" height="15"/>
+    <rect x="260" y="260" width="4" height="15"/>
+    <rect x="266" y="260" width="1" height="15"/>
+    <rect x="270" y="260" width="3" height="15"/>
+    <rect x="276" y="260" width="2" height="15"/>
+  </g>
+  <text x="200" y="284" font-family="Courier, monospace" font-size="6" fill="#64748b" text-anchor="middle">*000930825CHARGE*</text>
 </svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f1f5f9"/>
+  <!-- Classic elegant thin double border -->
+  <rect x="15" y="15" width="370" height="270" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.2"/>
+  <rect x="19" y="19" width="362" height="262" rx="2" fill="none" stroke="#64748b" stroke-width="0.5"/>
+  
+  <!-- Centered corporate logo placeholder watermark -->
+  <g transform="translate(185, 30)" fill="none" stroke="#64748b" stroke-width="1" opacity="0.2">
+    <polygon points="15,0 30,25 0,25"/>
+    <text x="15" y="35" font-family="system-ui, sans-serif" font-size="6" font-weight="bold" text-anchor="middle">CORP LOGO</text>
+  </g>
+  
+  <!-- Sender and Date on left -->
+  <g transform="translate(35, 45)">
+    <text x="0" y="10" font-family="system-ui, sans-serif" font-size="7.5" font-weight="semibold" fill="#475569">Vanguard Business Solutions</text>
+    <text x="0" y="20" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">100 Wall Street, NY | Date: Oct 24, 2026</text>
+  </g>
+  
+  <line x1="35" y1="78" x2="365" y2="78" stroke="#cbd5e1" stroke-width="0.75"/>
+  
+  <!-- Recipient and Subject -->
+  <g transform="translate(35, 92)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">TO RECIPIENT:</text>
+    <text x="0" y="18" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#0f172a">Marcus Jenkins President (Apex Partners)</text>
+    <text x="0" y="28" font-family="system-ui, sans-serif" font-size="7" fill="#475569">Address: 500 Broadway Road, New York</text>
+    
+    <text x="0" y="45" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#475569">SUBJECT: PROPOSED VENTURE ACQUISITION PARTNERSHIP</text>
+  </g>
+  
+  <!-- Letter text -->
+  <g transform="translate(35, 155)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="8" fill="#1e293b">Dear President Jenkins,</text>
+    
+    <rect x="0" y="16" width="330" height="4" rx="2" fill="#f1f5f9"/>
+    <rect x="0" y="24" width="310" height="4" rx="2" fill="#f1f5f9"/>
+    <rect x="0" y="32" width="330" height="4" rx="2" fill="#f1f5f9"/>
+    
+    <text x="0" y="48" font-family="system-ui, sans-serif" font-size="7.5" fill="#4b5563">"We look forward to initiating our mutual due diligence investigations."</text>
+  </g>
+  
+  <!-- Sign-off -->
+  <g transform="translate(35, 222)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Sincerely closing,</text>
+    <line x1="0" y1="22" x2="90" y2="22" stroke="#94a3b8" stroke-width="0.75"/>
+    <text x="0" y="30" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold" fill="#0f172a">Sarah Jenkins Vice President</text>
+  </g>
+</svg>
