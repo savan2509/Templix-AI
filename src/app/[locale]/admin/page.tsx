@@ -48,9 +48,13 @@ export default async function AdminPage({ params }: AdminProps) {
 
   try {
     if (process.env.DATABASE_URL) {
-      const dbCats = await db.category.findMany({
-        include: { _count: { select: { templates: true } } }
-      });
+      const [dbCats, dbBlogs] = await Promise.all([
+        db.category.findMany({
+          include: { _count: { select: { templates: true } } }
+        }),
+        db.blog.findMany()
+      ]);
+
       if (dbCats && dbCats.length > 0) {
         categories = dbCats.map((c: any) => ({
           slug: c.slug,
@@ -59,7 +63,6 @@ export default async function AdminPage({ params }: AdminProps) {
         }));
       }
 
-      const dbBlogs = await db.blog.findMany();
       if (dbBlogs && dbBlogs.length > 0) {
         blogs = dbBlogs.map((b: any) => ({
           slug: b.slug,
@@ -90,7 +93,7 @@ export default async function AdminPage({ params }: AdminProps) {
               <h1 className="text-2xl font-bold text-zinc-900 dark:text-white md:text-3xl mt-1">
                 Admin Panel Settings
               </h1>
-              <p className="text-sm text-zinc-550 dark:text-zinc-400">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 Configure template listings, blog publishes, monetization advertisement layout blocks, and feature flags.
               </p>
             </div>
@@ -114,7 +117,9 @@ export default async function AdminPage({ params }: AdminProps) {
               </div>
               <div>
                 <span className="text-[10px] text-zinc-400 font-bold uppercase">Total Templates</span>
-                <p className="text-xl font-bold mt-0.5">3</p>
+                <p className="text-xl font-bold mt-0.5">
+                  {categories.reduce((sum, c) => sum + c.templatesCount, 0)}
+                </p>
               </div>
             </div>
 

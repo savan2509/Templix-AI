@@ -45,9 +45,12 @@ export default function Navbar() {
     setLangDropdownOpen(false);
     if (localeCode === currentLocale) return;
 
-    const newParts = [...pathParts];
-    newParts[1] = localeCode;
-    router.push(newParts.join("/"));
+    // Reconstruct the path with the new locale segment.
+    // If pathParts[1] is a known locale code, replace it; otherwise prepend.
+    const isLocaleSegment = SUPPORTED_LOCALES.some((l) => l.code === pathParts[1]);
+    const subPath = isLocaleSegment ? pathParts.slice(2).join("/") : pathParts.slice(1).join("/");
+    const newPath = subPath ? `/${localeCode}/${subPath}` : `/${localeCode}`;
+    router.push(newPath);
   };
 
   const getSubPath = () => {
@@ -131,7 +134,7 @@ export default function Navbar() {
 
             {/* User Session Handler */}
             {status === "loading" ? (
-              <div className="h-9 w-20 bg-zinc-150 dark:bg-zinc-800 animate-pulse rounded-lg" />
+              <div className="h-9 w-20 bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-lg" />
             ) : session?.user ? (
               <div className="relative">
                 <button
@@ -142,7 +145,7 @@ export default function Navbar() {
                     <img
                       src={session.user.image}
                       alt={session.user.name || "User"}
-                      className="h-8 w-8 rounded-full object-cover border border-zinc-250 dark:border-zinc-750"
+                      className="h-8 w-8 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
                     />
                   ) : (
                     <div className="h-8 w-8 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-sm">

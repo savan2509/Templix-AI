@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   Sliders,
   DollarSign,
@@ -51,13 +51,13 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
     premiumExports: false,
   });
 
-  const toggleAd = (key: keyof typeof adConfig) => {
+  const toggleAd = useCallback((key: keyof typeof adConfig) => {
     setAdConfig((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
+  }, []);
 
-  const toggleFlag = (key: keyof typeof featureFlags) => {
+  const toggleFlag = useCallback((key: keyof typeof featureFlags) => {
     setFeatureFlags((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
+  }, []);
 
   return (
     <div className="grid lg:grid-cols-12 gap-8 items-start">
@@ -68,10 +68,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
             activeTab === "analytics"
               ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-              : "text-zinc-650 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-850"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
           }`}
         >
-          <BarChart3 className="h-4.5 w-4.5" />
+          <BarChart3 className="h-4 w-4" />
           <span>Dashboard Analytics</span>
         </button>
 
@@ -80,10 +80,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
             activeTab === "ads"
               ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-              : "text-zinc-650 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-850"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
           }`}
         >
-          <DollarSign className="h-4.5 w-4.5" />
+          <DollarSign className="h-4 w-4" />
           <span>Ads Manager</span>
         </button>
 
@@ -92,10 +92,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
             activeTab === "flags"
               ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-              : "text-zinc-650 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-850"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
           }`}
         >
-          <Sliders className="h-4.5 w-4.5" />
+          <Sliders className="h-4 w-4" />
           <span>Feature Flags</span>
         </button>
 
@@ -104,10 +104,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
             activeTab === "blogs"
               ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-              : "text-zinc-655 hover:bg-zinc-50 dark:text-zinc-450 dark:hover:bg-zinc-850"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
           }`}
         >
-          <BookOpen className="h-4.5 w-4.5" />
+          <BookOpen className="h-4 w-4" />
           <span>Blogs Manager</span>
         </button>
 
@@ -116,10 +116,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
             activeTab === "categories"
               ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-              : "text-zinc-655 hover:bg-zinc-50 dark:text-zinc-450 dark:hover:bg-zinc-850"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
           }`}
         >
-          <Layers className="h-4.5 w-4.5" />
+          <Layers className="h-4 w-4" />
           <span>Categories</span>
         </button>
       </div>
@@ -162,11 +162,11 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
             <div className="grid md:grid-cols-2 gap-6">
               {/* Top searches */}
               <div className="space-y-3">
-                <h4 className="font-bold text-xs uppercase text-zinc-450 flex items-center gap-1.5">
+                <h4 className="font-bold text-xs uppercase text-zinc-400 flex items-center gap-1.5">
                   <Search className="h-4 w-4 text-blue-500" />
                   <span>Top Search Phrases</span>
                 </h4>
-                <div className="border border-zinc-100 dark:border-zinc-850 rounded-xl overflow-hidden text-xs">
+                <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
                   <table className="w-full text-left">
                     <thead>
                       <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-semibold text-zinc-600">
@@ -181,7 +181,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                         { keyword: "service agreement", count: "1,800" },
                         { keyword: "freelancer contract", count: "1,200" },
                       ].map((s) => (
-                        <tr key={s.keyword} className="border-b border-zinc-100 dark:border-zinc-850 last:border-b-0">
+                        <tr key={s.keyword} className="border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
                           <td className="p-2.5 font-medium text-zinc-800 dark:text-zinc-200">"{s.keyword}"</td>
                           <td className="p-2.5 text-right text-zinc-500 font-bold">{s.count}</td>
                         </tr>
@@ -193,11 +193,11 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
 
               {/* Zero-result searches */}
               <div className="space-y-3">
-                <h4 className="font-bold text-xs uppercase text-zinc-450 flex items-center gap-1.5">
+                <h4 className="font-bold text-xs uppercase text-zinc-400 flex items-center gap-1.5">
                   <AlertTriangle className="h-4 w-4 text-amber-500" />
                   <span>No Result Searches</span>
                 </h4>
-                <div className="border border-zinc-100 dark:border-zinc-850 rounded-xl overflow-hidden text-xs">
+                <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
                   <table className="w-full text-left">
                     <thead>
                       <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-semibold text-zinc-600">
@@ -212,7 +212,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                         { keyword: "medical charts checklist", count: "180" },
                         { keyword: "real estate agreement california", count: "90" },
                       ].map((s) => (
-                        <tr key={s.keyword} className="border-b border-zinc-100 dark:border-zinc-850 last:border-b-0">
+                        <tr key={s.keyword} className="border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
                           <td className="p-2.5 font-medium text-zinc-800 dark:text-zinc-200">"{s.keyword}"</td>
                           <td className="p-2.5 text-right text-zinc-500 font-bold">{s.count}</td>
                         </tr>
@@ -225,14 +225,14 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
 
             {/* Template conversion lists */}
             <div className="space-y-3">
-              <h4 className="font-bold text-xs uppercase text-zinc-450 flex items-center gap-1.5">
+              <h4 className="font-bold text-xs uppercase text-zinc-400 flex items-center gap-1.5">
                 <TrendingUp className="h-4 w-4 text-green-500" />
                 <span>Conversion Funnels (Templates Detail)</span>
               </h4>
-              <div className="border border-zinc-100 dark:border-zinc-850 rounded-xl overflow-hidden text-xs">
+              <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-semibold text-zinc-650">
+                    <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-semibold text-zinc-600">
                       <th className="p-3">Template</th>
                       <th className="p-3 text-center">
                         <span className="flex items-center gap-1 justify-center"><Eye className="h-3 w-3" /> Views</span>
@@ -249,7 +249,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                       { title: "Professional Invoice", views: "9,000", downloads: "1,800", rate: "20.0%" },
                       { title: "Freelance Service Agreement", views: "4,500", downloads: "540", rate: "12.0%" },
                     ].map((t) => (
-                      <tr key={t.title} className="border-b border-zinc-100 dark:border-zinc-850 last:border-b-0">
+                      <tr key={t.title} className="border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
                         <td className="p-3 font-semibold text-zinc-800 dark:text-zinc-200">{t.title}</td>
                         <td className="p-3 text-center text-zinc-500">{t.views}</td>
                         <td className="p-3 text-center text-zinc-500 font-medium">{t.downloads}</td>
@@ -264,7 +264,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
             {/* Demographics */}
             <div className="grid md:grid-cols-2 gap-6 pt-4 border-t border-zinc-100 dark:border-zinc-800">
               <div className="space-y-3">
-                <h4 className="font-bold text-xs uppercase text-zinc-450 flex items-center gap-1.5">
+                <h4 className="font-bold text-xs uppercase text-zinc-400 flex items-center gap-1.5">
                   <Globe2 className="h-4 w-4 text-purple-500" />
                   <span>Geographic Distribution (Country Traffic)</span>
                 </h4>
@@ -289,7 +289,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
               </div>
 
               <div className="space-y-3">
-                <h4 className="font-bold text-xs uppercase text-zinc-450 flex items-center gap-1.5">
+                <h4 className="font-bold text-xs uppercase text-zinc-400 flex items-center gap-1.5">
                   <Sliders className="h-4 w-4 text-blue-500" />
                   <span>AI Prompt Presets Share</span>
                 </h4>
@@ -337,7 +337,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                     <span className="font-semibold text-sm capitalize text-zinc-800 dark:text-zinc-200">
                       {key.replace(/([A-Z])/g, " $1").trim()} Slot
                     </span>
-                    <p className="text-[10px] text-zinc-450 mt-0.5">
+                    <p className="text-[10px] text-zinc-400 mt-0.5">
                       Mounts script tags at the predefined placeholder boundaries.
                     </p>
                   </div>
@@ -367,7 +367,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 <Sliders className="h-5 w-5 text-purple-500" />
                 <span>Beta Toggles & Feature Flags</span>
               </h3>
-              <p className="text-zinc-550 dark:text-zinc-400 text-xs mt-1">
+              <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
                 Control the visibility of experimental modules on production builds.
               </p>
             </div>
@@ -382,7 +382,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                     <span className="font-semibold text-sm capitalize text-zinc-800 dark:text-zinc-200">
                       {key.replace(/([A-Z])/g, " $1").trim()} Feature
                     </span>
-                    <p className="text-[10px] text-zinc-450 mt-0.5">
+                    <p className="text-[10px] text-zinc-400 mt-0.5">
                       Toggle active states without modifying config environment keys.
                     </p>
                   </div>
@@ -412,15 +412,15 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 <BookOpen className="h-5 w-5 text-green-500" />
                 <span>SEO Content logs</span>
               </h3>
-              <p className="text-zinc-550 dark:text-zinc-400 text-xs mt-1">
+              <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
                 Lists all article directories mapped to the SEO programmatic content engine.
               </p>
             </div>
 
-            <div className="border border-zinc-200 dark:border-zinc-850 rounded-xl overflow-hidden text-xs">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 font-semibold text-zinc-700 dark:text-zinc-350">
+                  <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 font-semibold text-zinc-700 dark:text-zinc-300">
                     <th className="p-3">Title</th>
                     <th className="p-3">Slug</th>
                     <th className="p-3">Status</th>
@@ -428,7 +428,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 </thead>
                 <tbody>
                   {blogs.map((b) => (
-                    <tr key={b.slug} className="border-b border-zinc-100 dark:border-zinc-850 last:border-b-0">
+                    <tr key={b.slug} className="border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
                       <td className="p-3 font-semibold text-zinc-800 dark:text-zinc-200">{b.title}</td>
                       <td className="p-3 text-zinc-500 dark:text-zinc-400">/{b.slug}</td>
                       <td className="p-3">
@@ -455,7 +455,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 <Layers className="h-5 w-5 text-indigo-500" />
                 <span>Browse Category Taxonomy</span>
               </h3>
-              <p className="text-zinc-550 dark:text-zinc-400 text-xs mt-1">
+              <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
                 Taxonomies mapping templates and programmatic directory routes.
               </p>
             </div>
@@ -468,7 +468,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 >
                   <div>
                     <span className="font-semibold text-zinc-800 dark:text-zinc-200 text-sm">{cat.name}</span>
-                    <p className="text-[10px] text-zinc-450">Slug: /{cat.slug}</p>
+                    <p className="text-[10px] text-zinc-400">Slug: /{cat.slug}</p>
                   </div>
                   <span className="px-2 py-1 rounded bg-white dark:bg-zinc-900 text-xs border border-zinc-200 dark:border-zinc-800 font-bold">
                     {cat.templatesCount} templates

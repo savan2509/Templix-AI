@@ -104,10 +104,15 @@ export default async function HomePage({ params }: PageProps) {
 
   try {
     if (process.env.DATABASE_URL) {
-      const dbTemplates = await db.template.findMany({
-        take: 3,
-        include: { category: true }
-      });
+      const [dbTemplates, dbBlogs] = await Promise.all([
+        db.template.findMany({ take: 3, include: { category: true } }),
+        db.blog.findMany({
+          where: { published: true },
+          take: 2,
+          orderBy: { createdAt: "desc" }
+        })
+      ]);
+
       if (dbTemplates && dbTemplates.length > 0) {
         templates = dbTemplates.map((t: any) => ({
           id: t.id,
@@ -119,11 +124,6 @@ export default async function HomePage({ params }: PageProps) {
         }));
       }
 
-      const dbBlogs = await db.blog.findMany({
-        where: { published: true },
-        take: 2,
-        orderBy: { createdAt: "desc" }
-      });
       if (dbBlogs && dbBlogs.length > 0) {
         blogs = dbBlogs.map((b: any) => ({
           id: b.id,
@@ -189,7 +189,7 @@ export default async function HomePage({ params }: PageProps) {
                 <Link
                   key={cat.slug}
                   href={`/${locale}/templates/${cat.slug}`}
-                  className="group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-150/70 dark:border-zinc-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
+                  className="group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/70 dark:border-zinc-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
                 >
                   {/* Cover image */}
                   <div className="relative h-28 w-full overflow-hidden">
@@ -249,7 +249,7 @@ export default async function HomePage({ params }: PageProps) {
                   className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-[4/3] w-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border-b border-zinc-150 dark:border-zinc-800 relative overflow-hidden">
+                  <div className="aspect-[4/3] w-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden">
                     {TEMPLATE_IMAGES[temp.slug] ? (
                       <Image
                         src={TEMPLATE_IMAGES[temp.slug]}
@@ -294,7 +294,7 @@ export default async function HomePage({ params }: PageProps) {
 
                     <Link
                       href={`/${locale}/templates/${temp.slug}`}
-                      className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
+                      className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
                     >
                       <span>Customize Template</span>
                       <ArrowRight className="h-4 w-4" />
@@ -319,7 +319,7 @@ export default async function HomePage({ params }: PageProps) {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-150/60 dark:border-zinc-850">
+              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
                 <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-sm">
                   <FileText className="h-6 w-6" />
                 </div>
@@ -329,7 +329,7 @@ export default async function HomePage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-150/60 dark:border-zinc-850">
+              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
                 <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto shadow-sm">
                   <Sparkles className="h-6 w-6" />
                 </div>
@@ -339,7 +339,7 @@ export default async function HomePage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-150/60 dark:border-zinc-850">
+              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
                 <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-sm">
                   <Zap className="h-6 w-6" />
                 </div>

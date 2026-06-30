@@ -14,13 +14,14 @@ if (typeof window === "undefined") {
   if (connectionString) {
     const pool = new pg.Pool({ connectionString });
     const adapter = new PrismaPg(pool);
-    
-    prismaClient =
-      globalForPrisma.prisma ??
-      new PrismaClient({
+
+    if (!globalForPrisma.prisma) {
+      globalForPrisma.prisma = new PrismaClient({
         adapter,
         log: [],
       });
+    }
+    prismaClient = globalForPrisma.prisma;
   } else {
     // Dynamic Proxy fallback to prevent build compilation errors when DATABASE_URL is not set
     prismaClient = new Proxy({} as PrismaClient, {
@@ -37,6 +38,4 @@ if (typeof window === "undefined") {
 
 export const db = prismaClient;
 
-if (process.env.NODE_ENV !== "production" && process.env.DATABASE_URL) {
-  globalForPrisma.prisma = db;
-}
+// Singleton is now always assigned inside the initializer above.

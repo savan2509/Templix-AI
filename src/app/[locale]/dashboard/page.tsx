@@ -58,10 +58,17 @@ export default async function DashboardPage({ params }: DashboardProps) {
 
   try {
     if (process.env.DATABASE_URL) {
-      const dbDocs = await db.document.findMany({
-        where: { userId: session.user.id },
-        orderBy: { updatedAt: "desc" },
-      });
+      const [dbDocs, dbFavs] = await Promise.all([
+        db.document.findMany({
+          where: { userId: session.user.id },
+          orderBy: { updatedAt: "desc" },
+        }),
+        db.favorite.findMany({
+          where: { userId: session.user.id },
+          include: { template: { include: { category: true } } },
+        })
+      ]);
+
       if (dbDocs) {
         documents = dbDocs.map((d: any) => ({
           id: d.id,
@@ -70,10 +77,6 @@ export default async function DashboardPage({ params }: DashboardProps) {
         }));
       }
 
-      const dbFavs = await db.favorite.findMany({
-        where: { userId: session.user.id },
-        include: { template: { include: { category: true } } },
-      });
       if (dbFavs) {
         favorites = dbFavs.map((f: any) => ({
           id: f.template.id,
@@ -129,7 +132,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
               href={`/${locale}/templates`}
               className="flex items-center gap-1.5 h-11 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm shadow-md shadow-blue-500/10 transition-all shrink-0"
             >
-              <Plus className="h-4.5 w-4.5" />
+              <Plus className="h-4 w-4" />
               <span>Create New Document</span>
             </Link>
           </div>
@@ -137,7 +140,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
-              <span className="text-xs text-zinc-450 uppercase font-semibold">Saved Files</span>
+              <span className="text-xs text-zinc-400 uppercase font-semibold">Saved Files</span>
               <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{documents.length}</p>
             </div>
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
@@ -159,7 +162,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
             {/* Saved Documents */}
             <div className="lg:col-span-2 space-y-4">
               <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                <FileText className="h-5.5 w-5.5 text-blue-500" />
+                <FileText className="h-5 w-5 text-blue-500" />
                 <span>My Saved Documents</span>
               </h2>
 
@@ -189,7 +192,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
                       <div className="flex items-center gap-2">
                         <Link
                           href={`/${locale}/editor/${doc.id}`}
-                          className="h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850 text-xs font-semibold flex items-center justify-center text-zinc-700 dark:text-zinc-300 transition-colors"
+                          className="h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-semibold flex items-center justify-center text-zinc-700 dark:text-zinc-300 transition-colors"
                         >
                           Edit
                         </Link>
@@ -200,7 +203,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
                             type="submit"
                             className="p-2 border border-zinc-200 dark:border-zinc-800 hover:border-red-200 hover:bg-red-50 text-zinc-400 hover:text-red-500 dark:hover:bg-red-950/20 rounded-lg transition-colors"
                           >
-                            <Trash2 className="h-4.5 w-4.5" />
+                            <Trash2 className="h-4 w-4" />
                           </button>
                         </form>
                       </div>
@@ -215,7 +218,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
               {/* Favorites list */}
               <div className="space-y-4">
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                  <Star className="h-5.5 w-5.5 text-amber-500 fill-amber-500" />
+                  <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
                   <span>Favorite Templates</span>
                 </h2>
 
@@ -235,7 +238,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
                           {fav.categoryName}
                         </span>
                         <h4 className="font-bold text-sm text-zinc-900 dark:text-white">{fav.title}</h4>
-                        <p className="text-zinc-550 dark:text-zinc-400 text-xs leading-relaxed truncate">
+                        <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed truncate">
                           {fav.description}
                         </p>
                       </Link>

@@ -169,7 +169,7 @@ export default function EditorCanvas({
             onClick={handleBack}
             className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg text-zinc-500 hover:text-zinc-950 transition-colors"
           >
-            <ArrowLeft className="h-4.5 w-4.5" />
+            <ArrowLeft className="h-4 w-4" />
           </button>
 
           <input
@@ -202,14 +202,14 @@ export default function EditorCanvas({
           {/* Export items dropdown */}
           <button
             onClick={handleExportPDF}
-            className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850 text-xs font-bold text-zinc-700 dark:text-zinc-300"
+            className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300"
           >
             <FileDown className="h-4 w-4" />
             <span>Export PDF</span>
           </button>
           <button
             onClick={handleExportDOCX}
-            className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850 text-xs font-bold text-zinc-700 dark:text-zinc-300"
+            className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300"
           >
             <FileDown className="h-4 w-4" />
             <span>Export Word</span>
@@ -220,7 +220,7 @@ export default function EditorCanvas({
             className={`flex items-center gap-1.5 h-9 px-3 rounded-lg text-xs font-bold transition-all shadow-sm ${
               aiSidebarOpen
                 ? "bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600"
-                : "border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850 text-zinc-700 dark:text-zinc-300"
+                : "border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
             }`}
           >
             <Sparkles className="h-4 w-4 animate-bounce" />
@@ -238,7 +238,7 @@ export default function EditorCanvas({
             <button
               onClick={() => editor.chain().focus().toggleBold().run()}
               className={`p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                editor.isActive("bold") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-650 dark:text-zinc-400"
+                editor.isActive("bold") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
               <Bold className="h-4 w-4" />
@@ -246,7 +246,7 @@ export default function EditorCanvas({
             <button
               onClick={() => editor.chain().focus().toggleItalic().run()}
               className={`p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                editor.isActive("italic") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-655 dark:text-zinc-400"
+                editor.isActive("italic") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
               <Italic className="h-4 w-4" />
@@ -255,7 +255,7 @@ export default function EditorCanvas({
             <button
               onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
               className={`p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                editor.isActive("heading", { level: 1 }) ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-655 dark:text-zinc-400"
+                editor.isActive("heading", { level: 1 }) ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
               <Heading1 className="h-4 w-4" />
@@ -263,7 +263,7 @@ export default function EditorCanvas({
             <button
               onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
               className={`p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                editor.isActive("heading", { level: 2 }) ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-655 dark:text-zinc-400"
+                editor.isActive("heading", { level: 2 }) ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
               <Heading2 className="h-4 w-4" />
@@ -272,7 +272,7 @@ export default function EditorCanvas({
             <button
               onClick={() => editor.chain().focus().toggleBulletList().run()}
               className={`p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
-                editor.isActive("bulletList") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-655 dark:text-zinc-400"
+                editor.isActive("bulletList") ? "text-blue-500 bg-blue-50 dark:bg-blue-950/40" : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
               <List className="h-4 w-4" />
@@ -322,7 +322,7 @@ export default function EditorCanvas({
                       className={`flex-1 py-1.5 rounded-lg transition-all text-center ${
                         selectedPromptVersion === "v1"
                           ? "bg-white text-zinc-950 shadow-sm dark:bg-zinc-900 dark:text-white"
-                          : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-350"
+                          : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
                       }`}
                     >
                       Prompt V1 (Simple)
@@ -332,7 +332,7 @@ export default function EditorCanvas({
                       className={`flex-1 py-1.5 rounded-lg transition-all text-center ${
                         selectedPromptVersion === "v2"
                           ? "bg-white text-zinc-950 shadow-sm dark:bg-zinc-900 dark:text-white"
-                          : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-350"
+                          : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
                       }`}
                     >
                       Prompt V2 (Smart)
@@ -381,7 +381,7 @@ export default function EditorCanvas({
                         className={`flex items-center justify-between w-full h-10 px-3 rounded-lg border text-xs font-medium transition-all text-left ${
                           selectedTone === tone.key
                             ? "border-blue-500 text-blue-600 bg-blue-50/30 dark:bg-blue-950/20"
-                            : "border-zinc-100 hover:border-blue-500/50 dark:border-zinc-800 text-zinc-650 dark:text-zinc-350"
+                            : "border-zinc-100 hover:border-blue-500/50 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300"
                         }`}
                       >
                         <span>{tone.label}</span>
@@ -429,7 +429,7 @@ export default function EditorCanvas({
               </button>
               <button
                 onClick={() => setLoginModalOpen(false)}
-                className="w-full h-11 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850 font-semibold text-sm text-zinc-700 dark:text-zinc-300 rounded-xl transition-colors"
+                className="w-full h-11 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 font-semibold text-sm text-zinc-700 dark:text-zinc-300 rounded-xl transition-colors"
               >
                 Cancel
               </button>

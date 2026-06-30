@@ -130,7 +130,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               onClick={handleCustomizeClick}
               className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 flex items-center justify-center gap-1.5 transition-colors"
             >
-              <PenTool className="h-4.5 w-4.5" />
+              <PenTool className="h-4 w-4" />
               <span>Customize in Editor</span>
               <ArrowRight className="h-4 w-4" />
             </button>
@@ -142,7 +142,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
 
         {/* Dynamic Trust Badges */}
         <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3.5">
-          <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-250 uppercase tracking-wider">
+          <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
             Template Quality Guarantee
           </h4>
           <div className="space-y-2">
@@ -250,7 +250,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
 
                 if (block.type === "bulletList") {
                   return (
-                    <ul key={idx} className="list-disc pl-5 space-y-1.5 text-xs text-zinc-650 my-3">
+                    <ul key={idx} className="list-disc pl-5 space-y-1.5 text-xs text-zinc-600 my-3">
                       {block.content?.map((li: any, liIdx: number) => (
                         <li key={liIdx}>
                           {renderTextWithVariables(li.content?.[0]?.content?.[0]?.text || "")}

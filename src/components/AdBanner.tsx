@@ -59,7 +59,7 @@ export default function AdBanner({ position }: AdBannerProps) {
           <DollarSign className="h-2.5 w-2.5" />
           <span>Advertisement</span>
         </span>
-        <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-450">
+        <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400">
           {layout.label}
         </p>
       </div>

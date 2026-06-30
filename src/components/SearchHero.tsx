@@ -46,13 +46,13 @@ export default function SearchHero({ locale }: { locale: string }) {
       </form>
 
       {/* Quick suggestions tags */}
-      <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-450">
+      <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
         <span>Popular:</span>
         {quickTags.map((tag) => (
           <button
             key={tag.q}
             onClick={() => router.push(`/${locale}/templates?q=${tag.q}`)}
-            className="px-3 py-1 rounded-full border border-zinc-250/70 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 bg-zinc-50/50 dark:bg-zinc-900/50 transition-all"
+            className="px-3 py-1 rounded-full border border-zinc-200/70 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 bg-zinc-50/50 dark:bg-zinc-900/50 transition-all"
           >
             {tag.label}
           </button>
