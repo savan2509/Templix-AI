@@ -125,8 +125,8 @@ export class SEOEngine {
   ): InternalLinkingData {
     // Generate programmatic, related links to maximize page authority pass-downs
     const templatesList = [
-      { slug: "professional-invoice", title: "Professional Invoice", category: "invoices" },
-      { slug: "developer-resume", title: "Software Engineer Resume", category: "resumes" },
+      { slug: "invoice-freelancer", title: "Professional Invoice", category: "invoices" },
+      { slug: "resume-software-engineer", title: "Software Engineer Resume", category: "resumes" },
       { slug: "freelance-agreement", title: "Freelance Service Agreement", category: "contracts" },
       { slug: "employment-contract", title: "Employment Contract", category: "contracts" },
       { slug: "freelance-contract", title: "Freelance Contract", category: "contracts" },
@@ -160,22 +160,36 @@ export class SEOEngine {
       { slug: "experience-letter", title: "Experience Letter", category: "letters" },
     ];
 
-    const relatedTemplates = templatesList
-      .filter((t) => t.slug !== currentSlug)
-      .map((t) => ({
-        title: t.title,
-        href: `/${locale}/templates/${t.slug}`,
-      }));
+    const categoryTemplates = templatesList.filter(
+      (t) => t.category === categorySlug && t.slug !== currentSlug
+    );
+    const otherTemplates = templatesList.filter(
+      (t) => t.category !== categorySlug && t.slug !== currentSlug
+    );
+    const sortedTemplates = [...categoryTemplates, ...otherTemplates].slice(0, 8);
+
+    const relatedTemplates = sortedTemplates.map((t) => ({
+      title: t.title,
+      href: `/${locale}/templates/${t.slug}`,
+    }));
 
     const relatedBlogs = [
       { title: "How to Write a Professional Invoice for Freelance Work", href: `/${locale}/blog/how-to-write-freelance-invoice` },
       { title: "Top ATS Resume Tips for Software Engineers in 2026", href: `/${locale}/blog/ats-resume-tips-for-developers` },
+      { title: "Ultimate Guide to Business Proposal Writing", href: `/${locale}/blog/business-proposal-writing-guide` },
+      { title: "Top 10 Contract Clauses Every Freelancer Needs", href: `/${locale}/blog/freelancer-contract-clauses` },
+      { title: "How to Write a Resignation Letter (with Examples)", href: `/${locale}/blog/how-to-write-resignation-letter` },
+      { title: "Secrets to a Winning Cover Letter that Lands Interviews", href: `/${locale}/blog/winning-cover-letter-secrets` },
+      { title: "Writing a Recommendation Letter: Step-by-Step Guide", href: `/${locale}/blog/writing-recommendation-letter` },
+      { title: "Designing the Perfect Web Design Proposal", href: `/${locale}/blog/perfect-web-design-proposal` },
     ];
 
     const relatedCategories = [
       { name: "Invoices & Billings", href: `/${locale}/templates/invoices` },
       { name: "Resumes & CVs", href: `/${locale}/templates/resumes` },
       { name: "Agreements & Contracts", href: `/${locale}/templates/contracts` },
+      { name: "Business Proposals", href: `/${locale}/templates/proposals` },
+      { name: "Letters & Cover Letters", href: `/${locale}/templates/letters` },
     ];
 
     return {

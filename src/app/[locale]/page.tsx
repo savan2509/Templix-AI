@@ -8,6 +8,7 @@ import SearchHero from "@/components/SearchHero";
 import FAQ, { faqSchema } from "@/components/FAQ";
 import { CATEGORIES } from "@/constants";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { allFallbackTemplates } from "@/data/templates-fallback";
 import {
   FileText,
   ArrowRight,
@@ -19,24 +20,24 @@ import {
 
 // Template slug → preview image mapping (images stored in /public)
 const TEMPLATE_IMAGES: Record<string, string> = {
-  "professional-invoice": "/invoice-template-preview.png",
-  "developer-resume": "/resume-template-preview.png",
+  "invoice-freelancer": "/invoice-template-preview.png",
+  "resume-software-engineer": "/resume-template-preview.png",
   "freelance-agreement": "/contract-template-preview.png",
 };
 
 // ── Robust high-fidelity mock fallbacks ────────────────────────────────────
 const fallbackTemplates = [
   {
-    id: "professional-invoice",
-    slug: "professional-invoice",
+    id: "invoice-freelancer",
+    slug: "invoice-freelancer",
     title: "Professional Invoice",
     description: "Clean invoice template for freelancers and consultants, containing dynamic rows and tax details.",
     isPremium: false,
     category: { name: "Invoices", slug: "invoices" }
   },
   {
-    id: "developer-resume",
-    slug: "developer-resume",
+    id: "resume-software-engineer",
+    slug: "resume-software-engineer",
     title: "Software Engineer Resume",
     description: "ATS-friendly developer resume layout highlighting technical skills, experience, and projects.",
     isPremium: false,
@@ -58,9 +59,29 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  
+  const titles = {
+    en: "Templix AI | Free Invoice, Resume, Contract & Proposal Templates",
+    es: "Templix AI | Plantillas Gratuitas de Facturas, Currículums, Contratos y Propuestas",
+    de: "Templix AI | Kostenlose Vorlagen für Rechnungen, Lebensläufe, Verträge und Angebote",
+    fr: "Templix AI | Modèles Gratuits de Factures, CV, Contrats et Propositions",
+    ar: "Templix AI | قوالب مجانية للفواتير، السير الذاتية، العقود والمقترحات",
+  };
+  
+  const descriptions = {
+    en: "Create and download professional invoices, resumes, CVs, contract agreements, business proposals, and letters in minutes. Fully customizable template editor with AI assistance.",
+    es: "Cree y descargue facturas, currículums, contratos, propuestas comerciales y cartas profesionales en minutos. Editor de plantillas personalizable con IA.",
+    de: "Erstellen und laden Sie professionelle Rechnungen, Lebensläufe, Verträge, Angebote und Briefe in wenigen Minuten herunter. Anpassbarer Editor mit KI.",
+    fr: "Créez et téléchargez des factures, des CV, des contrats, des propositions commerciales et des lettres professionnels en quelques minutes. Éditeur personnalisable avec IA.",
+    ar: "قم بإنشاء وتنزيل الفواتير المهنية، السير الذاتية، العقود، المقترحات التجارية والرسائل في دقائق. محرر قوالب قابل للتخصيص بالكامل بمساعدة الذكاء الاصطناعي.",
+  };
+
+  const title = titles[locale as keyof typeof titles] || titles.en;
+  const description = descriptions[locale as keyof typeof descriptions] || descriptions.en;
+
   return {
-    title: "Templix AI — Free Professional Templates & AI Document Editor",
-    description: "Create invoices, resumes, contracts, proposals and business documents in minutes. Choose a template, customize with AI, and export to PDF or Word.",
+    title,
+    description,
     alternates: {
       canonical: `https://templix.ai/${locale}`,
       languages: {
@@ -209,7 +230,7 @@ export default async function HomePage({ params }: PageProps) {
                       {cat.name}
                     </span>
                     <div className="flex items-center gap-1 text-[10px] text-white/70 mt-0.5 font-medium">
-                      <span>{cat.count}+ templates</span>
+                      <span>{allFallbackTemplates.filter(t => t.categorySlug === cat.slug).length} templates</span>
                       <ArrowRight className="h-2.5 w-2.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                     </div>
                   </div>

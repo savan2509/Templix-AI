@@ -18,8 +18,8 @@ export async function searchTemplates(
     // Return basic fallback simulation if database connection is absent
     const mock = [
       {
-        id: "professional-invoice",
-        slug: "professional-invoice",
+        id: "invoice-freelancer",
+        slug: "invoice-freelancer",
         title: "Professional Invoice",
         description: "Clean invoice template for freelancers and consultants, containing dynamic rows and tax details.",
         isPremium: false,
@@ -28,8 +28,8 @@ export async function searchTemplates(
         status: "PUBLISHED"
       },
       {
-        id: "developer-resume",
-        slug: "developer-resume",
+        id: "resume-software-engineer",
+        slug: "resume-software-engineer",
         title: "Software Engineer Resume",
         description: "ATS-friendly developer resume layout highlighting technical skills, experience, and projects.",
         isPremium: false,

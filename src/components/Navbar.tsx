@@ -17,8 +17,9 @@ import {
   Layout,
   LogIn,
   LogOut,
-  User,
   Settings,
+  Shield,
+  HelpCircle,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -45,43 +46,85 @@ export default function Navbar() {
     setLangDropdownOpen(false);
     if (localeCode === currentLocale) return;
 
-    // Reconstruct the path with the new locale segment.
-    // If pathParts[1] is a known locale code, replace it; otherwise prepend.
     const isLocaleSegment = SUPPORTED_LOCALES.some((l) => l.code === pathParts[1]);
     const subPath = isLocaleSegment ? pathParts.slice(2).join("/") : pathParts.slice(1).join("/");
     const newPath = subPath ? `/${localeCode}/${subPath}` : `/${localeCode}`;
     router.push(newPath);
   };
 
-  const getSubPath = () => {
-    return pathParts.slice(2).join("/");
-  };
-
-  const menuItems = [
-    { name: { en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب" }, href: `/${currentLocale}/templates` },
-    { name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" }, href: `/${currentLocale}/blog` },
+  const menuItems: {
+    name: Record<string, string>;
+    href: string;
+    badge?: Record<string, string>;
+  }[] = [
+    { 
+      name: { en: "Invoices", es: "Facturas", de: "Rechnungen", fr: "Factures", ar: "الفواتير" }, 
+      href: `/${currentLocale}/templates/invoices`
+    },
+    { 
+      name: { en: "Resumes", es: "Currículums", de: "Lebensläufe", fr: "CVs", ar: "السير الذاتية" }, 
+      href: `/${currentLocale}/templates/resumes`
+    },
+    { 
+      name: { en: "Contracts", es: "Contratos", de: "Verträge", fr: "Contrats", ar: "العقود" }, 
+      href: `/${currentLocale}/templates/contracts`
+    },
+    { 
+      name: { en: "Proposals", es: "Propuestas", de: "Vorschläge", fr: "Propositions", ar: "المقترحات" }, 
+      href: `/${currentLocale}/templates/proposals`
+    },
+    { 
+      name: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" }, 
+      href: `/${currentLocale}/templates/letters`
+    },
+    { 
+      name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" }, 
+      href: `/${currentLocale}/blog` 
+    },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-md transition-colors duration-200">
+    <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
+      {/* Decorative top colored line */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500" />
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Logo Brand */}
           <div className="flex items-center gap-8">
-            <Link href={`/${currentLocale}`} className="flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400">
-              <Sparkles className="h-6 w-6 text-blue-500 animate-pulse" />
-              <span>Templix<span className="text-zinc-900 dark:text-white font-semibold">AI</span></span>
+            <Link 
+              href={`/${currentLocale}`} 
+              className="group flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
+            >
+              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
+                <Sparkles className="h-5 w-5 text-white animate-pulse" />
+              </div>
+              <span className="transition-all duration-200 group-hover:translate-x-0.5">
+                Templix<span className="text-zinc-900 dark:text-white font-extrabold">AI</span>
+              </span>
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-6">
+            {/* Desktop Menu items */}
+            <div className="hidden md:flex items-center gap-8">
               {menuItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-medium text-zinc-600 hover:text-blue-600 dark:text-zinc-300 dark:hover:text-blue-400 transition-colors"
+                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
+                    pathname.startsWith(item.href)
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  }`}
                 >
-                  {item.name[currentLocale as keyof typeof item.name] || item.name.en}
+                  <span>{item.name[currentLocale as keyof typeof item.name] || item.name.en}</span>
+                  {item.badge && (
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-sm shadow-blue-500/10">
+                      {item.badge[currentLocale as keyof typeof item.badge] || item.badge.en}
+                    </span>
+                  )}
+                  {pathname.startsWith(item.href) && (
+                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                  )}
                 </Link>
               ))}
             </div>
@@ -89,145 +132,157 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Language Selector */}
+            {/* Language Selector Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-sm font-semibold text-zinc-700 dark:text-zinc-200 bg-white/50 dark:bg-zinc-900/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               >
-                <Globe className="h-4 w-4" />
+                <Globe className="h-4 w-4 text-zinc-500" />
                 <span>{activeLocaleObj.name}</span>
-                <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+                <ChevronDown className={`h-3.5 w-3.5 opacity-60 transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
               </button>
               {langDropdownOpen && (
-                <div className="absolute right-0 mt-1.5 w-40 origin-top-right rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-1 shadow-lg">
-                  {SUPPORTED_LOCALES.map((locale) => (
-                    <button
-                      key={locale.code}
-                      onClick={() => handleLanguageChange(locale.code)}
-                      className={`flex w-full items-center px-3 py-2 text-sm rounded-lg transition-colors ${
-                        locale.code === currentLocale
-                          ? "bg-blue-600 text-white"
-                          : "text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700"
-                      }`}
-                    >
-                      {locale.name}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setLangDropdownOpen(false)} />
+                  <div className="absolute right-0 mt-2 w-44 z-50 origin-top-right rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200">
+                    {SUPPORTED_LOCALES.map((locale) => (
+                      <button
+                        key={locale.code}
+                        onClick={() => handleLanguageChange(locale.code)}
+                        className={`flex w-full items-center px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${
+                          locale.code === currentLocale
+                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
+                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80"
+                        }`}
+                      >
+                        {locale.name}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
-            {/* Theme Toggle */}
+            {/* Theme Toggle Button */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+              className="relative p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              aria-label="Toggle theme"
             >
               {!mounted ? (
                 <span className="block h-4 w-4" />
               ) : theme === "dark" ? (
-                <Sun className="h-4 w-4" />
+                <Sun className="h-4 w-4 text-amber-400 rotate-0 scale-100 transition-all duration-300" />
               ) : (
-                <Moon className="h-4 w-4" />
+                <Moon className="h-4 w-4 text-indigo-500 rotate-0 scale-100 transition-all duration-300" />
               )}
             </button>
 
-            {/* User Session Handler */}
+            {/* User Session menu */}
             {status === "loading" ? (
-              <div className="h-9 w-20 bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-lg" />
+              <div className="h-9 w-9 bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-full" />
             ) : session?.user ? (
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="flex items-center gap-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-transform duration-200 hover:scale-105"
                 >
                   {session.user.image ? (
                     <img
                       src={session.user.image}
                       alt={session.user.name || "User"}
-                      className="h-8 w-8 rounded-full object-cover border border-zinc-200 dark:border-zinc-700"
+                      className="h-9 w-9 rounded-full object-cover border-2 border-zinc-200 dark:border-zinc-700 shadow-sm"
                     />
                   ) : (
-                    <div className="h-8 w-8 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-sm">
+                    <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shadow-md shadow-blue-500/10">
                       {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
                     </div>
                   )}
                 </button>
 
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-1.5 shadow-xl ring-1 ring-black/5">
-                    <div className="px-3 py-2 border-b border-zinc-100 dark:border-zinc-800">
-                      <p className="text-sm font-semibold truncate text-zinc-800 dark:text-zinc-200">
-                        {session.user.name || "User"}
-                      </p>
-                      <p className="text-xs truncate text-zinc-500 dark:text-zinc-400">
-                        {session.user.email}
-                      </p>
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setUserDropdownOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-60 z-50 origin-top-right rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-2xl animate-in fade-in-50 slide-in-from-top-2 duration-200">
+                      <div className="px-3.5 py-2.5 border-b border-zinc-100 dark:border-zinc-800">
+                        <p className="text-sm font-bold truncate text-zinc-800 dark:text-zinc-100">
+                          {session.user.name || "User Account"}
+                        </p>
+                        <p className="text-[11px] truncate text-zinc-500 dark:text-zinc-400 font-medium">
+                          {session.user.email}
+                        </p>
+                      </div>
+
+                      <div className="p-1 space-y-0.5">
+                        <Link
+                          href={`/${currentLocale}/dashboard`}
+                          className="flex items-center gap-2.5 px-3 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-xl transition-colors"
+                          onClick={() => setUserDropdownOpen(false)}
+                        >
+                          <Layout className="h-4 w-4 text-zinc-500" />
+                          <span>My Workspace</span>
+                        </Link>
+
+                        {((session.user as any).role === "ADMIN" || (session.user as any).role === "OWNER") && (
+                          <Link
+                            href={`/${currentLocale}/admin`}
+                            className="flex items-center gap-2.5 px-3 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-xl transition-colors"
+                            onClick={() => setUserDropdownOpen(false)}
+                          >
+                            <Shield className="h-4 w-4 text-blue-500" />
+                            <span>Admin Settings</span>
+                          </Link>
+                        )}
+                      </div>
+
+                      <div className="p-1 border-t border-zinc-100 dark:border-zinc-800 mt-1">
+                        <button
+                          onClick={() => {
+                            setUserDropdownOpen(false);
+                            signOut({ callbackUrl: `/${currentLocale}` });
+                          }}
+                          className="flex w-full items-center gap-2.5 px-3 py-2 text-sm font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-xl transition-colors"
+                        >
+                          <LogOut className="h-4 w-4" />
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
                     </div>
-
-                    <Link
-                      href={`/${currentLocale}/dashboard`}
-                      className="flex items-center gap-2 px-3 py-2 mt-1.5 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-lg transition-colors"
-                      onClick={() => setUserDropdownOpen(false)}
-                    >
-                      <Layout className="h-4 w-4 opacity-70" />
-                      <span>Dashboard</span>
-                    </Link>
-
-                    {((session.user as any).role === "ADMIN" || (session.user as any).role === "OWNER") && (
-                      <Link
-                        href={`/${currentLocale}/admin`}
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-lg transition-colors"
-                        onClick={() => setUserDropdownOpen(false)}
-                      >
-                        <Settings className="h-4 w-4 opacity-70" />
-                        <span>Admin Panel</span>
-                      </Link>
-                    )}
-
-                    <button
-                      onClick={() => {
-                        setUserDropdownOpen(false);
-                        signOut({ callbackUrl: `/${currentLocale}` });
-                      }}
-                      className="flex w-full items-center gap-2 px-3 py-2 mt-1 border-t border-zinc-100 dark:border-zinc-800 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg transition-colors"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span>Sign Out</span>
-                    </button>
-                  </div>
+                  </>
                 )}
               </div>
             ) : (
               <Link
                 href={`/${currentLocale}/login`}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-semibold text-white shadow-md shadow-blue-500/10 transition-all"
+                className="flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 <LogIn className="h-4 w-4" />
-                <span>Sign In</span>
+                <span>Get Started</span>
               </Link>
             )}
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile menu trigger button */}
           <div className="flex md:hidden items-center gap-3">
-            {/* Theme Toggle */}
+            {/* Mobile Theme Switcher */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50"
+              aria-label="Toggle theme"
             >
               {!mounted ? (
                 <span className="block h-4 w-4" />
               ) : theme === "dark" ? (
-                <Sun className="h-4 w-4" />
+                <Sun className="h-4 w-4 text-amber-400" />
               ) : (
-                <Moon className="h-4 w-4" />
+                <Moon className="h-4 w-4 text-indigo-500" />
               )}
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300"
+              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-850 text-zinc-700 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 focus:outline-none"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -235,34 +290,43 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Drawer panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 py-4 space-y-3 transition-all">
+        <div className="md:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
           <div className="space-y-1">
             {menuItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium rounded-lg text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900 transition-colors"
+                className={`flex items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
+                  pathname.startsWith(item.href)
+                    ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                    : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item.name[currentLocale as keyof typeof item.name] || item.name.en}
+                <span>{item.name[currentLocale as keyof typeof item.name] || item.name.en}</span>
+                {item.badge && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-blue-600 text-white animate-pulse">
+                    {item.badge[currentLocale as keyof typeof item.badge] || item.badge.en}
+                  </span>
+                )}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Language selector */}
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-3">
-            <p className="px-3 text-xs font-semibold uppercase tracking-wider text-zinc-400">Select Language</p>
-            <div className="grid grid-cols-2 gap-1 mt-2">
+          {/* Mobile Language Selector */}
+          <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4">
+            <p className="px-3.5 text-xs font-bold uppercase tracking-wider text-zinc-400">Select Region</p>
+            <div className="grid grid-cols-2 gap-2 mt-2.5">
               {SUPPORTED_LOCALES.map((locale) => (
                 <button
                   key={locale.code}
                   onClick={() => handleLanguageChange(locale.code)}
-                  className={`flex items-center px-3 py-1.5 text-sm rounded-lg transition-colors ${
+                  className={`flex items-center justify-center px-3.5 py-2 text-sm font-semibold rounded-xl transition-colors ${
                     locale.code === currentLocale
-                      ? "bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400"
-                      : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-500/10"
+                      : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-900"
                   }`}
                 >
                   {locale.name}
@@ -271,19 +335,19 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* User Button */}
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-3">
+          {/* Mobile User Profile Section */}
+          <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4">
             {session?.user ? (
               <div className="space-y-1">
-                <div className="flex items-center gap-3 px-3 py-2 mb-2">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold">
+                <div className="flex items-center gap-3 px-3.5 py-2.5 mb-2 bg-zinc-50 dark:bg-zinc-900/30 rounded-2xl">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold">
                     {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold truncate text-zinc-800 dark:text-zinc-200">
-                      {session.user.name || "User"}
+                    <p className="text-sm font-bold truncate text-zinc-800 dark:text-zinc-200">
+                      {session.user.name || "User Account"}
                     </p>
-                    <p className="text-xs truncate text-zinc-500 dark:text-zinc-400">
+                    <p className="text-xs truncate text-zinc-500 dark:text-zinc-400 font-medium">
                       {session.user.email}
                     </p>
                   </div>
@@ -291,11 +355,11 @@ export default function Navbar() {
 
                 <Link
                   href={`/${currentLocale}/dashboard`}
-                  className="flex items-center gap-2 px-3 py-2 text-base font-medium rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                  className="flex items-center gap-2.5 px-3.5 py-2.5 text-base font-bold rounded-xl text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Layout className="h-5 w-5 opacity-70" />
-                  <span>Dashboard</span>
+                  <Layout className="h-5 w-5 text-zinc-500" />
+                  <span>My Workspace</span>
                 </Link>
 
                 <button
@@ -303,7 +367,7 @@ export default function Navbar() {
                     setMobileMenuOpen(false);
                     signOut({ callbackUrl: `/${currentLocale}` });
                   }}
-                  className="flex w-full items-center gap-2 px-3 py-2 text-base font-medium rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20"
+                  className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-base font-bold rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20"
                 >
                   <LogOut className="h-5 w-5" />
                   <span>Sign Out</span>
@@ -312,11 +376,11 @@ export default function Navbar() {
             ) : (
               <Link
                 href={`/${currentLocale}/login`}
-                className="flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 text-white font-semibold shadow-md shadow-blue-500/10"
+                className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <LogIn className="h-5 w-5" />
-                <span>Sign In</span>
+                <span>Get Started Free</span>
               </Link>
             )}
           </div>

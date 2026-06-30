@@ -538,7 +538,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   <p className={`font-bold text-sm truncate ${ !categorySlug ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200" }`}>
                     All Documents
                   </p>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">166+ templates</p>
+                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{allFallbackTemplates.length} templates</p>
                 </div>
                 {!categorySlug && (
                   <span className="ml-auto shrink-0 w-1.5 h-6 rounded-full bg-blue-500" />
@@ -577,7 +577,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           {cat.name}
                         </p>
                         <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{cat.description}</p>
-                        <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">{cat.count}+ templates</p>
+                        <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
+                          {allFallbackTemplates.filter((t) => t.categorySlug === cat.slug).length} templates
+                        </p>
                       </div>
 
                       {/* Active indicator */}

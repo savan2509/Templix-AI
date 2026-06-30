@@ -33,8 +33,8 @@ const fallbackDocs = [
 
 const fallbackFavorites = [
   {
-    id: "professional-invoice",
-    slug: "professional-invoice",
+    id: "invoice-freelancer",
+    slug: "invoice-freelancer",
     title: "Professional Invoice",
     description: "Invoice template containing dynamic fields and tax lines.",
     categoryName: "Invoices"
