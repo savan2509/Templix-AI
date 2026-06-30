@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M20 28 L380 28 L380 20 Q380 20 380 20 L20 20 Z" fill="#ea580c"/>
+  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Vanguard Construction</text>
+  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#64748b">contracts@vanguardbuilds.com</text>
+  <text x="360" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#ea580c" text-anchor="end">CONTRACTOR INVOICE</text>
+  <text x="360" y="68" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">Ref: #INV-CONT-441</text>
+  <rect x="40" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
+  <text x="48" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#ea580c">CONTRACT FOR:</text>
+  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Oakwood Residential</text>
+  <rect x="215" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
+  <text x="223" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">SITE LOCATION:</text>
+  <text x="223" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Plot 4, Sector G-5, USA</text>
+  <rect x="40" y="140" width="320" height="18" fill="#ea580c" rx="3" opacity="0.1"/>
+  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#ea580c">Labor &amp; Material Logistics</text>
+  <text x="280" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#ea580c" text-anchor="end">Unit</text>
+  <text x="352" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#ea580c" text-anchor="end">Cost</text>
+  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Concrete Foundation Pouring</text>
+  <text x="280" y="176" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">120 sqf</text>
+  <text x="352" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$4,200.00</text>
+  <line x1="40" y1="188" x2="360" y2="188" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="48" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Structural Steel Rebar Reinforcements</text>
+  <text x="280" y="202" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">Flat</text>
+  <text x="352" y="202" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$1,850.00</text>
+  <line x1="40" y1="214" x2="360" y2="214" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="280" y="244" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="end">Total Balance Due:</text>
+  <text x="352" y="244" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#ea580c" text-anchor="end">$6,050.00</text>
+  <text x="40" y="265" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Warranties apply as defined in build specification contracts.</text>
+</svg>

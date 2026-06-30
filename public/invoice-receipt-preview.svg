@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  <rect x="20" y="20" width="360" height="260" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M20 28 L380 28 L380 20 Q380 20 380 20 L20 20 Z" fill="#10b981"/>
+  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Bright Future Co</text>
+  <text x="40" y="68" font-family="system-ui, sans-serif" font-size="8" fill="#64748b">billing@brightfuture.com</text>
+  <text x="360" y="55" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#10b981" text-anchor="end">PAID RECEIPT</text>
+  <text x="360" y="68" font-family="system-ui, sans-serif" font-size="7" fill="#64748b" text-anchor="end">Ref: #REC-TRN-811</text>
+  <rect x="40" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
+  <text x="48" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#10b981">PAID BY PAYER:</text>
+  <text x="48" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#0f172a">Brightside Market LLC</text>
+  <rect x="215" y="85" width="145" height="40" rx="4" fill="#f8fafc" stroke="#f1f5f9"/>
+  <text x="223" y="98" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#475569">PAYMENT CONFIRMED:</text>
+  <text x="223" y="110" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#059669">Transaction: Successful</text>
+  <rect x="40" y="140" width="320" height="18" fill="#10b981" rx="3" opacity="0.1"/>
+  <text x="48" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#10b981">Paid Transaction Description</text>
+  <text x="280" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#10b981" text-anchor="end">Qty</text>
+  <text x="352" y="152" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#10b981" text-anchor="end">Amount</text>
+  <text x="48" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="medium" fill="#334155">Apex Design Studio Brand Identity Project</text>
+  <text x="280" y="176" font-family="system-ui, sans-serif" font-size="8" fill="#475569" text-anchor="end">1</text>
+  <text x="352" y="176" font-family="system-ui, sans-serif" font-size="8" font-weight="semibold" fill="#334155" text-anchor="end">$5,000.00</text>
+  <line x1="40" y1="188" x2="360" y2="188" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="280" y="244" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="end">Total Amount Paid:</text>
+  <text x="352" y="244" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#10b981" text-anchor="end">$5,000.00</text>
+  <text x="40" y="265" font-family="system-ui, sans-serif" font-size="7" fill="#94a3b8">Thank you for your payment! Balance due: $0.00.</text>
+</svg>

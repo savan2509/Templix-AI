@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* Use class-based dark mode. Nesting with .dark & ensures dark variants
+   always have higher specificity than plain hover: classes. */
+@custom-variant dark (.dark &);
+
+/* Extended zinc palette — fills gaps between standard Tailwind stops */
+@theme inline {
+  --color-zinc-150: oklch(93% 0.003 264);
+  --color-zinc-450: oklch(54% 0.006 264);
+  --color-zinc-650: oklch(44% 0.006 264);
+  --color-zinc-655: oklch(43% 0.006 264);
+  --color-zinc-750: oklch(34% 0.006 264);
+  --color-zinc-850: oklch(22% 0.006 264);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ─── Global dark-mode hover safeguard ──────────────────────────────────────
+   Any element that carries a Tailwind hover:bg-* class will be overridden in
+   dark mode so it never shows a white/light background.
+   We target the most common offenders (zinc-50, white, zinc-100) explicitly
+   so text always stays readable against a dark background.
+   Using !important here is intentional: these rules live in a @layer so they
+   only apply inside .dark and cannot bleed into light mode.
+─────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .dark .hover\:bg-zinc-50:hover,
+  .dark .hover\:bg-white:hover,
+  .dark .hover\:bg-zinc-100:hover {
+    background-color: rgb(39 39 42) !important; /* zinc-800 */
+  }
+}
+
+/* ─── Blog Article Prose ───────────────────────────────────────────────────── */
+.prose-article {
+  color: rgb(63 63 70); /* zinc-700 */
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: min(72ch, 100%);
+}
+
+.dark .prose-article {
+  color: rgb(161 161 170); /* zinc-400 */
+}
+
+.prose-article h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgb(24 24 27); /* zinc-900 */
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.dark .prose-article h2 { color: rgb(250 250 250); }
+
+.prose-article h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(24 24 27);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.dark .prose-article h3 { color: rgb(244 244 245); }
+
+.prose-article h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgb(39 39 42);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.dark .prose-article h4 { color: rgb(228 228 231); }
+
+.prose-article p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.prose-article strong {
+  font-weight: 700;
+  color: rgb(24 24 27);
+}
+.dark .prose-article strong { color: rgb(250 250 250); }
+
+.prose-article em { font-style: italic; }
+
+.prose-article ul,
+.prose-article ol {
+  margin: 1rem 0 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.prose-article ul { list-style-type: disc; }
+.prose-article ol { list-style-type: decimal; }
+.prose-article li { padding-left: 0.25rem; }
+
+.prose-article a {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dark .prose-article a { color: rgb(96 165 250); }
+.prose-article a:hover { text-decoration: none; }
+
+/* Tables */
+.prose-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(228 228 231);
+}
+.dark .prose-article table { border-color: rgb(63 63 70); }
+
+.prose-article thead tr {
+  background-color: rgb(244 244 245);
+}
+.dark .prose-article thead tr { background-color: rgb(39 39 42); }
+
+.prose-article th {
+  padding: 0.625rem 0.875rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(82 82 91);
+  border-bottom: 1px solid rgb(228 228 231);
+}
+.dark .prose-article th { color: rgb(161 161 170); border-color: rgb(63 63 70); }
+
+.prose-article td {
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid rgb(244 244 245);
+  vertical-align: top;
+}
+.dark .prose-article td { border-color: rgb(39 39 42); }
+
+.prose-article tbody tr:last-child td { border-bottom: none; }
+.prose-article tbody tr:hover { background-color: rgb(250 250 250); }
+.dark .prose-article tbody tr:hover { background-color: rgb(39 39 42 / 0.5); }
+
+/* Blockquotes */
+.prose-article blockquote {
+  border-left: 4px solid rgb(37 99 235);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background-color: rgb(239 246 255);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: rgb(30 58 138);
+  font-style: italic;
+}
+.dark .prose-article blockquote {
+  background-color: rgb(30 58 138 / 0.15);
+  color: rgb(147 197 253);
+  border-color: rgb(59 130 246);
+}
+
+/* Inline code */
+.prose-article code {
+  background-color: rgb(244 244 245);
+  border-radius: 0.25rem;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  font-family: ui-monospace, monospace;
+  color: rgb(220 38 38);
+}
+.dark .prose-article code {
+  background-color: rgb(39 39 42);
+  color: rgb(248 113 113);
+}
+
+/* HR */
+.prose-article hr {
+  border: none;
+  border-top: 1px solid rgb(228 228 231);
+  margin: 2rem 0;
+}
+.dark .prose-article hr { border-color: rgb(63 63 70); }
+
+/* ─── Utility Animations ────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
