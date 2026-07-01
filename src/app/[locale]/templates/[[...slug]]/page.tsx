@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { db } from "@/lib/db";
+import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
@@ -175,7 +175,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   if (lastSegment) {
     activeTemplate = allFallbackTemplates.find((t) => t.slug === lastSegment) || null;
 
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline && process.env.DATABASE_URL) {
       try {
         const dbTemplate = await db.template.findUnique({
           where: { slug: lastSegment },
@@ -265,11 +265,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider">
                   {activeTemplate.categoryName}
                 </span>
-                {activeTemplate.isPremium && (
-                  <span className="px-2 py-0.5 rounded-md bg-amber-500 text-white text-xs font-bold uppercase tracking-wider">
-                    Premium
-                  </span>
-                )}
+                <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
+                  Free
+                </span>
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
                 {activeTemplate.title} Template
@@ -370,7 +368,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   let isFallbackUsed = false;
 
   try {
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline && process.env.DATABASE_URL) {
       let catId: string | null = null;
       if (categorySlug) {
         const cat = await db.category.findUnique({ where: { slug: categorySlug } });
@@ -452,6 +450,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     breadcrumbElements.push({ name: nicheName, item: `/${locale}/templates/${categorySlug}/${nicheSlug}` });
   }
 
+  function siteUrl(path: string) {
+    return `${process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai"}${path}`;
+  }
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -462,10 +464,6 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       "item": `${siteUrl(elem.item)}`
     }))
   };
-
-  function siteUrl(path: string) {
-    return `${process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai"}${path}`;
-  }
 
   return (
     <>
@@ -731,9 +729,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                             {/* Document Footer Mock */}
                             <div className="flex justify-between items-end border-t border-zinc-100 dark:border-zinc-800/80 pt-2 text-[8px] text-zinc-400 dark:text-zinc-500">
-                              <span>{temp.isPremium ? "Premium Template" : "Free Layout"}</span>
+                              <span>Free Layout</span>
                               <span className="font-bold text-xs" style={{ color: temp.content?.styles?.primaryColor || "#3b82f6" }}>
-                                {temp.categorySlug === "invoices" ? (temp.isPremium ? "$$$" : "$4,500") : "• • •"}
+                                {temp.categorySlug === "invoices" ? "$4,500" : "• • •"}
                               </span>
                             </div>
                           </div>
@@ -744,11 +742,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
                         )}
 
-                        {temp.isPremium && (
-                          <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-amber-500 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
-                            Premium
-                          </span>
-                        )}
+                        <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
+                          Free
+                        </span>
                       </div>
 
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
@@ -778,6 +774,18 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                 </div>
               )}
+            </section>
+
+            {/* Template Compliance & Structuring Standards */}
+            <section className="pt-16 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
+              <div className="rounded-2xl bg-zinc-100 dark:bg-zinc-900/40 p-6 md:p-8 space-y-4">
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+                  Corporate Document Compliance & Open Specifications
+                </h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                  All items compiled in this directory are optimized to support dynamic field injection and variable mapping. Users can customize, rewrite using our built-in <a href={`/${locale}/editor/new`} className="text-blue-600 dark:text-blue-400 hover:underline">AI-enabled document editor</a>, and export to portable formats. We support the standard <a href="https://www.adobe.com/acrobat/about-pdf.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Adobe PDF Specifications</a> for pixel-perfect printing and structured serialization. Learn more about schema definitions at <a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Schema.org</a>.
+                </p>
+              </div>
             </section>
           </div>
         </div>

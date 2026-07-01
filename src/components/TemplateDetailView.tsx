@@ -42,6 +42,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
   const FIELD_DEFAULTS: Record<string, string> = {
     // — Universal / Shared —
     companyName: "Acme Global Inc.",
+    companyEmail: "info@acmeglobal.com",
     companyLogo: "🏢",
     logo: "🏢",
     clientName: "John Doe Services",
@@ -840,76 +841,112 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
         <h3 className="font-bold text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
           <FileText className="h-4 w-4 text-zinc-400" />
           <span>Live Document Preview</span>
+          <span className="ml-auto text-[10px] text-green-500 font-semibold uppercase tracking-widest animate-pulse">● Live</span>
         </h3>
 
-        {/* Paper Container simulated */}
-        <div className="w-full bg-white text-zinc-800 border border-zinc-200 rounded-2xl shadow-lg aspect-[1/1.4] p-8 sm:p-12 overflow-hidden flex flex-col justify-between font-sans leading-relaxed relative">
-          {/* Accent Border representing selected color styles */}
+        {/* A4 Paper simulation */}
+        <div className="w-full bg-white text-zinc-800 border border-zinc-300 rounded-xl shadow-2xl overflow-hidden font-sans relative" style={{ minHeight: "700px" }}>
+
+          {/* Top accent stripe */}
           <div
-            className="absolute top-0 left-0 right-0 h-1.5"
-            style={{ backgroundColor: template.content.styles.primaryColor || "#2563eb" }}
+            className="h-2 w-full"
+            style={{ background: `linear-gradient(90deg, ${template.content.styles.primaryColor || "#2563eb"}, ${template.content.styles.secondaryColor || "#3b82f6"})` }}
           />
 
-          <div className="space-y-6 flex-1 overflow-y-auto overflow-x-hidden pr-2">
-            {/* Header branding */}
-            {template.content.layout.header && (
-              <div className="text-[10px] uppercase font-bold tracking-wider text-zinc-400 border-b border-zinc-100 pb-2">
-                {renderTextWithVariables(template.content.layout.header)}
+          <div className="px-10 py-8 space-y-5">
+            {/* Header row: Company + branding */}
+            <div className="flex items-start justify-between gap-4 pb-5 border-b-2" style={{ borderColor: template.content.styles.primaryColor || "#2563eb" }}>
+              <div>
+                <div className="text-2xl font-black tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                  {renderTextWithVariables("{{companyName}}")}
+                </div>
+                <div className="text-xs text-zinc-400 mt-0.5">
+                  {renderTextWithVariables("{{address}}")}
+                </div>
+                <div className="text-xs text-zinc-400">
+                  {renderTextWithVariables("{{email}}")} · {renderTextWithVariables("{{phone}}")}
+                </div>
               </div>
-            )}
+              <div className="text-right">
+                <div className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-1">
+                  {template.categoryName}
+                </div>
+                <div className="text-3xl font-black uppercase tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                  {template.content.layout.header
+                    ? renderTextWithVariables(template.content.layout.header)
+                    : template.title.replace(" Template", "").toUpperCase()}
+                </div>
+              </div>
+            </div>
 
-            {/* Render Tiptap structure block representations */}
-            <div className="space-y-4 text-sm text-zinc-700">
+            {/* Render Tiptap document blocks */}
+            <div className="space-y-3 text-zinc-700 text-[13px] leading-relaxed">
               {template.content.editorState.content.map((block, idx) => {
+                // ── Heading ──────────────────────────────────────────────────
                 if (block.type === "heading") {
                   const lvl = block.attrs?.level || 1;
                   const text = block.content?.map((c: any) => c.text).join("") || "";
-                  const styleClass =
-                    lvl === 1
-                      ? "text-2xl font-extrabold text-zinc-900 border-b border-zinc-100 pb-2"
-                      : "text-base font-bold text-zinc-800 mt-4 border-b border-zinc-100/50 pb-1";
-
-                  return (
-                    <h2 key={idx} className={styleClass}>
-                      {renderTextWithVariables(text)}
+                  const replaced = renderTextWithVariables(text);
+                  if (lvl === 1) return (
+                    <h1 key={idx} className="text-lg font-black mt-4 mb-1 pb-1 border-b" style={{ color: template.content.styles.primaryColor || "#1d4ed8", borderColor: template.content.styles.primaryColor || "#bfdbfe" }}>
+                      {replaced}
+                    </h1>
+                  );
+                  if (lvl === 2) return (
+                    <h2 key={idx} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                      {replaced}
                     </h2>
+                  );
+                  return (
+                    <h3 key={idx} className="text-xs font-bold mt-2 text-zinc-600 uppercase tracking-wide">
+                      {replaced}
+                    </h3>
                   );
                 }
 
+                // ── Paragraph ────────────────────────────────────────────────
                 if (block.type === "paragraph") {
+                  const hasContent = block.content && block.content.length > 0;
+                  if (!hasContent) return <div key={idx} className="h-2" />;
                   return (
-                    <p key={idx} className="leading-relaxed text-xs">
+                    <p key={idx} className="text-[12px] text-zinc-600 leading-relaxed">
                       {block.content?.map((c: any, cidx: number) => {
                         const isBold = c.marks?.some((m: any) => m.type === "bold");
                         const isItalic = c.marks?.some((m: any) => m.type === "italic");
-                        const textVal = renderTextWithVariables(c.text);
-
-                        if (isBold) return <strong key={cidx} className="text-zinc-950 font-bold">{textVal}</strong>;
-                        if (isItalic) return <em key={cidx} className="italic text-zinc-600">{textVal}</em>;
-                        return textVal;
+                        const textVal = renderTextWithVariables(c.text || "");
+                        if (isBold && isItalic) return <strong key={cidx}><em>{textVal}</em></strong>;
+                        if (isBold) return <strong key={cidx} className="font-semibold text-zinc-800">{textVal}</strong>;
+                        if (isItalic) return <em key={cidx} className="text-zinc-500">{textVal}</em>;
+                        return <span key={cidx}>{textVal}</span>;
                       })}
                     </p>
                   );
                 }
 
+                // ── Table ────────────────────────────────────────────────────
                 if (block.type === "table") {
+                  const rows = block.content || [];
+                  const header = rows[0];
+                  const body = rows.slice(1);
                   return (
-                    <div key={idx} className="my-4 border border-zinc-200 rounded-lg overflow-hidden">
-                      <table className="w-full text-left text-xs border-collapse">
-                        <thead>
-                          <tr className="bg-zinc-50 border-b border-zinc-200">
-                            {block.content?.[0]?.content?.map((cell: any, cellIdx: number) => (
-                              <th key={cellIdx} className="p-2.5 font-semibold text-zinc-700">
-                                {renderTextWithVariables(cell.content?.[0]?.content?.[0]?.text || "")}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
+                    <div key={idx} className="overflow-hidden rounded-lg border border-zinc-200 my-3">
+                      <table className="w-full text-left text-[11px] border-collapse">
+                        {header && (
+                          <thead>
+                            <tr style={{ backgroundColor: template.content.styles.primaryColor || "#2563eb" }}>
+                              {header.content?.map((cell: any, cellIdx: number) => (
+                                <th key={cellIdx} className="px-3 py-2 font-semibold text-white whitespace-nowrap">
+                                  {renderTextWithVariables(cell.content?.[0]?.content?.[0]?.text || "")}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                        )}
                         <tbody>
-                          {block.content?.slice(1).map((row: any, rowIdx: number) => (
-                            <tr key={rowIdx} className="border-b border-zinc-100 last:border-b-0 hover:bg-zinc-50/50">
+                          {body.map((row: any, rowIdx: number) => (
+                            <tr key={rowIdx} className={rowIdx % 2 === 0 ? "bg-white" : "bg-zinc-50"}>
                               {row.content?.map((cell: any, cellIdx: number) => (
-                                <td key={cellIdx} className="p-2.5 text-zinc-600">
+                                <td key={cellIdx} className="px-3 py-2 border-t border-zinc-100 text-zinc-600">
                                   {renderTextWithVariables(cell.content?.[0]?.content?.[0]?.text || "")}
                                 </td>
                               ))}
@@ -921,11 +958,13 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   );
                 }
 
+                // ── Bullet list ──────────────────────────────────────────────
                 if (block.type === "bulletList") {
                   return (
-                    <ul key={idx} className="list-disc pl-5 space-y-1.5 text-xs text-zinc-600 my-3">
+                    <ul key={idx} className="space-y-1 my-2 pl-1">
                       {block.content?.map((li: any, liIdx: number) => (
-                        <li key={liIdx}>
+                        <li key={liIdx} className="flex items-start gap-2 text-[12px] text-zinc-600">
+                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: template.content.styles.primaryColor || "#2563eb" }} />
                           {renderTextWithVariables(li.content?.[0]?.content?.[0]?.text || "")}
                         </li>
                       ))}
@@ -933,17 +972,46 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   );
                 }
 
+                // ── Ordered list ─────────────────────────────────────────────
+                if (block.type === "orderedList") {
+                  return (
+                    <ol key={idx} className="space-y-1 my-2 pl-4 list-decimal">
+                      {block.content?.map((li: any, liIdx: number) => (
+                        <li key={liIdx} className="text-[12px] text-zinc-600">
+                          {renderTextWithVariables(li.content?.[0]?.content?.[0]?.text || "")}
+                        </li>
+                      ))}
+                    </ol>
+                  );
+                }
+
+                // ── Horizontal rule ──────────────────────────────────────────
+                if (block.type === "horizontalRule") {
+                  return <hr key={idx} className="border-zinc-200 my-3" />;
+                }
+
                 return null;
               })}
             </div>
+
+            {/* Footer */}
+            {template.content.layout.footer && (
+              <div className="pt-5 mt-4 border-t border-zinc-200 flex items-center justify-between">
+                <div className="text-[10px] text-zinc-400">
+                  {renderTextWithVariables(template.content.layout.footer)}
+                </div>
+                <div className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                  {renderTextWithVariables("{{companyName}}")}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Footer branding */}
-          {template.content.layout.footer && (
-            <div className="text-[10px] text-zinc-400 text-center border-t border-zinc-100 pt-4 mt-6">
-              {renderTextWithVariables(template.content.layout.footer)}
-            </div>
-          )}
+          {/* Bottom accent stripe */}
+          <div
+            className="h-1 w-full mt-auto"
+            style={{ background: `linear-gradient(90deg, ${template.content.styles.primaryColor || "#2563eb"}, ${template.content.styles.secondaryColor || "#3b82f6"})` }}
+          />
         </div>
       </div>
     </div>

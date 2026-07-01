@@ -20,30 +20,52 @@ export default function ThemeProvider({
   defaultTheme?: Theme;
   storageKey?: string;
 }) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (typeof window !== "undefined" ? (localStorage.getItem(storageKey) as Theme) : defaultTheme) || defaultTheme
-  );
+  // Read theme from localStorage (or default). The blocking script in layout.tsx
+  // has already applied the correct class to <html> before this component mounts,
+  // so we do NOT remove/re-add classes during hydration to prevent FOUC.
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === "undefined") return defaultTheme;
+    return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
 
+    const applyTheme = (t: Theme) => {
+      const resolved =
+        t === "system"
+          ? window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light"
+          : t;
+      // Only toggle if needed — avoids unnecessary class churn that causes flicker
+      if (resolved === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+      } else {
+        root.classList.remove("dark");
+        root.classList.add("light");
+      }
+    };
+
+    applyTheme(theme);
+
+    // Keep in sync when OS theme changes and user is on "system"
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      root.classList.add(systemTheme);
-      return;
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      const handler = () => applyTheme("system");
+      mq.addEventListener("change", handler);
+      return () => mq.removeEventListener("change", handler);
     }
-
-    root.classList.add(theme);
   }, [theme]);
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
+    setTheme: (t: Theme) => {
       if (typeof window !== "undefined") {
-        localStorage.setItem(storageKey, theme);
+        localStorage.setItem(storageKey, t);
       }
-      setTheme(theme);
+      setThemeState(t);
     },
   };
 
@@ -61,3 +83,4 @@ export const useTheme = () => {
   }
   return context;
 };
+

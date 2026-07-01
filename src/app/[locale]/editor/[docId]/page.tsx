@@ -73,7 +73,7 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
 
     if (selectedTemplate) {
       initialTitle = selectedTemplate.title;
-      initialContent = selectedTemplate.content.editorState;
+      initialContent = selectedTemplate.content?.editorState || selectedTemplate.content || initialContent;
     }
   } else {
     // Load existing document from DB

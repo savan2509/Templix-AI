@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -33,9 +33,49 @@ export default function Navbar() {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const langRef = useRef<HTMLDivElement>(null);
+  const userRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Close menus on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setLangDropdownOpen(false);
+    setUserDropdownOpen(false);
+  }, [pathname]);
+
+  // Click outside to close dropdowns (non-blocking)
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setLangDropdownOpen(false);
+      }
+      if (userRef.current && !userRef.current.contains(event.target as Node)) {
+        setUserDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  const toggleTheme = () => {
+    if (theme === "system") {
+      const isSystemDark = typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(isSystemDark ? "light" : "dark");
+    } else {
+      setTheme(theme === "dark" ? "light" : "dark");
+    }
+  };
+
+  const isDarkTheme =
+    mounted &&
+    (theme === "dark" ||
+      (theme === "system" &&
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches));
 
   // Extract current locale from pathname
   const pathParts = pathname.split("/");
@@ -133,7 +173,7 @@ export default function Navbar() {
           {/* Right actions */}
           <div className="hidden md:flex items-center gap-4">
             {/* Language Selector Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={langRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-sm font-semibold text-zinc-700 dark:text-zinc-200 bg-white/50 dark:bg-zinc-900/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
@@ -143,36 +183,33 @@ export default function Navbar() {
                 <ChevronDown className={`h-3.5 w-3.5 opacity-60 transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
               </button>
               {langDropdownOpen && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setLangDropdownOpen(false)} />
-                  <div className="absolute right-0 mt-2 w-44 z-50 origin-top-right rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200">
-                    {SUPPORTED_LOCALES.map((locale) => (
-                      <button
-                        key={locale.code}
-                        onClick={() => handleLanguageChange(locale.code)}
-                        className={`flex w-full items-center px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${
-                          locale.code === currentLocale
-                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
-                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80"
-                        }`}
-                      >
-                        {locale.name}
-                      </button>
-                    ))}
-                  </div>
-                </>
+                <div className="absolute right-0 mt-2 w-44 z-50 origin-top-right rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200">
+                  {SUPPORTED_LOCALES.map((locale) => (
+                    <button
+                      key={locale.code}
+                      onClick={() => handleLanguageChange(locale.code)}
+                      className={`flex w-full items-center px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${
+                        locale.code === currentLocale
+                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
+                          : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/80"
+                      }`}
+                    >
+                      {locale.name}
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
 
             {/* Theme Toggle Button */}
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
               className="relative p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               aria-label="Toggle theme"
             >
               {!mounted ? (
                 <span className="block h-4 w-4" />
-              ) : theme === "dark" ? (
+              ) : isDarkTheme ? (
                 <Sun className="h-4 w-4 text-amber-400 rotate-0 scale-100 transition-all duration-300" />
               ) : (
                 <Moon className="h-4 w-4 text-indigo-500 rotate-0 scale-100 transition-all duration-300" />
@@ -183,7 +220,7 @@ export default function Navbar() {
             {status === "loading" ? (
               <div className="h-9 w-9 bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-full" />
             ) : session?.user ? (
-              <div className="relative">
+              <div className="relative" ref={userRef}>
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                   className="flex items-center gap-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-transform duration-200 hover:scale-105"
@@ -202,9 +239,7 @@ export default function Navbar() {
                 </button>
 
                 {userDropdownOpen && (
-                  <>
-                    <div className="fixed inset-0 z-40" onClick={() => setUserDropdownOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-60 z-50 origin-top-right rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-2xl animate-in fade-in-50 slide-in-from-top-2 duration-200">
+                  <div className="absolute right-0 mt-2 w-60 z-50 origin-top-right rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-2xl animate-in fade-in-50 slide-in-from-top-2 duration-200">
                       <div className="px-3.5 py-2.5 border-b border-zinc-100 dark:border-zinc-800">
                         <p className="text-sm font-bold truncate text-zinc-800 dark:text-zinc-100">
                           {session.user.name || "User Account"}
@@ -249,7 +284,6 @@ export default function Navbar() {
                         </button>
                       </div>
                     </div>
-                  </>
                 )}
               </div>
             ) : (
@@ -267,13 +301,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-3">
             {/* Mobile Theme Switcher */}
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50"
               aria-label="Toggle theme"
             >
               {!mounted ? (
                 <span className="block h-4 w-4" />
-              ) : theme === "dark" ? (
+              ) : isDarkTheme ? (
                 <Sun className="h-4 w-4 text-amber-400" />
               ) : (
                 <Moon className="h-4 w-4 text-indigo-500" />

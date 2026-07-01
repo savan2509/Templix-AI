@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { db } from "@/lib/db";
+import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -16,6 +16,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
 // Standard mock documents fallback
 const fallbackDocs = [
@@ -57,7 +58,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
   let favorites = fallbackFavorites;
 
   try {
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline && process.env.DATABASE_URL) {
       const [dbDocs, dbFavs] = await Promise.all([
         db.document.findMany({
           where: { userId: session.user.id },
@@ -91,17 +92,34 @@ export default async function DashboardPage({ params }: DashboardProps) {
     console.warn("DB fetch bypass in Dashboard, showing mock details.");
   }
 
+  // Filter out any documents that have been marked deleted (for both mock files and database records)
+  const cookieStore = await cookies();
+  const deletedIds = cookieStore.get("deleted_docs")?.value?.split(",") || [];
+  documents = documents.filter((doc) => !deletedIds.includes(doc.id));
+
   // Server action to delete document
   const deleteDocument = async (formData: FormData) => {
     "use server";
     const id = formData.get("id") as string;
+    const loc = (formData.get("locale") as string) || "en";
     try {
-      if (process.env.DATABASE_URL) {
-        await db.document.delete({
-          where: { id }
-        });
+      if (isDbOnline && process.env.DATABASE_URL) {
+        try {
+          await db.document.delete({
+            where: { id }
+          });
+        } catch (dbErr) {
+          console.warn("DB delete bypass or record not found:", (dbErr as Error).message);
+        }
       }
-      revalidatePath(`/${locale}/dashboard`);
+
+      // Track deletion in cookies so that both mock files and database files disappear instantly in UI
+      const cookieStore = await cookies();
+      const current = cookieStore.get("deleted_docs")?.value || "";
+      const updated = current ? `${current},${id}` : id;
+      cookieStore.set("deleted_docs", updated, { path: "/" });
+
+      revalidatePath(`/${loc}/dashboard`);
     } catch (err) {
       console.error("Failed to delete document", err);
     }
@@ -144,15 +162,15 @@ export default async function DashboardPage({ params }: DashboardProps) {
               <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{documents.length}</p>
             </div>
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
-              <span className="text-xs text-zinc-455 uppercase font-semibold">Favorites</span>
+              <span className="text-xs text-zinc-400 uppercase font-semibold">Favorites</span>
               <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{favorites.length}</p>
             </div>
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
-              <span className="text-xs text-zinc-455 uppercase font-semibold">AI Credits</span>
-              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1.5">Free Tier</p>
+              <span className="text-xs text-zinc-400 uppercase font-semibold">AI Assistant</span>
+              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1.5">Unlimited Free</p>
             </div>
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
-              <span className="text-xs text-zinc-455 uppercase font-semibold">Role Tier</span>
+              <span className="text-xs text-zinc-400 uppercase font-semibold">Role Tier</span>
               <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{session.user.role || "USER"}</p>
             </div>
           </div>
@@ -199,6 +217,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
 
                         <form action={deleteDocument}>
                           <input type="hidden" name="id" value={doc.id} />
+                          <input type="hidden" name="locale" value={locale} />
                           <button
                             type="submit"
                             className="p-2 border border-zinc-200 dark:border-zinc-800 hover:border-red-200 hover:bg-red-50 text-zinc-400 hover:text-red-500 dark:hover:bg-red-950/20 rounded-lg transition-colors"

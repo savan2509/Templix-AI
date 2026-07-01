@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { db } from "@/lib/db";
+import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchHero from "@/components/SearchHero";
-import FAQ, { faqSchema } from "@/components/FAQ";
+import FAQ from "@/components/FAQ";
+import { faqSchema } from "@/data/faq";
 import { CATEGORIES } from "@/constants";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
@@ -123,7 +124,7 @@ export default async function HomePage({ params }: PageProps) {
   }));
 
   try {
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline && process.env.DATABASE_URL) {
       const [dbTemplates, dbBlogs] = await Promise.all([
         db.template.findMany({ take: 3, include: { category: true } }),
         db.blog.findMany({
@@ -291,11 +292,9 @@ export default async function HomePage({ params }: PageProps) {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                     )}
 
-                    {temp.isPremium && (
-                      <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-amber-500 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
-                        Premium
-                      </span>
-                    )}
+                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
+                      Free
+                    </span>
                   </div>
 
                   {/* Card Content */}
@@ -372,6 +371,69 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Why Choose Templix AI Section (100% Free & AI Powered) */}
+        <section className="py-16 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 600px'}}>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                100% Free & Open Access
+              </span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+                Advanced Features Without the Price Tag
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-xl mx-auto leading-relaxed">
+                Templix AI provides premium document creation tools completely free of charge. No subscriptions, no hidden limits.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Feature 1 */}
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
+                <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Fully Free &amp; Open</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+                  No billing forms, credit card prompts, or gated items. Simply open the app and begin customized layouts.
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
+                <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Unlimited Document AI</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+                  Rewrite paragraphs, translate segments, correct syntax, and tailor tones with zero word limits or cost tiers.
+                </p>
+              </div>
+
+              {/* Feature 2.5 (Zap/Speed) */}
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
+                <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Instant Page Loads</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+                  Optimized server compilation combined with dynamic client-side loading skeletons ensures your documents open immediately.
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
+                <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Clean Compliance</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
+                  Layout guidelines built under industry-standard schema structures ensure ATS compatibility and audit readiness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Blogs Section — deferred paint until visible */}
         <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 500px'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -436,6 +498,18 @@ export default async function HomePage({ params }: PageProps) {
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Industry Standards & Compliance Section */}
+        <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              Document Standardization & Compliance
+            </h2>
+            <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl mx-auto text-sm leading-relaxed">
+              We design all business document formats under rigorous compliance standards. From structured <a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">invoice layouts</a> to ATS-friendly <a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">resume layouts</a> and legal-grade <a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">contract agreements</a>, every template matches international schemas. Read the official documentation guidelines at the <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">World Wide Web Consortium (W3C)</a> and verify structured schema markup at <a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Schema.org</a>.
+            </p>
           </div>
         </section>
 

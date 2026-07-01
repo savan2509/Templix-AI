@@ -198,4 +198,105 @@ export class SEOEngine {
       relatedCategories,
     };
   }
+
+  /**
+   * Automatically parses and injects high-authority external links and related internal links
+   * into HTML content dynamically (without custom layout config)
+   */
+  static injectLinks(html: string, locale: string): string {
+    if (!html) return "";
+
+    // Split HTML into tags and text nodes to avoid injecting inside tag attributes/names
+    const segments = html.split(/(<[^>]+>)/g);
+    
+    let invoiceTemplatesReplaced = false;
+    let resumeTemplatesReplaced = false;
+    let contractTemplatesReplaced = false;
+    let proposalTemplatesReplaced = false;
+    let letterTemplatesReplaced = false;
+    let editorReplaced = false;
+    
+    let wikiInvoiceReplaced = false;
+    let wikiResumeReplaced = false;
+    let wikiContractReplaced = false;
+    let wikiProposalReplaced = false;
+    let schemaOrgReplaced = false;
+    let w3Replaced = false;
+
+    const processed = segments.map((seg) => {
+      if (seg.startsWith("<")) {
+        return seg;
+      }
+      
+      let text = seg;
+      
+      // 1. Internal Links
+      if (!invoiceTemplatesReplaced && text.toLowerCase().includes("invoice templates")) {
+        text = text.replace(/invoice templates/i, `<a href="/${locale}/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice templates</a>`);
+        invoiceTemplatesReplaced = true;
+      }
+      if (!resumeTemplatesReplaced && text.toLowerCase().includes("resume templates")) {
+        text = text.replace(/resume templates/i, `<a href="/${locale}/templates/resumes" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">resume templates</a>`);
+        resumeTemplatesReplaced = true;
+      }
+      if (!contractTemplatesReplaced && text.toLowerCase().includes("contract templates")) {
+        text = text.replace(/contract templates/i, `<a href="/${locale}/templates/contracts" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contract templates</a>`);
+        contractTemplatesReplaced = true;
+      }
+      if (!proposalTemplatesReplaced && text.toLowerCase().includes("proposal templates")) {
+        text = text.replace(/proposal templates/i, `<a href="/${locale}/templates/proposals" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">proposal templates</a>`);
+        proposalTemplatesReplaced = true;
+      }
+      if (!letterTemplatesReplaced && text.toLowerCase().includes("cover letter templates")) {
+        text = text.replace(/cover letter templates/i, `<a href="/${locale}/templates/letters" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">cover letter templates</a>`);
+        letterTemplatesReplaced = true;
+      }
+      if (!editorReplaced && text.toLowerCase().includes("document editor")) {
+        text = text.replace(/document editor/i, `<a href="/${locale}/editor" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document editor</a>`);
+        editorReplaced = true;
+      }
+
+      // 2. External Links (Authority links)
+      if (!wikiInvoiceReplaced && text.toLowerCase().includes("billing document")) {
+        text = text.replace(/billing document/i, `<a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">billing document</a>`);
+        wikiInvoiceReplaced = true;
+      }
+      if (!wikiResumeReplaced && text.toLowerCase().includes("curriculum vitae")) {
+        text = text.replace(/curriculum vitae/i, `<a href="https://en.wikipedia.org/wiki/Resume" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">curriculum vitae</a>`);
+        wikiResumeReplaced = true;
+      }
+      if (!wikiContractReplaced && text.toLowerCase().includes("legal record")) {
+        text = text.replace(/legal record/i, `<a href="https://en.wikipedia.org/wiki/Contract" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">legal record</a>`);
+        wikiContractReplaced = true;
+      }
+      if (!wikiProposalReplaced && text.toLowerCase().includes("business proposal")) {
+        text = text.replace(/business proposal/i, `<a href="https://en.wikipedia.org/wiki/Proposal_(business)" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">business proposal</a>`);
+        wikiProposalReplaced = true;
+      }
+      if (!schemaOrgReplaced && text.toLowerCase().includes("json-ld")) {
+        text = text.replace(/json-ld/i, `<a href="https://schema.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">JSON-LD</a>`);
+        schemaOrgReplaced = true;
+      }
+      if (!w3Replaced && text.toLowerCase().includes("html format")) {
+        text = text.replace(/html format/i, `<a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">HTML format</a>`);
+        w3Replaced = true;
+      }
+
+      return text;
+    });
+
+    let result = processed.join("");
+
+    const hasInternalLink = invoiceTemplatesReplaced || resumeTemplatesReplaced || contractTemplatesReplaced || proposalTemplatesReplaced || letterTemplatesReplaced || editorReplaced;
+    const hasExternalLink = wikiInvoiceReplaced || wikiResumeReplaced || wikiContractReplaced || wikiProposalReplaced || schemaOrgReplaced || w3Replaced;
+
+    if (!hasInternalLink) {
+      result += `<p class="mt-6 text-sm text-zinc-500 border-t border-zinc-100 dark:border-zinc-800/50 pt-4">For more ready-to-use layouts, check out our collection of free <a href="/${locale}/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document templates</a> to speed up your paperwork.</p>`;
+    }
+    if (!hasExternalLink) {
+      result += `<p class="mt-2 text-sm text-zinc-500">To learn more about professional document and markup standards, visit the official <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">W3C Organization website</a>.</p>`;
+    }
+
+    return result;
+  }
 }

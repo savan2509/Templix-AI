@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { db } from "@/lib/db";
+import { db, isDbOnline } from "@/lib/db";
 import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
 import {
@@ -68,7 +68,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
   // Load from DB if available, always fall back to static data
   let posts: BlogPost[] = STATIC_BLOG_POSTS;
   try {
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline && process.env.DATABASE_URL) {
       const dbPosts = await db.blog.findMany({
         where: { published: true },
         orderBy: { createdAt: "desc" },
@@ -99,8 +99,8 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
       : posts.filter((p) => p.category === category);
 
   // If filtering by category, show ALL posts in that category (no featured exclusion)
-  const featured = posts.find((p) => p.featured) ?? posts[0];
-  const grid = category === "All"
+  const featured = posts.find((p) => p.featured) ?? posts[0] ?? null;
+  const grid = category === "All" && featured
     ? filtered.filter((p) => p.slug !== featured.slug)
     : filtered;
 
@@ -354,6 +354,16 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 Invoice Templates →
               </Link>
             </div>
+          </div>
+
+          {/* SEO & Professional Document Writing Guides */}
+          <div className="border-t border-zinc-200 dark:border-zinc-800 pt-12 space-y-4">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
+              Professional Writing Directories & References
+            </h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              Our articles follow standard industry patterns for modern corporate formatting. When using our <a href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline">free templates library</a>, you benefit from built-in standard variables. For standard guidelines on writing and invoicing compliance, consult the <a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Wikipedia Invoice Definition</a>, or check professional networking best practices via <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">LinkedIn Guides</a>.
+            </p>
           </div>
 
         </div>

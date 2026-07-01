@@ -167,8 +167,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
       <Navbar />
 
       <main className="flex-1 bg-white dark:bg-zinc-950 min-h-screen">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c") }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }} />
 
         {/* ── Hero ── */}
         <section className="relative overflow-hidden pt-14 pb-16">
@@ -263,7 +263,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Prose content */}
               <div
                 className="prose-article"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: SEOEngine.injectLinks(post.content, locale) }}
               />
 
               {/* Share row */}
@@ -374,6 +374,28 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     {link.name}
                     <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
                   </Link>
+                ))}
+              </div>
+
+              {/* Authority Resources */}
+              <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Authority Resources</h3>
+                {[
+                  { name: "Schema.org Standard", href: "https://schema.org" },
+                  { name: "W3C Document Standard", href: "https://www.w3.org" },
+                  { name: "Wikipedia Business Docs", href: "https://en.wikipedia.org/wiki/Invoice" },
+                ].map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                  >
+                    <FileText className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
+                    {link.name}
+                    <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                  </a>
                 ))}
               </div>
 
