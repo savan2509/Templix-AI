@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import QueryProvider from "@/providers/query-provider";
 import AuthProvider from "@/providers/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
+import HtmlDirSync from "@/components/HtmlDirSync";
 import { siteConfig } from "@/config/site";
 
 const geistSans = Geist({
@@ -27,6 +27,13 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -34,12 +41,14 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
     creator: "@templix_ai",
+    images: ["/og-default.jpg"],
   },
 };
 
@@ -73,14 +82,22 @@ export default async function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('templix-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
           }}
         />
+
+        {/* Blocking script: sets lang/dir from the URL locale before paint. The
+            root layout can't read the [locale] param, so Arabic (rtl) is fixed here. */}
+        <script
+          id="locale-dir-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=location.pathname.split('/')[1];if(s){document.documentElement.lang=s;document.documentElement.dir=(s==='ar')?'rtl':'ltr';}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50">
+        <HtmlDirSync />
         <AuthProvider>
-          <QueryProvider>
-            <ThemeProvider defaultTheme="system">
-              {children}
-            </ThemeProvider>
-          </QueryProvider>
+          <ThemeProvider defaultTheme="system">
+            {children}
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

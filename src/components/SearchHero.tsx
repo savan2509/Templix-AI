@@ -37,7 +37,7 @@ export default function SearchHero({ locale }: { locale: string }) {
           />
           <button
             type="submit"
-            className="absolute right-2 top-2 h-10 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-650 text-white font-semibold text-sm transition-colors flex items-center gap-1.5 shadow-sm"
+            className="absolute right-2 top-2 h-10 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <Sparkles className="h-3.5 w-3.5" />
             <span>Search</span>

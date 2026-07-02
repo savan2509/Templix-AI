@@ -6,6 +6,10 @@ export interface SEOPageData {
   categoryName?: string;
   categorySlug?: string;
   isTemplate?: boolean;
+  metaTitle?: string;    // explicit <title>/OG title override
+  keywords?: string[];   // meta keywords
+  canonical?: string;    // explicit canonical URL override
+  image?: string;        // social share image (absolute URL or /public path)
 }
 
 export interface InternalLinkingData {
@@ -21,20 +25,33 @@ export class SEOEngine {
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
    */
   static generateMetadata(data: SEOPageData) {
-    const canonical = `${this.APP_URL}/${data.locale}${data.slug === "/" ? "" : data.slug}`;
-    const fullTitle = `${data.title} | Templix AI`;
+    const canonical =
+      data.canonical || `${this.APP_URL}/${data.locale}${data.slug === "/" ? "" : data.slug}`;
+    // The root layout applies a `%s | Templix AI` title template, so the document
+    // <title> must NOT include the brand (otherwise it doubles). Open Graph and
+    // Twitter titles are not templated, so we brand those explicitly.
+    const pageTitle = data.metaTitle || data.title;
+    const fullTitle = `${pageTitle} | Templix AI`;
+    const path = data.slug === "/" ? "" : data.slug;
+
+    // Resolve the social image to an absolute URL (required by OG/Twitter),
+    // falling back to a branded default so every page has a share preview.
+    const rawImage = data.image || "/og-default.jpg";
+    const ogImage = rawImage.startsWith("http") ? rawImage : `${this.APP_URL}${rawImage}`;
 
     return {
-      title: fullTitle,
+      title: pageTitle,
       description: data.description,
+      keywords: data.keywords,
       alternates: {
         canonical: canonical,
         languages: {
-          en: `${this.APP_URL}/en${data.slug === "/" ? "" : data.slug}`,
-          es: `${this.APP_URL}/es${data.slug === "/" ? "" : data.slug}`,
-          de: `${this.APP_URL}/de${data.slug === "/" ? "" : data.slug}`,
-          fr: `${this.APP_URL}/fr${data.slug === "/" ? "" : data.slug}`,
-          ar: `${this.APP_URL}/ar${data.slug === "/" ? "" : data.slug}`,
+          en: `${this.APP_URL}/en${path}`,
+          es: `${this.APP_URL}/es${path}`,
+          de: `${this.APP_URL}/de${path}`,
+          fr: `${this.APP_URL}/fr${path}`,
+          ar: `${this.APP_URL}/ar${path}`,
+          "x-default": `${this.APP_URL}/en${path}`,
         },
       },
       openGraph: {
@@ -44,11 +61,13 @@ export class SEOEngine {
         siteName: "Templix AI",
         locale: data.locale,
         type: data.isTemplate ? "article" : "website",
+        images: [{ url: ogImage, width: 1200, height: 630, alt: pageTitle }],
       },
       twitter: {
         card: "summary_large_image",
         title: fullTitle,
         description: data.description,
+        images: [ogImage],
       },
     };
   }
@@ -170,18 +189,22 @@ export class SEOEngine {
 
     const relatedTemplates = sortedTemplates.map((t) => ({
       title: t.title,
-      href: `/${locale}/templates/${t.slug}`,
+      // Use the canonical /{category}/{slug} shape so link equity isn't lost to
+      // the soft-duplicate /{slug} URL.
+      href: `/${locale}/templates/${t.category}/${t.slug}`,
     }));
 
+    // NOTE: every href below must map to a real slug in STATIC_BLOG_POSTS,
+    // otherwise the template pages render dead links / soft-404s.
     const relatedBlogs = [
-      { title: "How to Write a Professional Invoice for Freelance Work", href: `/${locale}/blog/how-to-write-freelance-invoice` },
-      { title: "Top ATS Resume Tips for Software Engineers in 2026", href: `/${locale}/blog/ats-resume-tips-for-developers` },
-      { title: "Ultimate Guide to Business Proposal Writing", href: `/${locale}/blog/business-proposal-writing-guide` },
-      { title: "Top 10 Contract Clauses Every Freelancer Needs", href: `/${locale}/blog/freelancer-contract-clauses` },
-      { title: "How to Write a Resignation Letter (with Examples)", href: `/${locale}/blog/how-to-write-resignation-letter` },
-      { title: "Secrets to a Winning Cover Letter that Lands Interviews", href: `/${locale}/blog/winning-cover-letter-secrets` },
-      { title: "Writing a Recommendation Letter: Step-by-Step Guide", href: `/${locale}/blog/writing-recommendation-letter` },
-      { title: "Designing the Perfect Web Design Proposal", href: `/${locale}/blog/perfect-web-design-proposal` },
+      { title: "How to Write a Freelance Invoice (Step-by-Step)", href: `/${locale}/blog/how-to-write-freelance-invoice` },
+      { title: "ATS Resume Format: Beat the Bots in 2026", href: `/${locale}/blog/ats-resume-format-guide` },
+      { title: "How to Write a Business Proposal That Wins Clients", href: `/${locale}/blog/how-to-write-a-business-proposal` },
+      { title: "Best Contract Templates for Freelancers & Businesses", href: `/${locale}/blog/best-contract-templates` },
+      { title: "Two Weeks Notice Letter: Templates & Etiquette", href: `/${locale}/blog/two-weeks-notice-letter` },
+      { title: "Best Cover Letter Examples for Every Job", href: `/${locale}/blog/best-cover-letter-examples` },
+      { title: "Thank You Letter After an Interview", href: `/${locale}/blog/thank-you-letter-after-interview` },
+      { title: "Web Design Proposal: Structure & Free Template", href: `/${locale}/blog/project-proposal-template-guide` },
     ];
 
     const relatedCategories = [
@@ -206,6 +229,10 @@ export class SEOEngine {
   static injectLinks(html: string, locale: string): string {
     if (!html) return "";
 
+    // Resolve locale-aware href tokens authored inside post content, e.g.
+    // <a href="/%LOCALE%/templates/invoices"> → <a href="/en/templates/invoices">
+    html = html.replace(/%LOCALE%/g, locale);
+
     // Split HTML into tags and text nodes to avoid injecting inside tag attributes/names
     const segments = html.split(/(<[^>]+>)/g);
     
@@ -223,13 +250,22 @@ export class SEOEngine {
     let schemaOrgReplaced = false;
     let w3Replaced = false;
 
+    // Track anchor nesting so we never inject a link inside an already-authored
+    // <a>…</a> (which would produce invalid nested anchors and hijack the href).
+    let anchorDepth = 0;
+
     const processed = segments.map((seg) => {
       if (seg.startsWith("<")) {
+        if (/^<a[\s>]/i.test(seg)) anchorDepth++;
+        else if (/^<\/a>/i.test(seg)) anchorDepth = Math.max(0, anchorDepth - 1);
         return seg;
       }
-      
+
+      // Skip text that lives inside an existing link.
+      if (anchorDepth > 0) return seg;
+
       let text = seg;
-      
+
       // 1. Internal Links
       if (!invoiceTemplatesReplaced && text.toLowerCase().includes("invoice templates")) {
         text = text.replace(/invoice templates/i, `<a href="/${locale}/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice templates</a>`);
@@ -287,8 +323,16 @@ export class SEOEngine {
 
     let result = processed.join("");
 
-    const hasInternalLink = invoiceTemplatesReplaced || resumeTemplatesReplaced || contractTemplatesReplaced || proposalTemplatesReplaced || letterTemplatesReplaced || editorReplaced;
-    const hasExternalLink = wikiInvoiceReplaced || wikiResumeReplaced || wikiContractReplaced || wikiProposalReplaced || schemaOrgReplaced || w3Replaced;
+    // Consider both auto-injected links AND links already authored in the content,
+    // so posts that ship their own internal/external links don't get duplicate fallbacks.
+    const hasInternalLink =
+      invoiceTemplatesReplaced || resumeTemplatesReplaced || contractTemplatesReplaced ||
+      proposalTemplatesReplaced || letterTemplatesReplaced || editorReplaced ||
+      /href="\/[^"]/.test(result);
+    const hasExternalLink =
+      wikiInvoiceReplaced || wikiResumeReplaced || wikiContractReplaced ||
+      wikiProposalReplaced || schemaOrgReplaced || w3Replaced ||
+      /href="https?:\/\//.test(result);
 
     if (!hasInternalLink) {
       result += `<p class="mt-6 text-sm text-zinc-500 border-t border-zinc-100 dark:border-zinc-800/50 pt-4">For more ready-to-use layouts, check out our collection of free <a href="/${locale}/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document templates</a> to speed up your paperwork.</p>`;

@@ -100,7 +100,7 @@ export default async function AdminPage({ params }: AdminProps) {
           </div>
 
           {/* Quick Metrics Grid */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex items-center gap-4">
               <div className="p-3 bg-blue-50 dark:bg-blue-950/30 text-blue-500 rounded-xl">
                 <Layout className="h-5 w-5" />

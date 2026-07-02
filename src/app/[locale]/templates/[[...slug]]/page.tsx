@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -123,6 +124,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale,
       categoryName: template.categoryName,
       categorySlug: template.categorySlug,
+      image: CATEGORIES.some((c) => c.slug === template.categorySlug)
+        ? `/cat-${template.categorySlug}-cover.jpg`
+        : undefined,
       isTemplate: true,
     }) as Metadata;
   }
@@ -155,6 +159,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     locale,
     categoryName: category || undefined,
     categorySlug: slug[0] || undefined,
+    image: CATEGORIES.some((c) => c.slug === slug[0])
+      ? `/cat-${slug[0]}-cover.jpg`
+      : "/cat-all-docs-cover.jpg",
   }) as Metadata;
 }
 
@@ -199,6 +206,15 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     }
   }
 
+  // Return a real 404 for a garbage top-level path (e.g. /templates/random-xyz)
+  // that is neither a known category nor a known template — avoids indexable
+  // soft-404 / doorway pages. Valid category listings and their long-tail niche
+  // pages (/templates/invoices/...) remain intentionally rendered.
+  const isKnownCategory = categorySlug ? CATEGORIES.some((c) => c.slug === categorySlug) : true;
+  if (categorySlug && !isKnownCategory && !activeTemplate) {
+    notFound();
+  }
+
   // If active template detail view, render preview template detail screen
   if (activeTemplate) {
     const breadcrumbsJson = SEOEngine.generateBreadcrumbSchema({
@@ -240,7 +256,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
+            <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
               <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
                 <Home className="h-3 w-3" />
                 <span>Home</span>
@@ -477,7 +493,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
         />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
-          <nav className="flex items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
+          <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
             <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
               <Home className="h-3 w-3" />
               <span>Home</span>
@@ -755,7 +771,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                             {temp.title}
                           </h3>
-                          <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed truncate-2-lines">
+                          <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-2">
                             {temp.description}
                           </p>
                         </div>

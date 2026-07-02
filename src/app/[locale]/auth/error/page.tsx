@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Sparkles, AlertTriangle, ArrowLeft, Mail } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Authentication Error",
+  robots: { index: false, follow: false },
+};
 
 interface Props {
   searchParams: Promise<{ error?: string }>;

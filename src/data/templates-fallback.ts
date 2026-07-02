@@ -2066,6 +2066,465 @@ export const allFallbackTemplates = [
         ]
       }
     }
+  },
+
+  // ── Additional SEO templates ───────────────────────────────────────────────
+  {
+    id: "invoice-hourly-rate",
+    slug: "invoice-hourly-rate",
+    title: "Hourly Rate Invoice Template",
+    description: "Time-based invoice template for consultants, developers, and freelancers billing clients by the hour with logged hours and rates.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Hourly Rate Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "invoiceNumber", "invoiceDate", "dueDate", "hoursWorked", "hourlyRate", "amountDue"],
+      layout: {
+        header: "HOURLY INVOICE",
+        footer: "Payment due within 15 days of invoice date. Thank you for your business!"
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1e3a8a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "HOURLY INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", text: "From: {{companyName}} ({{companyEmail}}) | Bill To: {{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Invoice #: {{invoiceNumber}} | Date: {{invoiceDate}} | Due: {{dueDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hours Worked: {{hoursWorked}} @ {{hourlyRate}} per hour" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Total Amount Due: {{amountDue}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-recurring-subscription",
+    slug: "invoice-recurring-subscription",
+    title: "Recurring Subscription Invoice Template",
+    description: "Monthly recurring invoice template for SaaS, retainers, and subscription services with billing period and auto-renewal details.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Recurring Subscription Invoice Template",
+      fields: ["companyName", "clientName", "invoiceNumber", "billingPeriod", "invoiceDate", "dueDate", "amountDue"],
+      layout: {
+        header: "SUBSCRIPTION INVOICE",
+        footer: "This is a recurring charge. Contact us to update your billing plan."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#4c1d95"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SUBSCRIPTION INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Provider: {{companyName}} | Subscriber: {{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Invoice #: {{invoiceNumber}} | Billing Period: {{billingPeriod}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Issued: {{invoiceDate}} | Due: {{dueDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Recurring Amount Due: {{amountDue}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-medical",
+    slug: "invoice-medical",
+    title: "Medical Practice Invoice Template",
+    description: "Patient billing invoice template for clinics, therapists, and medical practices with service codes and insurance reference fields.",
+    isPremium: true,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Medical Practice Invoice Template",
+      fields: ["companyName", "patientName", "invoiceNumber", "invoiceDate", "serviceDescription", "insuranceRef", "amountDue"],
+      layout: {
+        header: "MEDICAL INVOICE",
+        footer: "Please retain this invoice for insurance and tax records."
+      },
+      styles: {
+        primaryColor: "#0d9488",
+        secondaryColor: "#134e4a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MEDICAL INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Practice: {{companyName}} | Patient: {{patientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Invoice #: {{invoiceNumber}} | Date: {{invoiceDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Service: {{serviceDescription}} | Insurance Ref: {{insuranceRef}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Balance Due: {{amountDue}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-fresher-graduate",
+    slug: "resume-fresher-graduate",
+    title: "Fresher / Graduate Resume Template",
+    description: "Entry-level resume template for fresh graduates and students with no experience, highlighting education, projects, and skills.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Fresher / Graduate Resume Template",
+      fields: ["fullName", "email", "phone", "objective", "education", "projects", "skills"],
+      layout: {
+        header: "GRADUATE RESUME",
+        footer: "References available upon request."
+      },
+      styles: {
+        primaryColor: "#0891b2",
+        secondaryColor: "#155e75"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{email}} | {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Career Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{objective}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{education}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Academic Projects" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{projects}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{skills}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-product-manager",
+    slug: "resume-product-manager",
+    title: "Product Manager Resume Template",
+    description: "Results-driven resume template for product managers highlighting roadmaps, metrics, cross-functional leadership, and shipped products.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Product Manager Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "experience", "skills"],
+      layout: {
+        header: "PRODUCT MANAGER RESUME",
+        footer: "Portfolio and references available on request."
+      },
+      styles: {
+        primaryColor: "#4338ca",
+        secondaryColor: "#312e81"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{email}} | {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{experience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Core Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{skills}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-devops-engineer",
+    slug: "resume-devops-engineer",
+    title: "DevOps Engineer Resume Template",
+    description: "Technical resume template for DevOps and cloud engineers featuring CI/CD, infrastructure-as-code, and automation achievements.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "DevOps Engineer Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "experience", "certifications", "skills"],
+      layout: {
+        header: "DEVOPS ENGINEER RESUME",
+        footer: "GitHub and certifications available on request."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#134e4a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{email}} | {{phone}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{experience}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certifications}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{skills}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "residential-lease-agreement",
+    slug: "residential-lease-agreement",
+    title: "Residential Lease Agreement Template",
+    description: "Legally structured residential lease agreement template for landlords and tenants covering rent, deposit, term, and property rules.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Residential Lease Agreement Template",
+      fields: ["landlordName", "tenantName", "propertyAddress", "monthlyRent", "securityDeposit", "leaseTerm", "startDate"],
+      layout: {
+        header: "RESIDENTIAL LEASE AGREEMENT",
+        footer: "This agreement is governed by local tenancy and housing laws."
+      },
+      styles: {
+        primaryColor: "#0369a1",
+        secondaryColor: "#0c4a6e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "RESIDENTIAL LEASE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This lease is made between Landlord {{landlordName}} and Tenant {{tenantName}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Property Address: {{propertyAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Lease Term: {{leaseTerm}} starting {{startDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Monthly Rent: {{monthlyRent}} | Security Deposit: {{securityDeposit}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Both parties agree to the terms, maintenance duties, and payment schedule outlined above." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "influencer-collaboration-agreement",
+    slug: "influencer-collaboration-agreement",
+    title: "Influencer Collaboration Agreement Template",
+    description: "Social media influencer contract template covering deliverables, usage rights, disclosure, exclusivity, and payment terms for brand deals.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Influencer Collaboration Agreement Template",
+      fields: ["brandName", "influencerName", "deliverables", "compensation", "campaignDates", "usageRights"],
+      layout: {
+        header: "INFLUENCER COLLABORATION AGREEMENT",
+        footer: "Sponsored content must comply with advertising disclosure regulations."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#831843"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "INFLUENCER COLLABORATION AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Between {{brandName}} (Brand) and {{influencerName}} (Creator)." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Campaign Dates: {{campaignDates}} | Usage Rights: {{usageRights}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Compensation: {{compensation}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "photography-services-contract",
+    slug: "photography-services-contract",
+    title: "Photography Services Contract Template",
+    description: "Photography contract template for weddings, events, and portraits covering shoot details, deliverables, image rights, and cancellation terms.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Photography Services Contract Template",
+      fields: ["photographerName", "clientName", "eventDate", "eventLocation", "packageDetails", "totalFee", "deposit"],
+      layout: {
+        header: "PHOTOGRAPHY SERVICES CONTRACT",
+        footer: "Final images delivered within 30 days of the event date."
+      },
+      styles: {
+        primaryColor: "#9333ea",
+        secondaryColor: "#581c87"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PHOTOGRAPHY SERVICES CONTRACT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Photographer: {{photographerName}} | Client: {{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Event Date: {{eventDate}} | Location: {{eventLocation}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Package: {{packageDetails}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Total Fee: {{totalFee}} | Deposit Paid: {{deposit}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "seo-services-proposal",
+    slug: "seo-services-proposal",
+    title: "SEO Services Proposal Template",
+    description: "Professional SEO proposal template outlining audit findings, keyword strategy, deliverables, timeline, and pricing to win search clients.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "SEO Services Proposal Template",
+      fields: ["agencyName", "clientName", "objectives", "strategy", "deliverables", "timeline", "monthlyFee"],
+      layout: {
+        header: "SEO SERVICES PROPOSAL",
+        footer: "This proposal is valid for 14 days from the date of issue."
+      },
+      styles: {
+        primaryColor: "#16a34a",
+        secondaryColor: "#14532d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SEO SERVICES PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared by {{agencyName}} for {{clientName}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Strategy" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{strategy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Deliverables & Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{deliverables}} | Timeline: {{timeline}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Monthly Investment: {{monthlyFee}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "video-production-proposal",
+    slug: "video-production-proposal",
+    title: "Video Production Proposal Template",
+    description: "Video production proposal template for agencies and creators covering concept, scope, shoot schedule, deliverables, and budget breakdown.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Video Production Proposal Template",
+      fields: ["studioName", "clientName", "projectConcept", "scope", "deliverables", "timeline", "totalBudget"],
+      layout: {
+        header: "VIDEO PRODUCTION PROPOSAL",
+        footer: "Includes one round of revisions. Additional edits billed separately."
+      },
+      styles: {
+        primaryColor: "#e11d48",
+        secondaryColor: "#881337"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "VIDEO PRODUCTION PROPOSAL" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared by {{studioName}} for {{clientName}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Concept" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{projectConcept}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Scope & Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{scope}} | Deliverables: {{deliverables}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}} | Total Budget: {{totalBudget}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "internship-cover-letter",
+    slug: "internship-cover-letter",
+    title: "Internship Cover Letter Template",
+    description: "Cover letter template for students applying to internships, highlighting coursework, motivation, and transferable skills for entry roles.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Internship Cover Letter Template",
+      fields: ["fullName", "email", "companyName", "roleName", "letterDate", "body"],
+      layout: {
+        header: "INTERNSHIP APPLICATION",
+        footer: "Thank you for considering my application."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1e40af"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "INTERNSHIP COVER LETTER" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}} | {{email}} | {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear Hiring Team at {{companyName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am excited to apply for the {{roleName}} internship position." }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{body}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely, {{fullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "character-reference-letter",
+    slug: "character-reference-letter",
+    title: "Character Reference Letter Template",
+    description: "Personal character reference letter template for jobs, tenancy, or court, vouching for a person's integrity, reliability, and conduct.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Character Reference Letter Template",
+      fields: ["refereeName", "candidateName", "relationship", "letterDate", "body"],
+      layout: {
+        header: "CHARACTER REFERENCE",
+        footer: "I am happy to provide further information if required."
+      },
+      styles: {
+        primaryColor: "#0d9488",
+        secondaryColor: "#115e59"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CHARACTER REFERENCE LETTER" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To Whom It May Concern," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing to recommend {{candidateName}}, whom I have known as their {{relationship}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{body}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely, {{refereeName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "promotion-request-letter",
+    slug: "promotion-request-letter",
+    title: "Promotion Request Letter Template",
+    description: "Professional letter template to formally request a promotion, presenting achievements, added value, and readiness for the next role.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Promotion Request Letter Template",
+      fields: ["employeeName", "managerName", "currentRole", "targetRole", "letterDate", "achievements"],
+      layout: {
+        header: "PROMOTION REQUEST",
+        footer: "Thank you for considering my request. I welcome the chance to discuss it."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#5b21b6"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PROMOTION REQUEST LETTER" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Date: {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{managerName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing to express my interest in the {{targetRole}} position, moving up from my current role as {{currentRole}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Key achievements: {{achievements}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Respectfully, {{employeeName}}" }] }
+        ]
+      }
+    }
   }
 
 ];

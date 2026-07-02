@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { db } from "@/lib/db";
@@ -33,11 +34,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const post = getBlogPost(slug);
   if (!post) {
-    return { title: "Article Not Found | Templix AI" };
+    // Bare title — the root layout appends "| Templix AI" via its title template.
+    return { title: "Article Not Found", robots: { index: false } };
   }
   return SEOEngine.generateMetadata({
     title: post.title,
-    description: post.description,
+    metaTitle: post.metaTitle,
+    description: post.metaDescription || post.description,
+    keywords: post.keywords,
+    canonical: post.canonicalUrl,
+    image: post.image,
     slug: `/blog/${slug}`,
     locale,
   }) as Metadata;
@@ -109,25 +115,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   if (!post) post = getBlogPost(slug) ?? null;
 
-  // 404 fallback
-  if (!post) {
-    return (
-      <>
-        <Navbar />
-        <main className="flex-1 min-h-[60vh] flex items-center justify-center bg-white dark:bg-zinc-950">
-          <div className="text-center space-y-4 p-8">
-            <BookOpen className="h-14 w-14 mx-auto text-zinc-300 dark:text-zinc-700" />
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Article not found</h1>
-            <p className="text-zinc-500 text-sm">This article may have been moved or doesn't exist.</p>
-            <Link href={`/${locale}/blog`} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold">
-              <ArrowLeft className="h-4 w-4" /> Back to Blog
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
-  }
+  // Return a real 404 for unknown articles (avoids an indexable soft-404).
+  if (!post) notFound();
 
   const related = getRelatedPosts(slug, 3);
   const gradient = CATEGORY_GRADIENT[post.category] ?? "from-blue-600 to-indigo-600";
@@ -176,8 +165,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
           <div className="absolute inset-0 -z-10">
             <Image
               src="/blog/blog-hero-bg.jpg"
-              alt="Hero Background"
+              alt=""
+              aria-hidden="true"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />

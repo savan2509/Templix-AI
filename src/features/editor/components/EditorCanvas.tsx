@@ -42,7 +42,9 @@ export default function EditorCanvas({
 
   const [title, setTitle] = useState(initialTitle);
   const [saveStatus, setSaveStatus] = useState<"saved" | "saving" | "error">("saved");
-  const [aiSidebarOpen, setAiSidebarOpen] = useState(true);
+  // Default closed so the mobile full-screen overlay panel never hides the
+  // document on first load; users open it via the AI Assistant button.
+  const [aiSidebarOpen, setAiSidebarOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   // AI Configurations and Processing States
@@ -114,7 +116,7 @@ export default function EditorCanvas({
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm md:prose-base focus:outline-none w-full max-w-none bg-white p-12 min-h-[1056px] shadow-sm border border-zinc-200 dark:border-zinc-800 text-zinc-900 rounded-2xl mx-auto",
+          "prose prose-sm md:prose-base focus:outline-none w-full max-w-none bg-white p-4 sm:p-8 md:p-12 min-h-[1056px] shadow-sm border border-zinc-200 dark:border-zinc-800 text-zinc-900 rounded-2xl mx-auto",
       },
     },
     onUpdate({ editor }) {
@@ -163,11 +165,11 @@ export default function EditorCanvas({
   return (
     <div className="flex flex-col h-[calc(100vh-64px)] w-full overflow-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors">
       {/* Editor sub-header / control row */}
-      <header className="flex h-14 items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 shrink-0 shadow-sm">
-        <div className="flex items-center gap-4">
+      <header className="flex flex-wrap h-auto min-h-14 items-center justify-between gap-2 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 sm:px-6 py-2 shrink-0 shadow-sm">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
           <button
             onClick={handleBack}
-            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg text-zinc-500 hover:text-zinc-950 transition-colors"
+            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg text-zinc-500 hover:text-zinc-950 transition-colors shrink-0"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -176,7 +178,7 @@ export default function EditorCanvas({
             type="text"
             value={title}
             onChange={(e) => handleTitleChange(e.target.value)}
-            className="font-bold text-base bg-transparent border-0 border-b border-transparent hover:border-zinc-200 focus:border-blue-500 focus:ring-0 p-1 focus:outline-none rounded"
+            className="min-w-0 flex-1 max-w-[45vw] sm:max-w-none font-bold text-sm sm:text-base bg-transparent border-0 border-b border-transparent hover:border-zinc-200 focus:border-blue-500 focus:ring-0 p-1 focus:outline-none rounded"
           />
 
           <div className="flex items-center gap-1.5 text-xs font-semibold">
@@ -198,21 +200,21 @@ export default function EditorCanvas({
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 flex-wrap justify-end">
           {/* Export items dropdown */}
           <button
             onClick={handleExportPDF}
             className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300"
           >
             <FileDown className="h-4 w-4" />
-            <span>Export PDF</span>
+            <span className="hidden sm:inline">Export PDF</span>
           </button>
           <button
             onClick={handleExportDOCX}
             className="flex items-center gap-1.5 h-9 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300"
           >
             <FileDown className="h-4 w-4" />
-            <span>Export Word</span>
+            <span className="hidden sm:inline">Export Word</span>
           </button>
 
           <button
@@ -224,15 +226,15 @@ export default function EditorCanvas({
             }`}
           >
             <Sparkles className="h-4 w-4 animate-bounce" />
-            <span>AI Assistant</span>
+            <span className="hidden sm:inline">AI Assistant</span>
           </button>
         </div>
       </header>
 
       {/* Editor Body Area */}
-      <div className="flex flex-1 w-full overflow-hidden">
+      <div className="relative flex flex-1 w-full overflow-hidden">
         {/* Editor Main Canvas */}
-        <div className="flex-1 flex flex-col items-center overflow-y-auto p-8 border-r border-zinc-200 dark:border-zinc-800 relative">
+        <div className="flex-1 min-w-0 flex flex-col items-center overflow-y-auto p-3 sm:p-8 border-r border-zinc-200 dark:border-zinc-800 relative">
           {/* Floating formatting toolbar */}
           <div className="mb-4 flex flex-wrap items-center gap-1 p-1.5 border border-zinc-200/80 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-xl shadow-md shrink-0">
             <button
@@ -294,7 +296,7 @@ export default function EditorCanvas({
 
         {/* AI Assistant Side Panel (Phase 2 Preview) */}
         {aiSidebarOpen && (
-          <aside className="w-80 border-l border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 flex flex-col justify-between shrink-0 overflow-y-auto">
+          <aside className="absolute inset-0 z-20 w-full sm:static sm:inset-auto sm:z-auto sm:w-80 border-l border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 sm:p-6 flex flex-col justify-between shrink-0 overflow-y-auto">
             <div className="space-y-6">
               <div>
                 <span className="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-bold text-[10px] uppercase tracking-wider">

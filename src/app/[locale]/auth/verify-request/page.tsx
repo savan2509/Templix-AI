@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Sparkles, Mail, CheckCircle, ArrowLeft } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Check Your Email",
+  robots: { index: false, follow: false },
+};
 
 interface Props {
   params: Promise<{ locale: string }>;

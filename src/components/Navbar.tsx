@@ -145,7 +145,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Menu items */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {menuItems.map((item) => (
                 <Link
                   key={item.href}
@@ -171,7 +171,7 @@ export default function Navbar() {
           </div>
 
           {/* Right actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             {/* Language Selector Dropdown */}
             <div className="relative" ref={langRef}>
               <button
@@ -298,7 +298,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu trigger button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center gap-3">
             {/* Mobile Theme Switcher */}
             <button
               onClick={toggleTheme}
@@ -326,7 +326,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
+        <div className="lg:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
           <div className="space-y-1">
             {menuItems.map((item) => (
               <Link

@@ -6,8 +6,18 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/admin/", "/editor/", "/dashboard/", "/login"],
+      // Every app route is locale-prefixed (/en/admin, /de/dashboard, …), so the
+      // disallow patterns must use a wildcard segment to actually match them.
+      disallow: [
+        "/api/",
+        "/*/admin",
+        "/*/editor",
+        "/*/dashboard",
+        "/*/login",
+        "/*/auth/",
+      ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }

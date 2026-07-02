@@ -28,7 +28,7 @@ export default function AdBanner({ position }: AdBannerProps) {
         };
       case "sidebar":
         return {
-          dimensions: "w-[300px] h-[250px] md:h-[600px]",
+          dimensions: "w-full max-w-[300px] h-[250px] md:h-[600px]",
           label: "Skyscraper Sidebar Ad (300x250/600)",
         };
       case "inline":

@@ -786,10 +786,11 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
           <div className="space-y-4 max-h-[360px] overflow-y-auto overflow-x-hidden pr-3">
             {template.content.fields.map((field) => (
               <div key={field} className="space-y-1">
-                <label className="block text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                <label htmlFor={`field-${field}`} className="block text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                   {field.replace(/([A-Z])/g, " $1").trim()}
                 </label>
                 <input
+                  id={`field-${field}`}
                   type="text"
                   value={fieldValues[field] || ""}
                   onChange={(e) => handleInputChange(field, e.target.value)}
@@ -853,11 +854,11 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             style={{ background: `linear-gradient(90deg, ${template.content.styles.primaryColor || "#2563eb"}, ${template.content.styles.secondaryColor || "#3b82f6"})` }}
           />
 
-          <div className="px-10 py-8 space-y-5">
+          <div className="px-5 sm:px-10 py-6 sm:py-8 space-y-5">
             {/* Header row: Company + branding */}
-            <div className="flex items-start justify-between gap-4 pb-5 border-b-2" style={{ borderColor: template.content.styles.primaryColor || "#2563eb" }}>
+            <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-2 sm:gap-4 pb-5 border-b-2" style={{ borderColor: template.content.styles.primaryColor || "#2563eb" }}>
               <div>
-                <div className="text-2xl font-black tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                <div className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
                   {renderTextWithVariables("{{companyName}}")}
                 </div>
                 <div className="text-xs text-zinc-400 mt-0.5">
@@ -871,7 +872,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                 <div className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-1">
                   {template.categoryName}
                 </div>
-                <div className="text-3xl font-black uppercase tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
+                <div className="text-2xl sm:text-3xl font-black uppercase tracking-tight" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
                   {template.content.layout.header
                     ? renderTextWithVariables(template.content.layout.header)
                     : template.title.replace(" Template", "").toUpperCase()}
@@ -888,9 +889,11 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   const text = block.content?.map((c: any) => c.text).join("") || "";
                   const replaced = renderTextWithVariables(text);
                   if (lvl === 1) return (
-                    <h1 key={idx} className="text-lg font-black mt-4 mb-1 pb-1 border-b" style={{ color: template.content.styles.primaryColor || "#1d4ed8", borderColor: template.content.styles.primaryColor || "#bfdbfe" }}>
+                    // h2 (not h1): the page already has a single semantic h1 (the
+                    // template title). This is a visual heading inside the preview.
+                    <h2 key={idx} className="text-lg font-black mt-4 mb-1 pb-1 border-b" style={{ color: template.content.styles.primaryColor || "#1d4ed8", borderColor: template.content.styles.primaryColor || "#bfdbfe" }}>
                       {replaced}
-                    </h1>
+                    </h2>
                   );
                   if (lvl === 2) return (
                     <h2 key={idx} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider" style={{ color: template.content.styles.primaryColor || "#2563eb" }}>
@@ -929,7 +932,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   const header = rows[0];
                   const body = rows.slice(1);
                   return (
-                    <div key={idx} className="overflow-hidden rounded-lg border border-zinc-200 my-3">
+                    <div key={idx} className="overflow-x-auto rounded-lg border border-zinc-200 my-3">
                       <table className="w-full text-left text-[11px] border-collapse">
                         {header && (
                           <thead>

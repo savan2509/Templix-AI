@@ -11,7 +11,7 @@ export default function FAQ({ locale }: { locale: string }) {
   return (
     <section className="w-full py-16 bg-zinc-50 dark:bg-zinc-950/20 border-y border-zinc-200 dark:border-zinc-800 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-center tracking-tight text-zinc-900 dark:text-white mb-10">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center tracking-tight text-zinc-900 dark:text-white mb-10">
           Frequently Asked Questions
         </h2>
 
@@ -30,7 +30,7 @@ export default function FAQ({ locale }: { locale: string }) {
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
-                    className={`h-5 w-5 text-zinc-400 transform transition-transform duration-200 ${
+                    className={`h-5 w-5 shrink-0 ml-3 text-zinc-400 transform transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />

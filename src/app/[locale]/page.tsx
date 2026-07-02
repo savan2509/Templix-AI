@@ -19,6 +19,8 @@ import {
   Zap,
 } from "lucide-react";
 
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
+
 // Template slug → preview image mapping (images stored in /public)
 const TEMPLATE_IMAGES: Record<string, string> = {
   "invoice-freelancer": "/invoice-template-preview.png",
@@ -99,11 +101,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `https://templix.ai/${locale}`,
       siteName: "Templix AI",
       type: "website",
+      images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Templix AI" }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Templix AI — Free Professional Templates & AI Document Editor",
       description: "Create invoices, resumes, contracts, proposals and business documents in minutes.",
+      images: ["/og-default.jpg"],
     },
   };
 }
@@ -245,9 +249,9 @@ export default async function HomePage({ params }: PageProps) {
         {/* Featured Templates Grid — deferred paint until visible */}
         <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 600px'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
                   Trending Document Blueprints
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
@@ -256,7 +260,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
               <Link
                 href={`/${locale}/templates`}
-                className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
                 <span>View All</span>
                 <ArrowRight className="h-4 w-4" />
@@ -329,7 +333,7 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 500px'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-12">
             <div className="max-w-2xl mx-auto space-y-3">
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
                 Engineered for Ultimate Document Productivity
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm">
@@ -437,9 +441,9 @@ export default async function HomePage({ params }: PageProps) {
         {/* Featured Blogs Section — deferred paint until visible */}
         <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 500px'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
                   Document Writing Tips & Guidelines
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
@@ -448,7 +452,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
               <Link
                 href={`/${locale}/blog`}
-                className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
                 <span>View All Articles</span>
                 <ArrowRight className="h-4 w-4" />
@@ -504,7 +508,7 @@ export default async function HomePage({ params }: PageProps) {
         {/* Industry Standards & Compliance Section */}
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
               Document Standardization & Compliance
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl mx-auto text-sm leading-relaxed">
@@ -512,6 +516,42 @@ export default async function HomePage({ params }: PageProps) {
             </p>
           </div>
         </section>
+
+        {/* Organization + WebSite (SearchAction) JSON-LD — brand entity & sitelinks searchbox */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Templix AI",
+              url: `${SITE_URL}/${locale}`,
+              logo: `${SITE_URL}/icon-512.png`,
+              description:
+                "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
+              sameAs: ["https://twitter.com/templix_ai"],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Templix AI",
+              url: `${SITE_URL}/${locale}`,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_URL}/${locale}/templates?q={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
 
         {/* FAQs JSON-LD — native script tag per Next.js JSON-LD guide */}
         <script

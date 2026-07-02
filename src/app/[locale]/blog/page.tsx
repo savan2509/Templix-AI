@@ -129,8 +129,10 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           <div className="absolute inset-0 -z-10">
             <Image
               src="/blog/blog-hero-bg.jpg"
-              alt="Blog Hero Background"
+              alt=""
+              aria-hidden="true"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -152,7 +154,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
             </p>
 
             {/* Stats row */}
-            <div className="flex items-center justify-center gap-6 pt-2 text-sm text-zinc-400">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2 text-sm text-zinc-400">
               <span className="flex items-center gap-1.5"><BookOpen className="h-4 w-4 text-blue-400" />{posts.length} Articles</span>
               <span className="w-px h-4 bg-zinc-700" />
               <span className="flex items-center gap-1.5"><TrendingUp className="h-4 w-4 text-blue-400" />Weekly Updates</span>

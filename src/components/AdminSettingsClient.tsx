@@ -229,8 +229,8 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 <TrendingUp className="h-4 w-4 text-green-500" />
                 <span>Conversion Funnels (Templates Detail)</span>
               </h4>
-              <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
-                <table className="w-full text-left">
+              <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-x-auto text-xs">
+                <table className="w-full min-w-[480px] text-left">
                   <thead>
                     <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-semibold text-zinc-600">
                       <th className="p-3">Template</th>
@@ -417,8 +417,8 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
               </p>
             </div>
 
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden text-xs">
-              <table className="w-full text-left border-collapse">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-x-auto text-xs">
+              <table className="w-full min-w-[420px] text-left border-collapse">
                 <thead>
                   <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 font-semibold text-zinc-700 dark:text-zinc-300">
                     <th className="p-3">Title</th>

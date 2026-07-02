@@ -1,8 +1,12 @@
-import { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, HeadingLevel } from "docx";
-import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+// `docx` and `pdf-lib` are heavy (~1.5 MB combined) and only needed on an export
+// click, so they are imported dynamically inside each exporter instead of at the
+// module top. This keeps them out of the editor's initial client bundle.
 
 // 1. DOCX Exporter
 export async function exportToDocx(docJson: any, title: string) {
+  const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, HeadingLevel } =
+    await import("docx");
+
   const docChildren: any[] = [];
 
   // Parse Tiptap blocks to DOCX nodes
@@ -89,6 +93,8 @@ export async function exportToDocx(docJson: any, title: string) {
 
 // 2. PDF Exporter using pdf-lib
 export async function exportToPdf(docJson: any, title: string) {
+  const { PDFDocument, rgb, StandardFonts } = await import("pdf-lib");
+
   // Create a blank PDF Document
   const pdfDoc = await PDFDocument.create();
   let page = pdfDoc.addPage([595.276, 841.89]); // A4 Size dimensions

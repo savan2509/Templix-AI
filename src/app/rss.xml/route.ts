@@ -1,20 +1,17 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 
-const fallbackBlogs = [
-  {
-    slug: "how-to-write-freelance-invoice",
-    title: "How to Write a Professional Invoice for Freelance Work",
-    description: "A comprehensive guide showing how to write invoices that clients pay immediately.",
-    createdAt: new Date("2026-06-15")
-  },
-  {
-    slug: "ats-resume-tips-for-developers",
-    title: "Top ATS Resume Tips for Software Engineers in 2026",
-    description: "Learn how to optimize your technology CV to pass automated applicant tracking filters.",
-    createdAt: new Date("2026-06-20")
-  }
-];
+// Fallback: the full set of static articles, newest first (used when the DB is offline).
+const fallbackBlogs = [...STATIC_BLOG_POSTS]
+  .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+  .slice(0, 20)
+  .map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    createdAt: new Date(p.publishedAt),
+  }));
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
@@ -25,7 +22,7 @@ export async function GET() {
       const dbBlogs = await db.blog.findMany({
         where: { published: true },
         orderBy: { createdAt: "desc" },
-        take: 10
+        take: 20
       });
       if (dbBlogs && dbBlogs.length > 0) blogs = dbBlogs;
     }

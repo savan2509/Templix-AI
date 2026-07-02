@@ -1,61 +1,67 @@
 import { MetadataRoute } from "next";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
+import { CATEGORIES } from "@/constants";
+
+const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
-  const locales = ["en", "es", "de", "fr", "ar"];
-  const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Base paths per locale
-  const routes = ["", "/templates", "/blog"];
-  for (const route of routes) {
-    for (const locale of locales) {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: route === "" ? 1.0 : 0.8,
-      });
-    }
+  // One entry per canonical page. `url` is the English (x-default) variant and
+  // `alternates.languages` links every locale so search engines understand the
+  // multilingual structure (emits <xhtml:link rel="alternate" hreflang="…">).
+  const entry = (
+    path: string,
+    opts: {
+      lastModified?: Date;
+      changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
+      priority?: number;
+    } = {}
+  ): MetadataRoute.Sitemap[number] => ({
+    url: `${baseUrl}/en${path}`,
+    lastModified: opts.lastModified ?? new Date(),
+    changeFrequency: opts.changeFrequency ?? "weekly",
+    priority: opts.priority ?? 0.6,
+    alternates: {
+      languages: Object.fromEntries(
+        LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`])
+      ),
+    },
+  });
+
+  const entries: MetadataRoute.Sitemap = [];
+
+  // Top-level routes
+  entries.push(entry("", { changeFrequency: "daily", priority: 1.0 }));
+  entries.push(entry("/templates", { changeFrequency: "daily", priority: 0.9 }));
+  entries.push(entry("/blog", { changeFrequency: "daily", priority: 0.8 }));
+
+  // Category listing pages
+  for (const cat of CATEGORIES) {
+    entries.push(entry(`/templates/${cat.slug}`, { changeFrequency: "weekly", priority: 0.7 }));
   }
 
-  // Category pages
-  const categories = ["invoices", "resumes", "contracts", "proposals", "letters"];
-  for (const cat of categories) {
-    for (const locale of locales) {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}/templates/${cat}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      });
-    }
-  }
-
-  // Seeded template detail pages - dynamically generated
+  // Template detail pages (canonical /{category}/{slug} shape)
   for (const t of allFallbackTemplates) {
-    for (const locale of locales) {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}/templates/${t.categorySlug}/${t.slug}`,
-        lastModified: new Date(),
+    entries.push(
+      entry(`/templates/${t.categorySlug}/${t.slug}`, {
         changeFrequency: "weekly",
         priority: 0.6,
-      });
-    }
+      })
+    );
   }
 
-  // Blog posts — all static articles
+  // Blog articles
   for (const post of STATIC_BLOG_POSTS) {
-    for (const locale of locales) {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}/blog/${post.slug}`,
+    entries.push(
+      entry(`/blog/${post.slug}`, {
         lastModified: new Date(post.publishedAt),
         changeFrequency: "monthly",
         priority: 0.7,
-      });
-    }
+      })
+    );
   }
 
-  return sitemapEntries;
+  return entries;
 }
