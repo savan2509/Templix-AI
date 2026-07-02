@@ -855,5 +855,720 @@ export const proposalsTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "branding-proposal",
+    slug: "branding-proposal",
+    title: "Branding Proposal Template",
+    description: "Brand identity proposal template covering brand strategy, logo design, visual identity system, brand guidelines, timeline, and pricing to win creative clients.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Branding Proposal",
+      fields: ["companyName", "clientName", "brandStrategy", "objectives", "timeline", "totalPrice", "proposalSignature"],
+      layout: {
+        header: "BRANDING PROPOSAL",
+        footer: "Final logo files and brand assets are delivered upon receipt of the final payment."
+      },
+      styles: {
+        primaryColor: "#9333ea",
+        secondaryColor: "#6b21a8"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Branding Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Your brand deserves a distinctive identity that earns instant recognition and trust. This engagement crafts a cohesive visual language, from strategy through a complete brand system, so every touchpoint feels intentional." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Brand Strategy: " }, { type: "text", text: "{{brandStrategy}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Objectives: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Scope of Work" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Brand discovery workshop, audience research, and positioning statement" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Moodboards, art direction, and primary logo with variations" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Color palette, typography system, and iconography" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Business cards, letterhead, and social media templates" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Comprehensive brand guidelines PDF and asset handoff" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Brand Strategy" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Workshop, research, and positioning" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,800" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Logo & Identity" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Logo suite, color, and type system" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$4,200" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Brand Guidelines" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Guidelines book and collateral" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Complete brand identity" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalPrice}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{timeline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Approve this proposal and pay a 50% deposit to reserve your kickoff date. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "app-development-proposal",
+    slug: "app-development-proposal",
+    title: "App Development Proposal Template",
+    description: "Mobile app development proposal template detailing platform scope, feature set, tech stack, sprint timeline, and cost estimate for iOS and Android builds.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "App Development Proposal",
+      fields: ["companyName", "clientName", "projectName", "problemStatement", "technologyStack", "startDate", "deliveryDate", "totalPrice", "proposalSignature"],
+      layout: {
+        header: "APP DEVELOPMENT PROPOSAL",
+        footer: "Includes 60 days of post-launch bug fixes and app store submission support."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1e3a8a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "App Development Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} | Project: {{projectName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We will design, build, and ship a cross-platform mobile app for iOS and Android with a shared codebase, cloud backend, and analytics baked in from day one." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Problem: " }, { type: "text", text: "{{problemStatement}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tech Stack: " }, { type: "text", text: "{{technologyStack}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Scope & Deliverables" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Product discovery, user flows, and clickable prototype" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Native iOS and Android builds from one React Native codebase" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Secure authentication, push notifications, and offline mode" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "REST API, cloud database, and admin dashboard" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "QA on real devices, plus App Store and Play Store submission" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Cost Estimate" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Module" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "UX & Prototype" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Flows, wireframes, and design system" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$6,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Mobile App Build" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "iOS and Android with core features" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$28,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Backend & API" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Cloud API, database, and admin panel" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$9,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Fixed-bid engagement" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalPrice}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Development runs from {{startDate}} to {{deliveryDate}} across two-week sprints with a demo build at the end of each sprint." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign to lock the roadmap and provision repository and store accounts. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "social-media-proposal",
+    slug: "social-media-proposal",
+    title: "Social Media Proposal Template",
+    description: "Social media marketing proposal template outlining content strategy, channel plan, posting cadence, community management, and monthly retainer pricing.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Social Media Proposal",
+      fields: ["agencyName", "clientName", "objectives", "socialMediaStrategy", "campaignDuration", "monthlyFee", "proposalSignature"],
+      layout: {
+        header: "SOCIAL MEDIA PROPOSAL",
+        footer: "Reported reach and engagement metrics are estimates based on current account benchmarks."
+      },
+      styles: {
+        primaryColor: "#0ea5e9",
+        secondaryColor: "#0c4a6e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Social Media Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{agencyName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We turn your social channels into a consistent, on-brand growth engine with a content calendar, active community management, and paid amplification that drives followers toward action." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Objectives: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Content Strategy: " }, { type: "text", text: "{{socialMediaStrategy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Deliverables" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Monthly content calendar across Instagram, TikTok, and LinkedIn" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "20 branded posts and 12 short-form reels per month" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Daily community management and comment moderation" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Paid social boosting and audience targeting" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Monthly analytics report on reach, engagement, and follower growth" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Monthly Investment" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Service" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Content Creation" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Posts, reels, and graphics" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,400" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Community Management" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Daily engagement and moderation" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$900" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Paid Amplification" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Boosted posts management" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$700" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Monthly Retainer" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Excludes ad spend" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{monthlyFee}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Engagement runs for {{campaignDuration}}, starting with a one-week onboarding and channel audit before the first content goes live." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign to begin onboarding and grant access to your social accounts. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "interior-design-proposal",
+    slug: "interior-design-proposal",
+    title: "Interior Design Proposal Template",
+    description: "Interior design proposal template covering space planning, concept boards, furnishing, project phases, and itemized budget for residential and commercial spaces.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Interior Design Proposal",
+      fields: ["companyName", "clientName", "propertyAddress", "designStyle", "scopeOfWork", "startDate", "endDate", "totalPrice", "proposalSignature"],
+      layout: {
+        header: "INTERIOR DESIGN PROPOSAL",
+        footer: "Furniture and material costs are estimates and confirmed at the specification stage."
+      },
+      styles: {
+        primaryColor: "#b45309",
+        secondaryColor: "#78350f"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Interior Design Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} | Property: {{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We will transform your space into a functional, beautiful environment that reflects how you live and work, balancing aesthetics, comfort, and budget at every step." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Design Style: " }, { type: "text", text: "{{designStyle}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Scope: " }, { type: "text", text: "{{scopeOfWork}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Scope of Work" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Site survey, measurements, and space planning" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Concept boards, material palette, and 3D renderings" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Furniture, lighting, and finishes specification" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Procurement, vendor coordination, and delivery tracking" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Installation, styling, and final walkthrough" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Cost Estimate" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Cost" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Design Fee" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Concept, drawings, and renderings" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$5,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Furnishings" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Furniture, lighting, and decor" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$18,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Installation" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Delivery, assembly, and styling" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$3,200" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Turnkey design project" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalPrice}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The project runs from {{startDate}} to {{endDate}}, phased across design, procurement, and installation." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Approve the concept and pay the design retainer to begin sourcing. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "catering-proposal",
+    slug: "catering-proposal",
+    title: "Catering Proposal Template",
+    description: "Catering proposal template detailing menu selection, service style, staffing, guest count, and per-head pricing for weddings, corporate, and private events.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Catering Proposal",
+      fields: ["companyName", "clientName", "eventName", "eventDate", "expectedGuests", "venueLocation", "totalPrice", "proposalSignature"],
+      layout: {
+        header: "CATERING PROPOSAL",
+        footer: "Final headcount and menu selections are confirmed 10 days before the event."
+      },
+      styles: {
+        primaryColor: "#c026d3",
+        secondaryColor: "#701a75"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Catering Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} | Event: {{eventName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We will deliver a memorable dining experience for {{expectedGuests}} at {{venueLocation}} on {{eventDate}}, with a chef-crafted menu, full service staff, and seamless on-site coordination." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Menu & Services" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Passed canapes and a welcome drink reception" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Three-course plated dinner with vegetarian and vegan options" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Dessert table, coffee, and tea service" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Professional waitstaff, bartenders, and a captain" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Linens, tableware, glassware, and full cleanup" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Food & Menu" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Three-course dinner at $75 per guest" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$9,375" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Beverage Service" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Bar package and non-alcoholic drinks" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,200" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Staffing & Rentals" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Service team, linens, and tableware" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,900" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Full-service catering" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalPrice}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Tasting two weeks out, final headcount 10 days prior, and setup beginning three hours before service on {{eventDate}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign and place a 30% deposit to reserve your date. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "real-estate-proposal",
+    slug: "real-estate-proposal",
+    title: "Real Estate Proposal Template",
+    description: "Real estate listing proposal template covering property marketing plan, pricing strategy, staging, commission structure, and timeline for sellers.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Real Estate Proposal",
+      fields: ["companyName", "clientName", "propertyAddress", "objectives", "timeline", "proposalSignature"],
+      layout: {
+        header: "REAL ESTATE LISTING PROPOSAL",
+        footer: "Commission and marketing terms are governed by the signed listing agreement."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#134e4a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Real Estate Listing Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} | Property: {{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We will position your property to sell quickly and at top market value using a data-driven pricing strategy, premium staging, and a multi-channel marketing launch." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Seller Goals: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Marketing Plan" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Comparative market analysis and pricing recommendation" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Professional staging, photography, and video walkthrough" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "MLS listing, syndication, and featured portal placement" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Targeted social ads, email blasts, and broker outreach" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Open houses, private tours, and offer negotiation" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Commission & Costs" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Rate / Cost" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Listing Commission" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Full-service representation" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5% of sale price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Staging & Media" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Staging, photos, and video" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$3,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Premium Advertising" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Paid portal and social campaigns" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Marketing Investment" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Upfront, credited at closing" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "$5,300" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{timeline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign the listing agreement to begin staging and go live within 7 days. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "sponsorship-proposal",
+    slug: "sponsorship-proposal",
+    title: "Sponsorship Proposal Template",
+    description: "Event sponsorship proposal template presenting audience reach, sponsorship tiers, activation benefits, and package pricing to attract brand partners.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Sponsorship Proposal",
+      fields: ["companyName", "clientName", "eventName", "eventDate", "expectedGuests", "objectives", "proposalSignature"],
+      layout: {
+        header: "SPONSORSHIP PROPOSAL",
+        footer: "Sponsorship benefits are secured on a first-come, first-served basis per tier."
+      },
+      styles: {
+        primaryColor: "#d97706",
+        secondaryColor: "#92400e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Sponsorship Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} | Event: {{eventName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Partner with {{eventName}} on {{eventDate}} to put your brand in front of {{expectedGuests}} of engaged, high-intent attendees through prominent on-site and digital exposure." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Partnership Goals: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sponsor Benefits" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Logo placement on stage, signage, and event website" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Exhibition booth in the main networking hall" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Speaking slot or product demo opportunity" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Social media shout-outs and email newsletter features" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Attendee data insights and post-event impact report" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sponsorship Tiers" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Tier" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Benefits" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Bronze" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Logo and website listing" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Gold" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Booth, signage, and social features" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$7,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Platinum" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Headline branding and speaking slot" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$15,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Title Sponsor" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Exclusive naming rights" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "$30,000" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Confirm your tier by 60 days out to secure premium placement, with assets due 30 days before {{eventDate}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Select a tier and countersign to reserve your sponsorship. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "training-proposal",
+    slug: "training-proposal",
+    title: "Corporate Training Proposal Template",
+    description: "Corporate training proposal template outlining learning objectives, curriculum modules, delivery format, participant count, and per-cohort pricing.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Corporate Training Proposal",
+      fields: ["companyName", "clientName", "objectives", "startDate", "endDate", "totalPrice", "proposalSignature"],
+      layout: {
+        header: "CORPORATE TRAINING PROPOSAL",
+        footer: "Course materials and completion certificates are included for all enrolled participants."
+      },
+      styles: {
+        primaryColor: "#4338ca",
+        secondaryColor: "#312e81"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Corporate Training Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This program upskills your teams through a blended learning experience of live workshops, hands-on labs, and coaching, measurably improving on-the-job performance." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Learning Objectives: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Curriculum & Deliverables" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Training needs assessment and skills gap analysis" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Custom curriculum with role-based learning tracks" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Instructor-led workshops and interactive labs" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Workbooks, recordings, and on-demand resources" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Post-training assessment and certificates of completion" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Curriculum Design" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Assessment and custom content" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$4,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Workshop Delivery" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5-day program for one cohort of 20" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$9,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Materials & Certification" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Workbooks, LMS access, and certs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,500" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Per cohort" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalPrice}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The program runs from {{startDate}} to {{endDate}}, with a follow-up coaching session four weeks after delivery." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Approve to schedule the needs assessment and lock training dates. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "research-proposal",
+    slug: "research-proposal",
+    title: "Research Proposal Template",
+    description: "Academic research proposal template covering problem statement, research questions, methodology, expected outcomes, timeline, and itemized budget.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Research Proposal",
+      fields: ["organizationName", "contactPerson", "grantTitle", "problemStatement", "expectedOutcomes", "startDate", "endDate", "totalBudget", "proposalSignature"],
+      layout: {
+        header: "RESEARCH PROPOSAL",
+        footer: "This proposal complies with institutional ethics review and data governance policies."
+      },
+      styles: {
+        primaryColor: "#1d4ed8",
+        secondaryColor: "#1e40af"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Research Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{contactPerson}} by {{organizationName}} | Study: {{grantTitle}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This study investigates an under-researched question with a rigorous, reproducible methodology, aiming to produce peer-reviewed findings that advance both theory and practice." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Problem Statement: " }, { type: "text", text: "{{problemStatement}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Expected Outcomes: " }, { type: "text", text: "{{expectedOutcomes}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Methodology & Deliverables" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Literature review and hypothesis formulation" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Mixed-methods study design and ethics approval" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Data collection through surveys, interviews, and field work" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Statistical and qualitative analysis of results" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Final report, dataset, and journal manuscript" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Budget Breakdown" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Category" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Personnel" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Research assistants and analysts" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$32,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Data & Equipment" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Software, datasets, and instruments" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$12,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Dissemination" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Publication fees and conferences" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$6,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Requested" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Full study budget" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalBudget}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The study runs from {{startDate}} to {{endDate}}, structured across review, fieldwork, analysis, and publication phases." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Approve funding and ethics review to begin the literature phase. Principal investigator: {{proposalSignature}}." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "partnership-proposal",
+    slug: "partnership-proposal",
+    title: "Partnership Proposal Template",
+    description: "Strategic partnership proposal template outlining mutual value, collaboration scope, revenue sharing, roles, and timeline to formalize a business alliance.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Partnership Proposal",
+      fields: ["companyName", "clientName", "objectives", "scopeOfWork", "timeline", "proposalSignature"],
+      layout: {
+        header: "STRATEGIC PARTNERSHIP PROPOSAL",
+        footer: "This proposal is a non-binding framework pending a definitive partnership agreement."
+      },
+      styles: {
+        primaryColor: "#be123c",
+        secondaryColor: "#881337"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Strategic Partnership Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "We propose a strategic alliance that pairs our complementary strengths to reach new markets, share resources, and create value neither organization could unlock alone." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Shared Objectives: " }, { type: "text", text: "{{objectives}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Collaboration Scope: " }, { type: "text", text: "{{scopeOfWork}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Scope of Collaboration" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Joint go-to-market and co-branded campaigns" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Shared technology, data, and distribution channels" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Cross-referrals and bundled product offerings" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Defined roles, governance, and a joint steering committee" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Quarterly business reviews and shared KPI dashboards" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Revenue Sharing" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Stream" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Contribution" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Split" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Referred Revenue" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Leads passed between partners" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "20% referral fee" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Co-Sold Deals" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Jointly closed accounts" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "50 / 50" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Bundled Product" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Combined subscription offering" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "60 / 40" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Marketing Fund" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Shared campaign budget" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Equal contribution" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{timeline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Next Steps" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Countersign this framework to convene a joint working session and draft the definitive agreement. Authorized by {{proposalSignature}}." }] }
+        ]
+      }
+    }
   }
 ];

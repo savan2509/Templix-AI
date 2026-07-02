@@ -527,5 +527,395 @@ export const lettersTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "reference-letter",
+    slug: "reference-letter",
+    title: "Professional Reference Letter Template",
+    description: "Professional reference letter template to formally vouch for a candidate's skills, reliability, and character to a prospective employer or program.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Professional Reference Letter Template",
+      fields: ["fullName", "jobTitle", "companyName", "email", "phone", "letterDate", "recipientName", "recipientOrganization", "candidateName", "relationship", "durationKnown", "signatureFullName"],
+      layout: {
+        header: "REFERENCE LETTER",
+        footer: "Provided in confidence at the candidate's request."
+      },
+      styles: {
+        primaryColor: "#1d4ed8",
+        secondaryColor: "#1e40af"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientOrganization}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Professional Reference for {{candidateName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am delighted to serve as a professional reference for {{candidateName}}. As their {{relationship}} over the past {{durationKnown}}, I have had a direct, day-to-day view of how they work, and I can speak to their abilities without any hesitation whatsoever." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Throughout the time we worked together, {{candidateName}} proved to be one of the most dependable people on the team. They delivered accurate work on tight deadlines, took ownership of difficult problems instead of deferring them, and consistently raised the quality standard for everyone around them." }] },
+          { type: "paragraph", content: [{ type: "text", text: "What distinguishes them just as much as their competence is their character. They communicate openly, treat colleagues with respect, and stay composed and constructive when a project is under pressure. People trust them, and that trust is the product of genuine integrity rather than reputation alone." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I recommend {{candidateName}} to you enthusiastically and without reservation. Please feel free to contact me directly if you would like a fuller picture of their contributions." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "apology-letter",
+    slug: "apology-letter",
+    title: "Apology Letter Template",
+    description: "Sincere apology letter template to acknowledge a mistake, take responsibility, explain the remedy, and rebuild the customer relationship.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Apology Letter Template",
+      fields: ["fullName", "jobTitle", "companyName", "email", "phone", "letterDate", "customerName", "orderNumber", "issueDescription", "signatureFullName"],
+      layout: {
+        header: "APOLOGY LETTER",
+        footer: "We value your trust and appreciate your patience."
+      },
+      styles: {
+        primaryColor: "#dc2626",
+        secondaryColor: "#b91c1c"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{customerName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subject: " }, { type: "text", text: "Our sincere apology regarding order {{orderNumber}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{customerName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing to offer my sincere apology for the problem you experienced with order {{orderNumber}}. You placed your trust in us, and on this occasion we did not meet the standard you rightly expected. For that, I am genuinely sorry." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I want to be clear that we take full responsibility for what happened. The issue, {{issueDescription}}, was our error and not something you should have had to deal with. I understand how frustrating and inconvenient it must have been, and I do not want to make excuses for it." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We have already reviewed exactly where the process broke down and put a fix in place so that this does not happen to you or anyone else again. To make things right, we are resolving your case as an immediate priority and will follow up personally until you are fully satisfied." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thank you for giving us the chance to correct this. Your loyalty means a great deal to us, and we are committed to earning back your complete confidence." }] },
+          { type: "paragraph", content: [{ type: "text", text: "With sincere apologies," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invitation-letter",
+    slug: "invitation-letter",
+    title: "Formal Invitation Letter Template",
+    description: "Formal invitation letter template to invite a guest to an event, with clear date, venue, and RSVP details presented professionally.",
+    isPremium: true,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Formal Invitation Letter Template",
+      fields: ["fullName", "jobTitle", "companyName", "email", "phone", "letterDate", "recipientName", "eventName", "eventDate", "venue", "acceptanceDeadline", "signatureFullName"],
+      layout: {
+        header: "INVITATION LETTER",
+        footer: "Please RSVP by the date indicated above."
+      },
+      styles: {
+        primaryColor: "#0891b2",
+        secondaryColor: "#0e7490"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: You are cordially invited to {{eventName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "It is my great pleasure, on behalf of {{companyName}}, to formally invite you to {{eventName}}. This gathering brings together valued guests, partners, and colleagues for an evening of celebration, connection, and shared achievement, and your presence would make the occasion complete." }] },
+          { type: "paragraph", content: [{ type: "text", text: "The evening has been thoughtfully arranged so that every guest feels welcome from the moment they arrive. Please find the key details of the event below:" }] },
+          { type: "bulletList", content: [ { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Event: {{eventName}}" }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Date: {{eventDate}}" }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Venue: {{venue}}" }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Dress code: Formal attire" }] }] } ] },
+          { type: "paragraph", content: [{ type: "text", text: "So that we can prepare a seat and a warm welcome for you, kindly confirm your attendance by {{acceptanceDeadline}}. Should you wish to bring a guest, please let us know when you respond." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We would be truly honoured to have you join us, and we look forward to welcoming you on the day." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Warm regards," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "warning-letter",
+    slug: "warning-letter",
+    title: "Employee Warning Letter Template",
+    description: "Formal employee warning letter template to document a conduct or performance concern, cite specific incidents, and set clear expectations for improvement.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Employee Warning Letter Template",
+      fields: ["hrManagerName", "companyName", "email", "phone", "letterDate", "employeeName", "employeeId", "department", "signatureFullName"],
+      layout: {
+        header: "WARNING LETTER",
+        footer: "A copy of this letter will be placed in your personnel file."
+      },
+      styles: {
+        primaryColor: "#ea580c",
+        secondaryColor: "#c2410c"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{hrManagerName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{employeeName}} (Employee ID: {{employeeId}}), {{department}} Department" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Formal Written Warning" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{employeeName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "This letter serves as a formal written warning regarding conduct and performance that does not meet the standards expected of employees at {{companyName}}. The purpose of this notice is to make you clearly aware of the concern and to give you a fair opportunity to correct it." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Specifically, the following issues have been observed and documented:" }] },
+          { type: "bulletList", content: [ { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Repeated unexcused lateness and absence without prior notice." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Missed deadlines affecting the wider team's deliverables." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Failure to follow agreed procedures after previous verbal guidance." }] }] } ] },
+          { type: "paragraph", content: [{ type: "text", text: "We take these matters seriously because they affect your colleagues, our clients, and the reliability of the department as a whole. Please treat this warning as an opportunity to reset, not merely a reprimand." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We expect to see immediate and sustained improvement. Should the concerns continue, further disciplinary action, up to and including termination of employment, may follow. We remain willing to support you with any reasonable resources needed to succeed." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Please acknowledge receipt of this letter. You are welcome to schedule a meeting to discuss it." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "termination-letter",
+    slug: "termination-letter",
+    title: "Termination Letter Template",
+    description: "Formal termination letter template to end employment professionally, confirming the effective date, final settlement, and return of company property.",
+    isPremium: true,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Termination Letter Template",
+      fields: ["hrManagerName", "companyName", "email", "phone", "letterDate", "employeeName", "employeeId", "jobTitle", "department", "lastWorkingDay", "signatureFullName"],
+      layout: {
+        header: "TERMINATION LETTER",
+        footer: "We wish you well in your future endeavors."
+      },
+      styles: {
+        primaryColor: "#991b1b",
+        secondaryColor: "#7f1d1d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{hrManagerName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{employeeName}} (Employee ID: {{employeeId}}), {{jobTitle}}, {{department}} Department" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Notice of Termination of Employment" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{employeeName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "This letter is to formally notify you that your employment with {{companyName}} as {{jobTitle}} will end effective {{lastWorkingDay}}. This decision is final and has been reached after careful consideration and in line with company policy." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Your final salary, together with any outstanding accrued leave and eligible entitlements, will be settled in accordance with your contract and applicable regulations. The Human Resources team will contact you separately with a detailed breakdown of your final settlement." }] },
+          { type: "paragraph", content: [{ type: "text", text: "On or before your last working day, please return all company property in your possession, including your access badge, laptop, and any confidential documents or equipment. Your system access will be deactivated at the close of business on that date." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We appreciate the contributions you have made during your time with us and understand that this news is difficult to receive. If you have questions about next steps or references, HR will be glad to assist you." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We wish you the very best in your future endeavours." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "welcome-letter",
+    slug: "welcome-letter",
+    title: "New Employee Welcome Letter Template",
+    description: "Warm new employee welcome letter template to greet a new hire, confirm their start details, and help them feel supported from day one.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "New Employee Welcome Letter Template",
+      fields: ["hrManagerName", "companyName", "email", "phone", "letterDate", "employeeName", "jobTitle", "department", "joiningDate", "signatureFullName"],
+      layout: {
+        header: "WELCOME LETTER",
+        footer: "We are thrilled to have you on the team!"
+      },
+      styles: {
+        primaryColor: "#16a34a",
+        secondaryColor: "#15803d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{hrManagerName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{employeeName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Welcome to the {{companyName}} Team!" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{employeeName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "On behalf of everyone at {{companyName}}, it is my absolute pleasure to welcome you aboard as our new {{jobTitle}}. From the moment we met you during the hiring process, we were impressed, and we are genuinely excited for the energy and talent you will bring to the {{department}} team." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Your first day is {{joiningDate}}. To help you settle in quickly and start with confidence, here is what you can expect:" }] },
+          { type: "bulletList", content: [ { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "A warm team welcome and a tour of the workspace." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Your laptop, accounts, and access set up and ready to go." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "A structured onboarding plan and an assigned buddy for your first weeks." }] }] } ] },
+          { type: "paragraph", content: [{ type: "text", text: "Please do not feel you need to know everything on day one. We hired you for who you are, and we are committed to giving you the support, mentorship, and time you need to grow into the role and thrive here." }] },
+          { type: "paragraph", content: [{ type: "text", text: "If any questions come up before your start date, reach out to me directly at any time. We cannot wait to see what we will build together." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Warm regards," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "authorization-letter",
+    slug: "authorization-letter",
+    title: "Authorization Letter Template",
+    description: "Authorization letter template to formally grant another person permission to act, collect, or make decisions on your behalf for a defined purpose.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Authorization Letter Template",
+      fields: ["fullName", "senderAddress", "email", "phone", "letterDate", "recipientName", "recipientOrganization", "authorizedPersonName", "purposeOfRequest", "signatureFullName"],
+      layout: {
+        header: "AUTHORIZATION LETTER",
+        footer: "This authorization is valid until formally revoked in writing."
+      },
+      styles: {
+        primaryColor: "#4f46e5",
+        secondaryColor: "#4338ca"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{senderAddress}} | {{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientOrganization}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Letter of Authorization" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "To whom it may concern: " }, { type: "text", text: "I, {{fullName}}, hereby authorize {{authorizedPersonName}} to act on my behalf in the matter described below. This letter confirms that they have my full permission to proceed in my absence." }] },
+          { type: "paragraph", content: [{ type: "text", text: "The scope of this authorization is limited to the following purpose: {{purposeOfRequest}}. {{authorizedPersonName}} is authorized to sign, collect, submit, and receive any documents strictly necessary to complete this specific task, and nothing beyond it." }] },
+          { type: "paragraph", content: [{ type: "text", text: "This authorization is granted willingly and takes effect from the date of this letter. It remains valid only for the purpose stated above and may be revoked by me at any time through written notice." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Should you require any verification of this authorization, please contact me directly using the details provided above, and I will confirm the arrangement promptly." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thank you for your cooperation and assistance in this matter." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "sponsorship-letter",
+    slug: "sponsorship-letter",
+    title: "Sponsorship Request Letter Template",
+    description: "Sponsorship request letter template to invite a company to fund an event or cause, outlining the impact, audience, and benefits for the sponsor.",
+    isPremium: true,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Sponsorship Request Letter Template",
+      fields: ["fullName", "jobTitle", "organization", "contactEmail", "phone", "letterDate", "recipientName", "companyName", "eventName", "fundingRequested", "signatureFullName"],
+      layout: {
+        header: "SPONSORSHIP REQUEST",
+        footer: "Your generosity makes a lasting difference in our community."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#be185d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{organization}} | {{contactEmail}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientName}}, {{companyName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Sponsorship Opportunity for {{eventName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing on behalf of {{organization}} to invite {{companyName}} to become a sponsor of {{eventName}}. Your organization has a strong reputation for supporting the community, and we believe this partnership would be a natural and rewarding fit." }] },
+          { type: "paragraph", content: [{ type: "text", text: "This initiative brings real, measurable benefit to the people we serve, and it simply cannot happen at the scale we envision without the backing of generous partners. We are seeking sponsorship contributions of {{fundingRequested}} to make it a success." }] },
+          { type: "paragraph", content: [{ type: "text", text: "In return, we are proud to offer meaningful visibility and goodwill for {{companyName}}, including:" }] },
+          { type: "bulletList", content: [ { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Prominent logo placement across event banners and materials." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Recognition in press releases and across our social channels." }] }] }, { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Complimentary passes and a dedicated thank-you at the event." }] }] } ] },
+          { type: "paragraph", content: [{ type: "text", text: "I would welcome the chance to discuss how we can tailor this partnership to your goals. Thank you for considering our request; your support would make a lasting difference." }] },
+          { type: "paragraph", content: [{ type: "text", text: "With gratitude," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "farewell-letter",
+    slug: "farewell-letter",
+    title: "Farewell Letter Template",
+    description: "Heartfelt farewell letter template to say goodbye to colleagues, express gratitude for the journey, and share contact details to stay in touch.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Farewell Letter Template",
+      fields: ["fullName", "jobTitle", "department", "companyName", "email", "phone", "letterDate", "lastWorkingDay", "signatureFullName"],
+      layout: {
+        header: "FAREWELL LETTER",
+        footer: "Keep in touch - this is not goodbye, just see you later."
+      },
+      styles: {
+        primaryColor: "#0d9488",
+        secondaryColor: "#0f766e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{department}} Department, {{companyName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To my colleagues and friends," }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: A Fond Farewell and Thank You" }] },
+          { type: "paragraph", content: [{ type: "text", text: "As many of you already know, {{lastWorkingDay}} will be my last day at {{companyName}}. Before I go, I wanted to write to each of you personally, because a quick message in passing could never capture how much this chapter has meant to me." }] },
+          { type: "paragraph", content: [{ type: "text", text: "When I look back on my time here, it is not the projects or deadlines I remember most fondly, it is the people. Thank you for the collaboration, the patience during the hard weeks, the laughter during the good ones, and for making even ordinary days genuinely enjoyable." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am leaving to take on a new challenge, but I do so with a full heart and a great deal of gratitude. Everything I have learned alongside this team, professionally and personally, will travel with me into whatever comes next." }] },
+          { type: "paragraph", content: [{ type: "text", text: "This is not goodbye so much as see you later. Please stay in touch. You can reach me anytime at {{email}} or {{phone}}, and I would genuinely love to hear how you and your work are getting on." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Wishing every one of you continued success and happiness. Thank you for everything." }] },
+          { type: "paragraph", content: [{ type: "text", text: "With warmth and gratitude," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "follow-up-letter",
+    slug: "follow-up-letter",
+    title: "Follow-Up Letter Template",
+    description: "Professional follow-up letter template to reconnect after an interview or meeting, reaffirm interest, and prompt a clear next step.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters & Emails",
+    content: {
+      title: "Follow-Up Letter Template",
+      fields: ["fullName", "jobTitle", "email", "phone", "letterDate", "recipientName", "companyName", "jobPosition", "signatureFullName"],
+      layout: {
+        header: "FOLLOW-UP LETTER",
+        footer: "Thank you again for your time and consideration."
+      },
+      styles: {
+        primaryColor: "#2563eb",
+        secondaryColor: "#1d4ed8"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}}, {{jobTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{recipientName}}, {{companyName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "RE: Following Up on the {{jobPosition}} Interview" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I wanted to follow up and thank you again for taking the time to meet with me about the {{jobPosition}} role at {{companyName}}. I enjoyed our conversation, and it left me even more enthusiastic about the opportunity than I was before we spoke." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Our discussion confirmed how well my background aligns with what your team is looking for. Since we spoke, I have kept thinking about the challenges you described, and I am confident that my experience would let me contribute meaningfully and quickly from the start." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I also wanted to reiterate my genuine interest. The direction of the team and the way you described its goals resonate strongly with the kind of work I want to do, and I would be glad to provide any further references or information that would help your decision." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Please let me know if there is anything else you need from me, or if there is a natural next step in the process. I look forward to hearing from you when it is convenient." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thank you again for your time and consideration." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Best regards," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
   }
 ];

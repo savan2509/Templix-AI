@@ -1194,5 +1194,659 @@ export const invoicesTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "invoice-catering",
+    slug: "invoice-catering",
+    title: "Catering Invoice Template",
+    description: "Event catering invoice template for caterers billing weddings, corporate events, and parties by menu, guest count, and staffing.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Catering Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "clientEmail", "invoiceNumber", "invoiceDate", "eventDate", "venue", "guestCount", "menuPackage", "subtotal", "gratuity", "tax", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "CATERING INVOICE",
+        footer: "Thank you for letting us cater your event! Final headcount due 7 days prior."
+      },
+      styles: {
+        primaryColor: "#c2410c",
+        secondaryColor: "#431407"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CATERING INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Event: {{eventDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Caterer: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}} ({{clientEmail}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Event: " }, { type: "text", text: "{{menuPackage}} for {{guestCount}} guests at {{venue}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Menu & Service" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Menu Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Guests" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Per Head" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Three-course plated dinner" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "120" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$48.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$5,760.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Passed hors d'oeuvres (6 pc)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "120" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$14.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,680.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Bar service & bartenders" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2 staff" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$350.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$700.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Rentals (linens, china, glassware)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1 set" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$900.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$900.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}    Gratuity (18%): {{gratuity}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$723.20" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 40% deposit reserved your date; the balance above is due before the event." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-landscaping",
+    slug: "invoice-landscaping",
+    title: "Landscaping Invoice Template",
+    description: "Landscaping and lawn care invoice template for gardeners billing mowing, mulching, planting, and seasonal grounds maintenance.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Landscaping Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "propertyAddress", "invoiceNumber", "invoiceDate", "serviceDate", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "LANDSCAPING INVOICE",
+        footer: "Keeping your grounds green year-round. Payment due within 15 days."
+      },
+      styles: {
+        primaryColor: "#16a34a",
+        secondaryColor: "#14532d"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "LANDSCAPING INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Service Date: {{serviceDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landscaper: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Property: " }, { type: "text", text: "{{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Grounds Services" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Service" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty / Area" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Lawn mowing & edging" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "0.5 acre" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$140.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Mulch install (cedar, dyed brown)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8 cu yd" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$560.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Hedge & shrub trimming" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "14 shrubs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$210.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Seasonal flower bed planting" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3 beds" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$385.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$103.60" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Recurring weekly maintenance plans available at a 10% discount." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-tutoring",
+    slug: "invoice-tutoring",
+    title: "Tutoring Invoice Template",
+    description: "Tutoring invoice template for private tutors and academic coaches billing sessions by subject, hours, and test-prep packages.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Tutoring Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "studentName", "invoiceNumber", "invoiceDate", "billingPeriodStart", "billingPeriodEnd", "hourlyRate", "totalHours", "subtotal", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "TUTORING INVOICE",
+        footer: "Investing in bright futures, one session at a time. Payment due on receipt."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#2e1065"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "TUTORING INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Period: {{billingPeriodStart}} to {{billingPeriodEnd}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tutor: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parent / Client: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Student: " }, { type: "text", text: "{{studentName}} — {{totalHours}} hours at {{hourlyRate}}/hr" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sessions by Subject" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Subject" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Sessions" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Hours" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "AP Calculus" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "6" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$390.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "SAT Math Prep" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4.5" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$292.50" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Essay writing & review" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$195.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (13.5 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Sessions cancelled with less than 24 hours notice are billed at half rate." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-legal-services",
+    slug: "invoice-legal-services",
+    title: "Legal Services Invoice Template",
+    description: "Legal services invoice template for attorneys and law firms billing matters by billable hours, retainers, and court filing costs.",
+    isPremium: true,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Legal Services Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "matterName", "matterNumber", "invoiceNumber", "invoiceDate", "dueDate", "hourlyRate", "retainerApplied", "subtotal", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "LEGAL SERVICES INVOICE",
+        footer: "This statement reflects legal services rendered. Trust account balances applied where noted."
+      },
+      styles: {
+        primaryColor: "#1e40af",
+        secondaryColor: "#172554"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "LEGAL SERVICES INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Law Firm: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Matter: " }, { type: "text", text: "{{matterName}} (File {{matterNumber}}) billed at {{hourlyRate}}/hr" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Services (Billable Hours)" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Date & Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Hours" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Client consultation & case review" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3.2" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,120.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Drafting motion & pleadings" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5.5" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,925.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Court appearance & hearing" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2.0" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$700.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Court filing fees & disbursements" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "—" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$435.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (10.7 hrs + costs): " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Less Retainer Applied: " }, { type: "text", text: "{{retainerApplied}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Balance Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. This invoice is privileged and confidential attorney work product." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-marketing-agency",
+    slug: "invoice-marketing-agency",
+    title: "Marketing Agency Invoice Template",
+    description: "Marketing agency invoice template for billing retainers, ad spend, campaign management, and content deliverables to clients.",
+    isPremium: true,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Marketing Agency Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "clientCompany", "invoiceNumber", "invoiceDate", "dueDate", "campaignName", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "MARKETING INVOICE",
+        footer: "Driving measurable growth. Ad spend is billed at cost with no markup."
+      },
+      styles: {
+        primaryColor: "#db2777",
+        secondaryColor: "#500724"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MARKETING INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Agency: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}, {{clientCompany}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Campaign: " }, { type: "text", text: "{{campaignName}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Services & Media" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Line Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Detail" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Monthly retainer & strategy" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1 month" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$3,500.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Paid media ad spend (Google + Meta)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "At cost" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$5,000.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Content production (4 blogs, 12 posts)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "16 pieces" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "SEO & analytics reporting" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Included" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$650.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$876.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Monthly retainer invoices are issued on the 1st and support the full campaign calendar." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-electrician",
+    slug: "invoice-electrician",
+    title: "Electrician Invoice Template",
+    description: "Electrician invoice template for licensed electrical contractors billing fixtures, wiring, panel upgrades, labor, and permits.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Electrician Invoice Template",
+      fields: ["companyName", "licenseNumber", "clientName", "propertyAddress", "invoiceNumber", "serviceDate", "dueDate", "partsCost", "laborCost", "total", "amountDue", "warrantyPeriod"],
+      layout: {
+        header: "ELECTRICAL INVOICE",
+        footer: "Licensed & insured. All work meets current NEC code. Payment due within 15 days."
+      },
+      styles: {
+        primaryColor: "#ca8a04",
+        secondaryColor: "#422006"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "ELECTRICAL INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Service Date: {{serviceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Electrician: " }, { type: "text", text: "{{companyName}} (License {{licenseNumber}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Job Site: " }, { type: "text", text: "{{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Fixtures, Materials & Labor" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "200A panel upgrade" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,450.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Recessed LED fixtures installed" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$640.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "GFCI outlets & AFCI breakers" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "6" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$390.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Labor (2 electricians)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "10 hrs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$950.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Permit & inspection fee" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$185.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. All installations passed final inspection and meet current code." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-interior-design",
+    slug: "invoice-interior-design",
+    title: "Interior Design Invoice Template",
+    description: "Interior design invoice template for designers billing design fees, furnishings procurement, and project management to clients.",
+    isPremium: true,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Interior Design Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "propertyAddress", "invoiceNumber", "invoiceDate", "dueDate", "projectName", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "INTERIOR DESIGN INVOICE",
+        footer: "Curating spaces you love. Furnishing orders placed on receipt of deposit."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#042f2e"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "INTERIOR DESIGN INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Design Studio: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{projectName}} at {{propertyAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Services & Furnishings" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Detail" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Design concept & mood boards" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3 rooms" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,400.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3D renderings & space planning" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "6 views" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,600.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Furnishings & decor procurement" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "At trade cost" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$4,850.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Install day & styling" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1 day" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$900.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$780.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 50% design deposit is applied; furnishings ship after the balance clears." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-auto-repair",
+    slug: "invoice-auto-repair",
+    title: "Auto Repair Invoice Template",
+    description: "Auto repair invoice template for mechanics and garages billing parts, labor hours, diagnostics, and shop fees per vehicle.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Auto Repair Invoice Template",
+      fields: ["companyName", "clientName", "invoiceNumber", "serviceDate", "vehicleMakeModel", "vehicleVin", "odometer", "partsCost", "laborCost", "total", "amountDue", "warrantyPeriod"],
+      layout: {
+        header: "AUTO REPAIR INVOICE",
+        footer: "All parts and labor guaranteed. Please retain this invoice for your warranty."
+      },
+      styles: {
+        primaryColor: "#b91c1c",
+        secondaryColor: "#450a0a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "AUTO REPAIR INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Service Date: {{serviceDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Shop: " }, { type: "text", text: "{{companyName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Customer: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vehicle: " }, { type: "text", text: "{{vehicleMakeModel}} — VIN {{vehicleVin}} — {{odometer}} mi" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Parts & Labor" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Service / Part" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty / Hrs" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Diagnostic scan & inspection" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$110.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Front brake pads & rotors" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1 set" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$340.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Synthetic oil & filter change" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$89.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Labor (brake job + service)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3.5 hrs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$420.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Payment due on vehicle pickup; we accept card, cash, and financing." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-daycare",
+    slug: "invoice-daycare",
+    title: "Daycare Invoice Template",
+    description: "Daycare and childcare invoice template for centers billing tuition, enrollment fees, meals, and extended care per child.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Daycare Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "childName", "invoiceNumber", "invoiceDate", "billingPeriodStart", "billingPeriodEnd", "dueDate", "subtotal", "total", "amountDue", "paymentTerms"],
+      layout: {
+        header: "CHILDCARE INVOICE",
+        footer: "Where little ones grow and thrive. Tuition is billed monthly in advance."
+      },
+      styles: {
+        primaryColor: "#e11d48",
+        secondaryColor: "#4c0519"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CHILDCARE INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Issued: {{invoiceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Center: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parent / Guardian: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Child: " }, { type: "text", text: "{{childName}} — Billing period {{billingPeriodStart}} to {{billingPeriodEnd}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Tuition & Care Charges" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Charge" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Days / Detail" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Full-time tuition (Toddler room)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "20 days" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,200.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Meals & snacks program" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "20 days" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$160.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Extended care (after 5 PM)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8 days" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$120.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Supplies & activity fee" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Monthly" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$45.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A late fee of $25 applies after the 5th; sibling discounts are reflected above." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-ecommerce",
+    slug: "invoice-ecommerce",
+    title: "E-Commerce Order Invoice Template",
+    description: "E-commerce order invoice template for online stores billing products, shipping, discounts, and sales tax per customer order.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "E-Commerce Order Invoice Template",
+      fields: ["companyName", "companyEmail", "clientName", "shippingAddress", "orderNumber", "invoiceDate", "subtotal", "shippingCost", "discount", "taxAmount", "grandTotal", "amountDue", "paymentMethod"],
+      layout: {
+        header: "ORDER INVOICE",
+        footer: "Thanks for shopping with us! Track your order in your account dashboard."
+      },
+      styles: {
+        primaryColor: "#4338ca",
+        secondaryColor: "#1e1b4b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "ORDER INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Order #: " }, { type: "text", text: "{{orderNumber}}   Date: {{invoiceDate}}   Payment: {{paymentMethod}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Sold By" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Store: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Ship To" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Customer: " }, { type: "text", text: "{{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Address: " }, { type: "text", text: "{{shippingAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Order Summary" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Product / SKU" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Total" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Wireless Earbuds Pro (AUD-201)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$129.99" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$129.99" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Fast-Charge USB-C Cable (CBL-6FT)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$14.99" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$29.98" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Protective Case (CSE-BLK)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$24.99" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$24.99" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}    Shipping: {{shippingCost}}    Discount: {{discount}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Sales Tax: " }, { type: "text", text: "{{taxAmount}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Returns: " }, { type: "text", text: "Free 30-day returns on unopened items. Contact support with your order number for help." }] }
+        ]
+      }
+    }
   }
 ];

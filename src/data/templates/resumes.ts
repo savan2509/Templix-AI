@@ -680,5 +680,542 @@ export const resumesTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "resume-ux-designer",
+    slug: "resume-ux-designer",
+    title: "UX Designer Resume Template",
+    description: "User experience designer resume highlighting wireframing, usability testing, design systems, and product research portfolios.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "UX Designer Resume Template",
+      fields: ["fullName", "email", "phone", "portfolio", "linkedin", "summary", "uxResearchSkills", "designTools", "prototypingSkills", "designSystems", "featuredCaseStudy", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "UX DESIGNER RESUME",
+        footer: "Interactive case studies available in online portfolio."
+      },
+      styles: {
+        primaryColor: "#9333ea",
+        secondaryColor: "#3b0764"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "UX Designer · {{email}} · {{phone}} · Portfolio: {{portfolio}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior UX Designer " }, { type: "text", text: "— CloudNine SaaS (2021-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Redesigned the onboarding flow through 30+ moderated usability tests, lifting task-completion rate from 62% to 91%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built and maintained a Figma design system of 120+ components adopted across 4 product squads." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Ran generative and evaluative research that reshaped the roadmap and cut support tickets by 24%." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Product Designer " }, { type: "text", text: "— Nova Software Agency (2018-2021)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Delivered high-fidelity prototypes and interaction specs for a mobile checkout that raised conversion by 18%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Facilitated design-thinking workshops that aligned engineering, product, and marketing on a shared UX vision." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Research: {{uxResearchSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Tools: {{designTools}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Prototyping: {{prototypingSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Design systems: {{designSystems}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Featured Case Study" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{featuredCaseStudy}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-financial-analyst",
+    slug: "resume-financial-analyst",
+    title: "Financial Analyst Resume Template",
+    description: "Financial analyst resume highlighting valuation modeling, forecasting, variance analysis, and investment research experience.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Financial Analyst Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "financialModeling", "valuationSkills", "financialSoftware", "forecastingSkills", "keyDeal", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "FINANCIAL ANALYST RESUME",
+        footer: "CFA Level II Candidate. Detailed models available on request."
+      },
+      styles: {
+        primaryColor: "#1d4ed8",
+        secondaryColor: "#172554"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Financial Analyst · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Financial Analyst " }, { type: "text", text: "— Meridian Capital Partners (2021-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built a 3-statement DCF model that supported a $45M acquisition and delivered a 22% projected IRR." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Owned the annual budget and rolling 12-month forecast for a $200M business unit, holding variance under 3%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Automated monthly board reporting in Excel and Power Query, saving 20 analyst hours each close." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Financial Analyst " }, { type: "text", text: "— GlobalTech Industries (2018-2021)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Performed variance and profitability analysis across 6 product lines to guide pricing decisions." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Modeled capital-expenditure scenarios that reallocated $8M toward higher-return initiatives." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Modeling: {{financialModeling}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Valuation: {{valuationSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Software: {{financialSoftware}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Forecasting: {{forecastingSkills}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Key Transaction" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyDeal}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-hr-manager",
+    slug: "resume-hr-manager",
+    title: "HR Manager Resume Template",
+    description: "Human resources manager resume highlighting talent acquisition, employee relations, HRIS systems, and performance management.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "HR Manager Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "talentAcquisition", "employeeRelations", "hrSoftware", "compensationSkills", "hrInitiative", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "HR MANAGER RESUME",
+        footer: "SHRM-CP Certified. People-first leadership."
+      },
+      styles: {
+        primaryColor: "#be123c",
+        secondaryColor: "#4c0519"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "HR Manager · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Human Resources Manager " }, { type: "text", text: "— Acme Global Inc. (2020-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Scaled headcount from 120 to 340 employees while reducing time-to-hire from 52 days to 29 days." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Launched an engagement and retention program that lifted annual retention by 15% company-wide." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Rolled out a new HRIS and performance-review cycle covering the full employee lifecycle." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "HR Generalist " }, { type: "text", text: "— Rivera Strategy Group (2016-2020)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Handled employee relations, investigations, and conflict resolution for a 200-person workforce." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Administered benefits, payroll coordination, and open enrollment with 100% compliance." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Core Competencies" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Talent acquisition: {{talentAcquisition}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Employee relations: {{employeeRelations}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "HR systems: {{hrSoftware}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Compensation & benefits: {{compensationSkills}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signature Initiative" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{hrInitiative}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-mechanical-engineer",
+    slug: "resume-mechanical-engineer",
+    title: "Mechanical Engineer Resume Template",
+    description: "Mechanical engineer resume highlighting CAD design, FEA simulation, manufacturing processes, and product development experience.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Mechanical Engineer Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "cadSkills", "simulationSkills", "manufacturingSkills", "engineeringStandards", "keyProject", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "MECHANICAL ENGINEER RESUME",
+        footer: "EIT Certified. Portfolio of CAD drawings available."
+      },
+      styles: {
+        primaryColor: "#b45309",
+        secondaryColor: "#422006"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Mechanical Engineer · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Mechanical Engineer " }, { type: "text", text: "— Apex Manufacturing Corp. (2020-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Led the design of a hydraulic actuator assembly in SolidWorks that cut part count by 30% and unit cost by 18%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Ran FEA and thermal simulations in ANSYS that eliminated 3 field-failure modes before tooling release." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Drove a DFM initiative with suppliers that shortened production lead time from 12 weeks to 7." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Design Engineer " }, { type: "text", text: "— GlobalTech Industries (2016-2020)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Produced GD&T-compliant drawings and tolerance stack-ups for high-volume consumer products." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built and tested prototypes on the shop floor, iterating designs from concept to first article." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "CAD: {{cadSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Simulation: {{simulationSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Manufacturing: {{manufacturingSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Standards: {{engineeringStandards}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Flagship Project" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyProject}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-content-writer",
+    slug: "resume-content-writer",
+    title: "Content Writer Resume Template",
+    description: "Content writer resume highlighting SEO copywriting, editorial strategy, CMS publishing, and portfolio of published articles.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Content Writer Resume Template",
+      fields: ["fullName", "email", "phone", "portfolio", "linkedin", "summary", "writingSkills", "seoWritingSkills", "cmsTools", "contentTypes", "featuredByline", "degree", "university", "graduationYear"],
+      layout: {
+        header: "CONTENT WRITER RESUME",
+        footer: "Full writing portfolio and published bylines available online."
+      },
+      styles: {
+        primaryColor: "#0e7490",
+        secondaryColor: "#164e63"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Content Writer · {{email}} · {{phone}} · Portfolio: {{portfolio}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Content Writer " }, { type: "text", text: "— GrowthHive Marketing (2021-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Wrote 300+ SEO articles that grew organic blog traffic 180% and earned 40 first-page keyword rankings." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Owned the editorial calendar and style guide across a 5-writer team, keeping a consistent brand voice." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Turned long-form guides into email and social series that added 12,000 newsletter subscribers." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Copywriter " }, { type: "text", text: "— Apex Digital Agency (2018-2021)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Produced landing-page and ad copy that improved conversion rates by up to 35% in A/B tests." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Interviewed subject-matter experts to ghostwrite thought-leadership pieces for client executives." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Writing Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Writing craft: {{writingSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "SEO: {{seoWritingSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "CMS & tools: {{cmsTools}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Formats: {{contentTypes}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Featured Byline" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{featuredByline}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-business-analyst",
+    slug: "resume-business-analyst",
+    title: "Business Analyst Resume Template",
+    description: "Business analyst resume highlighting requirements gathering, process mapping, stakeholder management, and data-driven decision support.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Business Analyst Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "analysisSkills", "requirementsSkills", "baTools", "processModeling", "keyEngagement", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "BUSINESS ANALYST RESUME",
+        footer: "CBAP Certified. Requirements documentation available on request."
+      },
+      styles: {
+        primaryColor: "#3730a3",
+        secondaryColor: "#1e1b4b"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Business Analyst · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Business Analyst " }, { type: "text", text: "— GlobalTech Industries (2021-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Elicited and documented 200+ requirements for an ERP rollout, cutting post-launch change requests by 40%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Mapped current- and future-state processes in BPMN that surfaced $600K in annual efficiency savings." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Bridged business and engineering as product owner proxy, grooming a backlog across 3 Agile teams." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Business Analyst " }, { type: "text", text: "— Rivera Strategy Group (2017-2021)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Authored user stories, acceptance criteria, and UAT test cases for a customer-portal redesign." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built SQL and Tableau reports that gave leadership real-time visibility into KPIs across regions." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Core Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Analysis: {{analysisSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Requirements: {{requirementsSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Tools: {{baTools}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Process modeling: {{processModeling}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Key Engagement" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyEngagement}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-executive-assistant",
+    slug: "resume-executive-assistant",
+    title: "Executive Assistant Resume Template",
+    description: "Executive assistant resume highlighting calendar management, travel coordination, board support, and confidential communications.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Executive Assistant Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "administrativeSkills", "schedulingSkills", "officeSoftware", "communicationSkills", "keyContribution", "degree", "university", "graduationYear", "languagesKnown"],
+      layout: {
+        header: "EXECUTIVE ASSISTANT RESUME",
+        footer: "Trusted with confidential executive and board communications."
+      },
+      styles: {
+        primaryColor: "#9d174d",
+        secondaryColor: "#500724"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Executive Assistant · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Executive Assistant to the CEO " }, { type: "text", text: "— Acme Global Inc. (2020-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Managed a complex calendar of 40+ weekly meetings across 5 time zones with zero double-bookings." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Coordinated international travel, expense reports, and board-meeting logistics for a 9-member executive team." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Drafted confidential correspondence and prepared board decks that saved the CEO 10+ hours weekly." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Administrative Coordinator " }, { type: "text", text: "— Rivera Strategy Group (2016-2020)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Ran front-office operations and vendor relationships for a 120-person office." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Organized company events and offsites for up to 150 attendees, consistently under budget." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Core Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Administration: {{administrativeSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Scheduling: {{schedulingSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Software: {{officeSoftware}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Communication: {{communicationSkills}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Key Contribution" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyContribution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Languages" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}}) · Languages: {{languagesKnown}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-cybersecurity-analyst",
+    slug: "resume-cybersecurity-analyst",
+    title: "Cybersecurity Analyst Resume Template",
+    description: "Cybersecurity analyst resume highlighting threat detection, incident response, SIEM tooling, and security compliance frameworks.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Cybersecurity Analyst Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "securitySkills", "securityTools", "complianceFrameworks", "scriptingSkills", "keyIncident", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "CYBERSECURITY ANALYST RESUME",
+        footer: "CISSP Certified. Security clearance details on request."
+      },
+      styles: {
+        primaryColor: "#dc2626",
+        secondaryColor: "#450a0a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Cybersecurity Analyst · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Security Analyst " }, { type: "text", text: "— SentinelShield Security (2021-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Ran a 24/7 SOC using Splunk SIEM, cutting mean time to detect threats from 45 minutes to under 8." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Led incident response for a ransomware attempt, containing the threat with zero data exfiltration." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Hardened cloud infrastructure to SOC 2 and ISO 27001, closing 120+ findings across two audits." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Security Analyst " }, { type: "text", text: "— GlobalTech Industries (2018-2021)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Performed vulnerability scans and penetration tests, remediating critical CVEs within SLA." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built phishing-simulation and security-awareness training that dropped click-through rates by 60%." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Security: {{securitySkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Tools: {{securityTools}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Compliance: {{complianceFrameworks}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Scripting: {{scriptingSkills}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Notable Incident Response" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyIncident}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-pharmacist",
+    slug: "resume-pharmacist",
+    title: "Pharmacist Resume Template",
+    description: "Pharmacist resume highlighting medication dispensing, patient counseling, clinical protocols, and pharmacy licensure.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Pharmacist Resume Template",
+      fields: ["fullName", "email", "phone", "summary", "pharmacyLicenseNumber", "clinicalPharmacySkills", "pharmacySoftware", "patientCounseling", "keyContribution", "degree", "university", "graduationYear", "certificationName", "organization", "year", "languagesKnown"],
+      layout: {
+        header: "PHARMACIST RESUME",
+        footer: "Licensed Pharmacist (RPh) in good standing."
+      },
+      styles: {
+        primaryColor: "#047857",
+        secondaryColor: "#022c22"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Pharmacist, RPh · {{email}} · {{phone}} · License #: {{pharmacyLicenseNumber}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Staff Pharmacist " }, { type: "text", text: "— Riverside Community Pharmacy (2020-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Verified and dispensed 350+ prescriptions daily with a 99.98% accuracy rate and zero dispensing errors." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Delivered medication therapy management and immunizations to 1,200+ patients annually." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Launched a medication-adherence program that improved refill compliance by 22% among chronic patients." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Clinical Pharmacist " }, { type: "text", text: "— Stanford Health Care (2016-2020)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Reviewed inpatient orders for dosing, interactions, and renal adjustments across a 200-bed hospital." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Led antimicrobial-stewardship rounds that reduced broad-spectrum antibiotic use by 18%." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Clinical Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Clinical pharmacy: {{clinicalPharmacySkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Pharmacy systems: {{pharmacySoftware}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Patient counseling: {{patientCounseling}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Key Contribution" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyContribution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}}) · Languages: {{languagesKnown}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-civil-engineer",
+    slug: "resume-civil-engineer",
+    title: "Civil Engineer Resume Template",
+    description: "Civil engineer resume highlighting structural design, site management, AutoCAD drafting, and infrastructure project delivery.",
+    isPremium: true,
+    categorySlug: "resumes",
+    categoryName: "Resumes & CVs",
+    content: {
+      title: "Civil Engineer Resume Template",
+      fields: ["fullName", "email", "phone", "linkedin", "summary", "structuralSkills", "civilSoftware", "siteManagementSkills", "engineeringCodes", "keyProject", "degree", "university", "graduationYear", "certificationName", "organization", "year"],
+      layout: {
+        header: "CIVIL ENGINEER RESUME",
+        footer: "Professional Engineer (PE) licensed. Project portfolio on request."
+      },
+      styles: {
+        primaryColor: "#a16207",
+        secondaryColor: "#422006"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Civil Engineer, PE · {{email}} · {{phone}} · LinkedIn: {{linkedin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{summary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Civil Engineer " }, { type: "text", text: "— BuildRight Contractors (2020-2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Led structural design and delivery of a $30M highway-overpass project completed 2 months early." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Managed site inspections and QA/QC for 3 concurrent projects while maintaining a zero-incident safety record." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Optimized foundation designs in STAAD.Pro that reduced concrete volume and saved $450K in materials." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Civil Engineer " }, { type: "text", text: "— GlobalTech Industries (2016-2020)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Produced AutoCAD and Civil 3D drawings, grading plans, and drainage designs for commercial developments." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Coordinated with permitting authorities to secure approvals in compliance with local codes." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Structural: {{structuralSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Software: {{civilSoftware}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Site management: {{siteManagementSkills}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Codes & standards: {{engineeringCodes}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Flagship Project" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyProject}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education & Certifications" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{certificationName}} — {{organization}}, {{year}}" }] }
+        ]
+      }
+    }
   }
 ];
