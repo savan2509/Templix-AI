@@ -127,6 +127,21 @@ export default function Footer() {
                   Business Proposals
                 </Link>
               </li>
+              <li>
+                <Link href={`/${locale}/templates/reports`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Business Reports
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/templates/business-plans`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Business Plans
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/templates/quotations`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Price Quotations
+                </Link>
+              </li>
             </ul>
           </div>
 

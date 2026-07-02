@@ -3,6 +3,7 @@
 
 export const FIELD_DEFAULTS: Record<string, string> = {
   // — Universal / Shared —
+  date: "July 3, 2026",
   companyName: "Acme Global Inc.",
   companyEmail: "info@acmeglobal.com",
   companyLogo: "🏢",
@@ -687,7 +688,219 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   },
   "experience-letter": {
     responsibilities: "Full-stack development, database schema management, and code reviews."
-  }
+  },
+  // Reports
+  "business-report": {
+    reportPeriod: "Q3 2026", preparedBy: "Jane Whitfield", department: "Strategy & Finance",
+    executiveSummary: "Northwind Analytics delivered a strong quarter with double-digit revenue growth, improved margins, and record enterprise retention.",
+    revenueGrowth: "+13.5%", netMargin: "18.2%",
+    keyRisk: "Concentration of revenue among the top five enterprise accounts remains above target thresholds.",
+    strategicRecommendation: "Diversify the customer base by accelerating mid-market expansion and launching two new subscription tiers next quarter."
+  },
+  "project-status-report": {
+    reportPeriod: "Week 6 of 12", preparedBy: "Marcus Feldman", overallStatus: "On Track",
+    percentComplete: "52%", budgetStatus: "On budget — 48% of allocation spent",
+    topBlocker: "Awaiting client sign-off on data migration scope, delaying the integration workstream.",
+    nextMilestone: "Core Build completion (Week 6)"
+  },
+  "annual-report": {
+    reportPeriod: "2026", preparedBy: "Eleanor Voss, CFO",
+    chairMessage: "On behalf of the board, I am pleased to report a year of disciplined growth, strengthened governance, and meaningful progress against our long-term strategy.",
+    fullYearRevenue: "$214.8M", yoyGrowth: "+17.8%", dividendPerShare: "$0.62",
+    outlookStatement: "We enter the coming year confident in our balance sheet, our pipeline, and our ability to compound shareholder value through disciplined capital allocation."
+  },
+  "financial-report": {
+    reportPeriod: "Q2 2026", preparedBy: "Daniel Roarke", department: "Finance Department",
+    totalRevenue: "$5.0M", operatingExpenses: "$1.3M", netProfit: "$0.9M", cashPosition: "$3.4M",
+    analystNote: "Margins expanded on operating leverage and stable input costs; management maintains full-year guidance."
+  },
+  "sales-report": {
+    reportPeriod: "June 2026", preparedBy: "Priya Nandakumar", department: "Revenue Operations",
+    totalSales: "$1.32M", quotaAttainment: "104% of target", topRegion: "North America",
+    pipelineValue: "$4.7M open pipeline",
+    salesAction: "Prioritize EMEA renewals at risk and accelerate two late-stage enterprise deals to close before quarter-end."
+  },
+  "marketing-report": {
+    reportPeriod: "June 2026", preparedBy: "Chloe Bennett", department: "Growth Marketing",
+    totalSpend: "$27,000", leadsGenerated: "1,570", costPerLead: "$17.20",
+    bestChannel: "Organic / SEO — lowest cost per lead and highest conversion rate",
+    nextQuarterFocus: "Double down on content-led SEO, launch a lifecycle email program, and pilot paid social retargeting."
+  },
+  "incident-report": {
+    reportPeriod: "June 2026", preparedBy: "Alex Turner", department: "Site Reliability",
+    incidentId: "INC-2026-0417", severity: "SEV-2",
+    incidentSummary: "A configuration change to the primary region load balancer caused elevated error rates for a subset of customers for approximately 51 minutes.",
+    rootCause: "An unvalidated configuration deployment removed a required health-check rule, routing traffic to an unhealthy node pool.",
+    correctiveAction: "Rolled back the configuration, restored healthy routing, and added a mandatory pre-deployment validation gate for load balancer changes."
+  },
+  "research-report": {
+    reportPeriod: "Jan–Jun 2026", preparedBy: "Dr. Hannah Ostrom", department: "Research Division",
+    researchTitle: "Adoption Drivers in Enterprise SaaS",
+    abstract: "This study examines the factors influencing adoption and retention of enterprise SaaS platforms across three customer cohorts, drawing on survey, interview, and secondary data.",
+    methodology: "A mixed-methods design combining a 1,200-respondent survey, structured practitioner interviews, and secondary analysis of published industry datasets, with significance tested at the 0.05 level.",
+    keyFinding: "Onboarding quality was the strongest predictor of twelve-month retention, outweighing price sensitivity across all cohorts.",
+    conclusion: "Investing in structured onboarding and early value realization materially improves adoption and retention, warranting reallocation of budget toward customer enablement."
+  },
+  "progress-report": {
+    reportPeriod: "June 2026", preparedBy: "Nathan Cole", engagementName: "Operating Model Redesign",
+    overallProgress: "62%", hoursThisPeriod: "148 hours",
+    clientDependency: "Awaiting finalized headcount data from the client HR team to complete the target operating model.",
+    upcomingFocus: "Complete the design workstream, begin rollout readiness planning, and prepare the executive steering committee update."
+  },
+  "audit-report": {
+    reportPeriod: "FY2026", preparedBy: "Rebecca Lindqvist",
+    auditScope: "Review of IT general controls, vendor management, and business continuity processes across the primary operating entities.",
+    overallOpinion: "Partially Satisfactory — controls are largely effective with several areas requiring remediation.",
+    highRiskCount: "1",
+    keyFindingSummary: "Access reviews were not consistently performed, vendor contracts lacked standardized SLA clauses, and backup restoration testing was not evidenced.",
+    managementResponse: "Management accepts all findings and has committed to remediation within the stated timelines, assigning owners for each action item."
+  },
+  // Business Plans
+  "startup-business-plan": {
+    foundedYear: "2025", missionStatement: "Empower small businesses with affordable no-code automation.",
+    fundingAsk: "$1,000,000", founderName: "Priya Nair"
+  },
+  "restaurant-business-plan": {
+    cuisineType: "Modern American", seatingCapacity: "84", ownerName: "Marcus Bellini",
+    conceptStatement: "Seasonal, locally-sourced plates in a warm neighborhood setting."
+  },
+  "coffee-shop-business-plan": {
+    ownerName: "Elena Novak", dailyCustomers: "300", averageTicket: "$6.50", roastPartner: "Ironbark Roasters"
+  },
+  "ecommerce-business-plan": {
+    founderName: "Jordan Lee", productNiche: "sustainable home goods", targetAOV: "$68", storePlatform: "Shopify"
+  },
+  "nonprofit-business-plan": {
+    executiveDirector: "Angela Ruiz",
+    missionStatement: "Expand access to education and economic opportunity in underserved communities.",
+    einNumber: "84-3921750", beneficiariesServed: "2,500 youth"
+  },
+  "real-estate-business-plan": {
+    brokerName: "David Whitmore", licenseNumber: "RE-0198442", farmArea: "Lakeview and Highland Park", targetTransactions: "140"
+  },
+  "salon-business-plan": {
+    ownerName: "Sophia Laurent", numberOfStations: "8", serviceFocus: "Hair & Color", averageServicePrice: "$95"
+  },
+  "consulting-business-plan": {
+    principalName: "Rachel Coen", practiceArea: "Operations Strategy", targetDayRate: "$2,000", billableConsultants: "5"
+  },
+  "tech-startup-business-plan": {
+    founderName: "Aiden Park",
+    productVision: "Ship AI features in hours, not months, with reliable developer infrastructure.",
+    fundingRound: "$3M seed round", targetArr: "$10M ARR"
+  },
+  "fitness-gym-business-plan": {
+    ownerName: "Tyler Brooks", facilitySize: "6,500 sq ft", membershipTarget: "600", monthlyMembershipFee: "$89"
+  },
+  // Quotations
+  "price-quotation": { quoteNumber: "QT-1042", quoteDate: "July 3, 2026", validUntil: "August 2, 2026" },
+  "construction-quotation": {
+    quoteNumber: "CB-2087", quoteDate: "July 3, 2026", validUntil: "August 2, 2026",
+    projectAddress: "418 Ridgeline Drive, Austin, TX", projectScope: "New 2,400 sq ft residential extension", estimatedDuration: "14 weeks"
+  },
+  "it-services-quotation": {
+    quoteNumber: "TB-3310", quoteDate: "July 3, 2026", validUntil: "August 2, 2026",
+    contractTerm: "12 months", slaLevel: "Business Standard", monthlyTotal: "$2,900.00"
+  },
+  "catering-quotation": {
+    quoteNumber: "FF-5521", quoteDate: "July 3, 2026", validUntil: "July 24, 2026",
+    eventDate: "September 12, 2026", guestCount: "120", menuStyle: "Plated dinner", perPersonRate: "$58"
+  },
+  "printing-quotation": {
+    quoteNumber: "IW-7745", quoteDate: "July 3, 2026", validUntil: "July 17, 2026",
+    paperStock: "Gloss art 170gsm", turnaround: "5 business days"
+  },
+  "transport-quotation": {
+    quoteNumber: "SM-6620", quoteDate: "July 3, 2026", validUntil: "July 18, 2026",
+    originCity: "Chicago, IL", destinationCity: "Nashville, TN", cargoWeight: "18,500 lbs"
+  },
+  "event-quotation": {
+    quoteNumber: "GS-4408", quoteDate: "July 3, 2026", validUntil: "July 23, 2026",
+    eventName: "Annual Leadership Summit", eventDate: "October 5, 2026", venue: "Harborview Convention Center", guestCount: "350"
+  },
+  "software-development-quotation": {
+    quoteNumber: "BF-9012", quoteDate: "July 3, 2026", validUntil: "August 2, 2026",
+    projectName: "CustomerHub SaaS Platform", techStack: "Next.js, Node.js, PostgreSQL", timeline: "16 weeks"
+  },
+  "cleaning-services-quotation": {
+    quoteNumber: "PS-2256", quoteDate: "July 3, 2026", validUntil: "August 2, 2026",
+    propertyType: "Corporate office suite", squareFootage: "12,000 sq ft", frequency: "5 nights per week"
+  },
+  "interior-design-quotation": {
+    quoteNumber: "AI-3378", quoteDate: "July 3, 2026", validUntil: "August 2, 2026",
+    roomType: "Open-plan living room", designStyle: "Modern Scandinavian"
+  },
+  // Reports (batch 2)
+  "weekly-status-report": {
+    weekEnding: "July 4, 2026", overallHealth: "On Track (Green)",
+    highlightSummary: "The team hit all committed deliverables this week and cleared the carried-over backlog ahead of the client review.",
+    topBlocker: "Awaiting sign-off on the revised scope from the client sponsor.",
+    upcomingPriority: "Complete the draft recommendations deck for stakeholder review."
+  },
+  "monthly-performance-report": {
+    monthLabel: "June 2026", uptimePercent: "99.95%", slaCompliance: "100%", throughputVolume: "1.84M transactions",
+    performanceSummary: "Operations delivered above-target availability and throughput with no critical incidents during the month.",
+    improvementAction: "Roll out autoscaling on the payments tier to absorb peak-window latency spikes."
+  },
+  "expense-report": {
+    reportId: "EXP-2026-0642", reimbursableAmount: "$826.50", approverName: "Marcus Feldman, Finance Manager",
+    expenseNotes: "Client dinner exceeded the standard per-diem due to a large attendee group; pre-approved by department lead."
+  },
+  "inventory-report": {
+    warehouseLocation: "Distribution Center 3, Columbus OH", totalSkus: "1,472", stockValue: "$2.38M", lowStockCount: "14",
+    reorderAction: "Raise purchase orders for finished goods and the two fast-moving SKUs projected to stock out within lead time."
+  },
+  "employee-performance-report": {
+    employeeName: "Priya Nair", jobTitle: "Senior Product Analyst", overallRating: "Exceeds Expectations (4.2 / 5)",
+    reviewCycle: "H1 2026", managerName: "David Okonkwo",
+    developmentGoal: "Take ownership of the quarterly roadmap planning process and mentor one additional junior analyst."
+  },
+  "market-analysis-report": {
+    marketName: "North American SaaS Analytics", marketSize: "$14.6B", cagr: "12.4%", leadingCompetitor: "Datawave Analytics",
+    keyOpportunity: "Underserved mid-market segment growing at 14% with weak incumbent coverage.",
+    strategicImplication: "Prioritize a mid-market product tier and channel partnerships to capture share ahead of incumbents."
+  },
+  "quarterly-report": {
+    quarterLabel: "Q2 FY2026", quarterRevenue: "$100.8M", quarterlyGrowth: "+13.2% YoY", ebitdaMargin: "27.5%",
+    ceoComment: "We delivered double-digit growth led by subscription momentum while expanding margins through disciplined cost management.",
+    nextQuarterGuidance: "We expect Q3 revenue of $104M-$108M with continued margin expansion driven by the subscription mix shift."
+  },
+  "compliance-report": {
+    regulationFramework: "SOC 2 Type II", complianceScore: "92%", openViolations: "3", remediationOwner: "Angela Torres, Chief Compliance Officer",
+    attestationStatement: "Based on the evidence reviewed, controls operated effectively except for the noted data-retention and vendor-assessment gaps, which are scheduled for remediation within 30 days."
+  },
+  "feasibility-report": {
+    projectName: "Riverside Fulfillment Automation", estimatedCost: "$4.7M", projectedRoi: "31% over 5 years",
+    paybackPeriod: "3.2 years", viabilityScore: "78 / 100 (Favorable)",
+    recommendation: "Proceed with a phased pilot before full-scale rollout, releasing capital against milestone gates to contain overrun risk."
+  },
+  "site-inspection-report": {
+    siteName: "Meridian Tower, Phase 2", inspectorName: "Raymond Hollis, Lic. #BC-40912", overallCondition: "Fair — remediation required",
+    defectCount: "6", permitStatus: "Valid through Dec 2026",
+    followUpAction: "Rectify all high-priority electrical and guardrail defects before the next concrete pour and schedule a verification re-inspection."
+  },
+  // Business Plans (batch 2)
+  "bakery-business-plan": { specialtyProduct: "24-hour naturally leavened sourdough", dailyOutput: "400", wholesaleAccounts: "12" },
+  "food-truck-business-plan": { cuisineStyle: "Korean-Mexican Fusion", serviceRadius: "25-mile", eventsPerMonth: "10" },
+  "clothing-boutique-business-plan": { apparelStyle: "Modern Women's", averageBasket: "$120" },
+  "daycare-business-plan": { licensedCapacity: "64", ageRange: "6 weeks to 5 years", weeklyTuition: "$310" },
+  "cleaning-company-business-plan": { serviceArea: "Greater Metro", crewCount: "4", averageJobPrice: "$180" },
+  "photography-business-plan": { photographyNiche: "Wedding & Portrait", sessionRate: "$450" },
+  "landscaping-business-plan": { serviceRegion: "North County", crewCount: "3", averageContractValue: "$3,200" },
+  "auto-repair-business-plan": { bayCount: "6", laborRate: "$130/hour" },
+  "spa-business-plan": { treatmentFocus: "Massage & Skincare", treatmentRooms: "6", averageTreatmentPrice: "$135" },
+  "franchise-business-plan": { franchiseBrand: "BrightBrand", initialFranchiseFee: "$45,000", royaltyRate: "6%", targetUnits: "45" },
+  // Quotations (batch 2)
+  "plumbing-quotation": { propertyAddress: "48 Riverside Lane, Portland, OR 97201", jobScope: "Master bath re-pipe, fixture install, and water heater replacement" },
+  "electrical-quotation": { siteAddress: "215 Oakmont Ave, Austin, TX 78704", panelRating: "200A" },
+  "landscaping-quotation": { propertySize: "0.35-acre", projectType: "full backyard landscape renovation" },
+  "painting-quotation": { surfaceArea: "1,800 sq ft of interior walls and trim", paintFinish: "eggshell" },
+  "hvac-quotation": { systemType: "central air conditioning and gas furnace system", tonnage: "3-ton" },
+  "roofing-quotation": { roofType: "architectural asphalt shingle", roofArea: "2,400 sq ft (24 squares)" },
+  "marketing-quotation": { campaignName: "Q3 Growth Accelerator", channelFocus: "paid search, SEO, and content" },
+  "photography-quotation": { shootType: "full-day wedding coverage", shootDate: "September 14, 2026", deliverables: "400 edited images, online gallery, and album" },
+  "web-design-quotation": { projectName: "the corporate marketing website", pageCount: "8 responsive pages" },
+  "consulting-quotation": { engagementName: "Operations Transformation", engagementTerm: "a 10-week engagement" }
 };
 
 // Distinct letterhead brand (company / person) per template, so every cover and
@@ -824,6 +1037,72 @@ export const SLUG_BRAND: Record<string, string> = {
   "sponsorship-letter": "Riverside Youth Foundation",
   "farewell-letter": "David Miller",
   "follow-up-letter": "Michael Chen",
+  // Reports
+  "business-report": "Northwind Analytics",
+  "project-status-report": "Apex Project Group",
+  "annual-report": "Vertex Holdings Inc.",
+  "financial-report": "Sterling Finance Group",
+  "sales-report": "Momentum Sales Co.",
+  "marketing-report": "BrightReach Marketing",
+  "incident-report": "SafeGuard Operations",
+  "research-report": "Insight Research Labs",
+  "progress-report": "Milestone Consulting",
+  "audit-report": "Clarity Audit Partners",
+  // Business Plans
+  "startup-business-plan": "NexGen Ventures",
+  "restaurant-business-plan": "The Copper Fork",
+  "coffee-shop-business-plan": "Daybreak Coffee Co.",
+  "ecommerce-business-plan": "ShopSphere",
+  "nonprofit-business-plan": "Bright Futures Foundation",
+  "real-estate-business-plan": "Cornerstone Realty",
+  "salon-business-plan": "Luxe Hair & Beauty",
+  "consulting-business-plan": "Pinnacle Advisory",
+  "tech-startup-business-plan": "CodeNova Labs",
+  "fitness-gym-business-plan": "IronCore Fitness",
+  // Quotations
+  "price-quotation": "Vantage Supplies Co.",
+  "construction-quotation": "Cornerstone Builders",
+  "it-services-quotation": "TechBridge Solutions",
+  "catering-quotation": "Feast & Fork Catering",
+  "printing-quotation": "InkWorks Printing",
+  "transport-quotation": "SwiftMove Logistics",
+  "event-quotation": "Grand Stage Events",
+  "software-development-quotation": "ByteForge Studio",
+  "cleaning-services-quotation": "PureShine Cleaning",
+  "interior-design-quotation": "Aria Interiors Studio",
+  // Reports (batch 2)
+  "weekly-status-report": "Cadence Consulting",
+  "monthly-performance-report": "Bluepeak Operations",
+  "expense-report": "LedgerLine Finance",
+  "inventory-report": "StockFlow Warehousing",
+  "employee-performance-report": "TalentEdge HR",
+  "market-analysis-report": "Insight Metrics Group",
+  "quarterly-report": "Vantage Corporate",
+  "compliance-report": "SafeHarbor Compliance",
+  "feasibility-report": "Cornerstone Advisory",
+  "site-inspection-report": "BuildCheck Inspections",
+  // Business Plans (batch 2)
+  "bakery-business-plan": "Golden Crust Bakery",
+  "food-truck-business-plan": "Rolling Bites",
+  "clothing-boutique-business-plan": "Willow & Thread",
+  "daycare-business-plan": "Little Explorers Daycare",
+  "cleaning-company-business-plan": "FreshNest Cleaning",
+  "photography-business-plan": "Lumen Photography",
+  "landscaping-business-plan": "Evergreen Landscapes",
+  "auto-repair-business-plan": "TorqueMasters Auto",
+  "spa-business-plan": "Serenity Day Spa",
+  "franchise-business-plan": "BrightBrand Franchising",
+  // Quotations (batch 2)
+  "plumbing-quotation": "FlowRight Plumbing",
+  "electrical-quotation": "VoltEdge Electrical",
+  "landscaping-quotation": "GreenVista Landscaping",
+  "painting-quotation": "TrueCoat Painting",
+  "hvac-quotation": "ClimatePro HVAC",
+  "roofing-quotation": "SummitLine Roofing",
+  "marketing-quotation": "Amplify Marketing",
+  "photography-quotation": "Lumina Photography",
+  "web-design-quotation": "Nova Web Design",
+  "consulting-quotation": "Meridian Consulting",
 };
 
 // The letterhead brand for a template (falls back to the generic company name).

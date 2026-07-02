@@ -203,7 +203,7 @@ export default async function HomePage({ params }: PageProps) {
               <span>Browse Categories</span>
             </h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.slug}

@@ -82,6 +82,9 @@ const CATEGORY_IMAGES: Record<string, string> = {
   "proposals":     "/cat-proposals-cover.jpg",
   "letters":       "/cat-letters-cover.jpg",
   "cover-letters": "/cat-letters-cover.jpg",
+  "reports":        "/cat-reports-cover.jpg",
+  "business-plans": "/cat-business-plans-cover.jpg",
+  "quotations":     "/cat-quotations-cover.jpg",
 };
 
 function getTemplateImage(slug: string, categorySlug: string): string | null {

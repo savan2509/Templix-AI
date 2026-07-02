@@ -113,13 +113,17 @@ export default function Navbar() {
       name: { en: "Proposals", es: "Propuestas", de: "Vorschläge", fr: "Propositions", ar: "المقترحات" }, 
       href: `/${currentLocale}/templates/proposals`
     },
-    { 
-      name: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" }, 
+    {
+      name: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" },
       href: `/${currentLocale}/templates/letters`
     },
-    { 
-      name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" }, 
-      href: `/${currentLocale}/blog` 
+    {
+      name: { en: "Reports", es: "Informes", de: "Berichte", fr: "Rapports", ar: "التقارير" },
+      href: `/${currentLocale}/templates/reports`
+    },
+    {
+      name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" },
+      href: `/${currentLocale}/blog`
     },
   ];
 
@@ -145,7 +149,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Menu items */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {menuItems.map((item) => (
                 <Link
                   key={item.href}

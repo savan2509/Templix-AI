@@ -49,6 +49,30 @@ export const CATEGORIES = [
     count: 31,
     accent: "emerald",
   },
+  {
+    slug: "reports",
+    name: "Reports",
+    description: "Business, project & annual reports",
+    image: "/cat-reports-cover.jpg",
+    count: 20,
+    accent: "rose",
+  },
+  {
+    slug: "business-plans",
+    name: "Business Plans",
+    description: "Startup plans, strategy & financials",
+    image: "/cat-business-plans-cover.jpg",
+    count: 20,
+    accent: "amber",
+  },
+  {
+    slug: "quotations",
+    name: "Quotations",
+    description: "Price quotes, estimates & bids",
+    image: "/cat-quotations-cover.jpg",
+    count: 20,
+    accent: "cyan",
+  },
 ] as const;
 
 

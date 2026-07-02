@@ -6,6 +6,9 @@ import { resumesTemplates } from "./templates/resumes";
 import { contractsTemplates } from "./templates/contracts";
 import { proposalsTemplates } from "./templates/proposals";
 import { lettersTemplates } from "./templates/letters";
+import { reportsTemplates } from "./templates/reports";
+import { businessPlansTemplates } from "./templates/business-plans";
+import { quotationsTemplates } from "./templates/quotations";
 
 export const allFallbackTemplates: any[] = [
   ...invoicesTemplates,
@@ -13,4 +16,7 @@ export const allFallbackTemplates: any[] = [
   ...contractsTemplates,
   ...proposalsTemplates,
   ...lettersTemplates,
+  ...reportsTemplates,
+  ...businessPlansTemplates,
+  ...quotationsTemplates,
 ];
