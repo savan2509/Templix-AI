@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchHero from "@/components/SearchHero";
 import FAQ from "@/components/FAQ";
+import TemplateThumbnail from "@/components/TemplateThumbnail";
 import { faqSchema } from "@/data/faq";
 import { CATEGORIES } from "@/constants";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
@@ -20,13 +21,6 @@ import {
 } from "lucide-react";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
-
-// Template slug → preview image mapping (images stored in /public)
-const TEMPLATE_IMAGES: Record<string, string> = {
-  "invoice-freelancer": "/invoice-template-preview.png",
-  "resume-software-engineer": "/resume-template-preview.png",
-  "freelance-agreement": "/contract-template-preview.png",
-};
 
 // ── Robust high-fidelity mock fallbacks ────────────────────────────────────
 const fallbackTemplates = [
@@ -273,29 +267,18 @@ export default async function HomePage({ params }: PageProps) {
                   key={temp.id}
                   className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
                 >
-                  {/* Thumbnail */}
-                  <div className="aspect-[4/3] w-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden">
-                    {TEMPLATE_IMAGES[temp.slug] ? (
-                      <Image
-                        src={TEMPLATE_IMAGES[temp.slug]}
-                        alt={`${temp.title} preview`}
-                        fill
-                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    ) : (
-                      <div className="p-4 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200/50 dark:border-zinc-800 text-center w-full max-w-[200px] space-y-1">
-                        <FileText className="h-8 w-8 text-blue-500 mx-auto" />
-                        <p className="font-semibold text-xs text-zinc-800 dark:text-zinc-200 truncate">{temp.title}</p>
-                        <p className="text-[10px] text-zinc-400">{temp.category.name}</p>
-                      </div>
-                    )}
-
-                    {/* Subtle gradient overlay for depth */}
-                    {TEMPLATE_IMAGES[temp.slug] && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
-                    )}
-
+                  {/* Thumbnail — mini of the live document preview so the cover
+                      matches the detail page for every module */}
+                  <div className="aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
+                    <TemplateThumbnail
+                      template={{
+                        title: temp.title,
+                        categoryName: temp.category?.name,
+                        content:
+                          (temp as any).content ??
+                          allFallbackTemplates.find((a) => a.slug === temp.slug)?.content,
+                      }}
+                    />
                     <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
                       Free
                     </span>

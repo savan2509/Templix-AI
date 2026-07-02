@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import TemplateDetailView from "@/components/TemplateDetailView";
+import TemplateThumbnail from "@/components/TemplateThumbnail";
 import { CATEGORIES } from "@/constants";
 import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
@@ -637,126 +638,15 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               ) : (
                 <div className="grid md:grid-cols-2 gap-6">
                   {templates.map((temp) => {
-                    const customPreview = TEMPLATE_IMAGES[temp.slug] || null;
                     return (
                     <div
                       key={temp.id}
                       className="group flex flex-col border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
                     >
-                      {/* Card Thumbnail */}
-                      <div className="aspect-[4/3] w-full bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden">
-                        {customPreview ? (
-                          <Image
-                            src={customPreview}
-                            alt={`${temp.title} template preview`}
-                            fill
-                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
-                        ) : (
-                          /* Dynamic CSS Document Preview Fallback */
-                          <div className="w-full h-full p-5 flex flex-col justify-between select-none bg-zinc-50 dark:bg-zinc-900/35 transition-colors">
-                            {/* Document Header Mock */}
-                            <div className="flex justify-between items-start">
-                              <div className="space-y-1">
-                                <div className="h-3 w-16 rounded bg-zinc-300 dark:bg-zinc-700" />
-                                <div className="h-2 w-10 rounded bg-zinc-200 dark:bg-zinc-800" />
-                              </div>
-                              <span 
-                                className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border text-center"
-                                style={{ 
-                                  color: temp.content?.styles?.primaryColor || "#3b82f6", 
-                                  borderColor: `${temp.content?.styles?.primaryColor || "#3b82f6"}30`,
-                                  backgroundColor: `${temp.content?.styles?.primaryColor || "#3b82f6"}10`
-                                }}
-                              >
-                                {temp.content?.layout?.header || temp.categoryName || "Document"}
-                              </span>
-                            </div>
-
-                            {/* Category Specific Layout Content Mock */}
-                            <div className="flex-1 my-3 flex flex-col justify-center">
-                              {temp.categorySlug === "resumes" ? (
-                                /* Resume Layout */
-                                <div className="space-y-2">
-                                  <div className="flex items-center gap-2">
-                                    <div className="h-6 w-6 rounded-full bg-zinc-200 dark:bg-zinc-800 shrink-0" />
-                                    <div className="space-y-1 flex-1">
-                                      <div className="h-2.5 w-1/2 rounded bg-zinc-300 dark:bg-zinc-700" style={{ backgroundColor: temp.content?.styles?.primaryColor }} />
-                                      <div className="h-1.5 w-1/3 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    </div>
-                                  </div>
-                                  <div className="space-y-1 pt-1 border-t border-zinc-100 dark:border-zinc-800">
-                                    <div className="h-1.5 w-full rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    <div className="h-1.5 w-5/6 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                  </div>
-                                </div>
-                              ) : temp.categorySlug === "contracts" ? (
-                                /* Contract Layout */
-                                <div className="space-y-2.5">
-                                  <div className="space-y-1.5">
-                                    <div className="h-2 w-1/3 rounded bg-zinc-300 dark:bg-zinc-700" style={{ backgroundColor: temp.content?.styles?.primaryColor }} />
-                                    <div className="h-1.5 w-full rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    <div className="h-1.5 w-5/6 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                  </div>
-                                  <div className="flex gap-4 pt-1">
-                                    <div className="flex-1 h-3 rounded border border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950" />
-                                    <div className="flex-1 h-3 rounded border border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950" />
-                                  </div>
-                                </div>
-                              ) : temp.categorySlug === "proposals" ? (
-                                /* Proposal Layout */
-                                <div className="space-y-2 border border-zinc-100 dark:border-zinc-800 rounded-xl p-2.5 bg-white dark:bg-zinc-950 shadow-sm">
-                                  <div className="h-2.5 w-2/3 rounded bg-zinc-300 dark:bg-zinc-700" style={{ backgroundColor: temp.content?.styles?.primaryColor }} />
-                                  <div className="space-y-1">
-                                    <div className="h-1.5 w-full rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    <div className="h-1.5 w-4/5 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                  </div>
-                                </div>
-                              ) : temp.categorySlug === "letters" ? (
-                                /* Letter Layout */
-                                <div className="space-y-2">
-                                  <div className="space-y-1">
-                                    <div className="h-1.5 w-1/4 rounded bg-zinc-200 dark:bg-zinc-800" style={{ backgroundColor: temp.content?.styles?.primaryColor }} />
-                                    <div className="h-1.5 w-1/3 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                  </div>
-                                  <div className="space-y-1.5 pt-1">
-                                    <div className="h-1.5 w-full rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    <div className="h-1.5 w-full rounded bg-zinc-200 dark:bg-zinc-800" />
-                                    <div className="h-1.5 w-3/4 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                  </div>
-                                </div>
-                              ) : (
-                                /* Default / Invoice Layout */
-                                <div className="space-y-2 w-full">
-                                  <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-white dark:bg-zinc-950 shadow-sm">
-                                    <div className="h-4 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 px-2 flex items-center justify-between">
-                                      <div className="h-1.5 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
-                                      <div className="h-1.5 w-4 rounded bg-zinc-200 dark:bg-zinc-700" />
-                                    </div>
-                                    <div className="p-2 flex items-center justify-between gap-4">
-                                      <div className="h-1.5 w-20 rounded bg-zinc-200 dark:bg-zinc-800" />
-                                      <div className="h-1.5 w-8 rounded bg-zinc-300 dark:bg-zinc-700" style={{ backgroundColor: temp.content?.styles?.primaryColor }} />
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Document Footer Mock */}
-                            <div className="flex justify-between items-end border-t border-zinc-100 dark:border-zinc-800/80 pt-2 text-[8px] text-zinc-400 dark:text-zinc-500">
-                              <span>Free Layout</span>
-                              <span className="font-bold text-xs" style={{ color: temp.content?.styles?.primaryColor || "#3b82f6" }}>
-                                {temp.categorySlug === "invoices" ? "$4,500" : "• • •"}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Gradient overlay */}
-                        {customPreview && (
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
-                        )}
+                      {/* Card Thumbnail — a mini of the live document preview so
+                          the cover matches the detail page for every module */}
+                      <div className="aspect-[4/5] w-full border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
+                        <TemplateThumbnail template={temp} />
 
                         <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
                           Free

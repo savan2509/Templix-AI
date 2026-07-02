@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { TableKit } from "@tiptap/extension-table";
 import { exportToDocx, exportToPdf } from "../services";
 import { saveDocumentAction, rewriteTextAction } from "../actions";
 import { useRouter, usePathname } from "next/navigation";
@@ -111,7 +112,7 @@ export default function EditorCanvas({
   };
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, TableKit],
     content: TemplateEngine.renderTemplate(initialContent, prefills),
     editorProps: {
       attributes: {
