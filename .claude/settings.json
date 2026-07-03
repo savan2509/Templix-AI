@@ -10,7 +10,9 @@
       "Bash(node \"C:/Users/Admin/AppData/Local/Temp/claude/e--templix-ai/d0426abd-ffc6-4447-ba2b-79ccacf3be1d/scratchpad/merge-defaults.js\")",
       "Bash(curl -s \"http://localhost:3000/en/templates/contracts/loan-agreement\")",
       "Bash(node \"C:/Users/Admin/AppData/Local/Temp/claude/e--templix-ai/d0426abd-ffc6-4447-ba2b-79ccacf3be1d/scratchpad/leak-scan.js\")",
-      "Bash(awk 'NR>=11 && NR<=586' src/features/templates/sample-values.ts)"
+      "Bash(awk 'NR>=11 && NR<=586' src/features/templates/sample-values.ts)",
+      "Bash(ls -la .env*)",
+      "Bash(git check-ignore *)"
     ]
   }
 }

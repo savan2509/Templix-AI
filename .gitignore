@@ -19,6 +19,11 @@
 .DS_Store
 *.pem
 
+# env files (keep secrets out of git; .env.example stays tracked)
+.env
+.env.*
+!.env.example
+
 # debug
 npm-debug.log*
 yarn-debug.log*
