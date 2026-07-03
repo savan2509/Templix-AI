@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   verification: {
-    google: "jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE",
+    google: "google-site-verification=jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE",
   },
   icons: {
     icon: [
