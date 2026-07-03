@@ -1,4 +1,4 @@
-import { getTemplateValues, getTemplateBrand } from "@/features/templates/sample-values";
+import { getTemplateValues, getTemplateBrand, getTemplateDefaults } from "@/features/templates/sample-values";
 
 // The document "paper" render shared by the detail-page live preview and the
 // card thumbnail, so the cover image is a true mini of the live preview.
@@ -37,7 +37,14 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   const baseVals = values ?? getTemplateValues(template);
   // Ensure the letterhead company reflects this template's distinct brand.
   const brand = baseVals.companyName || getTemplateBrand(template);
-  const vals = { ...baseVals, companyName: brand };
+  // Layer every known default UNDER the passed/field values so any variable used
+  // in the body but absent from `content.fields` still resolves to a real sample
+  // value (non-empty passed values win; unknown vars fall through to humanize).
+  const vals: Record<string, string> = { ...getTemplateDefaults(template) };
+  for (const [k, v] of Object.entries(baseVals)) {
+    if (v) vals[k] = v;
+  }
+  vals.companyName = brand;
   const primary = template?.content?.styles?.primaryColor || "#2563eb";
   const secondary = template?.content?.styles?.secondaryColor || "#3b82f6";
   const footerText: string | undefined = template?.content?.layout?.footer;

@@ -4,6 +4,10 @@
 export const FIELD_DEFAULTS: Record<string, string> = {
   // — Universal / Shared —
   date: "July 3, 2026",
+  organizationName: "Cedar Grove Foundation",
+  employeeName: "Jordan Mitchell",
+  quoteNumber: "QT-2026-0148",
+  quoteDate: "July 3, 2026",
   companyName: "Acme Global Inc.",
   companyEmail: "info@acmeglobal.com",
   companyLogo: "🏢",
@@ -1105,6 +1109,443 @@ export const SLUG_BRAND: Record<string, string> = {
   "consulting-quotation": "Meridian Consulting",
 };
 
+export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
+  "invoice-timesheet": {
+    billingPeriodStart: "June 1, 2026",
+    billingPeriodEnd: "June 30, 2026",
+    totalHours: "160"
+  },
+  "invoice-milestone": {
+    contractRef: "MSA-2026-0042",
+    milestoneNumber: "2",
+    milestoneName: "Core Build & Integration",
+    milestoneStatus: "In Progress"
+  },
+  "invoice-receipt": {
+    payerName: "Daniel Cortez",
+    receiptNumber: "RCPT-2026-0417",
+    paymentDate: "June 28, 2026",
+    transactionId: "TXN-88213004",
+    amountPaid: "$4,500.00"
+  },
+  "invoice-rental": {
+    unitNumber: "4B",
+    rentalPeriod: "July 2026",
+    baseRent: "$1,850.00",
+    additionalFees: "$185.00"
+  },
+  "invoice-estimate": {
+    estimateNumber: "EST-2026-0231",
+    issueDate: "July 3, 2026",
+    estimatedTotal: "$13,200.00"
+  },
+  "invoice-purchase-order": {
+    supplierName: "Global Hardware Corp",
+    orderDate: "July 1, 2026",
+    deliveryAddress: "1400 Logistics Park Dr, Dock 7, Memphis, TN 38118",
+    goodsDescription: "Data center hardware — server racks, UPS units, and Cat6 cabling",
+    totalCost: "$7,660.00"
+  },
+  "invoice-recurring-subscription": {
+    billingPeriod: "July 1 – July 31, 2026"
+  },
+  "invoice-medical": {
+    patientName: "Laura Bennett",
+    insuranceRef: "BCBS-8842-0091"
+  },
+  "invoice-catering": {
+    menuPackage: "Plated Dinner Package",
+    gratuity: "$1,627.20"
+  },
+  "invoice-tutoring": {
+    studentName: "Ethan Bennett",
+    billingPeriodStart: "June 1, 2026",
+    billingPeriodEnd: "June 30, 2026",
+    totalHours: "13.5"
+  },
+  "invoice-legal-services": {
+    matterName: "Contract Dispute — Bennett v. Halcyon LLC",
+    matterNumber: "LGL-2026-0188",
+    retainerApplied: "$2,500.00"
+  },
+  "invoice-auto-repair": {
+    vehicleMakeModel: "2019 Honda Accord EX-L",
+    vehicleVin: "1HGCV1F30KA012345",
+    odometer: "68,240 mi"
+  },
+  "invoice-daycare": {
+    childName: "Mia Thompson",
+    billingPeriodStart: "June 1, 2026",
+    billingPeriodEnd: "June 30, 2026"
+  },
+  "resume-fresher-graduate": {
+    objective: "Motivated Computer Science graduate seeking an entry-level software engineering role to apply strong programming fundamentals and a passion for building user-focused products."
+  },
+  "resume-product-manager": {
+    productSkills: "Roadmapping, user research, A/B testing, OKRs, backlog prioritization, go-to-market strategy"
+  },
+  "resume-devops-engineer": {
+    certifications: "AWS Certified DevOps Engineer – Professional, Certified Kubernetes Administrator (CKA), HashiCorp Terraform Associate"
+  },
+  "resume-ux-designer": {
+    uxResearchSkills: "User interviews, usability testing, journey mapping, A/B testing, persona development",
+    designTools: "Figma, Sketch, Adobe XD, Framer, Miro",
+    prototypingSkills: "Interactive prototyping, micro-interactions, design handoff, motion design",
+    designSystems: "Component libraries, design tokens, accessibility (WCAG 2.1), pattern documentation",
+    featuredCaseStudy: "Redesigned a 2M-user SaaS onboarding flow, lifting task-completion rate from 62% to 91% across 30+ usability tests."
+  },
+  "resume-financial-analyst": {
+    financialModeling: "3-statement modeling, DCF, LBO, scenario and sensitivity analysis",
+    valuationSkills: "DCF valuation, comparable company analysis, precedent transactions, accretion/dilution",
+    financialSoftware: "Excel (advanced), Power BI, Bloomberg Terminal, Capital IQ, SAP",
+    forecastingSkills: "Budgeting, rolling forecasts, variance analysis, revenue and cash-flow projection",
+    keyDeal: "Built the DCF model underpinning a $45M acquisition that delivered a projected 22% IRR."
+  },
+  "resume-hr-manager": {
+    talentAcquisition: "Full-cycle recruiting, employer branding, structured interviewing, ATS management, campus hiring",
+    employeeRelations: "Conflict resolution, investigations, engagement programs, DEI initiatives",
+    hrSoftware: "Workday, BambooHR, ADP Workforce Now, Greenhouse, SAP SuccessFactors",
+    compensationSkills: "Salary benchmarking, benefits administration, pay-equity analysis, open enrollment",
+    hrInitiative: "Launched an engagement and retention program that lifted annual retention by 15% company-wide."
+  },
+  "resume-mechanical-engineer": {
+    cadSkills: "SolidWorks, AutoCAD, CATIA, Creo, GD&T",
+    simulationSkills: "ANSYS FEA, thermal analysis, CFD, tolerance stack-up analysis",
+    manufacturingSkills: "DFM/DFA, CNC machining, injection molding, sheet metal, lean manufacturing",
+    engineeringStandards: "ASME Y14.5, ISO 9001, Six Sigma, GD&T",
+    keyProject: "Led the design of a hydraulic actuator assembly in SolidWorks that cut part count 30% and unit cost 18%."
+  },
+  "resume-content-writer": {
+    writingSkills: "Long-form articles, copywriting, editing, storytelling, brand voice development",
+    seoWritingSkills: "Keyword research, on-page SEO, search intent optimization, Surfer SEO, Clearscope",
+    cmsTools: "WordPress, HubSpot, Contentful, Webflow, Google Docs",
+    contentTypes: "Blog posts, whitepapers, case studies, email newsletters, landing pages",
+    featuredByline: "Authored a long-form SaaS growth guide that ranked #1 for a 12,000-search-volume keyword and drove 40K monthly visits."
+  },
+  "resume-business-analyst": {
+    analysisSkills: "Gap analysis, cost-benefit analysis, data-driven decision support, root-cause analysis",
+    requirementsSkills: "Requirements elicitation, user stories, acceptance criteria, use cases, UAT",
+    baTools: "Jira, Confluence, SQL, Tableau, Visio, Balsamiq",
+    processModeling: "BPMN, current/future-state mapping, workflow optimization, swimlane diagrams",
+    keyEngagement: "Elicited 200+ requirements for an ERP rollout that cut post-launch change requests by 40%."
+  },
+  "resume-executive-assistant": {
+    administrativeSkills: "Diary and inbox management, travel coordination, expense reporting, board-meeting support",
+    schedulingSkills: "Complex multi-time-zone calendaring, meeting prioritization, conflict resolution",
+    officeSoftware: "Microsoft 365, Google Workspace, Outlook, Concur, Slack, Zoom",
+    keyContribution: "Streamlined the CEO's meeting and travel workflow, reclaiming 10+ executive hours every week."
+  },
+  "resume-cybersecurity-analyst": {
+    securitySkills: "Threat detection, incident response, vulnerability management, penetration testing, digital forensics",
+    securityTools: "Splunk SIEM, CrowdStrike, Wireshark, Nessus, Metasploit, Burp Suite",
+    complianceFrameworks: "SOC 2, ISO 27001, NIST CSF, PCI-DSS, GDPR",
+    scriptingSkills: "Python, PowerShell, Bash, regex for log analysis",
+    keyIncident: "Led containment of a ransomware attempt with zero data exfiltration and full recovery within four hours."
+  },
+  "resume-pharmacist": {
+    clinicalPharmacySkills: "Medication therapy management, dosing and interaction review, immunizations, antimicrobial stewardship",
+    pharmacySoftware: "Epic Willow, Cerner, Rx30, PioneerRx, McKesson EnterpriseRx",
+    patientCounseling: "Adherence coaching, chronic-disease education, OTC recommendations, motivational interviewing",
+    keyContribution: "Launched a medication-adherence program that improved refill compliance by 22% among chronic patients.",
+    pharmacyLicenseNumber: "RPh-4820193"
+  },
+  "resume-civil-engineer": {
+    structuralSkills: "Reinforced concrete and steel design, foundation design, load analysis, seismic design",
+    civilSoftware: "AutoCAD, Civil 3D, STAAD.Pro, Revit, SAP2000",
+    siteManagementSkills: "Site inspection, QA/QC, construction supervision, safety compliance, cost estimation",
+    engineeringCodes: "ACI 318, AISC, ASCE 7, IBC, local building codes",
+    keyProject: "Led structural design and delivery of a $30M highway-overpass project completed two months ahead of schedule."
+  },
+  "freelance-agreement": {
+    startDate: "August 1, 2026"
+  },
+  "employment-contract": {
+    companyAddress: "500 Enterprise Way, Suite 1200, New York, NY 10018",
+    startDate: "August 3, 2026",
+    reportingManager: "Sarah Kwon, VP of Engineering",
+    salary: "$135,000.00 per year"
+  },
+  "freelance-contract": {
+    startDate: "August 1, 2026"
+  },
+  "service-agreement": {
+    startDate: "August 1, 2026"
+  },
+  "nda-template": {
+    governingLaw: "the laws of the State of California"
+  },
+  "consulting-agreement": {
+    clientContact: "+1 (555) 641-7788 | operations@globaltech.com"
+  },
+  "sales-contract": {
+    deliveryAddress: "1400 Commerce Center Dr, Detroit, MI 48226",
+    governingLaw: "the laws of the State of Michigan",
+    sellerSignature: "Daniel Craig",
+    buyerSignature: "James Bond"
+  },
+  "vendor-agreement": {
+    deliverySchedule: "Monthly deliveries by the 5th of each month"
+  },
+  "residential-lease-agreement": {
+    leaseTerm: "12 months",
+    startDate: "August 1, 2026"
+  },
+  "influencer-collaboration-agreement": {
+    brandName: "Nova Brands",
+    brandContact: "partnerships@novabrands.com | +1 (555) 214-6677",
+    influencerName: "Mia Rodriguez",
+    influencerHandle: "@mia.creates",
+    campaignDates: "September 1–30, 2026",
+    contentApproval: "The Brand will review and approve all content at least 48 hours before publishing.",
+    disclosureRequirements: "All posts must include #ad and tag @novabrands as a paid partnership.",
+    exclusivity: "The Creator will not promote competing beauty brands for 30 days after the campaign.",
+    usageRights: "The Brand receives a 12-month license to reuse the content across its owned channels.",
+    compensation: "$4,500.00 flat fee plus product gifting",
+    brandSignature: "Nova Brands (Authorized Representative)",
+    influencerSignature: "Mia Rodriguez"
+  },
+  "photography-services-contract": {
+    eventLocation: "The Grand Ballroom, Hilton Downtown, Chicago, IL",
+    packageDetails: "Premium Wedding Coverage — two photographers",
+    deliveryTimeline: "30 days",
+    imageRights: "The Client receives a personal-use license to all delivered images.",
+    totalFee: "$3,800.00",
+    deposit: "$1,000.00",
+    balanceDue: "$2,800.00",
+    photographerSignature: "Emma Nguyen"
+  },
+  "commercial-lease-agreement": {
+    landlordCompany: "Summit Ridge Commercial Properties",
+    tenantCompany: "BrightPath Technologies Inc.",
+    premisesAddress: "2100 Market Street, Suite 400, Philadelphia, PA 19103",
+    rentableSquareFeet: "4,500 square feet",
+    permittedUse: "general office and administrative use",
+    leaseTerm: "5 years",
+    startDate: "September 1, 2026",
+    baseRent: "$9,375.00 per month",
+    rentEscalation: "3% annually",
+    camCharges: "$2.50 per rentable square foot annually",
+    renewalOption: "One 5-year renewal option at prevailing market rate"
+  },
+  "loan-agreement": {
+    lenderName: "Jonathan Reeves",
+    lenderCompany: "Summit Capital Partners",
+    lenderAddress: "800 Financial Plaza, Boston, MA 02110",
+    borrowerName: "Michael Ellison",
+    borrowerAddress: "312 Willow Creek Rd, Austin, TX 78704",
+    borrowerContact: "+1 (555) 448-2093 | michael.ellison@gmail.com",
+    principalAmount: "$50,000.00",
+    interestRate: "6.5%",
+    loanTerm: "60 months",
+    startDate: "August 1, 2026",
+    maturityDate: "July 31, 2031",
+    repaymentSchedule: "Equal monthly installments due on the 1st of each month",
+    installmentAmount: "$978.31 per month",
+    collateralDescription: "A 2023 Ford Transit cargo van, VIN 1FTBR1C89PKA12345",
+    prepaymentTerms: "The Borrower may prepay in full or in part at any time without penalty.",
+    defaultTerms: "Default occurs if any payment is more than 15 days late or the Borrower becomes insolvent.",
+    governingLaw: "the laws of the State of Texas",
+    lenderSignature: "Jonathan Reeves",
+    borrowerSignature: "Michael Ellison"
+  },
+  "subcontractor-agreement": {
+    subcontractorName: "Carlos Mendez",
+    subcontractorCompany: "Mendez Electrical Contractors LLC",
+    subcontractorAddress: "740 Industrial Blvd, Phoenix, AZ 85009",
+    projectSiteAddress: "1500 Riverside Commons, Phoenix, AZ 85003",
+    startDate: "September 8, 2026",
+    contractPrice: "$185,000.00",
+    retainagePercent: "10%",
+    indemnification: "The Subcontractor shall indemnify and hold the Contractor harmless from claims arising out of the Subcontractor's work.",
+    lienWaiver: "The Subcontractor waives all lien rights upon receipt of each progress payment.",
+    subcontractorSignature: "Carlos Mendez"
+  },
+  "licensing-agreement": {
+    licensorName: "Rebecca Hartley",
+    licensorCompany: "BrightWave Media Licensing",
+    licensorAddress: "220 Creative Row, Los Angeles, CA 90028",
+    licenseeName: "Daniel Osei",
+    licenseeCompany: "Vertex Consumer Goods Inc.",
+    licenseeAddress: "1800 Commerce Park, Columbus, OH 43215",
+    licensedProperty: "the SolarKids animated character brand and associated artwork",
+    grantScope: "manufacture, market, and sell licensed merchandise featuring the property",
+    territory: "North America",
+    exclusivity: "an exclusive",
+    licenseTerm: "3 years",
+    startDate: "October 1, 2026",
+    minimumRoyalty: "$25,000.00 per year",
+    qualityControl: "The Licensee shall maintain quality standards consistent with samples approved by the Licensor.",
+    licensorSignature: "Rebecca Hartley",
+    licenseeSignature: "Daniel Osei"
+  },
+  "non-compete-agreement": {
+    companyAddress: "1200 Enterprise Blvd, Chicago, IL 60601",
+    employeeContact: "+1 (555) 772-3311 | j.harrison@email.com",
+    restrictedActivities: "providing sales or consulting services to any competing software company",
+    restrictedPeriod: "12 months",
+    geographicScope: "a 50-mile radius of the Company's Chicago offices",
+    nonSolicitation: "The Employee shall not solicit the Company's clients or employees during the restricted period.",
+    consideration: "a one-time payment of $10,000.00 and continued access to proprietary training",
+    remediesClause: "The Employee agrees that any breach causes irreparable harm entitling the Company to injunctive relief.",
+    governingLaw: "the laws of the State of Illinois"
+  },
+  "joint-venture-agreement": {
+    ventureName: "Meridian Renewable Energy JV",
+    party1Name: "Laura Bennett",
+    party1Company: "Meridian Ventures LLC",
+    party1Address: "455 Harbor Drive, San Diego, CA 92101",
+    party2Name: "Thomas Nakamura",
+    party2Company: "Pacific Grid Solutions Inc.",
+    party2Address: "2900 Bayfront Ave, San Diego, CA 92113",
+    venturePurpose: "jointly developing and operating a community solar energy project",
+    party1Contribution: "$500,000.00 in cash capital",
+    party2Contribution: "$500,000.00 in equipment and engineering services",
+    profitAllocation: "Net profits and losses allocated 50/50 between the parties.",
+    managementStructure: "A three-member management committee with equal representation from both parties.",
+    votingRights: "Major decisions require unanimous approval; day-to-day matters by majority vote.",
+    termDuration: "5 years",
+    party1Signature: "Laura Bennett",
+    party2Signature: "Thomas Nakamura"
+  },
+  "equipment-rental-agreement": {
+    ownerCompany: "HeavyLift Equipment Rentals",
+    ownerAddress: "3400 Industrial Parkway, Houston, TX 77032",
+    renterName: "Greg Sullivan",
+    renterCompany: "Sullivan Site Works LLC",
+    renterAddress: "780 Construction Way, Houston, TX 77045",
+    equipmentDescription: "Caterpillar 320 hydraulic excavator",
+    rentalRate: "$1,800.00 per week",
+    rentalPeriod: "4 weeks",
+    startDate: "August 10, 2026",
+    returnDate: "September 7, 2026",
+    deliveryTerms: "The Owner will deliver and pick up the equipment at the Renter's job site.",
+    maintenanceResponsibility: "The Renter is responsible for routine daily maintenance and refueling.",
+    damageLiability: "The Renter is liable for all damage beyond normal wear and tear.",
+    ownerSignature: "HeavyLift Equipment Rentals (Authorized Agent)",
+    renterSignature: "Greg Sullivan"
+  },
+  "catering-contract": {
+    catererName: "Isabella Moreau",
+    catererCompany: "Gourmet Table Catering Co.",
+    catererContact: "+1 (555) 330-4412 | events@gourmettable.com",
+    clientContact: "+1 (555) 668-2019 | rachel.kim@email.com",
+    eventLocation: "Harborview Estate, 55 Lakeshore Dr, Seattle, WA 98101",
+    menuDetails: "Plated three-course dinner with seasonal vegetarian and gluten-free options",
+    serviceStaff: "6 servers, 1 bartender, and an on-site event captain",
+    beverageService: "Open bar with wine, beer, and signature cocktails",
+    totalCost: "$8,700.00",
+    balanceDueDate: "October 1, 2026",
+    foodSafetyTerms: "All food is prepared in a licensed commercial kitchen in compliance with local health codes.",
+    catererSignature: "Isabella Moreau"
+  },
+  "web-development-contract": {
+    developerCompany: "PixelForge Web Studio",
+    developerContact: "+1 (555) 902-7714 | hello@pixelforge.dev",
+    clientContact: "+1 (555) 233-8890 | ops@brightpath.io",
+    startDate: "August 15, 2026",
+    totalFee: "$18,000.00",
+    hostingMaintenance: "12 months of managed hosting and priority support included after launch.",
+    acceptanceTesting: "The Developer will conduct cross-browser and mobile testing before handover.",
+    developerSignature: "James Wilson"
+  },
+  "severance-agreement": {
+    companyAddress: "1000 Corporate Center Dr, Atlanta, GA 30328",
+    employeeContact: "+1 (555) 419-6620 | robert.hayes@email.com",
+    separationDate: "August 31, 2026",
+    severancePay: "$24,000.00",
+    severancePaymentTerms: "Paid in 8 equal bi-weekly installments following the effective date",
+    benefitsContinuation: "The Company will cover COBRA premiums for 3 months following separation.",
+    accruedPto: "$3,200.00 in unused accrued vacation",
+    releaseOfClaims: "The Employee releases the Company from all claims relating to the employment.",
+    returnOfProperty: "The Employee will return all laptops, badges, and confidential materials by the separation date.",
+    revocationPeriod: "7 days",
+    governingLaw: "the laws of the State of Georgia"
+  },
+  "seo-services-proposal": {
+    strategy: "A three-phase program fixing technical debt first, then scaling search-intent content and authority links.",
+    monthlyFee: "$3,500/month"
+  },
+  "video-production-proposal": {
+    projectConcept: "A cinematic brand film that tells your product story through real customer moments."
+  },
+  "branding-proposal": {
+    brandStrategy: "Position the brand as the premium, sustainable choice for design-conscious young professionals."
+  },
+  "social-media-proposal": {
+    monthlyFee: "$3,000/month"
+  },
+  "cover-letter": {
+    recipientName: "Ms. Laura Bennett",
+    companyAddress: "500 Howard Street, San Francisco, CA 94105",
+    jobPosition: "Senior Software Engineer"
+  },
+  "recommendation-letter": {
+    recipientName: "Dr. Elaine Foster"
+  },
+  "offer-letter": {
+    companyAddress: "1200 Corporate Drive, Suite 300, Austin, TX 78701",
+    candidateFullName: "Michael Chen",
+    candidateAddress: "88 Riverside Avenue, Apt 4C, Austin, TX 78702",
+    jobPosition: "Senior Marketing Manager",
+    startDate: "August 17, 2026",
+    salary: "$95,000 per year",
+    reportingManager: "Jennifer Walsh, Director of Marketing",
+    hrSignature: "Sophia Reyes, HR Director"
+  },
+  "business-letter": {
+    contactPerson: "Daniel Foster",
+    recipientName: "Mr. Andrew Coleman",
+    recipientCompany: "Meridian Partners LLC",
+    referenceNumber: "REF-2026-0451"
+  },
+  "thank-you-letter": {
+    recipientName: "Ms. Rebecca Hayes",
+    recipientCompany: "Brightpath Consulting Group"
+  },
+  "request-letter": {
+    recipientName: "Ms. Karen Whitfield"
+  },
+  "appointment-letter": {
+    jobPosition: "Senior Software Engineer",
+    startDate: "August 17, 2026",
+    salary: "$110,000 per year",
+    reportingManager: "Jennifer Walsh, Engineering Director",
+    hrSignature: "Sophia Reyes, HR Director"
+  },
+  "experience-letter": {
+    companyAddress: "1200 Corporate Drive, Suite 300, Austin, TX 78701",
+    hrName: "Sophia Reyes",
+    hrSignature: "Sophia Reyes, HR Director"
+  },
+  "internship-cover-letter": {
+    roleName: "Software Engineering"
+  },
+  "character-reference-letter": {
+    refereeName: "Jonathan Pierce"
+  },
+  "promotion-request-letter": {
+    currentRole: "Project Coordinator",
+    targetRole: "Senior Project Manager"
+  },
+  "reference-letter": {
+    recipientName: "Mr. Thomas Reed"
+  },
+  "invitation-letter": {
+    recipientName: "Mr. Jonathan Blake"
+  },
+  "authorization-letter": {
+    recipientName: "Mr. Steven Grant",
+    authorizedPersonName: "David Miller"
+  },
+  "sponsorship-letter": {
+    recipientName: "Ms. Patricia Nguyen"
+  },
+  "follow-up-letter": {
+    recipientName: "Ms. Laura Bennett",
+    jobPosition: "Product Manager"
+  },
+};
+
 // The letterhead brand for a template (falls back to the generic company name).
 export function getTemplateBrand(template: any): string {
   return SLUG_BRAND[template?.slug] || FIELD_DEFAULTS.companyName || "Your Company";
@@ -1112,9 +1553,30 @@ export function getTemplateBrand(template: any): string {
 
 // Build the resolved sample values for a template's declared fields — the exact
 // same logic used by the live-preview form state, so previews and thumbnails match.
+// Full resolution map for a template: every known default (global + slug-extra
+// + slug-specific) plus its distinct brand. Used by the renderer so a variable
+// used in the document BODY but not listed in `content.fields` still resolves
+// to a real value instead of a humanized placeholder.
+export function getTemplateDefaults(template: any): Record<string, string> {
+  const slug = template?.slug;
+  const brand = SLUG_BRAND[slug] || FIELD_DEFAULTS.companyName || "Your Company";
+  return {
+    ...FIELD_DEFAULTS,
+    ...(SLUG_EXTRA_DEFAULTS[slug] || {}),
+    ...(SLUG_SPECIFIC_DEFAULTS[slug] || {}),
+    companyName: brand,
+  };
+}
+
 export function getTemplateValues(template: any): Record<string, string> {
   const initial: Record<string, string> = {};
-  const specific = SLUG_SPECIFIC_DEFAULTS[template?.slug] || {};
+  // Slug-specific sample values: the curated map wins, with SLUG_EXTRA_DEFAULTS
+  // (generated per-template samples) filling any remaining fields so previews
+  // never fall back to a humanized placeholder like "billing Period Start".
+  const specific = {
+    ...(SLUG_EXTRA_DEFAULTS[template?.slug] || {}),
+    ...(SLUG_SPECIFIC_DEFAULTS[template?.slug] || {}),
+  };
   const fields: string[] = template?.content?.fields || [];
   fields.forEach((field) => {
     // The company name defaults to the template's distinct brand so each

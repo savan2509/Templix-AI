@@ -196,9 +196,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
-                  API Integration Docs
-                </a>
+                <Link href={`/${locale}/contact`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
@@ -220,14 +220,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
-                  GDPR & Cookie Policy
-                </a>
+                <Link href={`/${locale}/privacy`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Cookie Policy
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
-                  Security Measures
-                </a>
+                <Link href={`/${locale}/contact`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Contact Support
+                </Link>
               </li>
             </ul>
           </div>

@@ -37,6 +37,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry("/templates", { changeFrequency: "daily", priority: 0.9 }));
   entries.push(entry("/blog", { changeFrequency: "daily", priority: 0.8 }));
 
+  // Static info / legal pages
+  entries.push(entry("/about", { changeFrequency: "monthly", priority: 0.5 }));
+  entries.push(entry("/contact", { changeFrequency: "monthly", priority: 0.5 }));
+  entries.push(entry("/faq", { changeFrequency: "monthly", priority: 0.5 }));
+  entries.push(entry("/privacy", { changeFrequency: "yearly", priority: 0.3 }));
+  entries.push(entry("/terms", { changeFrequency: "yearly", priority: 0.3 }));
+
   // Category listing pages
   for (const cat of CATEGORIES) {
     entries.push(entry(`/templates/${cat.slug}`, { changeFrequency: "weekly", priority: 0.7 }));

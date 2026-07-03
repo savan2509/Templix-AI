@@ -3,7 +3,6 @@ import { db, isDbOnline, setDbOnline } from "@/lib/db";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
-import Credentials from "next-auth/providers/credentials";
 
 // ── Persistent global stores ──────────────────────────────────────────────────
 // We use globalThis so that tokens and users survive hot-module-reloads in dev.
@@ -135,6 +134,11 @@ const adapter = buildAdapter();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter,
+  // Auth.js v5 refuses requests from an untrusted Host header when not running
+  // on Vercel (throws UntrustedHost, which makes every /api/auth/* route return
+  // a "server configuration" error and breaks session/providers/OAuth). Trust
+  // the host for self-hosted / localhost deployments.
+  trustHost: true,
   secret: process.env.AUTH_SECRET || "development-only-fallback-secret-for-templix-ai-v5",
   providers: [
     Google({
@@ -215,37 +219,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         } catch (error) {
           console.warn("[auth] ⚠️  SMTP failed — use the terminal link above!", (error as Error).message);
           if (process.env.NODE_ENV === "production") throw error;
-        }
-      },
-    }),
-    Credentials({
-      name: "Development Bypass",
-      credentials: {
-        email: { label: "Email", type: "email" },
-      },
-      async authorize(credentials) {
-        const email = credentials?.email as string;
-        if (!email) return null;
-
-        const devUser = {
-          id: "dev-user-id",
-          email,
-          name: email.split("@")[0],
-          role: "USER",
-        };
-
-        if (!isDbOnline) return devUser;
-
-        try {
-          let user = await db.user.findUnique({ where: { email } });
-          if (!user) {
-            user = await db.user.create({
-              data: { email, name: email.split("@")[0], role: "USER" },
-            });
-          }
-          return user;
-        } catch {
-          return devUser;
         }
       },
     }),
