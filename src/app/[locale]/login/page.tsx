@@ -34,7 +34,7 @@ export default function LoginPage() {
       });
 
       if (res?.error) {
-        setError("Could not send the magic link. Please try again or continue with Google or GitHub.");
+        setError("Could not send the sign-in link right now. Please try again in a moment.");
       } else {
         setSuccess(true);
       }
