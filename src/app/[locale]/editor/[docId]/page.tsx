@@ -23,11 +23,11 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
   const session = await auth();
 
   const isNew = docId === "new";
-  const isLoggedIn = !!session?.user;
 
-  // Protect loading existing documents, but allow guests to customize new templates!
-  if (!isLoggedIn && !isNew) {
-    redirect(`/${locale}/login`);
+  // Login is disabled — the editor is open to everyone for new templates.
+  // Existing saved documents belong to accounts, so send those requests home.
+  if (!isNew) {
+    redirect(`/${locale}`);
   }
 
   let initialTitle = "Untitled Document";
@@ -105,7 +105,7 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
       initialTitle={initialTitle}
       initialContent={initialContent}
       prefills={prefills}
-      isLoggedIn={isLoggedIn}
+      isLoggedIn={true}
     />
   );
 }

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
 import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
 import {
@@ -14,27 +13,19 @@ import {
   Menu,
   X,
   ChevronDown,
-  Layout,
-  LogIn,
-  LogOut,
-  Settings,
-  Shield,
-  HelpCircle,
+  LayoutGrid,
 } from "lucide-react";
 
 export default function Navbar() {
-  const { data: session, status } = useSession();
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const langRef = useRef<HTMLDivElement>(null);
-  const userRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -44,7 +35,6 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setLangDropdownOpen(false);
-    setUserDropdownOpen(false);
   }, [pathname]);
 
   // Click outside to close dropdowns (non-blocking)
@@ -52,9 +42,6 @@ export default function Navbar() {
     const handleOutsideClick = (event: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(event.target as Node)) {
         setLangDropdownOpen(false);
-      }
-      if (userRef.current && !userRef.current.contains(event.target as Node)) {
-        setUserDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleOutsideClick);
@@ -220,85 +207,14 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* User Session menu */}
-            {status === "loading" ? (
-              <div className="h-9 w-9 bg-zinc-100 dark:bg-zinc-800 animate-pulse rounded-full" />
-            ) : session?.user ? (
-              <div className="relative" ref={userRef}>
-                <button
-                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-transform duration-200 hover:scale-105"
-                >
-                  {session.user.image ? (
-                    <img
-                      src={session.user.image}
-                      alt={session.user.name || "User"}
-                      className="h-9 w-9 rounded-full object-cover border-2 border-zinc-200 dark:border-zinc-700 shadow-sm"
-                    />
-                  ) : (
-                    <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shadow-md shadow-blue-500/10">
-                      {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
-                    </div>
-                  )}
-                </button>
-
-                {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-60 z-50 origin-top-right rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-2xl animate-in fade-in-50 slide-in-from-top-2 duration-200">
-                      <div className="px-3.5 py-2.5 border-b border-zinc-100 dark:border-zinc-800">
-                        <p className="text-sm font-bold truncate text-zinc-800 dark:text-zinc-100">
-                          {session.user.name || "User Account"}
-                        </p>
-                        <p className="text-[11px] truncate text-zinc-500 dark:text-zinc-400 font-medium">
-                          {session.user.email}
-                        </p>
-                      </div>
-
-                      <div className="p-1 space-y-0.5">
-                        <Link
-                          href={`/${currentLocale}/dashboard`}
-                          className="flex items-center gap-2.5 px-3 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-xl transition-colors"
-                          onClick={() => setUserDropdownOpen(false)}
-                        >
-                          <Layout className="h-4 w-4 text-zinc-500" />
-                          <span>My Workspace</span>
-                        </Link>
-
-                        {((session.user as any).role === "ADMIN" || (session.user as any).role === "OWNER") && (
-                          <Link
-                            href={`/${currentLocale}/admin`}
-                            className="flex items-center gap-2.5 px-3 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-xl transition-colors"
-                            onClick={() => setUserDropdownOpen(false)}
-                          >
-                            <Shield className="h-4 w-4 text-blue-500" />
-                            <span>Admin Settings</span>
-                          </Link>
-                        )}
-                      </div>
-
-                      <div className="p-1 border-t border-zinc-100 dark:border-zinc-800 mt-1">
-                        <button
-                          onClick={() => {
-                            setUserDropdownOpen(false);
-                            signOut({ callbackUrl: `/${currentLocale}` });
-                          }}
-                          className="flex w-full items-center gap-2.5 px-3 py-2 text-sm font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-xl transition-colors"
-                        >
-                          <LogOut className="h-4 w-4" />
-                          <span>Sign Out</span>
-                        </button>
-                      </div>
-                    </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                href={`/${currentLocale}/login`}
-                className="flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-              >
-                <LogIn className="h-4 w-4" />
-                <span>Get Started</span>
-              </Link>
-            )}
+            {/* Primary CTA — browse templates (no account needed) */}
+            <Link
+              href={`/${currentLocale}/templates`}
+              className="flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            >
+              <LayoutGrid className="h-4 w-4" />
+              <span>Browse Templates</span>
+            </Link>
           </div>
 
           {/* Mobile menu trigger button */}
@@ -373,54 +289,16 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile User Profile Section */}
+          {/* Mobile primary CTA — browse templates (no account needed) */}
           <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4">
-            {session?.user ? (
-              <div className="space-y-1">
-                <div className="flex items-center gap-3 px-3.5 py-2.5 mb-2 bg-zinc-50 dark:bg-zinc-900/30 rounded-2xl">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold">
-                    {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold truncate text-zinc-800 dark:text-zinc-200">
-                      {session.user.name || "User Account"}
-                    </p>
-                    <p className="text-xs truncate text-zinc-500 dark:text-zinc-400 font-medium">
-                      {session.user.email}
-                    </p>
-                  </div>
-                </div>
-
-                <Link
-                  href={`/${currentLocale}/dashboard`}
-                  className="flex items-center gap-2.5 px-3.5 py-2.5 text-base font-bold rounded-xl text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Layout className="h-5 w-5 text-zinc-500" />
-                  <span>My Workspace</span>
-                </Link>
-
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    signOut({ callbackUrl: `/${currentLocale}` });
-                  }}
-                  className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-base font-bold rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20"
-                >
-                  <LogOut className="h-5 w-5" />
-                  <span>Sign Out</span>
-                </button>
-              </div>
-            ) : (
-              <Link
-                href={`/${currentLocale}/login`}
-                className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/10"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <LogIn className="h-5 w-5" />
-                <span>Get Started Free</span>
-              </Link>
-            )}
+            <Link
+              href={`/${currentLocale}/templates`}
+              className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/10"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <LayoutGrid className="h-5 w-5" />
+              <span>Browse Templates</span>
+            </Link>
           </div>
         </div>
       )}

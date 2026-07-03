@@ -31,31 +31,21 @@ export default auth((req) => {
     );
   }
 
-  // Extract locale and path details
+  // Login is disabled: the app is fully usable anonymously (browse templates,
+  // customize in the editor, export). Account-only routes (/login, /dashboard,
+  // /admin) redirect to the home page so nothing dead-ends on a sign-in screen.
   const pathParts = pathname.split("/");
   const currentLocale = pathParts[1] || defaultLocale;
   const subPath = pathParts.slice(2).join("/");
 
-  // 2. Auth Guards
-  const isAuthRoute = subPath === "login" || subPath === "register";
-  const isProtectedRoute = subPath.startsWith("dashboard") || subPath.startsWith("editor");
-  const isAdminRoute = subPath.startsWith("admin");
+  const accountOnly =
+    subPath === "login" ||
+    subPath === "register" ||
+    subPath.startsWith("dashboard") ||
+    subPath.startsWith("admin");
 
-  const isLoggedIn = !!req.auth;
-
-  if (isAuthRoute && isLoggedIn) {
-    return NextResponse.redirect(new URL(`/${currentLocale}/dashboard`, req.url));
-  }
-
-  if (isProtectedRoute && !isLoggedIn) {
-    return NextResponse.redirect(new URL(`/${currentLocale}/login`, req.url));
-  }
-
-  if (isAdminRoute) {
-    const userRole = req.auth?.user?.role;
-    if (userRole !== "ADMIN" && userRole !== "OWNER") {
-      return NextResponse.redirect(new URL(`/${currentLocale}/dashboard`, req.url));
-    }
+  if (accountOnly) {
+    return NextResponse.redirect(new URL(`/${currentLocale}`, req.url));
   }
 
   return NextResponse.next();

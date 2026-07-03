@@ -11,12 +11,10 @@ export async function saveDocumentAction(
 ): Promise<{ success: boolean; id?: string }> {
   try {
     const session = await auth();
-    if (!session?.user?.id) {
-      throw new Error("Unauthorized. User must be logged in to save documents.");
-    }
 
-    if (!process.env.DATABASE_URL) {
-      console.warn("No DATABASE_URL configured, bypassing DB auto-save.");
+    // Login is disabled: without an account/database there is nothing to persist
+    // to, so treat save as a successful no-op (the document lives in the editor).
+    if (!session?.user?.id || !process.env.DATABASE_URL) {
       return { success: true };
     }
 
@@ -60,11 +58,8 @@ export async function rewriteTextAction(
   tone: string = "professional"
 ): Promise<{ success: boolean; result?: string; error?: string }> {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return { success: false, error: "Unauthorized. Please sign in to use AI assistant features." };
-    }
-
+    // Login is disabled: the AI assistant is available to everyone. It runs a
+    // real rewrite when GEMINI_API_KEY is set, otherwise a local stub.
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.warn("No GEMINI_API_KEY defined, running simulated response rewrite.");
