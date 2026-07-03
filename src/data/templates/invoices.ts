@@ -66,7 +66,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$250.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment: " }, { type: "text", text: "{{paymentMethod}} — {{paymentTerms}}. A 50% deposit was applied at kickoff; the balance above is now due." }] }
         ]
       }
@@ -129,7 +129,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Shipping: " }, { type: "text", text: "{{shippingCost}}    Sales Tax: {{taxAmount}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "Returns accepted within 14 days with this receipt. We appreciate your support of our local shop." }] }
         ]
       }
@@ -193,7 +193,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (16 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$192.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Remit by bank wire transfer; wire details provided under separate cover." }] }
         ]
       }
@@ -258,7 +258,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Labor Subtotal: " }, { type: "text", text: "{{laborCost}}    Materials: {{materialCost}}    Equipment: {{equipmentCost}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warranty}}. Final payment due upon walkthrough and lien-waiver signing." }] }
         ]
       }
@@ -322,7 +322,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Design Fee: " }, { type: "text", text: "{{designFee}}    Revisions Included: {{numberOfRevisions}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery: " }, { type: "text", text: "Editable source files ({{fileFormat}}) released once payment clears. Thank you for creating with us!" }] }
         ]
       }
@@ -385,7 +385,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (160 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Handover: " }, { type: "text", text: "Repository {{repositoryLink}} and deployment logs are shared on payment confirmation. Includes {{maintenancePlan}}." }] }
         ]
       }
@@ -449,7 +449,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Service Fee: " }, { type: "text", text: "{{serviceFee}}    Add-ons: {{extraCharges}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Supplies Used: " }, { type: "text", text: "{{suppliesUsed}}. All products are non-toxic and pet-safe." }] }
         ]
       }
@@ -513,7 +513,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Package Price: " }, { type: "text", text: "{{packagePrice}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery: " }, { type: "text", text: "High-resolution gallery links are released within 3 weeks of full payment. A 30% retainer secured the date." }] }
         ]
       }
@@ -578,7 +578,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Work Notes: " }, { type: "text", text: "{{maintenanceNotes}}. Refrigerant charged: {{refrigerantUsed}}." }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyInformation}}. Payment due on completion of service." }] }
         ]
       }
@@ -642,7 +642,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Net 15 payment terms apply." }] }
         ]
       }
@@ -705,7 +705,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "All logged hours are verified against the project management timesheet export. Payment due within 15 days." }] }
         ]
       }
@@ -769,7 +769,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Milestone Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$640.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Due This Release: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Due This Release: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "Released per the Master Service Agreement schedule. Milestone M3 invoices upon acceptance sign-off." }] }
         ]
       }
@@ -1066,7 +1066,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Amount Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Amount Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "Payment due within 15 days of the invoice date. Detailed time logs available on request." }] }
         ]
       }
@@ -1130,7 +1130,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$28.32" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Auto-Renewal: " }, { type: "text", text: "This subscription renews automatically each month. Update or cancel your plan anytime from your account dashboard." }] }
         ]
       }
@@ -1259,7 +1259,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}    Gratuity (18%): {{gratuity}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$723.20" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 40% deposit reserved your date; the balance above is due before the event." }] }
         ]
       }
@@ -1324,7 +1324,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$103.60" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Recurring weekly maintenance plans available at a 10% discount." }] }
         ]
       }
@@ -1387,7 +1387,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (13.5 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Sessions cancelled with less than 24 hours notice are billed at half rate." }] }
         ]
       }
@@ -1452,7 +1452,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (10.7 hrs + costs): " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Less Retainer Applied: " }, { type: "text", text: "{{retainerApplied}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Balance Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Balance Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. This invoice is privileged and confidential attorney work product." }] }
         ]
       }
@@ -1517,7 +1517,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$876.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Monthly retainer invoices are issued on the 1st and support the full campaign calendar." }] }
         ]
       }
@@ -1586,7 +1586,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. All installations passed final inspection and meet current code." }] }
         ]
       }
@@ -1651,7 +1651,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$780.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 50% design deposit is applied; furnishings ship after the balance clears." }] }
         ]
       }
@@ -1715,7 +1715,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Payment due on vehicle pickup; we accept card, cash, and financing." }] }
         ]
       }
@@ -1779,7 +1779,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A late fee of $25 applies after the 5th; sibling discounts are reflected above." }] }
         ]
       }
@@ -1843,7 +1843,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}    Shipping: {{shippingCost}}    Discount: {{discount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Sales Tax: " }, { type: "text", text: "{{taxAmount}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}} ({{amountDue}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Returns: " }, { type: "text", text: "Free 30-day returns on unopened items. Contact support with your order number for help." }] }
         ]
       }

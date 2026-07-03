@@ -35,11 +35,11 @@ export default function FAQ({ locale }: { locale: string }) {
                     }`}
                   />
                 </button>
-                {isOpen && (
-                  <div className="px-5 pb-5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800 pt-3">
-                    {faq.answer}
-                  </div>
-                )}
+                {/* Answer always in the DOM (collapsed via CSS) so users and
+                    crawlers both see it and it matches the FAQPage schema. */}
+                <div className={`${isOpen ? "block" : "hidden"} px-5 pb-5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800 pt-3`}>
+                  {faq.answer}
+                </div>
               </div>
             );
           })}

@@ -10,7 +10,9 @@ import { getTemplateValues, getTemplateBrand, getTemplateDefaults } from "@/feat
 // the same silhouette. The original five categories keep the classic layout.
 
 function humanize(key: string) {
-  return key.replace(/([A-Z])/g, " $1").trim();
+  // camelCase / snake / kebab → Title Case: "companyName" → "Company Name".
+  const spaced = key.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim();
+  return spaced.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // Stable 32-bit hash (FNV-1a) so layout choice is deterministic per slug and

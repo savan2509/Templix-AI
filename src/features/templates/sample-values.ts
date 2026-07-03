@@ -1171,7 +1171,7 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "invoice-auto-repair": {
     vehicleMakeModel: "2019 Honda Accord EX-L",
     vehicleVin: "1HGCV1F30KA012345",
-    odometer: "68,240 mi"
+    odometer: "68,240"
   },
   "invoice-daycare": {
     childName: "Mia Thompson",

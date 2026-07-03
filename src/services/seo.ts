@@ -18,8 +18,13 @@ export interface InternalLinkingData {
   relatedCategories: { name: string; href: string }[];
 }
 
+// Open Graph requires language_TERRITORY (e.g. en_US), not a bare "en".
+const OG_LOCALES: Record<string, string> = {
+  en: "en_US", es: "es_ES", de: "de_DE", fr: "fr_FR", ar: "ar_AR",
+};
+
 export class SEOEngine {
-  private static APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
+  private static APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
 
   /**
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
@@ -59,7 +64,7 @@ export class SEOEngine {
         description: data.description,
         url: canonical,
         siteName: "Templix AI",
-        locale: data.locale,
+        locale: OG_LOCALES[data.locale] || "en_US",
         type: data.isTemplate ? "article" : "website",
         images: [{ url: ogImage, width: 1200, height: 630, alt: pageTitle }],
       },

@@ -14,7 +14,7 @@ const fallbackBlogs = [...STATIC_BLOG_POSTS]
   }));
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
 
   let blogs = fallbackBlogs;
   try {

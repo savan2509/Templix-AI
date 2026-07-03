@@ -81,7 +81,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             {template.content.fields.map((field) => (
               <div key={field} className="space-y-1">
                 <label htmlFor={`field-${field}`} className="block text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-                  {field.replace(/([A-Z])/g, " $1").trim()}
+                  {field.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim().replace(/\b\w/g, (c) => c.toUpperCase())}
                 </label>
                 <input
                   id={`field-${field}`}

@@ -7,7 +7,7 @@ import { TOOLS } from "@/data/tools";
 const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
 
   // One entry per canonical page. `url` is the English (x-default) variant and
   // `alternates.languages` links every locale so search engines understand the

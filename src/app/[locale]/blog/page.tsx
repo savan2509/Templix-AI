@@ -171,7 +171,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
               {BLOG_CATEGORIES.map((cat) => (
                 <Link
                   key={cat}
-                  href={`/${locale}/blog${cat === "All" ? "" : `?category=${cat}`}`}
+                  href={`/${locale}/blog${cat === "All" ? "" : `?category=${encodeURIComponent(cat)}`}`}
                   className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
                     category === cat
                       ? "bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-500/20"
@@ -339,7 +339,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
               Ready to Create Your Document?
             </h2>
             <p className="text-blue-100 text-sm max-w-lg mx-auto leading-relaxed">
-              Browse 150+ free professional templates. Customize online with our AI editor and
+              Browse 180+ free professional templates. Customize online with our AI editor and
               download as PDF or Word — instantly, no account needed.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

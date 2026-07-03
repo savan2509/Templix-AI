@@ -1169,7 +1169,7 @@ Requirements:
     category: "Invoices",
     tags: ["tax", "w-9", "w-8ben", "freelancer", "compliance"],
     readTime: 7,
-    publishedAt: "2026-07-05",
+    publishedAt: "2026-06-02",
     image: "/blog/blog-freelancer-tax-forms-w9-w8ben.jpg",
     content: `
 <h2>Why Clients Ask for a Tax Form</h2>
@@ -1213,7 +1213,7 @@ Requirements:
     category: "Resumes",
     tags: ["resume", "ATS", "job application", "formatting", "career"],
     readTime: 8,
-    publishedAt: "2026-07-07",
+    publishedAt: "2026-06-04",
     featured: true,
     image: "/blog/blog-ats-resume-format-guide.jpg",
     content: `
@@ -1264,7 +1264,7 @@ Requirements:
     category: "Resumes",
     tags: ["linkedin", "profile", "career", "networking", "job search"],
     readTime: 6,
-    publishedAt: "2026-07-09",
+    publishedAt: "2026-06-06",
     image: "/blog/blog-linkedin-profile-tips.jpg",
     content: `
 <h2>Why Your Profile Must Match Your Resume</h2>
@@ -1309,7 +1309,7 @@ Requirements:
     category: "Contracts",
     tags: ["contract", "service agreement", "legal", "freelance", "business"],
     readTime: 7,
-    publishedAt: "2026-07-11",
+    publishedAt: "2026-06-08",
     image: "/blog/blog-service-agreement-vs-contract.jpg",
     content: `
 <h2>The Short Answer</h2>
@@ -1354,7 +1354,7 @@ Requirements:
     category: "Proposals",
     tags: ["statement of work", "sow", "proposal", "project", "scope"],
     readTime: 8,
-    publishedAt: "2026-07-13",
+    publishedAt: "2026-06-10",
     image: "/blog/blog-how-to-write-statement-of-work.jpg",
     content: `
 <h2>What Is a Statement of Work?</h2>
@@ -1403,7 +1403,7 @@ Requirements:
     category: "Proposals",
     tags: ["consulting", "proposal", "retainer", "pricing", "template"],
     readTime: 7,
-    publishedAt: "2026-07-15",
+    publishedAt: "2026-06-12",
     image: "/blog/blog-consulting-proposal-template-guide.jpg",
     content: `
 <h2>What Makes a Consulting Proposal Different</h2>
@@ -1452,7 +1452,7 @@ Requirements:
     category: "Letters",
     tags: ["email", "business writing", "communication", "etiquette", "letters"],
     readTime: 6,
-    publishedAt: "2026-07-17",
+    publishedAt: "2026-06-14",
     image: "/blog/blog-formal-email-writing-guide.jpg",
     content: `
 <h2>The Anatomy of a Formal Email</h2>
@@ -1511,7 +1511,7 @@ Best regards,
     category: "Letters",
     tags: ["resignation", "two weeks notice", "career", "letters", "etiquette"],
     readTime: 5,
-    publishedAt: "2026-07-19",
+    publishedAt: "2026-06-16",
     image: "/blog/blog-two-weeks-notice-letter.jpg",
     content: `
 <h2>Why the Notice Letter Matters</h2>
@@ -1569,7 +1569,7 @@ Sincerely,
     category: "Guides",
     tags: ["google docs", "microsoft word", "comparison", "document tools", "productivity"],
     readTime: 7,
-    publishedAt: "2026-07-21",
+    publishedAt: "2026-06-18",
     image: "/blog/blog-google-docs-vs-word-vs-templix.jpg",
     content: `
 <h2>Three Tools, Three Strengths</h2>

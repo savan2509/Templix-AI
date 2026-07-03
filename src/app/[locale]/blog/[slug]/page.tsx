@@ -130,7 +130,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     image: `https://templix.ai${post.image}`,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: { "@type": "Organization", name: "Templix AI", url: "https://templix.ai" },
+    author: { "@type": "Organization", name: "Templix AI", url: "https://templix-ai.vercel.app" },
     publisher: {
       "@type": "Organization",
       name: "Templix AI",

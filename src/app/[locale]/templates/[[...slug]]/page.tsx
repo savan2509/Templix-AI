@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -121,9 +121,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (isTemplateDetail) {
     const template = allFallbackTemplates.find((t) => t.slug === lastSegment)!;
+    // Titles may already end in "Template"; strip it so we never double it up.
+    const baseName = template.title.replace(/\s+Template$/i, "").trim();
     return SEOEngine.generateMetadata({
-      title: `${template.title} Template | Customize & Download`,
-      description: `Free customizable ${template.title.toLowerCase()} layout. Fill in variables, edit blocks with AI, and download PDF or Word format in minutes.`,
+      title: `${baseName} Template | Customize & Download`,
+      description: `Free customizable ${baseName.toLowerCase()} template. Fill in variables, edit blocks with AI, and download PDF or Word format in minutes.`,
       slug: `/templates/${template.categorySlug}/${template.slug}`,
       locale,
       categoryName: template.categoryName,
@@ -142,13 +144,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const subdivision = slug[3] ? capitalize(slug[3]) : "";
   const experience = slug[4] ? capitalize(slug[4]) : "";
 
+  // Singular, grammatically correct adjective per category — "Invoice Templates",
+  // not "Invoices Templates" — matching how people actually search.
+  const SINGULAR: Record<string, string> = {
+    invoices: "Invoice", resumes: "Resume", contracts: "Contract", proposals: "Proposal",
+    letters: "Letter", reports: "Report", "business-plans": "Business Plan",
+    quotations: "Quotation", "cover-letters": "Cover Letter",
+  };
+  const categoryAdjective = slug[0] ? (SINGULAR[slug[0]] || category.replace(/Templates?$/i, "").trim()) : "";
+
   let pageTitle = "Free Business Document Templates";
   if (category) {
     const parts = [
       "Free",
       experience,
       niche,
-      category.replace("Templates", "").trim(),
+      categoryAdjective,
       "Templates",
       location ? `in ${location}` : "",
       subdivision
@@ -172,6 +183,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function TemplatesPage({ params, searchParams }: PageProps) {
   const { locale, slug = [] } = await params;
   const { q = "" } = await searchParams;
+
+  // Canonicalize the short /templates/<slug> URL to /templates/<category>/<slug>
+  // so the same page isn't served on two URLs (splitting crawl budget / link equity).
+  if (slug.length === 1 && !CATEGORIES.some((c) => c.slug === slug[0])) {
+    const canonicalTemplate = allFallbackTemplates.find((t) => t.slug === slug[0]);
+    if (canonicalTemplate) {
+      permanentRedirect(`/${locale}/templates/${canonicalTemplate.categorySlug}/${canonicalTemplate.slug}`);
+    }
+  }
 
   const categorySlug = slug[0] || null;
   const nicheSlug = slug[1] || null;
@@ -367,13 +387,21 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const subdivisionName = subdivisionSlug ? capitalize(subdivisionSlug) : "";
   const experienceName = experienceSlug ? capitalize(experienceSlug) : "";
 
+  // Singular adjective per category so the H1 reads "Free Invoice Templates",
+  // not the grammatically wrong "Free Invoices Templates".
+  const SINGULAR_HEADING: Record<string, string> = {
+    invoices: "Invoice", resumes: "Resume", contracts: "Contract", proposals: "Proposal",
+    letters: "Letter", reports: "Report", "business-plans": "Business Plan",
+    quotations: "Quotation", "cover-letters": "Cover Letter",
+  };
   let pageHeading = "Free Professional Business Templates";
   if (categoryName) {
+    const adjective = (categorySlug && SINGULAR_HEADING[categorySlug]) || categoryName.replace(/Templates?$/i, "").trim();
     const parts = [
       "Free",
       experienceName,
       nicheName,
-      categoryName.replace("Templates", "").trim(),
+      adjective,
       "Templates",
       locationName ? `in ${locationName}` : "",
       subdivisionName
@@ -471,7 +499,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   }
 
   function siteUrl(path: string) {
-    return `${process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai"}${path}`;
+    return `${process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app"}${path}`;
   }
 
   const breadcrumbSchema = {
@@ -582,7 +610,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                       <div className="relative h-12 w-16 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 group-hover:scale-105 transition-transform duration-300">
                         <Image
                           src={cat.image}
-                          alt={cat.name}
+                          alt=""
                           fill
                           className="object-cover"
                           sizes="64px"

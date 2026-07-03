@@ -20,7 +20,7 @@ import {
   Zap,
 } from "lucide-react";
 
-const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix.ai";
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
 
 // ── Robust high-fidelity mock fallbacks ────────────────────────────────────
 const fallbackTemplates = [
@@ -57,12 +57,14 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   
+  // Brand is appended by the root layout's `%s | Templix AI` template, so it
+  // must NOT be included here (otherwise the brand appears twice in the title).
   const titles = {
-    en: "Templix AI | Free Invoice, Resume, Contract & Proposal Templates",
-    es: "Templix AI | Plantillas Gratuitas de Facturas, Currículums, Contratos y Propuestas",
-    de: "Templix AI | Kostenlose Vorlagen für Rechnungen, Lebensläufe, Verträge und Angebote",
-    fr: "Templix AI | Modèles Gratuits de Factures, CV, Contrats et Propositions",
-    ar: "Templix AI | قوالب مجانية للفواتير، السير الذاتية، العقود والمقترحات",
+    en: "Free Invoice, Resume, Contract & Proposal Templates",
+    es: "Plantillas Gratuitas de Facturas, Currículums, Contratos y Propuestas",
+    de: "Kostenlose Vorlagen für Rechnungen, Lebensläufe, Verträge und Angebote",
+    fr: "Modèles Gratuits de Factures, CV, Contrats et Propositions",
+    ar: "قوالب مجانية للفواتير، السير الذاتية، العقود والمقترحات",
   };
   
   const descriptions = {
@@ -80,22 +82,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     alternates: {
-      canonical: `https://templix.ai/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: {
-        en: "https://templix.ai/en",
-        es: "https://templix.ai/es",
-        de: "https://templix.ai/de",
-        fr: "https://templix.ai/fr",
-        ar: "https://templix.ai/ar",
+        en: `${SITE_URL}/en`,
+        es: `${SITE_URL}/es`,
+        de: `${SITE_URL}/de`,
+        fr: `${SITE_URL}/fr`,
+        ar: `${SITE_URL}/ar`,
+        "x-default": `${SITE_URL}/en`,
       },
     },
     openGraph: {
       title: "Templix AI — Free Professional Templates & AI Document Editor",
       description: "Create invoices, resumes, contracts, proposals and business documents in minutes.",
-      url: `https://templix.ai/${locale}`,
+      url: `${SITE_URL}/${locale}`,
       siteName: "Templix AI",
       type: "website",
-      images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Templix AI" }],
+      locale: locale === "ar" ? "ar_AR" : locale === "es" ? "es_ES" : locale === "de" ? "de_DE" : locale === "fr" ? "fr_FR" : "en_US",
+      images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: "Templix AI" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -214,7 +218,7 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-28 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      alt={cat.name}
+                      alt=""
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
@@ -299,7 +303,7 @@ export default async function HomePage({ params }: PageProps) {
                     </div>
 
                     <Link
-                      href={`/${locale}/templates/${temp.slug}`}
+                      href={`/${locale}/templates/${temp.category?.slug ? `${temp.category.slug}/` : ""}${temp.slug}`}
                       className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
                     >
                       <span>Customize Template</span>
@@ -331,7 +335,7 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">1. Choose a Template</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  Search and discover 1,000+ targeted templates across invoices, resumes, contracts, and covers optimized for global SEO search intent.
+                  Search and discover 180+ professionally designed templates across invoices, resumes, contracts, proposals, and more.
                 </p>
               </div>
 
