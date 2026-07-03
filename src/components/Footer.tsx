@@ -186,6 +186,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/tools`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Free Tools & Calculators
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/faq`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   Help Center & FAQs
                 </Link>

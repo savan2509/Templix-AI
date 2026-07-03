@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
+import { TOOLS } from "@/data/tools";
 
 const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
 
@@ -36,6 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   entries.push(entry("", { changeFrequency: "daily", priority: 1.0 }));
   entries.push(entry("/templates", { changeFrequency: "daily", priority: 0.9 }));
   entries.push(entry("/blog", { changeFrequency: "daily", priority: 0.8 }));
+
+  // Free tools hub + each tool
+  entries.push(entry("/tools", { changeFrequency: "weekly", priority: 0.7 }));
+  for (const tool of TOOLS) {
+    entries.push(entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6 }));
+  }
 
   // Static info / legal pages
   entries.push(entry("/about", { changeFrequency: "monthly", priority: 0.5 }));

@@ -109,6 +109,10 @@ export default function Navbar() {
       href: `/${currentLocale}/templates/reports`
     },
     {
+      name: { en: "Tools", es: "Herramientas", de: "Tools", fr: "Outils", ar: "أدوات" },
+      href: `/${currentLocale}/tools`
+    },
+    {
       name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" },
       href: `/${currentLocale}/blog`
     },
