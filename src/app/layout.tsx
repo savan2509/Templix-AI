@@ -6,6 +6,7 @@ import ThemeProvider from "@/providers/theme-provider";
 import HtmlDirSync from "@/components/HtmlDirSync";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -105,6 +106,9 @@ export default async function RootLayout({
         </AuthProvider>
         <Analytics />
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
