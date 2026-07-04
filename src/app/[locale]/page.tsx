@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
 import { faqSchema } from "@/data/faq";
 import { CATEGORIES } from "@/constants";
+import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import {
@@ -112,6 +113,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
+  const dict = getDictionary(locale);
+  const t = dict.home;
+  const c = dict.common;
+  const categoryName = (slug: string) =>
+    c.categoryNames[slug as keyof typeof c.categoryNames] ?? slug;
 
   let templates = fallbackTemplates;
   // Use real static blog posts (first 2) — always valid slugs
@@ -178,19 +184,19 @@ export default async function HomePage({ params }: PageProps) {
             {/* Top Badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-600 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400 shadow-sm" style={{animation: 'fadeIn 0.6s ease both'}}>
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Next-Gen Document AI Workspace</span>
+              <span>{t.heroBadge}</span>
             </div>
 
             {/* Main Brand Position Headline */}
             <div className="space-y-4 max-w-4xl mx-auto">
               <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-                Free Professional Templates <br />
+                {t.heroTitleLine1} <br />
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
-                  + AI Document Editor
+                  {t.heroTitleLine2}
                 </span>
               </h1>
               <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                Create invoices, resumes, contracts, proposals and business documents in minutes. Simply choose a template, customize, and export to PDF/Word.
+                {t.heroSubtitle}
               </p>
             </div>
 
@@ -204,7 +210,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 mb-8 flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-blue-500" />
-              <span>Browse Categories</span>
+              <span>{t.categoriesHeading}</span>
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -230,10 +236,10 @@ export default async function HomePage({ params }: PageProps) {
                   {/* Label area */}
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="block font-bold text-white text-xs leading-tight drop-shadow">
-                      {cat.name}
+                      {categoryName(cat.slug)}
                     </span>
                     <div className="flex items-center gap-1 text-[10px] text-white/70 mt-0.5 font-medium">
-                      <span>{allFallbackTemplates.filter(t => t.categorySlug === cat.slug).length} templates</span>
+                      <span>{allFallbackTemplates.filter(ft => ft.categorySlug === cat.slug).length} {c.templatesLabel}</span>
                       <ArrowRight className="h-2.5 w-2.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                     </div>
                   </div>
@@ -250,17 +256,17 @@ export default async function HomePage({ params }: PageProps) {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                  Trending Document Blueprints
+                  {t.featuredHeading}
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
-                  Ready-to-use, professionally formatted layouts for immediate customization.
+                  {t.featuredSubtitle}
                 </p>
               </div>
               <Link
                 href={`/${locale}/templates`}
                 className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
-                <span>View All</span>
+                <span>{c.viewAll}</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -284,7 +290,7 @@ export default async function HomePage({ params }: PageProps) {
                       }}
                     />
                     <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
-                      Free
+                      {c.free}
                     </span>
                   </div>
 
@@ -292,7 +298,7 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
                       <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold">
-                        {temp.category.name}
+                        {c.categoryNames[temp.category.slug as keyof typeof c.categoryNames] ?? temp.category.name}
                       </span>
                       <h3 className="font-bold text-zinc-900 dark:text-white text-lg">
                         {temp.title}
@@ -306,7 +312,7 @@ export default async function HomePage({ params }: PageProps) {
                       href={`/${locale}/templates/${temp.category?.slug ? `${temp.category.slug}/` : ""}${temp.slug}`}
                       className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
                     >
-                      <span>Customize Template</span>
+                      <span>{c.customizeTemplate}</span>
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -321,10 +327,10 @@ export default async function HomePage({ params }: PageProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-12">
             <div className="max-w-2xl mx-auto space-y-3">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                Engineered for Ultimate Document Productivity
+                {t.pillarsHeading}
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                Combining high-quality layout directories, AI text processing, and print-ready downloads.
+                {t.pillarsSubtitle}
               </p>
             </div>
 
@@ -333,9 +339,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-sm">
                   <FileText className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">1. Choose a Template</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  Search and discover 180+ professionally designed templates across invoices, resumes, contracts, proposals, and more.
+                  {t.pillar1Desc}
                 </p>
               </div>
 
@@ -343,9 +349,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto shadow-sm">
                   <Sparkles className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">2. AI-Powered Writing</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  Adjust tone, rewrite paragraphs, and fix grammar mistakes instantly using our swappable AI provider model layer inside our visual Tiptap workspace.
+                  {t.pillar2Desc}
                 </p>
               </div>
 
@@ -353,9 +359,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-sm">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">3. Export Instantly</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  Compile your customized layouts directly on the client or server into pixel-perfect PDF files (`pdf-lib`) and MS Word formats (`docx`).
+                  {t.pillar3Desc}
                 </p>
               </div>
             </div>
@@ -367,13 +373,13 @@ export default async function HomePage({ params }: PageProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                100% Free & Open Access
+                {t.whyBadge}
               </span>
               <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                Advanced Features Without the Price Tag
+                {t.whyHeading}
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-xl mx-auto leading-relaxed">
-                Templix AI provides premium document creation tools completely free of charge. No subscriptions, no hidden limits.
+                {t.whySubtitle}
               </p>
             </div>
 
@@ -383,9 +389,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Fully Free &amp; Open</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
-                  No billing forms, credit card prompts, or gated items. Simply open the app and begin customized layouts.
+                  {t.why1Desc}
                 </p>
               </div>
 
@@ -394,9 +400,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Unlimited Document AI</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
-                  Rewrite paragraphs, translate segments, correct syntax, and tailor tones with zero word limits or cost tiers.
+                  {t.why2Desc}
                 </p>
               </div>
 
@@ -405,9 +411,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                   <Zap className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Instant Page Loads</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
-                  Optimized server compilation combined with dynamic client-side loading skeletons ensures your documents open immediately.
+                  {t.why3Desc}
                 </p>
               </div>
 
@@ -416,9 +422,9 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                   <FileText className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">Clean Compliance</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
-                  Layout guidelines built under industry-standard schema structures ensure ATS compatibility and audit readiness.
+                  {t.why4Desc}
                 </p>
               </div>
             </div>
@@ -431,17 +437,17 @@ export default async function HomePage({ params }: PageProps) {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                  Document Writing Tips & Guidelines
+                  {t.blogsHeading}
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
-                  Increase compilation quality with detailed step-by-step guides.
+                  {t.blogsSubtitle}
                 </p>
               </div>
               <Link
                 href={`/${locale}/blog`}
                 className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
-                <span>View All Articles</span>
+                <span>{c.viewAllArticles}</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -470,7 +476,7 @@ export default async function HomePage({ params }: PageProps) {
 
                   <div className="p-6 space-y-2">
                     <span className="text-xs text-zinc-400 font-medium">
-                      {new Date(article.createdAt).toLocaleDateString("en-US", {
+                      {new Date(article.createdAt).toLocaleDateString(INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric"
@@ -483,7 +489,7 @@ export default async function HomePage({ params }: PageProps) {
                       {article.description}
                     </p>
                     <div className="pt-2 flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                      Read Article <ArrowRight className="h-3.5 w-3.5" />
+                      {c.readArticle} <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
                 </Link>
@@ -496,10 +502,10 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Document Standardization & Compliance
+              {t.complianceHeading}
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl mx-auto text-sm leading-relaxed">
-              We design all business document formats under rigorous compliance standards. From structured <a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">invoice layouts</a> to ATS-friendly <a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">resume layouts</a> and legal-grade <a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">contract agreements</a>, every template matches international schemas. Read the official documentation guidelines at the <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">World Wide Web Consortium (W3C)</a> and verify structured schema markup at <a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Schema.org</a>.
+              {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}<a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceW3CLink}</a>{t.complianceText5}<a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceSchemaLink}</a>{t.complianceText6}
             </p>
           </div>
         </section>

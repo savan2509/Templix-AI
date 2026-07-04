@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
+import { getDictionary } from "@/lib/i18n";
 import {
   Sparkles,
   Globe,
@@ -68,6 +69,7 @@ export default function Navbar() {
   const pathParts = pathname.split("/");
   const currentLocale = pathParts[1] || "en";
   const activeLocaleObj = SUPPORTED_LOCALES.find((l) => l.code === currentLocale) || SUPPORTED_LOCALES[0];
+  const t = getDictionary(currentLocale).common;
 
   const handleLanguageChange = (localeCode: string) => {
     setLangDropdownOpen(false);
@@ -217,7 +219,7 @@ export default function Navbar() {
               className="flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             >
               <LayoutGrid className="h-4 w-4" />
-              <span>Browse Templates</span>
+              <span>{t.browseTemplates}</span>
             </Link>
           </div>
 
@@ -275,7 +277,7 @@ export default function Navbar() {
 
           {/* Mobile Language Selector */}
           <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4">
-            <p className="px-3.5 text-xs font-bold uppercase tracking-wider text-zinc-400">Select Region</p>
+            <p className="px-3.5 text-xs font-bold uppercase tracking-wider text-zinc-400">{t.selectRegion}</p>
             <div className="grid grid-cols-2 gap-2 mt-2.5">
               {SUPPORTED_LOCALES.map((locale) => (
                 <button
@@ -301,7 +303,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               <LayoutGrid className="h-5 w-5" />
-              <span>Browse Templates</span>
+              <span>{t.browseTemplates}</span>
             </Link>
           </div>
         </div>

@@ -3,16 +3,18 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { faqData } from "@/data/faq";
+import { getDictionary } from "@/lib/i18n";
 
 
 export default function FAQ({ locale }: { locale: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const t = getDictionary(locale).faqSection;
 
   return (
     <section className="w-full py-16 bg-zinc-50 dark:bg-zinc-950/20 border-y border-zinc-200 dark:border-zinc-800 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-center tracking-tight text-zinc-900 dark:text-white mb-10">
-          Frequently Asked Questions
+          {t.heading}
         </h2>
 
         <div className="space-y-4">

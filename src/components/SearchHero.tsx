@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Sparkles } from "lucide-react";
+import { getDictionary } from "@/lib/i18n";
 
 export default function SearchHero({ locale }: { locale: string }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const t = getDictionary(locale).search;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,11 +18,11 @@ export default function SearchHero({ locale }: { locale: string }) {
   };
 
   const quickTags = [
-    { label: "Invoice", q: "invoice" },
-    { label: "Resume", q: "resume" },
-    { label: "Contract", q: "contract" },
-    { label: "Proposal", q: "proposal" },
-    { label: "Cover Letter", q: "cover letter" },
+    { label: t.tagInvoice, q: "invoice" },
+    { label: t.tagResume, q: "resume" },
+    { label: t.tagContract, q: "contract" },
+    { label: t.tagProposal, q: "proposal" },
+    { label: t.tagCoverLetter, q: "cover letter" },
   ];
 
   return (
@@ -32,7 +34,7 @@ export default function SearchHero({ locale }: { locale: string }) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search invoice templates, resumes, agreements..."
+            placeholder={t.placeholder}
             className="w-full h-14 pl-12 pr-32 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 shadow-lg shadow-zinc-100 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
           />
           <button
@@ -40,14 +42,14 @@ export default function SearchHero({ locale }: { locale: string }) {
             className="absolute right-2 top-2 h-10 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Search</span>
+            <span>{t.search}</span>
           </button>
         </div>
       </form>
 
       {/* Quick suggestions tags */}
       <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-        <span>Popular:</span>
+        <span>{t.popular}</span>
         {quickTags.map((tag) => (
           <button
             key={tag.q}
