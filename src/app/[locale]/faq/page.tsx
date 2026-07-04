@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import { faqData, faqSchema } from "@/data/faq";
+import { getDictionary } from "@/lib/i18n";
 import { ChevronDown } from "lucide-react";
 
 interface PageProps {
@@ -22,12 +23,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function FaqPage({ params }: PageProps) {
   const { locale } = await params;
+  const t = getDictionary(locale).faqPage;
   return (
     <InfoPageShell
       locale={locale}
-      eyebrow="Help Center"
-      title="Frequently Asked Questions"
-      subtitle="Everything you need to know about Templix AI's templates, editor, AI assistant, and exports."
+      eyebrow={t.eyebrow}
+      title={t.title}
+      subtitle={t.subtitle}
     >
       {/* FAQ structured data for rich results */}
       <script
@@ -53,9 +55,9 @@ export default async function FaqPage({ params }: PageProps) {
       </div>
 
       <p className="pt-2">
-        Still have questions? Visit our{" "}
-        <Link href={`/${locale}/contact`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contact page</Link>{" "}
-        and we&rsquo;ll be happy to help.
+        {t.stillHavePre}
+        <Link href={`/${locale}/contact`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.contactLink}</Link>
+        {t.stillHavePost}
       </p>
     </InfoPageShell>
   );

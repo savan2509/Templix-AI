@@ -12,6 +12,7 @@ import {
   type BlogPost,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
   ArrowRight,
   ArrowLeft,
@@ -55,12 +56,15 @@ export async function generateStaticParams() {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+function formatDate(iso: string, locale: string) {
+  return new Date(iso).toLocaleDateString(
+    INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
 }
 
 const CATEGORY_ACCENT: Record<string, string> = {
@@ -86,6 +90,8 @@ const CATEGORY_GRADIENT: Record<string, string> = {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default async function BlogArticlePage({ params }: PageProps) {
   const { locale, slug } = await params;
+  const t = getDictionary(locale).blog;
+  const c = getDictionary(locale).common;
 
   // Try DB first, fall back to static
   let post: BlogPost | null = null;
@@ -180,10 +186,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-xs text-white/70 font-medium flex-wrap">
               <Link href={`/${locale}`} className="hover:text-white flex items-center gap-1 transition-colors">
-                <Home className="h-3 w-3" /> Home
+                <Home className="h-3 w-3" /> {c.homeBreadcrumb}
               </Link>
               <span>/</span>
-              <Link href={`/${locale}/blog`} className="hover:text-white transition-colors">Blog</Link>
+              <Link href={`/${locale}/blog`} className="hover:text-white transition-colors">{t.blogBreadcrumb}</Link>
               <span>/</span>
               <span className="text-white/90 truncate max-w-[200px]">{post.title}</span>
             </nav>
@@ -194,10 +200,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 {post.category}
               </span>
               <span className="text-white/70 text-xs flex items-center gap-1">
-                <Calendar className="h-3 w-3" /> {formatDate(post.publishedAt)}
+                <Calendar className="h-3 w-3" /> {formatDate(post.publishedAt, locale)}
               </span>
               <span className="text-white/70 text-xs flex items-center gap-1">
-                <Clock className="h-3 w-3" /> {post.readTime} min read
+                <Clock className="h-3 w-3" /> {post.readTime} {t.minRead}
               </span>
             </div>
 
@@ -248,7 +254,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 href={`/${locale}/blog`}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8"
               >
-                <ArrowLeft className="h-3.5 w-3.5" /> Back to Blog
+                <ArrowLeft className="h-3.5 w-3.5" /> {t.backToBlog}
               </Link>
 
               {/* Prose content */}
@@ -260,8 +266,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Share row */}
               <div className="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm font-bold text-zinc-900 dark:text-white">Found this helpful?</p>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400">Share it with your network</p>
+                  <p className="text-sm font-bold text-zinc-900 dark:text-white">{t.foundHelpful}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">{t.shareNetwork}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Share2 className="h-4 w-4 text-zinc-400" />
@@ -286,18 +292,18 @@ export default async function BlogArticlePage({ params }: PageProps) {
               <div className={`mt-10 rounded-2xl bg-gradient-to-r ${gradient} p-7 text-white space-y-4 shadow-lg`}>
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5 opacity-80" />
-                  <span className="text-sm font-bold uppercase tracking-wider opacity-80">Free Templates</span>
+                  <span className="text-sm font-bold uppercase tracking-wider opacity-80">{t.freeTemplatesLabel}</span>
                 </div>
-                <h3 className="text-xl font-extrabold">Ready to put this into practice?</h3>
+                <h3 className="text-xl font-extrabold">{t.ctaPracticeHeading}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
-                  Browse Templix AI's free professional templates. Customize online, edit with AI, and download as PDF or Word — in minutes.
+                  {t.ctaPracticeText}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={`/${locale}/templates`}
                     className="px-5 py-2.5 rounded-xl bg-white text-blue-600 font-bold text-sm hover:bg-blue-50 transition-colors shadow"
                   >
-                    Browse All Templates
+                    {t.browseAllTemplates}
                   </Link>
                   <Link
                     href={`/${locale}/templates/${
@@ -311,7 +317,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     }`}
                     className="px-5 py-2.5 rounded-xl border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-colors flex items-center gap-1"
                   >
-                    {post.category === "AI Tools" ? "Resume" : post.category === "Guides" ? "Invoice" : post.category} Templates <ArrowRight className="h-3.5 w-3.5" />
+                    {t.templatesCta[post.category as keyof typeof t.templatesCta] ?? t.templatesCta.Invoices} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>
@@ -322,15 +328,15 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
               {/* Article info card */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">About This Article</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.aboutArticle}</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-zinc-400" />
-                    <span className="text-zinc-600 dark:text-zinc-400">{formatDate(post.publishedAt)}</span>
+                    <span className="text-zinc-600 dark:text-zinc-400">{formatDate(post.publishedAt, locale)}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-zinc-400" />
-                    <span className="text-zinc-600 dark:text-zinc-400">{post.readTime} minute read</span>
+                    <span className="text-zinc-600 dark:text-zinc-400">{post.readTime} {t.minuteRead}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <BookOpen className="h-4 w-4 text-zinc-400" />
@@ -348,13 +354,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
               {/* Quick links */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Free Templates</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.freeTemplatesLabel}</h3>
                 {[
-                  { name: "Invoice Templates", href: `/${locale}/templates/invoices` },
-                  { name: "Resume Templates", href: `/${locale}/templates/resumes` },
-                  { name: "Contract Templates", href: `/${locale}/templates/contracts` },
-                  { name: "Proposal Templates", href: `/${locale}/templates/proposals` },
-                  { name: "Letter Templates", href: `/${locale}/templates/letters` },
+                  { name: t.templatesCta.Invoices, href: `/${locale}/templates/invoices` },
+                  { name: t.templatesCta.Resumes, href: `/${locale}/templates/resumes` },
+                  { name: t.templatesCta.Contracts, href: `/${locale}/templates/contracts` },
+                  { name: t.templatesCta.Proposals, href: `/${locale}/templates/proposals` },
+                  { name: t.templatesCta.Letters, href: `/${locale}/templates/letters` },
                 ].map((link) => (
                   <Link
                     key={link.href}
@@ -370,11 +376,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
               {/* Authority Resources */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Authority Resources</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.authorityResources}</h3>
                 {[
-                  { name: "Schema.org Standard", href: "https://schema.org" },
-                  { name: "W3C Document Standard", href: "https://www.w3.org" },
-                  { name: "Wikipedia Business Docs", href: "https://en.wikipedia.org/wiki/Invoice" },
+                  { name: t.authoritySchema, href: "https://schema.org" },
+                  { name: t.authorityW3C, href: "https://www.w3.org" },
+                  { name: t.authorityWikipedia, href: "https://en.wikipedia.org/wiki/Invoice" },
                 ].map((link) => (
                   <a
                     key={link.href}
@@ -393,7 +399,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Related posts — hidden if none */}
               {related.length > 0 && (
                 <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Related Articles</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.relatedArticles}</h3>
                   <div className="space-y-3">
                     {related.map((rel) => (
                       <Link
@@ -405,7 +411,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                           {rel.title}
                         </p>
                         <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-                          <Clock className="h-2.5 w-2.5" /> {rel.readTime} min
+                          <Clock className="h-2.5 w-2.5" /> {rel.readTime} {t.min}
                         </span>
                       </Link>
                     ))}
@@ -418,9 +424,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
           {/* ── More Articles ── */}
           <div className="mt-16 pt-10 border-t border-zinc-100 dark:border-zinc-800">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">More Articles</h2>
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{t.moreArticles}</h2>
               <Link href={`/${locale}/blog`} className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
-                View all <ArrowRight className="h-3.5 w-3.5" />
+                {c.viewAll} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -451,7 +457,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                         {p.title}
                       </h3>
                       <p className="text-xs text-zinc-400 flex items-center gap-1 pt-1 border-t border-zinc-100 dark:border-zinc-800">
-                        <Clock className="h-2.5 w-2.5" /> {p.readTime} min read
+                        <Clock className="h-2.5 w-2.5" /> {p.readTime} {t.minRead}
                       </p>
                     </div>
                   </Link>

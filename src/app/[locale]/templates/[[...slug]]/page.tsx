@@ -11,6 +11,7 @@ import TemplateThumbnail from "@/components/TemplateThumbnail";
 import { CATEGORIES } from "@/constants";
 import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
+import { getDictionary } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 
 // Template slug → preview image mapping
@@ -184,6 +185,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const { locale, slug = [] } = await params;
   const { q = "" } = await searchParams;
 
+  const dict = getDictionary(locale);
+  const t = dict.templates;
+  const common = dict.common;
+
   // Canonicalize the short /templates/<slug> URL to /templates/<category>/<slug>
   // so the same page isn't served on two URLs (splitting crawl budget / link equity).
   if (slug.length === 1 && !CATEGORIES.some((c) => c.slug === slug[0])) {
@@ -283,15 +288,15 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
               <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
                 <Home className="h-3 w-3" />
-                <span>Home</span>
+                <span>{common.homeBreadcrumb}</span>
               </Link>
               <span>/</span>
               <Link href={`/${locale}/templates`} className="hover:text-blue-500 transition-colors">
-                Templates
+                {t.templatesBreadcrumb}
               </Link>
               <span>/</span>
               <Link href={`/${locale}/templates/${activeTemplate.categorySlug}`} className="hover:text-blue-500 transition-colors">
-                {activeTemplate.categoryName}
+                {common.categoryNames[activeTemplate.categorySlug as keyof typeof common.categoryNames] ?? activeTemplate.categoryName}
               </Link>
               <span>/</span>
               <span className="text-zinc-600 dark:text-zinc-300 font-semibold truncate max-w-[120px]">
@@ -303,17 +308,17 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             <div className="space-y-2.5 max-w-4xl">
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                  {activeTemplate.categoryName}
+                  {common.categoryNames[activeTemplate.categorySlug as keyof typeof common.categoryNames] ?? activeTemplate.categoryName}
                 </span>
                 <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
-                  Free
+                  {common.free}
                 </span>
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                {activeTemplate.title} Template
+                {activeTemplate.title} {t.templateNoun}
               </h1>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                {activeTemplate.description} Adjust fields in the controller to customize variables dynamically. Open in our visual tiptap document workspace to edit text blocks, trigger AI assistant rewrites, and export as PDF/Word.
+                {activeTemplate.description} {t.detailIntroExtra}
               </p>
             </div>
 
@@ -323,13 +328,13 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             {/* Contextual Internal Linking Grids */}
             <div className="pt-12 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
               <h3 className="font-bold text-lg text-zinc-900 dark:text-white">
-                Explore Related Resources
+                {t.exploreRelatedResources}
               </h3>
               
               <div className="grid md:grid-cols-3 gap-6 text-sm">
                 <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
                   <h4 className="font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider text-[10px]">
-                    Related Templates
+                    {t.relatedTemplates}
                   </h4>
                   <ul className="space-y-2">
                     {internalLinking.relatedTemplates.map((t) => (
@@ -344,7 +349,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                 <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
                   <h4 className="font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider text-[10px]">
-                    Writing Guides & Blog Articles
+                    {t.writingGuidesBlog}
                   </h4>
                   <ul className="space-y-2">
                     {internalLinking.relatedBlogs.map((b) => (
@@ -359,7 +364,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                 <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
                   <h4 className="font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider text-[10px]">
-                    Popular Categories
+                    {t.popularCategories}
                   </h4>
                   <ul className="space-y-2">
                     {internalLinking.relatedCategories.map((c) => (
@@ -394,16 +399,16 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     letters: "Letter", reports: "Report", "business-plans": "Business Plan",
     quotations: "Quotation", "cover-letters": "Cover Letter",
   };
-  let pageHeading = "Free Professional Business Templates";
+  let pageHeading = t.hubHeading;
   if (categoryName) {
     const adjective = (categorySlug && SINGULAR_HEADING[categorySlug]) || categoryName.replace(/Templates?$/i, "").trim();
     const parts = [
-      "Free",
+      t.freeWord,
       experienceName,
       nicheName,
       adjective,
-      "Templates",
-      locationName ? `in ${locationName}` : "",
+      t.templatesWord,
+      locationName ? `${t.inWord} ${locationName}` : "",
       subdivisionName
     ].filter(Boolean);
     pageHeading = parts.join(" ");
@@ -472,18 +477,22 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     }
   }
 
+  const categoryDisplayName = categorySlug
+    ? (common.categoryNames[categorySlug as keyof typeof common.categoryNames] ?? categoryName)
+    : categoryName;
+
   const relatedSearches = categorySlug
     ? [
-        { label: `${categoryName} for Freelancers`, url: `/${locale}/templates/${categorySlug}/freelancer` },
-        { label: `Legal ${categoryName}`, url: `/${locale}/templates/${categorySlug}/legal` },
-        { label: `${categoryName} in USA`, url: `/${locale}/templates/${categorySlug}/general/usa` },
-        { label: `${categoryName} in Canada`, url: `/${locale}/templates/${categorySlug}/general/canada` },
+        { label: `${categoryDisplayName} ${t.rsForFreelancers}`, url: `/${locale}/templates/${categorySlug}/freelancer` },
+        { label: `${t.rsLegal} ${categoryDisplayName}`, url: `/${locale}/templates/${categorySlug}/legal` },
+        { label: `${categoryDisplayName} ${t.inWord} USA`, url: `/${locale}/templates/${categorySlug}/general/usa` },
+        { label: `${categoryDisplayName} ${t.inWord} Canada`, url: `/${locale}/templates/${categorySlug}/general/canada` },
       ]
     : [
-        { label: "Invoice Templates", url: `/${locale}/templates/invoices` },
-        { label: "Resume CV Layouts", url: `/${locale}/templates/resumes` },
-        { label: "Freelancer Agreements", url: `/${locale}/templates/contracts/freelancer` },
-        { label: "Marketing Proposals", url: `/${locale}/templates/proposals` },
+        { label: t.rsInvoiceTemplates, url: `/${locale}/templates/invoices` },
+        { label: t.rsResumeLayouts, url: `/${locale}/templates/resumes` },
+        { label: t.rsFreelancerAgreements, url: `/${locale}/templates/contracts/freelancer` },
+        { label: t.rsMarketingProposals, url: `/${locale}/templates/proposals` },
       ];
 
   const breadcrumbElements = [
@@ -528,11 +537,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
             <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
               <Home className="h-3 w-3" />
-              <span>Home</span>
+              <span>{common.homeBreadcrumb}</span>
             </Link>
             <span>/</span>
             <Link href={`/${locale}/templates`} className="hover:text-blue-500 transition-colors">
-              Templates
+              {t.templatesBreadcrumb}
             </Link>
             {categorySlug && (
               <>
@@ -541,7 +550,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   href={`/${locale}/templates/${categorySlug}`}
                   className="hover:text-blue-500 transition-colors truncate max-w-[120px]"
                 >
-                  {categoryName}
+                  {categoryDisplayName}
                 </Link>
               </>
             )}
@@ -560,7 +569,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               {pageHeading}
             </h1>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-3xl">
-              Choose from our curated library of dynamic templates. Seamlessly custom-tailor fields, styles, and values inside our built-in interactive editor canvas.
+              {t.hubSubtitle}
             </p>
           </div>
 
@@ -582,9 +591,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </div>
                 <div className="min-w-0">
                   <p className={`font-bold text-sm truncate ${ !categorySlug ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200" }`}>
-                    All Documents
+                    {t.allDocuments}
                   </p>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{allFallbackTemplates.length} templates</p>
+                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{allFallbackTemplates.length} {common.templatesLabel}</p>
                 </div>
                 {!categorySlug && (
                   <span className="ml-auto shrink-0 w-1.5 h-6 rounded-full bg-blue-500" />
@@ -593,7 +602,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
               {/* Category cards */}
               <div className="space-y-2.5">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 px-1">Document Types</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 px-1">{t.documentTypes}</p>
                 {CATEGORIES.map((cat) => {
                   const isActive = categorySlug === cat.slug;
                   return (
@@ -620,11 +629,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                       {/* Text */}
                       <div className="min-w-0 flex-1">
                         <p className={`font-bold text-sm truncate ${ isActive ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400" } transition-colors`}>
-                          {cat.name}
+                          {common.categoryNames[cat.slug as keyof typeof common.categoryNames] ?? cat.name}
                         </p>
-                        <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{cat.description}</p>
+                        <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{common.categoryDescriptions[cat.slug as keyof typeof common.categoryDescriptions] ?? cat.description}</p>
                         <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
-                          {allFallbackTemplates.filter((t) => t.categorySlug === cat.slug).length} templates
+                          {allFallbackTemplates.filter((tpl) => tpl.categorySlug === cat.slug).length} {common.templatesLabel}
                         </p>
                       </div>
 
@@ -640,7 +649,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               {/* Related Searches box */}
               <div className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
                 <h3 className="font-bold text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-                  Related Searches
+                  {t.relatedSearchesTitle}
                 </h3>
                 <div className="flex flex-col gap-2">
                   {relatedSearches.map((rel) => (
@@ -661,9 +670,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               {templates.length === 0 ? (
                 <div className="p-12 text-center border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3">
                   <AlertCircle className="h-10 w-10 text-zinc-400 mx-auto" />
-                  <h3 className="font-bold text-zinc-800 dark:text-zinc-200">No templates found</h3>
+                  <h3 className="font-bold text-zinc-800 dark:text-zinc-200">{t.noTemplatesFound}</h3>
                   <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                    We could not find templates matching the search parameters or filter queries. Try resetting your search.
+                    {t.noTemplatesDesc}
                   </p>
                 </div>
               ) : (
@@ -680,14 +689,14 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <TemplateThumbnail template={temp} />
 
                         <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
-                          Free
+                          {common.free}
                         </span>
                       </div>
 
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                         <div className="space-y-1.5">
                           <span className="text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-blue-400">
-                            {temp.categoryName}
+                            {common.categoryNames[temp.categorySlug as keyof typeof common.categoryNames] ?? temp.categoryName}
                           </span>
                           <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                             {temp.title}
@@ -702,7 +711,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           href={`/${locale}/templates/${temp.categorySlug}/${temp.slug}`}
                           className="w-full h-10 rounded-xl bg-zinc-950 hover:bg-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-800 text-white font-semibold text-xs flex items-center justify-center gap-1 shadow-sm transition-colors"
                         >
-                          <span>Preview Details</span>
+                          <span>{t.previewDetails}</span>
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       </div>
@@ -717,10 +726,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             <section className="pt-16 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
               <div className="rounded-2xl bg-zinc-100 dark:bg-zinc-900/40 p-6 md:p-8 space-y-4">
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
-                  Corporate Document Compliance & Open Specifications
+                  {t.complianceHeading}
                 </h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                  All items compiled in this directory are optimized to support dynamic field injection and variable mapping. Users can customize, rewrite using our built-in <a href={`/${locale}/editor/new`} className="text-blue-600 dark:text-blue-400 hover:underline">AI-enabled document editor</a>, and export to portable formats. We support the standard <a href="https://www.adobe.com/acrobat/about-pdf.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Adobe PDF Specifications</a> for pixel-perfect printing and structured serialization. Learn more about schema definitions at <a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Schema.org</a>.
+                  {t.complianceP1}<a href={`/${locale}/editor/new`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceEditorLink}</a>{t.complianceP2}<a href="https://www.adobe.com/acrobat/about-pdf.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.compliancePdfLink}</a>{t.complianceP3}<a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceSchemaLink}</a>{t.complianceP4}
                 </p>
               </div>
             </section>

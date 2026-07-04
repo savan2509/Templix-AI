@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download } from "lucide-react";
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
+import { getDictionary } from "@/lib/i18n";
 
 interface TemplateContent {
   title: string;
@@ -40,6 +41,13 @@ interface TemplateDetailViewProps {
 export default function TemplateDetailView({ locale, template }: TemplateDetailViewProps) {
   const router = useRouter();
 
+  const dict = getDictionary(locale);
+  const t = dict.templates;
+  const common = dict.common;
+  const categoryLabel =
+    common.categoryNames[template.categorySlug as keyof typeof common.categoryNames] ??
+    template.categoryName;
+
   // Initialize form state for the template's declared fields (shared sample values).
   const [fieldValues, setFieldValues] = useState<Record<string, string>>(() =>
     getTemplateValues(template)
@@ -67,13 +75,13 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
         <div className="p-6 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-5">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              {template.categoryName}
+              {categoryLabel}
             </span>
             <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mt-1">
-              Customize variables
+              {t.customizeVariables}
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
-              Fill in the parameters below. The preview paper will update dynamically in real time.
+              {t.fillParams}
             </p>
           </div>
 
@@ -100,11 +108,11 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 flex items-center justify-center gap-1.5 transition-colors"
             >
               <PenTool className="h-4 w-4" />
-              <span>Customize in Editor</span>
+              <span>{t.customizeInEditor}</span>
               <ArrowRight className="h-4 w-4" />
             </button>
             <p className="text-[10px] text-center text-zinc-400">
-              Tapping opens our full tiptap canvas where you can add signature, upload logo, export PDF.
+              {t.customizeHint}
             </p>
           </div>
         </div>
@@ -112,20 +120,20 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
         {/* Dynamic Trust Badges */}
         <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3.5">
           <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
-            Template Quality Guarantee
+            {t.qualityGuarantee}
           </h4>
           <div className="space-y-2">
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
-              <span>Tested & optimized for major Applicant Tracking Systems (ATS).</span>
+              <span>{t.qualityAts}</span>
             </div>
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
-              <span>Formatted to standard invoice audit configurations.</span>
+              <span>{t.qualityAudit}</span>
             </div>
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
-              <span>Supports instant offline PDF & DOCX compilations.</span>
+              <span>{t.qualityOffline}</span>
             </div>
           </div>
         </div>
@@ -135,8 +143,8 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
       <div className="lg:col-span-7 space-y-4">
         <h3 className="font-bold text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
           <FileText className="h-4 w-4 text-zinc-400" />
-          <span>Live Document Preview</span>
-          <span className="ml-auto text-[10px] text-green-500 font-semibold uppercase tracking-widest animate-pulse">● Live</span>
+          <span>{t.livePreview}</span>
+          <span className="ml-auto text-[10px] text-green-500 font-semibold uppercase tracking-widest animate-pulse">● {t.liveLabel}</span>
         </h3>
 
         {/* A4 Paper simulation — same DocumentPaper as the card thumbnail */}

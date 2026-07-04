@@ -24,6 +24,7 @@ import { about } from "./dictionaries/about";
 import { contact } from "./dictionaries/contact";
 import { faqPage } from "./dictionaries/faqPage";
 import { tools } from "./dictionaries/tools";
+import { toolWidget } from "./dictionaries/toolWidget";
 import { privacy } from "./dictionaries/privacy";
 import { terms } from "./dictionaries/terms";
 import { blog } from "./dictionaries/blog";
@@ -48,6 +49,7 @@ export function getDictionary(rawLocale: string | undefined | null) {
     contact: contact[l],
     faqPage: faqPage[l],
     tools: tools[l],
+    toolWidget: toolWidget[l],
     privacy: privacy[l],
     terms: terms[l],
     blog: blog[l],

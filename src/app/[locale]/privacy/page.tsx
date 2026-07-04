@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SEOEngine } from "@/services/seo";
+import { getDictionary } from "@/lib/i18n";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 
 interface PageProps {
@@ -19,79 +20,61 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PrivacyPage({ params }: PageProps) {
   const { locale } = await params;
+  const t = getDictionary(locale).privacy;
   return (
     <InfoPageShell
       locale={locale}
-      eyebrow="Legal"
-      title="Privacy Policy"
-      subtitle="Your privacy matters. This policy explains what we collect, why, and the choices you have."
-      updated="July 3, 2026"
+      eyebrow={t.eyebrow}
+      title={t.title}
+      subtitle={t.subtitle}
+      updated={t.updated}
     >
-      <p>
-        This Privacy Policy describes how Templix AI (&ldquo;we&rdquo;, &ldquo;us&rdquo;) handles
-        information when you use our website, document templates, and editor. By using the service you
-        agree to the practices described here.
-      </p>
+      <p>{t.intro}</p>
 
-      <Section heading="1. Information We Collect">
+      <Section heading={t.s1Heading}>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li><strong>Account data</strong> — if you sign in, we store your email address and name from your Google, GitHub, or email sign-in.</li>
-          <li><strong>Documents you create</strong> — templates you customize are stored so you can return to them. You may delete them at any time.</li>
-          <li><strong>Usage data</strong> — basic, aggregated analytics such as pages viewed, used to improve the product.</li>
+          <li><strong>{t.s1Item1Label}</strong> — {t.s1Item1Text}</li>
+          <li><strong>{t.s1Item2Label}</strong> — {t.s1Item2Text}</li>
+          <li><strong>{t.s1Item3Label}</strong> — {t.s1Item3Text}</li>
         </ul>
-        <p>We do <strong>not</strong> sell your personal data, and we never require payment to use the templates or editor.</p>
+        <p>{t.s1NoSellPre} <strong>{t.s1NoSellEmphasis}</strong> {t.s1NoSellPost}</p>
       </Section>
 
-      <Section heading="2. How We Use Information">
+      <Section heading={t.s2Heading}>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li>To provide and maintain the template editor and your saved documents.</li>
-          <li>To authenticate you and keep your account secure.</li>
-          <li>To improve performance, fix bugs, and develop new features.</li>
-          <li>To send you a sign-in (magic) link when you request one.</li>
+          <li>{t.s2Item1}</li>
+          <li>{t.s2Item2}</li>
+          <li>{t.s2Item3}</li>
+          <li>{t.s2Item4}</li>
         </ul>
       </Section>
 
-      <Section heading="3. AI Processing">
-        <p>
-          When you use the AI rewrite assistant, the text you submit is sent securely to a third-party
-          AI provider solely to generate your requested rewrite. It is not used to train models and is
-          not retained by us beyond delivering the result.
-        </p>
+      <Section heading={t.s3Heading}>
+        <p>{t.s3Body}</p>
       </Section>
 
-      <Section heading="4. Cookies">
-        <p>
-          We use essential cookies to keep you signed in and to remember your theme preference. We do
-          not use advertising cookies. You can clear cookies in your browser at any time.
-        </p>
+      <Section heading={t.s4Heading}>
+        <p>{t.s4Body}</p>
       </Section>
 
-      <Section heading="5. Data Retention & Security">
-        <p>
-          We retain your account and documents until you delete them or ask us to. We apply reasonable
-          technical and organizational safeguards to protect your data, though no method of transmission
-          over the internet is 100% secure.
-        </p>
+      <Section heading={t.s5Heading}>
+        <p>{t.s5Body}</p>
       </Section>
 
-      <Section heading="6. Your Rights">
+      <Section heading={t.s6Heading}>
         <p>
-          Depending on your location, you may have the right to access, correct, export, or delete your
-          personal data. To exercise these rights, contact us at{" "}
+          {t.s6Body}{" "}
           <a href="mailto:privacy@templix.ai" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">privacy@templix.ai</a>.
         </p>
       </Section>
 
-      <Section heading="7. Changes to This Policy">
-        <p>
-          We may update this policy from time to time. Material changes will be reflected by the
-          &ldquo;Last updated&rdquo; date above.
-        </p>
+      <Section heading={t.s7Heading}>
+        <p>{t.s7Body}</p>
       </Section>
 
-      <Section heading="8. Contact">
+      <Section heading={t.s8Heading}>
         <p>
-          Questions about privacy? Email{" "}
+          {t.s8Body}{" "}
           <a href="mailto:privacy@templix.ai" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">privacy@templix.ai</a>.
         </p>
       </Section>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import { TOOLS } from "@/data/tools";
+import { getDictionary } from "@/lib/i18n";
 import { Percent, Tag, TrendingUp, Hash, Clock, ArrowRight, type LucideIcon } from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock };
@@ -13,10 +14,10 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const t = getDictionary(locale).tools;
   return SEOEngine.generateMetadata({
-    title: "Free Business Tools & Calculators",
-    description:
-      "Free online tools for freelancers and businesses: GST/tax calculator, discount calculator, profit margin calculator, invoice number generator, and hourly rate calculator.",
+    title: t.metaTitle,
+    description: t.metaDescription,
     slug: "/tools",
     locale,
   }) as Metadata;
@@ -24,12 +25,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ToolsHubPage({ params }: PageProps) {
   const { locale } = await params;
+  const t = getDictionary(locale).tools;
   return (
     <InfoPageShell
       locale={locale}
-      eyebrow="Free Tools"
-      title="Business Tools & Calculators"
-      subtitle="Fast, free, no sign-up calculators for invoicing, pricing, and freelancing — everything runs right in your browser."
+      eyebrow={t.hubEyebrow}
+      title={t.hubTitle}
+      subtitle={t.hubSubtitle}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {TOOLS.map((tool) => {
@@ -48,7 +50,7 @@ export default async function ToolsHubPage({ params }: PageProps) {
               </h2>
               <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{tool.description}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 dark:text-blue-400">
-                Open tool
+                {t.openTool}
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </Link>
@@ -57,9 +59,9 @@ export default async function ToolsHubPage({ params }: PageProps) {
       </div>
 
       <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-400">
-        Need a document too? Browse our free{" "}
-        <Link href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document templates</Link>{" "}
-        — invoices, resumes, contracts, proposals, and more.
+        {t.needDocPre}
+        <Link href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.needDocLink}</Link>
+        {t.needDocPost}
       </p>
     </InfoPageShell>
   );

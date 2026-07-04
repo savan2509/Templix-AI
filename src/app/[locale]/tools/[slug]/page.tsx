@@ -5,6 +5,7 @@ import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ToolWidget from "@/components/tools/ToolWidget";
 import { TOOLS, getTool } from "@/data/tools";
+import { getDictionary } from "@/lib/i18n";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -12,10 +13,11 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  const t = getDictionary(locale).tools;
   const tool = getTool(slug);
-  if (!tool) return { title: "Tool not found" };
+  if (!tool) return { title: t.notFoundTitle };
   return SEOEngine.generateMetadata({
-    title: `${tool.title} — Free Online Tool`,
+    title: `${tool.title}${t.metaTitleSuffix}`,
     description: tool.description,
     slug: `/tools/${tool.slug}`,
     locale,
@@ -25,41 +27,41 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ToolPage({ params }: PageProps) {
   const { locale, slug } = await params;
+  const t = getDictionary(locale).tools;
   const tool = getTool(slug);
   if (!tool) notFound();
 
-  const related = TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 4);
+  const related = TOOLS.filter((tl) => tl.slug !== tool.slug).slice(0, 4);
 
   return (
     <InfoPageShell
       locale={locale}
-      eyebrow="Free Tool"
+      eyebrow={t.toolEyebrow}
       title={tool.title}
       subtitle={tool.description}
     >
       <ToolWidget slug={tool.slug} />
 
-      <Section heading="How to use this tool">
+      <Section heading={t.howToHeading}>
         <p>
-          Enter your values above and the result updates instantly — nothing is sent to a server, so
-          it&rsquo;s fast and completely private. Use it as many times as you like, free and without an
-          account.
+          {t.howToBody}
         </p>
       </Section>
 
-      <Section heading="Related free tools">
+      <Section heading={t.relatedHeading}>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {related.map((t) => (
-            <li key={t.slug}>
-              <Link href={`/${locale}/tools/${t.slug}`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                {t.title}
+          {related.map((tl) => (
+            <li key={tl.slug}>
+              <Link href={`/${locale}/tools/${tl.slug}`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                {tl.title}
               </Link>
             </li>
           ))}
         </ul>
         <p className="pt-2">
-          Or create a document with our free{" "}
-          <Link href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">templates</Link>.
+          {t.orCreatePre}
+          <Link href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.orCreateLink}</Link>
+          {t.orCreatePost}
         </p>
       </Section>
     </InfoPageShell>

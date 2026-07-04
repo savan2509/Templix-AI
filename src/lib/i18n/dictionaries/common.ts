@@ -14,6 +14,8 @@ const en = {
   templatesLabel: "templates",
   backToHome: "Back to Home",
   selectRegion: "Select Region",
+  homeBreadcrumb: "Home",
+  lastUpdated: "Last updated:",
   categoryNames: {
     invoices: "Invoices",
     resumes: "Resumes & CVs",
@@ -48,6 +50,8 @@ const es: Shape = {
   templatesLabel: "plantillas",
   backToHome: "Volver al inicio",
   selectRegion: "Seleccionar región",
+  homeBreadcrumb: "Inicio",
+  lastUpdated: "Última actualización:",
   categoryNames: {
     invoices: "Facturas",
     resumes: "Currículums y CV",
@@ -80,6 +84,8 @@ const de: Shape = {
   templatesLabel: "Vorlagen",
   backToHome: "Zurück zur Startseite",
   selectRegion: "Region auswählen",
+  homeBreadcrumb: "Startseite",
+  lastUpdated: "Zuletzt aktualisiert:",
   categoryNames: {
     invoices: "Rechnungen",
     resumes: "Lebensläufe & CVs",
@@ -112,6 +118,8 @@ const fr: Shape = {
   templatesLabel: "modèles",
   backToHome: "Retour à l’accueil",
   selectRegion: "Sélectionner la région",
+  homeBreadcrumb: "Accueil",
+  lastUpdated: "Dernière mise à jour :",
   categoryNames: {
     invoices: "Factures",
     resumes: "CV et curriculums",
@@ -144,6 +152,8 @@ const ar: Shape = {
   templatesLabel: "قالبًا",
   backToHome: "العودة إلى الرئيسية",
   selectRegion: "اختر المنطقة",
+  homeBreadcrumb: "الرئيسية",
+  lastUpdated: "آخر تحديث:",
   categoryNames: {
     invoices: "الفواتير",
     resumes: "السير الذاتية",

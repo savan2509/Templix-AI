@@ -1,15 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { getDictionary, INTL_LOCALE, type Locale } from "@/lib/i18n";
 
 // Self-contained, client-side calculators. No network, no dependencies — all
 // math runs in the browser. One entry component picks the widget by slug.
+// UI labels come from the i18n dictionary; number formatting follows the locale.
 
 const CURRENCIES = ["$", "₹", "€", "£", "¥"];
 
-function fmt(n: number): string {
+// Shared per-render i18n handle for a widget: the translated labels + the
+// BCP-47 tag used to format numbers for the active locale.
+function useToolI18n() {
+  const locale = (usePathname().split("/")[1] || "en") as Locale;
+  return {
+    t: getDictionary(locale).toolWidget,
+    intl: INTL_LOCALE[locale] ?? "en-US",
+  };
+}
+
+function fmt(n: number, intl: string): string {
   if (!isFinite(n)) return "—";
-  return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return n.toLocaleString(intl, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 function num(s: string): number {
   const n = parseFloat(s);
@@ -58,6 +71,7 @@ function Card({ children }: { children: React.ReactNode }) {
 
 /* ---------------- GST / Tax ---------------- */
 function GstCalculator() {
+  const { t, intl } = useToolI18n();
   const [cur, setCur] = useState("$");
   const [amount, setAmount] = useState("1000");
   const [rate, setRate] = useState("18");
@@ -71,23 +85,23 @@ function GstCalculator() {
   return (
     <Card>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Field label="Amount"><input className={inputCls} inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} /></Field>
-        <Field label="Tax / GST rate (%)"><input className={inputCls} inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} /></Field>
-        <Field label="Currency"><CurrencySelect value={cur} onChange={setCur} /></Field>
-        <Field label="Mode">
+        <Field label={t.amount}><input className={inputCls} inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} /></Field>
+        <Field label={t.taxRate}><input className={inputCls} inputMode="decimal" value={rate} onChange={(e) => setRate(e.target.value)} /></Field>
+        <Field label={t.currency}><CurrencySelect value={cur} onChange={setCur} /></Field>
+        <Field label={t.mode}>
           <div className="grid grid-cols-2 gap-2">
             {(["add", "remove"] as const).map((m) => (
               <button key={m} onClick={() => setMode(m)} className={`h-11 rounded-xl text-sm font-semibold transition-colors ${mode === m ? "bg-blue-600 text-white" : "border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300"}`}>
-                {m === "add" ? "Add tax" : "Remove tax"}
+                {m === "add" ? t.addTax : t.removeTax}
               </button>
             ))}
           </div>
         </Field>
       </div>
       <div className="mt-6">
-        <ResultRow label="Net amount" value={`${cur}${fmt(net)}`} />
-        <ResultRow label={`Tax (${fmt(r)}%)`} value={`${cur}${fmt(tax)}`} />
-        <ResultRow label="Gross total" value={`${cur}${fmt(gross)}`} strong />
+        <ResultRow label={t.netAmount} value={`${cur}${fmt(net, intl)}`} />
+        <ResultRow label={`${t.tax} (${fmt(r, intl)}%)`} value={`${cur}${fmt(tax, intl)}`} />
+        <ResultRow label={t.grossTotal} value={`${cur}${fmt(gross, intl)}`} strong />
       </div>
     </Card>
   );
@@ -95,6 +109,7 @@ function GstCalculator() {
 
 /* ---------------- Discount ---------------- */
 function DiscountCalculator() {
+  const { t, intl } = useToolI18n();
   const [cur, setCur] = useState("$");
   const [price, setPrice] = useState("120");
   const [disc, setDisc] = useState("25");
@@ -106,13 +121,13 @@ function DiscountCalculator() {
   return (
     <Card>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Field label="Original price"><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} /></Field>
-        <Field label="Discount (%)"><input className={inputCls} inputMode="decimal" value={disc} onChange={(e) => setDisc(e.target.value)} /></Field>
-        <Field label="Currency"><CurrencySelect value={cur} onChange={setCur} /></Field>
+        <Field label={t.originalPrice}><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} /></Field>
+        <Field label={t.discount}><input className={inputCls} inputMode="decimal" value={disc} onChange={(e) => setDisc(e.target.value)} /></Field>
+        <Field label={t.currency}><CurrencySelect value={cur} onChange={setCur} /></Field>
       </div>
       <div className="mt-6">
-        <ResultRow label="You save" value={`${cur}${fmt(save)}`} />
-        <ResultRow label="Final price" value={`${cur}${fmt(final)}`} strong />
+        <ResultRow label={t.youSave} value={`${cur}${fmt(save, intl)}`} />
+        <ResultRow label={t.finalPrice} value={`${cur}${fmt(final, intl)}`} strong />
       </div>
     </Card>
   );
@@ -120,6 +135,7 @@ function DiscountCalculator() {
 
 /* ---------------- Profit margin ---------------- */
 function MarginCalculator() {
+  const { t, intl } = useToolI18n();
   const [cur, setCur] = useState("$");
   const [cost, setCost] = useState("60");
   const [price, setPrice] = useState("100");
@@ -132,14 +148,14 @@ function MarginCalculator() {
   return (
     <Card>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Field label="Cost price"><input className={inputCls} inputMode="decimal" value={cost} onChange={(e) => setCost(e.target.value)} /></Field>
-        <Field label="Selling price"><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} /></Field>
-        <Field label="Currency"><CurrencySelect value={cur} onChange={setCur} /></Field>
+        <Field label={t.costPrice}><input className={inputCls} inputMode="decimal" value={cost} onChange={(e) => setCost(e.target.value)} /></Field>
+        <Field label={t.sellingPrice}><input className={inputCls} inputMode="decimal" value={price} onChange={(e) => setPrice(e.target.value)} /></Field>
+        <Field label={t.currency}><CurrencySelect value={cur} onChange={setCur} /></Field>
       </div>
       <div className="mt-6">
-        <ResultRow label="Profit" value={`${cur}${fmt(profit)}`} />
-        <ResultRow label="Markup" value={`${fmt(markup)}%`} />
-        <ResultRow label="Profit margin" value={`${fmt(margin)}%`} strong />
+        <ResultRow label={t.profit} value={`${cur}${fmt(profit, intl)}`} />
+        <ResultRow label={t.markup} value={`${fmt(markup, intl)}%`} />
+        <ResultRow label={t.profitMargin} value={`${fmt(margin, intl)}%`} strong />
       </div>
     </Card>
   );
@@ -147,6 +163,7 @@ function MarginCalculator() {
 
 /* ---------------- Invoice number generator ---------------- */
 function InvoiceNumberGenerator() {
+  const { t } = useToolI18n();
   const [prefix, setPrefix] = useState("INV");
   const [useDate, setUseDate] = useState(true);
   const [start, setStart] = useState("1");
@@ -171,16 +188,16 @@ function InvoiceNumberGenerator() {
   return (
     <Card>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Field label="Prefix"><input className={inputCls} value={prefix} onChange={(e) => setPrefix(e.target.value)} /></Field>
-        <Field label="Start number"><input className={inputCls} inputMode="numeric" value={start} onChange={(e) => setStart(e.target.value)} /></Field>
-        <Field label="Zero padding"><input className={inputCls} inputMode="numeric" value={pad} onChange={(e) => setPad(e.target.value)} /></Field>
+        <Field label={t.prefix}><input className={inputCls} value={prefix} onChange={(e) => setPrefix(e.target.value)} /></Field>
+        <Field label={t.startNumber}><input className={inputCls} inputMode="numeric" value={start} onChange={(e) => setStart(e.target.value)} /></Field>
+        <Field label={t.zeroPadding}><input className={inputCls} inputMode="numeric" value={pad} onChange={(e) => setPad(e.target.value)} /></Field>
       </div>
       <label className="mt-4 flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300 cursor-pointer">
         <input type="checkbox" checked={useDate} onChange={(e) => setUseDate(e.target.checked)} className="h-4 w-4 rounded accent-blue-600" />
-        Include current year &amp; month{ym ? ` (${ym})` : ""}
+        {t.includeYearMonth}{ym ? ` (${ym})` : ""}
       </label>
       <div className="mt-5 rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 p-4">
-        <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Next invoice numbers</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t.nextInvoiceNumbers}</p>
         <div className="flex flex-wrap gap-2">
           {preview.map((p, i) => (
             <span key={i} className={`px-3 py-1.5 rounded-lg text-sm font-mono ${i === 0 ? "bg-blue-600 text-white font-bold" : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300"}`}>
@@ -195,6 +212,7 @@ function InvoiceNumberGenerator() {
 
 /* ---------------- Freelance hourly rate ---------------- */
 function HourlyRateCalculator() {
+  const { t, intl } = useToolI18n();
   const [cur, setCur] = useState("$");
   const [income, setIncome] = useState("80000");
   const [expenses, setExpenses] = useState("10000");
@@ -208,16 +226,16 @@ function HourlyRateCalculator() {
   return (
     <Card>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Field label="Target yearly income"><input className={inputCls} inputMode="decimal" value={income} onChange={(e) => setIncome(e.target.value)} /></Field>
-        <Field label="Yearly business expenses"><input className={inputCls} inputMode="decimal" value={expenses} onChange={(e) => setExpenses(e.target.value)} /></Field>
-        <Field label="Billable hours / week"><input className={inputCls} inputMode="decimal" value={hours} onChange={(e) => setHours(e.target.value)} /></Field>
-        <Field label="Working weeks / year"><input className={inputCls} inputMode="decimal" value={weeks} onChange={(e) => setWeeks(e.target.value)} /></Field>
-        <Field label="Currency"><CurrencySelect value={cur} onChange={setCur} /></Field>
+        <Field label={t.targetYearlyIncome}><input className={inputCls} inputMode="decimal" value={income} onChange={(e) => setIncome(e.target.value)} /></Field>
+        <Field label={t.yearlyExpenses}><input className={inputCls} inputMode="decimal" value={expenses} onChange={(e) => setExpenses(e.target.value)} /></Field>
+        <Field label={t.billableHoursWeek}><input className={inputCls} inputMode="decimal" value={hours} onChange={(e) => setHours(e.target.value)} /></Field>
+        <Field label={t.workingWeeksYear}><input className={inputCls} inputMode="decimal" value={weeks} onChange={(e) => setWeeks(e.target.value)} /></Field>
+        <Field label={t.currency}><CurrencySelect value={cur} onChange={setCur} /></Field>
       </div>
       <div className="mt-6">
-        <ResultRow label="Billable hours / year" value={fmt(billable)} />
-        <ResultRow label="Suggested day rate (8h)" value={`${cur}${fmt(dayRate)}`} />
-        <ResultRow label="Hourly rate to charge" value={`${cur}${fmt(rate)}`} strong />
+        <ResultRow label={t.billableHoursYear} value={fmt(billable, intl)} />
+        <ResultRow label={t.suggestedDayRate} value={`${cur}${fmt(dayRate, intl)}`} />
+        <ResultRow label={t.hourlyRate} value={`${cur}${fmt(rate, intl)}`} strong />
       </div>
     </Card>
   );

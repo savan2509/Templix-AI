@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
+import { getDictionary } from "@/lib/i18n";
 import { Mail, LifeBuoy, MessageSquare } from "lucide-react";
 
 interface PageProps {
@@ -10,32 +11,34 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const t = getDictionary(locale).contact;
   return SEOEngine.generateMetadata({
-    title: "Contact Us",
-    description:
-      "Get in touch with the Templix AI team for support, feedback, or partnership inquiries. We usually reply within one business day.",
+    title: t.metaTitle,
+    description: t.metaDescription,
     slug: "/contact",
     locale,
   }) as Metadata;
 }
 
-const CHANNELS = [
-  { icon: Mail, title: "General & Support", text: "Questions, bugs, or feedback about the product.", email: "support@templix.ai" },
-  { icon: MessageSquare, title: "Partnerships", text: "Collaborations, press, and business inquiries.", email: "hello@templix.ai" },
-  { icon: LifeBuoy, title: "Privacy & Legal", text: "Data requests and legal questions.", email: "privacy@templix.ai" },
-];
-
 export default async function ContactPage({ params }: PageProps) {
   const { locale } = await params;
+  const t = getDictionary(locale).contact;
+
+  const channels = [
+    { icon: Mail, title: t.channelSupportTitle, text: t.channelSupportText, email: "support@templix.ai" },
+    { icon: MessageSquare, title: t.channelPartnershipsTitle, text: t.channelPartnershipsText, email: "hello@templix.ai" },
+    { icon: LifeBuoy, title: t.channelLegalTitle, text: t.channelLegalText, email: "privacy@templix.ai" },
+  ];
+
   return (
     <InfoPageShell
       locale={locale}
-      eyebrow="We&rsquo;re here to help"
-      title="Contact Us"
-      subtitle="Have a question, found a bug, or want to partner with us? Reach out — we usually reply within one business day."
+      eyebrow={t.eyebrow}
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {CHANNELS.map((c) => (
+        {channels.map((c) => (
           <a
             key={c.email}
             href={`mailto:${c.email}`}
@@ -51,13 +54,13 @@ export default async function ContactPage({ params }: PageProps) {
         ))}
       </div>
 
-      <Section heading="Before you email">
+      <Section heading={t.beforeEmailHeading}>
         <p>
-          Many common questions are answered on our{" "}
-          <Link href={`/${locale}/faq`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">FAQ page</Link>{" "}
-          and in our{" "}
-          <Link href={`/${locale}/blog`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">guides</Link>.
-          For the fastest help, include the template name and a short description of the issue.
+          {t.beforeEmailPre}
+          <Link href={`/${locale}/faq`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.faqLink}</Link>
+          {t.beforeEmailMid}
+          <Link href={`/${locale}/blog`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.guidesLink}</Link>
+          {t.beforeEmailPost}
         </p>
       </Section>
     </InfoPageShell>

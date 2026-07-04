@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { db, isDbOnline } from "@/lib/db";
 import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
   BookOpen,
   ArrowRight,
@@ -53,17 +54,22 @@ const CATEGORY_DOT: Record<string, string> = {
   Guides:    "bg-amber-500",
 };
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+function formatDate(iso: string, locale: string) {
+  return new Date(iso).toLocaleDateString(
+    INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
 }
 
 export default async function BlogListingPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
   const { category = "All" } = await searchParams;
+  const t = getDictionary(locale).blog;
+  const c = getDictionary(locale).common;
 
   // Load from DB if available, always fall back to static data
   let posts: BlogPost[] = STATIC_BLOG_POSTS;
@@ -143,23 +149,22 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-semibold text-blue-400 shadow-sm">
               <Sparkles className="h-3.5 w-3.5 text-blue-400" />
-              <span>Templix AI Resource Library</span>
+              <span>{t.heroBadge}</span>
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-md">
-              Document Templates Blog
+              {t.heroTitle}
             </h1>
             <p className="text-zinc-300 text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
-              Practical guides on invoices, resumes, contracts, proposals, and AI writing tools —
-              written for freelancers, businesses, and professionals.
+              {t.heroSubtitle}
             </p>
 
             {/* Stats row */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2 text-sm text-zinc-400">
-              <span className="flex items-center gap-1.5"><BookOpen className="h-4 w-4 text-blue-400" />{posts.length} Articles</span>
+              <span className="flex items-center gap-1.5"><BookOpen className="h-4 w-4 text-blue-400" />{posts.length} {t.statArticles}</span>
               <span className="w-px h-4 bg-zinc-700" />
-              <span className="flex items-center gap-1.5"><TrendingUp className="h-4 w-4 text-blue-400" />Weekly Updates</span>
+              <span className="flex items-center gap-1.5"><TrendingUp className="h-4 w-4 text-blue-400" />{t.statWeekly}</span>
               <span className="w-px h-4 bg-zinc-700" />
-              <span className="flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-blue-400" />Free Templates Included</span>
+              <span className="flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-blue-400" />{t.statFree}</span>
             </div>
           </div>
         </section>
@@ -181,7 +186,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                   {cat !== "All" && (
                     <span className={`w-1.5 h-1.5 rounded-full ${CATEGORY_DOT[cat] ?? "bg-zinc-400"} ${category === cat ? "bg-white" : ""}`} />
                   )}
-                  {cat}
+                  {t.categories[cat] ?? cat}
                 </Link>
               ))}
             </div>
@@ -194,7 +199,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           {category === "All" && featured && (
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-5 flex items-center gap-2">
-                <TrendingUp className="h-3.5 w-3.5" /> Featured Article
+                <TrendingUp className="h-3.5 w-3.5" /> {t.featuredLabel}
               </p>
               <Link
                 href={`/${locale}/blog/${featured.slug}`}
@@ -221,10 +226,10 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                         {featured.category}
                       </span>
                       <span className="text-xs text-zinc-400 flex items-center gap-1">
-                        <Calendar className="h-3 w-3" /> {formatDate(featured.publishedAt)}
+                        <Calendar className="h-3 w-3" /> {formatDate(featured.publishedAt, locale)}
                       </span>
                       <span className="text-xs text-zinc-400 flex items-center gap-1">
-                        <Clock className="h-3 w-3" /> {featured.readTime} min read
+                        <Clock className="h-3 w-3" /> {featured.readTime} {t.minRead}
                       </span>
                     </div>
                     <h2 className="text-2xl lg:text-3xl font-extrabold text-zinc-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -235,7 +240,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
-                    <span>Read Full Article</span>
+                    <span>{t.readFullArticle}</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -247,20 +252,20 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           <div>
             {category !== "All" && (
               <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-5">
-                {filtered.length} article{filtered.length !== 1 ? "s" : ""} in {category}
+                {filtered.length} {filtered.length !== 1 ? t.articlePlural : t.articleSingular} {t.inWord} {t.categories[category as keyof typeof t.categories] ?? category}
               </p>
             )}
             {category === "All" && (
               <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-5">
-                All Articles
+                {t.allArticles}
               </p>
             )}
 
             {filtered.length === 0 ? (
               <div className="py-20 text-center text-zinc-400 dark:text-zinc-500 space-y-3">
                 <BookOpen className="h-10 w-10 mx-auto opacity-40" />
-                <p className="text-sm font-medium">No articles found in this category yet.</p>
-                <Link href={`/${locale}/blog`} className="text-xs text-blue-500 underline">View all articles</Link>
+                <p className="text-sm font-medium">{t.emptyState}</p>
+                <Link href={`/${locale}/blog`} className="text-xs text-blue-500 underline">{c.viewAllArticles}</Link>
               </div>
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -293,7 +298,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       {/* Meta — category badge removed here (already shown over image) */}
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-[10px] text-zinc-400 flex items-center gap-1 ml-auto">
-                          <Clock className="h-2.5 w-2.5" /> {post.readTime} min
+                          <Clock className="h-2.5 w-2.5" /> {post.readTime} {t.min}
                         </span>
                       </div>
 
@@ -319,10 +324,10 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       {/* Footer */}
                       <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
                         <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-                          <Calendar className="h-2.5 w-2.5" /> {formatDate(post.publishedAt)}
+                          <Calendar className="h-2.5 w-2.5" /> {formatDate(post.publishedAt, locale)}
                         </span>
                         <span className="flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                          Read <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                          {t.read} <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                         </span>
                       </div>
                     </div>
@@ -336,24 +341,23 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           <div className="rounded-3xl border border-blue-200 dark:border-blue-900/40 bg-gradient-to-r from-blue-600 to-indigo-600 p-8 md:p-12 text-center text-white space-y-5 shadow-xl shadow-blue-500/10">
             <Sparkles className="h-8 w-8 mx-auto opacity-80" />
             <h2 className="text-2xl md:text-3xl font-extrabold">
-              Ready to Create Your Document?
+              {t.ctaHeading}
             </h2>
             <p className="text-blue-100 text-sm max-w-lg mx-auto leading-relaxed">
-              Browse 180+ free professional templates. Customize online with our AI editor and
-              download as PDF or Word — instantly, no account needed.
+              {t.ctaText}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href={`/${locale}/templates`}
                 className="px-6 py-3 rounded-xl bg-white text-blue-600 font-bold text-sm hover:bg-blue-50 transition-colors shadow-md"
               >
-                Browse Templates
+                {c.browseTemplates}
               </Link>
               <Link
                 href={`/${locale}/templates/invoices`}
                 className="px-6 py-3 rounded-xl border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-colors"
               >
-                Invoice Templates →
+                {t.ctaInvoiceTemplates}
               </Link>
             </div>
           </div>
@@ -361,10 +365,10 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           {/* SEO & Professional Document Writing Guides */}
           <div className="border-t border-zinc-200 dark:border-zinc-800 pt-12 space-y-4">
             <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
-              Professional Writing Directories & References
+              {t.seoHeading}
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              Our articles follow standard industry patterns for modern corporate formatting. When using our <a href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline">free templates library</a>, you benefit from built-in standard variables. For standard guidelines on writing and invoicing compliance, consult the <a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Wikipedia Invoice Definition</a>, or check professional networking best practices via <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">LinkedIn Guides</a>.
+              {t.seoText1}<a href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoTemplatesLink}</a>{t.seoText2}<a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoWikiLink}</a>{t.seoText3}<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoLinkedInLink}</a>{t.seoText4}
             </p>
           </div>
 
