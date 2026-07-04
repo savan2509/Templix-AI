@@ -154,22 +154,22 @@ export default function Footer() {
             </h5>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
-                <Link href={`/${locale}/templates/letters`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                <Link href={`/${locale}/templates/letters/cover-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.coverLetters}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/templates/letters`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                <Link href={`/${locale}/templates/letters/resignation-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.resignationLetters}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/templates/letters`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                <Link href={`/${locale}/templates/letters/offer-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.offerLetters}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/templates/letters`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                <Link href={`/${locale}/templates/letters/recommendation-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.recommendationLetters}
                 </Link>
               </li>
@@ -224,11 +224,6 @@ export default function Footer() {
               <li>
                 <Link href={`/${locale}/terms`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.termsOfService}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/privacy`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
-                  {t.cookiePolicy}
                 </Link>
               </li>
               <li>

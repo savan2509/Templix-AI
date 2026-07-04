@@ -315,7 +315,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </span>
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                {activeTemplate.title} {t.templateNoun}
+                {/* Titles may already end in "Template"; strip it so the noun below never doubles it. */}
+                {activeTemplate.title.replace(/\s+Template$/i, "").trim()} {t.templateNoun}
               </h1>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                 {activeTemplate.description} {t.detailIntroExtra}

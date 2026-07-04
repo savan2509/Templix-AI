@@ -48,6 +48,16 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
     common.categoryNames[template.categorySlug as keyof typeof common.categoryNames] ??
     template.categoryName;
 
+  // The primary quality badge must match the document type — ATS only means
+  // something for resumes; invoices/quotations get the audit-format badge;
+  // everything else gets a neutral professional-standards badge.
+  const qualityPrimary =
+    template.categorySlug === "resumes"
+      ? t.qualityAts
+      : template.categorySlug === "invoices" || template.categorySlug === "quotations"
+        ? t.qualityAudit
+        : t.qualityStandard;
+
   // Initialize form state for the template's declared fields (shared sample values).
   const [fieldValues, setFieldValues] = useState<Record<string, string>>(() =>
     getTemplateValues(template)
@@ -125,11 +135,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
           <div className="space-y-2">
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
-              <span>{t.qualityAts}</span>
-            </div>
-            <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
-              <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
-              <span>{t.qualityAudit}</span>
+              <span>{qualityPrimary}</span>
             </div>
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />

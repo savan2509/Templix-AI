@@ -274,7 +274,10 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   employeeEmail: "david.miller@gmail.com",
   employeePhone: "+1 (555) 443-8899",
   department: "Engineering & Technology",
-  endDate: "N/A (Indefinite)",
+  // Reads naturally in the employment clause "…continues until {{endDate}}".
+  // Fixed-term contracts (freelance, service) override this with a real date.
+  startDate: "August 1, 2026",
+  endDate: "terminated by either party under the notice terms below",
   workLocation: "New York Corporate Office / Hybrid",
   bonus: "10% annual performance-based bonus target",
   benefits: "Medical, dental, vision, 401(k) matching, and 20 days PTO",
@@ -283,7 +286,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   probationPeriod: "90 days from the start date",
   leavePolicy: "20 days paid vacation, 5 sick days, and 10 company holidays",
   noticePeriod: "30 days written notice required by either party",
-  confidentialityClause: "Employee agrees to protect all proprietary and confidential business data.",
+  confidentialityClause: "Both parties agree to protect all proprietary and confidential business data.",
   nonCompeteClause: "12-month post-employment restriction within a 50-mile radius for competing services.",
   employerSignature: "Marcus Vance, HR Representative",
   employeeSignature: "David Miller",
@@ -294,7 +297,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   freelancerEmail: "alex@cartercreative.co",
   freelancerPhone: "+1 (555) 233-4455",
   projectTitle: "Brand Identity & Web Redesign",
-  deliverables: "Logo pack, color palette, custom Figma layout, and Tailwind CSS code files.",
+  deliverables: "Logo pack, color palette, custom Figma layout, and Tailwind CSS code files",
   timeline: "6-week sprint from kickoff",
   totalProjectFee: "$8,500.00",
   depositAmount: "$2,500.00 upfront payment",
@@ -593,7 +596,9 @@ export const FIELD_DEFAULTS: Record<string, string> = {
 export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   "invoice-freelancer": {
     unitPrice: "$1,200",
-    total: "$4,500.00",
+    // subtotal $4,250 + 8% tax ($340) = $4,590 due — keep these internally consistent.
+    total: "$4,590.00",
+    amountDue: "4,590.00",
     subtotal: "$4,250.00",
     tax: "8%",
     discount: "$50.00"
@@ -651,7 +656,11 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     clientAddress: "100 Broadway, Suite 400, Portland, OR 97205",
     clientEmail: "jessica.w@apexmarketing.com",
     clientPhone: "+1 (555) 877-6622",
-    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts."
+    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts.",
+    // Fixed-term engagement: 6-week sprint. Concrete dates so the clause doesn't
+    // read "commence on  and conclude by N/A (Indefinite)".
+    startDate: "July 15, 2026",
+    endDate: "August 26, 2026"
   },
   "freelance-contract": {
     freelancerName: "Alex Carter",
@@ -661,17 +670,30 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     clientAddress: "100 Broadway, Suite 400, Portland, OR 97205",
     clientEmail: "jessica.w@apexmarketing.com",
     clientPhone: "+1 (555) 877-6622",
-    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts."
+    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts.",
+    startDate: "July 15, 2026",
+    endDate: "August 26, 2026"
   },
   "independent-contractor-agreement": {
     contractorName: "Robert Chen"
   },
   "service-agreement": {
     serviceDescription: "Commercial janitorial and office cleaning services.",
-    serviceFee: "$1,200.00 per month"
+    serviceFee: "$1,200.00 per month",
+    startDate: "August 1, 2026",
+    endDate: "July 31, 2027"
   },
   "consulting-agreement": {
     consultantName: "Professor Alan Turing"
+  },
+  // Resumes: graduation must precede the first job in the (hardcoded) experience
+  // timeline, otherwise the sample reads as impossible (e.g. "5+ yrs, first job
+  // 2019" but "graduated 2024"). Fresher/entry resumes keep the recent default.
+  "resume-software-engineer": {
+    graduationYear: "2018"
+  },
+  "resume-teacher": {
+    graduationYear: "2015"
   },
   "marketing-proposal": {
     contactDetails: "hello@apexagency.co | +1 (555) 302-8811"
@@ -1578,10 +1600,20 @@ export function getTemplateValues(template: any): Record<string, string> {
     ...(SLUG_SPECIFIC_DEFAULTS[template?.slug] || {}),
   };
   const fields: string[] = template?.content?.fields || [];
+  const brand = SLUG_BRAND[template?.slug];
   fields.forEach((field) => {
     // The company name defaults to the template's distinct brand so each
     // document/cover is visibly its own, not a repeated "Acme Global Inc.".
-    const brandDefault = field === "companyName" ? SLUG_BRAND[template?.slug] : undefined;
+    let brandDefault: string | undefined;
+    if (field === "companyName") {
+      brandDefault = brand;
+    } else if (field === "companyEmail" && brand && !specific[field]) {
+      // Derive the contact email from the brand so it never mismatches the
+      // company name (e.g. "Jenkins Digital Studio" → hello@jenkinsdigitalstudio.com
+      // instead of the generic info@acmeglobal.com).
+      const handle = brand.toLowerCase().replace(/[^a-z0-9]+/g, "");
+      brandDefault = handle ? `hello@${handle}.com` : undefined;
+    }
     initial[field] = specific[field] || brandDefault || FIELD_DEFAULTS[field] || "";
   });
   return initial;

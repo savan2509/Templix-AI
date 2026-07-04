@@ -62,6 +62,7 @@ const en = {
   qualityGuarantee: "Template Quality Guarantee",
   qualityAts: "Tested & optimized for major Applicant Tracking Systems (ATS).",
   qualityAudit: "Formatted to standard invoice audit configurations.",
+  qualityStandard: "Formatted to professional industry standards.",
   qualityOffline: "Supports instant offline PDF & DOCX compilations.",
   livePreview: "Live Document Preview",
   liveLabel: "Live",
@@ -126,6 +127,7 @@ const es: Shape = {
     "Probada y optimizada para los principales sistemas de seguimiento de candidatos (ATS).",
   qualityAudit:
     "Formateada según configuraciones estándar de auditoría de facturas.",
+  qualityStandard: "Formateada según estándares profesionales del sector.",
   qualityOffline:
     "Admite compilaciones instantáneas de PDF y DOCX sin conexión.",
   livePreview: "Vista previa en vivo del documento",
@@ -190,6 +192,7 @@ const de: Shape = {
     "Getestet und optimiert für gängige Bewerbermanagementsysteme (ATS).",
   qualityAudit:
     "Formatiert nach standardmäßigen Rechnungsprüfungskonfigurationen.",
+  qualityStandard: "Nach professionellen Branchenstandards formatiert.",
   qualityOffline:
     "Unterstützt sofortige Offline-Kompilierungen als PDF & DOCX.",
   livePreview: "Live-Dokumentvorschau",
@@ -254,6 +257,7 @@ const fr: Shape = {
     "Testé et optimisé pour les principaux systèmes de suivi des candidatures (ATS).",
   qualityAudit:
     "Formaté selon les configurations d’audit de factures standard.",
+  qualityStandard: "Formaté selon les normes professionnelles du secteur.",
   qualityOffline:
     "Prend en charge les compilations PDF et DOCX instantanées hors ligne.",
   livePreview: "Aperçu du document en direct",
@@ -314,6 +318,7 @@ const ar: Shape = {
   qualityGuarantee: "ضمان جودة القالب",
   qualityAts: "مُختبرة ومُحسّنة لأنظمة تتبع المتقدمين الرئيسية (ATS).",
   qualityAudit: "منسّقة وفق إعدادات تدقيق الفواتير القياسية.",
+  qualityStandard: "منسّق وفق المعايير المهنية للقطاع.",
   qualityOffline: "تدعم إنشاء ملفات PDF وDOCX الفوري دون اتصال.",
   livePreview: "معاينة حية للمستند",
   liveLabel: "مباشر",
