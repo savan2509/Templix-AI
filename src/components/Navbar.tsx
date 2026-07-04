@@ -24,9 +24,12 @@ export default function Navbar() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [templatesOpen, setTemplatesOpen] = useState(false);
+  const [mobileTemplatesOpen, setMobileTemplatesOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const langRef = useRef<HTMLDivElement>(null);
+  const templatesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -36,6 +39,8 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setLangDropdownOpen(false);
+    setTemplatesOpen(false);
+    setMobileTemplatesOpen(false);
   }, [pathname]);
 
   // Click outside to close dropdowns (non-blocking)
@@ -43,6 +48,9 @@ export default function Navbar() {
     const handleOutsideClick = (event: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(event.target as Node)) {
         setLangDropdownOpen(false);
+      }
+      if (templatesRef.current && !templatesRef.current.contains(event.target as Node)) {
+        setTemplatesOpen(false);
       }
     };
     document.addEventListener("mousedown", handleOutsideClick);
@@ -120,6 +128,18 @@ export default function Navbar() {
     },
   ];
 
+  // The six document categories collapse into a single "Templates" dropdown so
+  // the bar stays on one line at every width; Tools & Blog remain top-level.
+  const categoryItems = menuItems.slice(0, 6);
+  const standaloneItems = menuItems.slice(6);
+  const templatesLabel: Record<string, string> = {
+    en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب",
+  };
+  const templatesLabelText = templatesLabel[currentLocale as keyof typeof templatesLabel] || templatesLabel.en;
+  const localeName = (item: { name: Record<string, string> }) =>
+    item.name[currentLocale as keyof typeof item.name] || item.name.en;
+  const isTemplatesActive = pathname.startsWith(`/${currentLocale}/templates`);
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
       {/* Decorative top colored line */}
@@ -143,7 +163,60 @@ export default function Navbar() {
 
             {/* Desktop Menu items */}
             <div className="hidden lg:flex items-center gap-6">
-              {menuItems.map((item) => (
+              {/* Templates dropdown (holds the six document categories) */}
+              <div className="relative" ref={templatesRef}>
+                <button
+                  onClick={() => setTemplatesOpen((v) => !v)}
+                  aria-expanded={templatesOpen}
+                  aria-haspopup="menu"
+                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
+                    isTemplatesActive
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  }`}
+                >
+                  <span>{templatesLabelText}</span>
+                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${templatesOpen ? "rotate-180" : ""}`} />
+                  {isTemplatesActive && (
+                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                  )}
+                </button>
+                {templatesOpen && (
+                  <div
+                    role="menu"
+                    className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  >
+                    {categoryItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        role="menuitem"
+                        onClick={() => setTemplatesOpen(false)}
+                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                          pathname.startsWith(item.href)
+                            ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                        }`}
+                      >
+                        {localeName(item)}
+                      </Link>
+                    ))}
+                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                    <Link
+                      href={`/${currentLocale}/templates`}
+                      role="menuitem"
+                      onClick={() => setTemplatesOpen(false)}
+                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                    >
+                      <LayoutGrid className="h-4 w-4" />
+                      <span>{t.browseTemplates}</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Standalone links (Tools, Blog) */}
+              {standaloneItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -153,12 +226,7 @@ export default function Navbar() {
                       : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                   }`}
                 >
-                  <span>{item.name[currentLocale as keyof typeof item.name] || item.name.en}</span>
-                  {item.badge && (
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-sm shadow-blue-500/10">
-                      {item.badge[currentLocale as keyof typeof item.badge] || item.badge.en}
-                    </span>
-                  )}
+                  <span>{localeName(item)}</span>
                   {pathname.startsWith(item.href) && (
                     <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
                   )}
@@ -254,7 +322,48 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
           <div className="space-y-1">
-            {menuItems.map((item) => (
+            {/* Collapsible Templates group */}
+            <button
+              onClick={() => setMobileTemplatesOpen((v) => !v)}
+              aria-expanded={mobileTemplatesOpen}
+              className={`flex w-full items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
+                isTemplatesActive
+                  ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                  : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+              }`}
+            >
+              <span>{templatesLabelText}</span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileTemplatesOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileTemplatesOpen && (
+              <div className="pl-3 space-y-1">
+                {categoryItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center px-3.5 py-2 text-sm font-semibold rounded-xl transition-all ${
+                      pathname.startsWith(item.href)
+                        ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                        : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900/50"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {localeName(item)}
+                  </Link>
+                ))}
+                <Link
+                  href={`/${currentLocale}/templates`}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <LayoutGrid className="h-4 w-4" />
+                  <span>{t.browseTemplates}</span>
+                </Link>
+              </div>
+            )}
+
+            {/* Standalone links (Tools, Blog) */}
+            {standaloneItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -265,12 +374,7 @@ export default function Navbar() {
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span>{item.name[currentLocale as keyof typeof item.name] || item.name.en}</span>
-                {item.badge && (
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-blue-600 text-white animate-pulse">
-                    {item.badge[currentLocale as keyof typeof item.badge] || item.badge.en}
-                  </span>
-                )}
+                <span>{localeName(item)}</span>
               </Link>
             ))}
           </div>
