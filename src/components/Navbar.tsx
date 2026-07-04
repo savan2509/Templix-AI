@@ -126,12 +126,20 @@ export default function Navbar() {
       name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" },
       href: `/${currentLocale}/blog`
     },
+    {
+      name: { en: "FAQ", es: "FAQ", de: "FAQ", fr: "FAQ", ar: "الأسئلة" },
+      href: `/${currentLocale}/faq`
+    },
+    {
+      name: { en: "About", es: "Acerca de", de: "Über uns", fr: "À propos", ar: "من نحن" },
+      href: `/${currentLocale}/about`
+    },
   ];
 
   // The six document categories collapse into a single "Templates" dropdown so
-  // the bar stays on one line at every width; Tools & Blog remain top-level.
+  // the bar stays on one line at every width; the rest stay top-level.
   const categoryItems = menuItems.slice(0, 6);
-  const standaloneItems = menuItems.slice(6);
+  const standaloneItems = menuItems.slice(6); // Tools, Blog, FAQ, About
   const templatesLabel: Record<string, string> = {
     en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب",
   };
