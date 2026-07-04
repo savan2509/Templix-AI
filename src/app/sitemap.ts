@@ -25,9 +25,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
     alternates: {
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`])
-      ),
+      languages: Object.fromEntries([
+        ...LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`]),
+        // x-default points at the English variant so search engines have a
+        // fallback for unmatched locales (recommended by Google's hreflang spec).
+        ["x-default", `${baseUrl}/en${path}`],
+      ]),
     },
   });
 
