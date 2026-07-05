@@ -33,7 +33,7 @@ export const resumesTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Professional Summary" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{careerSummary}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Experience" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Software Engineer " }, { type: "text", text: "— Acme Global Inc. (2022–2026)" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Senior Software Engineer " }, { type: "text", text: "— Northwind Systems (2022–2026)" }] },
           { type: "bulletList", content: [
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Architected a microservices platform on Next.js and Node.js serving 2M monthly active users at 99.98% uptime." }] }] },
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Cut API response latency by 40% by introducing Redis caching and query-level Postgres index tuning." }] }] },
