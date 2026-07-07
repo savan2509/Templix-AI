@@ -237,10 +237,13 @@ export default function Footer() {
 
         {/* Bottom Segment: Copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between border-t border-zinc-200 dark:border-zinc-800/50 pt-8 gap-4 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-          <div className="flex items-center gap-1.5">
-            <span>© {currentYear} {t.designedWithPre}</span>
-            <Heart className="h-3 w-3 text-red-500 fill-red-500" aria-label="love" />
-            <span>{t.designedWithPost}</span>
+          <div 
+            className="flex items-center gap-1.5"
+            aria-label={`© ${currentYear} ${t.designedWithPre} love ${t.designedWithPost}`}
+          >
+            <span aria-hidden="true">© {currentYear} {t.designedWithPre}</span>
+            <Heart className="h-3 w-3 text-red-500 fill-red-500 shrink-0" aria-hidden="true" />
+            <span aria-hidden="true">{t.designedWithPost}</span>
           </div>
           <div className="text-zinc-400 dark:text-zinc-500">
             {t.freeForever}

@@ -12,6 +12,7 @@ import {
   type BlogPost,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { siteConfig } from "@/config/site";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
   ArrowRight,
@@ -47,6 +48,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     image: post.image,
     slug: `/blog/${slug}`,
     locale,
+    isBlogPost: true,
+    publishedTime: post.publishedAt,
   }) as Metadata;
 }
 
@@ -133,17 +136,17 @@ export default async function BlogArticlePage({ params }: PageProps) {
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    image: `https://templix.ai${post.image}`,
+    image: `${siteConfig.url}${post.image}`,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: { "@type": "Organization", name: "Templix AI", url: "https://templix-ai.vercel.app" },
+    author: { "@type": "Organization", name: "Templix AI", url: siteConfig.url },
     publisher: {
       "@type": "Organization",
       name: "Templix AI",
-      logo: { "@type": "ImageObject", url: "https://templix.ai/logo.png" },
+      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
     },
-    url: `https://templix.ai/${locale}/blog/${slug}`,
-    mainEntityOfPage: `https://templix.ai/${locale}/blog/${slug}`,
+    url: `${siteConfig.url}/${locale}/blog/${slug}`,
+    mainEntityOfPage: `${siteConfig.url}/${locale}/blog/${slug}`,
     keywords: post.tags.join(", "),
   };
 
@@ -151,9 +154,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `https://templix.ai/${locale}` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `https://templix.ai/${locale}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://templix.ai/${locale}/blog/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/${locale}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${siteConfig.url}/${locale}/blog/${slug}` },
     ],
   };
 
@@ -272,14 +275,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 <div className="flex items-center gap-2">
                   <Share2 className="h-4 w-4 text-zinc-400" />
                   <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://templix.ai/${locale}/blog/${slug}`)}`}
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${siteConfig.url}/${locale}/blog/${slug}`)}`}
                     target="_blank" rel="noreferrer"
                     className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
                   >
                     Twitter
                   </a>
                   <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://templix.ai/${locale}/blog/${slug}`)}`}
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${siteConfig.url}/${locale}/blog/${slug}`)}`}
                     target="_blank" rel="noreferrer"
                     className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
                   >

@@ -16,7 +16,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   email: "sarah.j@techsolutions.com",
   phone: "+1 (555) 382-9281",
   website: "www.acmeglobal.com",
-  address: "742 Evergreen Terrace, Springfield, IL 62704",
+  address: "1200 Business Way, Suite 100, San Francisco, CA 94105",
   invoiceNumber: "INV-2026-001",
   invoiceDate: "2026-06-28",
   dueDate: "2026-07-12",
@@ -156,7 +156,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   github: "sarahj-dev",
   linkedin: "sarah-jenkins-lead",
   portfolio: "sarahjenkins.dev",
-  amountDue: "4,500.00",
+  amountDue: "$4,500.00",
   taxRate: "15",
   profilePhoto: "👤",
   location: "San Francisco, CA",
@@ -1565,56 +1565,478 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "follow-up-letter": {
     recipientName: "Ms. Laura Bennett",
     jobPosition: "Product Manager"
-  },
+  }
 };
 
-// The letterhead brand for a template (falls back to the generic company name).
+const OVERRIDES: Record<string, Record<string, string>> = {
+  "invoice-catering": {
+    guestCount: "120"
+  },
+  "catering-contract": {
+    guestCount: "120",
+    clientName: "Rachel Kim",
+    clientContact: "+1 (555) 668-2019 | rachel.kim@email.com",
+    clientSignature: "Rachel Kim"
+  },
+  "licensing-agreement": {
+    royaltyRate: "6.5%"
+  },
+  "equipment-rental-agreement": {
+    ownerName: "Richard Hendricks"
+  },
+  "subcontractor-agreement": {
+    completionDate: "October 15, 2026",
+    subcontractorSignature: "Carlos Mendez"
+  },
+  "commercial-lease-agreement": {
+    leaseEndDate: "August 31, 2031"
+  },
+  "employment-contract": {
+    companyLogo: ""
+  },
+  "invoice-medical": {
+    serviceDescription: "General patient consultation, comprehensive lab panels, and health diagnostic screening."
+  },
+  "independent-contractor-agreement": {
+    deliverables: "Database migration plan, custom schema scripts, PostgreSQL indexing guidelines, and system backup configurations."
+  },
+  "consulting-agreement": {
+    deliverables: "Strategic market research report, product growth roadmap, and weekly advisory session slide decks."
+  },
+  "photography-services-contract": {
+    deliverables: "High-resolution edited digital photo archive, professional color grading, and print release documentation."
+  },
+  "influencer-collaboration-agreement": {
+    deliverables: "Three dedicated Instagram post shares, two interactive story series, and one custom short-form video review."
+  },
+  "invoice-electrician": {
+    partsCost: "$2,480.00",
+    laborCost: "$950.00",
+    warrantyPeriod: "1-year warranty on parts & labor"
+  },
+  "invoice-auto-repair": {
+    partsCost: "$429.00",
+    laborCost: "$530.00",
+    warrantyPeriod: "90-day parts & labor repair guarantee"
+  },
+  "vendor-agreement": {
+    warrantyTerms: "12-month standard replacement and hardware diagnostic warranty for defective equipment."
+  },
+  "nda-template": {
+    partyAName: "John Doe",
+    partyBName: "Jane Smith"
+  },
+  "resume-software-engineer": {
+    graduationYear: "2018",
+    careerSummary: "Lead software developer with 8+ years of experience building scalable SaaS architectures, microservices, and modern Next.js/React frontend systems.",
+    degree: "B.S. in Computer Science",
+    university: "Stanford University",
+    certificationName: "AWS Certified Solutions Architect",
+    organization: "Amazon Web Services",
+    year: "2024"
+  },
+  "resume-data-analyst": {
+    summary: "Detail-oriented Data Analyst with 5+ years of experience translating complex datasets into actionable business insights using SQL, Python, and Power BI.",
+    degree: "B.S. in Statistics",
+    university: "University of California, Berkeley",
+    graduationYear: "2020",
+    certificationName: "Google Advanced Data Analytics Certificate",
+    organization: "Google",
+    year: "2023"
+  },
+  "resume-project-manager": {
+    summary: "PMP-certified Project Manager with 7+ years of experience leading cross-functional teams to deliver enterprise software solutions on time and under budget.",
+    degree: "B.B.A. in Operations Management",
+    university: "University of Texas at Austin",
+    graduationYear: "2017",
+    certificationName: "Project Management Professional (PMP)",
+    organization: "Project Management Institute (PMI)",
+    year: "2021"
+  },
+  "resume-graphic-designer": {
+    summary: "Creative Graphic Designer with 6+ years of experience designing visual identity systems, brand marketing collateral, and high-impact digital experiences.",
+    degree: "B.F.A. in Graphic Design",
+    university: "Rhode Island School of Design",
+    graduationYear: "2019",
+    certificationName: "Adobe Certified Professional — Creative Cloud",
+    organization: "Adobe",
+    year: "2020"
+  },
+  "resume-registered-nurse": {
+    summary: "Compassionate Registered Nurse (RN) with 8+ years of clinical experience in high-volume emergency rooms and intensive care units, dedicated to patient advocacy.",
+    degree: "Bachelor of Science in Nursing (BSN)",
+    university: "Johns Hopkins School of Nursing",
+    graduationYear: "2018",
+    certificationName: "Advanced Cardiac Life Support (ACLS)",
+    organization: "American Heart Association",
+    year: "2019"
+  },
+  "resume-teacher": {
+    summary: "Dedicated Educator with 10+ years of experience designing child-centered curriculums, integrating interactive tech, and lifting literacy and math scores in grades 3-5.",
+    degree: "Bachelor of Arts in Elementary Education",
+    university: "Boston University",
+    graduationYear: "2015",
+    certificationName: "State Board Teacher Certification (Elementary K-6)",
+    organization: "State Dept of Education",
+    year: "2016"
+  },
+  "resume-marketing-manager": {
+    summary: "Results-driven Marketing Manager with 6+ years of experience scaling customer acquisition channels through SEO, email marketing, and search/social advertising.",
+    degree: "B.S. in Marketing",
+    university: "New York University",
+    graduationYear: "2019",
+    certificationName: "Google Analytics Individual Qualification (GAIQ)",
+    organization: "Google",
+    year: "2022"
+  },
+  "resume-customer-service": {
+    summary: "Empathetic Customer Support Lead with 4+ years of experience resolving complex complaints, training agents, and maintaining a 96% CSAT rating.",
+    degree: "B.A. in Communications",
+    university: "Arizona State University",
+    graduationYear: "2021",
+    certificationName: "Customer Service Excellence Trainer",
+    organization: "Customer Service Institute",
+    year: "2022"
+  },
+  "resume-accountant": {
+    summary: "CPA-certified Accountant with 7+ years of experience managing corporate ledgers, tax filing, payroll processing, and internal audit controls.",
+    degree: "B.S. in Accounting & Finance",
+    university: "University of Illinois Urbana-Champaign",
+    graduationYear: "2018",
+    certificationName: "Certified Public Accountant (CPA)",
+    organization: "AICPA",
+    year: "2020"
+  },
+  "resume-sales-representative": {
+    summary: "Dynamic Sales Representative with 5+ years of experience exceeding quotas, managing enterprise pipelines, and pitching complex SaaS offerings.",
+    degree: "B.A. in Business Administration",
+    university: "Ohio State University",
+    graduationYear: "2020",
+    certificationName: "Salesforce Certified Administrator",
+    organization: "Salesforce",
+    year: "2021"
+  },
+  "resume-fresher-graduate": {
+    objective: "Motivated Computer Science graduate seeking an entry-level software engineering role to apply strong programming fundamentals and a passion for building user-focused products.",
+    degree: "B.S. in Computer Science",
+    university: "University of Michigan",
+    graduationYear: "2025",
+    certificationName: "AWS Certified Cloud Practitioner",
+    organization: "Amazon Web Services",
+    year: "2025"
+  },
+  "resume-product-manager": {
+    summary: "Product Manager with 6+ years of experience owning product lifecycles, translating user feedback into roadmaps, and collaborating with design and engineering teams.",
+    degree: "B.S. in Management Information Systems",
+    university: "Carnegie Mellon University",
+    graduationYear: "2019",
+    certificationName: "Certified Scrum Product Owner (CSPO)",
+    organization: "Scrum Alliance",
+    year: "2021"
+  },
+  "resume-devops-engineer": {
+    summary: "DevOps Engineer with 5+ years of experience automating cloud infrastructure, orchestrating containers, and optimizing CI/CD release pipelines.",
+    degree: "B.S. in Computer Engineering",
+    university: "Georgia Institute of Technology",
+    graduationYear: "2020",
+    certificationName: "Certified Kubernetes Administrator (CKA)",
+    organization: "Cloud Native Computing Foundation",
+    year: "2022"
+  },
+  "resume-ux-designer": {
+    summary: "UX Designer with 5+ years of experience designing intuitive customer journeys, interactive wireframes, and accessible brand design systems.",
+    degree: "B.S. in Human-Computer Interaction",
+    university: "University of Washington",
+    graduationYear: "2020",
+    certificationName: "UX Certificate (Interaction Design)",
+    organization: "Nielsen Norman Group",
+    year: "2022"
+  },
+  "resume-financial-analyst": {
+    summary: "Financial Analyst with 4+ years of experience constructing 3-statement models, forecasting cash flow, and providing strategic investment advice.",
+    degree: "B.B.A. in Finance",
+    university: "University of Pennsylvania",
+    graduationYear: "2021",
+    certificationName: "Chartered Financial Analyst (CFA) Level I",
+    organization: "CFA Institute",
+    year: "2022"
+  },
+  "resume-hr-manager": {
+    summary: "HR Manager with 7+ years of experience overseeing employee relations, corporate talent acquisition, benefits admin, and training programs.",
+    degree: "B.S. in Human Resource Management",
+    university: "Rutgers University",
+    graduationYear: "2018",
+    certificationName: "SHRM Certified Professional (SHRM-CP)",
+    organization: "SHRM",
+    year: "2021"
+  },
+  "resume-mechanical-engineer": {
+    summary: "Mechanical Engineer with 6+ years of experience designing robust automotive assemblies, running thermal/FEA simulations, and supervising CNC fabrication.",
+    degree: "B.S. in Mechanical Engineering",
+    university: "Purdue University",
+    graduationYear: "2019",
+    certificationName: "Professional Engineer (PE) License",
+    organization: "State Licensing Board",
+    year: "2023"
+  },
+  "resume-content-writer": {
+    summary: "Versatile Content Writer with 5+ years of experience authoring SEO blog posts, corporate whitepapers, and customer-converting landing pages.",
+    degree: "B.A. in English Literature",
+    university: "Northwestern University",
+    graduationYear: "2020",
+    certificationName: "Inbound Marketing Certification",
+    organization: "HubSpot",
+    year: "2021"
+  },
+  "resume-business-analyst": {
+    summary: "Business Analyst with 5+ years of experience gathering technical requirements, modeling business processes, and supporting UAT cycles.",
+    degree: "B.S. in Business Information Systems",
+    university: "Indiana University Bloomington",
+    graduationYear: "2020",
+    certificationName: "Certified Business Analysis Professional (CBAP)",
+    organization: "IIBA",
+    year: "2022"
+  },
+  "resume-executive-assistant": {
+    summary: "Polished Executive Assistant with 6+ years of experience coordinating calendars, travel logistics, and client presentations for C-level officers.",
+    degree: "B.A. in English",
+    university: "University of Southern California",
+    graduationYear: "2019",
+    certificationName: "Certified Administrative Professional (CAP)",
+    organization: "IAAP",
+    year: "2021"
+  },
+  "resume-cybersecurity-analyst": {
+    summary: "Cybersecurity Analyst with 5+ years of experience conducting vulnerability scans, configuring SIEM alerts, and mitigating security incidents.",
+    degree: "B.S. in Cybersecurity",
+    university: "University of Maryland",
+    graduationYear: "2020",
+    certificationName: "CompTIA Security+",
+    organization: "CompTIA",
+    year: "2021"
+  },
+  "resume-pharmacist": {
+    summary: "Licensed Pharmacist with 8+ years of experience dispensing prescription medications, reviewing safety interactions, and advising clinical patients.",
+    degree: "Doctor of Pharmacy (Pharm.D.)",
+    university: "University of North Carolina at Chapel Hill",
+    graduationYear: "2018",
+    certificationName: "Board Certified Pharmacotherapy Specialist (BCPS)",
+    organization: "Board of Pharmacy Specialties",
+    year: "2020"
+  },
+  "resume-civil-engineer": {
+    summary: "Structural Civil Engineer with 7+ years of experience drafting concrete/steel structures, managing site inspections, and ensuring building code compliance.",
+    degree: "B.S. in Civil Engineering",
+    university: "Texas A&M University",
+    graduationYear: "2018",
+    certificationName: "Professional Engineer (PE) License",
+    organization: "NCEES",
+    year: "2022"
+  }
+};
+
+function extractText(node: any): string {
+  if (!node) return "";
+  if (typeof node === "string") return node;
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (node.text !== undefined) return node.text;
+  if (node.content) return extractText(node.content);
+  return "";
+}
+
+function computeInvoiceTotals(template: any, currentValues: Record<string, string>): Record<string, string> {
+  const table = template?.content?.editorState?.content?.find((node: any) => node.type === "table");
+  if (!table || !table.content) return {};
+
+  let computedSubtotal = 0;
+  const rows = table.content;
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    if (row && row.content && row.content.length > 0) {
+      const lastCell = row.content[row.content.length - 1];
+      const cellText = extractText(lastCell).trim();
+      
+      let resolvedText = cellText;
+      Object.entries(currentValues).forEach(([k, v]) => {
+        if (resolvedText.includes(`{{${k}}}`)) {
+          resolvedText = resolvedText.replace(new RegExp(`\\{\\{${k}\\}\\}`, "g"), v || "0");
+        }
+      });
+      
+      const cleaned = resolvedText.replace(/[^\d.-]/g, "");
+      const val = parseFloat(cleaned);
+      if (!isNaN(val)) {
+        computedSubtotal += val;
+      }
+    }
+  }
+
+  if (computedSubtotal === 0) return {};
+
+  const formatMoney = (amount: number) => {
+    return "$" + amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
+  let taxRate = 0.08;
+  const taxVal = currentValues.tax || "8%";
+  const parsedTaxRate = parseFloat(taxVal.replace(/[^\d.-]/g, ""));
+  if (!isNaN(parsedTaxRate)) {
+    taxRate = parsedTaxRate / 100;
+  }
+
+  const subtotalStr = formatMoney(computedSubtotal);
+  const taxAmount = computedSubtotal * taxRate;
+  const taxStr = formatMoney(taxAmount);
+  let totalAmount = computedSubtotal + taxAmount;
+
+  if (template.slug === "invoice-legal-services") {
+    const retainerStr = currentValues.retainerApplied || "2500";
+    const retainer = parseFloat(retainerStr.replace(/[^\d.-]/g, ""));
+    if (!isNaN(retainer)) {
+      totalAmount = computedSubtotal - retainer;
+    }
+  }
+
+  const totalStr = formatMoney(totalAmount);
+
+  return {
+    subtotal: subtotalStr,
+    tax: taxVal,
+    taxAmount: taxStr,
+    total: totalStr,
+    amountDue: totalStr,
+    grandTotal: totalStr,
+  };
+}
+
 export function getTemplateBrand(template: any): string {
   return SLUG_BRAND[template?.slug] || FIELD_DEFAULTS.companyName || "Your Company";
 }
 
-// Build the resolved sample values for a template's declared fields — the exact
-// same logic used by the live-preview form state, so previews and thumbnails match.
-// Full resolution map for a template: every known default (global + slug-extra
-// + slug-specific) plus its distinct brand. Used by the renderer so a variable
-// used in the document BODY but not listed in `content.fields` still resolves
-// to a real value instead of a humanized placeholder.
 export function getTemplateDefaults(template: any): Record<string, string> {
   const slug = template?.slug;
   const brand = SLUG_BRAND[slug] || FIELD_DEFAULTS.companyName || "Your Company";
-  return {
+  const initial: Record<string, string> = {
     ...FIELD_DEFAULTS,
     ...(SLUG_EXTRA_DEFAULTS[slug] || {}),
     ...(SLUG_SPECIFIC_DEFAULTS[slug] || {}),
+    ...(OVERRIDES[slug] || {}),
     companyName: brand,
   };
+  
+  if (template?.categorySlug === "resumes" && brand && !initial.fullName) {
+    initial.fullName = brand;
+  }
+  
+  if (template?.categorySlug === "invoices") {
+    const computedTotals = computeInvoiceTotals(template, initial);
+    Object.entries(computedTotals).forEach(([k, v]) => {
+      initial[k] = v;
+    });
+  }
+  
+  return initial;
 }
 
 export function getTemplateValues(template: any): Record<string, string> {
   const initial: Record<string, string> = {};
-  // Slug-specific sample values: the curated map wins, with SLUG_EXTRA_DEFAULTS
-  // (generated per-template samples) filling any remaining fields so previews
-  // never fall back to a humanized placeholder like "billing Period Start".
   const specific = {
     ...(SLUG_EXTRA_DEFAULTS[template?.slug] || {}),
     ...(SLUG_SPECIFIC_DEFAULTS[template?.slug] || {}),
+    ...(OVERRIDES[template?.slug] || {}),
   };
   const fields: string[] = template?.content?.fields || [];
   const brand = SLUG_BRAND[template?.slug];
+  
+  if (template?.categorySlug === "resumes" && brand && !specific.fullName) {
+    specific.fullName = brand;
+  }
+  
   fields.forEach((field) => {
-    // The company name defaults to the template's distinct brand so each
-    // document/cover is visibly its own, not a repeated "Acme Global Inc.".
     let brandDefault: string | undefined;
     if (field === "companyName") {
       brandDefault = brand;
     } else if (field === "companyEmail" && brand && !specific[field]) {
-      // Derive the contact email from the brand so it never mismatches the
-      // company name (e.g. "Jenkins Digital Studio" → hello@jenkinsdigitalstudio.com
-      // instead of the generic info@acmeglobal.com).
       const handle = brand.toLowerCase().replace(/[^a-z0-9]+/g, "");
       brandDefault = handle ? `hello@${handle}.com` : undefined;
     }
+    
+    // Dynamic signature alignments
+    else if (field === "clientSignature" && !specific[field]) {
+      brandDefault = specific.clientName || FIELD_DEFAULTS.clientName;
+    } else if (field === "freelancerSignature" && !specific[field]) {
+      brandDefault = specific.freelancerName || brand || FIELD_DEFAULTS.freelancerName;
+    } else if (field === "employerSignature" && !specific[field]) {
+      brandDefault = specific.hrRepresentative || specific.companyName || brand || FIELD_DEFAULTS.companyName;
+    } else if (field === "employeeSignature" && !specific[field]) {
+      brandDefault = specific.employeeFullName || specific.employeeName || FIELD_DEFAULTS.employeeName;
+    } else if (field === "catererSignature" && !specific[field]) {
+      brandDefault = specific.catererName || specific.catererCompany || FIELD_DEFAULTS.catererName;
+    } else if (field === "renterSignature" && !specific[field]) {
+      brandDefault = specific.renterName || specific.tenantName || FIELD_DEFAULTS.renterName;
+    } else if (field === "ownerSignature" && !specific[field]) {
+      brandDefault = specific.ownerName || specific.ownerCompany || FIELD_DEFAULTS.ownerName;
+    } else if (field === "landlordSignature" && !specific[field]) {
+      brandDefault = specific.landlordName || FIELD_DEFAULTS.landlordName;
+    } else if (field === "tenantSignature" && !specific[field]) {
+      brandDefault = specific.tenantName || FIELD_DEFAULTS.tenantName;
+    } else if (field === "partner1Signature" && !specific[field]) {
+      brandDefault = specific.partner1Name || FIELD_DEFAULTS.partner1Name;
+    } else if (field === "partner2Signature" && !specific[field]) {
+      brandDefault = specific.partner2Name || FIELD_DEFAULTS.partner2Name;
+    } else if (field === "vendorSignature" && !specific[field]) {
+      brandDefault = specific.vendorName || specific.companyName || FIELD_DEFAULTS.vendorSignature;
+    } else if (field === "licensorSignature" && !specific[field]) {
+      brandDefault = specific.licensorName || FIELD_DEFAULTS.licensorName;
+    } else if (field === "licenseeSignature" && !specific[field]) {
+      brandDefault = specific.licenseeName || FIELD_DEFAULTS.licenseeName;
+    } else if (field === "lenderSignature" && !specific[field]) {
+      brandDefault = specific.lenderName || FIELD_DEFAULTS.lenderName;
+    } else if (field === "borrowerSignature" && !specific[field]) {
+      brandDefault = specific.borrowerName || FIELD_DEFAULTS.borrowerName;
+    } else if (field === "subcontractorSignature" && !specific[field]) {
+      brandDefault = specific.subcontractorName || FIELD_DEFAULTS.subcontractorName;
+    } else if (field === "contractorSignature" && !specific[field]) {
+      brandDefault = specific.contractorName || FIELD_DEFAULTS.contractorName;
+    }
+    
+    // Dynamic email alignments
+    else if (field === "employeeEmail" && !specific[field]) {
+      const name = specific.employeeFullName || specific.employeeName || FIELD_DEFAULTS.employeeName;
+      const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, ".");
+      brandDefault = handle ? `${handle}@email.com` : undefined;
+    } else if (field === "clientEmail" && !specific[field]) {
+      const name = specific.clientName || FIELD_DEFAULTS.clientName;
+      const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, ".");
+      brandDefault = handle ? `${handle.replace(/\.services$|\.llc$|\.corp$|\.inc$/g, "")}@email.com` : undefined;
+    } else if (field === "catererEmail" && !specific[field]) {
+      const name = specific.catererName || specific.catererCompany || FIELD_DEFAULTS.catererName;
+      const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, ".");
+      brandDefault = handle ? `${handle}@email.com` : undefined;
+    } else if (field === "hrEmail" && !specific[field]) {
+      const name = specific.hrRepresentative || FIELD_DEFAULTS.hrRepresentative;
+      const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, ".");
+      brandDefault = handle ? `${handle}@email.com` : undefined;
+    }
+    
+    // Dynamic letterhead address
+    else if (field === "address" && brand && !specific[field]) {
+      const handle = brand.replace(/[^a-zA-Z]/g, "");
+      const salt = handle.length % 5;
+      const cities = ["New York, NY 10001", "Austin, TX 78701", "San Francisco, CA 94105", "Seattle, WA 98101", "Chicago, IL 60601"];
+      const streetNum = 100 + (handle.charCodeAt(0) || 0) * 2;
+      brandDefault = `${streetNum} Business Way, ${cities[salt]}`;
+    }
+    
     initial[field] = specific[field] || brandDefault || FIELD_DEFAULTS[field] || "";
   });
+  
+  if (template?.categorySlug === "invoices") {
+    const computedTotals = computeInvoiceTotals(template, initial);
+    Object.entries(computedTotals).forEach(([k, v]) => {
+      initial[k] = v;
+    });
+  }
+  
   return initial;
 }

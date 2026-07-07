@@ -4,10 +4,12 @@ import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
 import { TOOLS } from "@/data/tools";
 
+import { siteConfig } from "@/config/site";
+
 const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
+  const baseUrl = siteConfig.url;
 
   // One entry per canonical page. `url` is the English (x-default) variant and
   // `alternates.languages` links every locale so search engines understand the

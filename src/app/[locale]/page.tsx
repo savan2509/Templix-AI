@@ -20,15 +20,16 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
+const SITE_URL = siteConfig.url;
 
 // ── Robust high-fidelity mock fallbacks ────────────────────────────────────
 const fallbackTemplates = [
   {
     id: "invoice-freelancer",
     slug: "invoice-freelancer",
-    title: "Professional Invoice",
+    title: "Freelancer Invoice Template",
     description: "Clean invoice template for freelancers and consultants, containing dynamic rows and tax details.",
     isPremium: false,
     category: { name: "Invoices", slug: "invoices" }
@@ -282,6 +283,8 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
                     <TemplateThumbnail
                       template={{
+                        slug: temp.slug,
+                        categorySlug: temp.category?.slug,
                         title: temp.title,
                         categoryName: temp.category?.name,
                         content:

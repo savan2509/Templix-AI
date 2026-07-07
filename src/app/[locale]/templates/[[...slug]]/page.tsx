@@ -99,6 +99,7 @@ interface PageProps {
   }>;
   searchParams: Promise<{
     q?: string;
+    page?: string;
   }>;
 }
 
@@ -183,7 +184,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function TemplatesPage({ params, searchParams }: PageProps) {
   const { locale, slug = [] } = await params;
-  const { q = "" } = await searchParams;
+  const { q = "", page = "1" } = await searchParams;
 
   const dict = getDictionary(locale);
   const t = dict.templates;
@@ -478,6 +479,14 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     }
   }
 
+  // Paginate templates
+  const itemsPerPage = 12;
+  const totalItems = templates.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const currentPage = Math.max(1, parseInt(page || "1", 10));
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedTemplates = templates.slice(startIndex, startIndex + itemsPerPage);
+
   const categoryDisplayName = categorySlug
     ? (common.categoryNames[categorySlug as keyof typeof common.categoryNames] ?? categoryName)
     : categoryName;
@@ -677,8 +686,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   </p>
                 </div>
               ) : (
-                <div className="grid md:grid-cols-2 gap-6">
-                  {templates.map((temp) => {
+                <>
+                  <div className="grid md:grid-cols-2 gap-6">
+                  {paginatedTemplates.map((temp) => {
                     return (
                     <div
                       key={temp.id}
@@ -720,7 +730,35 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   ); })}
 
                 </div>
-              )}
+
+                {/* Simple Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 pt-8">
+                    {Array.from({ length: totalPages }).map((_, idx) => {
+                      const p = idx + 1;
+                      const isActive = p === currentPage;
+                      const queryParams = new URLSearchParams();
+                      if (q) queryParams.set("q", q);
+                      queryParams.set("page", String(p));
+                      const urlPath = slug.length > 0 ? `/templates/${slug.join("/")}` : "/templates";
+                      return (
+                        <Link
+                          key={p}
+                          href={`/${locale}${urlPath}?${queryParams.toString()}`}
+                          className={`w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${
+                            isActive
+                              ? "bg-blue-600 border-blue-600 text-white shadow-sm"
+                              : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300"
+                          }`}
+                        >
+                          {p}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
+            )}
             </section>
 
             {/* Template Compliance & Structuring Standards */}

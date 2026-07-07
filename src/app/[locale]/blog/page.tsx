@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { db, isDbOnline } from "@/lib/db";
 import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { siteConfig } from "@/config/site";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
   BookOpen,
@@ -114,8 +115,8 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `https://templix.ai/${locale}` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `https://templix.ai/${locale}/blog` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/${locale}/blog` },
     ],
   };
 

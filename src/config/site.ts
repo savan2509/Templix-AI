@@ -1,4 +1,4 @@
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
+const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.whitesparksoft.com";
 
 export const siteConfig = {
   name: "Templix AI",

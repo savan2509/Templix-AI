@@ -20,7 +20,7 @@ export async function searchTemplates(
       {
         id: "invoice-freelancer",
         slug: "invoice-freelancer",
-        title: "Professional Invoice",
+        title: "Freelancer Invoice Template",
         description: "Clean invoice template for freelancers and consultants, containing dynamic rows and tax details.",
         isPremium: false,
         categorySlug: "invoices",

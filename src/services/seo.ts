@@ -6,6 +6,8 @@ export interface SEOPageData {
   categoryName?: string;
   categorySlug?: string;
   isTemplate?: boolean;
+  isBlogPost?: boolean;
+  publishedTime?: string;
   metaTitle?: string;    // explicit <title>/OG title override
   keywords?: string[];   // meta keywords
   canonical?: string;    // explicit canonical URL override
@@ -24,7 +26,7 @@ const OG_LOCALES: Record<string, string> = {
 };
 
 export class SEOEngine {
-  private static APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
+  private static APP_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.whitesparksoft.com";
 
   /**
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
@@ -65,8 +67,11 @@ export class SEOEngine {
         url: canonical,
         siteName: "Templix AI",
         locale: OG_LOCALES[data.locale] || "en_US",
-        type: data.isTemplate ? "article" : "website",
+        type: (data.isTemplate || data.isBlogPost) ? "article" : "website",
         images: [{ url: ogImage, width: 1200, height: 630, alt: pageTitle }],
+        ...(data.isBlogPost && data.publishedTime ? {
+          publishedTime: data.publishedTime,
+        } : {}),
       },
       twitter: {
         card: "summary_large_image",

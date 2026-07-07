@@ -301,7 +301,7 @@ export const resumesTemplates = [
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Designed a project-based STEM curriculum adopted department-wide across grades 9 through 12." }] }] },
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Ran weekly parent-engagement conferences and restorative-discipline routines that cut referrals by 40%." }] }] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Substitute & Student Teacher " }, { type: "text", text: "— Springfield Unified District (2016–2019)" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Substitute & Student Teacher " }, { type: "text", text: "— Sunnyvale Unified School District (2016–2019)" }] },
           { type: "bulletList", content: [
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Delivered differentiated lesson plans across mixed-ability classrooms of up to 34 students." }] }] },
             { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Integrated interactive whiteboard tools and formative assessments to lift student participation." }] }] }
