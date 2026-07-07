@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import type { NextRequest } from "next/server";
 
 const locales = ["en", "es", "de", "fr", "ar"];
 const defaultLocale = "en";
 
-export default auth((req) => {
+export default function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Skip api routes, next static files, images, favicon, sitemaps, robots.txt, rss
+  // ── Passthrough: api routes, Next.js internals, static assets ───────────────
+  // IMPORTANT: /api/auth/* must be excluded here so next-auth route handlers
+  // can respond correctly. Wrapping the middleware with auth() was causing
+  // next-auth to intercept its own /api/auth/session endpoint and return a
+  // 404 HTML page instead of JSON when the DB was offline.
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
@@ -17,7 +21,7 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
-  // 1. Check if the path is missing a locale prefix
+  // 1. Redirect bare paths (missing locale prefix) to the default locale
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
@@ -49,7 +53,7 @@ export default auth((req) => {
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: [
