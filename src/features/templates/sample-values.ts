@@ -1660,7 +1660,8 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     graduationYear: "2019",
     certificationName: "Adobe Certified Professional — Creative Cloud",
     organization: "Adobe",
-    year: "2020"
+    year: "2020",
+    awardsAchievements: "Winner — Regional Brand Identity Award 2024; featured in the Behance 'Best of Branding' gallery"
   },
   "resume-registered-nurse": {
     summary: "Compassionate Registered Nurse (RN) with 8+ years of clinical experience in high-volume emergency rooms and intensive care units, dedicated to patient advocacy.",
@@ -1669,14 +1670,15 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     graduationYear: "2018",
     certificationName: "Advanced Cardiac Life Support (ACLS)",
     organization: "American Heart Association",
-    year: "2019"
+    year: "2019",
+    awardsAchievements: "DAISY Award for Extraordinary Nursing (2023); Emergency Department Employee of the Year"
   },
   "resume-teacher": {
-    summary: "Dedicated Educator with 10+ years of experience designing child-centered curriculums, integrating interactive tech, and lifting literacy and math scores in grades 3-5.",
-    degree: "Bachelor of Arts in Elementary Education",
+    summary: "Dedicated high school Mathematics Educator with 10+ years of experience designing project-based STEM curricula, raising AP Calculus pass rates, and mentoring students across grades 9-12.",
+    degree: "Bachelor of Science in Mathematics Education",
     university: "Boston University",
     graduationYear: "2015",
-    certificationName: "State Board Teacher Certification (Elementary K-6)",
+    certificationName: "State Board Teacher Certification (Secondary Mathematics)",
     organization: "State Dept of Education",
     year: "2016"
   },
@@ -1723,7 +1725,9 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     graduationYear: "2025",
     certificationName: "AWS Certified Cloud Practitioner",
     organization: "Amazon Web Services",
-    year: "2025"
+    year: "2025",
+    programmingLanguages: "Java, Python, C++, JavaScript, SQL",
+    awardsAchievements: "Dean's List (all semesters); 1st place, University Hackathon 2025"
   },
   "resume-product-manager": {
     summary: "Product Manager with 6+ years of experience owning product lifecycles, translating user feedback into roadmaps, and collaborating with design and engineering teams.",
@@ -1741,7 +1745,8 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     graduationYear: "2020",
     certificationName: "Certified Kubernetes Administrator (CKA)",
     organization: "Cloud Native Computing Foundation",
-    year: "2022"
+    year: "2022",
+    programmingLanguages: "Bash, Python, Go, PowerShell"
   },
   "resume-ux-designer": {
     summary: "UX Designer with 5+ years of experience designing intuitive customer journeys, interactive wireframes, and accessible brand design systems.",
@@ -1947,11 +1952,25 @@ export function getTemplateValues(template: any): Record<string, string> {
   };
   const fields: string[] = template?.content?.fields || [];
   const brand = SLUG_BRAND[template?.slug];
-  
-  if (template?.categorySlug === "resumes" && brand && !specific.fullName) {
+
+  const isResume = template?.categorySlug === "resumes";
+  if (isResume && brand && !specific.fullName) {
     specific.fullName = brand;
   }
-  
+
+  // Resume contact details must belong to the resume's own person — otherwise
+  // every resume leaks the global default (sarah.j@techsolutions.com,
+  // linkedin: sarah-jenkins-lead, +1 (555) 382-9281). Derive them
+  // deterministically from the person's name so each resume is self-consistent.
+  const personRaw = (specific.fullName || brand || FIELD_DEFAULTS.fullName || "").replace(/,.*$/, "").trim();
+  const personDot = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, ".").replace(/^\.+|\.+$/g, "");
+  const personDash = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  const personPlain = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const personSeed = personRaw.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+  const personPhone = `+1 (555) ${String(200 + (personSeed % 700)).padStart(3, "0")}-${String(1000 + ((personSeed * 7) % 9000)).padStart(4, "0")}`;
+  const resumeCities = ["Austin, TX", "Denver, CO", "Seattle, WA", "Chicago, IL", "Boston, MA", "Atlanta, GA", "Portland, OR", "New York, NY"];
+  const personCity = resumeCities[personSeed % resumeCities.length];
+
   fields.forEach((field) => {
     let brandDefault: string | undefined;
     if (field === "companyName") {
@@ -1960,7 +1979,23 @@ export function getTemplateValues(template: any): Record<string, string> {
       const handle = brand.toLowerCase().replace(/[^a-z0-9]+/g, "");
       brandDefault = handle ? `hello@${handle}.com` : undefined;
     }
-    
+
+    // Resume-only contact details, derived from the resume's own person so no
+    // two resumes share the same email / phone / LinkedIn / portfolio.
+    else if (isResume && field === "email" && !specific[field] && personDot) {
+      brandDefault = `${personDot}@email.com`;
+    } else if (isResume && field === "phone" && !specific[field]) {
+      brandDefault = personPhone;
+    } else if (isResume && field === "linkedin" && !specific[field] && personDash) {
+      brandDefault = personDash;
+    } else if (isResume && field === "github" && !specific[field] && personPlain) {
+      brandDefault = `${personPlain}-dev`;
+    } else if (isResume && field === "portfolio" && !specific[field] && personPlain) {
+      brandDefault = `${personPlain}.dev`;
+    } else if (isResume && field === "location" && !specific[field]) {
+      brandDefault = personCity;
+    }
+
     // Dynamic signature alignments
     else if (field === "clientSignature" && !specific[field]) {
       brandDefault = specific.clientName || FIELD_DEFAULTS.clientName;

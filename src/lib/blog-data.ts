@@ -1101,7 +1101,7 @@ Requirements:
       "Learn how to write a freelance invoice step by step. What to include, how to number invoices, set payment terms, and get paid on time — with a free template.",
     metaDescription:
       "Step-by-step guide to writing a freelance invoice in 2026: required fields, numbering, tax, payment terms, and a free invoice template to get paid faster.",
-    canonicalUrl: "https://templix.ai/en/blog/how-to-write-freelance-invoice",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/how-to-write-freelance-invoice",
     keywords: ["freelance invoice", "how to write an invoice", "invoice guide", "get paid", "billing"],
     category: "Invoices",
     tags: ["invoice", "freelancer", "billing", "payment terms", "tutorial"],
@@ -1164,7 +1164,7 @@ Requirements:
       "Confused by freelance tax forms? Learn when to use a W-9 vs a W-8BEN, who fills them out, and how they affect withholding — a clear 2026 guide for freelancers.",
     metaDescription:
       "W-9 vs W-8BEN explained for freelancers: who files each form, US vs non-US contractors, withholding, and how to stay compliant when invoicing clients in 2026.",
-    canonicalUrl: "https://templix.ai/en/blog/freelancer-tax-forms-w9-w8ben",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/freelancer-tax-forms-w9-w8ben",
     keywords: ["w-9", "w-8ben", "freelance tax forms", "contractor tax", "withholding"],
     category: "Invoices",
     tags: ["tax", "w-9", "w-8ben", "freelancer", "compliance"],
@@ -1208,7 +1208,7 @@ Requirements:
       "Most resumes are filtered by software before a human sees them. Learn the ATS-friendly resume format, keywords, and layout rules that get you shortlisted in 2026.",
     metaDescription:
       "Beat applicant tracking systems in 2026. Learn ATS-friendly resume formatting, keyword optimization, section order, and a free ATS resume template.",
-    canonicalUrl: "https://templix.ai/en/blog/ats-resume-format-guide",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/ats-resume-format-guide",
     keywords: ["ats resume", "resume format", "applicant tracking system", "resume keywords", "job search"],
     category: "Resumes",
     tags: ["resume", "ATS", "job application", "formatting", "career"],
@@ -1259,7 +1259,7 @@ Requirements:
       "Your LinkedIn profile is a living resume. Learn how to align your headline, summary, and experience with your resume to attract recruiters and land interviews.",
     metaDescription:
       "Optimize your LinkedIn profile in 2026: headline, About section, keyword alignment with your resume, and recruiter-friendly tips that get you noticed.",
-    canonicalUrl: "https://templix.ai/en/blog/linkedin-profile-tips",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/linkedin-profile-tips",
     keywords: ["linkedin profile", "linkedin tips", "job search", "personal branding", "recruiters"],
     category: "Resumes",
     tags: ["linkedin", "profile", "career", "networking", "job search"],
@@ -1304,7 +1304,7 @@ Requirements:
       "Service agreement or contract — which do you need? Learn the legal differences, when each applies, and the key clauses that protect freelancers and businesses.",
     metaDescription:
       "Service agreement vs contract explained: definitions, when to use each, essential clauses, and free legal templates to protect your freelance or business deals.",
-    canonicalUrl: "https://templix.ai/en/blog/service-agreement-vs-contract",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/service-agreement-vs-contract",
     keywords: ["service agreement", "contract", "legal documents", "freelance contract", "clauses"],
     category: "Contracts",
     tags: ["contract", "service agreement", "legal", "freelance", "business"],
@@ -1349,7 +1349,7 @@ Requirements:
       "A statement of work prevents scope creep and disputes. Learn the essential SOW sections, how it differs from a proposal, and get a reusable structure and template.",
     metaDescription:
       "Learn how to write a statement of work (SOW) in 2026: key sections, deliverables, acceptance criteria, timelines, and a free proposal template to start from.",
-    canonicalUrl: "https://templix.ai/en/blog/how-to-write-statement-of-work",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/how-to-write-statement-of-work",
     keywords: ["statement of work", "sow", "scope of work", "project management", "deliverables"],
     category: "Proposals",
     tags: ["statement of work", "sow", "proposal", "project", "scope"],
@@ -1398,7 +1398,7 @@ Requirements:
       "Turn discovery calls into signed retainers. Learn how to structure a consulting proposal, price your value, and get a free template that wins long-term clients.",
     metaDescription:
       "Write a consulting proposal that wins retainers: structure, value-based pricing, scope, and a free consulting proposal template you can customize in minutes.",
-    canonicalUrl: "https://templix.ai/en/blog/consulting-proposal-template-guide",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/consulting-proposal-template-guide",
     keywords: ["consulting proposal", "retainer", "value pricing", "proposal template", "consultant"],
     category: "Proposals",
     tags: ["consulting", "proposal", "retainer", "pricing", "template"],
@@ -1447,7 +1447,7 @@ Requirements:
       "Write professional emails with confidence. Learn the correct structure, subject lines, tone, and sign-offs — with copy-paste examples for every business situation.",
     metaDescription:
       "Master formal email writing in 2026: subject lines, greetings, structure, tone, and sign-offs, plus copy-paste professional email examples you can reuse.",
-    canonicalUrl: "https://templix.ai/en/blog/formal-email-writing-guide",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/formal-email-writing-guide",
     keywords: ["formal email", "professional email", "email writing", "business communication", "etiquette"],
     category: "Letters",
     tags: ["email", "business writing", "communication", "etiquette", "letters"],
@@ -1506,7 +1506,7 @@ Best regards,
       "Resigning gracefully protects your reputation. Learn how to write a two weeks notice letter, what to include, what to avoid, and get a copy-paste template.",
     metaDescription:
       "How to write a two weeks notice letter in 2026: structure, etiquette, what to include and avoid, plus a professional copy-paste resignation letter template.",
-    canonicalUrl: "https://templix.ai/en/blog/two-weeks-notice-letter",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/two-weeks-notice-letter",
     keywords: ["two weeks notice", "resignation letter", "quit job", "notice period", "career"],
     category: "Letters",
     tags: ["resignation", "two weeks notice", "career", "letters", "etiquette"],
@@ -1564,7 +1564,7 @@ Sincerely,
       "Which document tool should you use in 2026? Compare Google Docs, Microsoft Word, and Templix AI on collaboration, templates, export quality, and price.",
     metaDescription:
       "Google Docs vs Word vs Templix AI compared: collaboration, templates, offline use, export quality, and cost — pick the best document tool for your workflow in 2026.",
-    canonicalUrl: "https://templix.ai/en/blog/google-docs-vs-word-vs-templix",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/google-docs-vs-word-vs-templix",
     keywords: ["google docs vs word", "document tools", "word alternative", "online editor", "templix"],
     category: "Guides",
     tags: ["google docs", "microsoft word", "comparison", "document tools", "productivity"],

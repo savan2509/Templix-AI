@@ -1,4 +1,5 @@
 import DocumentPaper from "./DocumentPaper";
+import { getTemplateValues } from "@/features/templates/sample-values";
 
 // Card cover = a framed, scaled snapshot of the real live document preview, so
 // the "first view" matches the detail page for every module.
@@ -65,6 +66,13 @@ export default function TemplateThumbnail({ template }: { template: any }) {
   const allBlocks: any[] = template?.content?.editorState?.content ?? [];
   const thumbnailBlocks = selectThumbnailBlocks(allBlocks);
 
+  // Resolve sample values from the FULL document, not the truncated thumbnail
+  // blocks — otherwise invoice subtotal/total would be recomputed from the 3
+  // visible rows and the card would disagree with the detail page (e.g. card
+  // $4,320 vs detail $4,590). Passing these as the `values` prop keeps the
+  // letterhead brand and every total identical to the live preview.
+  const values = getTemplateValues(template);
+
   const truncatedTemplate = {
     ...template,
     content: template?.content ? {
@@ -86,7 +94,7 @@ export default function TemplateThumbnail({ template }: { template: any }) {
           className="origin-top-left pointer-events-none"
           style={{ width: "150%", transform: "scale(0.667)" }}
         >
-          <DocumentPaper template={truncatedTemplate} />
+          <DocumentPaper template={truncatedTemplate} values={values} />
         </div>
         {/* soft fade so cropped content tapers off gracefully */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />

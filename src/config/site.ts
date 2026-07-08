@@ -1,4 +1,7 @@
-const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.whitesparksoft.com";
+// Single source of truth for the public domain. Only NEXT_PUBLIC_SITE_URL may
+// override it — the legacy NEXT_PUBLIC_APP_URL is intentionally NOT consulted so
+// a stale vercel.app value can never poison canonical/OG/sitemap/share URLs.
+const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://templix-ai.whitesparksoft.com";
 
 export const siteConfig = {
   name: "Templix AI",

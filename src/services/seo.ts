@@ -26,7 +26,9 @@ const OG_LOCALES: Record<string, string> = {
 };
 
 export class SEOEngine {
-  private static APP_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.whitesparksoft.com";
+  // Must stay in lockstep with siteConfig.url — only NEXT_PUBLIC_SITE_URL may
+  // override the production domain (never the legacy NEXT_PUBLIC_APP_URL).
+  private static APP_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://templix-ai.whitesparksoft.com";
 
   /**
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
@@ -154,7 +156,7 @@ export class SEOEngine {
   ): InternalLinkingData {
     // Generate programmatic, related links to maximize page authority pass-downs
     const templatesList = [
-      { slug: "invoice-freelancer", title: "Professional Invoice", category: "invoices" },
+      { slug: "invoice-freelancer", title: "Freelancer Invoice Template", category: "invoices" },
       { slug: "resume-software-engineer", title: "Software Engineer Resume", category: "resumes" },
       { slug: "freelance-agreement", title: "Freelance Service Agreement", category: "contracts" },
       { slug: "employment-contract", title: "Employment Contract", category: "contracts" },

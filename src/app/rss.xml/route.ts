@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { siteConfig } from "@/config/site";
 
 // Fallback: the full set of static articles, newest first (used when the DB is offline).
 const fallbackBlogs = [...STATIC_BLOG_POSTS]
@@ -14,7 +15,7 @@ const fallbackBlogs = [...STATIC_BLOG_POSTS]
   }));
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app";
+  const baseUrl = siteConfig.url;
 
   let blogs = fallbackBlogs;
   try {

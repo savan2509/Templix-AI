@@ -15,6 +15,7 @@ import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react"
 import { SEOEngine } from "@/services/seo";
 import { getDictionary } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
+import { siteConfig } from "@/config/site";
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -563,7 +564,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   }
 
   function siteUrl(path: string) {
-    return `${process.env.NEXT_PUBLIC_APP_URL || "https://templix-ai.vercel.app"}${path}`;
+    return `${siteConfig.url}${path}`;
   }
 
   const breadcrumbSchema = {
