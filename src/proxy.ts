@@ -19,6 +19,23 @@ export default async function proxy(req: NextRequest) {
     return supabaseResponse;
   }
 
+  // ── Self-heal Supabase auth code on the wrong path ──────────────────────────
+  // Supabase email links land on whatever its "Site URL" points at. If that is
+  // misconfigured (e.g. the site root instead of the callback), the confirmation
+  // arrives as /?code=… and the session is never established. Route any stray
+  // ?code= to the real callback so the user still ends up logged in.
+  const authCode = req.nextUrl.searchParams.get("code");
+  if (authCode) {
+    const localeSeg = locales.find(
+      (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
+    );
+    const loc = localeSeg || defaultLocale;
+    const callback = new URL("/api/auth/supabase/callback", req.url);
+    callback.searchParams.set("code", authCode);
+    callback.searchParams.set("next", `/${loc}/dashboard`);
+    return NextResponse.redirect(callback);
+  }
+
   // ── Supabase Session Refresh ────────────────────────────────────────────────
   // Refresh the user's session cookie on every request so they stay logged in.
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
