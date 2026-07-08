@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import TemplateDetailView from "@/components/TemplateDetailView";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
+import FavoriteButton from "@/components/FavoriteButton";
+import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
 import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
@@ -182,6 +184,42 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }) as Metadata;
 }
 
+// ── Server component wrapper for FavoriteButton ───────────────────────────────
+// Fetches the initial favorite state from Supabase server-side so the button
+// renders with the correct filled/empty heart on first paint (no flicker).
+async function FavoriteButtonWrapper({
+  templateSlug,
+  locale,
+}: {
+  templateSlug: string;
+  locale: string;
+}) {
+  let initialFavorited = false;
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data } = await supabase
+        .from("favorites")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("template_slug", templateSlug)
+        .single();
+      initialFavorited = !!data;
+    }
+  } catch {
+    // Silently skip — user simply starts with unfavorited state
+  }
+  return (
+    <FavoriteButton
+      templateSlug={templateSlug}
+      locale={locale}
+      initialFavorited={initialFavorited}
+      size="md"
+    />
+  );
+}
+
 export default async function TemplatesPage({ params, searchParams }: PageProps) {
   const { locale, slug = [] } = await params;
   const { q = "", page = "1" } = await searchParams;
@@ -315,10 +353,17 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   {common.free}
                 </span>
               </div>
-              <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                {/* Titles may already end in "Template"; strip it so the noun below never doubles it. */}
-                {activeTemplate.title.replace(/\s+Template$/i, "").trim()} {t.templateNoun}
-              </h1>
+              <div className="flex items-start gap-4">
+                <h1 className="flex-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+                  {/* Titles may already end in "Template"; strip it so the noun below never doubles it. */}
+                  {activeTemplate.title.replace(/\s+Template$/i, "").trim()} {t.templateNoun}
+                </h1>
+                {/* Favorite button — shows correct initial state from server session */}
+                <FavoriteButtonWrapper
+                  templateSlug={activeTemplate.slug}
+                  locale={locale}
+                />
+              </div>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                 {activeTemplate.description} {t.detailIntroExtra}
               </p>
@@ -702,6 +747,14 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
                           {common.free}
                         </span>
+                        {/* Favorite heart — appears on hover */}
+                        <div className="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <FavoriteButton
+                            templateSlug={temp.slug}
+                            locale={locale}
+                            size="sm"
+                          />
+                        </div>
                       </div>
 
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">

@@ -1,0 +1,88 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import { Heart } from "lucide-react";
+
+interface Props {
+  templateSlug: string;
+  locale: string;
+  initialFavorited?: boolean;
+  size?: "sm" | "md";
+}
+
+// Heart button that toggles a template as a favorite.
+// Requires Supabase auth — redirects to login if not signed in.
+export default function FavoriteButton({
+  templateSlug,
+  locale,
+  initialFavorited = false,
+  size = "md",
+}: Props) {
+  const router = useRouter();
+  const supabase = createClient();
+  const [favorited, setFavorited] = useState(initialFavorited);
+  const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Sync with server-side initial value after hydration
+  useEffect(() => {
+    setMounted(true);
+    setFavorited(initialFavorited);
+  }, [initialFavorited]);
+
+  const handleToggle = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Check auth first
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      router.push(`/${locale}/login`);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/favorites", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ templateSlug }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setFavorited(data.favorited);
+    } catch {
+      // Silently fail — UI stays consistent
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const iconSize = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
+  const btnSize = size === "sm"
+    ? "h-7 w-7 rounded-lg"
+    : "h-9 w-9 rounded-xl";
+
+  if (!mounted) return null;
+
+  return (
+    <button
+      id={`favorite-btn-${templateSlug}`}
+      onClick={handleToggle}
+      disabled={loading}
+      aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
+      title={favorited ? "Remove from favorites" : "Save to favorites"}
+      className={`inline-flex items-center justify-center ${btnSize} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-400/40 ${
+        favorited
+          ? "bg-red-50 dark:bg-red-950/30 text-red-500 hover:bg-red-100 dark:hover:bg-red-900/40 border border-red-200 dark:border-red-800/50"
+          : "bg-white dark:bg-zinc-800 text-zinc-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 border border-zinc-200 dark:border-zinc-700 hover:border-red-200 dark:hover:border-red-800/50"
+      } ${loading ? "opacity-60 cursor-not-allowed scale-95" : "hover:scale-110 active:scale-95"}`}
+    >
+      <Heart
+        className={`${iconSize} transition-all duration-200 ${favorited ? "fill-red-500 stroke-red-500" : "fill-transparent"}`}
+      />
+    </button>
+  );
+}

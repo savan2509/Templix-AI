@@ -1,24 +1,53 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { createServerClient } from "@supabase/ssr";
 
 const locales = ["en", "es", "de", "fr", "ar"];
 const defaultLocale = "en";
 
-export default function proxy(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  let supabaseResponse = NextResponse.next({ request: req });
 
   // ── Passthrough: api routes, Next.js internals, static assets ───────────────
-  // IMPORTANT: /api/auth/* must be excluded here so next-auth route handlers
-  // can respond correctly. Wrapping the middleware with auth() was causing
-  // next-auth to intercept its own /api/auth/session endpoint and return a
-  // 404 HTML page instead of JSON when the DB was offline.
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname.includes(".") ||
     pathname === "/favicon.ico"
   ) {
-    return NextResponse.next();
+    return supabaseResponse;
+  }
+
+  // ── Supabase Session Refresh ────────────────────────────────────────────────
+  // Refresh the user's session cookie on every request so they stay logged in.
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (supabaseUrl && supabaseKey) {
+    try {
+      const supabase = createServerClient(supabaseUrl, supabaseKey, {
+        cookies: {
+          getAll() {
+            return req.cookies.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) =>
+              req.cookies.set(name, value)
+            );
+            supabaseResponse = NextResponse.next({ request: req });
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options)
+            );
+          },
+        },
+      });
+
+      // Best-effort session refresh, never blocks request on network/DB failure
+      await supabase.auth.getUser();
+    } catch {
+      // Continue if Supabase is unreachable
+    }
   }
 
   // 1. Redirect bare paths (missing locale prefix) to the default locale
@@ -27,37 +56,21 @@ export default function proxy(req: NextRequest) {
   );
 
   if (pathnameIsMissingLocale) {
-    return NextResponse.redirect(
-      new URL(
-        `/${defaultLocale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        req.url
-      )
+    const redirectUrl = new URL(
+      `/${defaultLocale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+      req.url
     );
+    // Preserve any search parameters or hash (e.g. for password resets)
+    redirectUrl.search = req.nextUrl.search;
+    return NextResponse.redirect(redirectUrl);
   }
 
-  // Login is disabled: the app is fully usable anonymously (browse templates,
-  // customize in the editor, export). Account-only routes (/login, /dashboard,
-  // /admin) redirect to the home page so nothing dead-ends on a sign-in screen.
-  const pathParts = pathname.split("/");
-  const currentLocale = pathParts[1] || defaultLocale;
-  const subPath = pathParts.slice(2).join("/");
-
-  const accountOnly =
-    subPath === "login" ||
-    subPath === "register" ||
-    subPath.startsWith("dashboard") ||
-    subPath.startsWith("admin");
-
-  if (accountOnly) {
-    return NextResponse.redirect(new URL(`/${currentLocale}`, req.url));
-  }
-
-  return NextResponse.next();
+  return supabaseResponse;
 }
 
 export const config = {
   matcher: [
-    // Run middleware on all paths except static files & system paths
+    // Run proxy on all paths except static files & system paths
     "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml).*)",
   ],
 };
