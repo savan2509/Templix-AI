@@ -5,6 +5,9 @@ import { createClient } from "@/lib/supabase/server";
 // Returns the list of template slugs that the current user has favorited.
 export async function GET() {
   const supabase = await createClient();
+  if (!supabase) {
+    return NextResponse.json({ favorites: [] });
+  }
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -30,6 +33,9 @@ export async function GET() {
 // Returns: { favorited: boolean }
 export async function POST(request: Request) {
   const supabase = await createClient();
+  if (!supabase) {
+    return NextResponse.json({ error: "Authentication is not configured" }, { status: 503 });
+  }
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

@@ -22,6 +22,7 @@ export default function ResetPasswordPage() {
   // Supabase sends the access token in the URL hash (#access_token=...).
   // Calling getSession() after page load exchanges it for a live session.
   useEffect(() => {
+    if (!supabase) return; // Supabase not configured
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSessionReady(!!session);
     });
@@ -38,6 +39,7 @@ export default function ResetPasswordPage() {
     setError(null);
     if (password.length < 8) { setError("Password must be at least 8 characters."); return; }
     if (password !== confirmPassword) { setError("Passwords do not match."); return; }
+    if (!supabase) { setError("Password reset is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);

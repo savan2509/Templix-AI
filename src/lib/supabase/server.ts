@@ -3,12 +3,20 @@ import { cookies } from "next/headers";
 
 // Server-side Supabase client — reads/writes session cookies via Next.js
 // cookies() API. Use in Server Components, Route Handlers, and Server Actions.
+//
+// Returns null when the public Supabase env vars are missing, so callers can
+// degrade gracefully instead of throwing (which would 500 the page). Callers
+// must handle null.
 export async function createClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+
   const cookieStore = await cookies();
 
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    key,
     {
       cookies: {
         getAll() {

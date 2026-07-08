@@ -198,15 +198,17 @@ async function FavoriteButtonWrapper({
   let initialFavorited = false;
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data } = await supabase
-        .from("favorites")
-        .select("id")
-        .eq("user_id", user.id)
-        .eq("template_slug", templateSlug)
-        .single();
-      initialFavorited = !!data;
+    if (supabase) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data } = await supabase
+          .from("favorites")
+          .select("id")
+          .eq("user_id", user.id)
+          .eq("template_slug", templateSlug)
+          .single();
+        initialFavorited = !!data;
+      }
     }
   } catch {
     // Silently skip — user simply starts with unfavorited state

@@ -14,6 +14,9 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient();
+    if (!supabase) {
+      return NextResponse.redirect(`${origin}/en/auth/error?error=auth_not_configured`);
+    }
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
       // First-time account confirmation → notify the team with the new user's

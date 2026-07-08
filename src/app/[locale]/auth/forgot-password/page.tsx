@@ -19,6 +19,7 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
     setError(null);
     if (!email) { setError("Please enter your email address."); return; }
+    if (!supabase) { setError("Password reset is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/auth/reset-password`,

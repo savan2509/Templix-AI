@@ -24,10 +24,12 @@ const features = [
 export default async function LoginPage({ params }: Props) {
   const { locale } = await params;
 
-  // Redirect to dashboard if already signed in
+  // Redirect to dashboard if already signed in (skip when Supabase isn't configured)
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (user) redirect(`/${locale}/dashboard`);
+  if (supabase) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) redirect(`/${locale}/dashboard`);
+  }
 
   return (
     <div className="min-h-screen flex">

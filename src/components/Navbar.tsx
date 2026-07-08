@@ -48,6 +48,7 @@ export default function Navbar() {
   // Load Supabase user session on mount and keep in sync
   useEffect(() => {
     const supabase = createClient();
+    if (!supabase) return; // Supabase not configured — stay signed-out
     supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
@@ -113,7 +114,7 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     const supabase = createClient();
-    await supabase.auth.signOut();
+    if (supabase) await supabase.auth.signOut();
     setUser(null);
     setUserMenuOpen(false);
     router.push(`/${currentLocale}`);

@@ -36,7 +36,11 @@ export default function FavoriteButton({
     e.preventDefault();
     e.stopPropagation();
 
-    // Check auth first
+    // Check auth first (Supabase not configured → send to login)
+    if (!supabase) {
+      router.push(`/${locale}/login`);
+      return;
+    }
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       router.push(`/${locale}/login`);

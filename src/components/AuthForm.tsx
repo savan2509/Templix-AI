@@ -49,6 +49,7 @@ export default function AuthForm({ locale }: Props) {
       setError("Please enter your email and password.");
       return;
     }
+    if (!supabase) { setError("Sign-in is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
@@ -69,6 +70,7 @@ export default function AuthForm({ locale }: Props) {
     if (!email) { setError("Please enter your email address."); return; }
     if (password.length < 8) { setError("Password must be at least 8 characters."); return; }
     if (password !== confirmPassword) { setError("Passwords do not match."); return; }
+    if (!supabase) { setError("Sign-up is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
     const { error } = await supabase.auth.signUp({
       email,
