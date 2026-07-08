@@ -131,9 +131,13 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
         />
 
         {/* ── Hero Banner ── */}
-        <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-900 pt-20 pb-16">
+        {/* `isolate` keeps the background layers inside this section's own
+            stacking context — otherwise a negative z-index escapes and the
+            page's white background paints over the hero (invisible white text
+            in light mode). */}
+        <section className="relative isolate overflow-hidden border-b border-zinc-200 dark:border-zinc-900 pt-20 pb-16">
           {/* Background Image with Dark Overlay */}
-          <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 z-0">
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt=""

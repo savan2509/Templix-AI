@@ -169,9 +169,12 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }} />
 
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden pt-14 pb-16">
+        {/* `isolate` keeps the background layers inside this section's own
+            stacking context so the page's white background can't paint over
+            the hero (which made the white heading invisible in light mode). */}
+        <section className="relative isolate overflow-hidden pt-14 pb-16">
           {/* Abstract background image with category gradient overlay */}
-          <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 z-0">
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt=""
@@ -185,7 +188,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-zinc-950 to-transparent" />
           </div>
 
-          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-xs text-white/70 font-medium flex-wrap">
               <Link href={`/${locale}`} className="hover:text-white flex items-center gap-1 transition-colors">
