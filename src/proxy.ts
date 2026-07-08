@@ -25,13 +25,19 @@ export default async function proxy(req: NextRequest) {
   // arrives as /?code=… and the session is never established. Route any stray
   // ?code= to the real callback so the user still ends up logged in.
   const authCode = req.nextUrl.searchParams.get("code");
-  if (authCode) {
+  const tokenHash = req.nextUrl.searchParams.get("token_hash");
+  if (authCode || tokenHash) {
     const localeSeg = locales.find(
       (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
     );
     const loc = localeSeg || defaultLocale;
     const callback = new URL("/api/auth/supabase/callback", req.url);
-    callback.searchParams.set("code", authCode);
+    if (authCode) callback.searchParams.set("code", authCode);
+    if (tokenHash) {
+      callback.searchParams.set("token_hash", tokenHash);
+      const t = req.nextUrl.searchParams.get("type");
+      if (t) callback.searchParams.set("type", t);
+    }
     callback.searchParams.set("next", `/${loc}/dashboard`);
     return NextResponse.redirect(callback);
   }

@@ -72,7 +72,7 @@ export default function AuthForm({ locale }: Props) {
     if (password !== confirmPassword) { setError("Passwords do not match."); return; }
     if (!supabase) { setError("Sign-up is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -84,6 +84,13 @@ export default function AuthForm({ locale }: Props) {
     });
     setLoading(false);
     if (error) { setError(error.message); return; }
+    // If email confirmation is disabled, Supabase returns a live session and the
+    // user is signed in immediately — send them straight to the dashboard.
+    if (data.session) {
+      router.push(`/${locale}/dashboard`);
+      router.refresh();
+      return;
+    }
     setSuccess("Account created! Check your inbox and click the confirmation link to activate your account.");
   };
 
