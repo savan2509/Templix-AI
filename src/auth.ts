@@ -141,16 +141,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   // the host for self-hosted / localhost deployments.
   trustHost: true,
   secret: process.env.AUTH_SECRET || "development-only-fallback-secret-for-templix-ai-v5",
+  // Only register a provider when its credentials are actually present, so a
+  // missing OAuth or SMTP config simply hides that sign-in option instead of
+  // producing a configuration error. The site keeps running regardless.
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
-    GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
-    }),
-    Nodemailer({
+    ...(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET
+      ? [Google({
+          clientId: process.env.AUTH_GOOGLE_ID,
+          clientSecret: process.env.AUTH_GOOGLE_SECRET,
+        })]
+      : []),
+    ...(process.env.AUTH_GITHUB_ID && process.env.AUTH_GITHUB_SECRET
+      ? [GitHub({
+          clientId: process.env.AUTH_GITHUB_ID,
+          clientSecret: process.env.AUTH_GITHUB_SECRET,
+        })]
+      : []),
+    ...(process.env.EMAIL_SERVER_USER && process.env.EMAIL_SERVER_PASSWORD
+      ? [Nodemailer({
       server: {
         host: process.env.EMAIL_SERVER_HOST || "smtp.gmail.com",
         port: parseInt(process.env.EMAIL_SERVER_PORT || "587"),
@@ -218,11 +226,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           });
           console.log(`[auth] ✉️  Email delivered to ${identifier}`);
         } catch (error) {
+          // Never rethrow — a mail failure must not crash the sign-in flow or
+          // the site. The magic link is logged above as a fallback.
           console.warn("[auth] ⚠️  SMTP failed — use the terminal link above!", (error as Error).message);
-          if (process.env.NODE_ENV === "production") throw error;
         }
       },
-    }),
+    })]
+      : []),
   ],
   session: { strategy: "jwt" },
   events: {
