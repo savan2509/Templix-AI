@@ -75,7 +75,9 @@ export default function AuthForm({ locale }: Props) {
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/dashboard`,
+        // `signup=1` tells the callback this confirmation is a first-time
+        // account creation, so it emails the team the new user's details once.
+        emailRedirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/dashboard&signup=1`,
       },
     });
     setLoading(false);

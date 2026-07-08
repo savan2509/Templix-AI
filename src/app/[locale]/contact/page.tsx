@@ -25,9 +25,9 @@ export default async function ContactPage({ params }: PageProps) {
   const t = getDictionary(locale).contact;
 
   const channels = [
-    { icon: Mail, title: t.channelSupportTitle, text: t.channelSupportText, email: "support@templix.ai" },
-    { icon: MessageSquare, title: t.channelPartnershipsTitle, text: t.channelPartnershipsText, email: "hello@templix.ai" },
-    { icon: LifeBuoy, title: t.channelLegalTitle, text: t.channelLegalText, email: "privacy@templix.ai" },
+    { icon: Mail, title: t.channelSupportTitle, text: t.channelSupportText, email: "whitesparktechnologies@gmail.com" },
+    { icon: MessageSquare, title: t.channelPartnershipsTitle, text: t.channelPartnershipsText, email: "whitesparktechnologies@gmail.com" },
+    { icon: LifeBuoy, title: t.channelLegalTitle, text: t.channelLegalText, email: "whitesparktechnologies@gmail.com" },
   ];
 
   return (
@@ -40,7 +40,7 @@ export default async function ContactPage({ params }: PageProps) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {channels.map((c) => (
           <a
-            key={c.email}
+            key={c.title}
             href={`mailto:${c.email}`}
             className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 hover:border-blue-400/60 hover:shadow-md transition-all"
           >

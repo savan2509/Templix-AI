@@ -3,6 +3,7 @@ import { db, isDbOnline, setDbOnline } from "@/lib/db";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
+import { sendNewUserAdminEmail } from "@/lib/email";
 
 // ── Persistent global stores ──────────────────────────────────────────────────
 // We use globalThis so that tokens and users survive hot-module-reloads in dev.
@@ -224,6 +225,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   session: { strategy: "jwt" },
+  events: {
+    // Fires exactly once, when the adapter creates a brand-new user (first
+    // Google / GitHub / magic-link sign-in). Email the team their details.
+    async createUser({ user }) {
+      if (!user?.email) return;
+      await sendNewUserAdminEmail({
+        name: user.name,
+        email: user.email,
+        provider: "google / github / magic-link",
+      });
+    },
+  },
   callbacks: {
     async session({ session, token }) {
       if (token.sub && session.user) session.user.id = token.sub;

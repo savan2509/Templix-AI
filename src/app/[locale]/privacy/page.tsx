@@ -64,7 +64,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s6Heading}>
         <p>
           {t.s6Body}{" "}
-          <a href="mailto:privacy@templix.ai" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">privacy@templix.ai</a>.
+          <a href="mailto:whitesparktechnologies@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">whitesparktechnologies@gmail.com</a>.
         </p>
       </Section>
 
@@ -75,7 +75,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s8Heading}>
         <p>
           {t.s8Body}{" "}
-          <a href="mailto:privacy@templix.ai" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">privacy@templix.ai</a>.
+          <a href="mailto:whitesparktechnologies@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">whitesparktechnologies@gmail.com</a>.
         </p>
       </Section>
     </InfoPageShell>
