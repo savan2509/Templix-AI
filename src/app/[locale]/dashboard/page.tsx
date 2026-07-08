@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+import { createClient } from "@/lib/supabase/server";
 import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -48,9 +49,37 @@ interface DashboardProps {
 
 export default async function DashboardPage({ params }: DashboardProps) {
   const { locale } = await params;
-  const session = await auth();
 
-  if (!session?.user) {
+  // Accept EITHER auth system: Supabase (email/password — what the login form
+  // uses) or NextAuth (Google / GitHub / magic-link). Checking only NextAuth
+  // here caused a redirect loop (dashboard → login → dashboard) for users who
+  // signed in via Supabase, which rendered a blank page.
+  const supabase = await createClient();
+  const { data: { user: sbUser } } = supabase
+    ? await supabase.auth.getUser()
+    : { data: { user: null } };
+  const naSession = await auth();
+
+  const user = sbUser
+    ? {
+        id: sbUser.id,
+        email: sbUser.email ?? "",
+        name:
+          (sbUser.user_metadata?.full_name as string | undefined) ??
+          (sbUser.user_metadata?.name as string | undefined) ??
+          null,
+        role: "USER",
+      }
+    : naSession?.user
+      ? {
+          id: naSession.user.id as string,
+          email: naSession.user.email ?? "",
+          name: naSession.user.name ?? null,
+          role: (naSession.user.role as string) || "USER",
+        }
+      : null;
+
+  if (!user) {
     redirect(`/${locale}/login`);
   }
 
@@ -61,11 +90,11 @@ export default async function DashboardPage({ params }: DashboardProps) {
     if (isDbOnline && process.env.DATABASE_URL) {
       const [dbDocs, dbFavs] = await Promise.all([
         db.document.findMany({
-          where: { userId: session.user.id },
+          where: { userId: user.id },
           orderBy: { updatedAt: "desc" },
         }),
         db.favorite.findMany({
-          where: { userId: session.user.id },
+          where: { userId: user.id },
           include: { template: { include: { category: true } } },
         })
       ]);
@@ -139,7 +168,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
                 Workspace
               </span>
               <h1 className="text-2xl font-bold text-zinc-900 dark:text-white md:text-3xl">
-                Welcome back, {session.user.name || session.user.email?.split("@")[0]}!
+                Welcome back, {user.name || user.email?.split("@")[0]}!
               </h1>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 Manage your customized files, bookmarks, or jump into templates.
@@ -171,7 +200,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
             </div>
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
               <span className="text-xs text-zinc-400 uppercase font-semibold">Role Tier</span>
-              <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{session.user.role || "USER"}</p>
+              <p className="text-2xl font-bold text-zinc-900 dark:text-white mt-1.5">{user.role}</p>
             </div>
           </div>
 
