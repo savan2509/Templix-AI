@@ -85,8 +85,10 @@ export default function AuthForm({ locale }: Props) {
     setLoading(false);
     if (error) { setError(error.message); return; }
     // If email confirmation is disabled, Supabase returns a live session and the
-    // user is signed in immediately — send them straight to the dashboard.
+    // user is signed in immediately — notify the team (the callback that
+    // normally does this is skipped in this flow) and go to the dashboard.
     if (data.session) {
+      try { await fetch("/api/auth/signup-notify", { method: "POST" }); } catch {}
       router.push(`/${locale}/dashboard`);
       router.refresh();
       return;
