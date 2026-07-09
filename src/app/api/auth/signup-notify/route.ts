@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { sendNewUserAdminEmail } from "@/lib/email";
+import { notifyNewUser } from "@/lib/email";
 
 // Sends the "new sign-up" notification for the instant-signup path — i.e. when
 // Supabase email confirmation is DISABLED, so signUp returns a live session and
@@ -25,7 +25,7 @@ export async function POST() {
     return NextResponse.json({ ok: true, skipped: "not-new" });
   }
 
-  await sendNewUserAdminEmail({
+  await notifyNewUser({
     name:
       (user.user_metadata?.full_name as string | undefined) ??
       (user.user_metadata?.name as string | undefined),

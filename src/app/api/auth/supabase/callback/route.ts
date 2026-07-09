@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
-import { sendNewUserAdminEmail } from "@/lib/email";
+import { notifyNewUser } from "@/lib/email";
 
 // Supabase Auth Callback Route
 // Establishes a session from a Supabase email/OAuth confirmation. Supports two
@@ -49,9 +49,9 @@ export async function GET(request: Request) {
   if (ok) {
     // First-time account confirmation → notify the team with the new user's
     // details. Best-effort and awaited so it runs before the redirect, but
-    // sendNewUserAdminEmail never throws, so it can't break the sign-up.
+    // notifyNewUser never throws, so it cannot break the sign-up.
     if (isSignup && authUser?.email) {
-      await sendNewUserAdminEmail({
+      await notifyNewUser({
         name:
           (authUser.user_metadata?.full_name as string | undefined) ??
           (authUser.user_metadata?.name as string | undefined),

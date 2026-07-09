@@ -3,7 +3,7 @@ import { db, isDbOnline, setDbOnline } from "@/lib/db";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
-import { sendNewUserAdminEmail } from "@/lib/email";
+import { notifyNewUser } from "@/lib/email";
 
 // ── Persistent global stores ──────────────────────────────────────────────────
 // We use globalThis so that tokens and users survive hot-module-reloads in dev.
@@ -240,7 +240,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     // Google / GitHub / magic-link sign-in). Email the team their details.
     async createUser({ user }) {
       if (!user?.email) return;
-      await sendNewUserAdminEmail({
+      await notifyNewUser({
         name: user.name,
         email: user.email,
         provider: "google / github / magic-link",
