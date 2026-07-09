@@ -648,6 +648,39 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     grandTotal: "$635.00",
     tax: "8%"
   },
+  // India — GST tax invoice. 50,000 taxable + 9% CGST + 9% SGST = 59,000.
+  // Intra-state supply, so IGST is nil; swap to 18% IGST for inter-state.
+  "invoice-gst": {
+    currency: "₹",
+    gstin: "27AABCU9603R1ZM",
+    placeOfSupply: "Maharashtra (27)",
+    sacCode: "998314",
+    clientName: "TechVentures Pvt. Ltd.",
+    clientGstin: "27AAACT2727Q1ZW",
+    invoiceNumber: "GST-2026-001",
+    subtotal: "₹50,000.00",
+    cgst: "₹4,500.00",
+    sgst: "₹4,500.00",
+    igst: "Nil (intra-state supply)",
+    total: "₹59,000.00",
+    amountInWords: "Fifty Nine Thousand Rupees Only",
+    paymentMethod: "NEFT / UPI — details on request",
+    tax: "18%"
+  },
+  "invoice-proforma": {
+    currency: "₹",
+    gstin: "27AABCU9603R1ZM",
+    proformaNumber: "PI-2026-014",
+    proformaDate: "July 3, 2026",
+    validUntil: "August 2, 2026",
+    clientName: "TechVentures Pvt. Ltd.",
+    clientAddress: "Level 4, Prestige Tower, Bengaluru, KA 560001",
+    subtotal: "₹25,000.00",
+    total: "₹29,500.00",
+    tax: "18%",
+    paymentTerms: "50% advance on purchase order, balance before delivery",
+    deliveryTerms: "Within 14 working days of receipt of the purchase order"
+  },
   "freelance-agreement": {
     freelancerName: "Alex Carter",
     businessName: "Carter Creative Studio",
@@ -952,6 +985,8 @@ export const SLUG_BRAND: Record<string, string> = {
   "invoice-hourly-rate": "Sarah Jenkins Consulting",
   "invoice-recurring-subscription": "CloudNine SaaS",
   "invoice-medical": "Riverside Medical Clinic",
+  "invoice-gst": "Umang Digital Services LLP",
+  "invoice-proforma": "Umang Digital Services LLP",
   // Resumes (person names)
   "resume-software-engineer": "Sarah Jenkins",
   "resume-data-analyst": "Michael Chen",
@@ -1879,8 +1914,11 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
 
   if (computedSubtotal === 0) return {};
 
+  // Honour the template's own currency symbol — a GST invoice must not render
+  // its computed subtotal and total as US dollars.
+  const symbol = currentValues.currency || "$";
   const formatMoney = (amount: number) => {
-    return "$" + amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return symbol + amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
   let taxRate = 0.08;
@@ -2016,8 +2054,19 @@ export function getTemplateDefaults(template: any): Record<string, string> {
       initial[k] = v;
     });
   }
-  
+
   return initial;
+}
+
+// `initial` only holds keys listed in content.fields, but the totals calculator
+// needs `currency` and `tax` — which most invoices never declare as fields. A
+// GST invoice therefore computed "$50,000.00" at 8% instead of "₹50,000.00" at
+// 18%. Layer the defaults underneath so the context is always complete.
+function totalsContext(
+  specific: Record<string, string>,
+  initial: Record<string, string>,
+): Record<string, string> {
+  return { ...FIELD_DEFAULTS, ...specific, ...initial };
 }
 
 export function getTemplateValues(template: any): Record<string, string> {
@@ -2114,13 +2163,13 @@ export function getTemplateValues(template: any): Record<string, string> {
 
     initial[field] = specific[field] || brandDefault || FIELD_DEFAULTS[field] || "";
   });
-  
+
   if (template?.categorySlug === "invoices") {
-    const computedTotals = computeInvoiceTotals(template, initial);
+    const computedTotals = computeInvoiceTotals(template, totalsContext(specific, initial));
     Object.entries(computedTotals).forEach(([k, v]) => {
       initial[k] = v;
     });
   }
-  
+
   return initial;
 }

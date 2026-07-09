@@ -1848,5 +1848,126 @@ export const invoicesTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "invoice-gst",
+    slug: "invoice-gst",
+    title: "GST Invoice Format",
+    description: "GST-compliant tax invoice for Indian freelancers and businesses, with GSTIN, place of supply, SAC code and a CGST/SGST/IGST tax split.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "GST Invoice Format",
+      fields: ["companyName", "companyEmail", "gstin", "placeOfSupply", "sacCode", "clientName", "clientGstin", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "cgst", "sgst", "igst", "total", "amountInWords", "paymentMethod"],
+      layout: {
+        header: "TAX INVOICE",
+        footer: "This is a computer-generated tax invoice."
+      },
+      styles: {
+        primaryColor: "#0f766e",
+        secondaryColor: "#134e4a"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "TAX INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice No: " }, { type: "text", text: "{{invoiceNumber}}   Date: {{invoiceDate}}   Due: {{dueDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Supplier" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "GSTIN: " }, { type: "text", text: "{{gstin}}   Place of Supply: {{placeOfSupply}}   SAC: {{sacCode}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Recipient" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clientName}}   GSTIN: {{clientGstin}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Services Supplied" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "SAC" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Taxable Value" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Web application development services" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "998314" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "UI/UX design retainer" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "998314" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "10,000" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Taxable Value: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "CGST @ 9%: " }, { type: "text", text: "{{cgst}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "SGST @ 9%: " }, { type: "text", text: "{{sgst}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "IGST (inter-state): " }, { type: "text", text: "{{igst}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total: " }, { type: "text", text: "{{total}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount in words: " }, { type: "text", text: "{{amountInWords}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment: " }, { type: "text", text: "{{paymentMethod}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Whether tax is payable on reverse charge basis: No" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-proforma",
+    slug: "invoice-proforma",
+    title: "Proforma Invoice Format",
+    description: "Proforma invoice issued before supply, stating the agreed price and terms so the buyer can raise a purchase order or arrange payment.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Proforma Invoice Format",
+      fields: ["companyName", "companyEmail", "gstin", "clientName", "clientAddress", "proformaNumber", "proformaDate", "validUntil", "subtotal", "tax", "total", "paymentTerms", "deliveryTerms"],
+      layout: {
+        header: "PROFORMA INVOICE",
+        footer: "This is not a tax invoice. No payment is due against this document."
+      },
+      styles: {
+        primaryColor: "#7c3aed",
+        secondaryColor: "#4c1d95"
+      },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PROFORMA INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Proforma No: " }, { type: "text", text: "{{proformaNumber}}   Date: {{proformaDate}}   Valid until: {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}} ({{companyEmail}})   GSTIN: {{gstin}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "To" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clientName}}, {{clientAddress}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Proposed Supply" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Rate" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Annual software licence" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4,000" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "20,000" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Onboarding and training" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5,000" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "5,000" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "Applied on the final tax invoice" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Estimated Total: " }, { type: "text", text: "{{total}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment terms: " }, { type: "text", text: "{{paymentTerms}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery: " }, { type: "text", text: "{{deliveryTerms}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "A tax invoice will be issued on delivery of the goods or services described above." }] }
+        ]
+      }
+    }
   }
 ];

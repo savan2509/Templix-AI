@@ -447,6 +447,60 @@ const FALLBACK: CategoryFrame = {
 const frameFor = (categorySlug?: string) =>
   (categorySlug && FRAMES[categorySlug]) || FALLBACK;
 
+// A few templates answer a very specific search and deserve their own FAQs
+// rather than the category's generic ones.
+const SLUG_FAQS: Record<string, FAQItem[]> = {
+  "invoice-gst": [
+    {
+      question: "What is the correct GST invoice format?",
+      answer:
+        "A GST tax invoice must carry the supplier's name, address and GSTIN; a consecutive invoice number of at most sixteen characters; the date of issue; the recipient's name, address and GSTIN where they are registered; the place of supply; the SAC or HSN code; a description of the supply with taxable value; the tax rate and amount split into CGST and SGST or IGST; the total; and a signature. This template carries every one of those fields.",
+    },
+    {
+      question: "When do I charge CGST and SGST instead of IGST?",
+      answer:
+        "Look at the place of supply, not where you sit. If the recipient is in your state, charge CGST and SGST split equally. If the recipient is in another state, charge IGST at the full rate. The client pays the same amount either way — only the split changes — but getting it wrong forces you to issue a revised invoice.",
+    },
+    {
+      question: "Can I issue a GST invoice without a GSTIN?",
+      answer:
+        "No. If you are not registered you must not collect GST and must not print a GSTIN. Issue a bill of supply instead, with no tax rows. Your client cannot claim input tax credit against it.",
+    },
+    {
+      question: "How should I number GST invoices?",
+      answer:
+        "Consecutively for each financial year, with no gaps and no reuse — GST-2026-001, GST-2026-002, and so on. Deleting a cancelled invoice and reusing its number is the single most common error found during scrutiny. Keep the number, and issue a credit note.",
+    },
+    {
+      question: "Can I download this GST invoice format in Word and PDF?",
+      answer:
+        "Yes, both, free and with no sign-up. The exported file carries no watermark, so you can send it to a client or your accountant exactly as it appears in the preview.",
+    },
+  ],
+  "invoice-proforma": [
+    {
+      question: "What is a proforma invoice?",
+      answer:
+        "A proforma invoice is a quotation shaped like an invoice, issued before a supply takes place. It states the agreed price, tax treatment and terms so the buyer can raise a purchase order, arrange finance or clear customs. It is not a demand for payment.",
+    },
+    {
+      question: "What is the difference between a proforma invoice and a tax invoice?",
+      answer:
+        "A proforma invoice precedes the supply and creates no tax liability — no input tax credit can be claimed against it. A tax invoice is issued on or after the supply, must carry a consecutive invoice number, and is the document your client's accountant files.",
+    },
+    {
+      question: "Is a proforma invoice legally binding?",
+      answer:
+        "It commits neither side to the transaction, but the price and terms it states are what the buyer will hold you to. Give it an explicit validity date for exactly that reason.",
+    },
+    {
+      question: "Do I number proforma invoices in the same series as tax invoices?",
+      answer:
+        "No. Keep a separate series — PI-2026-001 — so your tax invoice numbering stays consecutive and unbroken.",
+    },
+  ],
+};
+
 /** Unique, per-template on-page copy. */
 export function getTemplateCopy(template: {
   title: string;
@@ -485,10 +539,12 @@ export function getTemplateCopy(template: {
   };
 }
 
-/** Four page-specific FAQs, so each detail page can carry FAQPage schema. */
+/** Page-specific FAQs, so each detail page can carry FAQPage schema. */
 export function getTemplateFaqs(template: {
+  slug?: string;
   title: string;
   categorySlug?: string;
 }): FAQItem[] {
+  if (template.slug && SLUG_FAQS[template.slug]) return SLUG_FAQS[template.slug];
   return frameFor(template.categorySlug).faq(noun(template.title));
 }

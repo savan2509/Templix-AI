@@ -1,7 +1,32 @@
-// Single source of truth for the public domain. Only NEXT_PUBLIC_SITE_URL may
-// override it — the legacy NEXT_PUBLIC_APP_URL is intentionally NOT consulted so
-// a stale vercel.app value can never poison canonical/OG/sitemap/share URLs.
-const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://templix-ai.whitesparksoft.com";
+// Single source of truth for the public domain, feeding canonical, Open Graph,
+// sitemap, RSS and share URLs everywhere.
+//
+// The legacy NEXT_PUBLIC_APP_URL is deliberately not consulted. On top of that
+// we reject any deployment-platform hostname: a canonical pointing at
+// *.vercel.app tells Google the real page lives there, which de-indexes the
+// custom domain. Preview deploys and a mis-set env var can no longer poison it.
+export const PRODUCTION_URL = "https://templix-ai.whitesparksoft.com";
+
+const PLATFORM_HOSTS = [".vercel.app", ".netlify.app", ".onrender.com", "localhost"];
+
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return PRODUCTION_URL;
+
+  let host: string;
+  try {
+    host = new URL(raw).hostname.toLowerCase();
+  } catch {
+    return PRODUCTION_URL; // not a valid absolute URL
+  }
+
+  if (PLATFORM_HOSTS.some((h) => host === h.replace(/^\./, "") || host.endsWith(h))) {
+    return PRODUCTION_URL;
+  }
+  return raw.replace(/\/+$/, ""); // no trailing slash — we always append paths
+}
+
+const APP_URL = resolveSiteUrl();
 
 export const siteConfig = {
   name: "Templix AI",

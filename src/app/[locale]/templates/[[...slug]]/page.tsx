@@ -131,16 +131,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // Titles may already end in "Template"; strip it so we never double it up.
     const baseName = template.title.replace(/\s+Template$/i, "").trim();
 
+    // Titles ending in "Format" already name the document — appending
+    // "Template" produced "GST Invoice Format Template".
+    const docName = /\bformats?$/i.test(baseName) ? baseName : `${baseName} Template`;
+
     // The layout appends " | Templix AI" (13 chars), so the metaTitle must stay
     // under 47 for the rendered <title> to land in the 50-60 character budget.
-    // Target the long-tail pattern: free + [document] + template + format.
+    // Target the long-tail pattern: free + [document] + free/PDF/Word.
     const candidates = [
-      `Free ${baseName} Template (PDF & Word)`,
-      `Free ${baseName} Template — PDF & Word`,
-      `Free ${baseName} Template`,
-      `${baseName} Template`,
+      `Free ${docName} (PDF & Word)`,
+      `Free ${docName} — PDF & Word`,
+      `Free ${docName} 2026`,
+      `Free ${docName}`,
+      docName,
     ];
-    const metaTitle = candidates.find((c) => c.length <= 47) ?? candidates[3];
+    const metaTitle =
+      candidates.find((c) => c.length >= 37 && c.length <= 47) ??
+      candidates.find((c) => c.length <= 47) ??
+      docName;
 
     return SEOEngine.generateMetadata({
       title: `${baseName} Template | Customize & Download`,
@@ -392,8 +400,13 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               </div>
               <div className="flex items-start gap-4">
                 <h1 className="flex-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                  {/* Titles may already end in "Template"; strip it so the noun below never doubles it. */}
-                  {activeTemplate.title.replace(/\s+Template$/i, "").trim()} {t.templateNoun}
+                  {/* Strip a trailing "Template" so the noun below never doubles
+                      it, and skip the noun entirely when the title already ends
+                      in "Format" ("GST Invoice Format", not "…Format Template"). */}
+                  {(() => {
+                    const base = activeTemplate.title.replace(/\s+Template$/i, "").trim();
+                    return /\bformats?$/i.test(base) ? base : `${base} ${t.templateNoun}`;
+                  })()}
                 </h1>
                 {/* Favorite button — shows correct initial state from server session */}
                 <FavoriteButtonWrapper

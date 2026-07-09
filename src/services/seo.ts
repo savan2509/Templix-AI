@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export interface SEOPageData {
   title: string;
   description: string;
@@ -26,9 +28,9 @@ const OG_LOCALES: Record<string, string> = {
 };
 
 export class SEOEngine {
-  // Must stay in lockstep with siteConfig.url — only NEXT_PUBLIC_SITE_URL may
-  // override the production domain (never the legacy NEXT_PUBLIC_APP_URL).
-  private static APP_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://templix-ai.whitesparksoft.com";
+  // One source of truth. Reading the env var separately here is how the two
+  // could ever disagree; siteConfig already rejects platform hostnames.
+  private static APP_URL = siteConfig.url;
 
   /**
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
