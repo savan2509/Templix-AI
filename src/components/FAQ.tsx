@@ -2,23 +2,31 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { faqData } from "@/data/faq";
+import { faqData, type FAQItem } from "@/data/faq";
 import { getDictionary } from "@/lib/i18n";
 
+interface Props {
+  locale: string;
+  /** Page-specific questions. Defaults to the site-wide set (homepage). */
+  items?: FAQItem[];
+  /** Overrides the generic "Frequently Asked Questions" heading. */
+  heading?: string;
+}
 
-export default function FAQ({ locale }: { locale: string }) {
+export default function FAQ({ locale, items, heading }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const t = getDictionary(locale).faqSection;
+  const faqs = items && items.length > 0 ? items : faqData;
 
   return (
     <section className="w-full py-16 bg-zinc-50 dark:bg-zinc-950/20 border-y border-zinc-200 dark:border-zinc-800 transition-colors">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-center tracking-tight text-zinc-900 dark:text-white mb-10">
-          {t.heading}
+          {heading ?? t.heading}
         </h2>
 
         <div className="space-y-4">
-          {faqData.map((faq, index) => {
+          {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div

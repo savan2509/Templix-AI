@@ -21,9 +21,15 @@ type Tab = "signin" | "signup";
 
 interface Props {
   locale: string;
+  /**
+   * Google OAuth is only offered when the provider is enabled in Supabase.
+   * signInWithOAuth() navigates away before it can report a disabled provider,
+   * so the user would land on a raw Supabase JSON error page instead.
+   */
+  googleEnabled?: boolean;
 }
 
-export default function AuthForm({ locale }: Props) {
+export default function AuthForm({ locale, googleEnabled = false }: Props) {
   const router = useRouter();
   // Memoised: an unstable client would retrigger the confirmation poll below.
   const supabase = useMemo(() => createClient(), []);
@@ -184,7 +190,10 @@ export default function AuthForm({ locale }: Props) {
 
   return (
     <div className="w-full max-w-md">
-      {/* Google OAuth — works for both signing in and creating an account */}
+      {/* Google OAuth — rendered only when the provider is enabled in Supabase,
+          otherwise clicking it dead-ends on a Supabase JSON error page. */}
+      {googleEnabled && (
+      <>
       <button
         type="button"
         onClick={handleGoogle}
@@ -210,6 +219,8 @@ export default function AuthForm({ locale }: Props) {
           </span>
         </div>
       </div>
+      </>
+      )}
 
       {/* Tab switcher */}
       <div className="flex rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 p-1 mb-8 gap-1">

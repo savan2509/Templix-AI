@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Sparkles, FileText, Star, Zap } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { getEnabledOAuthProviders } from "@/lib/supabase/providers";
 import AuthForm from "@/components/AuthForm";
 
 export const metadata: Metadata = {
@@ -30,6 +31,10 @@ export default async function LoginPage({ params }: Props) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) redirect(`/${locale}/dashboard`);
   }
+
+  // Only offer OAuth buttons for providers that are actually enabled — a
+  // disabled one redirects the user to a raw Supabase JSON error page.
+  const providers = await getEnabledOAuthProviders();
 
   return (
     <div className="min-h-screen flex">
@@ -107,7 +112,7 @@ export default async function LoginPage({ params }: Props) {
               </p>
             </div>
 
-            <AuthForm locale={locale} />
+            <AuthForm locale={locale} googleEnabled={providers.google} />
           </div>
 
           {/* Footer */}

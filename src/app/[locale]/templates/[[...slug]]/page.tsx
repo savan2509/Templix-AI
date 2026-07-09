@@ -16,6 +16,8 @@ import { SEOEngine } from "@/services/seo";
 import { getDictionary } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
+import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
+import { getTemplateCopy, getTemplateFaqs } from "@/features/templates/template-content";
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -128,9 +130,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const template = allFallbackTemplates.find((t) => t.slug === lastSegment)!;
     // Titles may already end in "Template"; strip it so we never double it up.
     const baseName = template.title.replace(/\s+Template$/i, "").trim();
+
+    // The layout appends " | Templix AI" (13 chars), so the metaTitle must stay
+    // under 47 for the rendered <title> to land in the 50-60 character budget.
+    // Target the long-tail pattern: free + [document] + template + format.
+    const candidates = [
+      `Free ${baseName} Template (PDF & Word)`,
+      `Free ${baseName} Template — PDF & Word`,
+      `Free ${baseName} Template`,
+      `${baseName} Template`,
+    ];
+    const metaTitle = candidates.find((c) => c.length <= 47) ?? candidates[3];
+
     return SEOEngine.generateMetadata({
       title: `${baseName} Template | Customize & Download`,
-      description: `Free customizable ${baseName.toLowerCase()} template. Fill in variables, edit blocks with AI, and download PDF or Word format in minutes.`,
+      metaTitle,
+      description: `Download a free ${baseName.toLowerCase()} template. Editable fields, PDF and Word export, no sign-up and no watermark. Fill it in and send it in minutes.`,
       slug: `/templates/${template.categorySlug}/${template.slug}`,
       locale,
       categoryName: template.categoryName,
@@ -172,9 +187,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     pageTitle = parts.join(" ");
   }
 
+  // Searchers add the year and the file format. A bare category page title is
+  // outranked by one that answers "…2026" and "…PDF & Word". Only append when
+  // there's room inside the 47-char budget (the layout adds " | Templix AI").
+  const withFormat = `${pageTitle} 2026 — PDF & Word`;
+  const withYear = `${pageTitle} 2026`;
+  const metaTitle =
+    withFormat.length <= 47 ? withFormat : withYear.length <= 47 ? withYear : pageTitle;
+
   return SEOEngine.generateMetadata({
     title: pageTitle,
-    description: `Download, edit, and create ${pageTitle.toLowerCase()}. Access clean, print-ready, professional layouts. Customize with our built-in AI document editor.`,
+    metaTitle,
+    description: `Download free ${pageTitle.replace(/^Free /, "").toLowerCase()}. Editable, print-ready layouts that export to PDF and Word — no sign-up and no watermark.`,
     slug: `/templates${slug.length > 0 ? "/" + slug.join("/") : ""}`,
     locale,
     categoryName: category || undefined,
@@ -311,6 +335,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       locale
     );
 
+    // Unique on-page copy + page-specific FAQs. Without these, ~180 detail
+    // pages were the preview plus one sentence — indistinguishable to Google.
+    const copy = getTemplateCopy(activeTemplate);
+    const templateFaqs = getTemplateFaqs(activeTemplate);
+    const templateFaqSchema = faqPageSchema(templateFaqs);
+
     return (
       <>
         <Navbar />
@@ -323,6 +353,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaJson).replace(/</g, "\\u003c") }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateFaqSchema).replace(/</g, "\\u003c") }}
           />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
@@ -374,6 +408,91 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
             {/* Client View Component */}
             <TemplateDetailView locale={locale} template={activeTemplate} />
+
+            {/* ── Unique, page-specific copy ────────────────────────────────
+                Turns a thin preview page into one that answers what the
+                searcher actually asked. The field list below is drawn from the
+                template's own fields, so no two pages read alike. */}
+            <article className="pt-12 border-t border-zinc-200 dark:border-zinc-800 max-w-3xl space-y-8">
+              <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                {copy.intro}
+              </p>
+
+              <section className="space-y-3">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  {copy.whoForHeading}
+                </h2>
+                <ul className="space-y-2">
+                  {copy.whoFor.map((line) => (
+                    <li key={line} className="flex gap-2.5 text-sm text-zinc-600 dark:text-zinc-400">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="space-y-3">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  {copy.includedHeading}
+                </h2>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {copy.included.map((field) => (
+                    <li key={field} className="flex gap-2.5 text-sm text-zinc-600 dark:text-zinc-400">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                      <span>{field}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="space-y-3">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  {copy.howToHeading}
+                </h2>
+                <ol className="space-y-2.5">
+                  {copy.howTo.map((step, i) => (
+                    <li key={step} className="flex gap-3 text-sm text-zinc-600 dark:text-zinc-400">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[11px] font-bold text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
+                        {i + 1}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+
+              <section className="space-y-3">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  {copy.tipsHeading}
+                </h2>
+                <ul className="space-y-2">
+                  {copy.tips.map((tip) => (
+                    <li key={tip} className="flex gap-2.5 text-sm text-zinc-600 dark:text-zinc-400">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                      <span>{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Page-specific FAQs — the visible copy behind the FAQPage schema */}
+              <section className="space-y-4">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  Frequently asked questions
+                </h2>
+                <div className="space-y-4">
+                  {templateFaqs.map((faq) => (
+                    <div key={faq.question} className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                      <h3 className="font-semibold text-zinc-900 dark:text-white">{faq.question}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </article>
 
             {/* Contextual Internal Linking Grids */}
             <div className="pt-12 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
@@ -580,6 +699,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     }))
   };
 
+  // Every category page used to render the homepage's four generic questions —
+  // duplicate content across nine URLs, with no FAQPage schema. Use questions
+  // written for this category, and emit the schema behind them.
+  const categoryFaqs = getCategoryFaqs(categorySlug);
+  const categoryFaqSchema = categoryFaqs ? faqPageSchema(categoryFaqs) : null;
+
   return (
     <>
       <Navbar />
@@ -590,6 +715,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
         />
+        {categoryFaqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryFaqSchema).replace(/</g, "\\u003c") }}
+          />
+        )}
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
@@ -833,7 +964,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
         </div>
       </main>
 
-      <FAQ locale={locale} />
+      <FAQ
+        locale={locale}
+        items={categoryFaqs ?? undefined}
+        heading={categoryFaqs ? `${categoryDisplayName} — frequently asked questions` : undefined}
+      />
       <Footer />
     </>
   );
