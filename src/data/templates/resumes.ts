@@ -436,7 +436,7 @@ export const resumesTemplates = [
       fields: ["fullName", "email", "phone", "summary", "accountingSoftware", "bookkeeping", "taxPreparation", "financialReporting", "payroll", "cpaCertified", "otherCertifications", "degree", "university", "graduationYear"],
       layout: {
         header: "ACCOUNTING & FINANCE PROFILE",
-        footer: "CPA Candidate. Audit Ready."
+        footer: "CPA Licensed. Audit Ready."
       },
       styles: {
         primaryColor: "#2563eb",

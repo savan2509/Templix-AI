@@ -347,8 +347,8 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   agreementDuration: "5 years from the effective date of disclosure",
   obligations: "Parties agree to treat all materials with standard commercial care and not disclose to third parties.",
   permittedDisclosures: "Disclosures to legal advisors, key officers, and auditors on a need-to-know basis.",
-  partyASignature: "John Doe, CEO Party A",
-  partyBSignature: "Jane Smith, CTO Party B",
+  partyASignature: "John Doe, Chief Executive Officer",
+  partyBSignature: "Jane Smith, Chief Technology Officer",
 
   // — Consulting Agreement —
   consultantCompany: "AI Cryptography Consultants",
@@ -1628,7 +1628,8 @@ const OVERRIDES: Record<string, Record<string, string>> = {
   },
   "resume-software-engineer": {
     graduationYear: "2018",
-    careerSummary: "Lead software developer with 8+ years of experience building scalable SaaS architectures, microservices, and modern Next.js/React frontend systems.",
+    jobTitle: "Senior Software Engineer",
+    careerSummary: "Lead software developer with 7+ years of experience building scalable SaaS architectures, microservices, and modern Next.js/React frontend systems.",
     degree: "B.S. in Computer Science",
     university: "Stanford University",
     certificationName: "AWS Certified Solutions Architect",
@@ -1636,28 +1637,28 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     year: "2024"
   },
   "resume-data-analyst": {
-    summary: "Detail-oriented Data Analyst with 5+ years of experience translating complex datasets into actionable business insights using SQL, Python, and Power BI.",
+    summary: "Detail-oriented Data Analyst with 8+ years of experience translating complex datasets into actionable business insights using SQL, Python, and Power BI.",
     degree: "B.S. in Statistics",
     university: "University of California, Berkeley",
-    graduationYear: "2020",
+    graduationYear: "2017",
     certificationName: "Google Advanced Data Analytics Certificate",
     organization: "Google",
     year: "2023"
   },
   "resume-project-manager": {
-    summary: "PMP-certified Project Manager with 7+ years of experience leading cross-functional teams to deliver enterprise software solutions on time and under budget.",
+    summary: "PMP-certified Project Manager with 9+ years of experience leading cross-functional teams to deliver enterprise software solutions on time and under budget.",
     degree: "B.B.A. in Operations Management",
     university: "University of Texas at Austin",
-    graduationYear: "2017",
+    graduationYear: "2016",
     certificationName: "Project Management Professional (PMP)",
     organization: "Project Management Institute (PMI)",
     year: "2021"
   },
   "resume-graphic-designer": {
-    summary: "Creative Graphic Designer with 6+ years of experience designing visual identity systems, brand marketing collateral, and high-impact digital experiences.",
+    summary: "Creative Graphic Designer with 8+ years of experience designing visual identity systems, brand marketing collateral, and high-impact digital experiences.",
     degree: "B.F.A. in Graphic Design",
     university: "Rhode Island School of Design",
-    graduationYear: "2019",
+    graduationYear: "2017",
     certificationName: "Adobe Certified Professional — Creative Cloud",
     organization: "Adobe",
     year: "2020",
@@ -1667,7 +1668,7 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     summary: "Compassionate Registered Nurse (RN) with 8+ years of clinical experience in high-volume emergency rooms and intensive care units, dedicated to patient advocacy.",
     degree: "Bachelor of Science in Nursing (BSN)",
     university: "Johns Hopkins School of Nursing",
-    graduationYear: "2018",
+    graduationYear: "2015",
     certificationName: "Advanced Cardiac Life Support (ACLS)",
     organization: "American Heart Association",
     year: "2019",
@@ -1683,37 +1684,37 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     year: "2016"
   },
   "resume-marketing-manager": {
-    summary: "Results-driven Marketing Manager with 6+ years of experience scaling customer acquisition channels through SEO, email marketing, and search/social advertising.",
+    summary: "Results-driven Marketing Manager with 9+ years of experience scaling customer acquisition channels through SEO, email marketing, and search/social advertising.",
     degree: "B.S. in Marketing",
     university: "New York University",
-    graduationYear: "2019",
+    graduationYear: "2016",
     certificationName: "Google Analytics Individual Qualification (GAIQ)",
     organization: "Google",
     year: "2022"
   },
   "resume-customer-service": {
-    summary: "Empathetic Customer Support Lead with 4+ years of experience resolving complex complaints, training agents, and maintaining a 96% CSAT rating.",
+    summary: "Empathetic Customer Support Lead with 9+ years of experience resolving complex complaints, training agents, and maintaining a 96% CSAT rating.",
     degree: "B.A. in Communications",
     university: "Arizona State University",
-    graduationYear: "2021",
+    graduationYear: "2016",
     certificationName: "Customer Service Excellence Trainer",
     organization: "Customer Service Institute",
     year: "2022"
   },
   "resume-accountant": {
-    summary: "CPA-certified Accountant with 7+ years of experience managing corporate ledgers, tax filing, payroll processing, and internal audit controls.",
+    summary: "CPA-certified Accountant with 10+ years of experience managing corporate ledgers, tax filing, payroll processing, and internal audit controls.",
     degree: "B.S. in Accounting & Finance",
     university: "University of Illinois Urbana-Champaign",
-    graduationYear: "2018",
+    graduationYear: "2015",
     certificationName: "Certified Public Accountant (CPA)",
     organization: "AICPA",
     year: "2020"
   },
   "resume-sales-representative": {
-    summary: "Dynamic Sales Representative with 5+ years of experience exceeding quotas, managing enterprise pipelines, and pitching complex SaaS offerings.",
+    summary: "Dynamic Sales Representative with 8+ years of experience exceeding quotas, managing enterprise pipelines, and pitching complex SaaS offerings.",
     degree: "B.A. in Business Administration",
     university: "Ohio State University",
-    graduationYear: "2020",
+    graduationYear: "2017",
     certificationName: "Salesforce Certified Administrator",
     organization: "Salesforce",
     year: "2021"
@@ -1730,110 +1731,110 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     awardsAchievements: "Dean's List (all semesters); 1st place, University Hackathon 2025"
   },
   "resume-product-manager": {
-    summary: "Product Manager with 6+ years of experience owning product lifecycles, translating user feedback into roadmaps, and collaborating with design and engineering teams.",
+    summary: "Product Manager with 8+ years of experience owning product lifecycles, translating user feedback into roadmaps, and collaborating with design and engineering teams.",
     degree: "B.S. in Management Information Systems",
     university: "Carnegie Mellon University",
-    graduationYear: "2019",
+    graduationYear: "2017",
     certificationName: "Certified Scrum Product Owner (CSPO)",
     organization: "Scrum Alliance",
     year: "2021"
   },
   "resume-devops-engineer": {
-    summary: "DevOps Engineer with 5+ years of experience automating cloud infrastructure, orchestrating containers, and optimizing CI/CD release pipelines.",
+    summary: "DevOps Engineer with 9+ years of experience automating cloud infrastructure, orchestrating containers, and optimizing CI/CD release pipelines.",
     degree: "B.S. in Computer Engineering",
     university: "Georgia Institute of Technology",
-    graduationYear: "2020",
+    graduationYear: "2016",
     certificationName: "Certified Kubernetes Administrator (CKA)",
     organization: "Cloud Native Computing Foundation",
     year: "2022",
     programmingLanguages: "Bash, Python, Go, PowerShell"
   },
   "resume-ux-designer": {
-    summary: "UX Designer with 5+ years of experience designing intuitive customer journeys, interactive wireframes, and accessible brand design systems.",
+    summary: "UX Designer with 8+ years of experience designing intuitive customer journeys, interactive wireframes, and accessible brand design systems.",
     degree: "B.S. in Human-Computer Interaction",
     university: "University of Washington",
-    graduationYear: "2020",
+    graduationYear: "2017",
     certificationName: "UX Certificate (Interaction Design)",
     organization: "Nielsen Norman Group",
     year: "2022"
   },
   "resume-financial-analyst": {
-    summary: "Financial Analyst with 4+ years of experience constructing 3-statement models, forecasting cash flow, and providing strategic investment advice.",
+    summary: "Financial Analyst with 8+ years of experience constructing 3-statement models, forecasting cash flow, and providing strategic investment advice.",
     degree: "B.B.A. in Finance",
     university: "University of Pennsylvania",
-    graduationYear: "2021",
+    graduationYear: "2017",
     certificationName: "Chartered Financial Analyst (CFA) Level I",
     organization: "CFA Institute",
     year: "2022"
   },
   "resume-hr-manager": {
-    summary: "HR Manager with 7+ years of experience overseeing employee relations, corporate talent acquisition, benefits admin, and training programs.",
+    summary: "HR Manager with 10+ years of experience overseeing employee relations, corporate talent acquisition, benefits admin, and training programs.",
     degree: "B.S. in Human Resource Management",
     university: "Rutgers University",
-    graduationYear: "2018",
+    graduationYear: "2015",
     certificationName: "SHRM Certified Professional (SHRM-CP)",
     organization: "SHRM",
     year: "2021"
   },
   "resume-mechanical-engineer": {
-    summary: "Mechanical Engineer with 6+ years of experience designing robust automotive assemblies, running thermal/FEA simulations, and supervising CNC fabrication.",
+    summary: "Mechanical Engineer with 10+ years of experience designing robust automotive assemblies, running thermal/FEA simulations, and supervising CNC fabrication.",
     degree: "B.S. in Mechanical Engineering",
     university: "Purdue University",
-    graduationYear: "2019",
+    graduationYear: "2015",
     certificationName: "Professional Engineer (PE) License",
     organization: "State Licensing Board",
     year: "2023"
   },
   "resume-content-writer": {
-    summary: "Versatile Content Writer with 5+ years of experience authoring SEO blog posts, corporate whitepapers, and customer-converting landing pages.",
+    summary: "Versatile Content Writer with 8+ years of experience authoring SEO blog posts, corporate whitepapers, and customer-converting landing pages.",
     degree: "B.A. in English Literature",
     university: "Northwestern University",
-    graduationYear: "2020",
+    graduationYear: "2017",
     certificationName: "Inbound Marketing Certification",
     organization: "HubSpot",
     year: "2021"
   },
   "resume-business-analyst": {
-    summary: "Business Analyst with 5+ years of experience gathering technical requirements, modeling business processes, and supporting UAT cycles.",
+    summary: "Business Analyst with 9+ years of experience gathering technical requirements, modeling business processes, and supporting UAT cycles.",
     degree: "B.S. in Business Information Systems",
     university: "Indiana University Bloomington",
-    graduationYear: "2020",
+    graduationYear: "2016",
     certificationName: "Certified Business Analysis Professional (CBAP)",
     organization: "IIBA",
     year: "2022"
   },
   "resume-executive-assistant": {
-    summary: "Polished Executive Assistant with 6+ years of experience coordinating calendars, travel logistics, and client presentations for C-level officers.",
+    summary: "Polished Executive Assistant with 10+ years of experience coordinating calendars, travel logistics, and client presentations for C-level officers.",
     degree: "B.A. in English",
     university: "University of Southern California",
-    graduationYear: "2019",
+    graduationYear: "2015",
     certificationName: "Certified Administrative Professional (CAP)",
     organization: "IAAP",
     year: "2021"
   },
   "resume-cybersecurity-analyst": {
-    summary: "Cybersecurity Analyst with 5+ years of experience conducting vulnerability scans, configuring SIEM alerts, and mitigating security incidents.",
+    summary: "Cybersecurity Analyst with 8+ years of experience conducting vulnerability scans, configuring SIEM alerts, and mitigating security incidents.",
     degree: "B.S. in Cybersecurity",
     university: "University of Maryland",
-    graduationYear: "2020",
+    graduationYear: "2017",
     certificationName: "CompTIA Security+",
     organization: "CompTIA",
     year: "2021"
   },
   "resume-pharmacist": {
-    summary: "Licensed Pharmacist with 8+ years of experience dispensing prescription medications, reviewing safety interactions, and advising clinical patients.",
+    summary: "Licensed Pharmacist with 10+ years of experience dispensing prescription medications, reviewing safety interactions, and advising clinical patients.",
     degree: "Doctor of Pharmacy (Pharm.D.)",
     university: "University of North Carolina at Chapel Hill",
-    graduationYear: "2018",
+    graduationYear: "2015",
     certificationName: "Board Certified Pharmacotherapy Specialist (BCPS)",
     organization: "Board of Pharmacy Specialties",
     year: "2020"
   },
   "resume-civil-engineer": {
-    summary: "Structural Civil Engineer with 7+ years of experience drafting concrete/steel structures, managing site inspections, and ensuring building code compliance.",
+    summary: "Structural Civil Engineer with 10+ years of experience drafting concrete/steel structures, managing site inspections, and ensuring building code compliance.",
     degree: "B.S. in Civil Engineering",
     university: "Texas A&M University",
-    graduationYear: "2018",
+    graduationYear: "2015",
     certificationName: "Professional Engineer (PE) License",
     organization: "NCEES",
     year: "2022"
@@ -1914,6 +1915,68 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
   };
 }
 
+// Contact details derived from the template's OWN brand / persona.
+//
+// The global FIELD_DEFAULTS contact block belongs to one persona (Sarah
+// Jenkins: sarah.j@techsolutions.com, +1 (555) 382-9281, linkedin
+// sarah-jenkins-lead, 1200 Business Way San Francisco). Any key not explicitly
+// resolved used to fall through to it, so every resume and every letterhead
+// leaked her details. This is applied as an underlay in BOTH resolvers, so a
+// document can never show another persona's contact info.
+function deriveContactValues(
+  template: any,
+  brand: string | undefined,
+  specific: Record<string, string>,
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  const phoneFor = (seedStr: string) => {
+    const seed = seedStr.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+    return `+1 (555) ${String(200 + (seed % 700)).padStart(3, "0")}-${String(
+      1000 + ((seed * 7) % 9000),
+    ).padStart(4, "0")}`;
+  };
+
+  if (template?.categorySlug === "resumes") {
+    // Strip credential suffixes ("Emily Carter, RN" → "Emily Carter").
+    const person = (specific.fullName || brand || "").replace(/,.*$/, "").trim();
+    if (!person) return out;
+    const dot = person.toLowerCase().replace(/[^a-z0-9]+/g, ".").replace(/^\.+|\.+$/g, "");
+    const dash = person.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    const plain = person.toLowerCase().replace(/[^a-z0-9]+/g, "");
+    const seed = person.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+    const cities = [
+      "Austin, TX", "Denver, CO", "Seattle, WA", "Chicago, IL",
+      "Boston, MA", "Atlanta, GA", "Portland, OR", "New York, NY",
+    ];
+    const city = cities[seed % cities.length];
+    if (dot) out.email = `${dot}@email.com`;
+    out.phone = phoneFor(person);
+    if (dash) out.linkedin = dash;
+    if (plain) {
+      out.github = `${plain}-dev`;
+      out.portfolio = `${plain}.dev`;
+    }
+    out.location = city;
+    // A resume letterhead shows the person's city, never a corporate street.
+    out.address = city;
+    return out;
+  }
+
+  if (brand) {
+    const letters = brand.replace(/[^a-zA-Z]/g, "");
+    const handle = brand.toLowerCase().replace(/[^a-z0-9]+/g, "");
+    const cities = [
+      "New York, NY 10001", "Austin, TX 78701", "San Francisco, CA 94105",
+      "Seattle, WA 98101", "Chicago, IL 60601",
+    ];
+    const streetNum = 100 + (letters.charCodeAt(0) || 0) * 2;
+    out.address = `${streetNum} Business Way, ${cities[letters.length % 5]}`;
+    if (handle) out.email = `hello@${handle}.com`;
+    out.phone = phoneFor(brand);
+  }
+  return out;
+}
+
 export function getTemplateBrand(template: any): string {
   return SLUG_BRAND[template?.slug] || FIELD_DEFAULTS.companyName || "Your Company";
 }
@@ -1921,18 +1984,32 @@ export function getTemplateBrand(template: any): string {
 export function getTemplateDefaults(template: any): Record<string, string> {
   const slug = template?.slug;
   const brand = SLUG_BRAND[slug] || FIELD_DEFAULTS.companyName || "Your Company";
-  const initial: Record<string, string> = {
-    ...FIELD_DEFAULTS,
+  const slugOverrides: Record<string, string> = {
     ...(SLUG_EXTRA_DEFAULTS[slug] || {}),
     ...(SLUG_SPECIFIC_DEFAULTS[slug] || {}),
     ...(OVERRIDES[slug] || {}),
+  };
+
+  const isResume = template?.categorySlug === "resumes";
+  // FIELD_DEFAULTS.fullName is a real name, so `!initial.fullName` never fired
+  // and every resume kept the global persona. Resolve it explicitly.
+  const personaName = slugOverrides.fullName || (isResume ? SLUG_BRAND[slug] : undefined);
+  const derived = deriveContactValues(template, SLUG_BRAND[slug], {
+    ...slugOverrides,
+    ...(personaName ? { fullName: personaName } : {}),
+  });
+
+  const initial: Record<string, string> = {
+    ...FIELD_DEFAULTS,
+    ...derived,       // this template's own contacts beat the global persona
+    ...slugOverrides, // explicit per-template values still win
     companyName: brand,
   };
-  
-  if (template?.categorySlug === "resumes" && brand && !initial.fullName) {
-    initial.fullName = brand;
+
+  if (isResume && personaName) {
+    initial.fullName = personaName;
   }
-  
+
   if (template?.categorySlug === "invoices") {
     const computedTotals = computeInvoiceTotals(template, initial);
     Object.entries(computedTotals).forEach(([k, v]) => {
@@ -1958,18 +2035,9 @@ export function getTemplateValues(template: any): Record<string, string> {
     specific.fullName = brand;
   }
 
-  // Resume contact details must belong to the resume's own person — otherwise
-  // every resume leaks the global default (sarah.j@techsolutions.com,
-  // linkedin: sarah-jenkins-lead, +1 (555) 382-9281). Derive them
-  // deterministically from the person's name so each resume is self-consistent.
-  const personRaw = (specific.fullName || brand || FIELD_DEFAULTS.fullName || "").replace(/,.*$/, "").trim();
-  const personDot = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, ".").replace(/^\.+|\.+$/g, "");
-  const personDash = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-  const personPlain = personRaw.toLowerCase().replace(/[^a-z0-9]+/g, "");
-  const personSeed = personRaw.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-  const personPhone = `+1 (555) ${String(200 + (personSeed % 700)).padStart(3, "0")}-${String(1000 + ((personSeed * 7) % 9000)).padStart(4, "0")}`;
-  const resumeCities = ["Austin, TX", "Denver, CO", "Seattle, WA", "Chicago, IL", "Boston, MA", "Atlanta, GA", "Portland, OR", "New York, NY"];
-  const personCity = resumeCities[personSeed % resumeCities.length];
+  // Exactly the derivation the defaults underlay applies, so a template's card
+  // and its detail page always resolve identical contact details.
+  const derived = deriveContactValues(template, brand, specific);
 
   fields.forEach((field) => {
     let brandDefault: string | undefined;
@@ -1980,20 +2048,10 @@ export function getTemplateValues(template: any): Record<string, string> {
       brandDefault = handle ? `hello@${handle}.com` : undefined;
     }
 
-    // Resume-only contact details, derived from the resume's own person so no
-    // two resumes share the same email / phone / LinkedIn / portfolio.
-    else if (isResume && field === "email" && !specific[field] && personDot) {
-      brandDefault = `${personDot}@email.com`;
-    } else if (isResume && field === "phone" && !specific[field]) {
-      brandDefault = personPhone;
-    } else if (isResume && field === "linkedin" && !specific[field] && personDash) {
-      brandDefault = personDash;
-    } else if (isResume && field === "github" && !specific[field] && personPlain) {
-      brandDefault = `${personPlain}-dev`;
-    } else if (isResume && field === "portfolio" && !specific[field] && personPlain) {
-      brandDefault = `${personPlain}.dev`;
-    } else if (isResume && field === "location" && !specific[field]) {
-      brandDefault = personCity;
+    // email / phone / linkedin / github / portfolio / location / address —
+    // all belong to this template's own persona or brand.
+    else if (derived[field] !== undefined && !specific[field]) {
+      brandDefault = derived[field];
     }
 
     // Dynamic signature alignments
@@ -2053,16 +2111,7 @@ export function getTemplateValues(template: any): Record<string, string> {
       const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, ".");
       brandDefault = handle ? `${handle}@email.com` : undefined;
     }
-    
-    // Dynamic letterhead address
-    else if (field === "address" && brand && !specific[field]) {
-      const handle = brand.replace(/[^a-zA-Z]/g, "");
-      const salt = handle.length % 5;
-      const cities = ["New York, NY 10001", "Austin, TX 78701", "San Francisco, CA 94105", "Seattle, WA 98101", "Chicago, IL 60601"];
-      const streetNum = 100 + (handle.charCodeAt(0) || 0) * 2;
-      brandDefault = `${streetNum} Business Way, ${cities[salt]}`;
-    }
-    
+
     initial[field] = specific[field] || brandDefault || FIELD_DEFAULTS[field] || "";
   });
   

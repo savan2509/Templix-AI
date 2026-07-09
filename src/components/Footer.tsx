@@ -241,9 +241,12 @@ export default function Footer() {
             className="flex items-center gap-1.5"
             aria-label={`© ${currentYear} ${t.designedWithPre} love ${t.designedWithPost}`}
           >
-            <span aria-hidden="true">© {currentYear} {t.designedWithPre}</span>
+            {/* Non-breaking spaces keep a real space around the heart, so the
+                copied/extracted text reads "Designed with ❤ for …" rather than
+                the run-together "Designed withfor …". */}
+            <span aria-hidden="true">© {currentYear} {t.designedWithPre}&nbsp;</span>
             <Heart className="h-3 w-3 text-red-500 fill-red-500 shrink-0" aria-hidden="true" />
-            <span aria-hidden="true">{t.designedWithPost}</span>
+            <span aria-hidden="true">&nbsp;{t.designedWithPost}</span>
           </div>
           <div className="text-zinc-400 dark:text-zinc-500">
             {t.freeForever}

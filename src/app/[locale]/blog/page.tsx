@@ -138,12 +138,15 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
         <section className="relative isolate overflow-hidden border-b border-zinc-200 dark:border-zinc-900 pt-20 pb-16">
           {/* Background Image with Dark Overlay */}
           <div className="absolute inset-0 z-0">
+            {/* Decorative, sits under an ~80%-opaque overlay — cap the requested
+                width and quality so mobile never downloads a 4K background. */}
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt=""
               aria-hidden="true"
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 1280px"
+              quality={55}
               className="object-cover"
               priority
             />

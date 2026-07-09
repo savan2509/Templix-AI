@@ -175,12 +175,15 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <section className="relative isolate overflow-hidden pt-14 pb-16">
           {/* Abstract background image with category gradient overlay */}
           <div className="absolute inset-0 z-0">
+            {/* Decorative, sits under a 90%-opaque gradient — never needs a 4K
+                source. Cap the requested width and drop quality to protect LCP. */}
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt=""
               aria-hidden="true"
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 1280px"
+              quality={55}
               className="object-cover"
               priority
             />

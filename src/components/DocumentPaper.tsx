@@ -76,6 +76,10 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
       result = result.replace(new RegExp(`\\{\\{${key}\\}\\}`, "g"), val || humanize(key));
     });
     result = result.replace(/\{\{([a-zA-Z0-9_]+)\}\}/g, (_m, varName) => humanize(varName));
+    // Sentence templates append a period after a variable, but many values
+    // already end in one ("…web layouts." + "." → "…web layouts.."). Collapse
+    // the duplicate. No template copy uses ellipses, so this is safe.
+    result = result.replace(/\.{2,}/g, ".");
     return result;
   };
 

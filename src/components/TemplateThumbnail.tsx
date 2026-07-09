@@ -25,7 +25,6 @@ import { getTemplateValues } from "@/features/templates/sample-values";
  */
 function selectThumbnailBlocks(blocks: any[]): any[] {
   const MAX_LEAD        = 5;  // lead blocks shown before the table
-  const MAX_TABLE_ROWS  = 3;  // table data rows (+ 1 header) in thumbnail
   const MAX_TRAIL       = 4;  // trailing blocks shown after the table
   const MAX_TEXT_BLOCKS = 14; // total top-level blocks for text documents
   const LIST_ITEM_CAP   = 3;  // max bullet/ordered list items per list block
@@ -36,16 +35,15 @@ function selectThumbnailBlocks(blocks: any[]): any[] {
   if (tableIdx !== -1) {
     const leadStart  = Math.max(0, tableIdx - MAX_LEAD);
     const leadBlocks = blocks.slice(leadStart, tableIdx);
+    // Keep EVERY line-item row. Dropping rows while still rendering the
+    // trailing "Subtotal / Total" lines made the visible arithmetic wrong
+    // (e.g. 3 rows summing to $4,000 under a $4,250 subtotal). The card crops
+    // with a fade, so any overflow is hidden rather than contradictory.
     const tableBlock = blocks[tableIdx];
-    const rows: any[] = tableBlock.content || [];
-    const trimmedTable = {
-      ...tableBlock,
-      content: rows.slice(0, MAX_TABLE_ROWS + 1), // +1 for header row
-    };
     // Include trailing blocks after the table (subtotal, tax, total, payment)
     // — these fill the lower portion of the card so no blank space appears.
     const trailBlocks = blocks.slice(tableIdx + 1, tableIdx + 1 + MAX_TRAIL);
-    return [...leadBlocks, trimmedTable, ...trailBlocks];
+    return [...leadBlocks, tableBlock, ...trailBlocks];
   }
 
   // ── Text-only document (resumes, letters, contracts, etc.) ───────────────
