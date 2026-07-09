@@ -231,6 +231,104 @@ export async function sendSignupVerificationEmail(input: {
   console.log(`[signup] ✉️  Confirmation link sent to ${input.email}`);
 }
 
+// Shared shell so every transactional email looks like the same product.
+function wrap(title: string, bodyHtml: string, footerHtml: string) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;"><tr><td align="center">
+    <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,.06);">
+      <tr><td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:36px 40px;">
+        <p style="margin:0;font-size:22px;font-weight:700;color:#ffffff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
+        <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.8);">${title}</p>
+      </td></tr>
+      <tr><td style="padding:36px 40px 8px;">${bodyHtml}</td></tr>
+      <tr><td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:20px 40px;">
+        <p style="margin:0;font-size:12px;color:#a1a1aa;">${footerHtml}</p>
+      </td></tr>
+    </table>
+  </td></tr></table>
+</body>
+</html>`;
+}
+
+/**
+ * Forwards a contact-form message to the team inbox. Throws on failure so the
+ * form can tell the visitor their message did not go through.
+ */
+export async function sendContactMessageEmail(input: {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+}): Promise<void> {
+  const from =
+    process.env.EMAIL_FROM ||
+    process.env.EMAIL_SERVER_USER ||
+    "no-reply@templix-ai.whitesparksoft.com";
+  const subject = (input.subject || "").trim() || "New contact form message";
+  const esc = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  const nodemailer = await import("nodemailer");
+  const transport = nodemailer.createTransport(buildTransport() as any);
+  await transport.sendMail({
+    to: ADMIN_NOTIFICATION_EMAIL,
+    from,
+    replyTo: `${input.name} <${input.email}>`, // hit Reply → answer the visitor
+    subject: `[Contact] ${subject}`,
+    text:
+      `New message from the Templix AI contact form.\n\n` +
+      `Name:    ${input.name}\nEmail:   ${input.email}\nSubject: ${subject}\n\n` +
+      `${input.message}\n`,
+    html: wrap(
+      "New contact form message",
+      `<h1 style="margin:0 0 20px;font-size:20px;font-weight:700;color:#18181b;">${esc(subject)}</h1>
+       <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#3f3f46;">
+         <tr><td style="padding:6px 0;color:#71717a;width:90px;">Name</td><td style="padding:6px 0;font-weight:600;">${esc(input.name)}</td></tr>
+         <tr><td style="padding:6px 0;color:#71717a;">Email</td><td style="padding:6px 0;font-weight:600;color:#2563eb;">${esc(input.email)}</td></tr>
+       </table>
+       <div style="margin-top:18px;padding:16px 18px;background:#f9f9f9;border:1px solid #e4e4e7;border-radius:10px;font-size:14px;color:#3f3f46;line-height:1.6;white-space:pre-wrap;">${esc(input.message)}</div>`,
+      `Reply directly to this email to answer ${esc(input.email)}.`,
+    ),
+  });
+  console.log(`[contact] ✉️  Message from ${input.email} forwarded to ${ADMIN_NOTIFICATION_EMAIL}`);
+}
+
+/**
+ * Tells the team someone subscribed to the newsletter. Throws on failure so the
+ * form does not falsely claim success.
+ */
+export async function sendNewsletterSignupEmail(subscriber: string): Promise<void> {
+  const from =
+    process.env.EMAIL_FROM ||
+    process.env.EMAIL_SERVER_USER ||
+    "no-reply@templix-ai.whitesparksoft.com";
+  const when = new Date().toUTCString();
+  const esc = (s: string) => s.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  const nodemailer = await import("nodemailer");
+  const transport = nodemailer.createTransport(buildTransport() as any);
+  await transport.sendMail({
+    to: ADMIN_NOTIFICATION_EMAIL,
+    from,
+    replyTo: subscriber,
+    subject: `New newsletter subscriber: ${subscriber}`,
+    text: `New newsletter subscriber on Templix AI.\n\nEmail: ${subscriber}\nTime:  ${when}\n`,
+    html: wrap(
+      "New newsletter subscriber",
+      `<h1 style="margin:0 0 20px;font-size:20px;font-weight:700;color:#18181b;">Someone subscribed 🎉</h1>
+       <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#3f3f46;">
+         <tr><td style="padding:6px 0;color:#71717a;width:90px;">Email</td><td style="padding:6px 0;font-weight:600;color:#2563eb;">${esc(subscriber)}</td></tr>
+         <tr><td style="padding:6px 0;color:#71717a;">Time</td><td style="padding:6px 0;">${when}</td></tr>
+       </table>`,
+      `Automated notification from ${siteConfig.url}`,
+    ),
+  });
+  console.log(`[newsletter] ✉️  Subscriber ${subscriber} forwarded to ${ADMIN_NOTIFICATION_EMAIL}`);
+}
+
 /**
  * Emails a password-reset link. Throws on failure so the caller can report it —
  * Supabase's own mailer cannot send for this project, so this is the only way

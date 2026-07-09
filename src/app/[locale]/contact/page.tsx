@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
+import ContactForm from "@/components/ContactForm";
 import { getDictionary } from "@/lib/i18n";
 import { Mail, LifeBuoy, MessageSquare } from "lucide-react";
 
@@ -53,6 +54,14 @@ export default async function ContactPage({ params }: PageProps) {
           </a>
         ))}
       </div>
+
+      <Section heading="Send us a message">
+        <p className="mb-6">
+          Fill in the form and it lands straight in our inbox — we reply to the
+          email address you give us.
+        </p>
+        <ContactForm />
+      </Section>
 
       <Section heading={t.beforeEmailHeading}>
         <p>

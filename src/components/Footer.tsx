@@ -19,14 +19,36 @@ export default function Footer() {
   const t = getDictionary(locale).footer;
 
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — bots fill it, humans don't
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  // Previously this only flipped a flag — it never sent the address anywhere.
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    setEmail("");
-    setTimeout(() => setSubmitted(false), 4000);
+    if (!email || sending) return;
+    setError(null);
+    setSending(true);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, website }),
+      });
+      const payload = await res.json();
+      if (!res.ok || !payload.ok) {
+        setError(payload.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+      setEmail("");
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -58,13 +80,23 @@ export default function Footer() {
               <span>{t.trustBadge}</span>
             </div>
 
-            {/* Direct contact — so a visitor with a question can just email us */}
+            {/* Direct contact — highlighted so a visitor with a question can't
+                miss how to reach us. */}
             <a
               href="mailto:whitesparktechnologies@gmail.com"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors"
+              className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
             >
-              <Mail className="h-4 w-4 shrink-0" />
-              <span>whitesparktechnologies@gmail.com</span>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
+                <Mail className="h-3.5 w-3.5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
+                  Questions? Email us
+                </span>
+                <span className="block truncate text-xs font-bold group-hover:underline">
+                  whitesparktechnologies@gmail.com
+                </span>
+              </span>
             </a>
           </div>
 
@@ -91,13 +123,26 @@ export default function Footer() {
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                   required
                 />
+                {/* Honeypot — hidden from people, irresistible to bots */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
               </div>
               <button
                 type="submit"
-                disabled={submitted}
-                className="flex items-center justify-center gap-1 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg transition-all duration-200"
+                disabled={submitted || sending}
+                className="flex items-center justify-center gap-1 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-70 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg transition-all duration-200"
               >
-                {submitted ? (
+                {sending ? (
+                  <span>Sending…</span>
+                ) : submitted ? (
                   <span>{t.subscribed}</span>
                 ) : (
                   <>
@@ -107,6 +152,14 @@ export default function Footer() {
                 )}
               </button>
             </form>
+            {error && (
+              <p className="text-xs font-semibold text-red-500 dark:text-red-400">{error}</p>
+            )}
+            {submitted && !error && (
+              <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                Thanks! You&apos;re on the list — we&apos;ll be in touch.
+              </p>
+            )}
           </div>
         </div>
 
