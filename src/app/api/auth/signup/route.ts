@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { sendSignupVerificationEmail } from "@/lib/email";
+import { sendSignupVerificationEmail, sendNewUserAdminEmail } from "@/lib/email";
 import { siteConfig } from "@/config/site";
 
 // Sign-up with email confirmation, delivered by OUR SMTP.
@@ -77,6 +77,14 @@ export async function POST(request: Request) {
       { status: 502 },
     );
   }
+
+  // Tell the team as soon as someone signs up — not only if they later click
+  // the confirmation link. Best-effort: never blocks the sign-up.
+  await sendNewUserAdminEmail({
+    name: fullName,
+    email,
+    provider: "email (awaiting confirmation)",
+  });
 
   return NextResponse.json({ ok: true });
 }

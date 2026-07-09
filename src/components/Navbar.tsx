@@ -141,6 +141,7 @@ export default function Navbar() {
     { name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" }, href: `/${currentLocale}/blog` },
     { name: { en: "FAQ", es: "FAQ", de: "FAQ", fr: "FAQ", ar: "الأسئلة" }, href: `/${currentLocale}/faq` },
     { name: { en: "About", es: "Acerca de", de: "Über uns", fr: "À propos", ar: "من نحن" }, href: `/${currentLocale}/about` },
+    { name: { en: "Contact", es: "Contacto", de: "Kontakt", fr: "Contact", ar: "اتصل بنا" }, href: `/${currentLocale}/contact` },
   ];
 
   const categoryItems = menuItems.slice(0, 6);

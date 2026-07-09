@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { notifyNewUser } from "@/lib/email";
+import { sendWelcomeEmail } from "@/lib/email";
 
 // Friendly sign-up confirmation URL: /{locale}/confirm/{token}
 //
@@ -33,9 +33,10 @@ export async function GET(
     return NextResponse.redirect(`${origin}/${loc}/auth/error?error=auth_callback_failed`);
   }
 
-  // Account is confirmed now — welcome the user and notify the team.
+  // Welcome the user. The team was already notified at sign-up time (see
+  // /api/auth/signup), so don't send a second admin notice here.
   if (data.user.email) {
-    await notifyNewUser({
+    await sendWelcomeEmail({
       name:
         (data.user.user_metadata?.full_name as string | undefined) ??
         (data.user.user_metadata?.name as string | undefined),

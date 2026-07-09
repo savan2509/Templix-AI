@@ -4,7 +4,7 @@ import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ContactForm from "@/components/ContactForm";
 import { getDictionary } from "@/lib/i18n";
-import { Mail, LifeBuoy, MessageSquare } from "lucide-react";
+import { Mail } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -25,12 +25,6 @@ export default async function ContactPage({ params }: PageProps) {
   const { locale } = await params;
   const t = getDictionary(locale).contact;
 
-  const channels = [
-    { icon: Mail, title: t.channelSupportTitle, text: t.channelSupportText, email: "whitesparktechnologies@gmail.com" },
-    { icon: MessageSquare, title: t.channelPartnershipsTitle, text: t.channelPartnershipsText, email: "whitesparktechnologies@gmail.com" },
-    { icon: LifeBuoy, title: t.channelLegalTitle, text: t.channelLegalText, email: "whitesparktechnologies@gmail.com" },
-  ];
-
   return (
     <InfoPageShell
       locale={locale}
@@ -38,30 +32,38 @@ export default async function ContactPage({ params }: PageProps) {
       title={t.title}
       subtitle={t.subtitle}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {channels.map((c) => (
-          <a
-            key={c.title}
-            href={`mailto:${c.email}`}
-            className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 hover:border-blue-400/60 hover:shadow-md transition-all"
-          >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 mb-3">
-              <c.icon className="h-5 w-5" />
-            </div>
-            <h3 className="font-bold text-zinc-900 dark:text-white">{c.title}</h3>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{c.text}</p>
-            <p className="mt-3 text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:underline break-all">{c.email}</p>
-          </a>
-        ))}
-      </div>
+      {/* Message form is the primary action — the old mailto cards duplicated
+          it three times and buried the form below the fold. */}
+      <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
+        <div className="mb-7 flex items-start gap-4">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-500/20">
+            <Mail className="h-5 w-5" />
+          </span>
+          <div>
+            <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+              Send us a message
+            </h2>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              It lands straight in our inbox and we reply to the email you give us —
+              usually within one business day.
+            </p>
+          </div>
+        </div>
 
-      <Section heading="Send us a message">
-        <p className="mb-6">
-          Fill in the form and it lands straight in our inbox — we reply to the
-          email address you give us.
-        </p>
         <ContactForm />
-      </Section>
+
+        <div className="mt-7 border-t border-zinc-100 pt-5 dark:border-zinc-800">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            Prefer your own mail client? Write to{" "}
+            <a
+              href="mailto:whitesparktechnologies@gmail.com"
+              className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
+            >
+              whitesparktechnologies@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
 
       <Section heading={t.beforeEmailHeading}>
         <p>

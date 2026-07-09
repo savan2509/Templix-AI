@@ -1,19 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Sparkles, Mail, ArrowLeft, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ForgotPasswordPage() {
   const { locale } = useParams<{ locale: string }>();
-  const supabase = createClient();
+  const router = useRouter();
+  // Memoised: an unstable client would retrigger the recovery watcher below.
+  const supabase = useMemo(() => createClient(), []);
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Once the emailed link is opened *in this browser*, /{locale}/reset/{token}
+  // establishes a recovery session. This tab was left sitting on the "check
+  // your inbox" screen; watch for that session and move it to the form.
+  // (A link opened on another device cannot sign this one in — the copy below
+  // tells the user to come back and sign in with their new password.)
+  useEffect(() => {
+    if (!sent || !supabase) return;
+    let cancelled = false;
+
+    const gotoReset = () => {
+      if (cancelled) return;
+      cancelled = true;
+      router.push(`/${locale}/auth/reset-password`);
+    };
+
+    const check = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!cancelled && data.session) gotoReset();
+    };
+    check();
+
+    const timer = setInterval(check, 3000);
+    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY" || event === "SIGNED_IN") gotoReset();
+    });
+
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+      sub.subscription.unsubscribe();
+    };
+  }, [sent, supabase, router, locale]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -143,13 +178,23 @@ export default function ForgotPasswordPage() {
               <h2 className="text-xl font-bold text-zinc-900 dark:text-white">Check your inbox</h2>
               <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 We sent a password reset link to <strong className="text-zinc-700 dark:text-zinc-200">{email}</strong>.
-                Click the link in the email to set a new password.
+                Open it in <strong className="text-zinc-700 dark:text-zinc-200">this browser</strong> and
+                we&apos;ll take you straight to the new-password form.
               </p>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-xs font-medium text-zinc-400 dark:text-zinc-500">
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              <span>Waiting for you to open the link…</span>
             </div>
             <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl text-left text-xs text-zinc-600 dark:text-zinc-400 space-y-1">
               <p>• Check your spam / junk folder if you don&apos;t see it.</p>
               <p>• The link expires in <strong>1 hour</strong>.</p>
               <p>• You can only use the link once.</p>
+              <p>
+                • Opened it on <strong>another device</strong> (e.g. your phone)? Finish there,
+                then <Link href={`/${locale}/login`} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">sign in here</Link> with
+                your new password.
+              </p>
             </div>
           </div>
         )}

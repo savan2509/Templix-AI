@@ -62,10 +62,12 @@ export default function FavoriteButton({
     }
   };
 
-  const iconSize = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
+  // Sized up: the old 3.5/4 heart in a 7/9 box was hard to see and a small
+  // touch target (well under the ~44px recommended minimum on the detail page).
+  const iconSize = size === "sm" ? "h-5 w-5" : "h-6 w-6";
   const btnSize = size === "sm"
-    ? "h-7 w-7 rounded-lg"
-    : "h-9 w-9 rounded-xl";
+    ? "h-10 w-10 rounded-xl"
+    : "h-12 w-12 rounded-2xl";
 
   // Rendered on the server too: returning null until mount made the heart pop in
   // late (and vanish entirely on cards that only reveal it on hover).

@@ -75,6 +75,29 @@ export default function AuthForm({ locale }: Props) {
     };
   }, [awaitingConfirm, supabase, email, password, router, locale]);
 
+  // Google OAuth via Supabase. Redirects out to Google and comes back to
+  // /api/auth/supabase/callback?code=…, which exchanges the code for a session.
+  const handleGoogle = async () => {
+    reset();
+    if (!supabase) { setError("Sign-in is temporarily unavailable. Please try again later."); return; }
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/dashboard`,
+      },
+    });
+    if (error) {
+      setLoading(false);
+      setError(
+        /provider is not enabled/i.test(error.message)
+          ? "Google sign-in isn't enabled yet. Please use your email and password."
+          : error.message,
+      );
+    }
+    // On success the browser navigates away to Google.
+  };
+
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     reset();
@@ -161,6 +184,33 @@ export default function AuthForm({ locale }: Props) {
 
   return (
     <div className="w-full max-w-md">
+      {/* Google OAuth — works for both signing in and creating an account */}
+      <button
+        type="button"
+        onClick={handleGoogle}
+        disabled={loading}
+        className="mb-6 flex w-full items-center justify-center gap-3 rounded-xl border border-zinc-200 bg-white py-3 text-sm font-bold text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+      >
+        <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285F4" d="M23.52 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.54 5.54 0 0 1-2.4 3.64v3h3.87c2.27-2.09 3.58-5.17 3.58-8.88z" />
+          <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.87-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-4v3.09A12 12 0 0 0 12 24z" />
+          <path fill="#FBBC05" d="M5.27 14.29a7.2 7.2 0 0 1 0-4.58V6.62h-4a12 12 0 0 0 0 10.76l4-3.09z" />
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.27 6.62l4 3.09C6.22 6.86 8.87 4.75 12 4.75z" />
+        </svg>
+        <span>Continue with Google</span>
+      </button>
+
+      <div className="relative mb-6">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-zinc-200 dark:border-zinc-800" />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-white px-3 text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:bg-zinc-950 dark:text-zinc-500">
+            or with email
+          </span>
+        </div>
+      </div>
+
       {/* Tab switcher */}
       <div className="flex rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 p-1 mb-8 gap-1">
         {(["signin", "signup"] as Tab[]).map((t) => (
