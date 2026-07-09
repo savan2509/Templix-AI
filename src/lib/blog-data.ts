@@ -1598,6 +1598,858 @@ Sincerely,
 <p>You do not have to choose one forever. Draft collaboratively, then finalize in a tool with strong export. Start from a free <a href="/%LOCALE%/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document template gallery</a> and, when you are ready to decide a file format, read our <a href="/%LOCALE%/blog/pdf-vs-word-which-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">PDF vs Word guide</a>.</p>
     `,
   },
+
+  // ── 27 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-27",
+    slug: "resume-format-for-freshers-in-india",
+    title: "Resume Format for Freshers in India (2026 Guide + Free Download)",
+    metaTitle: "Resume Format for Freshers in India 2026",
+    description:
+      "The exact resume format Indian recruiters expect from freshers in 2026: section order, page length, what to write with no experience, and a free template to download.",
+    metaDescription:
+      "Free resume format for freshers in India (2026). Correct section order, one-page rule, what to write with zero experience, ATS tips, and a free download — no sign-up.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/resume-format-for-freshers-in-india",
+    keywords: ["resume format for freshers", "fresher resume format india", "resume for freshers 2026", "biodata format for job", "free resume download"],
+    category: "Resumes",
+    tags: ["freshers", "india", "resume format", "campus placement", "ats"],
+    readTime: 8,
+    publishedAt: "2026-07-09",
+    image: "/blog/blog-resume-freshers.jpg",
+    content: `
+<h2>What Indian Recruiters Actually Expect</h2>
+<p>A fresher resume in India is judged in under ten seconds. Recruiters are not looking for experience you do not have — they are checking that you can present information clearly. The format below is the one used across campus placements, IT service companies, and startup hiring.</p>
+
+<h2>The Correct Section Order</h2>
+<p>Order matters more than design. Put your strongest evidence closest to the top.</p>
+<table>
+  <thead><tr><th>#</th><th>Section</th><th>Why it sits here</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Name and contact</td><td>Recruiter needs to reach you</td></tr>
+    <tr><td>2</td><td>Career objective</td><td>Two lines, tailored to the role</td></tr>
+    <tr><td>3</td><td>Education</td><td>Your strongest credential as a fresher</td></tr>
+    <tr><td>4</td><td>Projects</td><td>Substitutes for work experience</td></tr>
+    <tr><td>5</td><td>Skills</td><td>Where the ATS looks for keywords</td></tr>
+    <tr><td>6</td><td>Internships and training</td><td>Proof you have worked with others</td></tr>
+    <tr><td>7</td><td>Achievements</td><td>Differentiates you from peers</td></tr>
+  </tbody>
+</table>
+
+<h2>One Page. Always.</h2>
+<p>If you have under two years of experience, a second page signals padding. Cut anything from before Class 12, remove the photograph unless the employer asks for it, and drop the declaration line and signature — they are relics of an older format and waste prime space.</p>
+
+<h2>What to Write When You Have No Experience</h2>
+<p>Freshers lose marks by writing what they <em>learned</em> instead of what they <em>built</em>. Compare:</p>
+<ul>
+  <li><strong>Weak:</strong> Learned Python and machine learning during coursework.</li>
+  <li><strong>Strong:</strong> Built a churn-prediction model in Python on a 12,000-row dataset, reaching 87% accuracy; presented findings to a 40-person cohort.</li>
+</ul>
+<p>Numbers convert an activity into evidence. Even coursework has numbers: dataset size, team size, marks, duration, audience.</p>
+
+<h3>Career Objective That Is Not Generic</h3>
+<pre><code>Computer Science graduate (B.Tech, 2026) with hands-on experience
+building full-stack applications in React and Node.js. Seeking an
+entry-level software engineering role where I can contribute to
+production systems and grow into backend ownership.</code></pre>
+<p>Name the degree, name the stack, name the role. Anything vaguer than this is filler.</p>
+
+<h2>Getting Past the ATS</h2>
+<p>Most large Indian employers screen with an Applicant Tracking System before a human sees your file. Keep the layout single-column, avoid tables and text boxes for content, and mirror the exact keywords from the job posting. Our <a href="/%LOCALE%/blog/ats-resume-format-guide" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">ATS resume format guide</a> covers the parsing rules in detail.</p>
+
+<h2>Biodata, CV, or Resume?</h2>
+<p>These are used loosely in India but mean different things. A <strong>resume</strong> is a one-page targeted summary — this is what you want for jobs. A <strong>CV</strong> is a long academic record used for research and higher study. A <strong>biodata</strong> emphasises personal details and is largely obsolete for corporate hiring. Send a resume unless explicitly asked otherwise.</p>
+
+<h2>Common Mistakes That Cost Interviews</h2>
+<ul>
+  <li>An email address like coolguy_99@example.com. Use firstname.lastname.</li>
+  <li>Listing every technology you have ever opened. Claim only what survives a question.</li>
+  <li>Saving as .docx when the posting asks for PDF — see our <a href="/%LOCALE%/blog/pdf-vs-word-which-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">PDF vs Word guide</a>.</li>
+  <li>Spelling errors. Read it aloud once, backwards once.</li>
+</ul>
+
+<h2>Download a Fresher Resume Template</h2>
+<p>Rather than building the layout yourself, start from a structured file. Our free <a href="/%LOCALE%/templates/resumes" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">resume templates</a> follow the section order above, parse cleanly through applicant tracking systems, and export to PDF or Word with no watermark and no sign-up. For a deeper walkthrough of phrasing, read our <a href="/%LOCALE%/blog/resume-tips-for-freshers" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">resume tips for freshers</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Should I add a photo to my resume in India?</h3>
+<p>No, unless the employer explicitly requests one. Photographs invite unconscious bias and most ATS parsers discard the image region entirely.</p>
+<h3>How long should a fresher resume be?</h3>
+<p>Exactly one page. Recruiters treat a two-page fresher resume as a signal that you cannot prioritise.</p>
+<h3>Is a declaration and signature required?</h3>
+<p>No. It is an outdated convention that consumes space you could spend on a project.</p>
+
+<p>Resume conventions differ by country. If you are applying abroad, check the guidance published by the destination employer, or reference the widely used standards on <a href="https://en.wikipedia.org/wiki/Resume" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">curriculum vitae</a> conventions before you submit.</p>
+    `,
+  },
+
+  // ── 28 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-28",
+    slug: "gst-invoice-format-for-freelancers",
+    title: "GST Invoice Format for Freelancers in India (2026)",
+    metaTitle: "GST Invoice Format for Freelancers",
+    description:
+      "Every field a GST-compliant freelance invoice must carry in India, when you must register, how to handle export invoices, and a free template you can fill in today.",
+    metaDescription:
+      "GST invoice format for freelancers in India 2026: mandatory fields, HSN/SAC codes, CGST vs IGST, export invoices under LUT, and a free downloadable template.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/gst-invoice-format-for-freelancers",
+    keywords: ["gst invoice format", "freelancer invoice india", "gst invoice for freelancers", "sac code freelancer", "tax invoice format"],
+    category: "Invoices",
+    tags: ["gst", "india", "freelance", "tax invoice", "compliance"],
+    readTime: 9,
+    publishedAt: "2026-07-08",
+    image: "/blog/blog-invoice-freelancers.jpg",
+    content: `
+<h2>Do You Even Need to Register for GST?</h2>
+<p>Freelancers supplying services within India must register once turnover crosses the threshold set for service providers. You must also register regardless of turnover if you supply services to clients in another state through an e-commerce operator, or in certain other notified cases. Thresholds and exemptions change; confirm your current position with a chartered accountant before you invoice.</p>
+<p>If you are not registered, you must not collect GST and you must not print a GSTIN. Issue a plain bill of supply instead.</p>
+
+<h2>Mandatory Fields on a GST Tax Invoice</h2>
+<p>A tax invoice is a legal document, not a receipt. Miss a field and your client may be unable to claim input tax credit — which is the fastest way to lose a client.</p>
+<table>
+  <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Supplier name, address, GSTIN</td><td>Yours, exactly as registered</td></tr>
+    <tr><td>Invoice number</td><td>Consecutive, unique, max 16 characters</td></tr>
+    <tr><td>Invoice date</td><td>Date of issue</td></tr>
+    <tr><td>Recipient name, address, GSTIN</td><td>GSTIN required if they are registered</td></tr>
+    <tr><td>Place of supply</td><td>Decides CGST+SGST vs IGST</td></tr>
+    <tr><td>SAC code</td><td>Service Accounting Code for your service</td></tr>
+    <tr><td>Description, quantity, value</td><td>What you actually delivered</td></tr>
+    <tr><td>Taxable value and discount</td><td>Before tax</td></tr>
+    <tr><td>Rate and amount of tax</td><td>Split by CGST, SGST, IGST</td></tr>
+    <tr><td>Total in words</td><td>Conventional, often expected</td></tr>
+    <tr><td>Signature</td><td>Physical or digital</td></tr>
+  </tbody>
+</table>
+
+<h2>The Numbering Rule People Break</h2>
+<p>Invoice numbers must be consecutive for a financial year, with no gaps and no reuse. INV-2026-001, INV-2026-002, and so on. Deleting a cancelled invoice and reusing its number is the single most common error found during scrutiny. Cancel it, keep the number, and issue a credit note.</p>
+
+<h2>CGST + SGST or IGST?</h2>
+<p>Look at the place of supply, not where you sit.</p>
+<ul>
+  <li><strong>Client in your state:</strong> charge CGST and SGST, split equally.</li>
+  <li><strong>Client in another state:</strong> charge IGST at the full rate.</li>
+  <li><strong>Client outside India:</strong> this is an export of services — see below.</li>
+</ul>
+
+<h2>Invoicing Overseas Clients</h2>
+<p>Export of services is a zero-rated supply. You may either export under a Letter of Undertaking without paying tax, or pay IGST and claim a refund. Most freelancers file an LUT once a year and invoice at zero tax, adding the line <em>"Supply meant for export under LUT without payment of integrated tax"</em>. Keep the foreign inward remittance certificate from your bank as evidence.</p>
+<p>If you also bill clients in the United States, you will likely be asked for a tax form — our guide to <a href="/%LOCALE%/blog/freelancer-tax-forms-w9-w8ben" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">W-9 and W-8BEN forms</a> explains which one applies to you.</p>
+
+<h2>A Worked Example</h2>
+<pre><code>Taxable value      50,000.00
+CGST @ 9%           4,500.00
+SGST @ 9%           4,500.00
+--------------------------------
+Total              59,000.00</code></pre>
+<p>Same engagement, client in another state:</p>
+<pre><code>Taxable value      50,000.00
+IGST @ 18%          9,000.00
+--------------------------------
+Total              59,000.00</code></pre>
+<p>The client pays the same; only the split changes. Getting the split wrong forces a revised invoice.</p>
+
+<h2>How Long to Keep Records</h2>
+<p>Retain invoices, credit notes, and supporting contracts for the statutory retention period, which runs several years past the annual return for that year. Store them as PDFs with the invoice number in the filename.</p>
+
+<h2>Start From a Compliant Template</h2>
+<p>Building this layout in a word processor every month is wasted time. Our free <a href="/%LOCALE%/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice templates</a> already carry the supplier, recipient, place-of-supply, SAC, and tax-split rows — fill them in and export to PDF with no watermark. If you are new to billing, start with <a href="/%LOCALE%/blog/how-to-write-freelance-invoice" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">how to write a freelance invoice</a>, and keep <a href="/%LOCALE%/blog/late-payment-reminder-emails" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">late payment reminder emails</a> ready for when a client drifts past the due date.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I issue an invoice without a GSTIN?</h3>
+<p>Yes, if you are not registered. It is a bill of supply, it must not show any GST, and your client cannot claim input tax credit on it.</p>
+<h3>What SAC code do freelancers use?</h3>
+<p>It depends on the service — software development, design, and consulting each map to different codes. Confirm yours against the official schedule rather than copying another freelancer.</p>
+<h3>Is a digital signature mandatory?</h3>
+<p>An invoice must be signed, but a digital signature or an authenticated e-invoice satisfies this.</p>
+
+<p>This article is general guidance, not tax advice. Rates, thresholds, and e-invoicing mandates change; verify against the current rules published by the <a href="https://www.gst.gov.in" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">GST portal</a> or ask your accountant before filing.</p>
+    `,
+  },
+
+  // ── 29 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-29",
+    slug: "free-invoice-generator-guide",
+    title: "Free Invoice Generator: How to Bill Clients Without Paying for Software",
+    metaTitle: "Free Invoice Generator Guide",
+    description:
+      "Most free invoice generators watermark the PDF or force a sign-up. Here is what to look for, what to avoid, and how to create a clean invoice in under two minutes.",
+    metaDescription:
+      "How to use a free invoice generator with no watermark and no sign-up. What separates a genuinely free tool from a trial, plus a two-minute invoice workflow.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/free-invoice-generator-guide",
+    keywords: ["free invoice generator", "invoice maker no watermark", "invoice template free no sign up", "create invoice online", "billing tool"],
+    category: "Invoices",
+    tags: ["invoice generator", "free tools", "billing", "pdf", "no watermark"],
+    readTime: 6,
+    publishedAt: "2026-07-07",
+    image: "/blog/blog-create-invoice.jpg",
+    content: `
+<h2>"Free" Usually Is Not</h2>
+<p>Search for a free invoice generator and most results fall into one of three traps. Knowing them saves you an hour and an embarrassing client email.</p>
+<table>
+  <thead><tr><th>Trap</th><th>What actually happens</th></tr></thead>
+  <tbody>
+    <tr><td>Watermarked export</td><td>Your client receives an invoice stamped with someone else's logo</td></tr>
+    <tr><td>Free trial</td><td>Three invoices, then a paywall mid-project</td></tr>
+    <tr><td>Email wall</td><td>You hand over your address to download your own document</td></tr>
+  </tbody>
+</table>
+
+<h2>What a Genuinely Free Tool Looks Like</h2>
+<ul>
+  <li><strong>No watermark</strong> on the exported PDF, ever.</li>
+  <li><strong>No account required</strong> to download.</li>
+  <li><strong>Editable fields</strong>, not a flattened image.</li>
+  <li><strong>Both PDF and Word</strong> export, because some clients still want a .docx.</li>
+  <li><strong>Automatic totals</strong>, so subtotal, tax, and total cannot drift apart.</li>
+</ul>
+<p>That last point matters more than it sounds. An invoice whose line items do not add up to its total is the fastest way to have a payment delayed while a finance team asks questions.</p>
+
+<h2>The Two-Minute Workflow</h2>
+<ol>
+  <li>Open an <a href="/%LOCALE%/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice template</a> that already has the right rows.</li>
+  <li>Replace the sender and client blocks.</li>
+  <li>Set a sequential invoice number and an explicit due date.</li>
+  <li>Enter line items — description, quantity, rate. Let the tool compute the rest.</li>
+  <li>Export to PDF and attach it to a short email.</li>
+</ol>
+<p>Naming matters when a client is filing dozens of these. Use <code>INV-2026-014-YourName.pdf</code> rather than <code>invoice_final_v2.pdf</code>.</p>
+
+<h2>Generator or Template?</h2>
+<p>A generator is faster the first time. A template is faster every time after that, because you keep your branding, payment terms, and bank details instead of retyping them. Most freelancers end up with one saved template per client type — hourly, milestone, and retainer.</p>
+
+<h2>The Fields People Forget</h2>
+<ul>
+  <li><strong>Due date</strong>, not just "Net 30". Write the actual date.</li>
+  <li><strong>Payment method</strong> with full details — bank, account, reference.</li>
+  <li><strong>Purchase order number</strong> if the client uses one. Without it, some finance systems will not pay.</li>
+  <li><strong>Late fee terms</strong>, agreed in the contract beforehand.</li>
+</ul>
+<p>An invoice is a <a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">billing document</a>, not a receipt — the difference decides which one your accountant needs. We break that down in <a href="/%LOCALE%/blog/invoice-vs-receipt" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice vs receipt</a>.</p>
+
+<h2>After You Send It</h2>
+<p>Payment terms only work if you enforce them. Diary the due date, send a short reminder the morning after it passes, and escalate on a schedule. Our <a href="/%LOCALE%/blog/late-payment-reminder-emails" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">late payment reminder templates</a> give you the exact wording for each stage without damaging the relationship.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I legally invoice without a company?</h3>
+<p>In most countries a sole trader can invoice under their own name. Registration and tax obligations vary — check your local rules.</p>
+<h3>Should I send PDF or Word?</h3>
+<p>PDF, unless asked otherwise. It renders identically everywhere and cannot be edited accidentally.</p>
+<h3>Do I need an invoice number?</h3>
+<p>Yes. Sequential, unique, and never reused — most tax regimes require it.</p>
+
+<p>Ready to bill? Start from a free <a href="/%LOCALE%/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice template</a> — no sign-up, no watermark, PDF and Word export.</p>
+    `,
+  },
+
+  // ── 30 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-30",
+    slug: "experience-letter-format",
+    title: "Experience Letter Format: What HR Must Include (+ Free Template)",
+    metaTitle: "Experience Letter Format & Template",
+    description:
+      "An experience letter proves where someone worked, for how long, and in what role. Here is the exact format, the clauses to include, and a copy-paste template.",
+    metaDescription:
+      "Experience letter format for HR in 2026: required details, tone, common mistakes, difference from a relieving letter, and a free copy-paste template.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/experience-letter-format",
+    keywords: ["experience letter format", "work experience certificate", "experience certificate", "relieving letter", "hr letter template"],
+    category: "Letters",
+    tags: ["hr", "experience letter", "employment", "india", "templates"],
+    readTime: 6,
+    publishedAt: "2026-07-06",
+    image: "/blog/blog-business-letter.jpg",
+    content: `
+<h2>What an Experience Letter Proves</h2>
+<p>An experience letter — sometimes called a work experience certificate — is issued by an employer on company letterhead confirming that a person worked there, in which role, and between which dates. Background-verification agencies treat it as primary evidence. A vague letter is worse than none, because it invites follow-up questions.</p>
+
+<h2>Experience Letter vs Relieving Letter</h2>
+<table>
+  <thead><tr><th></th><th>Experience letter</th><th>Relieving letter</th></tr></thead>
+  <tbody>
+    <tr><td>Purpose</td><td>Confirms tenure and role</td><td>Confirms the employee is formally released</td></tr>
+    <tr><td>Issued</td><td>Any time after employment</td><td>On the last working day</td></tr>
+    <tr><td>Usually mentions</td><td>Responsibilities, conduct</td><td>Clearance of dues, notice served</td></tr>
+  </tbody>
+</table>
+<p>Many employers issue both, and many candidates need both. Do not merge them.</p>
+
+<h2>Fields That Must Appear</h2>
+<ul>
+  <li>Company letterhead with registered address.</li>
+  <li>Date of issue and a reference number.</li>
+  <li>Employee's full legal name and employee ID.</li>
+  <li>Designation, and department if relevant.</li>
+  <li>Exact joining date and last working date.</li>
+  <li>A one-line statement of conduct.</li>
+  <li>Name, designation, and signature of the authorised signatory.</li>
+  <li>Company seal, where that is the local convention.</li>
+</ul>
+
+<h2>The Tone Rule</h2>
+<p>Keep it factual. An experience letter is not a recommendation letter — it does not argue that someone is excellent, it records that they were employed. If you want to advocate for the person, write a separate <a href="/%LOCALE%/templates/letters/recommendation-letter" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">recommendation letter</a>. Mixing the two weakens both.</p>
+<p>Equally, never editorialise negatively. "Left without serving notice" belongs in internal records, not on a certificate that a person will carry for a decade. In several jurisdictions a gratuitously damaging statement exposes the employer to a defamation claim.</p>
+
+<h2>Copy-Paste Template</h2>
+<pre><code>[Company Letterhead]
+
+Date: [DD Month YYYY]
+Ref: [HR/EXP/2026/014]
+
+TO WHOMSOEVER IT MAY CONCERN
+
+This is to certify that [Full Name] (Employee ID: [ID]) was employed
+with [Company Name] as [Designation] in the [Department] department
+from [Joining Date] to [Last Working Date].
+
+During this tenure, [he/she/they] was responsible for [one line of
+core responsibilities]. We found [him/her/them] to be sincere,
+professional, and diligent in the discharge of assigned duties.
+
+We wish [him/her/them] success in future endeavours.
+
+For [Company Name]
+
+[Signature]
+[Name], [Designation]
+[Company Seal]</code></pre>
+
+<h2>Mistakes That Fail Verification</h2>
+<ul>
+  <li><strong>Date ranges that disagree</strong> with payroll records. Verifiers cross-check.</li>
+  <li><strong>A designation nobody can confirm</strong>, such as an internal title never used in offer letters.</li>
+  <li><strong>No signatory name</strong> — only an illegible signature.</li>
+  <li><strong>Scanned copies</strong> with a pasted signature image. Issue a signed PDF instead.</li>
+</ul>
+
+<h2>Storing and Reissuing</h2>
+<p>Keep a reference number and a copy of every letter issued. Former employees will ask for a reissue years later, and reconstructing the dates from memory is how discrepancies appear.</p>
+
+<h2>Get the Format Right in One Minute</h2>
+<p>Start from a structured file rather than a blank page. Our free <a href="/%LOCALE%/templates/letters" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">letter templates</a> include experience, offer, and appointment letters laid out on proper letterhead, exportable to PDF or Word with no sign-up. If you are also drafting the departure paperwork, our <a href="/%LOCALE%/blog/two-weeks-notice-letter" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">two weeks notice guide</a> covers the employee's side, and <a href="/%LOCALE%/blog/business-letter-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">business letter format</a> covers the conventions of formal correspondence.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can an employer refuse an experience letter?</h3>
+<p>Practice varies by jurisdiction and contract. Many employers treat it as a routine obligation once dues are cleared.</p>
+<h3>Does it need a company seal?</h3>
+<p>Not everywhere, but where it is conventional its absence invites doubt. Include it if your organisation has one.</p>
+<h3>Should salary be mentioned?</h3>
+<p>Generally no. Salary belongs in a separate salary certificate requested for a specific purpose, such as a loan.</p>
+
+<p>Employment documentation is governed by local law. Where a letter may be relied on as a <a href="https://en.wikipedia.org/wiki/Contract" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">legal record</a>, have your template reviewed once by counsel.</p>
+    `,
+  },
+
+  // ── 31 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-31",
+    slug: "offer-letter-format",
+    title: "Offer Letter Format: Every Clause a Job Offer Should Contain",
+    metaTitle: "Offer Letter Format & Clauses",
+    description:
+      "A job offer letter sets expectations before day one. Learn the clauses that prevent disputes, the ones that create them, and download a free offer letter template.",
+    metaDescription:
+      "Offer letter format 2026: compensation, start date, probation, notice, confidentiality and at-will language, plus a free downloadable offer letter template.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/offer-letter-format",
+    keywords: ["offer letter format", "job offer letter", "employment offer template", "appointment letter", "hr documents"],
+    category: "Letters",
+    tags: ["hr", "offer letter", "hiring", "employment", "templates"],
+    readTime: 7,
+    publishedAt: "2026-07-05",
+    image: "/blog/blog-cover-letter.jpg",
+    content: `
+<h2>The Offer Letter Is the First Contract</h2>
+<p>Candidates read the offer letter more carefully than any document you will ever send them. Ambiguity here becomes a dispute in month six. The goal is not legal density — it is that a reasonable person reading it once knows exactly what they are agreeing to.</p>
+
+<h2>Clauses Every Offer Letter Needs</h2>
+<table>
+  <thead><tr><th>Clause</th><th>Why it prevents a dispute</th></tr></thead>
+  <tbody>
+    <tr><td>Job title and reporting line</td><td>Stops "that was not my role" arguments</td></tr>
+    <tr><td>Start date</td><td>Anchors probation and notice calculations</td></tr>
+    <tr><td>Compensation</td><td>State gross, frequency, and currency</td></tr>
+    <tr><td>Variable pay</td><td>Say whether a bonus is discretionary or contractual</td></tr>
+    <tr><td>Probation period</td><td>Length, and the notice that applies during it</td></tr>
+    <tr><td>Notice period</td><td>Both directions, stated in days</td></tr>
+    <tr><td>Work location</td><td>Office, hybrid, or remote — and who decides changes</td></tr>
+    <tr><td>Confidentiality and IP</td><td>Who owns what the employee creates</td></tr>
+    <tr><td>Offer expiry</td><td>A date after which the offer lapses</td></tr>
+  </tbody>
+</table>
+
+<h2>The Bonus Sentence That Causes Litigation</h2>
+<p>"You will receive an annual bonus of 10%" is a promise. "You will be eligible to be considered for a discretionary annual bonus, targeted at 10% of base salary, subject to company and individual performance" is a policy. Employers regularly write the first and mean the second. Pick one deliberately.</p>
+
+<h2>Contingencies, Written Plainly</h2>
+<p>If the offer depends on anything, say so and say what happens if it fails:</p>
+<ul>
+  <li>Satisfactory background and reference checks.</li>
+  <li>Proof of eligibility to work in the country.</li>
+  <li>Submission of relieving and <a href="/%LOCALE%/blog/experience-letter-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">experience letters</a> from the previous employer.</li>
+</ul>
+<p>An offer withdrawn without a stated contingency is a reputational event. An offer withdrawn against a clause the candidate signed is routine.</p>
+
+<h2>Skeleton Template</h2>
+<pre><code>[Company Letterhead]
+Date: [DD Month YYYY]
+
+Dear [Candidate Name],
+
+We are pleased to offer you the position of [Job Title], reporting to
+[Manager Name, Title], based at [Location], commencing [Start Date].
+
+Compensation: [Amount] per annum, paid [frequency], subject to
+statutory deductions.
+
+Probation: [N] months, during which either party may terminate with
+[N] days' written notice.
+
+Notice: After probation, [N] days' written notice by either party.
+
+This offer is contingent on satisfactory background verification and
+proof of your eligibility to work in [Country]. Please confirm your
+acceptance by signing below on or before [Expiry Date].
+
+Sincerely,
+[Name], [Designation]
+
+Accepted: ____________________   Date: ____________</code></pre>
+
+<h2>Offer Letter, Appointment Letter, Contract</h2>
+<p>An <strong>offer letter</strong> proposes terms. An <strong>appointment letter</strong> confirms them once accepted and often carries the full policy set. An <strong>employment contract</strong> is the binding agreement, sometimes the same document. Decide which you are issuing before you write, or you will find yourself referencing policies that do not exist yet. Our <a href="/%LOCALE%/blog/service-agreement-vs-contract" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">service agreement vs contract</a> guide draws the same distinction for vendors.</p>
+
+<h2>Send It Correctly</h2>
+<p>PDF, signed, from a company address, with the expiry date in the email subject. Never send an editable .docx of an offer — see <a href="/%LOCALE%/blog/pdf-vs-word-which-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">PDF vs Word</a> for why. Free <a href="/%LOCALE%/templates/letters" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">offer letter templates</a> with the clauses above are ready to fill in — no sign-up, no watermark.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is an offer letter legally binding?</h3>
+<p>Once signed by both parties it usually is, to the extent of the terms stated. Treat every sentence as enforceable.</p>
+<h3>Can an offer be withdrawn?</h3>
+<p>If a stated contingency is not met, generally yes. Withdrawing for no stated reason after acceptance can create liability.</p>
+<h3>Should the offer include the full policy handbook?</h3>
+<p>No. Reference it, and provide it on joining. Keep the offer readable.</p>
+
+<p>Employment law is jurisdiction-specific. Have your standard offer template reviewed once by counsel; after that, reuse it.</p>
+    `,
+  },
+
+  // ── 32 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-32",
+    slug: "freelance-contract-checklist",
+    title: "Freelance Contract Checklist: 12 Clauses That Protect You",
+    metaTitle: "Freelance Contract Checklist",
+    description:
+      "Scope creep, late payment, and ownership disputes all trace back to a missing clause. Here are the twelve every freelance contract needs, in plain language.",
+    metaDescription:
+      "A 12-clause freelance contract checklist covering scope, payment, revisions, IP ownership, kill fees and termination — with a free contract template to download.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/freelance-contract-checklist",
+    keywords: ["freelance contract", "freelance agreement checklist", "scope creep", "kill fee", "ip ownership freelance"],
+    category: "Contracts",
+    tags: ["freelance", "contracts", "scope", "payment terms", "ip"],
+    readTime: 8,
+    publishedAt: "2026-07-04",
+    image: "/blog/blog-contract-templates.jpg",
+    content: `
+<h2>Why Freelancers Skip the Contract</h2>
+<p>Because the client seems nice, the project seems small, and asking feels awkward. Then the "small tweak" arrives in week three, the invoice sits unpaid in week nine, and the client claims they own the source files. Every one of those is a clause you did not write.</p>
+
+<h2>The Twelve Clauses</h2>
+<h3>1. Scope of Work</h3>
+<p>List deliverables as nouns, not activities. "Three logo concepts, two revision rounds, final files in SVG and PNG" is a scope. "Branding work" is an invitation.</p>
+
+<h3>2. What Is Explicitly Out of Scope</h3>
+<p>The most powerful paragraph in the document. Naming what you will not do makes the change-order conversation factual rather than personal.</p>
+
+<h3>3. Timeline and Client Dependencies</h3>
+<p>Your deadline should be conditional on their inputs. "Delivery within 10 business days of receipt of brand assets" protects you when assets arrive late.</p>
+
+<h3>4. Fees and Payment Schedule</h3>
+<p>State the total, the split, and the trigger for each instalment. A deposit of 30 to 50 percent before work begins is standard and filters out clients who were never going to pay.</p>
+
+<h3>5. Late Payment Terms</h3>
+<p>Interest, or a fixed fee, applied after a stated number of days. You will rarely charge it. Its presence changes behaviour. Pair it with the wording in our <a href="/%LOCALE%/blog/late-payment-reminder-emails" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">late payment reminder emails</a>.</p>
+
+<h3>6. Revisions Included</h3>
+<p>A number, not "reasonable". Then a rate for revisions beyond it.</p>
+
+<h3>7. Kill Fee</h3>
+<p>If the client cancels mid-project, you are paid for work performed plus an agreed percentage. Without this, a cancellation in week four pays nothing.</p>
+
+<h3>8. Intellectual Property Transfer</h3>
+<p>Say precisely when ownership passes — almost always <em>on receipt of final payment</em>, not on delivery. Until then you license, you do not assign.</p>
+
+<h3>9. What You Retain</h3>
+<p>Your working files, your underlying tools and libraries, and the right to show the work in a portfolio. Ask for portfolio rights explicitly; clients rarely object, and asking later is harder.</p>
+
+<h3>10. Confidentiality</h3>
+<p>Mutual, time-limited, with the standard carve-outs for information that is public or independently developed. Our <a href="/%LOCALE%/blog/nda-guide-protect-your-business" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">NDA guide</a> covers when a separate agreement is warranted.</p>
+
+<h3>11. Independent Contractor Status</h3>
+<p>You are not an employee. You control how the work is done, you supply your own tools, and you are responsible for your own taxes. Misclassification is the client's risk, but it becomes your problem.</p>
+
+<h3>12. Termination and Governing Law</h3>
+<p>How either side exits, with how much notice, and which jurisdiction's courts decide a dispute. Name a city.</p>
+
+<h2>The Clause Order Matters</h2>
+<table>
+  <thead><tr><th>Read first by</th><th>Cares most about</th></tr></thead>
+  <tbody>
+    <tr><td>Client's procurement</td><td>Fees, timeline, termination</td></tr>
+    <tr><td>Client's legal</td><td>IP, confidentiality, liability</td></tr>
+    <tr><td>You</td><td>Scope, revisions, payment triggers</td></tr>
+  </tbody>
+</table>
+<p>Put scope and fees in the first two pages. A contract nobody finishes reading is a contract nobody follows.</p>
+
+<h2>Do Not Draft From Scratch</h2>
+<p>Start from a structured <a href="/%LOCALE%/templates/contracts" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contract template</a> that already carries these clauses, then delete what does not apply. Deleting is safer than remembering. For larger engagements, formalise the deliverables separately using our guide to <a href="/%LOCALE%/blog/how-to-write-statement-of-work" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">writing a statement of work</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is an emailed agreement enforceable?</h3>
+<p>Often yes, if there is clear offer, acceptance, and consideration. A signed document is simply far easier to prove.</p>
+<h3>Should I use the client's contract?</h3>
+<p>You can, but read the IP, indemnity, and termination clauses first. Those are where client templates are most one-sided.</p>
+<h3>What if the project changes?</h3>
+<p>Issue a short change order referencing the original agreement, restating the new scope, fee, and date. Both sign.</p>
+
+<p>This is general information, not legal advice. A <a href="https://en.wikipedia.org/wiki/Contract" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">legal record</a> that will govern real money deserves one review by a lawyer in your jurisdiction.</p>
+    `,
+  },
+
+  // ── 33 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-33",
+    slug: "how-to-write-a-quotation",
+    title: "How to Write a Quotation That Wins the Job (Not Just the Price)",
+    metaTitle: "How to Write a Quotation",
+    description:
+      "A quotation is a sales document, not a price list. Learn the structure, the validity clause, the difference from an estimate, and get a free quotation template.",
+    metaDescription:
+      "How to write a quotation in 2026: structure, validity period, inclusions and exclusions, quotation vs estimate vs proposal, plus a free quotation template.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/how-to-write-a-quotation",
+    keywords: ["how to write a quotation", "quotation format", "price quotation template", "quotation vs estimate", "business quote"],
+    category: "Proposals",
+    tags: ["quotation", "pricing", "sales", "estimates", "templates"],
+    readTime: 7,
+    publishedAt: "2026-07-03",
+    image: "/blog/blog-business-proposal.jpg",
+    content: `
+<h2>Quotation, Estimate, or Proposal?</h2>
+<p>Clients use the words interchangeably. You should not.</p>
+<table>
+  <thead><tr><th>Document</th><th>Price is</th><th>Use when</th></tr></thead>
+  <tbody>
+    <tr><td>Estimate</td><td>Approximate, may change</td><td>Scope is still unclear</td></tr>
+    <tr><td>Quotation</td><td>Fixed for a stated period</td><td>Scope is defined</td></tr>
+    <tr><td>Proposal</td><td>One section of a larger argument</td><td>You must also win the idea</td></tr>
+  </tbody>
+</table>
+<p>Sending an estimate when the client expected a quotation reads as evasive. Sending a quotation before the scope is settled means you absorb the difference.</p>
+
+<h2>The Structure That Converts</h2>
+<ol>
+  <li><strong>Header:</strong> your details, client details, quotation number, date, and validity.</li>
+  <li><strong>One-line restatement</strong> of what the client asked for. This proves you listened.</li>
+  <li><strong>Itemised pricing:</strong> description, quantity, unit price, line total.</li>
+  <li><strong>What is included</strong> — spelled out.</li>
+  <li><strong>What is excluded</strong> — spelled out.</li>
+  <li><strong>Timeline</strong> and any client dependencies.</li>
+  <li><strong>Payment terms</strong> and accepted methods.</li>
+  <li><strong>Acceptance block</strong> — a signature line turns a quote into an order.</li>
+</ol>
+
+<h2>The Validity Clause</h2>
+<p>Every quotation must expire. "This quotation is valid for 30 days from the date of issue" protects you from a client accepting your Q1 price in Q4 after your costs rose. It also creates gentle urgency without a discount.</p>
+
+<h2>Never Send a Single Number</h2>
+<p>A lone total invites a single question: can you do it cheaper? An itemised quotation invites a better one: what can we remove? The second conversation preserves your rate.</p>
+<pre><code>Discovery workshop            1 x   800.00      800.00
+UI design, 8 screens          8 x   250.00    2,000.00
+Frontend build                1 x 3,400.00    3,400.00
+Two revision rounds           included             0.00
+-----------------------------------------------------
+Subtotal                                      6,200.00
+Tax @ 18%                                     1,116.00
+Total                                         7,316.00
+
+Excludes: content writing, photography, hosting.
+Valid for 30 days. 40% due on acceptance.</code></pre>
+
+<h2>Write the Exclusions Before the Inclusions</h2>
+<p>It is counter-intuitive and it works. Listing exclusions first forces you to think about where the project actually leaks — content, third-party licences, migration, training — and turns each one into either a paid line item or a documented boundary.</p>
+
+<h2>Follow Up Once, Properly</h2>
+<p>Send the quotation, then a single follow-up three working days later that adds something rather than asking for a decision: a relevant case study, a clarified assumption, or a note that the validity date approaches. Then stop. The wording conventions in our <a href="/%LOCALE%/blog/formal-email-writing-guide" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">formal email writing guide</a> apply directly.</p>
+
+<h2>From Quotation to Invoice</h2>
+<p>When the quotation is accepted, the line items should flow straight into the invoice with the same descriptions and the same numbers. Rewriting them introduces discrepancies that delay payment. Our free <a href="/%LOCALE%/templates/quotations" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">quotation templates</a> and <a href="/%LOCALE%/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">invoice templates</a> share a layout for exactly this reason. If the work needs more persuasion than pricing, write a <a href="/%LOCALE%/blog/how-to-write-a-business-proposal" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">business proposal</a> instead.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is a quotation legally binding?</h3>
+<p>Once accepted within its validity period it generally forms a binding agreement on those terms. That is precisely why the validity clause matters.</p>
+<h3>Can I revise a quotation?</h3>
+<p>Yes, before acceptance. Issue a new quotation number and mark the old one superseded rather than editing it silently.</p>
+<h3>Should tax be shown separately?</h3>
+<p>Always. A tax-inclusive total hides your actual rate and confuses the client's finance team.</p>
+
+<p>Pricing sits inside a wider sales document in many industries — a <a href="https://en.wikipedia.org/wiki/Proposal_(business)" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">business proposal</a> — so match the format to what the buyer is deciding.</p>
+    `,
+  },
+
+  // ── 34 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-34",
+    slug: "cover-letter-for-freshers",
+    title: "Cover Letter for Freshers: What to Write When You Have No Experience",
+    metaTitle: "Cover Letter for Freshers",
+    description:
+      "Freshers write cover letters about what they want. Hiring managers read for what you can do. Here is the four-paragraph structure that fixes it, with examples.",
+    metaDescription:
+      "How to write a cover letter as a fresher with no work experience: a four-paragraph structure, real before-and-after examples, and a free template to download.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/cover-letter-for-freshers",
+    keywords: ["cover letter for freshers", "cover letter no experience", "fresher cover letter format", "entry level cover letter", "job application letter"],
+    category: "Letters",
+    tags: ["freshers", "cover letter", "job search", "entry level", "templates"],
+    readTime: 6,
+    publishedAt: "2026-07-02",
+    image: "/blog/blog-resume-freshers.jpg",
+    content: `
+<h2>The Mistake in the First Line</h2>
+<p>Almost every fresher cover letter opens the same way: "I am writing to apply for the position of X, which I saw advertised on your website." The reader already knows. You have spent your strongest sentence confirming something obvious.</p>
+<p>Open with evidence instead.</p>
+<ul>
+  <li><strong>Weak:</strong> I am writing to apply for the Software Engineer role.</li>
+  <li><strong>Strong:</strong> I built and shipped a React dashboard that 400 students now use to track attendance — which is why the Software Engineer role on your platform team caught my attention.</li>
+</ul>
+
+<h2>The Four-Paragraph Structure</h2>
+<h3>Paragraph 1 — The Hook</h3>
+<p>One concrete thing you have done, connected to one thing the company does. Two sentences.</p>
+
+<h3>Paragraph 2 — The Proof</h3>
+<p>Expand that project. What was the problem, what did you build, what was the measurable outcome? Freshers have projects, coursework, hackathons, internships, and volunteering. All of them contain numbers if you look.</p>
+
+<h3>Paragraph 3 — The Fit</h3>
+<p>Show you read the job description. Pick two requirements and address them directly. If a requirement mentions a tool you have not used, say what you used instead and how quickly you picked up the last unfamiliar tool.</p>
+
+<h3>Paragraph 4 — The Close</h3>
+<p>Short. Confident. No apologising for lack of experience — never write "although I am a fresher". Ask for the conversation.</p>
+
+<h2>Before and After</h2>
+<table>
+  <thead><tr><th>Before</th><th>After</th></tr></thead>
+  <tbody>
+    <tr><td>I am a hardworking and passionate individual.</td><td>I shipped three side projects while carrying a full course load.</td></tr>
+    <tr><td>I have knowledge of Python.</td><td>I used Python and pandas to clean a 12,000-row dataset for my final-year project.</td></tr>
+    <tr><td>I am eager to learn.</td><td>I learned TypeScript in two weeks to migrate my project off plain JavaScript.</td></tr>
+  </tbody>
+</table>
+<p>The pattern is identical each time: replace an adjective about yourself with a verb about your work.</p>
+
+<h2>Length and Format</h2>
+<ul>
+  <li>Under 300 words. One page, generous margins.</li>
+  <li>Address a person if you can find one. "Dear Hiring Manager" beats "To Whom It May Concern".</li>
+  <li>Match the font to your resume so they read as one application.</li>
+  <li>Send as PDF unless the portal demands otherwise.</li>
+</ul>
+<p>The formal conventions — salutation, complimentary close, spacing — follow ordinary <a href="/%LOCALE%/blog/business-letter-format" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">business letter format</a>.</p>
+
+<h2>Tailor It, or Do Not Send It</h2>
+<p>A generic cover letter is worse than none, because it proves you will do the minimum. If you are applying to twenty companies, write one strong letter and change paragraphs one and three for each. That takes ten minutes and it is the entire difference.</p>
+
+<h2>Pair It With the Right Resume</h2>
+<p>The cover letter argues; the resume evidences. Both must agree. Start from a free <a href="/%LOCALE%/templates/letters/cover-letter" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">cover letter template</a> and a matching <a href="/%LOCALE%/templates/resumes" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">fresher resume template</a> — no sign-up, no watermark. For the resume side, read <a href="/%LOCALE%/blog/resume-format-for-freshers-in-india" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">resume format for freshers</a> and <a href="/%LOCALE%/blog/best-cover-letter-examples" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">cover letter examples</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is a cover letter still required in 2026?</h3>
+<p>Not always requested, frequently read. When two resumes are equal, the letter decides.</p>
+<h3>What if there is no name to address?</h3>
+<p>Check the company's team page and the job posting's contact. Failing that, "Dear Hiring Manager".</p>
+<h3>Should I mention salary expectations?</h3>
+<p>Only if the posting asks. Otherwise it anchors you before you have demonstrated value.</p>
+
+<p>A cover letter is a formal <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">HTML format</a>-independent document — what matters is that it exports cleanly and reads in one pass.</p>
+    `,
+  },
+
+  // ── 35 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-35",
+    slug: "resume-summary-examples",
+    title: "Resume Summary Examples: 3 Lines That Decide Whether You Get Read",
+    metaTitle: "Resume Summary Examples",
+    description:
+      "A resume summary is the only paragraph a recruiter reads in full. Here is the formula, twelve real examples by role, and the objective-vs-summary rule.",
+    metaDescription:
+      "Resume summary examples for 2026 across engineering, marketing, nursing, sales and freshers — plus the three-part formula and when to use an objective instead.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/resume-summary-examples",
+    keywords: ["resume summary examples", "professional summary resume", "resume objective vs summary", "resume profile", "cv personal statement"],
+    category: "Resumes",
+    tags: ["resume summary", "examples", "job search", "personal statement", "ats"],
+    readTime: 7,
+    publishedAt: "2026-07-01",
+    image: "/blog/blog-resume-templates.jpg",
+    content: `
+<h2>Summary or Objective?</h2>
+<p>An <strong>objective</strong> states what you want. A <strong>summary</strong> states what you offer. Recruiters are hiring for their need, not yours, so a summary wins in almost every case. The exception is the true fresher or career changer, where a brief objective explains a transition the resume alone cannot.</p>
+
+<h2>The Three-Part Formula</h2>
+<p>Every strong summary answers three questions in three lines:</p>
+<ol>
+  <li><strong>Who are you?</strong> Role, seniority, years.</li>
+  <li><strong>What is your evidence?</strong> One quantified achievement.</li>
+  <li><strong>What do you want to do next?</strong> One clause, aimed at this job.</li>
+</ol>
+<p>Anything else — "detail-oriented team player with excellent communication skills" — is a phrase every other applicant also used, which makes it worse than silence.</p>
+
+<h2>Examples by Role</h2>
+<h3>Software Engineer</h3>
+<p>Backend engineer with 6 years building payment systems in Go and Postgres. Reduced settlement latency from 400ms to 90ms across a service handling 2M transactions monthly. Looking to own reliability for a high-throughput platform.</p>
+
+<h3>Data Analyst</h3>
+<p>Data analyst with 5 years turning ambiguous questions into decisions. Built a churn model in SQL and Python that lifted 12-month retention by 12% across 40,000 accounts. Seeking a role where analysis reaches the roadmap, not just the dashboard.</p>
+
+<h3>Marketing Manager</h3>
+<p>Growth marketer with 7 years across SEO and paid acquisition. Grew organic sessions from 40k to 310k monthly in 18 months at a B2B SaaS company, cutting blended CAC by a third. Now focused on content-led growth at Series B scale.</p>
+
+<h3>Registered Nurse</h3>
+<p>Registered Nurse with 10 years in high-acuity emergency and intensive care. Precepted 14 new graduate nurses and led the unit's sepsis-protocol rollout, cutting time-to-antibiotics by 22 minutes. Seeking a charge nurse position.</p>
+
+<h3>Sales Representative</h3>
+<p>Enterprise sales representative with 8 years selling SaaS into mid-market operations teams. Closed 142% of quota in FY25 on an average deal size of 48,000 USD. Looking to build a territory from first principles.</p>
+
+<h3>Fresher</h3>
+<p>Computer Science graduate (2026) who shipped three production side projects, including an attendance dashboard used by 400 students. Strong in React, TypeScript and Postgres. Seeking an entry-level engineering role with mentorship and code review.</p>
+
+<h2>The Number Rule</h2>
+<table>
+  <thead><tr><th>Vague</th><th>Quantified</th></tr></thead>
+  <tbody>
+    <tr><td>Improved website performance</td><td>Cut page load from 6.1s to 1.4s</td></tr>
+    <tr><td>Managed a large team</td><td>Led 11 engineers across three squads</td></tr>
+    <tr><td>Increased sales significantly</td><td>Grew ARR from 1.2M to 3.4M in two years</td></tr>
+  </tbody>
+</table>
+<p>If you genuinely cannot find a number, use a scale instead: team size, dataset size, budget, audience, duration.</p>
+
+<h2>Write It Last</h2>
+<p>You cannot summarise a document you have not written. Draft the experience section first, find the single achievement you are proudest of, then compress it. Rewrite the summary for every application — it is three lines, and it is the only part guaranteed to be read.</p>
+
+<h2>Keep It Machine-Readable</h2>
+<p>Applicant tracking systems parse the summary as plain text and mine it for keywords. Do not place it in a text box, a header, or a two-column sidebar. Our <a href="/%LOCALE%/blog/ats-resume-format-guide" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">ATS resume format guide</a> explains what parsers silently discard.</p>
+
+<h2>Templates With the Summary in the Right Place</h2>
+<p>Our free <a href="/%LOCALE%/templates/resumes" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">resume templates</a> put the summary immediately under your name, single-column, where both the recruiter and the parser expect it. Export to PDF or Word, no sign-up, no watermark. For the sections beneath it, see <a href="/%LOCALE%/blog/professional-resume-templates" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">professional resume templates</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How long should a resume summary be?</h3>
+<p>Two to four lines. Beyond that it becomes a paragraph nobody finishes.</p>
+<h3>Should I write it in the first person?</h3>
+<p>Drop the pronoun entirely. "Backend engineer with 6 years…" rather than "I am a backend engineer…".</p>
+<h3>Do I need one if I have a cover letter?</h3>
+<p>Yes. Many resumes are screened without the letter ever being opened.</p>
+
+<p>Conventions for the summary section differ between a resume and an academic <a href="https://en.wikipedia.org/wiki/Resume" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">curriculum vitae</a>; match the document to the application.</p>
+    `,
+  },
+
+  // ── 36 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-36",
+    slug: "executive-summary-business-plan",
+    title: "How to Write an Executive Summary (The Only Page Investors Read)",
+    metaTitle: "How to Write an Executive Summary",
+    description:
+      "Investors read the executive summary and decide. Learn the seven elements, the order that works, why you write it last, and get a free business plan template.",
+    metaDescription:
+      "How to write an executive summary for a business plan or report in 2026: the seven elements, correct order, length, common mistakes, and a free template.",
+    canonicalUrl: "https://templix-ai.whitesparksoft.com/en/blog/executive-summary-business-plan",
+    keywords: ["executive summary", "business plan executive summary", "how to write executive summary", "investor summary", "business plan template"],
+    category: "Guides",
+    tags: ["business plan", "executive summary", "investors", "startup", "reports"],
+    readTime: 7,
+    publishedAt: "2026-06-30",
+    image: "/blog/blog-business-proposal.jpg",
+    content: `
+<h2>It Is Not an Introduction</h2>
+<p>An introduction prepares the reader for the document. An executive summary <em>replaces</em> it. Written properly, someone who reads only your summary knows the problem, the solution, the numbers, and what you are asking for. Everything after it is evidence for the reader who wants it.</p>
+<p>Investors and executives read summaries and skim the rest. Write accordingly.</p>
+
+<h2>The Seven Elements</h2>
+<table>
+  <thead><tr><th>#</th><th>Element</th><th>One sentence answering</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>The problem</td><td>Who is hurting, and how much?</td></tr>
+    <tr><td>2</td><td>The solution</td><td>What do you do about it?</td></tr>
+    <tr><td>3</td><td>The market</td><td>How many of them are there?</td></tr>
+    <tr><td>4</td><td>The traction</td><td>What proves this is working?</td></tr>
+    <tr><td>5</td><td>The model</td><td>How do you make money?</td></tr>
+    <tr><td>6</td><td>The team</td><td>Why you?</td></tr>
+    <tr><td>7</td><td>The ask</td><td>How much, for what, by when?</td></tr>
+  </tbody>
+</table>
+<p>Seven elements, roughly one paragraph each, one page total. If it runs to three pages, you have written an introduction after all.</p>
+
+<h2>Write It Last, Read It First</h2>
+<p>You cannot summarise a plan you have not finished. Draft the full document, then extract the single strongest sentence from each section. This is why summaries written first always feel generic — they are describing a plan the author has not yet stress-tested.</p>
+
+<h2>Traction Beats Projection</h2>
+<p>One line of real traction outweighs a page of forecast. In order of persuasiveness:</p>
+<ol>
+  <li>Revenue from paying customers.</li>
+  <li>Signed letters of intent.</li>
+  <li>Active users with a retention curve.</li>
+  <li>A waitlist.</li>
+  <li>A survey.</li>
+</ol>
+<p>If you only have a survey, say so plainly. Overstating traction is the fastest way to lose a reader who has seen a thousand of these.</p>
+
+<h2>The Ask, Written Concretely</h2>
+<pre><code>We are raising 1,500,000 USD to extend runway to 24 months.
+
+  Engineering (4 hires)        720,000
+  Go-to-market                 450,000
+  Infrastructure and tooling   180,000
+  Operating buffer             150,000
+
+Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
+<p>An ask without a use of funds and a milestone is a number, not a plan.</p>
+
+<h2>Executive Summary vs Abstract vs Introduction</h2>
+<ul>
+  <li><strong>Executive summary:</strong> stands alone, contains conclusions and the ask. Business documents.</li>
+  <li><strong>Abstract:</strong> stands alone, contains method and findings. Academic papers.</li>
+  <li><strong>Introduction:</strong> does not stand alone, sets up what follows. Both.</li>
+</ul>
+<p>Using an introduction where a summary is expected is the single most common failure in submitted business plans and consulting reports alike.</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Opening with company history. Nobody has earned the patience yet.</li>
+  <li>Jargon that requires the rest of the document to decode.</li>
+  <li>Adjectives instead of numbers — "significant growth" is not a metric.</li>
+  <li>Burying the ask on the final line, or omitting it entirely.</li>
+</ul>
+
+<h2>Start From a Structured Document</h2>
+<p>Our free <a href="/%LOCALE%/templates/business-plans" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">business plan templates</a> open with a summary block laid out in the order above, and our <a href="/%LOCALE%/templates/reports" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">report templates</a> apply the same discipline to internal documents. No sign-up, no watermark, PDF and Word export. If you are pitching a service rather than raising capital, write a <a href="/%LOCALE%/blog/how-to-write-a-business-proposal" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">business proposal</a>; if you are pricing defined work, send a <a href="/%LOCALE%/blog/how-to-write-a-quotation" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">quotation</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How long should an executive summary be?</h3>
+<p>One page for a business plan, and roughly five to ten percent of the length for a long report.</p>
+<h3>Should it include charts?</h3>
+<p>One, at most, and only if a single chart carries the argument better than a sentence.</p>
+<h3>Can I reuse it as my pitch email?</h3>
+<p>Yes — a well-written summary compresses cleanly into a five-sentence email. That is a good test of whether it works.</p>
+
+<p>An executive summary is the front door to a <a href="https://en.wikipedia.org/wiki/Proposal_(business)" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">business proposal</a>, a plan, or a report. Write it as if it is the only page that will be read, because usually it is.</p>
+    `,
+  },
 ];
 
 // Helper — get a post by slug
