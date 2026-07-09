@@ -72,6 +72,35 @@ export default function AuthForm({ locale }: Props) {
     if (password !== confirmPassword) { setError("Passwords do not match."); return; }
     if (!supabase) { setError("Sign-up is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
+
+    // Preferred path: the server mints a confirmation link and emails it from
+    // our own SMTP. The user is NOT signed in yet — opening the link signs them
+    // in. Falls back to the direct Supabase signup if that isn't configured.
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, fullName, locale }),
+      });
+      const payload = await res.json();
+      if (res.ok && payload.ok) {
+        setLoading(false);
+        setSuccess(
+          "Almost there! We've emailed you a confirmation link — open it and you'll be signed in automatically.",
+        );
+        return;
+      }
+      if (res.ok && payload.fallback) {
+        // Confirmation email not configured — continue to the direct signup below.
+      } else {
+        setLoading(false);
+        setError(payload.error || "Could not create your account. Please try again.");
+        return;
+      }
+    } catch {
+      // Network hiccup — fall through to the direct signup so the user isn't stuck.
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,

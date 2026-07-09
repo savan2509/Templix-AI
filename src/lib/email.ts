@@ -171,6 +171,67 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
 }
 
 /**
+ * Emails the sign-up confirmation link. Unlike the other two, this one THROWS
+ * on failure: if we cannot deliver the link the account is unusable, so the
+ * sign-up must report an error rather than silently stranding the user.
+ */
+export async function sendSignupVerificationEmail(input: {
+  name?: string | null;
+  email: string;
+  confirmUrl: string;
+}): Promise<void> {
+  const from =
+    process.env.EMAIL_FROM ||
+    process.env.EMAIL_SERVER_USER ||
+    "no-reply@templix-ai.whitesparksoft.com";
+  const name = (input.name && input.name.trim()) || input.email.split("@")[0];
+  const { confirmUrl } = input;
+
+  const nodemailer = await import("nodemailer");
+  const transport = nodemailer.createTransport(buildTransport() as any);
+  await transport.sendMail({
+    to: input.email,
+    from,
+    subject: "Confirm your Templix AI account",
+    text:
+      `Hi ${name},\n\n` +
+      `Confirm your email to activate your Templix AI account:\n\n${confirmUrl}\n\n` +
+      `Opening the link signs you in automatically. It expires in 24 hours and can be used once.\n\n` +
+      `If you didn't create an account, you can ignore this email.\n`,
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;"><tr><td align="center">
+    <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,.06);">
+      <tr><td style="background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 50%,#3b82f6 100%);padding:40px 40px 36px;">
+        <p style="margin:0;font-size:22px;font-weight:700;color:#fff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
+        <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.8);">Professional Document Templates</p>
+      </td></tr>
+      <tr><td style="padding:40px 40px 8px;">
+        <h1 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#18181b;">Confirm your email</h1>
+        <p style="margin:0 0 24px;font-size:15px;color:#52525b;line-height:1.6;">Hi ${name}, welcome to Templix AI! Click below to activate your account — you'll be signed in automatically.</p>
+        <table width="100%"><tr><td align="center" style="padding:4px 0 28px;">
+          <a href="${confirmUrl}" style="display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,.35);">Confirm &amp; sign in →</a>
+        </td></tr></table>
+        <table width="100%"><tr><td style="border-top:1px solid #f0f0f0;padding-top:22px;">
+          <p style="margin:0 0 8px;font-size:13px;color:#71717a;">Or paste this link into your browser:</p>
+          <p style="margin:0;font-size:12px;color:#a1a1aa;word-break:break-all;background:#f9f9f9;padding:10px 14px;border-radius:8px;border:1px solid #e4e4e7;">${confirmUrl}</p>
+        </td></tr></table>
+      </td></tr>
+      <tr><td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:22px 40px;">
+        <p style="margin:0 0 4px;font-size:12px;color:#a1a1aa;">This link expires in <strong>24 hours</strong> and can only be used once.</p>
+        <p style="margin:0;font-size:12px;color:#a1a1aa;">If you didn't create a Templix AI account, you can safely ignore this email.</p>
+      </td></tr>
+    </table>
+  </td></tr></table>
+</body>
+</html>`,
+  });
+  console.log(`[signup] ✉️  Confirmation link sent to ${input.email}`);
+}
+
+/**
  * Single entry point for a brand-new sign-up: welcomes the user AND notifies
  * the team. Both are best-effort and independent, so one failing never blocks
  * the other or the sign-up itself.
