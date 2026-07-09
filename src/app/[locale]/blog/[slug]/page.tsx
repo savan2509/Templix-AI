@@ -12,6 +12,13 @@ import {
   type BlogPost,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import {
+  withHeadingIds,
+  extractFaqs,
+  buildFaqSchema,
+  readingTime,
+  wordCount,
+} from "@/lib/blog-seo";
 import { siteConfig } from "@/config/site";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
@@ -130,6 +137,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const related = getRelatedPosts(slug, 3);
   const gradient = CATEGORY_GRADIENT[post.category] ?? "from-blue-600 to-indigo-600";
 
+  // Resolve links first, then add anchors — so the ids match what renders.
+  const linkedHtml = SEOEngine.injectLinks(post.content, locale);
+  const { html: articleHtml, toc } = withHeadingIds(linkedHtml);
+  const faqs = extractFaqs(articleHtml);
+  const minutes = readingTime(post.content);
+  const words = wordCount(post.content);
+
   // JSON-LD
   const articleSchema = {
     "@context": "https://schema.org",
@@ -147,8 +161,15 @@ export default async function BlogArticlePage({ params }: PageProps) {
     },
     url: `${siteConfig.url}/${locale}/blog/${slug}`,
     mainEntityOfPage: `${siteConfig.url}/${locale}/blog/${slug}`,
+    articleSection: post.category,
+    wordCount: words,
+    timeRequired: `PT${minutes}M`,
     keywords: post.tags.join(", "),
   };
+
+  // Only emit FAQPage when the post actually has a Q&A section — an empty
+  // mainEntity is a structured-data error in Search Console.
+  const faqSchema = faqs.length > 0 ? buildFaqSchema(faqs) : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -167,6 +188,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
       <main className="flex-1 bg-white dark:bg-zinc-950 min-h-screen">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c") }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }} />
+        {faqSchema && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }} />
+        )}
 
         {/* ── Hero ── */}
         {/* `isolate` keeps the background layers inside this section's own
@@ -212,7 +236,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 <Calendar className="h-3 w-3" /> {formatDate(post.publishedAt, locale)}
               </span>
               <span className="text-white/70 text-xs flex items-center gap-1">
-                <Clock className="h-3 w-3" /> {post.readTime} {t.minRead}
+                <Clock className="h-3 w-3" /> {minutes} {t.minRead}
               </span>
             </div>
 
@@ -266,10 +290,39 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 <ArrowLeft className="h-3.5 w-3.5" /> {t.backToBlog}
               </Link>
 
+              {/* Table of contents — generated from the article's own H2s.
+                  Helps readers skim and gives Google jump-to-section links. */}
+              {toc.length >= 3 && (
+                <nav
+                  aria-label="Table of contents"
+                  className="mb-10 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/50"
+                >
+                  <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    In this article
+                  </p>
+                  <ol className="space-y-1.5">
+                    {toc.map((item, i) => (
+                      <li key={item.id} className="flex gap-2.5 text-sm">
+                        <span className="shrink-0 font-mono text-xs text-zinc-400 dark:text-zinc-600">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <a
+                          href={`#${item.id}`}
+                          className="text-zinc-600 hover:text-blue-600 hover:underline dark:text-zinc-400 dark:hover:text-blue-400"
+                        >
+                          {item.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
+
               {/* Prose content */}
               <div
                 className="prose-article"
-                dangerouslySetInnerHTML={{ __html: SEOEngine.injectLinks(post.content, locale) }}
+                dangerouslySetInnerHTML={{ __html: articleHtml }}
               />
 
               {/* Share row */}
@@ -345,7 +398,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-zinc-400" />
-                    <span className="text-zinc-600 dark:text-zinc-400">{post.readTime} {t.minuteRead}</span>
+                    <span className="text-zinc-600 dark:text-zinc-400">{minutes} {t.minuteRead}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <BookOpen className="h-4 w-4 text-zinc-400" />
@@ -420,7 +473,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                           {rel.title}
                         </p>
                         <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-                          <Clock className="h-2.5 w-2.5" /> {rel.readTime} {t.min}
+                          <Clock className="h-2.5 w-2.5" /> {readingTime(rel.content)} {t.min}
                         </span>
                       </Link>
                     ))}
@@ -466,7 +519,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                         {p.title}
                       </h3>
                       <p className="text-xs text-zinc-400 flex items-center gap-1 pt-1 border-t border-zinc-100 dark:border-zinc-800">
-                        <Clock className="h-2.5 w-2.5" /> {p.readTime} {t.minRead}
+                        <Clock className="h-2.5 w-2.5" /> {readingTime(p.content)} {t.minRead}
                       </p>
                     </div>
                   </Link>

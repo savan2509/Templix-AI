@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { db, isDbOnline } from "@/lib/db";
 import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { readingTime } from "@/lib/blog-seo";
 import { siteConfig } from "@/config/site";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
@@ -237,7 +238,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                         <Calendar className="h-3 w-3" /> {formatDate(featured.publishedAt, locale)}
                       </span>
                       <span className="text-xs text-zinc-400 flex items-center gap-1">
-                        <Clock className="h-3 w-3" /> {featured.readTime} {t.minRead}
+                        <Clock className="h-3 w-3" /> {readingTime(featured.content)} {t.minRead}
                       </span>
                     </div>
                     <h2 className="text-2xl lg:text-3xl font-extrabold text-zinc-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -306,7 +307,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       {/* Meta — category badge removed here (already shown over image) */}
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-[10px] text-zinc-400 flex items-center gap-1 ml-auto">
-                          <Clock className="h-2.5 w-2.5" /> {post.readTime} {t.min}
+                          <Clock className="h-2.5 w-2.5" /> {readingTime(post.content)} {t.min}
                         </span>
                       </div>
 
