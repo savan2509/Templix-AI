@@ -24,11 +24,9 @@ export default function FavoriteButton({
   const supabase = createClient();
   const [favorited, setFavorited] = useState(initialFavorited);
   const [loading, setLoading] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  // Sync with server-side initial value after hydration
+  // Keep in sync when the server-rendered value changes (e.g. after navigation).
   useEffect(() => {
-    setMounted(true);
     setFavorited(initialFavorited);
   }, [initialFavorited]);
 
@@ -69,8 +67,8 @@ export default function FavoriteButton({
     ? "h-7 w-7 rounded-lg"
     : "h-9 w-9 rounded-xl";
 
-  if (!mounted) return null;
-
+  // Rendered on the server too: returning null until mount made the heart pop in
+  // late (and vanish entirely on cards that only reveal it on hover).
   return (
     <button
       id={`favorite-btn-${templateSlug}`}

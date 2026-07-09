@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -25,7 +25,8 @@ interface Props {
 
 export default function AuthForm({ locale }: Props) {
   const router = useRouter();
-  const supabase = createClient();
+  // Memoised: an unstable client would retrigger the confirmation poll below.
+  const supabase = useMemo(() => createClient(), []);
 
   const [tab, setTab] = useState<Tab>("signin");
   const [email, setEmail] = useState("");
@@ -36,11 +37,43 @@ export default function AuthForm({ locale }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [awaitingConfirm, setAwaitingConfirm] = useState(false);
 
   const reset = () => {
     setError(null);
     setSuccess(null);
   };
+
+  // The confirmation link may be opened on a *different device* (email on the
+  // phone, sign-up on the laptop). Without this the original tab sits on the
+  // sign-up screen forever. Poll for the account becoming confirmed, then sign
+  // this tab in with the credentials the user just entered.
+  useEffect(() => {
+    if (!awaitingConfirm || !supabase) return;
+    let cancelled = false;
+    const startedAt = Date.now();
+
+    const timer = setInterval(async () => {
+      if (cancelled) return;
+      if (Date.now() - startedAt > 15 * 60 * 1000) {
+        clearInterval(timer); // give up quietly after 15 minutes
+        return;
+      }
+      // Fails with `email_not_confirmed` until the link is opened.
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (!cancelled && !error && data.session) {
+        clearInterval(timer);
+        setAwaitingConfirm(false);
+        router.push(`/${locale}/dashboard`);
+        router.refresh();
+      }
+    }, 5000);
+
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
+  }, [awaitingConfirm, supabase, email, password, router, locale]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,8 +119,9 @@ export default function AuthForm({ locale }: Props) {
       if (res.ok && payload.ok) {
         setLoading(false);
         setSuccess(
-          "Almost there! We've emailed you a confirmation link — open it and you'll be signed in automatically.",
+          "Almost there! We've emailed you a confirmation link. Open it on any device — this page will sign you in automatically.",
         );
+        setAwaitingConfirm(true);
         return;
       }
       if (res.ok && payload.fallback) {

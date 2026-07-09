@@ -57,6 +57,15 @@ export default function Footer() {
               <CheckCircle2 className="h-4.5 w-4.5 text-emerald-500 dark:text-emerald-400" />
               <span>{t.trustBadge}</span>
             </div>
+
+            {/* Direct contact — so a visitor with a question can just email us */}
+            <a
+              href="mailto:whitesparktechnologies@gmail.com"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors"
+            >
+              <Mail className="h-4 w-4 shrink-0" />
+              <span>whitesparktechnologies@gmail.com</span>
+            </a>
           </div>
 
           {/* Spacer */}

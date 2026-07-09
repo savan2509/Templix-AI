@@ -750,8 +750,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
                           {common.free}
                         </span>
-                        {/* Favorite heart — appears on hover */}
-                        <div className="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        {/* Favorite heart — always visible: a hover-only control
+                            is unreachable on touch devices. */}
+                        <div className="absolute top-3 left-3 z-10">
                           <FavoriteButton
                             templateSlug={temp.slug}
                             locale={locale}

@@ -18,30 +18,13 @@ import {
 } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { allFallbackTemplates } from "@/data/templates-fallback";
 
-// Standard mock documents fallback
-const fallbackDocs = [
-  {
-    id: "mock-doc-1",
-    title: "Project Development Invoice - Sarah",
-    updatedAt: new Date("2026-06-28T12:00:00Z"),
-  },
-  {
-    id: "mock-doc-2",
-    title: "Sarah Jenkins Developer Resume CV",
-    updatedAt: new Date("2026-06-27T09:30:00Z"),
-  }
-];
-
-const fallbackFavorites = [
-  {
-    id: "invoice-freelancer",
-    slug: "invoice-freelancer",
-    title: "Professional Invoice",
-    description: "Invoice template containing dynamic fields and tax lines.",
-    categoryName: "Invoices"
-  }
-];
+interface SavedDoc { id: string; title: string; updatedAt: Date }
+interface FavoriteItem {
+  id: string; slug: string; categorySlug: string;
+  title: string; description: string; categoryName: string;
+}
 
 interface DashboardProps {
   params: Promise<{ locale: string }>;
@@ -83,42 +66,54 @@ export default async function DashboardPage({ params }: DashboardProps) {
     redirect(`/${locale}/login`);
   }
 
-  let documents = fallbackDocs;
-  let favorites = fallbackFavorites;
+  // A brand-new account owns nothing yet. Never seed the dashboard with mock
+  // documents/favourites — it made every new user believe someone else's files
+  // were already in their workspace.
+  let documents: SavedDoc[] = [];
+  let favorites: FavoriteItem[] = [];
 
+  // Saved documents live in the Prisma database (when one is configured).
   try {
     if (isDbOnline && process.env.DATABASE_URL) {
-      const [dbDocs, dbFavs] = await Promise.all([
-        db.document.findMany({
-          where: { userId: user.id },
-          orderBy: { updatedAt: "desc" },
-        }),
-        db.favorite.findMany({
-          where: { userId: user.id },
-          include: { template: { include: { category: true } } },
-        })
-      ]);
-
-      if (dbDocs) {
-        documents = dbDocs.map((d: any) => ({
-          id: d.id,
-          title: d.title,
-          updatedAt: d.updatedAt
-        }));
-      }
-
-      if (dbFavs) {
-        favorites = dbFavs.map((f: any) => ({
-          id: f.template.id,
-          slug: f.template.slug,
-          title: f.template.title,
-          description: f.template.description,
-          categoryName: f.template.category.name
-        }));
-      }
+      const dbDocs = await db.document.findMany({
+        where: { userId: user.id },
+        orderBy: { updatedAt: "desc" },
+      });
+      documents = (dbDocs ?? []).map((d: any) => ({
+        id: d.id,
+        title: d.title,
+        updatedAt: d.updatedAt,
+      }));
     }
-  } catch (err) {
-    console.warn("DB fetch bypass in Dashboard, showing mock details.");
+  } catch {
+    // Database offline — the user simply has no saved documents to show.
+  }
+
+  // Favourites live in Supabase — the same `favorites` table /api/favorites
+  // writes to — so read them from there rather than from Prisma.
+  try {
+    if (supabase && sbUser) {
+      const { data } = await supabase
+        .from("favorites")
+        .select("template_slug")
+        .eq("user_id", sbUser.id);
+
+      favorites = (data ?? [])
+        .map((row: { template_slug: string }) =>
+          allFallbackTemplates.find((t: any) => t.slug === row.template_slug),
+        )
+        .filter(Boolean)
+        .map((t: any) => ({
+          id: t.slug,
+          slug: t.slug,
+          categorySlug: t.categorySlug,
+          title: t.title,
+          description: t.description,
+          categoryName: t.categoryName,
+        }));
+    }
+  } catch {
+    // `favorites` table not created yet — show an empty list rather than fail.
   }
 
   // Filter out any documents that have been marked deleted (for both mock files and database records)
@@ -279,7 +274,7 @@ export default async function DashboardPage({ params }: DashboardProps) {
                     favorites.map((fav) => (
                       <Link
                         key={fav.id}
-                        href={`/${locale}/templates/${fav.slug}`}
+                        href={`/${locale}/templates/${fav.categorySlug}/${fav.slug}`}
                         className="p-4 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-xl shadow-sm hover:shadow-md block hover:border-blue-500/30 transition-all space-y-1.5"
                       >
                         <span className="text-[9px] uppercase tracking-wider font-bold text-blue-600 dark:text-blue-400">
