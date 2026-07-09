@@ -19,13 +19,52 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
     setError(null);
     if (!email) { setError("Please enter your email address."); return; }
-    if (!supabase) { setError("Password reset is temporarily unavailable. Please try again later."); return; }
     setLoading(true);
+
+    // Preferred path: our server mints the recovery token and emails the link
+    // from our own SMTP (Supabase's mailer cannot send for this project).
+    try {
+      const res = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, locale }),
+      });
+      const payload = await res.json();
+      if (res.ok && payload.ok) {
+        setLoading(false);
+        setSent(true);
+        return;
+      }
+      if (!(res.ok && payload.fallback)) {
+        setLoading(false);
+        setError(payload.error || "We couldn't send the reset email. Please try again.");
+        return;
+      }
+      // fallback: not configured — fall through to Supabase's own mailer.
+    } catch {
+      // Network hiccup — try the Supabase path rather than dead-ending.
+    }
+
+    if (!supabase) {
+      setLoading(false);
+      setError("Password reset is temporarily unavailable. Please try again later.");
+      return;
+    }
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/auth/reset-password`,
+      redirectTo: `${window.location.origin}/${locale}/auth/reset-password`,
     });
     setLoading(false);
-    if (error) { setError(error.message); return; }
+    if (error) {
+      // `error.message` can be empty (or a bare object) when Supabase's mailer
+      // fails, which rendered a useless "{}" in the banner. Always show text.
+      const raw = typeof error.message === "string" ? error.message.trim() : "";
+      setError(
+        raw && raw !== "{}"
+          ? raw
+          : "We couldn't send the reset email right now. Please try again shortly.",
+      );
+      return;
+    }
     setSent(true);
   };
 

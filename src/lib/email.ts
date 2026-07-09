@@ -232,6 +232,66 @@ export async function sendSignupVerificationEmail(input: {
 }
 
 /**
+ * Emails a password-reset link. Throws on failure so the caller can report it —
+ * Supabase's own mailer cannot send for this project, so this is the only way
+ * a user ever receives a reset link.
+ */
+export async function sendPasswordResetEmail(input: {
+  email: string;
+  resetUrl: string;
+}): Promise<void> {
+  const from =
+    process.env.EMAIL_FROM ||
+    process.env.EMAIL_SERVER_USER ||
+    "no-reply@templix-ai.whitesparksoft.com";
+  const name = input.email.split("@")[0];
+  const { resetUrl } = input;
+
+  const nodemailer = await import("nodemailer");
+  const transport = nodemailer.createTransport(buildTransport() as any);
+  await transport.sendMail({
+    to: input.email,
+    from,
+    subject: "Reset your Templix AI password",
+    text:
+      `Hi ${name},\n\n` +
+      `We received a request to reset your Templix AI password.\n\n${resetUrl}\n\n` +
+      `The link expires in 1 hour and can be used once. ` +
+      `If you didn't request this, you can safely ignore this email — your password stays unchanged.\n`,
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;"><tr><td align="center">
+    <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,.06);">
+      <tr><td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:40px 40px 36px;">
+        <p style="margin:0;font-size:22px;font-weight:700;color:#ffffff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
+        <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.8);">Professional Document Templates</p>
+      </td></tr>
+      <tr><td style="padding:40px 40px 8px;">
+        <h1 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#18181b;">Reset your password</h1>
+        <p style="margin:0 0 24px;font-size:15px;color:#52525b;line-height:1.6;">We received a request to reset the password for <strong>${input.email}</strong>. Click below to choose a new one.</p>
+        <table width="100%"><tr><td align="center" style="padding:4px 0 28px;">
+          <a href="${resetUrl}" style="display:inline-block;padding:14px 40px;background-color:#2563eb;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;">Choose a new password →</a>
+        </td></tr></table>
+        <table width="100%"><tr><td style="border-top:1px solid #f0f0f0;padding-top:22px;">
+          <p style="margin:0 0 8px;font-size:13px;color:#71717a;">Or paste this link into your browser:</p>
+          <p style="margin:0;font-size:12px;color:#a1a1aa;word-break:break-all;background:#f9f9f9;padding:10px 14px;border-radius:8px;border:1px solid #e4e4e7;">${resetUrl}</p>
+        </td></tr></table>
+      </td></tr>
+      <tr><td style="background:#fafafa;border-top:1px solid #f0f0f0;padding:22px 40px;">
+        <p style="margin:0 0 4px;font-size:12px;color:#a1a1aa;">This link expires in <strong>1 hour</strong> and can only be used once.</p>
+        <p style="margin:0;font-size:12px;color:#a1a1aa;">Didn't request this? Ignore this email — your password stays unchanged.</p>
+      </td></tr>
+    </table>
+  </td></tr></table>
+</body>
+</html>`,
+  });
+  console.log(`[reset] ✉️  Password reset link sent to ${input.email}`);
+}
+
+/**
  * Single entry point for a brand-new sign-up: welcomes the user AND notifies
  * the team. Both are best-effort and independent, so one failing never blocks
  * the other or the sign-up itself.
