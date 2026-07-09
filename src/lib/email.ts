@@ -69,7 +69,7 @@ export async function sendNewUserAdminEmail(user: NewUserInfo): Promise<void> {
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
         <tr>
-          <td style="background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 50%,#3b82f6 100%);padding:36px 40px;">
+          <td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:36px 40px;">
             <p style="margin:0;font-size:22px;font-weight:700;color:#ffffff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
             <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.8);">New account sign-up</p>
           </td>
@@ -138,7 +138,7 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
 <body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;"><tr><td align="center">
     <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,.06);">
-      <tr><td style="background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 50%,#3b82f6 100%);padding:40px 40px 36px;">
+      <tr><td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:40px 40px 36px;">
         <p style="margin:0;font-size:22px;font-weight:700;color:#fff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
         <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.8);">Professional Document Templates</p>
       </td></tr>
@@ -146,7 +146,7 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
         <h1 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#18181b;">Welcome, ${name}! 🎉</h1>
         <p style="margin:0 0 24px;font-size:15px;color:#52525b;line-height:1.6;">Your Templix AI account is ready. Create professional invoices, resumes, contracts, proposals and letters in minutes — completely free, with no watermark.</p>
         <table width="100%"><tr><td align="center" style="padding:4px 0 28px;">
-          <a href="${templates}" style="display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,.35);">Browse free templates →</a>
+          <a href="${templates}" style="display:inline-block;padding:14px 40px;background-color:#2563eb;color:#fff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,.35);">Browse free templates →</a>
         </td></tr></table>
         <table width="100%"><tr><td style="border-top:1px solid #f0f0f0;padding-top:22px;">
           <p style="margin:0 0 6px;font-size:13px;color:#71717a;">Jump straight back in any time:</p>
@@ -204,7 +204,7 @@ export async function sendSignupVerificationEmail(input: {
 <body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;"><tr><td align="center">
     <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,.06);">
-      <tr><td style="background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 50%,#3b82f6 100%);padding:40px 40px 36px;">
+      <tr><td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:40px 40px 36px;">
         <p style="margin:0;font-size:22px;font-weight:700;color:#fff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
         <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.8);">Professional Document Templates</p>
       </td></tr>
@@ -212,7 +212,7 @@ export async function sendSignupVerificationEmail(input: {
         <h1 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#18181b;">Confirm your email</h1>
         <p style="margin:0 0 24px;font-size:15px;color:#52525b;line-height:1.6;">Hi ${name}, welcome to Templix AI! Click below to activate your account — you'll be signed in automatically.</p>
         <table width="100%"><tr><td align="center" style="padding:4px 0 28px;">
-          <a href="${confirmUrl}" style="display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,.35);">Confirm &amp; sign in →</a>
+          <a href="${confirmUrl}" style="display:inline-block;padding:14px 40px;background-color:#2563eb;color:#fff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,.35);">Confirm &amp; sign in →</a>
         </td></tr></table>
         <table width="100%"><tr><td style="border-top:1px solid #f0f0f0;padding-top:22px;">
           <p style="margin:0 0 8px;font-size:13px;color:#71717a;">Or paste this link into your browser:</p>

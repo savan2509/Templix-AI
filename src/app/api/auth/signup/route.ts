@@ -11,9 +11,9 @@ import { siteConfig } from "@/config/site";
 //   1. mint the confirmation token server-side via admin.generateLink()
 //      (generateLink never sends an email itself), then
 //   2. email the link from our own working SMTP.
-// Clicking it hits /api/auth/supabase/callback?token_hash=…&type=signup, which
-// verifies the OTP, establishes the session, and lands the user on the
-// dashboard — i.e. the link signs them in automatically.
+// Clicking it hits /{locale}/confirm/{token}, which verifies the OTP,
+// establishes the session, and lands the user on the dashboard — i.e. the link
+// signs them in automatically.
 //
 // If SUPABASE_SECRET_KEY is absent we return `fallback: true` so the client can
 // keep using the previous instant-signup path rather than breaking.
@@ -61,11 +61,11 @@ export async function POST(request: Request) {
     );
   }
 
-  // Point the link at OUR callback, which verifies the token and signs the user in.
+  // Short, readable link — /{locale}/confirm/{token} verifies the token,
+  // signs the user in, and lands them on the dashboard.
   const confirmUrl =
-    `${siteConfig.url}/api/auth/supabase/callback` +
-    `?token_hash=${encodeURIComponent(data.properties.hashed_token)}` +
-    `&type=signup&next=${encodeURIComponent(`/${locale}/dashboard`)}`;
+    `${siteConfig.url}/${locale}/confirm/` +
+    `${encodeURIComponent(data.properties.hashed_token)}`;
 
   try {
     await sendSignupVerificationEmail({ name: fullName, email, confirmUrl });

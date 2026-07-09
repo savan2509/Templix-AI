@@ -193,7 +193,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e4e4e7;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
         <tr>
-          <td style="background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 50%,#3b82f6 100%);padding:40px 40px 36px;">
+          <td bgcolor="#1d4ed8" style="background-color:#1d4ed8;padding:40px 40px 36px;">
             <p style="margin:0;font-size:22px;font-weight:700;color:#ffffff;">⚡ Templix<span style="font-weight:400;">AI</span></p>
             <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.75);">Professional Document Templates</p>
           </td>
@@ -204,7 +204,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             <p style="margin:0 0 8px;font-size:15px;color:#52525b;line-height:1.6;">Sign-in requested for:</p>
             <p style="margin:0 0 28px;font-size:15px;font-weight:600;color:#2563eb;">${identifier}</p>
             <table width="100%"><tr><td align="center" style="padding:4px 0 32px;">
-              <a href="${url}" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,0.35);">Sign In to Templix AI →</a>
+              <a href="${url}" style="display:inline-block;padding:14px 36px;background-color:#2563eb;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;box-shadow:0 4px 12px rgba(37,99,235,0.35);">Sign In to Templix AI →</a>
             </td></tr></table>
             <table width="100%"><tr><td style="border-top:1px solid #f0f0f0;padding-top:24px;">
               <p style="margin:0 0 8px;font-size:13px;color:#71717a;">Or copy and paste this link:</p>
