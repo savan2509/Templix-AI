@@ -152,7 +152,9 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
               priority
             />
             <div className="absolute inset-0 bg-slate-950/80 dark:bg-zinc-950/85 backdrop-blur-[1px]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-zinc-950 via-transparent to-transparent" />
+            {/* Fade into the page background. Height must stay <= the section's
+                bottom padding, or it washes out the light-on-dark stats row. */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-zinc-950 to-transparent" />
           </div>
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
