@@ -1165,6 +1165,36 @@ export const SLUG_BRAND: Record<string, string> = {
   "photography-quotation": "Lumina Photography",
   "web-design-quotation": "Nova Web Design",
   "consulting-quotation": "Meridian Consulting",
+  // New letters
+  "letter-salary-increase": "Acme Global Inc.",
+  "letter-leave-application": "Acme Global Inc.",
+  "letter-noc": "Umang Digital Services LLP",
+  "letter-business-introduction": "GrowthHive Marketing",
+  "letter-payment-reminder": "Jenkins Digital Studio",
+  "letter-reference-request": "Michael Chen",
+  // New invoices
+  "invoice-commercial-export": "Meridian Exports Pvt. Ltd.",
+  "invoice-credit-note": "Bloom & Co. Boutique",
+  // New resumes / CV
+  "resume-career-change": "Jordan Ellis",
+  "resume-internship": "Ava Martinez",
+  "cv-academic": "Dr. Elena Rossi",
+  // New contracts
+  "contract-roommate": "Maple Street Apartment",
+  "contract-social-media": "GrowthHive Marketing",
+  // New proposals
+  "proposal-one-page": "Apex Digital Agency",
+  "proposal-cleaning-services": "SparkleClean Services",
+  // New reports
+  "report-internship": "Priya Sharma",
+  "report-book": "Ethan Brooks",
+  "report-lab": "Chloe Bennett",
+  // New business plans
+  "business-plan-one-page": "BrightBox",
+  "business-plan-lean-canvas": "FlowState",
+  // New quotations
+  "quotation-security-services": "GuardWell Security Services",
+  "quotation-amc": "TechCare IT Solutions",
 };
 
 export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
@@ -1601,6 +1631,184 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "follow-up-letter": {
     recipientName: "Ms. Laura Bennett",
     jobPosition: "Product Manager"
+  },
+  "letter-salary-increase": {
+    fullName: "Daniel Reed", jobTitle: "Senior Account Manager", department: "Sales",
+    email: "daniel.reed@email.com", phone: "+1 (555) 274-8810", letterDate: "July 3, 2026",
+    managerName: "Ms. Laura Bennett", currentSalary: "$82,000", requestedSalary: "$92,000",
+    incrementPercent: "12%", yearsInRole: "three years", proposedEffectiveDate: "August 1, 2026",
+    signatureFullName: "Daniel Reed"
+  },
+  "letter-leave-application": {
+    fullName: "Priya Sharma", employeeId: "EMP-2043", jobTitle: "Financial Analyst", department: "Finance",
+    letterDate: "July 3, 2026", managerName: "Mr. David Kim", leaveType: "Casual Leave",
+    leaveFromDate: "July 14, 2026", leaveToDate: "July 18, 2026", totalDays: "5 working days",
+    leaveReason: "a family commitment out of town", workHandoverTo: "Rahul Mehta",
+    contactDuringLeave: "+91 98200 11234", rejoiningDate: "July 21, 2026", signatureFullName: "Priya Sharma"
+  },
+  "letter-noc": {
+    address: "4th Floor, Cyber Heights, Sector 62, Noida, UP 201301",
+    email: "hr@umangdigital.com", phone: "+91 120 456 7890", letterDate: "July 3, 2026",
+    referenceNumber: "NOC/HR/2026/0142", applicantName: "Rahul Verma", applicantId: "EMP-1188",
+    designation: "Senior Software Engineer", nocPurpose: "applying for a tourist visa to Schengen countries",
+    objectDescription: "the applicant travelling abroad from 10–24 August 2026 and returning to duty thereafter",
+    validityPeriod: "3 months from the date of issue", issuingAuthorityName: "Anita Desai",
+    issuingAuthorityDesignation: "Head of Human Resources"
+  },
+  "letter-business-introduction": {
+    fullName: "Sofia Alvarez", jobTitle: "Growth Lead", email: "sofia@growthhive.com",
+    phone: "+1 (555) 640-2210", letterDate: "July 3, 2026", recipientName: "Mark", recipientCompany: "Brightway Retail",
+    yourCompanyOneLiner: "a performance marketing studio for DTC brands",
+    painPointHook: "Most retail brands quietly lose 20–30% of paid-ad budget to underperforming campaigns.",
+    valueProposition: "We rebuild your funnel around what actually converts and typically cut wasted spend within the first month.",
+    socialProofLine: "Last quarter we lifted a client's ROAS from 1.8x to 3.4x in nine weeks.",
+    callToAction: "Worth a quick 15-minute call to see if there's a fit?",
+    meetingLink: "cal.com/growthhive/intro", signatureFullName: "Sofia Alvarez"
+  },
+  "letter-payment-reminder": {
+    letterDate: "July 3, 2026", recipientName: "Ms. Rivera", clientCompany: "TechVentures Corp.",
+    invoiceNumber: "INV-2026-014", invoiceAmount: "$2,450.00", dueDate: "June 18, 2026", daysOverdue: "15 days",
+    paymentLink: "pay.jenkinsdigitalstudio.com/INV-2026-014",
+    lateFeeWarning: "Per our terms a 2% late fee applies past 30 days overdue — I'd love to settle this before then.",
+    signatureFullName: "Sarah Jenkins", email: "hello@jenkinsdigitalstudio.com", phone: "+1 (555) 509-3963"
+  },
+  "letter-reference-request": {
+    fullName: "Michael Chen", jobTitle: "Data Analyst", email: "michael.chen@email.com", phone: "+1 (555) 318-7742",
+    letterDate: "July 3, 2026", recipientName: "Dr. Vance", targetJobTitle: "Senior Data Analyst",
+    targetCompany: "DataCorp Systems", relationshipContext: "You managed me directly on the analytics team",
+    workedTogetherPeriod: "2022 to 2025", referenceDeadline: "July 20, 2026", signatureFullName: "Michael Chen"
+  },
+  "invoice-commercial-export": {
+    companyAddress: "Plot 22, MIDC Industrial Area, Andheri East, Mumbai 400093",
+    companyEmail: "exports@meridianexports.com",
+    clientName: "Nordic Apparel AB", clientAddress: "Sveavägen 44, 111 34 Stockholm, Sweden",
+    invoiceNumber: "EXP-2026-0087", invoiceDate: "2026-07-03",
+    hsCode: "6109.10", incoterms: "FOB Mumbai", countryOfOrigin: "India", countryOfDestination: "Sweden",
+    currencyCode: "USD", grossWeight: "480 kg", netWeight: "450 kg", packageCount: "18 cartons",
+    tax: "0%", paymentTerms: "100% advance via T/T against proforma"
+  },
+  "invoice-credit-note": {
+    companyAddress: "456 Commerce Blvd, Suite 200, Austin, TX 78701",
+    companyEmail: "hello@bloomcoboutique.com",
+    clientName: "John Doe Services", clientAddress: "789 Billing Ave, Floor 3, Dallas, TX 75201",
+    creditNoteNumber: "CN-2026-0031", invoiceDate: "2026-07-03",
+    originalInvoiceNumber: "INV-2026-001", originalInvoiceDate: "2026-06-28",
+    refundReason: "Two items returned damaged and a duplicate line corrected",
+    refundMethod: "Credit to original card ending 4421 (3–5 business days)",
+    tax: "8%", approvedBy: "Maria Bloom, Store Owner"
+  },
+  "resume-career-change": {
+    jobTitle: "Aspiring Software Developer",
+    careerSummary: "Operations professional with 6 years' experience transitioning into software development — bringing proven delivery, data fluency and stakeholder communication, now paired with hands-on full-stack skills from an intensive bootcamp and three shipped projects.",
+    targetIndustry: "Software Engineering", degree: "B.A. in Business Administration",
+    university: "University of Michigan", graduationYear: "2018"
+  },
+  "resume-internship": {
+    jobTitle: "Computer Science Student",
+    careerObjective: "Second-year CS student seeking a summer software internship to apply my coursework on a real product team. Comfortable with JavaScript and Python, and eager to contribute from week one.",
+    degree: "B.S. Computer Science", university: "UT Austin", graduationYear: "2027", gpa: "3.7/4.0"
+  },
+  "cv-academic": {
+    jobTitle: "Postdoctoral Researcher, Climate AI", email: "elena.rossi@university.edu", location: "Zürich, Switzerland",
+    researchInterests: "Machine learning for climate resilience, transfer learning, and ecological forecasting.",
+    dissertationTitle: "Adaptive Neural Models for Climate-Resilient Ecosystems", advisorName: "Prof. M. Bianchi",
+    degree: "Ph.D. in Computer Science", university: "ETH Zürich", graduationYear: "2023"
+  },
+  "contract-roommate": {
+    primaryTenantName: "Alex Carter", roommateName: "Jamie Lee",
+    propertyAddress: "14 Maple Street, Apt 3B, Portland, OR 97205", effectiveDate: "July 1, 2026",
+    leaseTermMonths: "12 months", monthlyRent: "$2,000", rentSplit: "50/50 ($1,000 each)",
+    securityDeposit: "$2,000", depositSplit: "50/50 ($1,000 each)", utilitiesSplitMethod: "equally, 50/50",
+    choresSchedule: "Kitchen and common areas cleaned weekly on a rotating schedule",
+    quietHours: "10:00 PM – 7:00 AM on weekdays", guestPolicy: "Overnight guests up to 3 nights; longer stays by mutual agreement",
+    moveOutNoticePeriod: "30 days", governingLaw: "the State of Oregon"
+  },
+  "contract-social-media": {
+    clientName: "Mark Rivera", clientCompany: "Brightway Retail", effectiveDate: "July 1, 2026", endDate: "December 31, 2026",
+    platformScope: "Instagram, Facebook, and TikTok", postsPerMonth: "16 feed posts and 20 stories",
+    monthlyRetainer: "$2,500", contentApprovalProcess: "drafts shared each Thursday for approval within 48 hours",
+    responseTimeSla: "one business day", reportingFrequency: "monthly, with a live dashboard",
+    adSpendManagementFee: "15% of ad spend", contentOwnership: "all delivered content transfers to the Client on payment",
+    terminationClause: "Either party may terminate with 30 days written notice; fees are prorated to the termination date."
+  },
+  "proposal-one-page": {
+    clientName: "Brightway Retail", proposalNumber: "P-2026-021", validUntil: "July 31, 2026",
+    theAsk: "Engage Apex Digital to run a 90-day paid-acquisition sprint across Google and Meta.",
+    whyUs: "We've scaled 30+ DTC brands and specialise in profitable, fast-feedback ad testing.",
+    keyBenefits: "A rebuilt funnel, weekly optimisation, and a clear dashboard — typically cutting wasted spend 20–30% in month one.",
+    socialProof: "Recently lifted a retail client's ROAS from 1.8x to 3.4x in nine weeks.",
+    singlePrice: "$6,000 / month", deadlineToAccept: "July 31, 2026", proposalSignature: "Apex Digital Agency"
+  },
+  "proposal-cleaning-services": {
+    clientName: "Daniel Foster", clientCompany: "Foster & Lane Offices", proposalNumber: "CS-2026-045", validUntil: "July 31, 2026",
+    facilityType: "12,000 sq ft corporate office", facilityArea: "12,000 sq ft", cleaningFrequency: "five nights per week",
+    monthlyContractPrice: "$3,200 / month", oneTimeDeepCleanPrice: "$1,450",
+    ecoFriendlyProducts: "Green Seal-certified, low-VOC products",
+    insuranceCoverage: "Fully bonded and insured up to $2M liability", proposalSignature: "SparkleClean Services"
+  },
+  "report-internship": {
+    studentName: "Priya Sharma", rollNumber: "CS21-0447", universityName: "Delhi Technological University",
+    internshipCompany: "Nova Software Agency", internshipDuration: "8 weeks, May–July 2026", mentorName: "Mr. Arjun Nair",
+    departmentAssigned: "Backend Engineering", reportDate: "July 3, 2026",
+    objectivesOfInternship: "To gain hands-on experience building production APIs and to understand agile delivery in a real team.",
+    skillsLearned: "REST API design, code review, testing, and sprint planning",
+    toolsUsed: "Node.js, PostgreSQL, Git, Jira, Postman",
+    learningOutcomes: "I can now design and ship a small API feature end to end, write tests, and collaborate through pull requests with confidence."
+  },
+  "report-book": {
+    studentName: "Ethan Brooks", className: "Grade 10 English", reportDate: "July 3, 2026",
+    bookTitle: "To Kill a Mockingbird", authorName: "Harper Lee", genre: "Southern Gothic / Bildungsroman",
+    publicationYear: "1960", pageCount: "281",
+    plotSummary: "Set in 1930s Alabama, the story follows Scout Finch as her father, lawyer Atticus Finch, defends a Black man wrongly accused of a crime, exposing the town's prejudice through a child's eyes.",
+    themesAnalysis: "The novel explores racial injustice, moral growth, and the loss of innocence, arguing that real courage is standing for what is right even when you're sure to lose.",
+    favoriteQuote: "You never really understand a person until you consider things from his point of view.",
+    personalOpinion: "A moving, still-relevant read; Scout's narration makes hard themes accessible without softening them.",
+    ratingOutOfFive: "5 / 5"
+  },
+  "report-lab": {
+    studentName: "Chloe Bennett", className: "Chemistry 201", reportDate: "July 3, 2026",
+    experimentTitle: "Determining the Concentration of Acetic Acid in Vinegar", experimentNumber: "7",
+    objective: "To determine the molar concentration of acetic acid in commercial vinegar by titration with standardized NaOH.",
+    hypothesis: "Commercial vinegar contains approximately 0.83 M acetic acid (about 5% by mass).",
+    materialsList: "Burette, 25 mL pipette, 0.100 M NaOH, phenolphthalein indicator, conical flask, vinegar sample",
+    procedure: "Pipette 25.0 mL of vinegar into a flask, add indicator, and titrate with NaOH until a faint pink endpoint persists for 30 seconds. Repeat for three concordant titres.",
+    results: "Mean titre 20.6 mL NaOH → 0.082 mol acetic acid per 25 mL = 0.82 M.",
+    discussionOfResults: "The measured 0.82 M is within 1% of the hypothesised value; minor error likely from endpoint judgement. Results support the ~5% labelling."
+  },
+  "business-plan-one-page": {
+    founderName: "Sam Whitfield", date: "July 3, 2026",
+    problem: "Small e-commerce sellers waste hours reconciling orders across marketplaces.",
+    solution: "BrightBox syncs orders, inventory and payouts across every channel in one dashboard.",
+    uniqueValueProp: "One dashboard for every marketplace — set up in 10 minutes, no developer needed.",
+    customerSegments: "Solo and small-team sellers on Shopify, Amazon and Etsy.",
+    revenueStreams: "Tiered monthly SaaS subscriptions plus per-transaction fees at scale.",
+    costStructure: "Cloud hosting, a small engineering team, and paid acquisition.",
+    keyMetrics: "Activation rate, MRR, and net revenue retention.",
+    milestones90Days: "Launch beta, reach 100 paying sellers, and hit $10K MRR.", fundingAsk: "$250,000 pre-seed"
+  },
+  "business-plan-lean-canvas": {
+    founderName: "Nadia Khan", date: "July 3, 2026",
+    problemTop3: "1) Freelancers lose track of deadlines; 2) invoicing is manual; 3) cash flow is unpredictable.",
+    customerSegments: "Independent freelancers and 2–5 person studios.",
+    uniqueValueProposition: "The single workspace that turns a project into an invoice automatically.",
+    solutionTop3: "1) Deadline board; 2) one-click invoicing; 3) cash-flow forecast.",
+    channels: "Content SEO, freelancer communities, and referrals.",
+    revenueStreams: "Freemium with a $12/month Pro tier.", costStructure: "Engineering, hosting, and content.",
+    keyMetrics: "Weekly active users, free-to-paid conversion, churn.",
+    unfairAdvantage: "Proprietary project-to-invoice automation and an engaged community."
+  },
+  "quotation-security-services": {
+    address: "Tower B, DLF Cyber City, Gurugram 122002", email: "ops@guardwell.com", phone: "+91 124 400 5500",
+    clientName: "Vikram Malhotra", clientCompany: "Horizon Malls Pvt. Ltd.", quoteNumber: "QT-SEC-2026-018",
+    quoteDate: "July 3, 2026", validUntil: "July 31, 2026", siteType: "retail mall premises",
+    psaraLicenseNo: "PSARA/HR/2021/4477", notes: "Deployment can begin within 7 days of a signed work order."
+  },
+  "quotation-amc": {
+    address: "22 Residency Road, Bengaluru 560025", email: "support@techcare.io", phone: "+91 80 4123 8800",
+    clientName: "Ananya Rao", clientCompany: "Finserv Solutions Pvt. Ltd.", quoteNumber: "QT-AMC-2026-031",
+    quoteDate: "July 3, 2026", validUntil: "July 31, 2026", amcType: "Comprehensive AMC (labour + listed spares)",
+    visitsPerYear: "12 preventive visits + unlimited breakdown calls", responseTimeSla: "4 business hours on-site",
+    contractStartDate: "August 1, 2026", contractEndDate: "July 31, 2027", notes: "Renewable annually with a 5% escalation."
   }
 };
 

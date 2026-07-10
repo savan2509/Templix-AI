@@ -1598,4 +1598,104 @@ export const businessPlansTemplates = [
       }
     }
   },
+  {
+    id: "business-plan-one-page",
+    slug: "business-plan-one-page",
+    title: "One-Page Business Plan Template",
+    description: "A lean, single-page business plan: problem, solution, value proposition, customers, revenue, costs, metrics and 90-day milestones.",
+    isPremium: false,
+    categorySlug: "business-plans",
+    categoryName: "Business Plans",
+    content: {
+      title: "One-Page Business Plan",
+      fields: ["companyName", "founderName", "date", "problem", "solution", "uniqueValueProp", "customerSegments", "revenueStreams", "costStructure", "keyMetrics", "milestones90Days", "fundingAsk"],
+      layout: { header: "ONE-PAGE BUSINESS PLAN", footer: "A living one-pager — revisit and update quarterly." },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{companyName}} — One-Page Plan" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared by {{founderName}} · {{date}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Problem" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{problem}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Solution" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{solution}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Unique Value Proposition" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{uniqueValueProp}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Customers & Revenue" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Customer segments: " }, { type: "text", text: "{{customerSegments}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Revenue streams: " }, { type: "text", text: "{{revenueStreams}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Cost structure: " }, { type: "text", text: "{{costStructure}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Traction & Next 90 Days" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Key metrics: " }, { type: "text", text: "{{keyMetrics}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "90-day milestones: " }, { type: "text", text: "{{milestones90Days}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Funding ask: " }, { type: "text", text: "{{fundingAsk}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "business-plan-lean-canvas",
+    slug: "business-plan-lean-canvas",
+    title: "Lean Canvas Template",
+    description: "The 9-block Lean Canvas: problem, customer segments, unique value proposition, solution, channels, revenue, costs, metrics and unfair advantage.",
+    isPremium: false,
+    categorySlug: "business-plans",
+    categoryName: "Business Plans",
+    content: {
+      title: "Lean Canvas",
+      fields: ["companyName", "founderName", "date", "problemTop3", "customerSegments", "uniqueValueProposition", "solutionTop3", "channels", "revenueStreams", "costStructure", "keyMetrics", "unfairAdvantage"],
+      layout: { header: "LEAN CANVAS", footer: "One-page strategy snapshot — iterate as you learn." },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{companyName}} — Lean Canvas" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared by {{founderName}} · {{date}}" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Block" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Detail" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Problem (top 3)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{problemTop3}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Customer Segments" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{customerSegments}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Unique Value Proposition" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{uniqueValueProposition}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Solution (top 3)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{solutionTop3}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Channels" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{channels}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Revenue Streams" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{revenueStreams}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Cost Structure" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{costStructure}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Key Metrics" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{keyMetrics}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Unfair Advantage" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{unfairAdvantage}}" }] }] }
+            ] }
+          ] }
+        ]
+      }
+    }
+  },
 ];

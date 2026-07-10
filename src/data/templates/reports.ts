@@ -1378,4 +1378,111 @@ export const reportsTemplates = [
       }
     }
   },
+  {
+    id: "report-internship",
+    slug: "report-internship",
+    title: "Internship Report Template",
+    description: "End-of-internship report for students — objectives, tasks performed, skills learned, tools used, and learning outcomes.",
+    isPremium: false,
+    categorySlug: "reports",
+    categoryName: "Reports",
+    content: {
+      title: "Internship Report",
+      fields: ["studentName", "rollNumber", "universityName", "internshipCompany", "internshipDuration", "mentorName", "departmentAssigned", "reportDate", "objectivesOfInternship", "skillsLearned", "toolsUsed", "learningOutcomes"],
+      layout: { header: "INTERNSHIP REPORT", footer: "Submitted in partial fulfilment of the internship requirement." },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Internship Report" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{studentName}} (Roll No. {{rollNumber}}), {{universityName}} — submitted {{reportDate}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Internship at {{internshipCompany}}, {{departmentAssigned}} ({{internshipDuration}}), under {{mentorName}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Objectives" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{objectivesOfInternship}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Tasks Performed" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Shadowed the team and completed onboarding on internal tools and workflows." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Contributed to a live project, from requirements through testing." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Presented weekly progress to the mentor and incorporated feedback." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Skills & Tools" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Skills learned: " }, { type: "text", text: "{{skillsLearned}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tools used: " }, { type: "text", text: "{{toolsUsed}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Learning Outcomes" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{learningOutcomes}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "report-book",
+    slug: "report-book",
+    title: "Book Report Template",
+    description: "Student book report with summary, main characters, theme analysis, a favourite quote, personal opinion, and rating.",
+    isPremium: false,
+    categorySlug: "reports",
+    categoryName: "Reports",
+    content: {
+      title: "Book Report",
+      fields: ["studentName", "className", "reportDate", "bookTitle", "authorName", "genre", "publicationYear", "pageCount", "plotSummary", "themesAnalysis", "favoriteQuote", "personalOpinion", "ratingOutOfFive"],
+      layout: { header: "BOOK REPORT", footer: "Submitted for English / Literature coursework." },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#581c87", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Book Report: {{bookTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "By {{studentName}}, {{className}} — {{reportDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "\"{{bookTitle}}\" by {{authorName}} · {{genre}} · {{publicationYear}} · {{pageCount}} pages" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{plotSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Main Characters" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "The protagonist, whose choices drive the central conflict." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "A key supporting character who tests and changes the protagonist." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Theme Analysis" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{themesAnalysis}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Favourite Quote" }] },
+          { type: "paragraph", content: [{ type: "text", text: "\"{{favoriteQuote}}\"" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "My Opinion" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{personalOpinion}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Rating: " }, { type: "text", text: "{{ratingOutOfFive}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "report-lab",
+    slug: "report-lab",
+    title: "Lab Report Template",
+    description: "Science lab report with objective, hypothesis, materials, procedure, results, and discussion for students.",
+    isPremium: false,
+    categorySlug: "reports",
+    categoryName: "Reports",
+    content: {
+      title: "Lab Report",
+      fields: ["studentName", "className", "reportDate", "experimentTitle", "experimentNumber", "objective", "hypothesis", "materialsList", "procedure", "results", "discussionOfResults", "instructorName"],
+      layout: { header: "LABORATORY REPORT", footer: "Submitted for science coursework — data recorded during the session." },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Lab {{experimentNumber}}: {{experimentTitle}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{studentName}}, {{className}} · Instructor: {{instructorName}} · {{reportDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{objective}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Hypothesis" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{hypothesis}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Materials" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{materialsList}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Procedure" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{procedure}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Results" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{results}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Discussion" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{discussionOfResults}}" }] }
+        ]
+      }
+    }
+  },
 ];

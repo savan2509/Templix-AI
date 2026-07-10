@@ -1661,5 +1661,110 @@ export const quotationsTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "quotation-security-services",
+    slug: "quotation-security-services",
+    title: "Security Services Quotation Template",
+    description: "Manpower security quotation priced by guards, shifts, and monthly rate — with supervisor, equipment, and PSARA licence details.",
+    isPremium: true,
+    categorySlug: "quotations",
+    categoryName: "Quotations",
+    content: {
+      title: "Security Services Quotation",
+      fields: ["companyName", "address", "email", "phone", "clientName", "clientCompany", "quoteNumber", "quoteDate", "validUntil", "siteType", "psaraLicenseNo", "notes"],
+      layout: { header: "SECURITY SERVICES QUOTATION", footer: "Rates are per calendar month. Uniform, training and statutory compliance included." },
+      styles: { primaryColor: "#1f2937", secondaryColor: "#111827", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SECURITY SERVICES QUOTATION" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{address}} — {{email}}, {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for " }, { type: "text", marks: [{ type: "bold" }], text: "{{clientName}}" }, { type: "text", text: " of {{clientCompany}} for a {{siteType}}. Quotation {{quoteNumber}} issued {{quoteDate}}, valid until {{validUntil}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Manpower Deployment (Monthly)" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Role" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Guards" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Shift" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Rate / Guard" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Unarmed Guard" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "12 hr" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$7,200.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Shift Supervisor" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "12 hr" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,300.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,300.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "$9,500.00    Tax (8%): $760.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Monthly Contract Value: " }, { type: "text", text: "$10,260.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "PSARA Licence: " }, { type: "text", text: "{{psaraLicenseNo}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{notes}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "quotation-amc",
+    slug: "quotation-amc",
+    title: "AMC (Annual Maintenance Contract) Quotation Template",
+    description: "Annual Maintenance Contract quotation for IT or HVAC equipment — visits per year, response SLA, parts coverage and annual value.",
+    isPremium: true,
+    categorySlug: "quotations",
+    categoryName: "Quotations",
+    content: {
+      title: "AMC Quotation",
+      fields: ["companyName", "address", "email", "phone", "clientName", "clientCompany", "quoteNumber", "quoteDate", "validUntil", "amcType", "visitsPerYear", "responseTimeSla", "contractStartDate", "contractEndDate", "notes"],
+      layout: { header: "ANNUAL MAINTENANCE CONTRACT QUOTATION", footer: "Comprehensive AMC — labour and listed spares included. Consumables billed at actuals." },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#164e63", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "AMC QUOTATION" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{address}} — {{email}}, {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for " }, { type: "text", marks: [{ type: "bold" }], text: "{{clientName}}" }, { type: "text", text: " of {{clientCompany}}. Quotation {{quoteNumber}} issued {{quoteDate}}, valid until {{validUntil}}." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contract: " }, { type: "text", text: "{{amcType}}   |   {{visitsPerYear}}   |   Response SLA: {{responseTimeSla}}   |   Term: {{contractStartDate}} to {{contractEndDate}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Equipment Covered" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Equipment" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Annual Rate" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Desktop workstations" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$60.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$2,400.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Network servers" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "3" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$450.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,350.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Network printers" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "6" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$125.00" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$750.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "$4,500.00    Tax (8%): $360.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Annual Contract Value: " }, { type: "text", text: "$4,860.00" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{notes}}" }] }
+        ]
+      }
+    }
   }
 ];

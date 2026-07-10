@@ -1217,5 +1217,128 @@ export const resumesTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "resume-career-change",
+    slug: "resume-career-change",
+    title: "Career Change Resume Template",
+    description: "Skills-first (functional) resume for career changers — leads with transferable skills, not a reverse-chronological job list.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes",
+    content: {
+      title: "Career Change Resume",
+      fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "portfolio", "careerSummary", "targetIndustry", "degree", "university", "graduationYear"],
+      layout: { header: "CAREER CHANGE RESUME", footer: "Functional format — references available on request." },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} · {{email}} · {{phone}} · {{location}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "LinkedIn: {{linkedin}} · Portfolio: {{portfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Career Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{careerSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Transferable Skills" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project delivery — " }, { type: "text", text: "led cross-functional initiatives end to end, on time and within budget." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Data & analysis — " }, { type: "text", text: "turned messy data into clear decisions using SQL and spreadsheets." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Communication — " }, { type: "text", text: "translated technical detail for non-technical stakeholders and clients." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Relevant Experience" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Operations Coordinator " }, { type: "text", text: "— Brightway Retail (2020–2026)" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Redesigned a fulfilment workflow that cut order errors by 35%." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Built the reporting dashboard the leadership team now uses weekly." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Retraining for {{targetIndustry}}" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Completed a full-stack development bootcamp (600+ hours)." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Shipped three portfolio projects, deployed and documented." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}})" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "resume-internship",
+    slug: "resume-internship",
+    title: "Internship Resume / CV Template",
+    description: "Student-focused internship CV that leads with education, coursework, academic projects and skills — no long work history required.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes",
+    content: {
+      title: "Internship CV",
+      fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "portfolio", "careerObjective", "degree", "university", "graduationYear", "gpa"],
+      layout: { header: "INTERNSHIP CURRICULUM VITAE", footer: "Available for a summer / semester internship." },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} · {{email}} · {{phone}} · {{location}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "LinkedIn: {{linkedin}} · Portfolio: {{portfolio}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Objective" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{careerObjective}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{degree}} " }, { type: "text", text: "— {{university}}, expected {{graduationYear}} (GPA {{gpa}})" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Academic Projects" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Campus Events App — " }, { type: "text", text: "built a React app used by 400+ students to track club events." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Data Study — " }, { type: "text", text: "analysed a public dataset in Python and presented findings to the class." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Relevant Coursework" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Data Structures, Databases, Web Development, Statistics, Discrete Math" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Skills & Activities" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "JavaScript, Python, SQL, Git, Figma" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Treasurer, Computer Science Society" }] }] }
+          ] }
+        ]
+      }
+    }
+  },
+  {
+    id: "cv-academic",
+    slug: "cv-academic",
+    title: "Academic CV Template",
+    description: "Full academic curriculum vitae for researchers and professors — publications, grants, teaching, and conference presentations.",
+    isPremium: false,
+    categorySlug: "resumes",
+    categoryName: "Resumes",
+    content: {
+      title: "Academic CV",
+      fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "researchInterests", "dissertationTitle", "advisorName", "degree", "university", "graduationYear"],
+      layout: { header: "ACADEMIC CURRICULUM VITAE", footer: "Full publication list and references available on request." },
+      styles: { primaryColor: "#065f46", secondaryColor: "#064e3b" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} · {{email}} · {{phone}} · {{location}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Research Interests" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{researchInterests}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Education" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{degree}}, {{university}} ({{graduationYear}}). Dissertation: \"{{dissertationTitle}}\", advised by {{advisorName}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Selected Publications" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Rossi, E. et al. (2025). Adaptive models for climate resilience. Nature Climate, 15(3), 210–224." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Rossi, E. (2024). A survey of transfer learning in ecology. J. Applied AI, 8(1), 44–67." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Grants & Awards" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Horizon Europe Research Grant — €480,000 (2024–2027), Principal Investigator." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Early-Career Researcher Award, European Science Foundation (2023)." }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Teaching" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Graduate seminar in Machine Learning; undergraduate Statistics; supervised 6 MSc theses." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Selected Conferences" }] },
+          { type: "paragraph", content: [{ type: "text", text: "NeurIPS 2025 (poster); ICML 2024 (talk); European Ecology Congress 2023 (keynote)." }] }
+        ]
+      }
+    }
   }
 ];

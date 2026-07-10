@@ -1083,5 +1083,79 @@ export const contractsTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "contract-roommate",
+    slug: "contract-roommate",
+    title: "Roommate Agreement Template",
+    description: "Shared-housing agreement covering rent split, deposit, utilities, chores, quiet hours, guests, and move-out notice.",
+    isPremium: false,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Roommate Agreement",
+      fields: ["primaryTenantName", "roommateName", "propertyAddress", "effectiveDate", "leaseTermMonths", "monthlyRent", "rentSplit", "securityDeposit", "depositSplit", "utilitiesSplitMethod", "choresSchedule", "quietHours", "guestPolicy", "moveOutNoticePeriod", "governingLaw"],
+      layout: { header: "ROOMMATE AGREEMENT", footer: "Signed voluntarily by both roommates as a good-faith house agreement." },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "ROOMMATE AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This agreement is made on {{effectiveDate}} between {{primaryTenantName}} and {{roommateName}} (the Roommates) for the shared residence at {{propertyAddress}}, for a term of {{leaseTermMonths}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Rent" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Total monthly rent is {{monthlyRent}}, split {{rentSplit}}. Each roommate pays their share by the 1st of each month directly to the landlord or designated account." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Security Deposit" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The security deposit of {{securityDeposit}} is contributed {{depositSplit}} and refunded on the same basis after deductions for damage beyond normal wear." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Utilities & Shared Costs" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Electricity, water, internet and shared supplies are divided {{utilitiesSplitMethod}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. House Rules" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Chores: " }, { type: "text", text: "{{choresSchedule}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Quiet hours: " }, { type: "text", text: "{{quietHours}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Guests: " }, { type: "text", text: "{{guestPolicy}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Moving Out" }] },
+          { type: "paragraph", content: [{ type: "text", text: "A roommate who intends to leave must give {{moveOutNoticePeriod}} written notice and remains responsible for their share until a replacement is agreed. This agreement is governed by {{governingLaw}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Roommate 1: " }, { type: "text", text: "{{primaryTenantName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Roommate 2: " }, { type: "text", text: "{{roommateName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "contract-social-media",
+    slug: "contract-social-media",
+    title: "Social Media Management Contract Template",
+    description: "Agreement for social media management services — platform scope, posting cadence, retainer, approvals, reporting, and content ownership.",
+    isPremium: true,
+    categorySlug: "contracts",
+    categoryName: "Contracts",
+    content: {
+      title: "Social Media Management Contract",
+      fields: ["companyName", "clientName", "clientCompany", "effectiveDate", "endDate", "platformScope", "postsPerMonth", "monthlyRetainer", "contentApprovalProcess", "responseTimeSla", "reportingFrequency", "adSpendManagementFee", "contentOwnership", "terminationClause"],
+      layout: { header: "SOCIAL MEDIA MANAGEMENT AGREEMENT", footer: "Either party may terminate per the notice terms below." },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SOCIAL MEDIA MANAGEMENT AGREEMENT" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This agreement is made on {{effectiveDate}} between {{companyName}} (the Agency) and {{clientName}} of {{clientCompany}} (the Client), running through {{endDate}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Services" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The Agency will manage the Client's presence across {{platformScope}}, producing and scheduling {{postsPerMonth}} and engaging with the community during business days." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Fees" }] },
+          { type: "paragraph", content: [{ type: "text", text: "The Client pays a monthly retainer of {{monthlyRetainer}}. Paid advertising is billed separately, plus an ad-spend management fee of {{adSpendManagementFee}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Approvals & Response Times" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Content follows this approval process: {{contentApprovalProcess}}. The Agency responds to Client requests within {{responseTimeSla}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Reporting & Ownership" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Performance reporting is delivered {{reportingFrequency}}. Content ownership: {{contentOwnership}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Term & Termination" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{terminationClause}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Agency: " }, { type: "text", text: "{{companyName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}, {{clientCompany}}" }] }
+        ]
+      }
+    }
   }
 ];

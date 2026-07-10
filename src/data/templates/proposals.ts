@@ -1570,5 +1570,73 @@ export const proposalsTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "proposal-one-page",
+    slug: "proposal-one-page",
+    title: "One-Page Business Proposal Template",
+    description: "A single-page proposal that states the ask, why you, the key benefits, proof, one price, and a deadline to accept.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "One-Page Business Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "theAsk", "whyUs", "keyBenefits", "socialProof", "singlePrice", "deadlineToAccept", "proposalSignature"],
+      layout: { header: "ONE-PAGE PROPOSAL", footer: "One page, one price, one clear next step." },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Proposal for {{clientName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "From {{companyName}} · No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "The Ask" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{theAsk}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Why {{companyName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{whyUs}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "What You Get" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{keyBenefits}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Proof" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{socialProof}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Investment" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{singlePrice}}" }, { type: "text", text: " — all-inclusive." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Accept by {{deadlineToAccept}}. " }, { type: "text", text: "Reply to this proposal or sign below to start. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "proposal-cleaning-services",
+    slug: "proposal-cleaning-services",
+    title: "Cleaning Services Proposal Template",
+    description: "Commercial cleaning proposal with facility scope, frequency, eco-friendly options, monthly and one-time deep-clean pricing.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Cleaning Services Proposal",
+      fields: ["companyName", "clientName", "clientCompany", "proposalNumber", "validUntil", "facilityType", "facilityArea", "cleaningFrequency", "monthlyContractPrice", "oneTimeDeepCleanPrice", "ecoFriendlyProducts", "insuranceCoverage", "proposalSignature"],
+      layout: { header: "CLEANING SERVICES PROPOSAL", footer: "Fully insured. Satisfaction guaranteed or we re-clean free." },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Cleaning Services Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}}, {{clientCompany}} by {{companyName}} · No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Facility & Scope" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This proposal covers a {{facilityType}} of approximately {{facilityArea}}, serviced {{cleaningFrequency}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "What's Included" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Floors, restrooms, kitchens, and high-touch surfaces sanitised each visit." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Trash removal, restocking of consumables, and interior glass." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Products: " }, { type: "text", text: "{{ecoFriendlyProducts}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Monthly contract: " }, { type: "text", text: "{{monthlyContractPrice}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "One-time deep clean: " }, { type: "text", text: "{{oneTimeDeepCleanPrice}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Assurance" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{insuranceCoverage}}. To proceed, countersign below. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
   }
 ];

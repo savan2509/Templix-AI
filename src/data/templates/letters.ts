@@ -917,5 +917,189 @@ export const lettersTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "letter-salary-increase",
+    slug: "letter-salary-increase",
+    title: "Salary Increment Request Letter Template",
+    description: "Formal letter requesting a salary increase, backed by achievements, tenure, and market benchmarks.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Salary Increment Request Letter",
+      fields: ["fullName", "jobTitle", "department", "companyName", "email", "phone", "letterDate", "managerName", "currentSalary", "requestedSalary", "incrementPercent", "yearsInRole", "proposedEffectiveDate", "signatureFullName"],
+      layout: { header: "SALARY INCREMENT REQUEST", footer: "Submitted for your review and consideration." },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}} — {{jobTitle}}, {{department}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{email}} | {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To: {{managerName}}, {{companyName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Subject: Request for Salary Review" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{managerName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing to respectfully request a review of my current compensation. Over the past {{yearsInRole}} in the {{jobTitle}} role, I have consistently taken on greater responsibility and delivered measurable results for the team, and I believe my pay should now reflect that contribution." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Recent achievements:" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Owned and delivered high-impact projects ahead of schedule." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Improved a core process, reducing turnaround time and cost." }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Mentored newer team members and lifted overall output." }] }] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", text: "Based on my performance and market benchmarks for this role, I would like to propose an adjustment from {{currentSalary}} to {{requestedSalary}} (approximately {{incrementPercent}}), effective {{proposedEffectiveDate}}. I am happy to discuss this at your convenience and to share supporting data." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thank you for considering my request and for your continued support of my growth here." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sincerely," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "letter-leave-application",
+    slug: "letter-leave-application",
+    title: "Leave Application Letter Template",
+    description: "Formal leave application stating leave type, dates, reason, and handover — sick, casual, or annual leave.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Leave Application Letter",
+      fields: ["fullName", "employeeId", "jobTitle", "department", "companyName", "letterDate", "managerName", "leaveType", "leaveFromDate", "leaveToDate", "totalDays", "leaveReason", "workHandoverTo", "contactDuringLeave", "rejoiningDate", "signatureFullName"],
+      layout: { header: "LEAVE APPLICATION", footer: "Kindly approve and forward to HR for records." },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{fullName}} (ID: {{employeeId}}) — {{jobTitle}}, {{department}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To: {{managerName}}, {{companyName}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Subject: Application for {{leaveType}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{managerName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I am writing to request {{leaveType}} for {{totalDays}}, from {{leaveFromDate}} to {{leaveToDate}}. The reason for my leave is {{leaveReason}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "To ensure continuity, I will hand over my ongoing responsibilities to {{workHandoverTo}} before I leave, and I will remain reachable for anything urgent at {{contactDuringLeave}}. I plan to resume work on {{rejoiningDate}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I would be grateful for your approval. Please let me know if you need any further information." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thank you," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "letter-noc",
+    slug: "letter-noc",
+    title: "No Objection Certificate (NOC) Template",
+    description: "Formal No Objection Certificate issued by an employer or authority for visas, employment, property, or vehicle transfer.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "No Objection Certificate",
+      fields: ["companyName", "address", "email", "phone", "letterDate", "referenceNumber", "applicantName", "applicantId", "designation", "nocPurpose", "objectDescription", "validityPeriod", "issuingAuthorityName", "issuingAuthorityDesignation"],
+      layout: { header: "NO OBJECTION CERTIFICATE", footer: "This certificate is issued on request and is valid for the stated purpose only." },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "NO OBJECTION CERTIFICATE" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{address}} — {{email}}, {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Ref: {{referenceNumber}}    Date: {{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "TO WHOMSOEVER IT MAY CONCERN" }] },
+          { type: "paragraph", content: [{ type: "text", text: "This is to certify that {{applicantName}} (ID: {{applicantId}}), serving as {{designation}} with {{companyName}}, has our No Objection for {{nocPurpose}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "We have no objection to {{objectDescription}}. To the best of our knowledge the applicant has no outstanding obligations that would prevent this, and this certificate is issued at their request without any liability on the part of {{companyName}}." }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Validity: " }, { type: "text", text: "{{validityPeriod}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "For {{companyName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{issuingAuthorityName}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{issuingAuthorityDesignation}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "letter-business-introduction",
+    slug: "letter-business-introduction",
+    title: "Business Introduction Letter & Cold Email Template",
+    description: "Concise B2B introduction / cold outreach email that opens with a hook, states value, adds proof, and asks for a meeting.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Business Introduction Letter",
+      fields: ["fullName", "jobTitle", "companyName", "email", "phone", "letterDate", "recipientName", "recipientCompany", "yourCompanyOneLiner", "painPointHook", "valueProposition", "socialProofLine", "callToAction", "meetingLink", "signatureFullName"],
+      layout: { header: "BUSINESS INTRODUCTION", footer: "Sent as a brief introduction — no obligation." },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hi {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{painPointHook}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "I'm {{fullName}}, {{jobTitle}} at {{companyName}} — {{yourCompanyOneLiner}}. {{valueProposition}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{socialProofLine}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{callToAction}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "You can grab a slot here: {{meetingLink}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Best," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}} — {{email}}, {{phone}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "P.S. If {{recipientCompany}} isn't the right fit right now, a quick reply pointing me to the right person is hugely appreciated." }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "letter-payment-reminder",
+    slug: "letter-payment-reminder",
+    title: "Payment Reminder Email Template",
+    description: "Polite but firm overdue-invoice reminder stating the amount, due date, days overdue, and a payment link.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Payment Reminder Email",
+      fields: ["companyName", "email", "phone", "letterDate", "recipientName", "clientCompany", "invoiceNumber", "invoiceAmount", "dueDate", "daysOverdue", "paymentLink", "lateFeeWarning", "signatureFullName"],
+      layout: { header: "PAYMENT REMINDER", footer: "If payment has already been sent, please disregard this notice." },
+      styles: { primaryColor: "#b45309", secondaryColor: "#78350f" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Hi {{recipientName}} ({{clientCompany}})," }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Subject: Reminder — Invoice {{invoiceNumber}} is {{daysOverdue}} overdue" }] },
+          { type: "paragraph", content: [{ type: "text", text: "I hope you're well. This is a friendly reminder that invoice {{invoiceNumber}} for {{invoiceAmount}} was due on {{dueDate}} and is now {{daysOverdue}} past due." }] },
+          { type: "paragraph", content: [{ type: "text", text: "You can settle it in a couple of clicks here: {{paymentLink}}. If the payment is already on its way, thank you — please ignore this note." }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{lateFeeWarning}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Please let me know if there's any issue with the invoice and I'll sort it out right away." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Thanks," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}}, {{companyName}} — {{email}}, {{phone}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "letter-reference-request",
+    slug: "letter-reference-request",
+    title: "Reference Request Email Template",
+    description: "Courteous email asking a former manager or colleague to serve as a professional reference for a specific role.",
+    isPremium: false,
+    categorySlug: "letters",
+    categoryName: "Letters",
+    content: {
+      title: "Reference Request Email",
+      fields: ["fullName", "jobTitle", "email", "phone", "letterDate", "recipientName", "targetJobTitle", "targetCompany", "relationshipContext", "workedTogetherPeriod", "referenceDeadline", "signatureFullName"],
+      layout: { header: "REFERENCE REQUEST", footer: "Thank you for considering this request." },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "paragraph", content: [{ type: "text", text: "{{letterDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Dear {{recipientName}}," }] },
+          { type: "paragraph", content: [{ type: "text", text: "I hope you're doing well. {{relationshipContext}} during {{workedTogetherPeriod}}, and I've always valued your perspective on my work." }] },
+          { type: "paragraph", content: [{ type: "text", text: "I'm applying for the {{targetJobTitle}} position at {{targetCompany}}, and I would be grateful if you'd be willing to serve as a professional reference. Your insight into my work as a {{jobTitle}} would carry real weight with the hiring team." }] },
+          { type: "paragraph", content: [{ type: "text", text: "If you're comfortable, the team may reach out before {{referenceDeadline}}. I'm happy to share my updated resume and a short summary of the role so the details are fresh." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Completely understand if now isn't a good time — thank you either way." }] },
+          { type: "paragraph", content: [{ type: "text", text: "Warm regards," }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{signatureFullName}} — {{email}}, {{phone}}" }] }
+        ]
+      }
+    }
   }
 ];

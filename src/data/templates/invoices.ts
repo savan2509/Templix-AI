@@ -1969,5 +1969,107 @@ export const invoicesTemplates = [
         ]
       }
     }
+  },
+  {
+    id: "invoice-commercial-export",
+    slug: "invoice-commercial-export",
+    title: "Commercial Export Invoice Template",
+    description: "International trade invoice with HS codes, Incoterms, country of origin, weights and currency for customs clearance.",
+    isPremium: true,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Commercial Export Invoice",
+      fields: ["companyName", "companyAddress", "companyEmail", "clientName", "clientAddress", "invoiceNumber", "invoiceDate", "hsCode", "incoterms", "countryOfOrigin", "countryOfDestination", "currencyCode", "grossWeight", "netWeight", "packageCount", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
+      layout: { header: "COMMERCIAL EXPORT INVOICE", footer: "Goods exported under zero-rated supply. Certified true and correct for customs purposes." },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#164e63" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "COMMERCIAL INVOICE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Date: {{invoiceDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Exporter" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} — {{companyEmail}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Consignee / Importer" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clientName}}, {{clientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "Incoterms {{incoterms}}   |   Origin: {{countryOfOrigin}}   |   Destination: {{countryOfDestination}}   |   Currency: {{currencyCode}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Goods Description" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Description" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "HS Code" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Cotton knitted t-shirts (assorted)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{hsCode}}" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1,200 pcs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$7,200.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Cotton woven shirts (formal)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "6205.20" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "600 pcs" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$5,400.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Packages: " }, { type: "text", text: "{{packageCount}}   Gross Wt: {{grossWeight}}   Net Wt: {{netWeight}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "FOB Subtotal: " }, { type: "text", text: "{{subtotal}}   Export Duty ({{tax}}): {{taxAmount}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total ({{currencyCode}}): " }, { type: "text", text: "{{total}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment: " }, { type: "text", text: "{{paymentTerms}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "invoice-credit-note",
+    slug: "invoice-credit-note",
+    title: "Credit Note / Refund Invoice Template",
+    description: "Credit note that references the original invoice, itemizes the credited amount, tax adjustment and refund method.",
+    isPremium: false,
+    categorySlug: "invoices",
+    categoryName: "Invoices",
+    content: {
+      title: "Credit Note",
+      fields: ["companyName", "companyAddress", "companyEmail", "clientName", "clientAddress", "creditNoteNumber", "invoiceDate", "originalInvoiceNumber", "originalInvoiceDate", "refundReason", "refundMethod", "subtotal", "tax", "total", "amountDue", "approvedBy"],
+      layout: { header: "CREDIT NOTE", footer: "This credit note adjusts the referenced invoice. Retain for your records." },
+      styles: { primaryColor: "#be123c", secondaryColor: "#4c0519" },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CREDIT NOTE" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Credit Note #: " }, { type: "text", text: "{{creditNoteNumber}}   Date: {{invoiceDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Against Invoice: " }, { type: "text", text: "{{originalInvoiceNumber}} dated {{originalInvoiceDate}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} — {{companyEmail}}" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Credited To" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{clientName}}, {{clientAddress}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Reason: " }, { type: "text", text: "{{refundReason}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Credited Items" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Item" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Qty" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Credit" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Returned goods — damaged in transit" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$180.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Overcharge correction" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$45.00" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Credit Subtotal: " }, { type: "text", text: "{{subtotal}}   Tax Adjustment ({{tax}}): {{taxAmount}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Credit: " }, { type: "text", text: "{{total}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Refund method: " }, { type: "text", text: "{{refundMethod}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Approved by: " }, { type: "text", text: "{{approvedBy}}" }] }
+        ]
+      }
+    }
   }
 ];
