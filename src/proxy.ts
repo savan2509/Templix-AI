@@ -1,11 +1,27 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { PRODUCTION_URL } from "@/config/site";
 
 const locales = ["en", "es", "de", "fr", "ar"];
 const defaultLocale = "en";
 
+// Deployment-platform alias suffixes. A production request that lands on one of
+// these (e.g. templix-ai.vercel.app) is permanently redirected to the custom
+// domain so Google consolidates every ranking signal there instead of splitting
+// them across two hostnames — the recurring "canonical split" problem.
+const PLATFORM_ALIAS = /\.(vercel\.app|netlify\.app|onrender\.com)$/i;
+
 export default async function proxy(req: NextRequest) {
+  // ── Consolidate the platform alias onto the production domain (301/308) ──────
+  // Gated on VERCEL_ENV === "production" so preview and development deployments,
+  // which legitimately serve on *.vercel.app, are never redirected.
+  const host = req.headers.get("host") || "";
+  if (process.env.VERCEL_ENV === "production" && PLATFORM_ALIAS.test(host)) {
+    const dest = new URL(req.nextUrl.pathname + req.nextUrl.search, PRODUCTION_URL);
+    return NextResponse.redirect(dest, 308);
+  }
+
   const { pathname } = req.nextUrl;
   let supabaseResponse = NextResponse.next({ request: req });
 
