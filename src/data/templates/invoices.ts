@@ -767,9 +767,9 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$8,000.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Milestone Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "This Release (M2): " }, { type: "text", text: "$8,000.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$640.00" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Due This Release: " }, { type: "text", text: "{{total}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Due This Release: " }, { type: "text", text: "$8,640.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "Released per the Master Service Agreement schedule. Milestone M3 invoices upon acceptance sign-off." }] }
         ]
       }

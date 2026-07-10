@@ -615,7 +615,9 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     hourlyRate: "$150.00",
     total: "$2,400.00",
     tax: "8%",
-    discount: "$50.00"
+    // Body renders {{paymentTerms}}; keep it Net 15 to match the footer's
+    // "Net 15 terms" instead of the global Net 30 default.
+    paymentTerms: "Net 15"
   },
   "invoice-web-developer": {
     hourlyRate: "$95.00",
@@ -1200,8 +1202,10 @@ export const SLUG_BRAND: Record<string, string> = {
 export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "invoice-timesheet": {
     billingPeriodStart: "June 1, 2026",
-    billingPeriodEnd: "June 30, 2026",
-    totalHours: "160"
+    billingPeriodEnd: "June 5, 2026",
+    // Must match the daily log in the preview table (Mon/Wed/Fri × 8h = 24h),
+    // or the header contradicts the visible rows.
+    totalHours: "24"
   },
   "invoice-milestone": {
     contractRef: "MSA-2026-0042",
