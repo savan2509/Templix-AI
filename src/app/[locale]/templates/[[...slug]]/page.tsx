@@ -963,7 +963,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             </section>
 
             {/* Template Compliance & Structuring Standards */}
-            <section className="pt-16 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
+            {/* Spans the full grid width — without col-span-4 it lands in a single
+                narrow sidebar-width cell instead of a full-width band below. */}
+            <section className="lg:col-span-4 pt-16 border-t border-zinc-200 dark:border-zinc-800 space-y-6">
               <div className="rounded-2xl bg-zinc-100 dark:bg-zinc-900/40 p-6 md:p-8 space-y-4">
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
                   {t.complianceHeading}
