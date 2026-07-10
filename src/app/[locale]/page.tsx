@@ -95,8 +95,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     },
     openGraph: {
-      title: "Templix AI — Free Professional Templates & AI Document Editor",
-      description: "Create invoices, resumes, contracts, proposals and business documents in minutes.",
+      // Keep the OG/Twitter title aligned with the document <title> (brand
+      // appended, since OG titles aren't run through the layout's template) so
+      // the page presents one consistent message in search and social.
+      title: `${title} | Templix AI`,
+      description,
       url: `${SITE_URL}/${locale}`,
       siteName: "Templix AI",
       type: "website",
@@ -105,8 +108,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: "Templix AI — Free Professional Templates & AI Document Editor",
-      description: "Create invoices, resumes, contracts, proposals and business documents in minutes.",
+      title: `${title} | Templix AI`,
+      description,
       images: ["/og-default.jpg"],
     },
   };

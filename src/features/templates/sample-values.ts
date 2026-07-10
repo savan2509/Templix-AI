@@ -632,9 +632,10 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     tax: "8%"
   },
   "invoice-contractor": {
-    total: "$9,700.00",
-    tax: "8%",
-    discount: "$50.00"
+    // Labor Subtotal must equal the two hardcoded labor rows in the preview
+    // table (demolition $1,680 + framing $6,720), or the breakdown won't add up.
+    laborCost: "$8,400.00",
+    tax: "8%"
   },
   "invoice-cleaning-service": {
     total: "$970.00",
@@ -1932,6 +1933,20 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
   const taxAmount = computedSubtotal * taxRate;
   const taxStr = formatMoney(taxAmount);
   let totalAmount = computedSubtotal + taxAmount;
+
+  // Shipping and order-level discounts are shown as their own summary lines, not
+  // as table rows, so the line-item sum never includes them. Fold them into the
+  // grand total — otherwise it won't match what the reader adds up (e.g. a store
+  // invoice showed "Shipping $45" yet omitted it from the total). Gate on the
+  // template's declared fields so the universal FIELD_DEFAULTS.discount can never
+  // silently discount an invoice that doesn't actually show one.
+  const invoiceFields: string[] = template?.content?.fields || [];
+  const money = (s: string) => {
+    const v = parseFloat(String(s || "").replace(/[^\d.-]/g, ""));
+    return isNaN(v) ? 0 : v;
+  };
+  if (invoiceFields.includes("shippingCost")) totalAmount += money(currentValues.shippingCost);
+  if (invoiceFields.includes("discount")) totalAmount -= money(currentValues.discount);
 
   if (template.slug === "invoice-legal-services") {
     const retainerStr = currentValues.retainerApplied || "2500";

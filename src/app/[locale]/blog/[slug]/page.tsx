@@ -34,6 +34,7 @@ import {
   Share2,
   Sparkles,
   FileText,
+  PenLine,
 } from "lucide-react";
 
 interface PageProps {
@@ -253,6 +254,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
               </span>
               <span className="text-white/70 text-xs flex items-center gap-1">
                 <Clock className="h-3 w-3" /> {minutes} {t.minRead}
+              </span>
+              <span className="text-white/70 text-xs flex items-center gap-1">
+                <PenLine className="h-3 w-3" /> {t.byline}
               </span>
             </div>
 

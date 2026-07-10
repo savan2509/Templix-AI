@@ -32,6 +32,7 @@ const en = {
   read: "Read",
   min: "min",
   minRead: "min read",
+  byline: "By Templix AI Team",
   emptyState: "No articles found in this category yet.",
 
   // ── Listing page: CTA banner ──
@@ -140,6 +141,7 @@ const es: Shape = {
   read: "Leer",
   min: "min",
   minRead: "min de lectura",
+  byline: "Por el equipo de Templix AI",
   emptyState: "Aún no hay artículos en esta categoría.",
 
   ctaHeading: "¿Listo para crear tu documento?",
@@ -240,6 +242,7 @@ const de: Shape = {
   read: "Lesen",
   min: "Min.",
   minRead: "Min. Lesezeit",
+  byline: "Vom Templix AI-Team",
   emptyState: "In dieser Kategorie gibt es noch keine Artikel.",
 
   ctaHeading: "Bereit, dein Dokument zu erstellen?",
@@ -340,6 +343,7 @@ const fr: Shape = {
   read: "Lire",
   min: "min",
   minRead: "min de lecture",
+  byline: "Par l'équipe Templix AI",
   emptyState: "Aucun article dans cette catégorie pour le moment.",
 
   ctaHeading: "Prêt à créer votre document ?",
@@ -440,6 +444,7 @@ const ar: Shape = {
   read: "اقرأ",
   min: "دقيقة",
   minRead: "دقيقة قراءة",
+  byline: "بواسطة فريق Templix AI",
   emptyState: "لا توجد مقالات في هذه الفئة حتى الآن.",
 
   ctaHeading: "هل أنت مستعد لإنشاء مستندك؟",

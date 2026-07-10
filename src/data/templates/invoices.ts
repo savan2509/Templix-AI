@@ -641,7 +641,7 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$140.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Service & Labor: {{laborCost}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Net 15 payment terms apply." }] }
         ]
@@ -1585,7 +1585,7 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$185.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Labor: {{laborCost}}    Permit & Fees: $185.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. All installations passed final inspection and meet current code." }] }
         ]
