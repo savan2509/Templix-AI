@@ -7,11 +7,10 @@ import { X, ArrowRight } from "lucide-react";
 
 // Show once the reader has spent this long actively on the article. "Active"
 // means the tab is visible — time spent on a backgrounded tab does not count,
-// so a parked tab never triggers it.
+// so a parked tab never triggers it. The timer re-arms on every article view
+// (initial load or client-side navigation), so each article that is read for
+// the full duration surfaces the popup — it is not suppressed for the session.
 const THRESHOLD_MS = 30_000;
-// One popup per browser session. The flag is set the moment it shows, so
-// opening more articles in the same visit will not surface it again.
-const SESSION_KEY = "templix:blog-read-popup-shown";
 
 /**
  * Timed "WAIT!" engagement popup for blog article pages. Desktop only — the
@@ -20,7 +19,8 @@ const SESSION_KEY = "templix:blog-read-popup-shown";
  * Touch form (via a window event) rather than duplicating the contact form.
  */
 export default function BlogReadPopup() {
-  const locale = usePathname().split("/")[1] || "en";
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "en";
   const t = getDictionary(locale).blog.readPopup;
 
   const [open, setOpen] = useState(false);
@@ -28,16 +28,11 @@ export default function BlogReadPopup() {
   // Where focus was before the popup grabbed it, so we can hand it back.
   const restoreFocusRef = useRef<Element | null>(null);
 
-  // ── Arm the reading timer (desktop, once per session) ──────────────────────
+  // ── Arm the reading timer — re-arms on every article (keyed on pathname) ────
   useEffect(() => {
     if (typeof window === "undefined") return;
     // Desktop only. matchMedia keeps this in sync with the CSS `md` breakpoint.
     if (!window.matchMedia("(min-width: 768px)").matches) return;
-    try {
-      if (sessionStorage.getItem(SESSION_KEY)) return;
-    } catch {
-      // Private mode can throw on sessionStorage; fall through and still show.
-    }
 
     // Dev/QA-only seam: `?readPopupMs=1500` shortens the delay so the popup can
     // be exercised without a 30s wait. Ignored entirely in production builds.
@@ -47,6 +42,7 @@ export default function BlogReadPopup() {
       if (Number.isFinite(override) && override > 0) threshold = override;
     }
 
+    // Count active reading time for this article.
     let elapsed = 0;
     const id = window.setInterval(() => {
       if (document.visibilityState !== "visible") return;
@@ -54,13 +50,12 @@ export default function BlogReadPopup() {
       if (elapsed >= threshold) {
         window.clearInterval(id);
         restoreFocusRef.current = document.activeElement;
-        try { sessionStorage.setItem(SESSION_KEY, "1"); } catch { /* ignore */ }
         setOpen(true);
       }
     }, 1000);
 
     return () => window.clearInterval(id);
-  }, []);
+  }, [pathname]);
 
   const close = useCallback(() => {
     setOpen(false);
