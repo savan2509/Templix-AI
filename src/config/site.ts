@@ -41,6 +41,10 @@ export const siteConfig = {
   locales: ["en", "es", "de", "fr", "ar"],
   defaultLocale: "en",
   themeColor: "#2563eb",
+  // Content freshness stamp shown on template pages ("Updated …") and emitted as
+  // schema.org dateModified. Bump when the template library is refreshed — keeps
+  // it deterministic across builds instead of a per-request new Date().
+  contentUpdated: "2026-07-01",
 };
 
 export type SiteConfig = typeof siteConfig;

@@ -565,6 +565,51 @@ const HUB_DESC: Record<string, { adj: string; desc: string }> = {
   quotations:       { adj: "Quotation",     desc: "price the job and set clear terms before the work starts" },
 };
 
+// A definitional "What is a [document]?" block per category — unique 80–110
+// words answering what the document is, who needs it, and what formats we offer.
+// Category pages that define the document type and link to templates outrank
+// bare grids, and it gives each of the 8 categories its own substantial copy.
+const CATEGORY_DEF: Record<string, { term: string; body: string }> = {
+  invoices: {
+    term: "an invoice",
+    body: "An invoice is a commercial document a seller issues to a buyer that itemizes the goods or services delivered, the amount owed, applicable tax, and how and when to pay. Freelancers, agencies, contractors and small businesses rely on invoices to get paid on time and to keep a compliant record for their accountant. A good invoice carries a unique number, both parties' details, a line-item table, the subtotal and tax, and clear payment terms. Every free invoice template here includes those fields, totals itself as you type, and exports to clean PDF and Word — no sign-up and no watermark.",
+  },
+  resumes: {
+    term: "a resume",
+    body: "A resume (or CV) is a concise summary of your skills, experience and education that persuades an employer to interview you. Most applications now pass through an applicant-tracking system first, so structure and keywords matter as much as wording. A strong resume leads with a focused summary, quantifies achievements, and stays to one clean column so parsers read it correctly. These free resume and CV templates are built ATS-friendly, cover roles from fresher to executive, and export to PDF and Word so the layout never shifts on the recruiter's screen.",
+  },
+  contracts: {
+    term: "a contract",
+    body: "A contract is a legally binding agreement that records what each party will do, by when, for how much, and what happens if something goes wrong. Freelancers, small businesses and landlords use contracts to prevent disputes and to make expectations enforceable. A clear contract names both parties, defines scope and deliverables, sets payment and timelines, and covers termination, confidentiality and governing law. These free contract and agreement templates are written in plain English, cover the clauses that actually matter, and download as PDF or Word ready to fill in and sign.",
+  },
+  proposals: {
+    term: "a proposal",
+    body: "A business proposal is a persuasive document that restates a client's problem, lays out your solution, and prices the work so they can say yes. Agencies, consultants and freelancers use proposals to win projects and set expectations before the contract. A winning proposal opens with a stand-alone summary, defines deliverables and timeline, offers clear pricing, and ends with a signature block that turns interest into an order. These free proposal templates are structured to win the work and export to PDF and Word in minutes.",
+  },
+  letters: {
+    term: "a formal letter",
+    body: "A formal letter or professional email communicates a specific request or notice — a resignation, a leave application, a complaint, a reference request or a payment reminder — in a clear, courteous, on-the-record way. Employees, HR teams and businesses use them daily, and the right structure and tone decide how the message lands. A good letter states its purpose up front, gives the necessary detail, and closes with a clear next step. These free letter and email templates cover the situations you actually face and download as PDF or Word.",
+  },
+  reports: {
+    term: "a report",
+    body: "A report presents information — findings, progress, numbers or an incident — in a structured, skimmable format so a reader can act on it quickly. Students, managers and teams use reports for status updates, internships, labs, expenses and audits. A useful report opens with a summary, lays out the detail in sections and tables, and ends with a conclusion or recommendation. These free report templates give you the structure so you spend your time on the content, not the formatting, and export to PDF and Word.",
+  },
+  "business-plans": {
+    term: "a business plan",
+    body: "A business plan explains what your business does, who it serves, how it makes money, and what it needs to grow. Founders use it to raise funding, align a team, and pressure-test the model before spending. A solid plan covers the summary, market, product, operations, team and financials — though a lean one-page plan or Lean Canvas is often enough to start. These free business plan templates range from a single page to a full investor-ready document and export to PDF and Word.",
+  },
+  quotations: {
+    term: "a quotation",
+    body: "A quotation (or quote) is a document a supplier sends a prospective customer stating the price, scope and terms for a job before it begins. Trades, agencies and service businesses use quotations to win work and to set expectations on cost and timeline up front. A clear quote itemizes the work, shows the subtotal, tax and total, and states validity and payment terms. These free quotation templates — from construction and AMC to interior design and security — download as PDF or Word ready to send.",
+  },
+};
+
+/** The definitional block for a category, or null for niche/hub/unknown. */
+export function getCategoryDefinition(categorySlug: string | null | undefined): { term: string; body: string } | null {
+  if (!categorySlug) return null;
+  return CATEGORY_DEF[categorySlug] ?? null;
+}
+
 /**
  * A unique intro paragraph for a templates listing page. Returns "" for the
  * bare /templates hub (which keeps its localized subtitle) and for unknown

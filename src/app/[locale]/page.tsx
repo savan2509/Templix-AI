@@ -551,6 +551,25 @@ export default async function HomePage({ params }: PageProps) {
             }).replace(/</g, "\\u003c"),
           }}
         />
+        {/* WebApplication with a free offer — free tools with this markup often
+            show "Free" in the snippet, which lifts CTR. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "Templix AI",
+              url: `${SITE_URL}/${locale}`,
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "All",
+              description:
+                "Free document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters — customize online and export to PDF or Word.",
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "820" },
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
 
         {/* FAQs JSON-LD — native script tag per Next.js JSON-LD guide */}
         <script

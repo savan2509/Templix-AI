@@ -39,6 +39,7 @@ const en = {
 
   // Card CTA
   previewDetails: "Preview Details",
+  updatedLabel: "Updated",
 
   // Compliance block
   complianceHeading: "Corporate Document Compliance & Open Specifications",
@@ -103,6 +104,7 @@ const es: Shape = {
     "No pudimos encontrar plantillas que coincidan con los parámetros de búsqueda o los filtros. Intenta restablecer tu búsqueda.",
 
   previewDetails: "Ver detalles",
+  updatedLabel: "Actualizado",
 
   complianceHeading:
     "Cumplimiento de documentos corporativos y especificaciones abiertas",
@@ -167,6 +169,7 @@ const de: Shape = {
     "Wir konnten keine Vorlagen finden, die den Suchparametern oder Filtern entsprechen. Setze deine Suche zurück und versuche es erneut.",
 
   previewDetails: "Details ansehen",
+  updatedLabel: "Aktualisiert",
 
   complianceHeading:
     "Konformität von Geschäftsdokumenten & offene Spezifikationen",
@@ -232,6 +235,7 @@ const fr: Shape = {
     "Nous n’avons trouvé aucun modèle correspondant aux paramètres de recherche ou aux filtres. Essayez de réinitialiser votre recherche.",
 
   previewDetails: "Voir les détails",
+  updatedLabel: "Mis à jour",
 
   complianceHeading:
     "Conformité des documents d’entreprise et spécifications ouvertes",
@@ -297,6 +301,7 @@ const ar: Shape = {
     "لم نتمكن من العثور على قوالب تطابق معايير البحث أو عوامل التصفية. حاول إعادة ضبط بحثك.",
 
   previewDetails: "معاينة التفاصيل",
+  updatedLabel: "آخر تحديث",
 
   complianceHeading: "امتثال مستندات الشركات والمواصفات المفتوحة",
   complianceP1:

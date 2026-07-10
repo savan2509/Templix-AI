@@ -1,0 +1,26 @@
+# Templix AI
+
+> Templix AI offers free, professional document templates and an AI-powered editor. Create invoices, resumes, CVs, contracts, proposals, letters, reports, business plans and quotations — customize them online and export to PDF or Word, with no sign-up and no watermark. Primary audience: freelancers, small businesses and professionals in the US and India.
+
+## Templates
+- [Invoice templates](https://templix-ai.whitesparksoft.com/en/templates/invoices): freelance, contractor, GST (India), proforma, commercial/export, consulting, milestone, timesheet and more — line-item tables that total themselves.
+- [Resume & CV templates](https://templix-ai.whitesparksoft.com/en/templates/resumes): ATS-friendly resumes and CVs from fresher/entry-level to executive and academic.
+- [Contract & agreement templates](https://templix-ai.whitesparksoft.com/en/templates/contracts): freelance, employment, NDA, rental/lease, roommate, partnership and social-media management agreements.
+- [Proposal templates](https://templix-ai.whitesparksoft.com/en/templates/proposals): business, project, marketing, one-page and cleaning-services proposals.
+- [Letter & email templates](https://templix-ai.whitesparksoft.com/en/templates/letters): resignation, cover, salary increment, leave application, No Objection Certificate (NOC), payment reminder and reference-request letters.
+- [Report templates](https://templix-ai.whitesparksoft.com/en/templates/reports): weekly status, internship, incident, expense, lab and book reports.
+- [Business plan templates](https://templix-ai.whitesparksoft.com/en/templates/business-plans): one-page, lean canvas and full investor-ready plans.
+- [Quotation templates](https://templix-ai.whitesparksoft.com/en/templates/quotations): construction, painting, electrical, interior design, AMC and security-services quotations.
+
+## Popular for India
+- [GST invoice format (Word/PDF)](https://templix-ai.whitesparksoft.com/en/templates/invoices/invoice-gst)
+- [Proforma invoice format](https://templix-ai.whitesparksoft.com/en/templates/invoices/invoice-proforma)
+- [No Objection Certificate (NOC) format](https://templix-ai.whitesparksoft.com/en/templates/letters/letter-noc)
+- [AMC quotation format](https://templix-ai.whitesparksoft.com/en/templates/quotations/quotation-amc)
+
+## Guides
+- [Document Templates Blog](https://templix-ai.whitesparksoft.com/en/blog): practical guides on invoices, resumes, contracts and proposals.
+
+## Other
+- [Free tools](https://templix-ai.whitesparksoft.com/en/tools): GST/tax calculator and other document utilities.
+- [Contact](https://templix-ai.whitesparksoft.com/en/contact)

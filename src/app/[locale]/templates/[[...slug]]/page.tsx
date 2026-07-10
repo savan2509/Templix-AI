@@ -13,11 +13,11 @@ import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
 import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
-import { getTemplateCopy, getTemplateFaqs, getHubIntro } from "@/features/templates/template-content";
+import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -117,7 +117,7 @@ const capitalize = (str: string) => {
 };
 
 // Next.js Dynamic SEO Metadata Generator
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug || [];
   const locale = resolvedParams.locale || "en";
@@ -203,11 +203,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const metaTitle =
     withFormat.length <= 47 ? withFormat : withYear.length <= 47 ? withYear : pageTitle;
 
+  // Paginated pages self-canonicalize (page 2 → its own ?page=2 URL) so Google
+  // crawls templates on pages 2+; page 1 keeps the clean category URL. A search
+  // (?q=) result canonicalizes to the clean category to avoid infinite variants.
+  const slugPath = `/templates${slug.length > 0 ? "/" + slug.join("/") : ""}`;
+  const { page: pageParam } = await searchParams;
+  const pageNum = Math.max(1, parseInt(pageParam || "1", 10) || 1);
+  const canonical =
+    pageNum > 1 ? `${siteConfig.url}/${locale}${slugPath}?page=${pageNum}` : undefined;
+
   return SEOEngine.generateMetadata({
     title: pageTitle,
     metaTitle,
+    canonical,
     description: `Download free ${pageTitle.replace(/^Free /, "").toLowerCase()}. Editable, print-ready layouts that export to PDF and Word — no sign-up and no watermark.`,
-    slug: `/templates${slug.length > 0 ? "/" + slug.join("/") : ""}`,
+    slug: slugPath,
     locale,
     categoryName: category || undefined,
     categorySlug: slug[0] || undefined,
@@ -318,6 +328,20 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     notFound();
   }
 
+  // A 2nd-level slug under a known category that is neither a real template nor a
+  // recognized niche/location is a garbage URL (e.g. /templates/invoices/xyz-fake).
+  // Return a real 404 instead of a soft-404 listing with a nonsense H1. Extend
+  // these sets when new niche/country landing pages are intentionally added.
+  const KNOWN_NICHES = new Set([
+    "freelancer", "legal", "general", "small-business", "hourly", "contractor", "consulting",
+  ]);
+  const KNOWN_LOCATIONS = new Set(["usa", "canada", "uk", "india", "australia"]);
+  if (categorySlug && isKnownCategory && !activeTemplate && nicheSlug) {
+    const nicheOk = KNOWN_NICHES.has(nicheSlug) || KNOWN_LOCATIONS.has(nicheSlug);
+    const locationOk = !locationSlug || KNOWN_LOCATIONS.has(locationSlug);
+    if (!nicheOk || !locationOk) notFound();
+  }
+
   // If active template detail view, render preview template detail screen
   if (activeTemplate) {
     const breadcrumbsJson = SEOEngine.generateBreadcrumbSchema({
@@ -349,6 +373,27 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     const templateFaqs = getTemplateFaqs(activeTemplate);
     const templateFaqSchema = faqPageSchema(templateFaqs);
 
+    // Freshness: visible "Updated …" + schema dateModified. Templates skew to
+    // current-year ("…2026") searches, so a recent modified date helps.
+    const updatedLabel = new Date(siteConfig.contentUpdated).toLocaleDateString(
+      INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US",
+      { year: "numeric", month: "long" },
+    );
+    const templateSchemaWithDate = { ...templateSchemaJson, dateModified: siteConfig.contentUpdated };
+
+    // HowTo schema built from the "How to use" steps — can win extended SERP
+    // real estate for "how to …" template queries.
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: copy.howToHeading,
+      step: copy.howTo.map((text, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        text,
+      })),
+    };
+
     return (
       <>
         <Navbar />
@@ -360,7 +405,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaJson).replace(/</g, "\\u003c") }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaWithDate).replace(/</g, "\\u003c") }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema).replace(/</g, "\\u003c") }}
           />
           <script
             type="application/ld+json"
@@ -396,6 +445,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </span>
                 <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
                   {common.free}
+                </span>
+                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                  {t.updatedLabel} {updatedLabel}
                 </span>
               </div>
               <div className="flex items-start gap-4">
@@ -717,6 +769,22 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   // written for this category, and emit the schema behind them.
   const categoryFaqs = getCategoryFaqs(categorySlug);
   const categoryFaqSchema = categoryFaqs ? faqPageSchema(categoryFaqs) : null;
+  const categoryDef = getCategoryDefinition(categorySlug);
+
+  // ItemList schema — tells Google the category is an ordered collection of
+  // templates (helps it understand the page and can produce sitelinks).
+  const itemListSchema = paginatedTemplates.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${categoryDisplayName || "Document"} Templates`,
+    numberOfItems: totalItems,
+    itemListElement: paginatedTemplates.map((tpl, idx) => ({
+      "@type": "ListItem",
+      position: startIndex + idx + 1,
+      name: tpl.title,
+      url: siteUrl(`/${locale}/templates/${tpl.categorySlug}/${tpl.slug}`),
+    })),
+  } : null;
 
   return (
     <>
@@ -732,6 +800,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryFaqSchema).replace(/</g, "\\u003c") }}
+          />
+        )}
+        {itemListSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema).replace(/</g, "\\u003c") }}
           />
         )}
 
@@ -920,9 +994,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           </p>
                         </div>
 
-                        {/* Redirects to category/slug path representing specific preview page */}
+                        {/* Redirects to category/slug path representing specific preview page.
+                            aria-label carries the template name so the link has real keyword
+                            relevance instead of a generic "Preview Details". */}
                         <Link
                           href={`/${locale}/templates/${temp.categorySlug}/${temp.slug}`}
+                          aria-label={`${t.previewDetails}: ${temp.title}`}
                           className="w-full h-10 rounded-xl bg-zinc-950 hover:bg-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-800 text-white font-semibold text-xs flex items-center justify-center gap-1 shadow-sm transition-colors"
                         >
                           <span>{t.previewDetails}</span>
@@ -963,6 +1040,20 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               </>
             )}
             </section>
+
+            {/* "What is a [document]?" — a definitional section (unique 80–110
+                words per category) that helps the page rank as a topical page,
+                not just a grid. Only rendered on real category pages. */}
+            {categoryDef && (
+              <section className="lg:col-span-4 pt-16 border-t border-zinc-200 dark:border-zinc-800 space-y-3">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  What is {categoryDef.term}?
+                </h2>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-4xl">
+                  {categoryDef.body}
+                </p>
+              </section>
+            )}
 
             {/* Template Compliance & Structuring Standards */}
             {/* Spans the full grid width — without col-span-4 it lands in a single

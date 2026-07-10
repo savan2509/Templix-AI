@@ -16,6 +16,9 @@ export default function robots(): MetadataRoute.Robots {
         "/*/dashboard",
         "/*/login",
         "/*/auth/",
+        // Search-result URLs are infinite, thin variants — keep them out of the
+        // index. Paginated ?page= URLs are intentionally left crawlable.
+        "/*?q=",
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
