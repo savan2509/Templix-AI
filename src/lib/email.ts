@@ -262,12 +262,14 @@ export async function sendContactMessageEmail(input: {
   email: string;
   subject?: string;
   message: string;
+  phone?: string;
 }): Promise<void> {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
     "no-reply@templix-ai.whitesparksoft.com";
   const subject = (input.subject || "").trim() || "New contact form message";
+  const phone = (input.phone || "").trim();
   const esc = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -280,7 +282,9 @@ export async function sendContactMessageEmail(input: {
     subject: `[Contact] ${subject}`,
     text:
       `New message from the Templix AI contact form.\n\n` +
-      `Name:    ${input.name}\nEmail:   ${input.email}\nSubject: ${subject}\n\n` +
+      `Name:    ${input.name}\nEmail:   ${input.email}\n` +
+      (phone ? `Phone:   ${phone}\n` : "") +
+      `Subject: ${subject}\n\n` +
       `${input.message}\n`,
     html: wrap(
       "New contact form message",
@@ -288,6 +292,7 @@ export async function sendContactMessageEmail(input: {
        <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#3f3f46;">
          <tr><td style="padding:6px 0;color:#71717a;width:90px;">Name</td><td style="padding:6px 0;font-weight:600;">${esc(input.name)}</td></tr>
          <tr><td style="padding:6px 0;color:#71717a;">Email</td><td style="padding:6px 0;font-weight:600;color:#2563eb;">${esc(input.email)}</td></tr>
+         ${phone ? `<tr><td style="padding:6px 0;color:#71717a;">Phone</td><td style="padding:6px 0;font-weight:600;">${esc(phone)}</td></tr>` : ""}
        </table>
        <div style="margin-top:18px;padding:16px 18px;background:#f9f9f9;border:1px solid #e4e4e7;border-radius:10px;font-size:14px;color:#3f3f46;line-height:1.6;white-space:pre-wrap;">${esc(input.message)}</div>`,
       `Reply directly to this email to answer ${esc(input.email)}.`,

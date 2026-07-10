@@ -5,7 +5,8 @@ import { sendContactMessageEmail } from "@/lib/email";
 // the inbox answers them directly.
 export async function POST(request: Request) {
   let body: {
-    name?: string; email?: string; subject?: string; message?: string; website?: string;
+    name?: string; email?: string; subject?: string; message?: string;
+    phone?: string; website?: string;
   };
   try {
     body = await request.json();
@@ -20,6 +21,7 @@ export async function POST(request: Request) {
   const email = (body.email || "").trim().toLowerCase();
   const subject = (body.subject || "").trim();
   const message = (body.message || "").trim();
+  const phone = (body.phone || "").trim(); // optional — the blog form collects it
 
   if (name.length < 2 || name.length > 100) {
     return NextResponse.json({ error: "Please enter your name." }, { status: 400 });
@@ -33,9 +35,14 @@ export async function POST(request: Request) {
   if (message.length > 5000 || subject.length > 200) {
     return NextResponse.json({ error: "Your message is too long." }, { status: 400 });
   }
+  // Phone is optional, but reject junk so the inbox never shows a header-
+  // injection attempt or a 500-character "number".
+  if (phone && !/^\+?[\d\s().-]{5,24}$/.test(phone)) {
+    return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
+  }
 
   try {
-    await sendContactMessageEmail({ name, email, subject, message });
+    await sendContactMessageEmail({ name, email, subject, message, phone });
   } catch (err) {
     console.warn("[contact] ⚠️  Failed to forward message:", (err as Error).message);
     return NextResponse.json(

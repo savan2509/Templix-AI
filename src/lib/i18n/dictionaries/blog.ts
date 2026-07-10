@@ -79,6 +79,25 @@ const en = {
   authorityWikipedia: "Wikipedia Business Docs",
   relatedArticles: "Related Articles",
   moreArticles: "More Articles",
+  tocTitle: "Table of Content",
+
+  // ── Article page: "Get in touch" side tab + modal ──
+  getInTouch: {
+    tab: "Get in Touch",
+    title: "Get in Touch With Us",
+    intro: "Submitting the form below will ensure a prompt response from us.",
+    name: "Name*",
+    email: "Email*",
+    phone: "Number",
+    message: "Your Message*",
+    submit: "Submit",
+    sending: "Sending…",
+    close: "Close",
+    successTitle: "Message sent!",
+    successText: "Thanks for reaching out — we'll reply to your email shortly.",
+    genericError: "Something went wrong. Please try again.",
+    networkError: "Network error. Please try again.",
+  },
 };
 
 type Shape = typeof en;
@@ -157,6 +176,23 @@ const es: Shape = {
   authorityWikipedia: "Documentos comerciales en Wikipedia",
   relatedArticles: "Artículos relacionados",
   moreArticles: "Más artículos",
+  tocTitle: "Tabla de contenido",
+  getInTouch: {
+    tab: "Contáctanos",
+    title: "Ponte en contacto con nosotros",
+    intro: "Al enviar el siguiente formulario recibirás una respuesta rápida.",
+    name: "Nombre*",
+    email: "Correo electrónico*",
+    phone: "Número",
+    message: "Tu mensaje*",
+    submit: "Enviar",
+    sending: "Enviando…",
+    close: "Cerrar",
+    successTitle: "¡Mensaje enviado!",
+    successText: "Gracias por escribirnos: responderemos a tu correo en breve.",
+    genericError: "Algo salió mal. Inténtalo de nuevo.",
+    networkError: "Error de red. Inténtalo de nuevo.",
+  },
 };
 
 const de: Shape = {
@@ -233,6 +269,23 @@ const de: Shape = {
   authorityWikipedia: "Geschäftsdokumente bei Wikipedia",
   relatedArticles: "Ähnliche Artikel",
   moreArticles: "Weitere Artikel",
+  tocTitle: "Inhaltsverzeichnis",
+  getInTouch: {
+    tab: "Kontakt",
+    title: "Nehmen Sie Kontakt mit uns auf",
+    intro: "Wenn Sie das folgende Formular absenden, antworten wir Ihnen umgehend.",
+    name: "Name*",
+    email: "E-Mail*",
+    phone: "Nummer",
+    message: "Ihre Nachricht*",
+    submit: "Absenden",
+    sending: "Wird gesendet…",
+    close: "Schließen",
+    successTitle: "Nachricht gesendet!",
+    successText: "Danke für Ihre Nachricht — wir antworten Ihnen in Kürze per E-Mail.",
+    genericError: "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    networkError: "Netzwerkfehler. Bitte versuchen Sie es erneut.",
+  },
 };
 
 const fr: Shape = {
@@ -309,6 +362,23 @@ const fr: Shape = {
   authorityWikipedia: "Documents commerciaux sur Wikipédia",
   relatedArticles: "Articles connexes",
   moreArticles: "Plus d’articles",
+  tocTitle: "Table des matières",
+  getInTouch: {
+    tab: "Nous contacter",
+    title: "Entrez en contact avec nous",
+    intro: "En envoyant le formulaire ci-dessous, vous recevrez une réponse rapide.",
+    name: "Nom*",
+    email: "E-mail*",
+    phone: "Numéro",
+    message: "Votre message*",
+    submit: "Envoyer",
+    sending: "Envoi en cours…",
+    close: "Fermer",
+    successTitle: "Message envoyé !",
+    successText: "Merci de nous avoir contactés — nous répondrons à votre e-mail sous peu.",
+    genericError: "Une erreur est survenue. Veuillez réessayer.",
+    networkError: "Erreur réseau. Veuillez réessayer.",
+  },
 };
 
 const ar: Shape = {
@@ -384,6 +454,23 @@ const ar: Shape = {
   authorityWikipedia: "المستندات التجارية في ويكيبيديا",
   relatedArticles: "مقالات ذات صلة",
   moreArticles: "المزيد من المقالات",
+  tocTitle: "جدول المحتويات",
+  getInTouch: {
+    tab: "تواصل معنا",
+    title: "تواصل معنا",
+    intro: "بإرسال النموذج أدناه ستحصل على رد سريع منا.",
+    name: "الاسم*",
+    email: "البريد الإلكتروني*",
+    phone: "رقم الهاتف",
+    message: "رسالتك*",
+    submit: "إرسال",
+    sending: "جارٍ الإرسال…",
+    close: "إغلاق",
+    successTitle: "تم إرسال الرسالة!",
+    successText: "شكرًا لتواصلك معنا — سنرد على بريدك الإلكتروني قريبًا.",
+    genericError: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    networkError: "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+  },
 };
 
 export const blog: Dict<Shape> = { en, es, de, fr, ar };

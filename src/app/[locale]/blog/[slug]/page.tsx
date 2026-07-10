@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BlogGetInTouch from "@/components/BlogGetInTouch";
 import { db } from "@/lib/db";
 import {
   getBlogPost,
@@ -144,6 +145,20 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const minutes = readingTime(post.content);
   const words = wordCount(post.content);
 
+  // A 1- or 2-entry table of contents is noise, so short posts keep the plain
+  // two-column layout. Placement classes are written out per branch because
+  // Tailwind only ships classes it can see as literal strings.
+  const hasToc = toc.length >= 3;
+  const gridClass = hasToc
+    ? "grid gap-8 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] xl:grid-cols-[16rem_minmax(0,1fr)_20rem]"
+    : "grid gap-8 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]";
+  const articleClass = hasToc
+    ? "min-w-0 lg:col-start-1 lg:row-start-2 xl:col-start-2 xl:row-start-1"
+    : "min-w-0 lg:col-start-1 lg:row-start-1";
+  const asideClass = hasToc
+    ? "space-y-6 lg:col-start-2 lg:row-start-1 lg:row-span-2 xl:col-start-3 xl:row-span-1"
+    : "space-y-6 lg:col-start-2 lg:row-start-1";
+
   // JSON-LD
   const articleSchema = {
     "@context": "https://schema.org",
@@ -278,10 +293,43 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
         {/* ── Body Layout ── */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col lg:flex-row gap-10">
+          <div className={gridClass}>
+
+            {/* ── Table of contents ──
+                Generated from the article's own H2s. Helps readers skim and
+                gives Google jump-to-section links. Becomes a sticky left rail
+                once there is room for a third column (xl); above that width it
+                sits over the article, as it did before. `self-start` is what
+                lets `sticky` work — a stretched grid item has nowhere to stick. */}
+            {hasToc && (
+              <nav
+                aria-label={t.tocTitle}
+                className="rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/50 lg:col-start-1 lg:row-start-1 xl:col-start-1 xl:row-start-1 xl:sticky xl:top-24 xl:self-start xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto"
+              >
+                <p className="mb-3 flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-white">
+                  <BookOpen className="h-4 w-4 text-blue-500" />
+                  {t.tocTitle}
+                </p>
+                <ol className="space-y-1.5">
+                  {toc.map((item, i) => (
+                    <li key={item.id} className="flex gap-2.5 text-sm">
+                      <span className="shrink-0 font-mono text-xs text-zinc-400 dark:text-zinc-600">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <a
+                        href={`#${item.id}`}
+                        className="text-zinc-600 hover:text-blue-600 hover:underline dark:text-zinc-400 dark:hover:text-blue-400"
+                      >
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
 
             {/* ── Article Content ── */}
-            <article className="flex-1 min-w-0">
+            <article className={articleClass}>
               {/* Back link */}
               <Link
                 href={`/${locale}/blog`}
@@ -289,35 +337,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
               >
                 <ArrowLeft className="h-3.5 w-3.5" /> {t.backToBlog}
               </Link>
-
-              {/* Table of contents — generated from the article's own H2s.
-                  Helps readers skim and gives Google jump-to-section links. */}
-              {toc.length >= 3 && (
-                <nav
-                  aria-label="Table of contents"
-                  className="mb-10 rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/50"
-                >
-                  <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                    <BookOpen className="h-3.5 w-3.5" />
-                    In this article
-                  </p>
-                  <ol className="space-y-1.5">
-                    {toc.map((item, i) => (
-                      <li key={item.id} className="flex gap-2.5 text-sm">
-                        <span className="shrink-0 font-mono text-xs text-zinc-400 dark:text-zinc-600">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <a
-                          href={`#${item.id}`}
-                          className="text-zinc-600 hover:text-blue-600 hover:underline dark:text-zinc-400 dark:hover:text-blue-400"
-                        >
-                          {item.text}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-              )}
 
               {/* Prose content */}
               <div
@@ -386,7 +405,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </article>
 
             {/* ── Sidebar ── */}
-            <aside className="lg:w-72 xl:w-80 shrink-0 space-y-6">
+            <aside className={asideClass}>
 
               {/* Article info card */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">
@@ -528,6 +547,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
           </div>
         </div>
       </main>
+
+      <BlogGetInTouch articleTitle={post.title} />
 
       <Footer />
     </>
