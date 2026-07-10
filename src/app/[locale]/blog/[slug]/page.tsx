@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogGetInTouch from "@/components/BlogGetInTouch";
+import BlogReadPopup from "@/components/BlogReadPopup";
 import { db } from "@/lib/db";
 import {
   getBlogPost,
@@ -549,6 +550,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       </main>
 
       <BlogGetInTouch articleTitle={post.title} />
+      <BlogReadPopup />
 
       <Footer />
     </>

@@ -43,6 +43,14 @@ export default function BlogGetInTouch({ articleTitle }: { articleTitle: string 
     openerRef.current?.focus();
   }, []);
 
+  // Let other blog widgets (e.g. the timed "WAIT!" popup) open this form by
+  // dispatching a window event, so there is only one contact form to maintain.
+  useEffect(() => {
+    const openForm = () => setOpen(true);
+    window.addEventListener("templix:blog-open-contact", openForm);
+    return () => window.removeEventListener("templix:blog-open-contact", openForm);
+  }, []);
+
   // While the dialog is up: lock background scroll and let Escape dismiss it.
   useEffect(() => {
     if (!open) return;

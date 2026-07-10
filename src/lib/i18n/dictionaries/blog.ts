@@ -98,6 +98,15 @@ const en = {
     genericError: "Something went wrong. Please try again.",
     networkError: "Network error. Please try again.",
   },
+
+  // ── Article page: timed "WAIT!" popup (desktop only, after ~30s) ──
+  readPopup: {
+    wait: "WAIT!",
+    title: "Need a Template That Doesn't Exist Yet?",
+    text: "Every business has document needs an off-the-shelf template can't cover — a branded invoice, a region-specific contract, or a bespoke proposal. Tell us what you need and our team will help you build it.",
+    cta: "Share Your Idea",
+    close: "Close",
+  },
 };
 
 type Shape = typeof en;
@@ -193,6 +202,13 @@ const es: Shape = {
     genericError: "Algo salió mal. Inténtalo de nuevo.",
     networkError: "Error de red. Inténtalo de nuevo.",
   },
+  readPopup: {
+    wait: "¡ESPERA!",
+    title: "¿Necesitas una plantilla que aún no existe?",
+    text: "Cada empresa tiene necesidades documentales que una plantilla genérica no cubre: una factura con tu marca, un contrato adaptado a tu región o una propuesta a medida. Cuéntanos qué necesitas y nuestro equipo te ayudará a crearla.",
+    cta: "Comparte tu idea",
+    close: "Cerrar",
+  },
 };
 
 const de: Shape = {
@@ -285,6 +301,13 @@ const de: Shape = {
     successText: "Danke für Ihre Nachricht — wir antworten Ihnen in Kürze per E-Mail.",
     genericError: "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     networkError: "Netzwerkfehler. Bitte versuchen Sie es erneut.",
+  },
+  readPopup: {
+    wait: "MOMENT!",
+    title: "Brauchen Sie eine Vorlage, die es noch nicht gibt?",
+    text: "Jedes Unternehmen hat Dokumentanforderungen, die eine Standardvorlage nicht abdeckt — eine gebrandete Rechnung, einen regionsspezifischen Vertrag oder ein maßgeschneidertes Angebot. Sagen Sie uns, was Sie brauchen, und unser Team hilft Ihnen, es zu erstellen.",
+    cta: "Idee teilen",
+    close: "Schließen",
   },
 };
 
@@ -379,6 +402,13 @@ const fr: Shape = {
     genericError: "Une erreur est survenue. Veuillez réessayer.",
     networkError: "Erreur réseau. Veuillez réessayer.",
   },
+  readPopup: {
+    wait: "ATTENDEZ !",
+    title: "Besoin d'un modèle qui n'existe pas encore ?",
+    text: "Chaque entreprise a des besoins documentaires qu'un modèle standard ne couvre pas — une facture à votre image, un contrat adapté à votre région ou une proposition sur mesure. Dites-nous ce qu'il vous faut et notre équipe vous aidera à le créer.",
+    cta: "Partagez votre idée",
+    close: "Fermer",
+  },
 };
 
 const ar: Shape = {
@@ -470,6 +500,13 @@ const ar: Shape = {
     successText: "شكرًا لتواصلك معنا — سنرد على بريدك الإلكتروني قريبًا.",
     genericError: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     networkError: "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+  },
+  readPopup: {
+    wait: "انتظر!",
+    title: "هل تحتاج إلى قالب غير موجود بعد؟",
+    text: "كل شركة لديها احتياجات مستندية لا يغطيها القالب الجاهز — فاتورة تحمل علامتك التجارية، أو عقد يناسب منطقتك، أو عرض مخصّص. أخبرنا بما تحتاجه وسيساعدك فريقنا في إنشائه.",
+    cta: "شارك فكرتك",
+    close: "إغلاق",
   },
 };
 
