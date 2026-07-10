@@ -548,3 +548,44 @@ export function getTemplateFaqs(template: {
   if (template.slug && SLUG_FAQS[template.slug]) return SLUG_FAQS[template.slug];
   return frameFor(template.categorySlug).faq(noun(template.title));
 }
+
+// Unique intro copy for the category / niche / country listing pages. Without
+// it, every one of ~200 listing URLs shared a single boilerplate subtitle —
+// duplicate, thin content. The sentence varies by category, and by niche and
+// country when present, so each page reads as its own. English, matching the
+// detail-page copy above (the primary markets are US + India English).
+const HUB_DESC: Record<string, { adj: string; desc: string }> = {
+  invoices:         { adj: "Invoice",       desc: "bill clients and get paid faster, with fields that add up the totals for you" },
+  resumes:          { adj: "Resume",        desc: "get past the applicant-tracking bots and still read well to a hiring manager" },
+  contracts:        { adj: "Contract",      desc: "put the scope, terms and payment in writing in plain English" },
+  proposals:        { adj: "Proposal",      desc: "pitch the work and win the client with a clear, structured document" },
+  letters:          { adj: "Letter",        desc: "say it professionally — a resignation, a request, a complaint or a reminder" },
+  reports:          { adj: "Report",        desc: "present findings and numbers without wrestling the formatting" },
+  "business-plans": { adj: "Business Plan", desc: "map out the model, market and money, from a lean one-pager to a full plan" },
+  quotations:       { adj: "Quotation",     desc: "price the job and set clear terms before the work starts" },
+};
+
+/**
+ * A unique intro paragraph for a templates listing page. Returns "" for the
+ * bare /templates hub (which keeps its localized subtitle) and for unknown
+ * categories.
+ */
+export function getHubIntro(
+  categorySlug: string | null | undefined,
+  nicheName?: string,
+  locationName?: string,
+): string {
+  if (!categorySlug) return "";
+  const meta = HUB_DESC[categorySlug];
+  if (!meta) return "";
+  const niche = nicheName ? `${nicheName.toLowerCase()} ` : "";
+  const noun = `${niche}${meta.adj.toLowerCase()} templates`;
+  const loc = locationName
+    ? ` Formatted for ${locationName} businesses and their local conventions.`
+    : "";
+  return (
+    `Browse free ${noun} designed to ${meta.desc}. ` +
+    `Customize any of them online, then download as PDF or Word in minutes — ` +
+    `no sign-up and no watermark.${loc}`
+  );
+}

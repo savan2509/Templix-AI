@@ -17,7 +17,7 @@ import { getDictionary } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
-import { getTemplateCopy, getTemplateFaqs } from "@/features/templates/template-content";
+import { getTemplateCopy, getTemplateFaqs, getHubIntro } from "@/features/templates/template-content";
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -771,7 +771,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               {pageHeading}
             </h1>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-3xl">
-              {t.hubSubtitle}
+              {/* Unique per category / niche / country so ~200 listing URLs no
+                  longer share one boilerplate subtitle. Bare hub keeps t.hubSubtitle. */}
+              {getHubIntro(categorySlug, nicheName, locationName) || t.hubSubtitle}
             </p>
           </div>
 
