@@ -2,13 +2,13 @@ import type { Dict } from "../locales";
 
 const en = {
   // Hub page (tools/page.tsx)
-  metaTitle: "Free Business Tools & Calculators",
+  metaTitle: "Free PDF, Resume & Business Tools",
   metaDescription:
-    "Free online tools for freelancers and businesses: GST/tax, discount, profit margin, invoice number and hourly rate calculators — no sign-up.",
+    "Free browser-based tools: merge & split PDF, JPG↔PDF, resume ATS checker, plus GST/tax, discount, margin and invoice calculators — no sign-up.",
   hubEyebrow: "Free Tools",
-  hubTitle: "Business Tools & Calculators",
+  hubTitle: "Free PDF, Resume & Business Tools",
   hubSubtitle:
-    "Fast, free, no sign-up calculators for invoicing, pricing, and freelancing — everything runs right in your browser.",
+    "Fast, free, no sign-up tools for PDFs, resumes, invoicing and pricing — everything runs right in your browser, nothing is uploaded.",
   openTool: "Open tool",
   needDocPre: "Need a document too? Browse our free ",
   needDocLink: "document templates",
@@ -20,7 +20,7 @@ const en = {
   toolEyebrow: "Free Tool",
   howToHeading: "How to use this tool",
   howToBody:
-    "Enter your values above and the result updates instantly — nothing is sent to a server, so it’s fast and completely private. Use it as many times as you like, free and without an account.",
+    "Everything runs right here in your browser — nothing is sent to a server, so it’s fast and completely private. Use it as many times as you like, free and without an account.",
   relatedHeading: "Related free tools",
   orCreatePre: "Or create a document with our free ",
   orCreateLink: "templates",
@@ -47,7 +47,7 @@ const es: Shape = {
   toolEyebrow: "Herramienta gratuita",
   howToHeading: "Cómo usar esta herramienta",
   howToBody:
-    "Introduce tus valores arriba y el resultado se actualiza al instante: no se envía nada a ningún servidor, por lo que es rápido y totalmente privado. Úsala tantas veces como quieras, gratis y sin cuenta.",
+    "Todo funciona aquí mismo en tu navegador: no se envía nada a ningún servidor, por lo que es rápido y totalmente privado. Úsala tantas veces como quieras, gratis y sin cuenta.",
   relatedHeading: "Herramientas gratuitas relacionadas",
   orCreatePre: "O crea un documento con nuestras ",
   orCreateLink: "plantillas",
@@ -72,7 +72,7 @@ const de: Shape = {
   toolEyebrow: "Kostenloses Tool",
   howToHeading: "So verwendest du dieses Tool",
   howToBody:
-    "Gib oben deine Werte ein und das Ergebnis wird sofort aktualisiert – es wird nichts an einen Server gesendet, daher ist es schnell und völlig privat. Nutze es so oft du möchtest, kostenlos und ohne Konto.",
+    "Alles läuft direkt hier in deinem Browser – es wird nichts an einen Server gesendet, daher ist es schnell und völlig privat. Nutze es so oft du möchtest, kostenlos und ohne Konto.",
   relatedHeading: "Verwandte kostenlose Tools",
   orCreatePre: "Oder erstelle ein Dokument mit unseren kostenlosen ",
   orCreateLink: "Vorlagen",
@@ -97,7 +97,7 @@ const fr: Shape = {
   toolEyebrow: "Outil gratuit",
   howToHeading: "Comment utiliser cet outil",
   howToBody:
-    "Saisissez vos valeurs ci-dessus et le résultat se met à jour instantanément — rien n’est envoyé à un serveur, c’est donc rapide et totalement privé. Utilisez-le autant de fois que vous le souhaitez, gratuitement et sans compte.",
+    "Tout fonctionne directement dans votre navigateur — rien n’est envoyé à un serveur, c’est donc rapide et totalement privé. Utilisez-le autant de fois que vous le souhaitez, gratuitement et sans compte.",
   relatedHeading: "Outils gratuits associés",
   orCreatePre: "Ou créez un document avec nos ",
   orCreateLink: "modèles",
@@ -122,7 +122,7 @@ const ar: Shape = {
   toolEyebrow: "أداة مجانية",
   howToHeading: "كيفية استخدام هذه الأداة",
   howToBody:
-    "أدخل قيمك في الأعلى وستُحدَّث النتيجة فورًا — لا يُرسَل أي شيء إلى الخادم، لذا فهي سريعة وخاصة تمامًا. استخدمها كما تشاء، مجانًا وبدون حساب.",
+    "كل شيء يعمل مباشرة هنا في متصفحك — لا يُرسَل أي شيء إلى الخادم، لذا فهي سريعة وخاصة تمامًا. استخدمها كما تشاء، مجانًا وبدون حساب.",
   relatedHeading: "أدوات مجانية ذات صلة",
   orCreatePre: "أو أنشئ مستندًا باستخدام ",
   orCreateLink: "القوالب",

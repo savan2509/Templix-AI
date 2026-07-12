@@ -57,6 +57,51 @@ export const TOOLS: ToolMeta[] = [
     keywords: ["hourly rate calculator", "freelance rate calculator", "how much to charge per hour", "contractor rate"],
     icon: "Clock",
   },
+  {
+    slug: "merge-pdf",
+    title: "Merge PDF Files",
+    short: "Merge PDF",
+    description:
+      "Free online PDF merger. Combine two or more PDF files into a single document in your browser. Reorder pages, no upload, no watermark.",
+    keywords: ["merge pdf", "combine pdf", "join pdf files", "pdf merger online free", "merge pdf without upload"],
+    icon: "Combine",
+  },
+  {
+    slug: "split-pdf",
+    title: "Split PDF Pages",
+    short: "Split PDF",
+    description:
+      "Free online PDF splitter. Extract a page range from a PDF into a new file — right in your browser. No upload, no watermark, no sign-up.",
+    keywords: ["split pdf", "extract pdf pages", "separate pdf pages", "pdf splitter online free", "delete pdf pages"],
+    icon: "Scissors",
+  },
+  {
+    slug: "jpg-to-pdf",
+    title: "JPG to PDF Converter",
+    short: "JPG to PDF",
+    description:
+      "Free JPG to PDF converter. Turn JPG and PNG images into a single PDF in your browser — one image per page. No upload, no watermark.",
+    keywords: ["jpg to pdf", "image to pdf", "png to pdf", "convert jpg to pdf free", "photos to pdf"],
+    icon: "FileImage",
+  },
+  {
+    slug: "pdf-to-jpg",
+    title: "PDF to JPG Converter",
+    short: "PDF to JPG",
+    description:
+      "Free PDF to JPG converter. Turn every page of a PDF into a downloadable high-quality JPG image, right in your browser. No upload needed.",
+    keywords: ["pdf to jpg", "pdf to image", "convert pdf to jpg free", "pdf to jpeg", "export pdf pages as images"],
+    icon: "Images",
+  },
+  {
+    slug: "resume-ats-checker",
+    title: "Resume ATS Score Checker",
+    short: "Resume ATS Checker",
+    description:
+      "Free resume ATS checker. Paste your resume to get an instant ATS-readiness score with checks for sections, contact info, action verbs, and metrics.",
+    keywords: ["ats resume checker", "resume score checker", "ats score checker free", "resume checker", "is my resume ats friendly"],
+    icon: "ClipboardCheck",
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {
