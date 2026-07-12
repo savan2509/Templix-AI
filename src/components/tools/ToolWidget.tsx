@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { getDictionary, INTL_LOCALE, type Locale } from "@/lib/i18n";
 import { MergePdf, SplitPdf, JpgToPdf, PdfToJpg, ResumeAtsChecker } from "./file-tools";
+import {
+  ProposalBuilder, PricingCalculator, ScopeGenerator, ContractGenerator, NdaGenerator,
+  TermsGenerator, LetterGenerator, ResignationLetterGenerator, RecommendationLetterGenerator,
+} from "./doc-tools";
 
 // Self-contained, client-side calculators. No network, no dependencies — all
 // math runs in the browser. One entry component picks the widget by slug.
@@ -254,6 +258,16 @@ const WIDGETS: Record<string, () => React.ReactElement> = {
   "jpg-to-pdf": JpgToPdf,
   "pdf-to-jpg": PdfToJpg,
   "resume-ats-checker": ResumeAtsChecker,
+  // Document generators (form → PDF/Word/copy) — see ./doc-tools.
+  "proposal-builder": ProposalBuilder,
+  "pricing-calculator": PricingCalculator,
+  "scope-generator": ScopeGenerator,
+  "contract-generator": ContractGenerator,
+  "nda-generator": NdaGenerator,
+  "terms-generator": TermsGenerator,
+  "letter-generator": LetterGenerator,
+  "resignation-letter-generator": ResignationLetterGenerator,
+  "recommendation-letter-generator": RecommendationLetterGenerator,
 };
 
 export default function ToolWidget({ slug }: { slug: string }) {

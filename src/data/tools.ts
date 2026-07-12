@@ -102,6 +102,87 @@ export const TOOLS: ToolMeta[] = [
     keywords: ["ats resume checker", "resume score checker", "ats score checker free", "resume checker", "is my resume ats friendly"],
     icon: "ClipboardCheck",
   },
+  {
+    slug: "proposal-builder",
+    title: "Business Proposal Generator",
+    short: "Proposal Builder",
+    description:
+      "Free business proposal generator. Fill in a short form and download a professional client proposal as PDF or Word — no sign-up, no watermark.",
+    keywords: ["proposal generator", "business proposal template", "project proposal maker", "free proposal builder", "client proposal"],
+    icon: "FileSignature",
+  },
+  {
+    slug: "pricing-calculator",
+    title: "Project Pricing Calculator",
+    short: "Pricing Calculator",
+    description:
+      "Free project pricing calculator. Add line items with quantities and rates, apply a discount and tax, and get an instant quote total.",
+    keywords: ["pricing calculator", "project cost calculator", "quote calculator", "freelance pricing calculator", "estimate calculator"],
+    icon: "Calculator",
+  },
+  {
+    slug: "scope-generator",
+    title: "Scope of Work Generator",
+    short: "Scope Generator",
+    description:
+      "Free scope of work generator. Turn a short form into a clear SOW covering objectives, in/out of scope, deliverables, and acceptance criteria.",
+    keywords: ["scope of work generator", "sow template", "statement of work maker", "project scope generator", "free sow"],
+    icon: "ListChecks",
+  },
+  {
+    slug: "contract-generator",
+    title: "Service Contract Generator",
+    short: "Contract Generator",
+    description:
+      "Free service agreement generator. Fill in the parties, services, payment, and term to download a professional contract as PDF or Word.",
+    keywords: ["contract generator", "service agreement template", "freelance contract maker", "free contract generator", "service contract"],
+    icon: "FileText",
+  },
+  {
+    slug: "nda-generator",
+    title: "NDA Generator",
+    short: "NDA Generator",
+    description:
+      "Free non-disclosure agreement (NDA) generator. Enter the parties, purpose, and term to download a ready-to-sign NDA as PDF or Word.",
+    keywords: ["nda generator", "non disclosure agreement template", "free nda maker", "confidentiality agreement generator", "nda template"],
+    icon: "ShieldCheck",
+  },
+  {
+    slug: "terms-generator",
+    title: "Terms & Conditions Generator",
+    short: "Terms & Conditions",
+    description:
+      "Free terms and conditions generator. Create standard T&C for your website or app from a short form and download as PDF or Word.",
+    keywords: ["terms and conditions generator", "terms of service generator", "free t&c generator", "website terms generator", "terms template"],
+    icon: "Scale",
+  },
+  {
+    slug: "letter-generator",
+    title: "Business Letter Generator",
+    short: "Letter Generator",
+    description:
+      "Free business letter generator. Enter sender, recipient, subject, and body to produce a properly formatted letter you can download or copy.",
+    keywords: ["business letter generator", "formal letter maker", "letter template", "free letter generator", "professional letter"],
+    icon: "Mail",
+  },
+  {
+    slug: "resignation-letter-generator",
+    title: "Resignation Letter Generator",
+    short: "Resignation Letter",
+    description:
+      "Free resignation letter generator. Fill in your role, company, and last day to create a polite, professional resignation letter in seconds.",
+    keywords: ["resignation letter generator", "resignation letter template", "how to write a resignation letter", "free resignation letter", "notice letter"],
+    icon: "LogOut",
+  },
+  {
+    slug: "recommendation-letter-generator",
+    title: "Recommendation Letter Generator",
+    short: "Recommendation Letter",
+    description:
+      "Free recommendation letter generator. Turn a candidate's strengths into a polished reference letter you can download as PDF or Word.",
+    keywords: ["recommendation letter generator", "reference letter template", "letter of recommendation maker", "free recommendation letter", "reference letter"],
+    icon: "Award",
+  },
 ];
 
 export function getTool(slug: string): ToolMeta | undefined {

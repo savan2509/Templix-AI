@@ -4,9 +4,9 @@ import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import { TOOLS } from "@/data/tools";
 import { getDictionary } from "@/lib/i18n";
-import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, ArrowRight, type LucideIcon } from "lucide-react";
+import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, ArrowRight, type LucideIcon } from "lucide-react";
 
-const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck };
+const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award };
 
 interface PageProps {
   params: Promise<{ locale: string }>;
