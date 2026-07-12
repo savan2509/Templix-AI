@@ -18,7 +18,7 @@ export const faqData: FAQItem[] = [
   },
   {
     question: "How does the AI Document Workspace help write better documents?",
-    answer: "Our built-in AI assistant uses advanced models (like Gemini) to rewrite paragraphs, adjust tone (professional, friendly, brief, long), translate text across languages, and check grammar, keeping editing efficient and error-free."
+    answer: "Our built-in AI assistant uses advanced language models to rewrite paragraphs, adjust tone (professional, friendly, brief, long), translate text across languages, and check grammar, keeping editing efficient and error-free."
   }
 ];
 

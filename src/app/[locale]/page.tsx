@@ -66,12 +66,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // layout appends " | Templix AI" (13 chars). "Free Invoice, Resume & Contract
   // Templates" (41) + brand = 54. Proposals still lead the H1, description and
   // their own pages. Other locales keep the fuller phrase (language-inherent).
+  // Every locale kept short enough that " | Templix AI" (13 chars, appended by
+  // the root layout) still lands under Google's ~60–65 char SERP budget. German
+  // and Spanish are language-inherently longer, so they drop "& Angebote/…" and
+  // lead with three document types, mirroring the English title.
   const titles = {
     en: "Free Invoice, Resume & Contract Templates",
-    es: "Plantillas Gratuitas de Facturas, Currículums, Contratos y Propuestas",
-    de: "Kostenlose Vorlagen für Rechnungen, Lebensläufe, Verträge und Angebote",
-    fr: "Modèles Gratuits de Factures, CV, Contrats et Propositions",
-    ar: "قوالب مجانية للفواتير، السير الذاتية، العقود والمقترحات",
+    es: "Plantillas Gratis: Facturas y Currículums",
+    de: "Kostenlose Vorlagen: Rechnungen & Lebensläufe",
+    fr: "Modèles Gratuits : Factures, CV et Contrats",
+    ar: "قوالب مجانية: فواتير وسير ذاتية وعقود",
   };
   
   // Kept under 160 characters so the snippet isn't truncated in search results.

@@ -523,28 +523,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Authority Resources */}
-              <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.authorityResources}</h3>
-                {[
-                  { name: t.authoritySchema, href: "https://schema.org" },
-                  { name: t.authorityW3C, href: "https://www.w3.org" },
-                  { name: t.authorityWikipedia, href: "https://en.wikipedia.org/wiki/Invoice" },
-                ].map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
-                  >
-                    <FileText className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
-                    {link.name}
-                    <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
-                  </a>
-                ))}
-              </div>
-
               {/* Related posts — hidden if none */}
               {related.length > 0 && (
                 <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">

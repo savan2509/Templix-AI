@@ -10,7 +10,7 @@ const en = {
   whyBody:
     "Creating a clean invoice, a standout resume, or a solid contract shouldn't require expensive software or design skills. We built Templix AI so anyone — freelancers, small businesses, students, and consultants — can start from a polished template, customize it in a live editor, and export a print-ready document in minutes.",
 
-  value1Title: "180+ Templates",
+  value1Title: "200+ Templates",
   value1Text: "Professionally designed layouts across 8 document categories.",
   value2Title: "AI-Assisted",
   value2Text: "Rewrite, adjust tone, and polish your text in one click.",
@@ -45,7 +45,7 @@ const es: Shape = {
   whyBody:
     "Crear una factura impecable, un currículum destacado o un contrato sólido no debería requerir software costoso ni conocimientos de diseño. Creamos Templix AI para que cualquiera — autónomos, pequeñas empresas, estudiantes y consultores — pueda partir de una plantilla pulida, personalizarla en un editor en vivo y exportar un documento listo para imprimir en minutos.",
 
-  value1Title: "Más de 180 plantillas",
+  value1Title: "Más de 200 plantillas",
   value1Text: "Diseños profesionales en 8 categorías de documentos.",
   value2Title: "Asistido por IA",
   value2Text: "Reescribe, ajusta el tono y pule tu texto con un clic.",
@@ -78,7 +78,7 @@ const de: Shape = {
   whyBody:
     "Eine saubere Rechnung, ein überzeugender Lebenslauf oder ein solider Vertrag sollten keine teure Software oder Designkenntnisse erfordern. Wir haben Templix AI entwickelt, damit jeder — Freelancer, kleine Unternehmen, Studierende und Berater — mit einer gepflegten Vorlage beginnen, sie in einem Live-Editor anpassen und in Minuten ein druckfertiges Dokument exportieren kann.",
 
-  value1Title: "Über 180 Vorlagen",
+  value1Title: "Über 200 Vorlagen",
   value1Text: "Professionell gestaltete Layouts in 8 Dokumentkategorien.",
   value2Title: "KI-unterstützt",
   value2Text: "Umschreiben, Ton anpassen und Text mit einem Klick verfeinern.",
@@ -111,7 +111,7 @@ const fr: Shape = {
   whyBody:
     "Créer une facture soignée, un CV remarquable ou un contrat solide ne devrait pas exiger de logiciels coûteux ni de compétences en design. Nous avons créé Templix AI pour que chacun — indépendants, petites entreprises, étudiants et consultants — puisse partir d'un modèle abouti, le personnaliser dans un éditeur en direct et exporter un document prêt à imprimer en quelques minutes.",
 
-  value1Title: "Plus de 180 modèles",
+  value1Title: "Plus de 200 modèles",
   value1Text: "Mises en page professionnelles réparties sur 8 catégories de documents.",
   value2Title: "Assisté par IA",
   value2Text: "Réécrivez, ajustez le ton et peaufinez votre texte en un clic.",
@@ -144,7 +144,7 @@ const ar: Shape = {
   whyBody:
     "إنشاء فاتورة أنيقة أو سيرة ذاتية مميزة أو عقد متين لا ينبغي أن يتطلب برامج باهظة الثمن أو مهارات تصميم. أنشأنا Templix AI ليتمكن أي شخص — المستقلون والشركات الصغيرة والطلاب والمستشارون — من البدء بقالب متقن وتخصيصه في محرر مباشر وتصدير مستند جاهز للطباعة في دقائق.",
 
-  value1Title: "أكثر من 180 قالبًا",
+  value1Title: "أكثر من 200 قالبًا",
   value1Text: "تصاميم احترافية موزعة على 8 فئات من المستندات.",
   value2Title: "مدعوم بالذكاء الاصطناعي",
   value2Text: "أعد الصياغة واضبط النبرة وصقل نصك بنقرة واحدة.",

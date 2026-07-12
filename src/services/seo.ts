@@ -341,8 +341,6 @@ export class SEOEngine {
     let wikiResumeReplaced = false;
     let wikiContractReplaced = false;
     let wikiProposalReplaced = false;
-    let schemaOrgReplaced = false;
-    let w3Replaced = false;
 
     // Track anchor nesting so we never inject a link inside an already-authored
     // <a>…</a> (which would produce invalid nested anchors and hijack the href).
@@ -412,14 +410,10 @@ export class SEOEngine {
         text = text.replace(/business proposal/i, `<a href="https://en.wikipedia.org/wiki/Proposal_(business)" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">business proposal</a>`);
         wikiProposalReplaced = true;
       }
-      if (!schemaOrgReplaced && text.toLowerCase().includes("json-ld")) {
-        text = text.replace(/json-ld/i, `<a href="https://schema.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">JSON-LD</a>`);
-        schemaOrgReplaced = true;
-      }
-      if (!w3Replaced && text.toLowerCase().includes("html format")) {
-        text = text.replace(/html format/i, `<a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">HTML format</a>`);
-        w3Replaced = true;
-      }
+      // (Removed the generic Schema.org / W3C "authority" links: developer
+      // standards are off-topic for business-document articles and the
+      // formulaic repetition read as link stuffing. Only topically-relevant
+      // Wikipedia links above remain.)
 
       return text;
     });
@@ -432,16 +426,11 @@ export class SEOEngine {
       invoiceTemplatesReplaced || resumeTemplatesReplaced || contractTemplatesReplaced ||
       proposalTemplatesReplaced || letterTemplatesReplaced || editorReplaced ||
       /href="\/[^"]/.test(result);
-    const hasExternalLink =
-      wikiInvoiceReplaced || wikiResumeReplaced || wikiContractReplaced ||
-      wikiProposalReplaced || schemaOrgReplaced || w3Replaced ||
-      /href="https?:\/\//.test(result);
 
+    // Only a single, genuinely-useful internal fallback remains. The former
+    // external "W3C standards" fallback was off-topic filler and was removed.
     if (!hasInternalLink) {
       result += `<p class="mt-6 text-sm text-zinc-500 border-t border-zinc-100 dark:border-zinc-800/50 pt-4">For more ready-to-use layouts, check out our collection of free <a href="/${locale}/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document templates</a> to speed up your paperwork.</p>`;
-    }
-    if (!hasExternalLink) {
-      result += `<p class="mt-2 text-sm text-zinc-500">To learn more about professional document and markup standards, visit the official <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">W3C Organization website</a>.</p>`;
     }
 
     return result;

@@ -86,7 +86,10 @@ export default function TemplateThumbnail({ template }: { template: any }) {
   // card height with real content, avoiding blank space at the bottom.
 
   return (
-    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-2 sm:p-2.5">
+    // Decorative snapshot filled with sample data — hide it from the a11y tree
+    // so screen readers don't announce dummy names/figures; the card's real
+    // linked heading conveys the template. (The card link carries the true label.)
+    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-2 sm:p-2.5" aria-hidden="true">
       <div className="relative h-full w-full overflow-hidden rounded-md bg-white shadow-md ring-1 ring-black/5">
         <div
           className="origin-top-left pointer-events-none"

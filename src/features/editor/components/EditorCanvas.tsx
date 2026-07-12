@@ -398,7 +398,7 @@ export default function EditorCanvas({
 
             <div className="p-4 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/50 dark:border-blue-900/30 space-y-2">
               <CloudLightning className="h-5 w-5 text-blue-500" />
-              <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200">Gemini-Powered Workspace</h4>
+              <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200">AI-Powered Workspace</h4>
               <p className="text-[10px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Connect your API key in environment variables to enable generative drafts directly within the visual editor.
               </p>

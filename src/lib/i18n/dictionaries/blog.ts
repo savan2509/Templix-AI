@@ -38,7 +38,7 @@ const en = {
   // ── Listing page: CTA banner ──
   ctaHeading: "Ready to Create Your Document?",
   ctaText:
-    "Browse 180+ free professional templates. Customize online with our AI editor and download as PDF or Word — instantly, no account needed.",
+    "Browse 200+ free professional templates. Customize online with our AI editor and download as PDF or Word — instantly, no account needed.",
   ctaInvoiceTemplates: "Invoice Templates →",
 
   // ── Listing page: SEO block ──
@@ -147,7 +147,7 @@ const es: Shape = {
 
   ctaHeading: "¿Listo para crear tu documento?",
   ctaText:
-    "Explora más de 180 plantillas profesionales gratuitas. Personalízalas en línea con nuestro editor de IA y descárgalas en PDF o Word, al instante y sin necesidad de cuenta.",
+    "Explora más de 200 plantillas profesionales gratuitas. Personalízalas en línea con nuestro editor de IA y descárgalas en PDF o Word, al instante y sin necesidad de cuenta.",
   ctaInvoiceTemplates: "Plantillas de facturas →",
 
   seoHeading: "Directorios y referencias de redacción profesional",
@@ -249,7 +249,7 @@ const de: Shape = {
 
   ctaHeading: "Bereit, dein Dokument zu erstellen?",
   ctaText:
-    "Durchstöbere über 180 kostenlose professionelle Vorlagen. Passe sie online mit unserem KI-Editor an und lade sie sofort als PDF oder Word herunter – ohne Konto.",
+    "Durchstöbere über 200 kostenlose professionelle Vorlagen. Passe sie online mit unserem KI-Editor an und lade sie sofort als PDF oder Word herunter – ohne Konto.",
   ctaInvoiceTemplates: "Rechnungsvorlagen →",
 
   seoHeading: "Verzeichnisse und Referenzen für professionelles Schreiben",
@@ -351,7 +351,7 @@ const fr: Shape = {
 
   ctaHeading: "Prêt à créer votre document ?",
   ctaText:
-    "Parcourez plus de 180 modèles professionnels gratuits. Personnalisez-les en ligne avec notre éditeur IA et téléchargez-les en PDF ou Word, instantanément et sans compte.",
+    "Parcourez plus de 200 modèles professionnels gratuits. Personnalisez-les en ligne avec notre éditeur IA et téléchargez-les en PDF ou Word, instantanément et sans compte.",
   ctaInvoiceTemplates: "Modèles de factures →",
 
   seoHeading: "Répertoires et références de rédaction professionnelle",
@@ -453,7 +453,7 @@ const ar: Shape = {
 
   ctaHeading: "هل أنت مستعد لإنشاء مستندك؟",
   ctaText:
-    "تصفح أكثر من 180 قالبًا احترافيًا مجانيًا. خصصها عبر الإنترنت باستخدام محرر الذكاء الاصطناعي وحمّلها بصيغة PDF أو Word فورًا وبدون حساب.",
+    "تصفح أكثر من 200 قالبًا احترافيًا مجانيًا. خصصها عبر الإنترنت باستخدام محرر الذكاء الاصطناعي وحمّلها بصيغة PDF أو Word فورًا وبدون حساب.",
   ctaInvoiceTemplates: "قوالب الفواتير →",
 
   seoHeading: "أدلة ومراجع الكتابة الاحترافية",
