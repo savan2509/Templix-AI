@@ -1,0 +1,8 @@
+{
+  "name": "empty-canvas",
+  "version": "1.0.0",
+  "description": "No-op stub for pdfjs-dist's optional `canvas` dependency. We only use pdfjs in the browser, so the native Node canvas addon (and its deprecated prebuild-install build step) is never needed. Overridden in the root package.json.",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true
+}
