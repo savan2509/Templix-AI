@@ -252,6 +252,17 @@ body {
 .scrollbar-none { scrollbar-width: none; -ms-overflow-style: none; }
 .scrollbar-none::-webkit-scrollbar { display: none; }
 
+/* ─── Skip rendering off-screen template previews ────────────────────────────
+   The template grids paint ~12 full live document previews; below-the-fold
+   ones don't need to be laid out or painted until scrolled near. content-
+   visibility:auto defers that work (better LCP/INP) with no visual change; the
+   intrinsic size reserves height so the scrollbar doesn't jump, and `auto`
+   lets the browser remember each card's real size after it first renders. */
+.cv-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 380px;
+}
+
 /* ─── Utility Animations ────────────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-6px); }

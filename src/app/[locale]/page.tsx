@@ -288,7 +288,7 @@ export default async function HomePage({ params }: PageProps) {
                 >
                   {/* Thumbnail — mini of the live document preview so the cover
                       matches the detail page for every module */}
-                  <div className="aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
+                  <div className="cv-card aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
                     <TemplateThumbnail
                       template={{
                         slug: temp.slug,

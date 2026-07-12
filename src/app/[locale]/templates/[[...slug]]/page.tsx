@@ -964,7 +964,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                     >
                       {/* Card Thumbnail — a mini of the live document preview so
                           the cover matches the detail page for every module */}
-                      <div className="aspect-[4/5] w-full border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
+                      <div className="cv-card aspect-[4/5] w-full border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
                         <TemplateThumbnail template={temp} />
 
                         <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[8px] uppercase tracking-wider z-10 shadow-sm">
