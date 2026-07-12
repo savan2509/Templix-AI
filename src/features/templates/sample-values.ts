@@ -263,7 +263,10 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   contractDate: "2026-06-28",
   paymentAmount: "$5,000.00",
   projectScope: "Deliver Next.js App Router integrations, seed database schema, construct Tiptap editor canvas, and build PDF exporter plugins.",
-  summary: "Lead developer with 8+ years experience scaling SaaS architectures, designing Next.js routers, and managing high-volume Postgres schemas.",
+  // Role-neutral fallback only. Every resume template supplies its own
+  // role-specific summary; this is the safety net so a future resume that
+  // forgets one never shows an engineer summary on a nurse/teacher/etc. page.
+  summary: "Results-focused professional with a track record of delivering measurable outcomes, collaborating across teams, and raising the standard of the work.",
 
   // — Employment Contract —
   hrRepresentative: "Marcus Vance, HR Director",
