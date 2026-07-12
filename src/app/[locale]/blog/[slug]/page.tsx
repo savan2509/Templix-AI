@@ -24,6 +24,7 @@ import {
   wordCount,
 } from "@/lib/blog-seo";
 import { siteConfig } from "@/config/site";
+import { getTool } from "@/data/tools";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import {
   ArrowRight,
@@ -37,6 +38,7 @@ import {
   Sparkles,
   FileText,
   PenLine,
+  Wrench,
 } from "lucide-react";
 
 interface PageProps {
@@ -141,6 +143,20 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   const related = getRelatedPosts(slug, 3);
   const gradient = CATEGORY_GRADIENT[post.category] ?? "from-blue-600 to-indigo-600";
+
+  // Free tools relevant to the article's topic — a contextual internal link to
+  // our best link-magnet utilities. Falls back to a general set for Guides/AI.
+  const TOOLS_BY_CATEGORY: Record<string, string[]> = {
+    Invoices: ["invoice-number-generator", "gst-calculator", "pricing-calculator"],
+    Resumes: ["resume-ats-checker", "pdf-to-jpg", "merge-pdf"],
+    Contracts: ["contract-generator", "nda-generator", "terms-generator"],
+    Proposals: ["proposal-builder", "pricing-calculator", "scope-generator"],
+    Letters: ["letter-generator", "resignation-letter-generator", "recommendation-letter-generator"],
+    "AI Tools": ["resume-ats-checker", "merge-pdf", "pdf-to-jpg"],
+  };
+  const relatedTools = (TOOLS_BY_CATEGORY[post.category] ?? ["merge-pdf", "gst-calculator", "resume-ats-checker"])
+    .map((s) => getTool(s))
+    .filter((tl): tl is NonNullable<typeof tl> => Boolean(tl));
 
   // Resolve links first, then add anchors — so the ids match what renders.
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
@@ -488,6 +504,24 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   </Link>
                 ))}
               </div>
+
+              {/* Free tools — contextual to the article topic */}
+              {relatedTools.length > 0 && (
+                <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.freeToolsLabel}</h3>
+                  {relatedTools.map((tool) => (
+                    <Link
+                      key={tool.slug}
+                      href={`/${locale}/tools/${tool.slug}`}
+                      className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                    >
+                      <Wrench className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
+                      {tool.short}
+                      <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                    </Link>
+                  ))}
+                </div>
+              )}
 
               {/* Authority Resources */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">

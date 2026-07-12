@@ -60,6 +60,7 @@ const en = {
   foundHelpful: "Found this helpful?",
   shareNetwork: "Share it with your network",
   freeTemplatesLabel: "Free Templates",
+  freeToolsLabel: "Free Tools",
   ctaPracticeHeading: "Ready to put this into practice?",
   ctaPracticeText:
     "Browse Templix AI's free professional templates. Customize online, edit with AI, and download as PDF or Word — in minutes.",
@@ -167,6 +168,7 @@ const es: Shape = {
   foundHelpful: "¿Te resultó útil?",
   shareNetwork: "Compártelo con tu red",
   freeTemplatesLabel: "Plantillas gratuitas",
+  freeToolsLabel: "Herramientas gratuitas",
   ctaPracticeHeading: "¿Listo para ponerlo en práctica?",
   ctaPracticeText:
     "Explora las plantillas profesionales gratuitas de Templix AI. Personalízalas en línea, edítalas con IA y descárgalas en PDF o Word, en minutos.",
@@ -268,6 +270,7 @@ const de: Shape = {
   foundHelpful: "War das hilfreich?",
   shareNetwork: "Teile ihn mit deinem Netzwerk",
   freeTemplatesLabel: "Kostenlose Vorlagen",
+  freeToolsLabel: "Kostenlose Tools",
   ctaPracticeHeading: "Bereit, das in die Praxis umzusetzen?",
   ctaPracticeText:
     "Durchstöbere die kostenlosen professionellen Vorlagen von Templix AI. Passe sie online an, bearbeite sie mit KI und lade sie in Minuten als PDF oder Word herunter.",
@@ -369,6 +372,7 @@ const fr: Shape = {
   foundHelpful: "Cet article vous a été utile ?",
   shareNetwork: "Partagez-le avec votre réseau",
   freeTemplatesLabel: "Modèles gratuits",
+  freeToolsLabel: "Outils gratuits",
   ctaPracticeHeading: "Prêt à mettre cela en pratique ?",
   ctaPracticeText:
     "Parcourez les modèles professionnels gratuits de Templix AI. Personnalisez-les en ligne, modifiez-les avec l’IA et téléchargez-les en PDF ou Word, en quelques minutes.",
@@ -469,6 +473,7 @@ const ar: Shape = {
   foundHelpful: "هل كان هذا مفيدًا؟",
   shareNetwork: "شاركه مع شبكتك",
   freeTemplatesLabel: "قوالب مجانية",
+  freeToolsLabel: "أدوات مجانية",
   ctaPracticeHeading: "هل أنت مستعد لتطبيق ذلك عمليًا؟",
   ctaPracticeText:
     "تصفح قوالب Templix AI الاحترافية المجانية. خصصها عبر الإنترنت وحررها بالذكاء الاصطناعي وحمّلها بصيغة PDF أو Word في دقائق.",

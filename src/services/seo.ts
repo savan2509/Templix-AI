@@ -313,7 +313,30 @@ export class SEOEngine {
     let proposalTemplatesReplaced = false;
     let letterTemplatesReplaced = false;
     let editorReplaced = false;
-    
+
+    // Tool cross-links: when an article mentions one of our free tools by name,
+    // link the first mention to that tool page. Bounded to one link per tool per
+    // article. Phrases are ordered most-specific-first; word boundaries guard the
+    // short tokens (e.g. "nda") from matching inside unrelated words.
+    const toolLinked = new Set<string>();
+    const TOOL_RULES: { re: RegExp; slug: string }[] = [
+      { re: /invoice number generator/i, slug: "invoice-number-generator" },
+      { re: /invoice number/i, slug: "invoice-number-generator" },
+      { re: /gst calculator/i, slug: "gst-calculator" },
+      { re: /resume ats checker|ats resume checker|\bats checker\b/i, slug: "resume-ats-checker" },
+      { re: /applicant tracking system/i, slug: "resume-ats-checker" },
+      { re: /merge pdf/i, slug: "merge-pdf" },
+      { re: /split pdf/i, slug: "split-pdf" },
+      { re: /pdf to jpg/i, slug: "pdf-to-jpg" },
+      { re: /jpg to pdf/i, slug: "jpg-to-pdf" },
+      { re: /profit margin/i, slug: "profit-margin-calculator" },
+      { re: /hourly rate/i, slug: "hourly-rate-calculator" },
+      { re: /non-disclosure agreement|\bnda\b/i, slug: "nda-generator" },
+      { re: /resignation letter/i, slug: "resignation-letter-generator" },
+      { re: /recommendation letter|reference letter/i, slug: "recommendation-letter-generator" },
+      { re: /scope of work/i, slug: "scope-generator" },
+    ];
+
     let wikiInvoiceReplaced = false;
     let wikiResumeReplaced = false;
     let wikiContractReplaced = false;
@@ -361,6 +384,15 @@ export class SEOEngine {
       if (!editorReplaced && text.toLowerCase().includes("document editor")) {
         text = text.replace(/document editor/i, `<a href="/${locale}/editor" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">document editor</a>`);
         editorReplaced = true;
+      }
+
+      // 1b. Tool cross-links — funnel readers to the free tool the article names.
+      for (const rule of TOOL_RULES) {
+        if (toolLinked.has(rule.slug)) continue;
+        if (rule.re.test(text)) {
+          text = text.replace(rule.re, (m) => `<a href="/${locale}/tools/${rule.slug}" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">${m}</a>`);
+          toolLinked.add(rule.slug);
+        }
       }
 
       // 2. External Links (Authority links)
