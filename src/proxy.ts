@@ -95,10 +95,13 @@ export default async function proxy(req: NextRequest) {
   );
 
   if (pathnameIsMissingLocale) {
-    const redirectUrl = new URL(
-      `/${defaultLocale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-      req.url
-    );
+    // Redirect to the locale-prefixed path in a SINGLE hop. The root "/" must
+    // map to "/{locale}" with no trailing slash — appending pathname ("/")
+    // produced "/en/", which Next then re-redirected to "/en", a needless
+    // 2-hop chain on the site's most-linked URL. Other paths already start with
+    // "/" so they carry through unchanged (e.g. "/templates" → "/en/templates").
+    const targetPath = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+    const redirectUrl = new URL(targetPath, req.url);
     // Preserve any search parameters or hash (e.g. for password resets)
     redirectUrl.search = req.nextUrl.search;
     return NextResponse.redirect(redirectUrl);
