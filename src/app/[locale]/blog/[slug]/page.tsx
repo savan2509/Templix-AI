@@ -19,6 +19,7 @@ import {
   withHeadingIds,
   extractFaqs,
   buildFaqSchema,
+  getBlogFaqs,
   readingTime,
   wordCount,
 } from "@/lib/blog-seo";
@@ -144,7 +145,12 @@ export default async function BlogArticlePage({ params }: PageProps) {
   // Resolve links first, then add anchors — so the ids match what renders.
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
   const { html: articleHtml, toc } = withHeadingIds(linkedHtml);
-  const faqs = extractFaqs(articleHtml);
+  // Every article gets an FAQ. If the post already ships its own "Frequently
+  // Asked Questions" section, use those; otherwise generate a category-specific
+  // set to render below the article + emit FAQPage schema.
+  const inlineFaqs = extractFaqs(articleHtml);
+  const generatedFaqs = inlineFaqs.length > 0 ? [] : getBlogFaqs(post);
+  const faqs = inlineFaqs.length > 0 ? inlineFaqs : generatedFaqs;
   const minutes = readingTime(post.content);
   const words = wordCount(post.content);
 
@@ -353,6 +359,24 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 className="prose-article"
                 dangerouslySetInnerHTML={{ __html: articleHtml }}
               />
+
+              {/* Generated FAQ — only for posts that don't already ship their own
+                  FAQ section. The FAQPage schema above covers whichever set. */}
+              {generatedFaqs.length > 0 && (
+                <section className="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800 space-y-4">
+                  <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-4">
+                    {generatedFaqs.map((faq) => (
+                      <div key={faq.question} className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+                        <h3 className="font-semibold text-zinc-900 dark:text-white">{faq.question}</h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Share row */}
               <div className="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

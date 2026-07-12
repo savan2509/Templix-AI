@@ -10,8 +10,10 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   quoteDate: "July 3, 2026",
   companyName: "Acme Global Inc.",
   companyEmail: "info@acmeglobal.com",
-  companyLogo: "🏢",
-  logo: "🏢",
+  // No emoji stand-in: an "🏢" leaked into document bodies and the editor's
+  // logo input. Templates render a text letterhead, not a logo glyph.
+  companyLogo: "",
+  logo: "",
   clientName: "John Doe Services",
   email: "sarah.j@techsolutions.com",
   phone: "+1 (555) 382-9281",
@@ -27,6 +29,15 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   subtotal: "$4,250.00",
   notes: "Payment is due within 30 days of invoice date.",
   signature: "Sarah Jenkins",
+  // Common report / business-plan / proposal fields — without these, previews
+  // rendered the humanized field name ("Owner Name", "Report Period") because
+  // the field had no sample value.
+  preparedBy: "Alex Morgan",
+  reportPeriod: "Q2 2026 (Apr–Jun)",
+  ownerName: "Jordan Ellis",
+  founderName: "Jordan Ellis",
+  contactPerson: "Alex Morgan",
+  instructorName: "Dr. Susan Wright",
   projectName: "Templix AI Platform Development",
 
   // — Freelancer Invoice —

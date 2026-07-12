@@ -60,7 +60,7 @@ export const contractsTemplates = [
     categoryName: "Contracts",
     content: {
       title: "Employment Agreement",
-      fields: ["companyLogo", "companyName", "companyAddress", "hrRepresentative", "hrEmail", "hrPhone", "employeeFullName", "employeeAddress", "employeeEmail", "employeePhone", "jobTitle", "department", "employmentType", "startDate", "endDate", "workLocation", "reportingManager", "salary", "bonus", "benefits", "payFrequency", "workingHours", "probationPeriod", "leavePolicy", "noticePeriod", "confidentialityClause", "nonCompeteClause", "employerSignature", "employeeSignature", "signatureDate"],
+      fields: ["companyName", "companyAddress", "hrRepresentative", "hrEmail", "hrPhone", "employeeFullName", "employeeAddress", "employeeEmail", "employeePhone", "jobTitle", "department", "employmentType", "startDate", "endDate", "workLocation", "reportingManager", "salary", "bonus", "benefits", "payFrequency", "workingHours", "probationPeriod", "leavePolicy", "noticePeriod", "confidentialityClause", "nonCompeteClause", "employerSignature", "employeeSignature", "signatureDate"],
       layout: {
         header: "EMPLOYMENT AGREEMENT",
         footer: "Subject to governing labor laws. Copy retained by both parties."
@@ -75,7 +75,7 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "EMPLOYMENT CONTRACT" }] },
           { type: "paragraph", content: [{ type: "text", text: "This Employment Agreement is made between {{companyName}} (the Employer) and {{employeeFullName}} (the Employee) and sets out the terms under which the Employee will be engaged." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Parties" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer: " }, { type: "text", text: "{{companyName}} {{companyLogo}}, {{companyAddress}}. HR Contact: {{hrRepresentative}} ({{hrEmail}} / {{hrPhone}})" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}. HR Contact: {{hrRepresentative}} ({{hrEmail}} / {{hrPhone}})" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee: " }, { type: "text", text: "{{employeeFullName}}, {{employeeAddress}} ({{employeeEmail}} / {{employeePhone}})" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Position & Duties" }] },
           { type: "paragraph", content: [{ type: "text", text: "The Employee is hired as {{jobTitle}} in the {{department}} department on a {{employmentType}} basis, based at {{workLocation}} and reporting to {{reportingManager}}." }] },
