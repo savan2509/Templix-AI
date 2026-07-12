@@ -183,6 +183,12 @@ export default async function BlogArticlePage({ params }: PageProps) {
     wordCount: words,
     timeRequired: `PT${minutes}M`,
     keywords: post.tags.join(", "),
+    // Voice-search: point assistants at the headline + summary of the article.
+    // The classes below tag the exact elements those selectors resolve to.
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".speakable-title", ".speakable-summary"],
+    },
   };
 
   // Only emit FAQPage when the post actually has a Q&A section — an empty
@@ -258,13 +264,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
               </span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            {/* Title — .speakable-title is referenced by the Article schema's
+                SpeakableSpecification for voice assistants. */}
+            <h1 className="speakable-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
               {post.title}
             </h1>
 
-            {/* Description */}
-            <p className="text-white/80 text-base leading-relaxed max-w-2xl">
+            {/* Description — .speakable-summary, the second speakable selector. */}
+            <p className="speakable-summary text-white/80 text-base leading-relaxed max-w-2xl">
               {post.description}
             </p>
 
