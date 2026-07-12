@@ -822,7 +822,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
+          {/* grid-cols-1 clamps the single mobile column to the viewport
+              (minmax(0,1fr)); without it the column is auto-sized and a wide
+              child — e.g. the many-page pagination row — stretched it past the
+              screen, dragging the sidebar into horizontal overflow. */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* ── Sidebar ── */}
             <aside className="lg:col-span-1 space-y-5">
 
@@ -984,7 +988,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                 {/* Simple Pagination Controls */}
                 {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 pt-8">
+                  <div className="flex flex-wrap items-center justify-center gap-2 pt-8">
                     {Array.from({ length: totalPages }).map((_, idx) => {
                       const p = idx + 1;
                       const isActive = p === currentPage;
