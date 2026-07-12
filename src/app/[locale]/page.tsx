@@ -61,20 +61,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   // Brand is appended by the root layout's `%s | Templix AI` template, so it
   // must NOT be included here (otherwise the brand appears twice in the title).
+  // Keep the English <title> under Google's ~60-char budget once the root
+  // layout appends " | Templix AI" (13 chars). "Free Invoice, Resume & Contract
+  // Templates" (41) + brand = 54. Proposals still lead the H1, description and
+  // their own pages. Other locales keep the fuller phrase (language-inherent).
   const titles = {
-    en: "Free Invoice, Resume, Contract & Proposal Templates",
+    en: "Free Invoice, Resume & Contract Templates",
     es: "Plantillas Gratuitas de Facturas, Currículums, Contratos y Propuestas",
     de: "Kostenlose Vorlagen für Rechnungen, Lebensläufe, Verträge und Angebote",
     fr: "Modèles Gratuits de Factures, CV, Contrats et Propositions",
     ar: "قوالب مجانية للفواتير، السير الذاتية، العقود والمقترحات",
   };
   
+  // Kept under 160 characters so the snippet isn't truncated in search results.
   const descriptions = {
-    en: "Create and download professional invoices, resumes, CVs, contract agreements, business proposals, and letters in minutes. Fully customizable template editor with AI assistance.",
-    es: "Cree y descargue facturas, currículums, contratos, propuestas comerciales y cartas profesionales en minutos. Editor de plantillas personalizable con IA.",
-    de: "Erstellen und laden Sie professionelle Rechnungen, Lebensläufe, Verträge, Angebote und Briefe in wenigen Minuten herunter. Anpassbarer Editor mit KI.",
-    fr: "Créez et téléchargez des factures, des CV, des contrats, des propositions commerciales et des lettres professionnels en quelques minutes. Éditeur personnalisable avec IA.",
-    ar: "قم بإنشاء وتنزيل الفواتير المهنية، السير الذاتية، العقود، المقترحات التجارية والرسائل في دقائق. محرر قوالب قابل للتخصيص بالكامل بمساعدة الذكاء الاصطناعي.",
+    en: "Create and download free invoices, resumes, contracts, proposals and letters in minutes. Customize online with AI and export to PDF or Word — no sign-up.",
+    es: "Crea y descarga facturas, currículums, contratos, propuestas y cartas gratis en minutos. Personaliza online con IA y exporta a PDF o Word, sin registro.",
+    de: "Kostenlose Rechnungen, Lebensläufe, Verträge, Angebote und Briefe in Minuten erstellen. Online mit KI anpassen und als PDF oder Word exportieren.",
+    fr: "Créez et téléchargez gratuitement factures, CV, contrats, propositions et lettres en minutes. Personnalisez avec l'IA, exportez en PDF ou Word.",
+    ar: "أنشئ ونزّل فواتير وسِيَرًا ذاتية وعقودًا ومقترحات ورسائل مجانية في دقائق. عدّلها عبر الإنترنت بمساعدة الذكاء الاصطناعي وصدّرها بصيغة PDF أو Word.",
   };
 
   const title = titles[locale as keyof typeof titles] || titles.en;
@@ -228,7 +233,7 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-28 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      alt=""
+                      alt={`Free ${cat.name} templates`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
