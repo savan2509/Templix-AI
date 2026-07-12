@@ -14,6 +14,11 @@ export interface SEOPageData {
   keywords?: string[];   // meta keywords
   canonical?: string;    // explicit canonical URL override
   image?: string;        // social share image (absolute URL or /public path)
+  // English-only content served under every /{locale} path (blog posts, tools).
+  // Point the canonical at the /en variant and drop the hreflang alternates so
+  // Google consolidates the duplicates onto one URL instead of indexing, say,
+  // the /de URL for English text. Remove this once real translations exist.
+  consolidateToEn?: boolean;
 }
 
 export interface InternalLinkingData {
@@ -36,8 +41,14 @@ export class SEOEngine {
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
    */
   static generateMetadata(data: SEOPageData) {
+    // For English-only content, the canonical always points at the /en variant
+    // (regardless of the locale the page is served under) so search engines
+    // consolidate the duplicates. An explicit `canonical` still wins.
     const canonical =
-      data.canonical || `${this.APP_URL}/${data.locale}${data.slug === "/" ? "" : data.slug}`;
+      data.canonical ||
+      (data.consolidateToEn
+        ? `${this.APP_URL}/en${data.slug === "/" ? "" : data.slug}`
+        : `${this.APP_URL}/${data.locale}${data.slug === "/" ? "" : data.slug}`);
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and
     // Twitter titles are not templated, so we brand those explicitly.
@@ -56,14 +67,21 @@ export class SEOEngine {
       keywords: data.keywords,
       alternates: {
         canonical: canonical,
-        languages: {
-          en: `${this.APP_URL}/en${path}`,
-          es: `${this.APP_URL}/es${path}`,
-          de: `${this.APP_URL}/de${path}`,
-          fr: `${this.APP_URL}/fr${path}`,
-          ar: `${this.APP_URL}/ar${path}`,
-          "x-default": `${this.APP_URL}/en${path}`,
-        },
+        // Omit hreflang for English-only content — declaring de/fr/… as language
+        // alternates of identical English text is exactly the misleading signal
+        // that made Google index the wrong locale. Translated pages keep it.
+        ...(data.consolidateToEn
+          ? {}
+          : {
+              languages: {
+                en: `${this.APP_URL}/en${path}`,
+                es: `${this.APP_URL}/es${path}`,
+                de: `${this.APP_URL}/de${path}`,
+                fr: `${this.APP_URL}/fr${path}`,
+                ar: `${this.APP_URL}/ar${path}`,
+                "x-default": `${this.APP_URL}/en${path}`,
+              },
+            }),
       },
       openGraph: {
         title: fullTitle,

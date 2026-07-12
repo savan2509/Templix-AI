@@ -64,6 +64,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     locale,
     isBlogPost: true,
     publishedTime: post.publishedAt,
+    // Article body is English on every locale — consolidate the duplicates to /en.
+    consolidateToEn: true,
   }) as Metadata;
 }
 

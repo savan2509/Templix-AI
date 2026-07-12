@@ -24,20 +24,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified?: Date;
       changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
       priority?: number;
+      // English-only content (blog posts, tools, template details): emit just the
+      // /en URL with no hreflang, matching the page's consolidated canonical.
+      // Listing localized alternates here would re-introduce the duplicate signal.
+      enOnly?: boolean;
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
     lastModified: opts.lastModified ?? contentDate,
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
-    alternates: {
-      languages: Object.fromEntries([
-        ...LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`]),
-        // x-default points at the English variant so search engines have a
-        // fallback for unmatched locales (recommended by Google's hreflang spec).
-        ["x-default", `${baseUrl}/en${path}`],
-      ]),
-    },
+    ...(opts.enOnly
+      ? {}
+      : {
+          alternates: {
+            languages: Object.fromEntries([
+              ...LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`]),
+              // x-default points at the English variant so search engines have a
+              // fallback for unmatched locales (recommended by Google's hreflang spec).
+              ["x-default", `${baseUrl}/en${path}`],
+            ]),
+          },
+        }),
   });
 
   const entries: MetadataRoute.Sitemap = [];
@@ -50,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Free tools hub + each tool
   entries.push(entry("/tools", { changeFrequency: "weekly", priority: 0.7 }));
   for (const tool of TOOLS) {
-    entries.push(entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6 }));
+    entries.push(entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6, enOnly: true }));
   }
 
   // Static info / legal pages
@@ -65,23 +73,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.push(entry(`/templates/${cat.slug}`, { changeFrequency: "weekly", priority: 0.7 }));
   }
 
-  // Template detail pages (canonical /{category}/{slug} shape)
+  // Template detail pages (canonical /{category}/{slug} shape) — English-only
+  // content, so consolidated onto the /en URL (no per-locale alternates).
   for (const t of allFallbackTemplates) {
     entries.push(
       entry(`/templates/${t.categorySlug}/${t.slug}`, {
         changeFrequency: "weekly",
         priority: 0.6,
+        enOnly: true,
       })
     );
   }
 
-  // Blog articles
+  // Blog articles — English-only content, consolidated onto the /en URL.
   for (const post of STATIC_BLOG_POSTS) {
     entries.push(
       entry(`/blog/${post.slug}`, {
         lastModified: new Date(post.publishedAt),
         changeFrequency: "monthly",
         priority: 0.7,
+        enOnly: true,
       })
     );
   }
