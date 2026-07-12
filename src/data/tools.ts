@@ -9,11 +9,32 @@ export interface ToolMeta {
   description: string; // meta description + hero subtitle
   keywords: string[];
   icon: string;       // lucide icon name, mapped in the UI
+  category: ToolCategoryKey; // groups the tool on the hub + in the navbar dropdown
 }
+
+export type ToolCategoryKey = "pdf" | "resume" | "invoice" | "proposal" | "contract" | "letter";
+
+export interface ToolCategory {
+  key: ToolCategoryKey;
+  icon: string;                    // lucide icon name for the section/dropdown
+  label: Record<string, string>;   // localized category label
+}
+
+// Ordered to mirror the Templates dropdown. Each key is used as the section
+// anchor id on /tools (e.g. /tools#pdf) that the navbar dropdown links to.
+export const TOOL_CATEGORIES: ToolCategory[] = [
+  { key: "pdf", icon: "FileStack", label: { en: "PDF Tools", es: "Herramientas PDF", de: "PDF-Tools", fr: "Outils PDF", ar: "أدوات PDF" } },
+  { key: "resume", icon: "ClipboardCheck", label: { en: "Resume Tools", es: "Herramientas de CV", de: "Lebenslauf-Tools", fr: "Outils CV", ar: "أدوات السيرة الذاتية" } },
+  { key: "invoice", icon: "Calculator", label: { en: "Invoice & Business", es: "Facturas y negocio", de: "Rechnung & Business", fr: "Facturation & business", ar: "الفواتير والأعمال" } },
+  { key: "proposal", icon: "FileSignature", label: { en: "Proposals", es: "Propuestas", de: "Angebote", fr: "Propositions", ar: "المقترحات" } },
+  { key: "contract", icon: "ShieldCheck", label: { en: "Contracts & Legal", es: "Contratos y legal", de: "Verträge & Recht", fr: "Contrats & juridique", ar: "العقود والقانون" } },
+  { key: "letter", icon: "Mail", label: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" } },
+];
 
 export const TOOLS: ToolMeta[] = [
   {
     slug: "gst-calculator",
+    category: "invoice",
     title: "GST & Tax Calculator",
     short: "GST / Tax Calculator",
     description:
@@ -23,6 +44,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "discount-calculator",
+    category: "invoice",
     title: "Discount Calculator",
     short: "Discount Calculator",
     description:
@@ -32,6 +54,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "profit-margin-calculator",
+    category: "invoice",
     title: "Profit Margin Calculator",
     short: "Profit Margin Calculator",
     description:
@@ -41,6 +64,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "invoice-number-generator",
+    category: "invoice",
     title: "Invoice Number Generator",
     short: "Invoice Number Generator",
     description:
@@ -50,6 +74,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "hourly-rate-calculator",
+    category: "invoice",
     title: "Freelance Hourly Rate Calculator",
     short: "Hourly Rate Calculator",
     description:
@@ -59,6 +84,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "merge-pdf",
+    category: "pdf",
     title: "Merge PDF Files",
     short: "Merge PDF",
     description:
@@ -68,6 +94,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "split-pdf",
+    category: "pdf",
     title: "Split PDF Pages",
     short: "Split PDF",
     description:
@@ -77,6 +104,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "jpg-to-pdf",
+    category: "pdf",
     title: "JPG to PDF Converter",
     short: "JPG to PDF",
     description:
@@ -86,6 +114,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "pdf-to-jpg",
+    category: "pdf",
     title: "PDF to JPG Converter",
     short: "PDF to JPG",
     description:
@@ -95,6 +124,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "resume-ats-checker",
+    category: "resume",
     title: "Resume ATS Score Checker",
     short: "Resume ATS Checker",
     description:
@@ -104,6 +134,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "proposal-builder",
+    category: "proposal",
     title: "Business Proposal Generator",
     short: "Proposal Builder",
     description:
@@ -113,6 +144,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "pricing-calculator",
+    category: "proposal",
     title: "Project Pricing Calculator",
     short: "Pricing Calculator",
     description:
@@ -122,6 +154,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "scope-generator",
+    category: "proposal",
     title: "Scope of Work Generator",
     short: "Scope Generator",
     description:
@@ -131,6 +164,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "contract-generator",
+    category: "contract",
     title: "Service Contract Generator",
     short: "Contract Generator",
     description:
@@ -140,6 +174,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "nda-generator",
+    category: "contract",
     title: "NDA Generator",
     short: "NDA Generator",
     description:
@@ -149,6 +184,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "terms-generator",
+    category: "contract",
     title: "Terms & Conditions Generator",
     short: "Terms & Conditions",
     description:
@@ -158,6 +194,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "letter-generator",
+    category: "letter",
     title: "Business Letter Generator",
     short: "Letter Generator",
     description:
@@ -167,6 +204,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "resignation-letter-generator",
+    category: "letter",
     title: "Resignation Letter Generator",
     short: "Resignation Letter",
     description:
@@ -176,6 +214,7 @@ export const TOOLS: ToolMeta[] = [
   },
   {
     slug: "recommendation-letter-generator",
+    category: "letter",
     title: "Recommendation Letter Generator",
     short: "Recommendation Letter",
     description:
@@ -187,4 +226,8 @@ export const TOOLS: ToolMeta[] = [
 
 export function getTool(slug: string): ToolMeta | undefined {
   return TOOLS.find((t) => t.slug === slug);
+}
+
+export function toolsByCategory(key: ToolCategoryKey): ToolMeta[] {
+  return TOOLS.filter((t) => t.category === key);
 }

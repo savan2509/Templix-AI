@@ -7,6 +7,7 @@ import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
 import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
+import { TOOL_CATEGORIES } from "@/data/tools";
 import type { User } from "@supabase/supabase-js";
 import {
   Sparkles,
@@ -17,6 +18,7 @@ import {
   X,
   ChevronDown,
   LayoutGrid,
+  Wrench,
   LogIn,
   LogOut,
   User as UserIcon,
@@ -33,12 +35,15 @@ export default function Navbar() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [templatesOpen, setTemplatesOpen] = useState(false);
   const [mobileTemplatesOpen, setMobileTemplatesOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   const langRef = useRef<HTMLDivElement>(null);
   const templatesRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,6 +67,8 @@ export default function Navbar() {
     setLangDropdownOpen(false);
     setTemplatesOpen(false);
     setMobileTemplatesOpen(false);
+    setToolsOpen(false);
+    setMobileToolsOpen(false);
     setUserMenuOpen(false);
   }, [pathname]);
 
@@ -73,6 +80,9 @@ export default function Navbar() {
       }
       if (templatesRef.current && !templatesRef.current.contains(event.target as Node)) {
         setTemplatesOpen(false);
+      }
+      if (toolsRef.current && !toolsRef.current.contains(event.target as Node)) {
+        setToolsOpen(false);
       }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setUserMenuOpen(false);
@@ -145,7 +155,8 @@ export default function Navbar() {
   ];
 
   const categoryItems = menuItems.slice(0, 6);
-  const standaloneItems = menuItems.slice(6);
+  const toolsItem = menuItems[6]; // "Tools" — rendered as its own dropdown
+  const standaloneItems = menuItems.slice(7);
   const templatesLabel: Record<string, string> = {
     en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب",
   };
@@ -153,6 +164,17 @@ export default function Navbar() {
   const localeName = (item: { name: Record<string, string> }) =>
     item.name[currentLocale as keyof typeof item.name] || item.name.en;
   const isTemplatesActive = pathname.startsWith(`/${currentLocale}/templates`);
+
+  // Tools dropdown: mirrors Templates, listing tool categories that anchor to
+  // sections on the /tools hub (e.g. /tools#pdf).
+  const toolsHref = `/${currentLocale}/tools`;
+  const toolsLabelText = localeName(toolsItem);
+  const isToolsActive = pathname.startsWith(toolsHref);
+  const catLabel = (rec: Record<string, string>) => rec[currentLocale] || rec.en;
+  const allToolsLabel: Record<string, string> = {
+    en: "All tools", es: "Todas las herramientas", de: "Alle Tools", fr: "Tous les outils", ar: "جميع الأدوات",
+  };
+  const allToolsText = allToolsLabel[currentLocale as keyof typeof allToolsLabel] || allToolsLabel.en;
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
@@ -224,6 +246,54 @@ export default function Navbar() {
                     >
                       <LayoutGrid className="h-4 w-4" />
                       <span>{t.browseTemplates}</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Tools dropdown */}
+              <div className="relative" ref={toolsRef}>
+                <button
+                  onClick={() => setToolsOpen((v) => !v)}
+                  aria-expanded={toolsOpen}
+                  aria-haspopup="menu"
+                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
+                    isToolsActive
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  }`}
+                >
+                  <span>{toolsLabelText}</span>
+                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${toolsOpen ? "rotate-180" : ""}`} />
+                  {isToolsActive && (
+                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                  )}
+                </button>
+                {toolsOpen && (
+                  <div
+                    role="menu"
+                    className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  >
+                    {TOOL_CATEGORIES.map((cat) => (
+                      <Link
+                        key={cat.key}
+                        href={`${toolsHref}#${cat.key}`}
+                        role="menuitem"
+                        onClick={() => setToolsOpen(false)}
+                        className="flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                      >
+                        {catLabel(cat.label)}
+                      </Link>
+                    ))}
+                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                    <Link
+                      href={toolsHref}
+                      role="menuitem"
+                      onClick={() => setToolsOpen(false)}
+                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                    >
+                      <Wrench className="h-4 w-4" />
+                      <span>{allToolsText}</span>
                     </Link>
                   </div>
                 )}
@@ -434,6 +504,42 @@ export default function Navbar() {
                 >
                   <LayoutGrid className="h-4 w-4" />
                   <span>{t.browseTemplates}</span>
+                </Link>
+              </div>
+            )}
+
+            {/* Tools group */}
+            <button
+              onClick={() => setMobileToolsOpen((v) => !v)}
+              aria-expanded={mobileToolsOpen}
+              className={`flex w-full items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
+                isToolsActive
+                  ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                  : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+              }`}
+            >
+              <span>{toolsLabelText}</span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileToolsOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileToolsOpen && (
+              <div className="pl-3 space-y-1">
+                {TOOL_CATEGORIES.map((cat) => (
+                  <Link
+                    key={cat.key}
+                    href={`${toolsHref}#${cat.key}`}
+                    className="flex items-center px-3.5 py-2 text-sm font-semibold rounded-xl transition-all text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900/50"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {catLabel(cat.label)}
+                  </Link>
+                ))}
+                <Link
+                  href={toolsHref}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Wrench className="h-4 w-4" />
+                  <span>{allToolsText}</span>
                 </Link>
               </div>
             )}
