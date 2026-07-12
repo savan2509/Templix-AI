@@ -28,7 +28,9 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   return SEOEngine.generateMetadata({
-    title: "Free Document Templates Blog — Guides, Tips & Resources",
+    // Kept short so the rendered <title> (with " | Templix AI") stays within
+    // the ~60-char budget: "Free Document Templates Blog — Guides & Tips | Templix AI" (57).
+    title: "Free Document Templates Blog — Guides & Tips",
     description:
       "Explore expert guides on invoices, resumes, contracts, proposals, and more. Professional writing tips and document templates from Templix AI.",
     slug: "/blog",

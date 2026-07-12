@@ -4,7 +4,7 @@ const en = {
   // Hub page (tools/page.tsx)
   metaTitle: "Free Business Tools & Calculators",
   metaDescription:
-    "Free online tools for freelancers and businesses: GST/tax calculator, discount calculator, profit margin calculator, invoice number generator, and hourly rate calculator.",
+    "Free online tools for freelancers and businesses: GST/tax, discount, profit margin, invoice number and hourly rate calculators — no sign-up.",
   hubEyebrow: "Free Tools",
   hubTitle: "Business Tools & Calculators",
   hubSubtitle:
@@ -30,9 +30,9 @@ const en = {
 type Shape = typeof en;
 
 const es: Shape = {
-  metaTitle: "Herramientas y calculadoras gratuitas para empresas",
+  metaTitle: "Herramientas y calculadoras gratuitas",
   metaDescription:
-    "Herramientas en línea gratuitas para autónomos y empresas: calculadora de IVA/impuestos, calculadora de descuentos, calculadora de margen de beneficio, generador de números de factura y calculadora de tarifa por hora.",
+    "Herramientas gratuitas para autónomos y empresas: calculadoras de IVA/impuestos, descuento, margen de beneficio, número de factura y tarifa por hora.",
   hubEyebrow: "Herramientas gratuitas",
   hubTitle: "Herramientas y calculadoras para empresas",
   hubSubtitle:
@@ -57,7 +57,7 @@ const es: Shape = {
 const de: Shape = {
   metaTitle: "Kostenlose Business-Tools & Rechner",
   metaDescription:
-    "Kostenlose Online-Tools für Freelancer und Unternehmen: MwSt./Steuerrechner, Rabattrechner, Gewinnmargenrechner, Rechnungsnummerngenerator und Stundensatzrechner.",
+    "Kostenlose Tools für Freelancer und Unternehmen: MwSt./Steuer-, Rabatt-, Gewinnmargen-, Rechnungsnummer- und Stundensatzrechner — ohne Anmeldung.",
   hubEyebrow: "Kostenlose Tools",
   hubTitle: "Business-Tools & Rechner",
   hubSubtitle:
@@ -80,9 +80,9 @@ const de: Shape = {
 };
 
 const fr: Shape = {
-  metaTitle: "Outils et calculateurs gratuits pour entreprises",
+  metaTitle: "Outils et calculateurs gratuits",
   metaDescription:
-    "Outils en ligne gratuits pour les freelances et les entreprises : calculateur de TVA/taxes, calculateur de remise, calculateur de marge bénéficiaire, générateur de numéros de facture et calculateur de taux horaire.",
+    "Outils gratuits pour freelances et entreprises : calculateurs de TVA/taxes, remise, marge bénéficiaire, numéro de facture et taux horaire.",
   hubEyebrow: "Outils gratuits",
   hubTitle: "Outils et calculateurs pour entreprises",
   hubSubtitle:
