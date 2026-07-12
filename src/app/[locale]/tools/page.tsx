@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
+import Schema from "@/components/seo/Schema";
 import { TOOLS, TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
 import { getDictionary } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack, ArrowRight, type LucideIcon } from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack };
@@ -29,6 +31,25 @@ export default async function ToolsHubPage({ params }: PageProps) {
   const categories = TOOL_CATEGORIES.map((c) => ({ ...c, tools: toolsByCategory(c.key) })).filter((c) => c.tools.length > 0);
   const label = (rec: Record<string, string>) => rec[locale] || rec.en;
 
+  // Dynamic JSON-LD: a CollectionPage wrapping every tool as an ordered ItemList
+  // (built from TOOLS, so it stays in sync as tools are added) + a BreadcrumbList.
+  const toolsUrl = `${siteConfig.url}/${locale}/tools`;
+  const collectionSchema = SEOEngine.generateCollectionSchema({
+    name: t.hubTitle,
+    description: t.hubSubtitle,
+    url: toolsUrl,
+    locale,
+    items: TOOLS.map((tool) => ({ name: tool.title, url: `${siteConfig.url}/${locale}/tools/${tool.slug}` })),
+  });
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t.toolEyebrow, item: toolsUrl },
+    ],
+  };
+
   return (
     <InfoPageShell
       locale={locale}
@@ -36,6 +57,9 @@ export default async function ToolsHubPage({ params }: PageProps) {
       title={t.hubTitle}
       subtitle={t.hubSubtitle}
     >
+      {/* JSON-LD: CollectionPage(ItemList of all tools) + BreadcrumbList */}
+      <Schema data={[collectionSchema, breadcrumbSchema]} />
+
       {/* Quick category nav */}
       <nav className="flex flex-wrap gap-2" aria-label={t.hubTitle}>
         {categories.map((cat) => {

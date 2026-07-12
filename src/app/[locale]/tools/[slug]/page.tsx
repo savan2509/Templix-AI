@@ -36,10 +36,21 @@ export default async function ToolPage({ params }: PageProps) {
   const related = TOOLS.filter((tl) => tl.slug !== tool.slug).slice(0, 4);
 
   const toolUrl = `${siteConfig.url}/${locale}/tools/${tool.slug}`;
+  // Map our internal category to a schema.org applicationCategory so each tool's
+  // SoftwareApplication is classified specifically (not a generic default).
+  const APP_CATEGORY: Record<string, string> = {
+    pdf: "UtilitiesApplication",
+    resume: "BusinessApplication",
+    invoice: "FinanceApplication",
+    proposal: "BusinessApplication",
+    contract: "BusinessApplication",
+    letter: "BusinessApplication",
+  };
   const softwareSchema = SEOEngine.generateToolSchema({
     name: tool.title,
     description: tool.description,
     url: toolUrl,
+    category: APP_CATEGORY[tool.category],
   });
   const breadcrumbSchema = {
     "@context": "https://schema.org",
