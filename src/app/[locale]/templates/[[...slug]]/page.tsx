@@ -822,6 +822,11 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             </p>
           </div>
 
+          {/* Screen-reader h2 before the grid so the outline goes h1 → h2 →
+              (sidebar + card h3s) with no skipped level. Placed before the grid
+              because the sidebar's own h3 would otherwise follow the h1 directly. */}
+          <h2 className="sr-only">{pageHeading}</h2>
+
           {/* grid-cols-1 clamps the single mobile column to the viewport
               (minmax(0,1fr)); without it the column is auto-sized and a wide
               child — e.g. the many-page pagination row — stretched it past the

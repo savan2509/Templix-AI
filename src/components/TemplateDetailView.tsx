@@ -129,9 +129,9 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
 
         {/* Dynamic Trust Badges */}
         <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3.5">
-          <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
+          <h3 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
             {t.qualityGuarantee}
-          </h4>
+          </h3>
           <div className="space-y-2">
             <div className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />

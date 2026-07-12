@@ -105,9 +105,11 @@ export default function Footer() {
 
           {/* Interactive Newsletter */}
           <div className="lg:col-span-6 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
+            {/* h2 (first footer heading) so the outline never skips a level even
+                on content-light pages (h1 → h2). Nav columns below are h3. */}
+            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
               {t.newsletterTitle}
-            </h4>
+            </h2>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-md">
               {t.newsletterDesc}
             </p>
@@ -167,9 +169,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12">
           {/* Column 1: Templates categories */}
           <div>
-            <h5 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colDocuments}
-            </h5>
+            </h3>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/templates/invoices`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -211,9 +213,9 @@ export default function Footer() {
 
           {/* Column 2: Letters */}
           <div>
-            <h5 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colLetters}
-            </h5>
+            </h3>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/templates/letters/cover-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -240,9 +242,9 @@ export default function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h5 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colResources}
-            </h5>
+            </h3>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/blog`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -274,9 +276,9 @@ export default function Footer() {
 
           {/* Column 4: Legal & Policies */}
           <div>
-            <h5 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colLegal}
-            </h5>
+            </h3>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/privacy`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
