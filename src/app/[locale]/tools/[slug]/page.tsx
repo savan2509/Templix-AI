@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ToolWidget from "@/components/tools/ToolWidget";
+import Schema from "@/components/seo/Schema";
 import { TOOLS, getTool } from "@/data/tools";
 import { getDictionary } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -33,6 +35,22 @@ export default async function ToolPage({ params }: PageProps) {
 
   const related = TOOLS.filter((tl) => tl.slug !== tool.slug).slice(0, 4);
 
+  const toolUrl = `${siteConfig.url}/${locale}/tools/${tool.slug}`;
+  const softwareSchema = SEOEngine.generateToolSchema({
+    name: tool.title,
+    description: tool.description,
+    url: toolUrl,
+  });
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t.toolEyebrow, item: `${siteConfig.url}/${locale}/tools` },
+      { "@type": "ListItem", position: 3, name: tool.title, item: toolUrl },
+    ],
+  };
+
   return (
     <InfoPageShell
       locale={locale}
@@ -40,6 +58,7 @@ export default async function ToolPage({ params }: PageProps) {
       title={tool.title}
       subtitle={tool.description}
     >
+      <Schema data={[softwareSchema, breadcrumbSchema]} />
       <ToolWidget slug={tool.slug} />
 
       <Section heading={t.howToHeading}>

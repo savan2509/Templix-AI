@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import TemplateDetailView from "@/components/TemplateDetailView";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
+import Schema from "@/components/seo/Schema";
 import FavoriteButton from "@/components/FavoriteButton";
 import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
@@ -398,23 +399,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       <>
         <Navbar />
         <main className="flex-1 bg-zinc-50 dark:bg-zinc-950/20 py-10 transition-colors">
-          {/* JSON-LD structured data — native script tag per Next.js JSON-LD guide */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJson).replace(/</g, "\\u003c") }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateSchemaWithDate).replace(/</g, "\\u003c") }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema).replace(/</g, "\\u003c") }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(templateFaqSchema).replace(/</g, "\\u003c") }}
-          />
+          {/* JSON-LD: BreadcrumbList + SoftwareApplication + HowTo + FAQPage */}
+          <Schema data={[breadcrumbsJson, templateSchemaWithDate, howToSchema, templateFaqSchema]} />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
             {/* Breadcrumb */}
@@ -771,43 +757,28 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const categoryFaqSchema = categoryFaqs ? faqPageSchema(categoryFaqs) : null;
   const categoryDef = getCategoryDefinition(categorySlug);
 
-  // ItemList schema — tells Google the category is an ordered collection of
-  // templates (helps it understand the page and can produce sitelinks).
-  const itemListSchema = paginatedTemplates.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${categoryDisplayName || "Document"} Templates`,
-    numberOfItems: totalItems,
-    itemListElement: paginatedTemplates.map((tpl, idx) => ({
-      "@type": "ListItem",
-      position: startIndex + idx + 1,
-      name: tpl.title,
-      url: siteUrl(`/${locale}/templates/${tpl.categorySlug}/${tpl.slug}`),
-    })),
-  } : null;
+  // CollectionPage wrapping the templates as an ItemList — tells Google the
+  // category is an ordered collection (helps understanding + sitelinks).
+  const collectionSchema = paginatedTemplates.length > 0
+    ? SEOEngine.generateCollectionSchema({
+        name: `${categoryDisplayName || "Document"} Templates`,
+        description: getHubIntro(categorySlug, nicheName, locationName) || t.hubSubtitle,
+        url: siteUrl(`/${locale}/templates${slug.length > 0 ? "/" + slug.join("/") : ""}`),
+        locale,
+        items: paginatedTemplates.map((tpl) => ({
+          name: tpl.title,
+          url: siteUrl(`/${locale}/templates/${tpl.categorySlug}/${tpl.slug}`),
+        })),
+      })
+    : null;
 
   return (
     <>
       <Navbar />
 
       <main className="flex-1 bg-zinc-50 dark:bg-zinc-950/20 py-10 transition-colors">
-        {/* JSON-LD structured data — native script tag per Next.js JSON-LD guide */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
-        />
-        {categoryFaqSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryFaqSchema).replace(/</g, "\\u003c") }}
-          />
-        )}
-        {itemListSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema).replace(/</g, "\\u003c") }}
-          />
-        )}
+        {/* JSON-LD: BreadcrumbList + FAQPage + CollectionPage(ItemList) */}
+        <Schema data={[breadcrumbSchema, categoryFaqSchema, collectionSchema]} />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">

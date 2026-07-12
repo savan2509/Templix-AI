@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogGetInTouch from "@/components/BlogGetInTouch";
 import BlogReadPopup from "@/components/BlogReadPopup";
+import Schema from "@/components/seo/Schema";
 import { db } from "@/lib/db";
 import {
   getBlogPost,
@@ -203,11 +204,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
       <Navbar />
 
       <main className="flex-1 bg-white dark:bg-zinc-950 min-h-screen">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c") }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }} />
-        {faqSchema && (
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }} />
-        )}
+        {/* JSON-LD: Article + BreadcrumbList (+ FAQPage when the post has Q&A) */}
+        <Schema data={[articleSchema, breadcrumbSchema, faqSchema]} />
 
         {/* ── Hero ── */}
         {/* `isolate` keeps the background layers inside this section's own

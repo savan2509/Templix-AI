@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import Schema from "@/components/seo/Schema";
 import Footer from "@/components/Footer";
 import { db, isDbOnline } from "@/lib/db";
 import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
@@ -121,15 +122,25 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
     ],
   };
 
+  // Blog index as a CollectionPage of its articles.
+  const blogCollectionSchema = SEOEngine.generateCollectionSchema({
+    name: t.heroTitle,
+    description: t.heroSubtitle,
+    url: `${siteConfig.url}/${locale}/blog`,
+    locale,
+    items: filtered.map((p) => ({
+      name: p.title,
+      url: `${siteConfig.url}/${locale}/blog/${p.slug}`,
+    })),
+  });
+
   return (
     <>
       <Navbar />
 
       <main className="flex-1 bg-white dark:bg-zinc-950 min-h-screen">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
+        {/* JSON-LD: BreadcrumbList + CollectionPage(ItemList of articles) */}
+        <Schema data={[breadcrumbSchema, blogCollectionSchema]} />
 
         {/* ── Hero Banner ── */}
         {/* `isolate` keeps the background layers inside this section's own

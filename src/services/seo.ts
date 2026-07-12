@@ -149,6 +149,63 @@ export class SEOEngine {
   }
 
   /**
+   * CollectionPage schema for a category listing, wrapping the templates as an
+   * ItemList so Google understands the page as an ordered collection.
+   */
+  static generateCollectionSchema(data: {
+    name: string;
+    description: string;
+    url: string;
+    locale: string;
+    items: { name: string; url: string }[];
+  }) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: data.name,
+      description: data.description,
+      url: data.url,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Templix AI",
+        url: `${this.APP_URL}/${data.locale}`,
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: data.items.length,
+        itemListElement: data.items.map((it, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: it.name,
+          url: it.url,
+        })),
+      },
+    };
+  }
+
+  /**
+   * SoftwareApplication schema for a free tool (GST calculator, etc.), with a
+   * zero-price Offer so search can surface it as "Free".
+   */
+  static generateToolSchema(data: {
+    name: string;
+    description: string;
+    url: string;
+    category?: string;
+  }) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: data.name,
+      description: data.description,
+      url: data.url,
+      applicationCategory: data.category || "BusinessApplication",
+      operatingSystem: "All",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    };
+  }
+
+  /**
    * Generates contextual internal linking directories
    */
   static generateInternalLinks(

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import SearchHero from "@/components/SearchHero";
 import FAQ from "@/components/FAQ";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
+import Schema from "@/components/seo/Schema";
 import { faqSchema } from "@/data/faq";
 import { CATEGORIES } from "@/constants";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
@@ -521,11 +522,11 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Organization + WebSite (SearchAction) JSON-LD — brand entity & sitelinks searchbox */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+        {/* JSON-LD: Organization + WebSite (SearchAction) + WebApplication (free
+            Offer) + FAQPage — the brand entity, sitelinks searchbox and CTR. */}
+        <Schema
+          data={[
+            {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Templix AI",
@@ -534,13 +535,8 @@ export default async function HomePage({ params }: PageProps) {
               description:
                 "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
               sameAs: ["https://twitter.com/templix_ai"],
-            }).replace(/</g, "\\u003c"),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            },
+            {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Templix AI",
@@ -553,15 +549,8 @@ export default async function HomePage({ params }: PageProps) {
                 },
                 "query-input": "required name=search_term_string",
               },
-            }).replace(/</g, "\\u003c"),
-          }}
-        />
-        {/* WebApplication with a free offer — free tools with this markup often
-            show "Free" in the snippet, which lifts CTR. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            },
+            {
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "Templix AI",
@@ -572,14 +561,9 @@ export default async function HomePage({ params }: PageProps) {
                 "Free document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters — customize online and export to PDF or Word.",
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
               aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "820" },
-            }).replace(/</g, "\\u003c"),
-          }}
-        />
-
-        {/* FAQs JSON-LD — native script tag per Next.js JSON-LD guide */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
+            },
+            faqSchema,
+          ]}
         />
         <FAQ locale={locale} />
       </main>
