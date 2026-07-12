@@ -44,7 +44,7 @@ export const siteConfig = {
   // Content freshness stamp shown on template pages ("Updated …") and emitted as
   // schema.org dateModified. Bump when the template library is refreshed — keeps
   // it deterministic across builds instead of a per-request new Date().
-  contentUpdated: "2026-07-01",
+  contentUpdated: "2026-07-12",
 };
 
 export type SiteConfig = typeof siteConfig;

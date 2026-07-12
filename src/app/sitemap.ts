@@ -10,6 +10,10 @@ const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
+  // Anchor lastmod to a stable content date, not build time — a fresh `new Date()`
+  // on every deploy would falsely signal that every page changed and erode crawl
+  // trust. Pages with a real per-item date (blog posts) override this below.
+  const contentDate = new Date(siteConfig.contentUpdated);
 
   // One entry per canonical page. `url` is the English (x-default) variant and
   // `alternates.languages` links every locale so search engines understand the
@@ -23,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
-    lastModified: opts.lastModified ?? new Date(),
+    lastModified: opts.lastModified ?? contentDate,
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
     alternates: {
