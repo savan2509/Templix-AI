@@ -223,7 +223,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
       )}
 
       {/* Tab switcher */}
-      <div className="flex rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 p-1 mb-8 gap-1">
+      <div className="flex rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 p-1 mb-6 gap-1">
         {(["signin", "signup"] as Tab[]).map((t) => (
           <button
             key={t}

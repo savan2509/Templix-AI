@@ -12,6 +12,7 @@ export interface BlogPost {
   tags: string[];
   readTime: number; // minutes
   publishedAt: string; // ISO date string
+  updatedAt?: string;  // ISO date string — last content edit; drives sitemap <lastmod>
   featured?: boolean;
   image: string; // /public path served via Next.js
   content: string; // HTML string rendered inside the article page

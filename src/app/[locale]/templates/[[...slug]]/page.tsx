@@ -163,10 +163,6 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
         ? `/cat-${template.categorySlug}-cover.jpg`
         : undefined,
       isTemplate: true,
-      // Template title, description and document body are English on every
-      // locale — consolidate the per-locale duplicates onto the /en canonical.
-      // (Category listing pages below keep their translated per-locale meta.)
-      consolidateToEn: true,
     }) as Metadata;
   }
 

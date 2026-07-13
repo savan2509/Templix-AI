@@ -24,9 +24,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     slug: `/tools/${tool.slug}`,
     locale,
     keywords: tool.keywords,
-    // The tool itself (name, description, UI) is English on every locale —
-    // consolidate the per-locale duplicates onto the /en canonical.
-    consolidateToEn: true,
   }) as Metadata;
 }
 

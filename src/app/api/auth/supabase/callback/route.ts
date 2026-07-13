@@ -25,7 +25,12 @@ export async function GET(request: Request) {
     return NextResponse.redirect(`${origin}/en/auth/error?error=auth_not_configured`);
   }
 
-  let authUser: { email?: string | null; user_metadata?: Record<string, unknown> } | null = null;
+  let authUser: {
+    email?: string | null;
+    created_at?: string;
+    user_metadata?: Record<string, unknown>;
+    app_metadata?: Record<string, unknown>;
+  } | null = null;
   let ok = false;
 
   if (tokenHash && type) {
@@ -47,16 +52,26 @@ export async function GET(request: Request) {
   }
 
   if (ok) {
-    // First-time account confirmation → notify the team with the new user's
-    // details. Best-effort and awaited so it runs before the redirect, but
-    // notifyNewUser never throws, so it cannot break the sign-up.
-    if (isSignup && authUser?.email) {
+    // Detect a genuinely new account by its age. OAuth sign-ins (Google) come
+    // through the `code` exchange with no `signup` flag or OTP `type`, so the
+    // flag-based `isSignup` alone misses first-time Google users — treat any
+    // account created in the last 10 minutes as a sign-up too. Returning users
+    // have an old `created_at`, so they never re-trigger the notification.
+    const createdMs = authUser?.created_at ? new Date(authUser.created_at).getTime() : 0;
+    const isNewAccount = createdMs > 0 && Date.now() - createdMs < 10 * 60 * 1000;
+
+    // First-time sign-up → notify the team with the new user's details.
+    // Best-effort and awaited so it runs before the redirect, but notifyNewUser
+    // never throws, so it cannot break the sign-up.
+    if ((isSignup || isNewAccount) && authUser?.email) {
       await notifyNewUser({
         name:
           (authUser.user_metadata?.full_name as string | undefined) ??
           (authUser.user_metadata?.name as string | undefined),
         email: authUser.email,
-        provider: "email",
+        // Reflect how they actually signed up (e.g. "google") when Supabase
+        // records it, falling back to email for the confirmation-link flow.
+        provider: (authUser.app_metadata?.provider as string | undefined) || "email",
       });
     }
     return NextResponse.redirect(`${origin}${next}`);
