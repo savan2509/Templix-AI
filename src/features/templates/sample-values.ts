@@ -598,7 +598,7 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     unitPrice: "$1,200",
     // subtotal $4,250 + 8% tax ($340) = $4,590 due — keep these internally consistent.
     total: "$4,590.00",
-    amountDue: "4,590.00",
+    amountDue: "$4,590.00",
     subtotal: "$4,250.00",
     tax: "8%",
     discount: "$50.00"
@@ -613,9 +613,13 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   },
   "invoice-consulting": {
     hourlyRate: "$150.00",
-    total: "$2,400.00",
+    // 16 hours × $150 = $2,400 subtotal + 8% tax ($192) = $2,592 total
+    subtotal: "$2,400.00",
+    taxAmount: "$192.00",
+    total: "$2,592.00",
+    amountDue: "$2,592.00",
     tax: "8%",
-    discount: "$50.00"
+    discount: "$0.00"
   },
   "invoice-web-developer": {
     hourlyRate: "$95.00",
@@ -689,17 +693,84 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   // Resumes: graduation must precede the first job in the (hardcoded) experience
   // timeline, otherwise the sample reads as impossible (e.g. "5+ yrs, first job
   // 2019" but "graduated 2024"). Fresher/entry resumes keep the recent default.
+  // fullName is also set explicitly here so SLUG_BRAND names propagate correctly
+  // regardless of which render path (getTemplateDefaults vs getTemplateValues) is used.
   "resume-software-engineer": {
+    fullName: "Sarah Jenkins",
     graduationYear: "2018"
   },
+  "resume-data-analyst": {
+    fullName: "Michael Chen"
+  },
+  "resume-project-manager": {
+    fullName: "Olivia Adams"
+  },
+  "resume-graphic-designer": {
+    fullName: "Alex Morgan"
+  },
+  "resume-registered-nurse": {
+    fullName: "Emily Carter"
+  },
   "resume-teacher": {
+    fullName: "David Brooks",
     graduationYear: "2015"
+  },
+  "resume-marketing-manager": {
+    fullName: "Jessica Wong"
+  },
+  "resume-customer-service": {
+    fullName: "Daniel Reed"
+  },
+  "resume-accountant": {
+    fullName: "Priya Sharma"
+  },
+  "resume-sales-representative": {
+    fullName: "Marcus Bell"
+  },
+  "resume-fresher-graduate": {
+    fullName: "Ava Martinez"
+  },
+  "resume-product-manager": {
+    fullName: "Ryan Cooper"
+  },
+  "resume-devops-engineer": {
+    fullName: "Nina Patel"
+  },
+  "resume-ux-designer": {
+    fullName: "Maya Patel"
+  },
+  "resume-financial-analyst": {
+    fullName: "Ethan Brooks"
+  },
+  "resume-hr-manager": {
+    fullName: "Sophia Reyes"
+  },
+  "resume-mechanical-engineer": {
+    fullName: "Liam Foster"
+  },
+  "resume-content-writer": {
+    fullName: "Chloe Bennett"
+  },
+  "resume-business-analyst": {
+    fullName: "Noah Williams"
+  },
+  "resume-executive-assistant": {
+    fullName: "Grace Kim"
+  },
+  "resume-cybersecurity-analyst": {
+    fullName: "Aiden Clark"
+  },
+  "resume-pharmacist": {
+    fullName: "Isabella Torres"
+  },
+  "resume-civil-engineer": {
+    fullName: "Lucas Martin"
   },
   "marketing-proposal": {
     contactDetails: "hello@apexagency.co | +1 (555) 302-8811"
   },
   "web-design-proposal": {
-    designerName: "Sarah Jenkins, Lead Web Designer"
+    designerName: "Jordan Blake, Lead Web Designer"
   },
   "construction-proposal": {
     licenseNumber: "LIC-CON-998877",
@@ -1499,7 +1570,8 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "cover-letter": {
     recipientName: "Ms. Laura Bennett",
     companyAddress: "500 Howard Street, San Francisco, CA 94105",
-    jobPosition: "Senior Software Engineer"
+    jobPosition: "Senior Software Engineer",
+    signatureFullName: "Sarah Jenkins"
   },
   "recommendation-letter": {
     recipientName: "Dr. Elaine Foster"
@@ -1512,7 +1584,8 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
     startDate: "August 17, 2026",
     salary: "$95,000 per year",
     reportingManager: "Jennifer Walsh, Director of Marketing",
-    hrSignature: "Sophia Reyes, HR Director"
+    hrSignature: "Sophia Reyes, HR Director",
+    signatureFullName: "Sophia Reyes, HR Director"
   },
   "business-letter": {
     contactPerson: "Daniel Foster",
@@ -1522,22 +1595,26 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   },
   "thank-you-letter": {
     recipientName: "Ms. Rebecca Hayes",
-    recipientCompany: "Brightpath Consulting Group"
+    recipientCompany: "Brightpath Consulting Group",
+    signatureFullName: "Sarah Jenkins"
   },
   "request-letter": {
-    recipientName: "Ms. Karen Whitfield"
+    recipientName: "Ms. Karen Whitfield",
+    signatureFullName: "Michael Chen"
   },
   "appointment-letter": {
     jobPosition: "Senior Software Engineer",
     startDate: "August 17, 2026",
     salary: "$110,000 per year",
     reportingManager: "Jennifer Walsh, Engineering Director",
-    hrSignature: "Sophia Reyes, HR Director"
+    hrSignature: "Sophia Reyes, HR Director",
+    signatureFullName: "Sophia Reyes, HR Director"
   },
   "experience-letter": {
     companyAddress: "1200 Corporate Drive, Suite 300, Austin, TX 78701",
     hrName: "Sophia Reyes",
-    hrSignature: "Sophia Reyes, HR Director"
+    hrSignature: "Sophia Reyes, HR Director",
+    signatureFullName: "Sophia Reyes, HR Director"
   },
   "internship-cover-letter": {
     roleName: "Software Engineering"
@@ -1893,7 +1970,8 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
     const retainerStr = currentValues.retainerApplied || "2500";
     const retainer = parseFloat(retainerStr.replace(/[^\d.-]/g, ""));
     if (!isNaN(retainer)) {
-      totalAmount = computedSubtotal - retainer;
+      // Retainer is a credit applied to the gross total (subtotal + tax), not subtotal alone
+      totalAmount = computedSubtotal + taxAmount - retainer;
     }
   }
 
