@@ -1,9 +1,13 @@
 import { siteConfig } from "@/config/site";
 
 // Where new-user sign-up notifications (and, by extension, contact/support
-// mail) are delivered. Overridable via env, defaults to the team inbox.
+// mail) are delivered. This is the SAME branded address shown on the contact,
+// privacy, terms and footer pages, so what visitors email reaches the same
+// inbox we notify. IMPORTANT: this mailbox must actually be monitored — create
+// it (or forward it) on the domain, or override ADMIN_NOTIFICATION_EMAIL in the
+// environment to a real inbox, or contact-form and sign-up mail will be lost.
 export const ADMIN_NOTIFICATION_EMAIL =
-  process.env.ADMIN_NOTIFICATION_EMAIL || "whitesparktechnologies@gmail.com";
+  process.env.ADMIN_NOTIFICATION_EMAIL || "contact@templix-ai.whitesparksoft.com";
 
 // SMTP transport built from the same EMAIL_SERVER_* env used by the magic-link
 // provider, so a single mail configuration powers every outbound email.
@@ -129,7 +133,7 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
       text:
         `Hi ${name},\n\n` +
         `Welcome to Templix AI! Your account is ready.\n\n` +
-        `Browse 180+ free templates: ${templates}\n` +
+        `Browse 200+ free templates: ${templates}\n` +
         `Go to your dashboard: ${dashboard}\n\n` +
         `Invoices, resumes, contracts, proposals and letters — free, no watermark.\n`,
       html: `<!DOCTYPE html>

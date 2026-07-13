@@ -321,7 +321,8 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Language Selector */}
+            {/* Language Selector — hidden while only one locale is served */}
+            {SUPPORTED_LOCALES.length > 1 && (
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -349,6 +350,7 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+            )}
 
             {/* Theme Toggle */}
             <button
@@ -561,7 +563,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Language Selector */}
+          {/* Mobile Language Selector — hidden while only one locale is served */}
+          {SUPPORTED_LOCALES.length > 1 && (
           <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4">
             <p className="px-3.5 text-xs font-bold uppercase tracking-wider text-zinc-400">{t.selectRegion}</p>
             <div className="grid grid-cols-2 gap-2 mt-2.5">
@@ -580,6 +583,7 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+          )}
 
           {/* Mobile auth */}
           <div className="border-t border-zinc-100 dark:border-zinc-850 pt-4 space-y-2">

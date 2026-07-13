@@ -21,10 +21,10 @@ const en = {
     "Search and discover 200+ professionally designed templates across invoices, resumes, contracts, proposals, and more.",
   pillar2Title: "2. AI-Powered Writing",
   pillar2Desc:
-    "Adjust tone, rewrite paragraphs, and fix grammar mistakes instantly using our swappable AI provider model layer inside our visual Tiptap workspace.",
+    "Adjust the tone, rewrite paragraphs, and fix grammar instantly with the built-in AI writing assistant, right inside the editor.",
   pillar3Title: "3. Export Instantly",
   pillar3Desc:
-    "Compile your customized layouts directly on the client or server into pixel-perfect PDF files and MS Word formats.",
+    "Download your finished document as a polished, print-ready PDF or an editable MS Word file in one click.",
 
   whyBadge: "100% Free & Open Access",
   whyHeading: "Advanced Features Without the Price Tag",
@@ -38,7 +38,7 @@ const en = {
     "Rewrite paragraphs, translate segments, correct syntax, and tailor tones with zero word limits or cost tiers.",
   why3Title: "Instant Page Loads",
   why3Desc:
-    "Optimized server compilation combined with dynamic client-side loading skeletons ensures your documents open immediately.",
+    "Fast page loads and a smooth, responsive editor mean your documents open immediately.",
   why4Title: "Clean Compliance",
   why4Desc:
     "Layout guidelines built under industry-standard schema structures ensure ATS compatibility and audit readiness.",
@@ -55,7 +55,7 @@ const en = {
   complianceText3: " and legal-grade ",
   complianceContractLink: "contract agreements",
   complianceText4:
-    ", every template matches international schemas. Read the official documentation guidelines at the ",
+    ", every template is built to clean, professional formatting standards that export reliably to PDF and Word.",
   complianceW3CLink: "World Wide Web Consortium (W3C)",
   complianceText5: " and verify structured schema markup at ",
   complianceSchemaLink: "Schema.org",

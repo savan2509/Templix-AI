@@ -273,7 +273,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   // — Contract fields —
   contractDate: "2026-06-28",
   paymentAmount: "$5,000.00",
-  projectScope: "Deliver Next.js App Router integrations, seed database schema, construct Tiptap editor canvas, and build PDF exporter plugins.",
+  projectScope: "Deliver the full website build, set up the content management system, integrate the payment gateway, and provide launch support and documentation.",
   // Role-neutral fallback only. Every resume template supplies its own
   // role-specific summary; this is the safety net so a future resume that
   // forgets one never shows an engineer summary on a nurse/teacher/etc. page.
@@ -350,7 +350,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   // — NDA —
   partyAName: "Acme Global Systems Inc.",
   partyACompany: "Acme Global Systems Inc.",
-  partyAAddress: "123 Silicon Ave, San Jose, CA 95112",
+  partyAAddress: "123 Innovation Parkway, San Jose, CA 95112",
   partyBName: "Innovatech Solutions LLC",
   partyBCompany: "Innovatech Solutions LLC",
   partyBAddress: "789 Future Way, San Jose, CA 95113",
@@ -366,17 +366,17 @@ export const FIELD_DEFAULTS: Record<string, string> = {
 
   // — Consulting Agreement —
   consultantCompany: "AI Cryptography Consultants",
-  consultantContact: "+1 (555) 700-1122 | alan@turingconsulting.com",
+  consultantContact: "+1 (555) 700-1122 | adrian@coleconsulting.com",
   fixedFee: "$15,000.00 fixed project fee",
   expenses: "Travel and lodging expenses pre-approved up to $2,000.00",
   intellectualProperty: "All work product created by Consultant vests exclusively in the Client upon payment.",
-  consultantSignature: "Alan Turing",
+  consultantSignature: "Adrian Cole",
 
   // — Rental Agreement —
-  landlordName: "Richard Hendricks",
+  landlordName: "Daniel Whitfield",
   landlordAddress: "345 Palo Alto Rd, Palo Alto, CA 94301",
   landlordContact: "+1 (555) 888-2233",
-  tenantName: "Erlich Bachman",
+  tenantName: "Marcus Lang",
   tenantAddress: "5230 Newell Rd, Palo Alto, CA 94303",
   tenantPhone: "+1 (555) 777-4455",
   propertyType: "Residential Single Family Home (4 Bedrooms)",
@@ -385,19 +385,19 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   monthlyRent: "$4,500.00 per month",
   securityDeposit: "$9,000.00 refundable deposit",
   rentDueDate: "1st day of each calendar month",
-  utilities: "Tenant is responsible for water, power, gas, and high-speed internet.",
+  utilities: "Tenant is responsible for water, power, gas, and high-speed internet",
   maintenance: "Landlord handles major structural repairs; Tenant maintains lawn and minor tasks.",
   petsPolicy: "Allowed with pre-approval and a $500 non-refundable pet fee.",
   smokingPolicy: "Strictly no smoking inside the premises.",
-  landlordSignature: "Richard Hendricks",
-  tenantSignature: "Erlich Bachman",
+  landlordSignature: "Daniel Whitfield",
+  tenantSignature: "Marcus Lang",
 
   // — Sales Contract —
   sellerName: "Daniel Craig",
   sellerCompany: "Craig Automotive Dealers",
   sellerAddress: "890 Auto Row, Detroit, MI 48201",
-  buyerName: "James Bond",
-  buyerCompany: "MI6 Services",
+  buyerName: "Jonathan Reed",
+  buyerCompany: "Reed Logistics Ltd.",
   buyerAddress: "85 Albert Embankment, London, UK",
   totalAmount: "$85,000.00",
   shippingMethod: "Enclosed vehicle container delivery",
@@ -405,10 +405,10 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   returnPolicy: "7-day exchange or full refund policy if vehicle is undamaged.",
 
   // — Partnership Agreement —
-  partner1Name: "Erlich Bachman",
+  partner1Name: "Marcus Lang",
   partner1Address: "Palo Alto, CA",
   partner1Ownership: "50% ownership stake",
-  partner2Name: "Richard Hendricks",
+  partner2Name: "Daniel Whitfield",
   partner2Address: "Palo Alto, CA",
   partner2Ownership: "50% ownership stake",
   industryType: "Software & Technology Incubator",
@@ -417,8 +417,8 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   partnerResponsibilities: "Erlich manages branding and relations; Richard handles tech development.",
   decisionMaking: "All major business expansion decisions require unanimous partner consent.",
   exitStrategy: "A partner may sell their shares back to the partnership or to an approved buyer.",
-  partner1Signature: "Erlich Bachman",
-  partner2Signature: "Richard Hendricks",
+  partner1Signature: "Marcus Lang",
+  partner2Signature: "Daniel Whitfield",
 
   // — Vendor Agreement —
   vendorName: "Global Hardware Corp",
@@ -706,7 +706,7 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     clientAddress: "100 Broadway, Suite 400, Portland, OR 97205",
     clientEmail: "jessica.w@apexmarketing.com",
     clientPhone: "+1 (555) 877-6622",
-    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts.",
+    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts",
     // Fixed-term engagement: 6-week sprint. Concrete dates so the clause doesn't
     // read "commence on  and conclude by N/A (Indefinite)".
     startDate: "July 15, 2026",
@@ -720,7 +720,7 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     clientAddress: "100 Broadway, Suite 400, Portland, OR 97205",
     clientEmail: "jessica.w@apexmarketing.com",
     clientPhone: "+1 (555) 877-6622",
-    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts.",
+    projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts",
     startDate: "July 15, 2026",
     endDate: "August 26, 2026"
   },
@@ -734,7 +734,7 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     endDate: "July 31, 2027"
   },
   "consulting-agreement": {
-    consultantName: "Professor Alan Turing"
+    consultantName: "Professor Adrian Cole"
   },
   // Resumes: graduation must precede the first job in the (hardcoded) experience
   // timeline, otherwise the sample reads as impossible (e.g. "5+ yrs, first job
@@ -1844,7 +1844,7 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     royaltyRate: "6.5%"
   },
   "equipment-rental-agreement": {
-    ownerName: "Richard Hendricks"
+    ownerName: "Daniel Whitfield"
   },
   "subcontractor-agreement": {
     completionDate: "October 15, 2026",

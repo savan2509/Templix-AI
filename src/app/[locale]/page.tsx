@@ -521,7 +521,7 @@ export default async function HomePage({ params }: PageProps) {
               {t.complianceHeading}
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl mx-auto text-sm leading-relaxed">
-              {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}<a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceW3CLink}</a>{t.complianceText5}<a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceSchemaLink}</a>{t.complianceText6}
+              {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}
             </p>
           </div>
         </section>

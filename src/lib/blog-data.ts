@@ -2284,7 +2284,7 @@ Valid for 30 days. 40% due on acceptance.</code></pre>
 <h3>Should I mention salary expectations?</h3>
 <p>Only if the posting asks. Otherwise it anchors you before you have demonstrated value.</p>
 
-<p>A cover letter is a formal <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">HTML format</a>-independent document — what matters is that it exports cleanly and reads in one pass.</p>
+<p>A cover letter is a formal, format-independent document — what matters is that it exports cleanly and reads in one pass.</p>
     `,
   },
 

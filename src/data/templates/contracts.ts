@@ -95,50 +95,6 @@ export const contractsTemplates = [
     }
   },
   {
-    id: "freelance-contract",
-    slug: "freelance-contract",
-    title: "Freelance Contract Template",
-    description: "Detailed freelance agreement mapping client project specifications, late fees, and copyrights.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Freelance Services Contract",
-      fields: ["freelancerName", "businessName", "freelancerAddress", "freelancerEmail", "freelancerPhone", "clientName", "clientCompanyName", "clientAddress", "clientEmail", "clientPhone", "projectTitle", "projectDescription", "deliverables", "timeline", "startDate", "endDate", "paymentTerms", "totalProjectFee", "depositAmount", "paymentSchedule", "lateFee", "ownershipRights", "confidentialityClause", "revisionsIncluded", "cancellationPolicy", "freelancerSignature", "clientSignature"],
-      layout: {
-        header: "FREELANCE CONTRACT",
-        footer: "Governed by mutually agreed independent service terms."
-      },
-      styles: {
-        primaryColor: "#475569",
-        secondaryColor: "#1e293b"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "FREELANCE SERVICES CONTRACT" }] },
-          { type: "paragraph", content: [{ type: "text", text: "This Freelance Services Contract is entered into by {{freelancerName}} operating as {{businessName}} (the Contractor) and {{clientName}} of {{clientCompanyName}} (the Client) for delivery of {{projectTitle}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Parties" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor: " }, { type: "text", text: "{{freelancerName}}, {{businessName}}, {{freelancerAddress}} ({{freelancerEmail}} / {{freelancerPhone}})" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}, {{clientCompanyName}}, {{clientAddress}} ({{clientEmail}} / {{clientPhone}})" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Services & Deliverables" }] },
-          { type: "paragraph", content: [{ type: "text", text: "The Contractor will provide: {{projectDescription}}. Agreed deliverables are {{deliverables}}, produced independently and without supervision by the Client." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Schedule" }] },
-          { type: "paragraph", content: [{ type: "text", text: "The engagement runs from {{startDate}} to {{endDate}} over an estimated {{timeline}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Payment & Late Fees" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Total fee: {{totalProjectFee}}. Deposit: {{depositAmount}}. Billing follows {{paymentSchedule}} on {{paymentTerms}} terms, and late payments incur {{lateFee}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Copyright & Revisions" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{ownershipRights}} {{revisionsIncluded}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Confidentiality & Cancellation" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{confidentialityClause}} {{cancellationPolicy}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor: " }, { type: "text", text: "{{freelancerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
-        ]
-      }
-    }
-  },
-  {
     id: "independent-contractor-agreement",
     slug: "independent-contractor-agreement",
     title: "Independent Contractor Agreement",
@@ -486,50 +442,6 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vendor: " }, { type: "text", text: "{{vendorSignature}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
-        ]
-      }
-    }
-  },
-  {
-    id: "residential-lease-agreement",
-    slug: "residential-lease-agreement",
-    title: "Residential Lease Agreement Template",
-    description: "Legally structured residential lease agreement template for landlords and tenants covering rent, deposit, term, and property rules.",
-    isPremium: false,
-    categorySlug: "contracts",
-    categoryName: "Contracts",
-    content: {
-      title: "Residential Lease Agreement Template",
-      fields: ["landlordName", "landlordContact", "tenantName", "tenantPhone", "propertyAddress", "propertyType", "leaseTerm", "startDate", "leaseEndDate", "monthlyRent", "securityDeposit", "rentDueDate", "lateFee", "paymentMethod", "utilities", "maintenance", "petsPolicy", "smokingPolicy", "landlordSignature", "tenantSignature"],
-      layout: {
-        header: "RESIDENTIAL LEASE AGREEMENT",
-        footer: "This agreement is governed by local tenancy and housing laws."
-      },
-      styles: {
-        primaryColor: "#0369a1",
-        secondaryColor: "#0c4a6e"
-      },
-      editorState: {
-        type: "doc",
-        content: [
-          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "RESIDENTIAL LEASE AGREEMENT" }] },
-          { type: "paragraph", content: [{ type: "text", text: "This Lease Agreement is made between {{landlordName}} (the Landlord) and {{tenantName}} (the Tenant) for occupancy of the residence at {{propertyAddress}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Parties" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord: " }, { type: "text", text: "{{landlordName}} ({{landlordContact}})" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant: " }, { type: "text", text: "{{tenantName}} ({{tenantPhone}})" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Premises & Lease Term" }] },
-          { type: "paragraph", content: [{ type: "text", text: "The Landlord rents the {{propertyType}} at {{propertyAddress}} for a term of {{leaseTerm}}, beginning {{startDate}} and ending {{leaseEndDate}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Rent" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Monthly rent of {{monthlyRent}} is due on the {{rentDueDate}}, payable via {{paymentMethod}}. Rent received after the grace period is subject to a late fee of {{lateFee}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Security Deposit" }] },
-          { type: "paragraph", content: [{ type: "text", text: "The Tenant pays a security deposit of {{securityDeposit}}, refundable within the statutory period after move-out less any deductions for damage beyond normal wear." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "4. Utilities & Maintenance" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Utilities: {{utilities}}. Maintenance: {{maintenance}}." }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Pets & Smoking" }] },
-          { type: "paragraph", content: [{ type: "text", text: "Pets: {{petsPolicy}} Smoking: {{smokingPolicy}}" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord: " }, { type: "text", text: "{{landlordSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant: " }, { type: "text", text: "{{tenantSignature}}" }] }
         ]
       }
     }

@@ -6,8 +6,6 @@ import { TOOLS } from "@/data/tools";
 
 import { siteConfig } from "@/config/site";
 
-const LOCALES = ["en", "es", "de", "fr", "ar"] as const;
-
 type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -25,42 +23,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return isNaN(parsed.getTime()) ? contentDate : parsed;
   };
 
-  // One entry per canonical page. `url` is the English (x-default) variant and
-  // `alternates.languages` links every locale so search engines understand the
-  // multilingual structure (emits <xhtml:link rel="alternate" hreflang="…">).
-  // The page's own <link rel="canonical"> + hreflang MUST agree with this — see
-  // SEOEngine.generateMetadata.
-  //
-  // Every `/{locale}` route resolves (the [locale] segment accepts all five via
-  // toLocale() and renders), so these alternates point at live 200 URLs — they
-  // are valid, not broken hreflang. `localized: false` is a safety valve: set it
-  // to emit the /en URL alone (no alternates) for any path whose locale variants
-  // ever stop resolving or get consolidated to /en only.
+  // One entry per canonical page. Only English (/en) is served now — the other
+  // locales were retired and 308-redirect to /en (see proxy.ts) — so there are
+  // no hreflang alternates to emit; a single-locale site doesn't need them.
   const entry = (
     path: string,
     opts: {
       lastModified?: Date;
       changeFrequency?: ChangeFrequency;
       priority?: number;
-      localized?: boolean;
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
     lastModified: opts.lastModified ?? contentDate,
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
-    ...(opts.localized === false
-      ? {}
-      : {
-          alternates: {
-            languages: Object.fromEntries([
-              ...LOCALES.map((l) => [l, `${baseUrl}/${l}${path}`]),
-              // x-default points at the English variant so search engines have a
-              // fallback for unmatched locales (recommended by Google's hreflang spec).
-              ["x-default", `${baseUrl}/en${path}`],
-            ]),
-          },
-        }),
   });
 
   // Only indexable, canonical routes belong here — auth, login, dashboard,

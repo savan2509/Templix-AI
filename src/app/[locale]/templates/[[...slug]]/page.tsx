@@ -274,6 +274,23 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const t = dict.templates;
   const common = dict.common;
 
+  // Templates merged into a near-identical equivalent. Their retired URLs
+  // 301-redirect to the kept template so inbound links and rankings survive the
+  // merge (freelance-contract → freelance-agreement, residential-lease → rental).
+  const MERGED_TEMPLATE_REDIRECTS: Record<string, string> = {
+    "freelance-contract": "freelance-agreement",
+    "residential-lease-agreement": "rental-agreement",
+  };
+  const retiredSlug = slug.find((s) => s in MERGED_TEMPLATE_REDIRECTS);
+  if (retiredSlug) {
+    const target = allFallbackTemplates.find(
+      (tpl) => tpl.slug === MERGED_TEMPLATE_REDIRECTS[retiredSlug],
+    );
+    if (target) {
+      permanentRedirect(`/${locale}/templates/${target.categorySlug}/${target.slug}`);
+    }
+  }
+
   // Canonicalize the short /templates/<slug> URL to /templates/<category>/<slug>
   // so the same page isn't served on two URLs (splitting crawl budget / link equity).
   if (slug.length === 1 && !CATEGORIES.some((c) => c.slug === slug[0])) {
@@ -1044,7 +1061,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   {t.complianceHeading}
                 </h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                  {t.complianceP1}<a href={`/${locale}/editor/new`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceEditorLink}</a>{t.complianceP2}<a href="https://www.adobe.com/acrobat/about-pdf.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.compliancePdfLink}</a>{t.complianceP3}<a href="https://schema.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceSchemaLink}</a>{t.complianceP4}
+                  {t.complianceP1}<a href={`/${locale}/editor/new`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceEditorLink}</a>{t.complianceP2}
                 </p>
               </div>
             </section>

@@ -5,7 +5,7 @@ const en = {
   templatesBreadcrumb: "Templates",
   templateNoun: "Template",
   detailIntroExtra:
-    "Adjust fields in the controller to customize variables dynamically. Open in our visual tiptap document workspace to edit text blocks, trigger AI assistant rewrites, and export as PDF/Word.",
+    "Fill in the fields to customize your document, then open it in the editor to edit any text, use the AI assistant to rewrite, and export as PDF or Word.",
 
   // Detail-page related resources
   exploreRelatedResources: "Explore Related Resources",
@@ -16,7 +16,7 @@ const en = {
   // Listing hub heading/subtitle & assembly words
   hubHeading: "Free Professional Business Templates",
   hubSubtitle:
-    "Choose from our curated library of dynamic templates. Seamlessly custom-tailor fields, styles, and values inside our built-in interactive editor canvas.",
+    "Choose from our curated library of templates. Easily customize the fields, styles, and wording in the built-in editor.",
   freeWord: "Free",
   templatesWord: "Templates",
   inWord: "in",
@@ -42,11 +42,11 @@ const en = {
   updatedLabel: "Updated",
 
   // Compliance block
-  complianceHeading: "Corporate Document Compliance & Open Specifications",
+  complianceHeading: "Professional, Export-Ready Formatting",
   complianceP1:
-    "All items compiled in this directory are optimized to support dynamic field injection and variable mapping. Users can customize, rewrite using our built-in ",
+    "Every template has fill-in fields you can customize. Edit and rewrite the text with our built-in ",
   complianceEditorLink: "AI-enabled document editor",
-  complianceP2: ", and export to portable formats. We support the standard ",
+  complianceP2: ", then export to PDF or Word.",
   compliancePdfLink: "Adobe PDF Specifications",
   complianceP3:
     " for pixel-perfect printing and structured serialization. Learn more about schema definitions at ",
@@ -59,12 +59,12 @@ const en = {
     "Fill in the parameters below. The preview paper will update dynamically in real time.",
   customizeInEditor: "Customize in Editor",
   customizeHint:
-    "Tapping opens our full tiptap canvas where you can add signature, upload logo, export PDF.",
+    "Tapping opens the full editor, where you can add a signature, upload a logo, and export to PDF.",
   qualityGuarantee: "Template Quality Guarantee",
   qualityAts: "Tested & optimized for major Applicant Tracking Systems (ATS).",
   qualityAudit: "Formatted to standard invoice audit configurations.",
   qualityStandard: "Formatted to professional industry standards.",
-  qualityOffline: "Supports instant offline PDF & DOCX compilations.",
+  qualityOffline: "Export to PDF and Word instantly, even offline.",
   livePreview: "Live Document Preview",
   liveLabel: "Live",
 };

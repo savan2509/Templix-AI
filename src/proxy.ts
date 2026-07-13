@@ -3,7 +3,12 @@ import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { PRODUCTION_URL } from "@/config/site";
 
+// Locale prefixes the app still recognizes in incoming URLs. Only `en` is
+// served now — the others exist purely so we can 308-redirect their old,
+// English-content URLs onto /en (see the redirect block below) instead of
+// 404ing them, consolidating every ranking signal on the English pages.
 const locales = ["en", "es", "de", "fr", "ar"];
+const RETIRED_LOCALES = ["es", "de", "fr", "ar"];
 const defaultLocale = "en";
 
 // Deployment-platform alias suffixes. A production request that lands on one of
@@ -87,6 +92,19 @@ export default async function proxy(req: NextRequest) {
     } catch {
       // Continue if Supabase is unreachable
     }
+  }
+
+  // 0. Retire the non-English locales. Their pages only ever served English
+  // content, so a /{es,de,fr,ar}/… URL is permanently redirected to its /en
+  // equivalent. Google then drops the duplicate localized URLs and keeps /en.
+  const retired = RETIRED_LOCALES.find(
+    (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
+  );
+  if (retired) {
+    const rest = pathname.replace(/^\/(?:es|de|fr|ar)(?=\/|$)/, "");
+    const dest = new URL(`/en${rest}`, req.url);
+    dest.search = req.nextUrl.search;
+    return NextResponse.redirect(dest, 308);
   }
 
   // 1. Redirect bare paths (missing locale prefix) to the default locale

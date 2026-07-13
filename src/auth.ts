@@ -168,7 +168,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           pass: process.env.EMAIL_SERVER_PASSWORD,
         },
       },
-      from: process.env.EMAIL_FROM || "savanpipaliya478@gmail.com",
+      from: process.env.EMAIL_FROM || "no-reply@templix-ai.whitesparksoft.com",
       async sendVerificationRequest({ identifier, url, provider }) {
         // Always print to terminal — useful if email is delayed
         console.log("\n=======================================================");

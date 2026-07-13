@@ -9,8 +9,8 @@ export const faqData: FAQItem[] = [
     answer: "Templix AI is a production-grade document productivity platform that provides professionally designed business templates (invoices, resumes, contracts, proposals). You can search for a template, customize it in our interactive rich-text editor, use AI to rewrite it for different tones, and export it instantly to PDF or DOCX formats."
   },
   {
-    question: "Can I customize template variables automatically?",
-    answer: "Yes! Our templates are JSON-structured and support variables (e.g. {{companyName}}, {{clientName}}). You can fill in these fields globally or edit them directly within the Tiptap editor canvas."
+    question: "Can I customize template fields automatically?",
+    answer: "Yes! Every template has fill-in fields (e.g. {{companyName}}, {{clientName}}). Fill them in once to update the whole document, or edit any text directly in the editor."
   },
   {
     question: "Are document downloads in PDF and DOCX formats free?",

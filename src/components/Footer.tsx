@@ -83,7 +83,7 @@ export default function Footer() {
             {/* Direct contact — highlighted so a visitor with a question can't
                 miss how to reach us. */}
             <a
-              href="mailto:whitesparktechnologies@gmail.com"
+              href="mailto:contact@templix-ai.whitesparksoft.com"
               className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
             >
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
@@ -94,7 +94,7 @@ export default function Footer() {
                   Questions? Email us
                 </span>
                 <span className="block truncate text-xs font-bold group-hover:underline">
-                  whitesparktechnologies@gmail.com
+                  contact@templix-ai.whitesparksoft.com
                 </span>
               </span>
             </a>
