@@ -26,7 +26,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   total: "$4,500.00",
   subtotal: "$4,250.00",
   notes: "Payment is due within 30 days of invoice date.",
-  signature: "Sarah Jenkins",
+  signature: "Authorized Signatory",
   projectName: "Templix AI Platform Development",
 
   // — Freelancer Invoice —
@@ -151,7 +151,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   customerSignature: "Jane Smith",
 
   // — Resume fields —
-  fullName: "Sarah Jenkins",
+  fullName: "Alex Johnson",
   jobTitle: "Principal Lead Engineer",
   github: "sarahj-dev",
   linkedin: "sarah-jenkins-lead",
@@ -545,7 +545,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   whyGoodFit: "My combined technical leadership and hands-on full-stack development experience align perfectly with your team needs.",
   closingParagraph: "Thank you for your time and consideration. I look forward to discussing how my experience can contribute to your goals.",
   complimentaryClosing: "Sincerely",
-  signatureFullName: "Sarah Jenkins",
+  signatureFullName: "Alex Johnson",
   employeeId: "EMP-4482-A",
   managerName: "John Watson, Director of Engineering",
   lastWorkingDay: "2026-07-31",
