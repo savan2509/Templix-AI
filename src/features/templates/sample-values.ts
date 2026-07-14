@@ -1460,6 +1460,7 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
     subcontractorAddress: "740 Industrial Blvd, Phoenix, AZ 85009",
     projectSiteAddress: "1500 Riverside Commons, Phoenix, AZ 85003",
     startDate: "September 8, 2026",
+    completionDate: "December 20, 2026",
     contractPrice: "$185,000.00",
     retainagePercent: "10%",
     indemnification: "The Subcontractor shall indemnify and hold the Contractor harmless from claims arising out of the Subcontractor's work.",
@@ -1485,6 +1486,9 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
     licenseeSignature: "Daniel Osei"
   },
   "non-compete-agreement": {
+    // Name matches the employeeContact email below (was David Miller vs j.harrison).
+    employeeFullName: "James Harrison",
+    employeeSignature: "James Harrison",
     companyAddress: "1200 Enterprise Blvd, Chicago, IL 60601",
     employeeContact: "+1 (555) 772-3311 | j.harrison@email.com",
     restrictedActivities: "providing sales or consulting services to any competing software company",
@@ -1555,6 +1559,9 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
     developerSignature: "James Wilson"
   },
   "severance-agreement": {
+    // Name matches the employeeContact email below (was David Miller vs robert.hayes).
+    employeeFullName: "Robert Hayes",
+    employeeSignature: "Robert Hayes",
     companyAddress: "1000 Corporate Center Dr, Atlanta, GA 30328",
     employeeContact: "+1 (555) 419-6620 | robert.hayes@email.com",
     separationDate: "August 31, 2026",

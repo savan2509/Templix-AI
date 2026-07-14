@@ -518,7 +518,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
                   {copy.howToHeading}
                 </h2>
-                <ol className="space-y-2.5">
+                <ol className="list-none space-y-2.5">
                   {copy.howTo.map((step, i) => (
                     <li key={step} className="flex gap-3 text-sm text-zinc-600 dark:text-zinc-400">
                       <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[11px] font-bold text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
