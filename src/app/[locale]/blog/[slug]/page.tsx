@@ -192,7 +192,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     description: post.description,
     image: `${siteConfig.url}${post.image}`,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: { "@type": "Organization", name: "Templix AI", url: siteConfig.url },
     publisher: {
       "@type": "Organization",

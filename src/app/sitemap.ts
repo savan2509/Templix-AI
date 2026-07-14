@@ -32,12 +32,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified?: Date;
       changeFrequency?: ChangeFrequency;
       priority?: number;
+      images?: string[];
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
     lastModified: opts.lastModified ?? contentDate,
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
+    // Image sitemap extension — helps the page's cover/OG image surface in
+    // Google Images and rich results. Absolute URLs only.
+    ...(opts.images && opts.images.length ? { images: opts.images } : {}),
   });
 
   // Only indexable, canonical routes belong here — auth, login, dashboard,
@@ -48,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: Array<
     [string, Omit<NonNullable<Parameters<typeof entry>[1]>, "lastModified">]
   > = [
-    ["", { changeFrequency: "daily", priority: 1.0 }],
+    ["", { changeFrequency: "daily", priority: 1.0, images: [`${baseUrl}/og-default.jpg`] }],
     ["/templates", { changeFrequency: "daily", priority: 0.9 }],
     ["/blog", { changeFrequency: "daily", priority: 0.8 }],
     ["/tools", { changeFrequency: "weekly", priority: 0.7 }],
@@ -74,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       entry(`/templates/${t.categorySlug}/${t.slug}`, {
         changeFrequency: "weekly",
         priority: 0.7,
+        images: [`${baseUrl}/cat-${t.categorySlug}-cover.jpg`],
       })
     );
     
@@ -86,7 +91,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Category listing pages
     ...CATEGORIES.map((cat) =>
-      entry(`/templates/${cat.slug}`, { changeFrequency: "weekly", priority: 0.7 })
+      entry(`/templates/${cat.slug}`, {
+        changeFrequency: "weekly",
+        priority: 0.7,
+        images: [`${baseUrl}${cat.image}`],
+      })
     ),
 
     // One entry per free tool (the /tools hub is a static route above)
@@ -104,6 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: safeDate(post.updatedAt ?? post.publishedAt),
         changeFrequency: "monthly",
         priority: 0.7,
+        images: post.image ? [`${baseUrl}${post.image}`] : undefined,
       })
     ),
   ];
