@@ -6,8 +6,33 @@ import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ToolWidget from "@/components/tools/ToolWidget";
 import AiToolWidget from "@/components/tools/AiToolWidget";
 import Schema from "@/components/seo/Schema";
+import { buildFaqSchema } from "@/lib/blog-seo";
 import { ALL_TOOLS, getTool } from "@/data/tools";
 import { getAiTool } from "@/data/ai-tools";
+
+// Answer-Engine Optimization: give every tool page a short, honest FAQ so AI
+// search (Google AI Overview, ChatGPT, Perplexity, etc.) and Google's Q&A rich
+// result can directly answer "what is it / is it free / is it private / how".
+function buildToolFaqs(
+  tool: { title: string; description: string },
+  isAi: boolean,
+  howTo: string,
+): { question: string; answer: string }[] {
+  return [
+    { question: `What is the ${tool.title}?`, answer: tool.description },
+    {
+      question: `Is the ${tool.title} free to use?`,
+      answer: `Yes. The ${tool.title} is completely free with no sign-up, no watermark and no usage limits.`,
+    },
+    {
+      question: "Is my data private?",
+      answer: isAi
+        ? "Your input is sent securely to generate the result and is not stored or used to train AI models."
+        : "Everything runs directly in your browser — nothing is uploaded to a server, so your data stays on your device.",
+    },
+    { question: `How do I use the ${tool.title}?`, answer: howTo },
+  ];
+}
 import { getDictionary } from "@/lib/i18n";
 import { siteConfig } from "@/config/site";
 
@@ -70,6 +95,9 @@ export default async function ToolPage({ params }: PageProps) {
     ],
   };
 
+  const faqs = buildToolFaqs(tool, !!aiTool, t.howToBody);
+  const faqSchema = buildFaqSchema(faqs);
+
   return (
     <InfoPageShell
       locale={locale}
@@ -77,7 +105,7 @@ export default async function ToolPage({ params }: PageProps) {
       title={tool.title}
       subtitle={tool.description}
     >
-      <Schema data={[softwareSchema, breadcrumbSchema]} />
+      <Schema data={[softwareSchema, breadcrumbSchema, faqSchema]} />
       {aiTool ? (
         <AiToolWidget
           slug={aiTool.slug}
@@ -94,6 +122,17 @@ export default async function ToolPage({ params }: PageProps) {
         <p>
           {t.howToBody}
         </p>
+      </Section>
+
+      <Section heading="Frequently Asked Questions">
+        <div className="space-y-4">
+          {faqs.map((f) => (
+            <div key={f.question}>
+              <h3 className="font-semibold text-zinc-900 dark:text-white">{f.question}</h3>
+              <p className="mt-1 text-zinc-600 dark:text-zinc-400 leading-relaxed">{f.answer}</p>
+            </div>
+          ))}
+        </div>
       </Section>
 
       <Section heading={t.relatedHeading}>

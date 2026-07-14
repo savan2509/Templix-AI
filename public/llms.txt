@@ -21,6 +21,19 @@
 ## Guides
 - [Document Templates Blog](https://templix-ai.whitesparksoft.com/en/blog): practical guides on invoices, resumes, contracts and proposals.
 
-## Other
-- [Free tools](https://templix-ai.whitesparksoft.com/en/tools): GST/tax calculator and other document utilities.
+## Free tools
+Browser-based utilities, no sign-up. See all at [Templix AI Tools](https://templix-ai.whitesparksoft.com/en/tools).
+- Calculators & generators: GST/Tax calculator, discount calculator, profit-margin calculator, invoice number generator, freelance hourly-rate calculator, pricing calculator.
+- PDF tools: merge PDF, split PDF, JPG↔PDF, PDF→JPG.
+- Document generators: rent receipt generator (HRA, India), salary slip / payslip generator, proposal builder, contract generator, NDA generator, terms & conditions generator, letter generator, resignation & recommendation letters, resume ATS checker.
+
+## Free AI tools
+AI-powered writing and document tools. See [AI Tools](https://templix-ai.whitesparksoft.com/en/tools#ai).
+- Writing: AI Writer, AI Rewrite (paraphraser), Grammar Checker, Humanize AI Text, AI Summarizer, Tone Changer, AI Translator.
+- Career: Resume Summary Generator, AI Cover Letter Generator.
+- Business: AI Proposal Generator, AI Email Generator, AI Business Plan Generator.
+
+## About
+- [About Templix AI](https://templix-ai.whitesparksoft.com/en/about) — an AI-powered document workspace for creating, editing and exporting business documents.
 - [Contact](https://templix-ai.whitesparksoft.com/en/contact)
+- [Privacy Policy](https://templix-ai.whitesparksoft.com/en/privacy) · [Terms](https://templix-ai.whitesparksoft.com/en/terms)
