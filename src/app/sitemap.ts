@@ -76,6 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       })
     );
+    
 
   // ── Data-driven routes ──────────────────────────────────────────────────────
   // Derived straight from the content sources, so new categories, tools,
