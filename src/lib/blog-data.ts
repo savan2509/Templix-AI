@@ -2459,6 +2459,543 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
 <p>An executive summary is the front door to a <a href="https://en.wikipedia.org/wiki/Proposal_(business)" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">business proposal</a>, a plan, or a report. Write it as if it is the only page that will be read, because usually it is.</p>
     `,
   },
+
+  // ── 37 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-37",
+    slug: "invoice-vs-proforma-invoice",
+    title: "Invoice vs Proforma Invoice: What's the Difference?",
+    metaTitle: "Invoice vs Proforma Invoice: Key Differences",
+    description:
+      "Invoice vs proforma invoice explained: what each document means, when to send it, and how they differ in legal and accounting terms. Free templates included.",
+    category: "Invoices",
+    tags: ["invoice", "proforma invoice", "billing", "accounting"],
+    keywords: ["invoice vs proforma invoice", "proforma invoice meaning", "what is a proforma invoice", "difference between invoice and proforma"],
+    readTime: 6,
+    publishedAt: "2026-07-10",
+    image: "/blog/blog-invoice-vs-receipt.jpg",
+    content: `
+<h2>Invoice vs Proforma Invoice: The Short Answer</h2>
+<p>A <strong>proforma invoice</strong> is a preliminary quote sent <em>before</em> a sale is confirmed — it tells the buyer what to expect. A <strong>tax invoice</strong> is the final, legally binding demand for payment sent <em>after</em> the goods or services are delivered. One is an estimate; the other is a record of a completed transaction.</p>
+
+<h2>Side-by-Side Comparison</h2>
+<table>
+  <thead><tr><th>Aspect</th><th>Proforma Invoice</th><th>Tax Invoice</th></tr></thead>
+  <tbody>
+    <tr><td>Purpose</td><td>Estimate before the sale</td><td>Demand for payment after delivery</td></tr>
+    <tr><td>Legally binding?</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Enters your accounts?</td><td>No</td><td>Yes (revenue &amp; tax)</td></tr>
+    <tr><td>Invoice number</td><td>Optional / provisional</td><td>Mandatory, sequential</td></tr>
+    <tr><td>Used for</td><td>Quotes, customs, advance approval</td><td>Payment, tax filing, records</td></tr>
+  </tbody>
+</table>
+
+<h2>When to Send a Proforma Invoice</h2>
+<ul>
+  <li>A client asks for a formal price commitment before approving the work</li>
+  <li>You need an advance or deposit before starting</li>
+  <li>International shipments require a document for customs valuation</li>
+  <li>A company's procurement team needs a quote to raise a purchase order</li>
+</ul>
+
+<h2>When to Send a Tax Invoice</h2>
+<p>Send the final invoice once the work is done or the goods are shipped. This is the document your client pays against and that both parties report for tax. Build one in minutes with our free <a href="/en/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice templates</a>, and generate a clean reference number with the <a href="/en/tools/invoice-number-generator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice number generator</a>.</p>
+
+<h2>Common Mistakes to Avoid</h2>
+<ul>
+  <li>❌ Treating a proforma invoice as a receivable in your books</li>
+  <li>❌ Reusing the proforma number as the final invoice number</li>
+  <li>❌ Forgetting to mark the document clearly as "Proforma"</li>
+  <li>❌ Charging tax on a proforma as if it were a real invoice</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can a customer pay against a proforma invoice?</h3>
+<p>They can send an advance, but it isn't a legal demand for payment. Always follow up with a proper tax invoice so the transaction is recorded correctly for both sides.</p>
+<h3>Does a proforma invoice count as revenue?</h3>
+<p>No. It never enters your accounts as income. Only the final tax invoice records revenue and any tax collected.</p>
+<h3>Do I need an invoice number on a proforma?</h3>
+<p>It's optional and usually marked as provisional (e.g. "PI-2026-001"). The final tax invoice must carry a mandatory, sequential number.</p>
+    `,
+  },
+
+  // ── 38 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-38",
+    slug: "quotation-vs-estimate",
+    title: "Quotation vs Estimate: Which One Should You Send?",
+    metaTitle: "Quotation vs Estimate: The Difference",
+    description:
+      "Quotation vs estimate explained simply: how binding each one is, when to use it, and what to include so clients say yes. Free quotation template inside.",
+    category: "Invoices",
+    tags: ["quotation", "estimate", "pricing", "freelance"],
+    keywords: ["quotation vs estimate", "difference between quotation and estimate", "what is a quotation", "estimate vs quote"],
+    readTime: 6,
+    publishedAt: "2026-07-10",
+    image: "/blog/blog-how-to-write-freelance-invoice.jpg",
+    content: `
+<h2>Quotation vs Estimate: The Core Difference</h2>
+<p>An <strong>estimate</strong> is your best-guess price — approximate and subject to change. A <strong>quotation</strong> is a fixed, firm price you commit to for a defined scope. Send an estimate when the work is uncertain; send a quotation when the scope is clear and you're ready to be held to the number.</p>
+
+<h2>Comparison Table</h2>
+<table>
+  <thead><tr><th>Feature</th><th>Estimate</th><th>Quotation</th></tr></thead>
+  <tbody>
+    <tr><td>Price</td><td>Approximate</td><td>Fixed</td></tr>
+    <tr><td>Binding?</td><td>No — can change</td><td>Yes, within its validity</td></tr>
+    <tr><td>Scope</td><td>Loosely defined</td><td>Precisely defined</td></tr>
+    <tr><td>Best for</td><td>Early enquiries, variable work</td><td>Confirmed jobs, tenders</td></tr>
+    <tr><td>Validity date</td><td>Optional</td><td>Essential</td></tr>
+  </tbody>
+</table>
+
+<h2>What Every Quotation Should Include</h2>
+<ul>
+  <li>Your business name, logo and contact details</li>
+  <li>A unique quotation number and issue date</li>
+  <li>An itemised scope with quantities and unit prices</li>
+  <li>Subtotal, tax and total</li>
+  <li>A <strong>"valid until" date</strong> so prices don't stay open forever</li>
+  <li>Payment terms and what happens if scope changes</li>
+</ul>
+
+<h2>How to Turn a Quote Into a Sale</h2>
+<p>Send the quotation the same day you discuss the work — speed signals reliability. Keep the validity window short (14–30 days) to create urgency, and make it easy to accept. When they say yes, convert it into an <a href="/en/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice</a> and price line items accurately with the <a href="/en/tools/pricing-calculator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">pricing calculator</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is a quotation legally binding?</h3>
+<p>Once a client accepts a quotation within its validity period, it generally forms a binding agreement on price and scope. An estimate does not, because it's explicitly approximate.</p>
+<h3>Can I change a quoted price later?</h3>
+<p>Only if the scope changes. That's why a good quotation defines the scope precisely and states how out-of-scope work is charged.</p>
+<h3>Which looks more professional to clients?</h3>
+<p>A firm quotation signals confidence and clarity. Use an estimate only when genuine uncertainty makes a fixed price impossible.</p>
+    `,
+  },
+
+  // ── 39 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-39",
+    slug: "cv-vs-resume",
+    title: "CV vs Resume: What's the Difference and When to Use Each",
+    metaTitle: "CV vs Resume: Key Differences Explained",
+    description:
+      "CV vs resume: length, purpose, and which one to send by country and role. Learn the difference and build the right document with free templates.",
+    category: "Resumes",
+    tags: ["CV", "resume", "job application", "career"],
+    keywords: ["cv vs resume", "difference between cv and resume", "resume vs cv", "what is a cv"],
+    readTime: 6,
+    publishedAt: "2026-07-11",
+    image: "/blog/blog-resume-templates.jpg",
+    content: `
+<h2>CV vs Resume: The Difference in One Line</h2>
+<p>A <strong>resume</strong> is a short, targeted 1–2 page summary of your most relevant experience. A <strong>CV</strong> (curriculum vitae) is a longer, comprehensive record of your entire academic and professional history. Which you send depends on the role, the country, and the industry.</p>
+
+<h2>Comparison Table</h2>
+<table>
+  <thead><tr><th>Aspect</th><th>Resume</th><th>CV</th></tr></thead>
+  <tbody>
+    <tr><td>Length</td><td>1–2 pages</td><td>2+ pages (no fixed limit)</td></tr>
+    <tr><td>Purpose</td><td>Tailored to a specific job</td><td>Full career/academic record</td></tr>
+    <tr><td>Content</td><td>Relevant highlights only</td><td>Everything: publications, grants, teaching</td></tr>
+    <tr><td>Common in</td><td>US, Canada, India (private sector)</td><td>UK, EU, academia, research, medicine</td></tr>
+    <tr><td>Updated</td><td>Per application</td><td>Cumulatively over time</td></tr>
+  </tbody>
+</table>
+
+<h2>Which Should You Send?</h2>
+<ul>
+  <li><strong>Applying to a company in the US/Canada?</strong> Send a resume.</li>
+  <li><strong>Academic, research, or medical role?</strong> Send a CV.</li>
+  <li><strong>UK, Ireland or much of Europe?</strong> "CV" often just means a 1–2 page resume — follow the job ad's length.</li>
+  <li><strong>India, private sector?</strong> A 1–2 page resume is standard; "CV" and "resume" are used interchangeably.</li>
+</ul>
+
+<h2>Build the Right One in Minutes</h2>
+<p>Whichever you need, start from a clean, ATS-friendly layout. Browse our free <a href="/en/templates/resumes" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">resume &amp; CV templates</a> and check how well it parses with the <a href="/en/tools/resume-ats-checker" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">resume ATS checker</a> before you apply.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is a CV better than a resume?</h3>
+<p>Neither is "better" — they serve different purposes. A resume wins for most corporate jobs; a CV is expected in academia, research and medicine.</p>
+<h3>Can a resume be 2 pages?</h3>
+<p>Yes, especially with 10+ years of experience. But keep only what's relevant to the target role — recruiters skim the first half a page first.</p>
+<h3>Do I need a photo on my CV or resume?</h3>
+<p>In the US, UK and India, no — leave it off to avoid bias and ATS parsing issues. Some EU countries still expect a photo; follow local norms.</p>
+    `,
+  },
+
+  // ── 40 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-40",
+    slug: "net-30-payment-terms-explained",
+    title: "What Does Net 30 Mean? Invoice Payment Terms Explained",
+    metaTitle: "Net 30 Meaning: Invoice Payment Terms",
+    description:
+      "Net 30 explained: what it means, how it differs from Net 15 and Net 60, and the payment terms every freelancer and business should know. Free invoice template.",
+    category: "Invoices",
+    tags: ["net 30", "payment terms", "invoice", "cash flow"],
+    keywords: ["net 30 meaning", "what does net 30 mean", "payment terms explained", "net 15 vs net 30"],
+    readTime: 6,
+    publishedAt: "2026-07-11",
+    image: "/blog/blog-create-invoice.jpg",
+    content: `
+<h2>What Does "Net 30" Mean?</h2>
+<p><strong>Net 30</strong> means payment is due in full within 30 days of the invoice date. The word "net" signals the total amount owed (after any discounts), and the number is the count of days the client has to pay. So an invoice dated 1 June with Net 30 terms is due by 1 July.</p>
+
+<h2>Common Payment Terms at a Glance</h2>
+<table>
+  <thead><tr><th>Term</th><th>Meaning</th><th>Best for</th></tr></thead>
+  <tbody>
+    <tr><td>Due on receipt</td><td>Pay immediately</td><td>Small jobs, new clients</td></tr>
+    <tr><td>Net 7 / Net 15</td><td>Pay within 7 / 15 days</td><td>Freelancers, fast cash flow</td></tr>
+    <tr><td>Net 30</td><td>Pay within 30 days</td><td>Standard B2B default</td></tr>
+    <tr><td>Net 60 / Net 90</td><td>Pay within 60 / 90 days</td><td>Large corporates, enterprise</td></tr>
+    <tr><td>2/10 Net 30</td><td>2% discount if paid within 10 days</td><td>Encouraging early payment</td></tr>
+  </tbody>
+</table>
+
+<h2>Should Freelancers Offer Net 30?</h2>
+<p>Net 30 is the corporate default, but longer terms strain your cash flow. If you're a freelancer, consider <strong>Net 7 or Net 15</strong>, ask for a deposit up front, and add a late-fee clause. Reserve Net 30+ for established clients who won't pay any faster.</p>
+
+<h2>How to Get Paid on Time</h2>
+<ul>
+  <li>State the exact due date on the invoice — don't make clients calculate it</li>
+  <li>Offer an early-payment discount (e.g. 2/10 Net 30)</li>
+  <li>Add a late-payment fee and mention it up front</li>
+  <li>Send a reminder 3 days before the due date</li>
+</ul>
+<p>Set a clear due date with our free <a href="/en/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice templates</a> — the total, tax and terms are built in.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Does Net 30 start from the invoice date or delivery date?</h3>
+<p>Usually the invoice date, unless your contract says "Net 30 from receipt" or "from delivery." Always state which on the invoice to avoid disputes.</p>
+<h3>What does 2/10 Net 30 mean?</h3>
+<p>The client gets a 2% discount if they pay within 10 days; otherwise the full amount is due in 30 days. It's a common early-payment incentive.</p>
+<h3>Is Net 30 the same as due in 30 days?</h3>
+<p>Yes — "Net 30" is just the accounting shorthand for "the net amount is due within 30 days."</p>
+    `,
+  },
+
+  // ── 41 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-41",
+    slug: "rent-receipt-for-hra",
+    title: "Rent Receipt for HRA: Format, Rules & Free Template (India)",
+    metaTitle: "Rent Receipt for HRA: Format & Rules",
+    description:
+      "How to make a rent receipt for HRA claims in India: required details, the revenue stamp and landlord PAN rules, and a free rent receipt generator.",
+    category: "Invoices",
+    tags: ["rent receipt", "HRA", "India", "tax"],
+    keywords: ["rent receipt for hra", "rent receipt format", "house rent receipt", "rent receipt generator india", "hra rent receipt rules"],
+    readTime: 6,
+    publishedAt: "2026-07-12",
+    image: "/blog/blog-invoice-vs-receipt.jpg",
+    content: `
+<h2>Why You Need a Rent Receipt for HRA</h2>
+<p>If you're a salaried employee in India claiming <strong>House Rent Allowance (HRA)</strong> exemption, your employer needs valid rent receipts as proof. A correct rent receipt confirms how much rent you paid, to whom, and for which period — and getting the details right avoids your claim being rejected.</p>
+
+<h2>What a Valid Rent Receipt Must Include</h2>
+<table>
+  <thead><tr><th>Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Tenant name</td><td>The employee claiming HRA</td></tr>
+    <tr><td>Landlord name</td><td>Who received the rent</td></tr>
+    <tr><td>Rent amount</td><td>Monthly rent paid</td></tr>
+    <tr><td>Rent period</td><td>The month(s) covered</td></tr>
+    <tr><td>Property address</td><td>The rented premises</td></tr>
+    <tr><td>Payment mode &amp; date</td><td>Cash, bank transfer, UPI or cheque</td></tr>
+    <tr><td>Landlord signature</td><td>Confirms receipt</td></tr>
+  </tbody>
+</table>
+
+<h2>The Revenue Stamp &amp; Landlord PAN Rules</h2>
+<ul>
+  <li>A <strong>₹1 revenue stamp</strong> is required on receipts for cash payments above ₹5,000, signed across by the landlord.</li>
+  <li>If your annual rent exceeds <strong>₹1,00,000</strong>, you must report the <strong>landlord's PAN</strong> to your employer.</li>
+  <li>Bank transfer or UPI receipts don't need a revenue stamp — the bank record is your trail.</li>
+</ul>
+
+<h2>Generate Rent Receipts in Seconds</h2>
+<p>Skip the manual formatting. Our free <a href="/en/tools/rent-receipt-generator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">rent receipt generator</a> fills in the tenant, landlord, amount and period, flags the revenue-stamp rule automatically, and lets you download or print a clean receipt — no sign-up.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Do I need a revenue stamp on every rent receipt?</h3>
+<p>Only for cash payments above ₹5,000. Payments by bank transfer, UPI or cheque don't need a stamp because the transaction itself is the proof.</p>
+<h3>Is the landlord's PAN mandatory for HRA?</h3>
+<p>Yes, if your total annual rent exceeds ₹1,00,000. Below that, PAN isn't required but the receipts still are.</p>
+<h3>Can I claim HRA if I pay rent to my parents?</h3>
+<p>Yes, provided you genuinely pay rent, keep receipts, and your parents declare that rent as income. The arrangement must be real, not on paper only.</p>
+    `,
+  },
+
+  // ── 42 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-42",
+    slug: "salary-slip-format",
+    title: "Salary Slip Format: What to Include (+ Free Payslip Generator)",
+    metaTitle: "Salary Slip Format: Components & Template",
+    description:
+      "A clear salary slip format with every earning and deduction explained — basic, HRA, PF, professional tax, TDS and net pay. Generate a payslip free.",
+    category: "Guides",
+    tags: ["salary slip", "payslip", "payroll", "India"],
+    keywords: ["salary slip format", "payslip format", "salary slip generator", "salary slip components", "how to make salary slip"],
+    readTime: 6,
+    publishedAt: "2026-07-12",
+    image: "/blog/blog-business-letter.jpg",
+    content: `
+<h2>What Is a Salary Slip?</h2>
+<p>A <strong>salary slip</strong> (or payslip) is a document an employer issues each pay period that breaks down an employee's earnings and deductions to arrive at <strong>net pay</strong> — the amount actually credited. It's essential proof of income for loans, visas, and new-job negotiations.</p>
+
+<h2>Salary Slip Components</h2>
+<table>
+  <thead><tr><th>Section</th><th>Typical items</th></tr></thead>
+  <tbody>
+    <tr><td>Earnings</td><td>Basic pay, House Rent Allowance (HRA), other allowances, bonus</td></tr>
+    <tr><td>Deductions</td><td>Provident Fund (PF), Professional Tax, TDS, other deductions</td></tr>
+    <tr><td>Totals</td><td>Gross earnings, total deductions, net pay</td></tr>
+    <tr><td>Header</td><td>Company name, employee name &amp; ID, designation, pay period</td></tr>
+  </tbody>
+</table>
+
+<h2>How Net Pay Is Calculated</h2>
+<blockquote>
+  Net Pay = Gross Earnings (Basic + HRA + Allowances) &minus; Total Deductions (PF + Professional Tax + TDS + Other)
+</blockquote>
+<p>For example, gross earnings of ₹64,000 with total deductions of ₹7,500 give a net pay of ₹56,500.</p>
+
+<h2>Why an Accurate Salary Slip Matters</h2>
+<ul>
+  <li>Banks require recent payslips for home, car and personal loans</li>
+  <li>Embassies ask for them during visa applications</li>
+  <li>New employers use them to verify your current CTC</li>
+  <li>They're your record of PF and tax contributions</li>
+</ul>
+
+<h2>Generate a Professional Payslip Free</h2>
+<p>Enter earnings and deductions into our free <a href="/en/tools/salary-slip-generator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">salary slip generator</a> — it computes gross, total deductions and net pay, then lets you download or print a clean payslip. No sign-up, no watermark.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What's the difference between gross pay and net pay?</h3>
+<p>Gross pay is total earnings before deductions. Net pay is what lands in your account after PF, professional tax and TDS are subtracted.</p>
+<h3>Is a salary slip mandatory?</h3>
+<p>Employers are generally expected to provide payslips. Even small businesses benefit from issuing them for transparency and record-keeping.</p>
+<h3>Can I get a salary slip if I'm self-employed?</h3>
+<p>Not a traditional payslip, but you can issue yourself an income statement or use invoices and bank records as proof of earnings.</p>
+    `,
+  },
+
+  // ── 43 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-43",
+    slug: "relieving-letter-format",
+    title: "Relieving Letter Format: Samples & What to Include",
+    metaTitle: "Relieving Letter Format & Sample",
+    description:
+      "What a relieving letter is, why it matters for your next job, and a ready-to-use relieving letter format with sample wording. Free letter templates inside.",
+    category: "Letters",
+    tags: ["relieving letter", "HR", "India", "employment"],
+    keywords: ["relieving letter format", "relieving letter sample", "what is a relieving letter", "relieving letter vs experience letter"],
+    readTime: 5,
+    publishedAt: "2026-07-13",
+    image: "/blog/blog-two-weeks-notice-letter.jpg",
+    content: `
+<h2>What Is a Relieving Letter?</h2>
+<p>A <strong>relieving letter</strong> is a formal document an employer issues when an employee leaves, confirming that they have been officially released from their duties and have completed all exit formalities. New employers in India often ask for it as proof that you left your previous job cleanly.</p>
+
+<h2>Relieving Letter vs Experience Letter</h2>
+<table>
+  <thead><tr><th>Aspect</th><th>Relieving Letter</th><th>Experience Letter</th></tr></thead>
+  <tbody>
+    <tr><td>Confirms</td><td>You've been released from the role</td><td>Your role, tenure and performance</td></tr>
+    <tr><td>Issued</td><td>On your last working day</td><td>On or after your last day</td></tr>
+    <tr><td>Used for</td><td>Joining a new employer</td><td>Proof of experience</td></tr>
+  </tbody>
+</table>
+
+<h2>What to Include</h2>
+<ul>
+  <li>Company letterhead and date</li>
+  <li>Employee's full name, designation and employee ID</li>
+  <li>Joining date and last working day</li>
+  <li>A clear statement that the employee is relieved of duties</li>
+  <li>Confirmation that dues and handover are settled</li>
+  <li>Authorised signatory's name, designation and signature</li>
+</ul>
+
+<h2>Sample Wording</h2>
+<blockquote>
+  This is to certify that Mr./Ms. [Name], [Designation] (Employee ID [ID]), has been relieved from the services of [Company] with effect from the close of business on [Last Working Day]. All company property has been returned and dues settled. We wish them success in their future endeavours.
+</blockquote>
+<p>Draft one quickly from our free <a href="/en/templates/letters" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">letter templates</a> and read our <a href="/en/blog/experience-letter-format" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">experience letter format</a> guide for the companion document.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is a relieving letter mandatory in India?</h3>
+<p>It isn't a legal requirement, but many employers ask for one before onboarding you, so it's important to obtain it during your exit process.</p>
+<h3>What if my employer won't issue a relieving letter?</h3>
+<p>First, complete all exit formalities and request it in writing. If it's still withheld, your resignation acceptance email, final payslip and bank records can serve as supporting evidence.</p>
+<h3>Is a relieving letter the same as an experience letter?</h3>
+<p>No. A relieving letter confirms your release; an experience letter certifies your role and tenure. Many people need both.</p>
+    `,
+  },
+
+  // ── 44 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-44",
+    slug: "purchase-order-vs-invoice",
+    title: "Purchase Order vs Invoice: The Difference Explained",
+    metaTitle: "Purchase Order vs Invoice: Key Differences",
+    description:
+      "Purchase order vs invoice: who creates each, when it's sent, and how they work together in the buying process. Clear comparison plus free invoice templates.",
+    category: "Invoices",
+    tags: ["purchase order", "invoice", "procurement", "accounting"],
+    keywords: ["purchase order vs invoice", "difference between purchase order and invoice", "what is a purchase order", "po vs invoice"],
+    readTime: 5,
+    publishedAt: "2026-07-13",
+    image: "/blog/blog-create-invoice.jpg",
+    content: `
+<h2>Purchase Order vs Invoice: Who Sends What</h2>
+<p>A <strong>purchase order (PO)</strong> is created by the <em>buyer</em> to request goods or services — it says "I want to buy this." An <strong>invoice</strong> is created by the <em>seller</em> to request payment — it says "here's what you owe me." The PO comes first; the invoice follows delivery.</p>
+
+<h2>Comparison Table</h2>
+<table>
+  <thead><tr><th>Aspect</th><th>Purchase Order</th><th>Invoice</th></tr></thead>
+  <tbody>
+    <tr><td>Created by</td><td>Buyer</td><td>Seller</td></tr>
+    <tr><td>Sent</td><td>Before delivery</td><td>After delivery</td></tr>
+    <tr><td>Purpose</td><td>Authorise a purchase</td><td>Request payment</td></tr>
+    <tr><td>Contains</td><td>Items, quantities, agreed price</td><td>Items, price, tax, total, due date</td></tr>
+    <tr><td>Reference</td><td>PO number</td><td>Invoice number (often cites the PO)</td></tr>
+  </tbody>
+</table>
+
+<h2>How They Work Together</h2>
+<ol>
+  <li>Buyer issues a <strong>PO</strong> to authorise the order</li>
+  <li>Seller delivers the goods or services</li>
+  <li>Seller sends an <strong>invoice</strong> that references the PO number</li>
+  <li>Buyer matches invoice to PO and delivery, then pays</li>
+</ol>
+<p>This "three-way match" (PO, delivery, invoice) is how finance teams prevent overpayment and fraud.</p>
+
+<h2>Get the Invoice Right</h2>
+<p>Always quote the client's PO number on your invoice — it speeds up approval. Build a compliant one from our free <a href="/en/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice templates</a> and number it cleanly with the <a href="/en/tools/invoice-number-generator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice number generator</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Does every invoice need a purchase order?</h3>
+<p>No. POs are common in B2B and procurement-heavy businesses. Many freelancers and small sales invoice directly without one.</p>
+<h3>Can a purchase order be used as an invoice?</h3>
+<p>No — they serve opposite roles. The PO authorises the buy; only the seller's invoice legally requests payment and records revenue.</p>
+<h3>What is a PO number?</h3>
+<p>A unique reference the buyer assigns to a purchase order. Quoting it on your invoice links the two documents for faster approval.</p>
+    `,
+  },
+
+  // ── 45 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-45",
+    slug: "how-to-write-a-letter-of-recommendation",
+    title: "How to Write a Letter of Recommendation (+ Templates)",
+    metaTitle: "How to Write a Letter of Recommendation",
+    description:
+      "A step-by-step guide to writing a strong letter of recommendation, with structure, sample wording and mistakes to avoid. Free recommendation letter template.",
+    category: "Letters",
+    tags: ["recommendation letter", "reference letter", "letters", "career"],
+    keywords: ["how to write a letter of recommendation", "recommendation letter template", "reference letter", "letter of recommendation format"],
+    readTime: 6,
+    publishedAt: "2026-07-14",
+    image: "/blog/blog-cover-letter.jpg",
+    content: `
+<h2>What Makes a Recommendation Letter Strong</h2>
+<p>A great <strong>letter of recommendation</strong> does more than say someone is "hardworking." It gives a specific role for the writer, concrete examples of the candidate's impact, and a clear, confident endorsement. Vague praise reads as lukewarm; specifics read as genuine.</p>
+
+<h2>The Standard Structure</h2>
+<ol>
+  <li><strong>Opening</strong> — who you are and how you know the candidate</li>
+  <li><strong>Context</strong> — the capacity and duration of your relationship</li>
+  <li><strong>Body</strong> — 2–3 specific achievements with measurable results</li>
+  <li><strong>Character</strong> — the personal qualities that set them apart</li>
+  <li><strong>Endorsement</strong> — an unambiguous recommendation</li>
+  <li><strong>Close</strong> — your contact details and offer to follow up</li>
+</ol>
+
+<h2>Sample Opening Lines</h2>
+<blockquote>
+  It is my pleasure to recommend [Name], whom I supervised for three years as [Your Role] at [Company]. In that time she consistently delivered work of a standard well above her peers.
+</blockquote>
+
+<h2>Mistakes to Avoid</h2>
+<ul>
+  <li>❌ Generic praise with no examples ("a great team player")</li>
+  <li>❌ Any lukewarm or hedged language — it reads as a red flag</li>
+  <li>❌ Focusing on tasks instead of results</li>
+  <li>❌ Forgetting to state your relationship and how long you've known them</li>
+</ul>
+<p>Don't start from a blank page — use our free <a href="/en/templates/letters" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">letter templates</a> or generate a draft with the <a href="/en/tools/recommendation-letter-generator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">recommendation letter generator</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How long should a recommendation letter be?</h3>
+<p>One page, or roughly 350–450 words. Long enough for two or three concrete examples, short enough to stay focused.</p>
+<h3>Can I write my own letter for someone to sign?</h3>
+<p>It's common for busy referees to ask you to draft it. Keep it honest and specific, then let them edit and sign — the endorsement must be genuinely theirs.</p>
+<h3>What if I can't give a strong recommendation?</h3>
+<p>It's better to decline politely than to write a lukewarm letter, which can quietly harm the candidate more than no letter at all.</p>
+    `,
+  },
+
+  // ── 46 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-46",
+    slug: "how-much-to-charge-as-a-freelancer",
+    title: "How Much to Charge as a Freelancer: Setting Your Rate",
+    metaTitle: "How Much to Charge as a Freelancer",
+    description:
+      "A practical method to set your freelance rate: cover your costs, price by value not just hours, and avoid undercharging. Free hourly rate calculator inside.",
+    category: "Guides",
+    tags: ["freelance", "pricing", "hourly rate", "rates"],
+    keywords: ["how much to charge as a freelancer", "freelance rate", "how to set freelance rates", "freelance hourly rate calculator"],
+    readTime: 7,
+    publishedAt: "2026-07-14",
+    image: "/blog/blog-how-to-write-freelance-invoice.jpg",
+    content: `
+<h2>Why Most Freelancers Underprice</h2>
+<p>New freelancers usually pick a number that "feels okay" and quietly undercharge for years. The fix is to price from your <strong>real costs and income goal</strong>, not a gut feeling — then layer value on top. Your rate has to cover more than your time.</p>
+
+<h2>Start With the Real Math</h2>
+<p>Your billable hours are far fewer than your working hours, because admin, sales and downtime aren't billable. Use this formula:</p>
+<blockquote>
+  Hourly Rate = (Target Income + Business Expenses) &divide; Billable Hours per Year
+</blockquote>
+<p>If you want ₹12,00,000, have ₹1,50,000 of expenses, and bill 1,200 hours a year, your minimum rate is ₹1,125/hour. Run your own numbers with the free <a href="/en/tools/hourly-rate-calculator" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">freelance hourly rate calculator</a>.</p>
+
+<h2>Hourly vs Project vs Value Pricing</h2>
+<table>
+  <thead><tr><th>Model</th><th>Best for</th><th>Watch out for</th></tr></thead>
+  <tbody>
+    <tr><td>Hourly</td><td>Open-ended or support work</td><td>Punishes you for being fast</td></tr>
+    <tr><td>Fixed project</td><td>Well-defined scope</td><td>Scope creep — define it tightly</td></tr>
+    <tr><td>Value-based</td><td>Work tied to client revenue</td><td>Needs proof of ROI</td></tr>
+  </tbody>
+</table>
+
+<h2>Signs It's Time to Raise Your Rate</h2>
+<ul>
+  <li>You're fully booked and turning work away</li>
+  <li>Clients accept your quotes without hesitation</li>
+  <li>Your skills or results have measurably improved</li>
+  <li>You haven't raised prices in over a year</li>
+</ul>
+
+<h2>Quote With Confidence</h2>
+<p>Once you know your rate, send a clean quotation and back it with a professional <a href="/en/templates/invoices" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">invoice</a>. Pricing clearly and promptly is itself a signal of quality.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How do I set my first freelance rate?</h3>
+<p>Start from the cost-plus formula above so you at least cover your income goal and expenses, then adjust up as your portfolio and demand grow.</p>
+<h3>Should I show my rates publicly?</h3>
+<p>For productised services, yes — it filters out mismatched leads. For custom work, quote per project after understanding the scope.</p>
+<h3>Is it better to charge hourly or per project?</h3>
+<p>Per project usually earns more once you're efficient, because you're paid for the outcome, not the clock. Define the scope tightly to avoid creep.</p>
+    `,
+  },
 ];
 
 // Helper — get a post by slug
