@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ToolWidget from "@/components/tools/ToolWidget";
+import AiToolWidget from "@/components/tools/AiToolWidget";
 import Schema from "@/components/seo/Schema";
-import { TOOLS, getTool } from "@/data/tools";
+import { ALL_TOOLS, getTool } from "@/data/tools";
+import { getAiTool } from "@/data/ai-tools";
 import { getDictionary } from "@/lib/i18n";
 import { siteConfig } from "@/config/site";
 
@@ -32,13 +34,19 @@ export default async function ToolPage({ params }: PageProps) {
   const t = getDictionary(locale).tools;
   const tool = getTool(slug);
   if (!tool) notFound();
+  const aiTool = getAiTool(slug);
 
-  const related = TOOLS.filter((tl) => tl.slug !== tool.slug).slice(0, 4);
+  // Related: prefer same-category tools, then fill from the rest.
+  const related = ALL_TOOLS
+    .filter((tl) => tl.slug !== tool.slug)
+    .sort((a) => (a.category === tool.category ? -1 : 1))
+    .slice(0, 4);
 
   const toolUrl = `${siteConfig.url}/${locale}/tools/${tool.slug}`;
   // Map our internal category to a schema.org applicationCategory so each tool's
   // SoftwareApplication is classified specifically (not a generic default).
   const APP_CATEGORY: Record<string, string> = {
+    ai: "BusinessApplication",
     pdf: "UtilitiesApplication",
     resume: "BusinessApplication",
     invoice: "FinanceApplication",
@@ -70,7 +78,17 @@ export default async function ToolPage({ params }: PageProps) {
       subtitle={tool.description}
     >
       <Schema data={[softwareSchema, breadcrumbSchema]} />
-      <ToolWidget slug={tool.slug} />
+      {aiTool ? (
+        <AiToolWidget
+          slug={aiTool.slug}
+          inputLabel={aiTool.inputLabel}
+          inputPlaceholder={aiTool.inputPlaceholder}
+          outputLabel={aiTool.outputLabel}
+          options={aiTool.options}
+        />
+      ) : (
+        <ToolWidget slug={tool.slug} />
+      )}
 
       <Section heading={t.howToHeading}>
         <p>

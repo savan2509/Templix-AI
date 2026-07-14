@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
-import { TOOLS } from "@/data/tools";
+import { ALL_TOOLS } from "@/data/tools";
 
 import { siteConfig } from "@/config/site";
 
@@ -90,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
 
     // One entry per free tool (the /tools hub is a static route above)
-    ...TOOLS.map((tool) =>
+    ...ALL_TOOLS.map((tool) =>
       entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6 })
     ),
 

@@ -12,7 +12,7 @@ export interface ToolMeta {
   category: ToolCategoryKey; // groups the tool on the hub + in the navbar dropdown
 }
 
-export type ToolCategoryKey = "pdf" | "resume" | "invoice" | "proposal" | "contract" | "letter";
+export type ToolCategoryKey = "ai" | "pdf" | "resume" | "invoice" | "proposal" | "contract" | "letter";
 
 export interface ToolCategory {
   key: ToolCategoryKey;
@@ -29,6 +29,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   { key: "proposal", icon: "FileSignature", label: { en: "Proposals", es: "Propuestas", de: "Angebote", fr: "Propositions", ar: "المقترحات" } },
   { key: "contract", icon: "ShieldCheck", label: { en: "Contracts & Legal", es: "Contratos y legal", de: "Verträge & Recht", fr: "Contrats & juridique", ar: "العقود والقانون" } },
   { key: "letter", icon: "Mail", label: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" } },
+  { key: "ai", icon: "Sparkles", label: { en: "AI Tools", es: "Herramientas de IA", de: "KI-Tools", fr: "Outils IA", ar: "أدوات الذكاء الاصطناعي" } },
 ];
 
 export const TOOLS: ToolMeta[] = [
@@ -224,10 +225,17 @@ export const TOOLS: ToolMeta[] = [
   },
 ];
 
+// AI tools live in ./ai-tools (they run a server-side LLM prompt). They share
+// the ToolMeta shape, so every consumer — hub, detail page, sitemap — treats
+// them uniformly via ALL_TOOLS. `import type` keeps this dependency one-way.
+import { AI_TOOLS } from "./ai-tools";
+
+export const ALL_TOOLS: ToolMeta[] = [...TOOLS, ...AI_TOOLS];
+
 export function getTool(slug: string): ToolMeta | undefined {
-  return TOOLS.find((t) => t.slug === slug);
+  return ALL_TOOLS.find((t) => t.slug === slug);
 }
 
 export function toolsByCategory(key: ToolCategoryKey): ToolMeta[] {
-  return TOOLS.filter((t) => t.category === key);
+  return ALL_TOOLS.filter((t) => t.category === key);
 }

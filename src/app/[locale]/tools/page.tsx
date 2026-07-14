@@ -3,12 +3,12 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import Schema from "@/components/seo/Schema";
-import { TOOLS, TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
+import { ALL_TOOLS, TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
 import { getDictionary } from "@/lib/i18n";
 import { siteConfig } from "@/config/site";
-import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack, ArrowRight, type LucideIcon } from "lucide-react";
+import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack, Sparkles, PenLine, SpellCheck, Wand2, Palette, Languages, ScrollText, MessageSquare, Briefcase, ArrowRight, type LucideIcon } from "lucide-react";
 
-const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack };
+const ICONS: Record<string, LucideIcon> = { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack, Sparkles, PenLine, SpellCheck, Wand2, Palette, Languages, ScrollText, MessageSquare, Briefcase };
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -39,7 +39,7 @@ export default async function ToolsHubPage({ params }: PageProps) {
     description: t.hubSubtitle,
     url: toolsUrl,
     locale,
-    items: TOOLS.map((tool) => ({ name: tool.title, url: `${siteConfig.url}/${locale}/tools/${tool.slug}` })),
+    items: ALL_TOOLS.map((tool) => ({ name: tool.title, url: `${siteConfig.url}/${locale}/tools/${tool.slug}` })),
   });
   const breadcrumbSchema = {
     "@context": "https://schema.org",
