@@ -20,6 +20,7 @@ export interface InternalLinkingData {
   relatedTemplates: { title: string; href: string }[];
   relatedBlogs: { title: string; href: string }[];
   relatedCategories: { name: string; href: string }[];
+  relatedTools: { title: string; href: string }[];
 }
 
 // Open Graph requires language_TERRITORY (e.g. en_US), not a bare "en".
@@ -282,10 +283,52 @@ export class SEOEngine {
       { name: "Letters & Cover Letters", href: `/${locale}/templates/letters` },
     ];
 
+    // Cross-link each template category to the free tools that complete the job
+    // (e.g. an invoice template links to the GST calculator + invoice number
+    // generator). Every slug below is a real tool page.
+    const TOOL_TITLES: Record<string, string> = {
+      "gst-calculator": "GST & Tax Calculator",
+      "invoice-number-generator": "Invoice Number Generator",
+      "pricing-calculator": "Pricing Calculator",
+      "hourly-rate-calculator": "Freelance Rate Calculator",
+      "resume-ats-checker": "Resume ATS Checker",
+      "ai-resume-summary-generator": "Resume Summary Generator",
+      "ai-cover-letter-generator": "AI Cover Letter Generator",
+      "contract-generator": "Contract Generator",
+      "nda-generator": "NDA Generator",
+      "terms-generator": "Terms & Conditions Generator",
+      "proposal-builder": "Proposal Builder",
+      "ai-proposal-generator": "AI Proposal Generator",
+      "scope-generator": "Scope of Work Generator",
+      "letter-generator": "Letter Generator",
+      "recommendation-letter-generator": "Recommendation Letter Generator",
+      "resignation-letter-generator": "Resignation Letter Generator",
+      "ai-business-plan-generator": "AI Business Plan Generator",
+      "ai-writer": "AI Writer",
+      "ai-summarizer": "AI Summarizer",
+      "grammar-checker": "Grammar Checker",
+    };
+    const TOOLS_BY_CATEGORY: Record<string, string[]> = {
+      invoices: ["gst-calculator", "invoice-number-generator", "pricing-calculator", "hourly-rate-calculator"],
+      resumes: ["resume-ats-checker", "ai-resume-summary-generator", "ai-cover-letter-generator", "grammar-checker"],
+      contracts: ["contract-generator", "nda-generator", "terms-generator", "ai-writer"],
+      proposals: ["proposal-builder", "ai-proposal-generator", "scope-generator", "pricing-calculator"],
+      letters: ["letter-generator", "ai-cover-letter-generator", "recommendation-letter-generator", "resignation-letter-generator"],
+      reports: ["ai-writer", "ai-summarizer", "grammar-checker"],
+      "business-plans": ["ai-business-plan-generator", "ai-writer", "pricing-calculator"],
+      quotations: ["pricing-calculator", "gst-calculator", "invoice-number-generator"],
+    };
+    const toolSlugs = (TOOLS_BY_CATEGORY[categorySlug] || ["ai-writer", "grammar-checker", "resume-ats-checker"]).slice(0, 4);
+    const relatedTools = toolSlugs.map((s) => ({
+      title: TOOL_TITLES[s] || s,
+      href: `/${locale}/tools/${s}`,
+    }));
+
     return {
       relatedTemplates,
       relatedBlogs,
       relatedCategories,
+      relatedTools,
     };
   }
 

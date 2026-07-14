@@ -613,6 +613,21 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                     ))}
                   </ul>
                 </div>
+
+                <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider text-[10px]">
+                    Related Free Tools
+                  </h4>
+                  <ul className="space-y-2">
+                    {internalLinking.relatedTools.map((tl) => (
+                      <li key={tl.href}>
+                        <Link href={tl.href} className="text-blue-600 hover:underline dark:text-blue-400 font-semibold">
+                          {tl.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
