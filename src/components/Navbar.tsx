@@ -7,7 +7,7 @@ import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
 import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
-import { TOOL_CATEGORIES } from "@/data/tools";
+import { TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
 import type { User } from "@supabase/supabase-js";
 import {
   Sparkles,
@@ -37,6 +37,8 @@ export default function Navbar() {
   const [mobileTemplatesOpen, setMobileTemplatesOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const [aiToolsOpen, setAiToolsOpen] = useState(false);
+  const [mobileAiToolsOpen, setMobileAiToolsOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -44,6 +46,7 @@ export default function Navbar() {
   const langRef = useRef<HTMLDivElement>(null);
   const templatesRef = useRef<HTMLDivElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
+  const aiToolsRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -69,6 +72,8 @@ export default function Navbar() {
     setMobileTemplatesOpen(false);
     setToolsOpen(false);
     setMobileToolsOpen(false);
+    setAiToolsOpen(false);
+    setMobileAiToolsOpen(false);
     setUserMenuOpen(false);
   }, [pathname]);
 
@@ -83,6 +88,9 @@ export default function Navbar() {
       }
       if (toolsRef.current && !toolsRef.current.contains(event.target as Node)) {
         setToolsOpen(false);
+      }
+      if (aiToolsRef.current && !aiToolsRef.current.contains(event.target as Node)) {
+        setAiToolsOpen(false);
       }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setUserMenuOpen(false);
@@ -175,6 +183,20 @@ export default function Navbar() {
     en: "All tools", es: "Todas las herramientas", de: "Alle Tools", fr: "Tous les outils", ar: "جميع الأدوات",
   };
   const allToolsText = allToolsLabel[currentLocale as keyof typeof allToolsLabel] || allToolsLabel.en;
+
+  // Dedicated AI Tools dropdown — surfaces the AI-powered tools directly in the
+  // navbar (violet-accented) instead of hiding them under a Tools-hub anchor.
+  const aiTools = toolsByCategory("ai");
+  const aiToolsLabel: Record<string, string> = {
+    en: "AI Tools", es: "Herramientas IA", de: "KI-Tools", fr: "Outils IA", ar: "أدوات الذكاء الاصطناعي",
+  };
+  const aiToolsText = aiToolsLabel[currentLocale as keyof typeof aiToolsLabel] || aiToolsLabel.en;
+  const aiToolsHref = `${toolsHref}#ai`;
+  const isAiActive = aiTools.some((tl) => pathname === `/${currentLocale}/tools/${tl.slug}`);
+  const allAiToolsLabel: Record<string, string> = {
+    en: "All AI tools", es: "Todas las herramientas IA", de: "Alle KI-Tools", fr: "Tous les outils IA", ar: "جميع أدوات الذكاء الاصطناعي",
+  };
+  const allAiToolsText = allAiToolsLabel[currentLocale as keyof typeof allAiToolsLabel] || allAiToolsLabel.en;
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
@@ -302,6 +324,60 @@ export default function Navbar() {
                     >
                       <Wrench className="h-4 w-4" />
                       <span>{allToolsText}</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* AI Tools dropdown */}
+              <div className="relative" ref={aiToolsRef}>
+                <button
+                  onClick={() => setAiToolsOpen((v) => !v)}
+                  aria-expanded={aiToolsOpen}
+                  aria-haspopup="menu"
+                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
+                    isAiActive
+                      ? "text-violet-600 dark:text-violet-400"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  }`}
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-violet-500" />
+                  <span>{aiToolsText}</span>
+                  <span className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
+                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${aiToolsOpen ? "rotate-180" : ""}`} />
+                  {isAiActive && (
+                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />
+                  )}
+                </button>
+                {aiToolsOpen && (
+                  <div
+                    role="menu"
+                    className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-violet-200/70 dark:border-violet-900/60 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  >
+                    {aiTools.map((tl) => (
+                      <Link
+                        key={tl.slug}
+                        href={`/${currentLocale}/tools/${tl.slug}`}
+                        role="menuitem"
+                        onClick={() => setAiToolsOpen(false)}
+                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                          pathname === `/${currentLocale}/tools/${tl.slug}`
+                            ? "bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
+                            : "text-zinc-700 dark:text-zinc-300 hover:bg-violet-50 dark:hover:bg-violet-950/30 hover:text-violet-700 dark:hover:text-violet-300"
+                        }`}
+                      >
+                        {tl.title}
+                      </Link>
+                    ))}
+                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                    <Link
+                      href={aiToolsHref}
+                      role="menuitem"
+                      onClick={() => setAiToolsOpen(false)}
+                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/30 transition-colors"
+                    >
+                      <Sparkles className="h-4 w-4" />
+                      <span>{allAiToolsText}</span>
                     </Link>
                   </div>
                 )}
@@ -558,6 +634,50 @@ export default function Navbar() {
                 >
                   <Wrench className="h-4 w-4" />
                   <span>{allToolsText}</span>
+                </Link>
+              </div>
+            )}
+
+            {/* AI Tools group */}
+            <button
+              onClick={() => setMobileAiToolsOpen((v) => !v)}
+              aria-expanded={mobileAiToolsOpen}
+              className={`flex w-full items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
+                isAiActive
+                  ? "bg-violet-50 text-violet-600 dark:bg-violet-950/30 dark:text-violet-400"
+                  : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+              }`}
+            >
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="h-4 w-4 text-violet-500" />
+                {aiToolsText}
+                <span className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
+              </span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileAiToolsOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileAiToolsOpen && (
+              <div className="pl-3 space-y-1">
+                {aiTools.map((tl) => (
+                  <Link
+                    key={tl.slug}
+                    href={`/${currentLocale}/tools/${tl.slug}`}
+                    className={`flex items-center px-3.5 py-2 text-sm font-semibold rounded-xl transition-all ${
+                      pathname === `/${currentLocale}/tools/${tl.slug}`
+                        ? "bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
+                        : "text-zinc-600 hover:bg-violet-50 hover:text-violet-700 dark:text-zinc-400 dark:hover:bg-violet-950/30 dark:hover:text-violet-300"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {tl.title}
+                  </Link>
+                ))}
+                <Link
+                  href={aiToolsHref}
+                  className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold rounded-xl text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/30 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Sparkles className="h-4 w-4" />
+                  <span>{allAiToolsText}</span>
                 </Link>
               </div>
             )}
