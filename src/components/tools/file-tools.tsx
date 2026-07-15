@@ -67,6 +67,39 @@ function ErrorNote({ msg }: { msg: string }) {
 }
 const fmtSize = (b: number) => (b < 1024 * 1024 ? `${(b / 1024).toFixed(0)} KB` : `${(b / 1024 / 1024).toFixed(1)} MB`);
 
+// Decode any browser-supported image (PNG, JPG, WEBP, GIF, BMP, AVIF, SVG…) into
+// a loaded <img>. Rejects with the filename so callers can name the culprit.
+function decodeImage(file: File): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const el = new Image();
+    el.onload = () => resolve(el);
+    el.onerror = () => { URL.revokeObjectURL(url); reject(new Error(file.name)); };
+    el.src = url;
+  });
+}
+// pdf-lib can only embed PNG/JPG, so rasterize any other format to PNG bytes via
+// a canvas first — lets the "image → PDF" tool accept every image format.
+async function fileToPngBytes(file: File): Promise<Uint8Array> {
+  const img = await decodeImage(file);
+  const canvas = document.createElement("canvas");
+  canvas.width = img.naturalWidth || img.width;
+  canvas.height = img.naturalHeight || img.height;
+  canvas.getContext("2d")!.drawImage(img, 0, 0);
+  const blob = await new Promise<Blob | null>((r) => canvas.toBlob(r, "image/png"));
+  if (!blob) throw new Error(file.name);
+  return new Uint8Array(await blob.arrayBuffer());
+}
+const IMG_ACCEPT = "image/*,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif,.svg,.ico,.tiff";
+
+// Encodable output formats shared by the image tools (canvas.toBlob targets).
+const IMG_FORMATS = [
+  { key: "image/png", label: "PNG", ext: "png" },
+  { key: "image/jpeg", label: "JPG", ext: "jpg" },
+  { key: "image/webp", label: "WEBP", ext: "webp" },
+] as const;
+type ImgFormatKey = (typeof IMG_FORMATS)[number]["key"];
+
 // ── Merge PDF ────────────────────────────────────────────────────────────────
 export function MergePdf() {
   const [files, setFiles] = useState<File[]>([]);
@@ -199,21 +232,29 @@ export function JpgToPdf() {
     try {
       const doc = await PDFDocument.create();
       for (const file of files) {
-        const bytes = await file.arrayBuffer();
-        const img = /png$/i.test(file.type) || /\.png$/i.test(file.name)
-          ? await doc.embedPng(bytes) : await doc.embedJpg(bytes);
+        const name = file.name.toLowerCase();
+        const isJpg = /jpe?g$/.test(file.type) || /\.jpe?g$/.test(name);
+        const isPng = /png$/.test(file.type) || /\.png$/.test(name);
+        // JPG/PNG embed straight from bytes; every other format (WEBP, GIF, BMP,
+        // AVIF, SVG…) is rasterized to PNG first so pdf-lib can embed it.
+        const img = isJpg
+          ? await doc.embedJpg(await file.arrayBuffer())
+          : isPng
+            ? await doc.embedPng(await file.arrayBuffer())
+            : await doc.embedPng(await fileToPngBytes(file));
         const page = doc.addPage([img.width, img.height]);
         page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
       }
       download(await doc.save(), "images.pdf", "application/pdf");
-    } catch {
-      setErr("Couldn't convert these images. Use standard JPG or PNG files.");
+    } catch (e) {
+      const which = e instanceof Error && e.message ? `“${e.message}”` : "an image";
+      setErr(`Couldn't add ${which}. Most image formats work; HEIC/HEIF only decode in Safari — re-save it as PNG or JPG.`);
     } finally { setBusy(false); }
   }, [files]);
 
   return (
     <Card>
-      <DropZone accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple hint="Add one or more JPG or PNG images" onFiles={(f) => setFiles((p) => [...p, ...f])} />
+      <DropZone accept={IMG_ACCEPT} multiple hint="Add JPG, PNG, WEBP, GIF, BMP, AVIF or SVG images — one per page" onFiles={(f) => setFiles((p) => [...p, ...f])} />
       {files.length > 0 && (
         <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
           {files.map((f, i) => (
@@ -237,11 +278,15 @@ export function JpgToPdf() {
 // ── PDF → JPG (rasterize each page) ──────────────────────────────────────────
 export function PdfToJpg() {
   const [pages, setPages] = useState<string[]>([]);
+  const [target, setTarget] = useState<ImgFormatKey>("image/jpeg");
+  const [lastFile, setLastFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  const convert = useCallback(async (file: File) => {
-    setErr(null); setBusy(true); setPages([]);
+  const fmt = IMG_FORMATS.find((f) => f.key === target)!;
+
+  const convert = useCallback(async (file: File, format: ImgFormatKey) => {
+    setErr(null); setBusy(true); setPages([]); setLastFile(file);
     try {
       const pdfjs: any = await import("pdfjs-dist");
       pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
@@ -253,8 +298,10 @@ export function PdfToJpg() {
         const canvas = document.createElement("canvas");
         canvas.width = viewport.width; canvas.height = viewport.height;
         const ctx = canvas.getContext("2d")!;
+        // JPG has no alpha — paint white behind the page so it isn't transparent.
+        if (format === "image/jpeg") { ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
         await page.render({ canvasContext: ctx, viewport }).promise;
-        out.push(canvas.toDataURL("image/jpeg", 0.9));
+        out.push(canvas.toDataURL(format, 0.92));
       }
       setPages(out);
     } catch {
@@ -262,9 +309,29 @@ export function PdfToJpg() {
     } finally { setBusy(false); }
   }, []);
 
+  const pickFormat = (key: ImgFormatKey) => {
+    setTarget(key);
+    if (lastFile) convert(lastFile, key); // re-render the current PDF in the new format
+  };
+
   return (
     <Card>
-      <DropZone accept=".pdf,application/pdf" hint="Choose a PDF — each page becomes a downloadable JPG" onFiles={(f) => convert(f[0])} />
+      <div className="mb-4">
+        <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">Export pages as</label>
+        <div className="inline-flex rounded-xl border border-zinc-200 dark:border-zinc-800 p-1">
+          {IMG_FORMATS.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              onClick={() => pickFormat(f.key)}
+              className={`h-9 px-4 rounded-lg text-sm font-bold transition-colors ${target === f.key ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <DropZone accept=".pdf,application/pdf" hint={`Choose a PDF — each page becomes a downloadable ${fmt.label}`} onFiles={(f) => convert(f[0], target)} />
       {busy && <p className="mt-4 flex items-center gap-2 text-sm text-zinc-500"><Loader2 className="h-4 w-4 animate-spin" /> Rendering pages…</p>}
       {pages.length > 0 && (
         <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -272,7 +339,7 @@ export function PdfToJpg() {
             <div key={i} className="space-y-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={`Page ${i + 1}`} className="w-full rounded-lg border border-zinc-200 dark:border-zinc-800" />
-              <a href={src} download={`page-${i + 1}.jpg`} className="flex items-center justify-center gap-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              <a href={src} download={`page-${i + 1}.${fmt.ext}`} className="flex items-center justify-center gap-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
                 <Download className="h-3.5 w-3.5" /> Page {i + 1}
               </a>
             </div>
@@ -289,13 +356,6 @@ export function PdfToJpg() {
 // via an <img>, repaints onto a canvas and re-encodes to the chosen format with
 // canvas.toBlob — so a single tool covers every format pair people search for.
 type ConvertedImage = { name: string; url: string; size: number };
-
-const IMG_FORMATS = [
-  { key: "image/png", label: "PNG", ext: "png" },
-  { key: "image/jpeg", label: "JPG", ext: "jpg" },
-  { key: "image/webp", label: "WEBP", ext: "webp" },
-] as const;
-type ImgFormatKey = (typeof IMG_FORMATS)[number]["key"];
 
 export function ImageConverter() {
   const [files, setFiles] = useState<File[]>([]);

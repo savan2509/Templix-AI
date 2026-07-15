@@ -106,21 +106,21 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: "jpg-to-pdf",
     category: "pdf",
-    title: "JPG to PDF Converter",
-    short: "JPG to PDF",
+    title: "JPG to PDF Converter (Any Image to PDF)",
+    short: "Image to PDF",
     description:
-      "Free JPG to PDF converter. Turn JPG and PNG images into a single PDF in your browser — one image per page. No upload, no watermark.",
-    keywords: ["jpg to pdf", "image to pdf", "png to pdf", "convert jpg to pdf free", "photos to pdf"],
+      "Free image to PDF converter. Turn JPG, PNG, WEBP, GIF, BMP or AVIF images into a single PDF in your browser — one image per page. No upload, no watermark, no sign-up.",
+    keywords: ["jpg to pdf", "image to pdf", "png to pdf", "webp to pdf", "convert images to pdf free", "photos to pdf", "gif to pdf"],
     icon: "FileImage",
   },
   {
     slug: "pdf-to-jpg",
     category: "pdf",
-    title: "PDF to JPG Converter",
+    title: "PDF to JPG Converter (JPG, PNG, WEBP)",
     short: "PDF to JPG",
     description:
-      "Free PDF to JPG converter. Turn every page of a PDF into a downloadable high-quality JPG image, right in your browser. No upload needed.",
-    keywords: ["pdf to jpg", "pdf to image", "convert pdf to jpg free", "pdf to jpeg", "export pdf pages as images"],
+      "Free PDF to image converter. Turn every page of a PDF into a downloadable high-quality JPG, PNG or WEBP image, right in your browser. No upload needed.",
+    keywords: ["pdf to jpg", "pdf to image", "pdf to png", "pdf to webp", "convert pdf to jpg free", "pdf to jpeg", "export pdf pages as images"],
     icon: "Images",
   },
   {
