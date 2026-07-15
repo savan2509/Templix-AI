@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 // it (or forward it) on the domain, or override ADMIN_NOTIFICATION_EMAIL in the
 // environment to a real inbox, or contact-form and sign-up mail will be lost.
 export const ADMIN_NOTIFICATION_EMAIL =
-  process.env.ADMIN_NOTIFICATION_EMAIL || "contact@templix-ai.whitesparksoft.com";
+  process.env.ADMIN_NOTIFICATION_EMAIL || "whitesparktechnologies@gmail.com";
 
 // SMTP transport built from the same EMAIL_SERVER_* env used by the magic-link
 // provider, so a single mail configuration powers every outbound email.

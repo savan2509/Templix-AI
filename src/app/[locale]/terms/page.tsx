@@ -70,7 +70,7 @@ export default async function TermsPage({ params }: PageProps) {
       <Section heading={t.s9Heading}>
         <p>
           {t.s9Before}
-          <a href="mailto:contact@templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contact@templix-ai.whitesparksoft.com</a>{t.s9After}
+          <a href="mailto:whitesparktechnologies@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">whitesparktechnologies@gmail.com</a>{t.s9After}
         </p>
       </Section>
     </InfoPageShell>

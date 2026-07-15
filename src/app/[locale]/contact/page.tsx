@@ -56,10 +56,10 @@ export default async function ContactPage({ params }: PageProps) {
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
             Prefer your own mail client? Write to{" "}
             <a
-              href="mailto:contact@templix-ai.whitesparksoft.com"
+              href="mailto:whitesparktechnologies@gmail.com"
               className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
             >
-              contact@templix-ai.whitesparksoft.com
+              whitesparktechnologies@gmail.com
             </a>
           </p>
         </div>
