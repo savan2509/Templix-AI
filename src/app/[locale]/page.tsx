@@ -238,7 +238,9 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-28 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      alt={`Free ${cat.name} templates`}
+                      // Decorative cover — the link's visible label + count already
+                      // name it, so empty alt avoids a duplicate screen-reader announce.
+                      alt=""
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
