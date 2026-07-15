@@ -2996,6 +2996,301 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
 <p>Per project usually earns more once you're efficient, because you're paid for the outcome, not the clock. Define the scope tightly to avoid creep.</p>
     `,
   },
+
+  // ── 47 (PDF cluster) ────────────────────────────────────────────────────────
+  {
+    id: "blog-47",
+    slug: "how-to-merge-pdf-files",
+    title: "How to Merge PDF Files for Free (No Upload)",
+    metaTitle: "How to Merge PDF Files Free (No Upload)",
+    description:
+      "Merge two or more PDFs into one file for free, right in your browser — no upload, no watermark, no sign-up. Step-by-step guide plus a free PDF merger.",
+    category: "Guides",
+    tags: ["pdf", "merge pdf", "combine pdf", "pdf tools"],
+    keywords: ["how to merge pdf", "combine pdf files", "merge pdf free", "join pdf online", "merge pdf without upload"],
+    readTime: 5,
+    publishedAt: "2026-07-15",
+    image: "/blog/blog-google-docs-vs-word-vs-templix.jpg",
+    content: `
+<h2>What Does It Mean to Merge PDFs?</h2>
+<p>Merging PDFs combines several separate PDF files into a <strong>single document</strong>, in the order you choose. It's how you turn a scanned contract, an invoice and a cover note into one clean file to send — instead of three attachments.</p>
+
+<h2>How to Merge PDF Files (Step by Step)</h2>
+<ol>
+  <li>Open the free <a href="/en/tools/merge-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Merge PDF tool</a>.</li>
+  <li>Select the PDF files you want to combine.</li>
+  <li>Drag them into the right order.</li>
+  <li>Click merge and download the single combined PDF.</li>
+</ol>
+<p>Because it runs entirely in your browser, your files are never uploaded to a server — fast and private.</p>
+
+<h2>When to Merge PDFs</h2>
+<ul>
+  <li>Combining an invoice + receipt + timesheet into one billing pack</li>
+  <li>Joining multi-page scans that came out as separate files</li>
+  <li>Bundling a proposal, contract and appendix for a client</li>
+  <li>Assembling a portfolio or application packet</li>
+</ul>
+
+<h2>Tips for Clean Merged PDFs</h2>
+<ul>
+  <li>Name the final file clearly (e.g. "Acme-Invoice-Pack-July.pdf")</li>
+  <li>Put the most important document first — most people read top-down</li>
+  <li>Check the page order before you send</li>
+</ul>
+<p>Need the source documents too? Create them from our free <a href="/en/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">document templates</a> first, then merge.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is it free to merge PDFs?</h3>
+<p>Yes. The Merge PDF tool is completely free, with no sign-up, no watermark and no page limit.</p>
+<h3>Are my files uploaded anywhere?</h3>
+<p>No. The merge happens locally in your browser, so your documents never leave your device.</p>
+<h3>Can I reorder pages before merging?</h3>
+<p>Yes — drag the files into the order you want before combining them.</p>
+    `,
+  },
+
+  // ── 48 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-48",
+    slug: "how-to-split-a-pdf",
+    title: "How to Split a PDF into Separate Pages (Free)",
+    metaTitle: "How to Split a PDF into Pages (Free)",
+    description:
+      "Split a PDF into separate pages or extract a page range for free in your browser — no upload, no watermark. Step-by-step guide plus a free PDF splitter.",
+    category: "Guides",
+    tags: ["pdf", "split pdf", "extract pdf pages", "pdf tools"],
+    keywords: ["how to split a pdf", "split pdf pages", "extract pages from pdf", "separate pdf pages", "pdf splitter free"],
+    readTime: 4,
+    publishedAt: "2026-07-15",
+    image: "/blog/blog-google-docs-vs-word-vs-templix.jpg",
+    content: `
+<h2>What Does Splitting a PDF Mean?</h2>
+<p>Splitting a PDF means extracting <strong>specific pages or a range</strong> from a larger PDF into a new, smaller file. It's the opposite of merging — you pull out just the pages you need and leave the rest behind.</p>
+
+<h2>How to Split a PDF (Step by Step)</h2>
+<ol>
+  <li>Open the free <a href="/en/tools/split-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Split PDF tool</a>.</li>
+  <li>Select your PDF file.</li>
+  <li>Choose the page range you want to extract (e.g. pages 2–5).</li>
+  <li>Download the new PDF containing only those pages.</li>
+</ol>
+
+<h2>Common Reasons to Split a PDF</h2>
+<ul>
+  <li>Sending only the signature page of a contract</li>
+  <li>Sharing one chapter from a long report</li>
+  <li>Removing confidential pages before forwarding</li>
+  <li>Breaking a bulk scan into individual documents</li>
+</ul>
+
+<h2>Split vs Merge</h2>
+<table>
+  <thead><tr><th>Action</th><th>What it does</th><th>Tool</th></tr></thead>
+  <tbody>
+    <tr><td>Split</td><td>One PDF → several / a page range</td><td><a href="/en/tools/split-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Split PDF</a></td></tr>
+    <tr><td>Merge</td><td>Several PDFs → one file</td><td><a href="/en/tools/merge-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Merge PDF</a></td></tr>
+  </tbody>
+</table>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I extract a single page from a PDF?</h3>
+<p>Yes — set the range to that one page (e.g. pages 3–3) and download it as its own file.</p>
+<h3>Is the Split PDF tool free?</h3>
+<p>Completely free, no sign-up and no watermark. It runs in your browser, so nothing is uploaded.</p>
+<h3>Will splitting reduce the quality?</h3>
+<p>No. Splitting copies the original pages exactly — text and images stay identical.</p>
+    `,
+  },
+
+  // ── 49 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-49",
+    slug: "how-to-convert-jpg-to-pdf",
+    title: "How to Convert JPG to PDF for Free",
+    metaTitle: "How to Convert JPG to PDF (Free)",
+    description:
+      "Turn JPG or PNG images into a single PDF for free in your browser — one image per page, no upload, no watermark. Step-by-step guide plus a free converter.",
+    category: "Guides",
+    tags: ["pdf", "jpg to pdf", "image to pdf", "pdf tools"],
+    keywords: ["how to convert jpg to pdf", "jpg to pdf free", "image to pdf", "png to pdf", "photos to pdf"],
+    readTime: 4,
+    publishedAt: "2026-07-14",
+    image: "/blog/blog-create-invoice.jpg",
+    content: `
+<h2>Why Convert JPG to PDF?</h2>
+<p>PDFs are the standard for sharing documents because they look the same on every device and can't be accidentally edited. Converting your JPG or PNG images to a <strong>single PDF</strong> makes photos of receipts, ID cards, or signed pages easy to send and print.</p>
+
+<h2>How to Convert JPG to PDF (Step by Step)</h2>
+<ol>
+  <li>Open the free <a href="/en/tools/jpg-to-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">JPG to PDF tool</a>.</li>
+  <li>Select one or more JPG/PNG images.</li>
+  <li>Arrange them in the order you want (one image becomes one page).</li>
+  <li>Download the combined PDF.</li>
+</ol>
+
+<h2>Great For</h2>
+<ul>
+  <li>Turning photos of receipts into one expense PDF</li>
+  <li>Combining scanned pages captured with your phone</li>
+  <li>Submitting ID or document images as a single file</li>
+  <li>Creating a simple photo PDF to print</li>
+</ul>
+
+<h2>Tips</h2>
+<ul>
+  <li>Crop images before converting so pages aren't mostly whitespace</li>
+  <li>Order images logically — they'll appear as pages in that sequence</li>
+</ul>
+<p>Need the reverse? Use the <a href="/en/tools/pdf-to-jpg" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PDF to JPG tool</a> to pull images back out of a PDF.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I convert multiple images into one PDF?</h3>
+<p>Yes — add several images and each becomes a page in a single combined PDF.</p>
+<h3>Does it work with PNG too?</h3>
+<p>Yes, both JPG and PNG are supported.</p>
+<h3>Are my images uploaded?</h3>
+<p>No — the conversion runs in your browser, so your images stay on your device.</p>
+    `,
+  },
+
+  // ── 50 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-50",
+    slug: "how-to-convert-pdf-to-jpg",
+    title: "How to Convert PDF to JPG (Extract Images Free)",
+    metaTitle: "How to Convert PDF to JPG (Free)",
+    description:
+      "Convert each page of a PDF into a high-quality JPG image for free in your browser — no upload, no watermark. Step-by-step guide plus a free converter.",
+    category: "Guides",
+    tags: ["pdf", "pdf to jpg", "pdf to image", "pdf tools"],
+    keywords: ["how to convert pdf to jpg", "pdf to jpg free", "pdf to image", "extract images from pdf", "pdf to jpeg"],
+    readTime: 4,
+    publishedAt: "2026-07-14",
+    image: "/blog/blog-create-invoice.jpg",
+    content: `
+<h2>Why Convert PDF to JPG?</h2>
+<p>Sometimes you need a PDF as an <strong>image</strong> — to post a page on social media, drop it into a slide deck, preview a document as a thumbnail, or attach it where PDFs aren't accepted. Converting PDF pages to JPG makes that possible.</p>
+
+<h2>How to Convert PDF to JPG (Step by Step)</h2>
+<ol>
+  <li>Open the free <a href="/en/tools/pdf-to-jpg" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PDF to JPG tool</a>.</li>
+  <li>Select your PDF file.</li>
+  <li>The tool renders each page as a high-quality JPG.</li>
+  <li>Download the images.</li>
+</ol>
+
+<h2>When This Helps</h2>
+<ul>
+  <li>Sharing a single document page as an image on social media</li>
+  <li>Adding a document page to a presentation or blog post</li>
+  <li>Creating thumbnails or previews of a PDF</li>
+</ul>
+
+<h2>PDF ↔ Image, Both Ways</h2>
+<p>To go the other direction — images into a PDF — use the <a href="/en/tools/jpg-to-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">JPG to PDF tool</a>. Together they cover both conversions, free and in your browser.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Does each PDF page become a separate JPG?</h3>
+<p>Yes — every page is exported as its own high-quality JPG image.</p>
+<h3>Is the quality good?</h3>
+<p>Pages are rendered at high resolution so text stays crisp and readable.</p>
+<h3>Is it free and private?</h3>
+<p>Yes — no sign-up, no watermark, and the conversion runs in your browser so nothing is uploaded.</p>
+    `,
+  },
+
+  // ── 51 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-51",
+    slug: "how-to-convert-pdf-to-word",
+    title: "How to Convert PDF to Word (Keep the Formatting)",
+    metaTitle: "How to Convert PDF to Word (Free)",
+    description:
+      "The best ways to convert a PDF to an editable Word document while keeping formatting — and when to just rebuild it from a free template instead.",
+    category: "Guides",
+    tags: ["pdf", "pdf to word", "convert pdf", "editing"],
+    keywords: ["how to convert pdf to word", "pdf to word free", "edit pdf in word", "pdf to editable document"],
+    readTime: 5,
+    publishedAt: "2026-07-13",
+    image: "/blog/blog-google-docs-vs-word-vs-templix.jpg",
+    content: `
+<h2>Why Convert PDF to Word?</h2>
+<p>PDFs are built to be <em>read</em>, not edited. When you need to actually change the text — update a price, fix a name, reuse a contract — you need an editable format like <strong>Word (.docx)</strong>.</p>
+
+<h2>Three Ways to Convert PDF to Word</h2>
+<ol>
+  <li><strong>Word's built-in open:</strong> In Microsoft Word, use File → Open and select the PDF. Word converts it to an editable document — best for text-heavy PDFs.</li>
+  <li><strong>Google Docs:</strong> Upload the PDF to Google Drive, open it with Google Docs, then download as .docx.</li>
+  <li><strong>Rebuild from a template (often the cleanest):</strong> If the PDF is a standard document — an invoice, resume or contract — it's frequently faster to start from a <a href="/en/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">free template</a> and re-enter the details than to fix a messy conversion.</li>
+</ol>
+
+<h2>Why Conversions Get Messy</h2>
+<ul>
+  <li>Scanned PDFs are images — they need OCR, and formatting rarely survives</li>
+  <li>Complex layouts (columns, tables) often shift during conversion</li>
+  <li>Fonts get substituted if they aren't installed</li>
+</ul>
+<p>For anything you'll reuse regularly, a clean template beats a one-off conversion — you get a document that stays editable and always exports well to both PDF and Word.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What's the easiest free way to convert PDF to Word?</h3>
+<p>Opening the PDF directly in Microsoft Word (File → Open) or via Google Docs both work for free and keep most text formatting.</p>
+<h3>Why does my converted document look wrong?</h3>
+<p>Usually because the PDF was scanned (an image) or had a complex layout. For standard documents, rebuilding from a template is cleaner.</p>
+<h3>Can I edit a PDF without converting it?</h3>
+<p>For quick text fixes, some editors let you edit directly. For a document you'll reuse, start from an editable template instead.</p>
+    `,
+  },
+
+  // ── 52 ──────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-52",
+    slug: "how-to-edit-a-pdf-free",
+    title: "How to Edit a PDF for Free (Without Expensive Software)",
+    metaTitle: "How to Edit a PDF for Free",
+    description:
+      "Practical free ways to edit a PDF — text, pages, images and signatures — without Acrobat. Plus when to rebuild from an editable template instead.",
+    category: "Guides",
+    tags: ["pdf", "edit pdf", "pdf tools", "documents"],
+    keywords: ["how to edit a pdf", "edit pdf free", "edit pdf without acrobat", "pdf editor free", "add text to pdf"],
+    readTime: 5,
+    publishedAt: "2026-07-13",
+    image: "/blog/blog-google-docs-vs-word-vs-templix.jpg",
+    content: `
+<h2>Can You Edit a PDF for Free?</h2>
+<p>Yes — you don't need expensive software. The right approach depends on <strong>what</strong> you need to change: the text, the page order, or the whole document.</p>
+
+<h2>Match the Task to the Tool</h2>
+<table>
+  <thead><tr><th>You want to…</th><th>Do this</th></tr></thead>
+  <tbody>
+    <tr><td>Combine or reorder documents</td><td>Use <a href="/en/tools/merge-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Merge PDF</a></td></tr>
+    <tr><td>Remove or extract pages</td><td>Use <a href="/en/tools/split-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Split PDF</a></td></tr>
+    <tr><td>Turn images into a PDF</td><td>Use <a href="/en/tools/jpg-to-pdf" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">JPG to PDF</a></td></tr>
+    <tr><td>Rewrite the actual content</td><td>Rebuild from a <a href="/en/templates" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">free template</a> in the editor</td></tr>
+  </tbody>
+</table>
+
+<h2>Editing the Text</h2>
+<p>Editing text inside a PDF is the hardest part, because PDFs weren't designed for it. Two reliable free routes:</p>
+<ul>
+  <li>Convert the PDF to Word or Google Docs, edit, then export back to PDF (see our <a href="/en/blog/how-to-convert-pdf-to-word" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PDF to Word guide</a>).</li>
+  <li>For standard documents (invoices, resumes, contracts), start from a template so the content is always editable and exports cleanly to PDF or Word.</li>
+</ul>
+
+<h2>Best Practice</h2>
+<p>If it's a one-time fix, convert-and-edit is fine. If it's a document you'll send again and again, keep the editable source — a template — so you never have to wrestle a PDF twice.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What's the easiest free way to edit a PDF?</h3>
+<p>Match the task: merge/split for pages and structure, convert-to-Word for text, or rebuild from a template for documents you reuse.</p>
+<h3>Can I edit a PDF without Adobe Acrobat?</h3>
+<p>Yes. Free browser tools handle merging, splitting and converting, and Word/Google Docs handle text edits — no Acrobat needed.</p>
+<h3>How do I add my signature to a PDF?</h3>
+<p>Create the signed document from a template and export to PDF, or use a free e-signature service — both avoid editing the PDF's raw text.</p>
+    `,
+  },
 ];
 
 // Helper — get a post by slug
