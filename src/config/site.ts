@@ -7,23 +7,25 @@
 // custom domain. Preview deploys and a mis-set env var can no longer poison it.
 export const PRODUCTION_URL = "https://templix-ai.whitesparksoft.com";
 
-const PLATFORM_HOSTS = [".vercel.app", ".netlify.app", ".onrender.com", "localhost"];
-
 function resolveSiteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (!raw) return PRODUCTION_URL;
 
   let host: string;
+  let prodHost: string;
   try {
     host = new URL(raw).hostname.toLowerCase();
+    prodHost = new URL(PRODUCTION_URL).hostname.toLowerCase();
   } catch {
     return PRODUCTION_URL; // not a valid absolute URL
   }
 
-  if (PLATFORM_HOSTS.some((h) => host === h.replace(/^\./, "") || host.endsWith(h))) {
-    return PRODUCTION_URL;
-  }
-  return raw.replace(/\/+$/, ""); // no trailing slash — we always append paths
+  // Only ever trust the EXACT production host. Anything else — a platform alias
+  // (*.vercel.app), a look-alike brand domain (templix.ai), localhost, or a
+  // stale/mis-set env var — falls back to PRODUCTION_URL, so canonical, OG,
+  // sitemap and share URLs can never point off-domain and de-index the site.
+  // To move domains, change PRODUCTION_URL above (one source of truth).
+  return host === prodHost ? raw.replace(/\/+$/, "") : PRODUCTION_URL;
 }
 
 const APP_URL = resolveSiteUrl();
