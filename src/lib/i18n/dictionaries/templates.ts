@@ -58,6 +58,9 @@ const en = {
   fillParams:
     "Fill in the parameters below. The preview paper will update dynamically in real time.",
   customizeInEditor: "Customize in Editor",
+  signInToCustomize: "Sign in to Customize",
+  signInToEditHint:
+    "Editing a template needs a free account — sign in and you'll come right back here with your details kept.",
   customizeHint:
     "Tapping opens the full editor, where you can add a signature, upload a logo, and export to PDF.",
   qualityGuarantee: "Template Quality Guarantee",
@@ -122,6 +125,9 @@ const es: Shape = {
   fillParams:
     "Completa los parámetros a continuación. La vista previa se actualizará dinámicamente en tiempo real.",
   customizeInEditor: "Personalizar en el editor",
+  signInToCustomize: "Inicia sesión para personalizar",
+  signInToEditHint:
+    "Editar una plantilla requiere una cuenta gratuita: inicia sesión y volverás aquí con tus datos guardados.",
   customizeHint:
     "Al tocar se abre nuestro lienzo tiptap completo donde puedes añadir firma, subir logo y exportar a PDF.",
   qualityGuarantee: "Garantía de calidad de la plantilla",
@@ -188,6 +194,9 @@ const de: Shape = {
   fillParams:
     "Fülle die folgenden Parameter aus. Die Vorschau wird dynamisch in Echtzeit aktualisiert.",
   customizeInEditor: "Im Editor anpassen",
+  signInToCustomize: "Zum Anpassen anmelden",
+  signInToEditHint:
+    "Zum Bearbeiten einer Vorlage ist ein kostenloses Konto nötig – melde dich an und du kehrst mit deinen Angaben hierher zurück.",
   customizeHint:
     "Ein Tippen öffnet unsere vollständige Tiptap-Leinwand, wo du eine Signatur hinzufügen, ein Logo hochladen und als PDF exportieren kannst.",
   qualityGuarantee: "Qualitätsgarantie für Vorlagen",
@@ -254,6 +263,9 @@ const fr: Shape = {
   fillParams:
     "Renseignez les paramètres ci-dessous. L’aperçu se mettra à jour dynamiquement en temps réel.",
   customizeInEditor: "Personnaliser dans l’éditeur",
+  signInToCustomize: "Connectez-vous pour personnaliser",
+  signInToEditHint:
+    "Modifier un modèle nécessite un compte gratuit — connectez-vous et vous reviendrez ici avec vos informations conservées.",
   customizeHint:
     "Un appui ouvre notre canevas tiptap complet où vous pouvez ajouter une signature, importer un logo et exporter en PDF.",
   qualityGuarantee: "Garantie de qualité du modèle",
@@ -318,6 +330,9 @@ const ar: Shape = {
   fillParams:
     "املأ المعلمات أدناه. ستتحدث المعاينة ديناميكيًا في الوقت الفعلي.",
   customizeInEditor: "التخصيص في المحرر",
+  signInToCustomize: "سجّل الدخول للتخصيص",
+  signInToEditHint:
+    "يتطلب تعديل القالب حسابًا مجانيًا — سجّل الدخول وستعود إلى هنا مع الاحتفاظ ببياناتك.",
   customizeHint:
     "يفتح النقر لوحة tiptap الكاملة حيث يمكنك إضافة توقيع ورفع شعار وتصدير PDF.",
   qualityGuarantee: "ضمان جودة القالب",

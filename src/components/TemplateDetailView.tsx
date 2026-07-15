@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download } from "lucide-react";
+import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download, Lock } from "lucide-react";
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
 import { getDictionary } from "@/lib/i18n";
+import { createClient } from "@/lib/supabase/client";
 
 interface TemplateContent {
   title: string;
@@ -63,19 +64,53 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
     getTemplateValues(template)
   );
 
+  // Editing a template requires an account. `canEdit` gates the form + button:
+  //   null  → auth not resolved yet (optimistic; the proxy is the real backstop)
+  //   true  → signed in, or Supabase unconfigured (no gate, matches the proxy)
+  //   false → signed out → the form is locked and the button routes to /login
+  const [canEdit, setCanEdit] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    if (!supabase) {
+      setCanEdit(true); // Supabase not configured → no gating (mirrors the proxy)
+      return;
+    }
+    let active = true;
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (active) setCanEdit(!!user);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setCanEdit(!!session?.user);
+    });
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const locked = canEdit === false;
+
   const handleInputChange = (field: string, val: string) => {
     setFieldValues((prev) => ({ ...prev, [field]: val }));
   };
 
   const handleCustomizeClick = () => {
-    // Redirect to the editor page with template slug and pre-filled variables as search queries
+    // Build the editor URL with the template slug + pre-filled variables.
     const params = new URLSearchParams();
     params.set("template", template.slug);
     Object.entries(fieldValues).forEach(([k, v]) => {
       params.set(`field_${k}`, v);
     });
+    const editorUrl = `/${locale}/editor/new?${params.toString()}`;
 
-    router.push(`/${locale}/editor/new?${params.toString()}`);
+    // Signed out → send them to login first, carrying the editor URL (with their
+    // values) in `next` so they land straight back in the editor after signing in.
+    if (locked) {
+      router.push(`/${locale}/login?next=${encodeURIComponent(editorUrl)}`);
+      return;
+    }
+    router.push(editorUrl);
   };
 
   return (
@@ -106,7 +141,10 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   type="text"
                   value={fieldValues[field] || ""}
                   onChange={(e) => handleInputChange(field, e.target.value)}
-                  className="w-full h-10 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  disabled={locked}
+                  readOnly={locked}
+                  aria-disabled={locked}
+                  className="w-full h-10 px-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
             ))}
@@ -117,12 +155,12 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               onClick={handleCustomizeClick}
               className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 flex items-center justify-center gap-1.5 transition-colors"
             >
-              <PenTool className="h-4 w-4" />
-              <span>{t.customizeInEditor}</span>
+              {locked ? <Lock className="h-4 w-4" /> : <PenTool className="h-4 w-4" />}
+              <span>{locked ? t.signInToCustomize : t.customizeInEditor}</span>
               <ArrowRight className="h-4 w-4" />
             </button>
             <p className="text-[10px] text-center text-zinc-400">
-              {t.customizeHint}
+              {locked ? t.signInToEditHint : t.customizeHint}
             </p>
           </div>
         </div>
