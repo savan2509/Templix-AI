@@ -284,6 +284,148 @@ export function PdfToJpg() {
   );
 }
 
+// ── Image Converter (any image → PNG / JPG / WEBP, fully in-browser) ──────────
+// Decodes whatever the browser can read (PNG, JPG, WEBP, GIF, BMP, AVIF, SVG…)
+// via an <img>, repaints onto a canvas and re-encodes to the chosen format with
+// canvas.toBlob — so a single tool covers every format pair people search for.
+type ConvertedImage = { name: string; url: string; size: number };
+
+const IMG_FORMATS = [
+  { key: "image/png", label: "PNG", ext: "png" },
+  { key: "image/jpeg", label: "JPG", ext: "jpg" },
+  { key: "image/webp", label: "WEBP", ext: "webp" },
+] as const;
+type ImgFormatKey = (typeof IMG_FORMATS)[number]["key"];
+
+export function ImageConverter() {
+  const [files, setFiles] = useState<File[]>([]);
+  const [target, setTarget] = useState<ImgFormatKey>("image/png");
+  const [quality, setQuality] = useState(0.92);
+  const [results, setResults] = useState<ConvertedImage[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  const fmt = IMG_FORMATS.find((f) => f.key === target)!;
+  const lossy = target !== "image/png"; // PNG is lossless — no quality control
+
+  const convert = useCallback(async () => {
+    setErr(null);
+    setBusy(true);
+    // Free the object URLs from the previous run before starting a new one.
+    setResults((prev) => {
+      prev.forEach((r) => URL.revokeObjectURL(r.url));
+      return [];
+    });
+    try {
+      const out: ConvertedImage[] = [];
+      for (const file of files) {
+        const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+          const url = URL.createObjectURL(file);
+          const el = new Image();
+          el.onload = () => resolve(el);
+          el.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error(file.name));
+          };
+          el.src = url;
+        });
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth || img.width;
+        canvas.height = img.naturalHeight || img.height;
+        const ctx = canvas.getContext("2d")!;
+        // JPG has no alpha channel — flatten transparency onto white so PNGs with
+        // transparent backgrounds don't come out black.
+        if (target === "image/jpeg") {
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        ctx.drawImage(img, 0, 0);
+        const blob = await new Promise<Blob | null>((res) =>
+          canvas.toBlob(res, target, lossy ? quality : undefined)
+        );
+        if (!blob) throw new Error(file.name);
+        const base = file.name.replace(/\.[^./\\]+$/, "");
+        out.push({ name: `${base}.${fmt.ext}`, url: URL.createObjectURL(blob), size: blob.size });
+      }
+      setResults(out);
+    } catch (e) {
+      const which = e instanceof Error && e.message ? `“${e.message}”` : "an image";
+      setErr(
+        `Couldn't convert ${which}. Most formats work, but HEIC/HEIF only decode in Safari — re-save it as PNG or JPG and try again.`
+      );
+    } finally {
+      setBusy(false);
+    }
+  }, [files, target, quality, lossy, fmt.ext]);
+
+  return (
+    <Card>
+      <DropZone
+        accept="image/*,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif,.svg,.ico,.tiff"
+        multiple
+        hint="Add PNG, JPG, WEBP, GIF, BMP, AVIF or SVG images — convert them to any format"
+        onFiles={(f) => setFiles((p) => [...p, ...f])}
+      />
+      {files.length > 0 && (
+        <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {files.map((f, i) => (
+            <li key={i} className="flex items-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-800 px-3 py-2 text-xs">
+              <ImageIcon className="h-4 w-4 shrink-0 text-blue-500" />
+              <span className="min-w-0 flex-1 truncate">{f.name}</span>
+              <button onClick={() => setFiles((p) => p.filter((_, k) => k !== i))} className="text-zinc-400 hover:text-red-500" aria-label="Remove"><X className="h-3.5 w-3.5" /></button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Output format + quality */}
+      <div className="mt-5 flex flex-wrap items-end gap-5">
+        <div>
+          <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">Convert to</label>
+          <div className="inline-flex rounded-xl border border-zinc-200 dark:border-zinc-800 p-1">
+            {IMG_FORMATS.map((f) => (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => setTarget(f.key)}
+                className={`h-9 px-4 rounded-lg text-sm font-bold transition-colors ${target === f.key ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        {lossy && (
+          <div className="min-w-[180px] flex-1">
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">Quality — {Math.round(quality * 100)}%</label>
+            <input type="range" min={0.3} max={1} step={0.01} value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full accent-blue-600" />
+          </div>
+        )}
+      </div>
+
+      <button onClick={convert} disabled={files.length < 1 || busy} className={`${btnPrimary} mt-5 w-full sm:w-auto`}>
+        {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+        {busy ? "Converting…" : `Convert to ${fmt.label}`}
+      </button>
+
+      {results.length > 0 && (
+        <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {results.map((r, i) => (
+            <div key={i} className="space-y-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={r.url} alt={r.name} className="w-full rounded-lg border border-zinc-200 dark:border-zinc-800" />
+              <a href={r.url} download={r.name} className="flex items-center justify-center gap-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+                <Download className="h-3.5 w-3.5" /> {r.name.length > 16 ? `${fmt.label} · ${fmtSize(r.size)}` : `${r.name} · ${fmtSize(r.size)}`}
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+      {err && <ErrorNote msg={err} />}
+    </Card>
+  );
+}
+
 // ── Resume ATS / Score Checker (rule-based, offline) ─────────────────────────
 const ACTION_VERBS = ["led","built","designed","launched","managed","improved","increased","reduced","delivered","created","developed","implemented","achieved","drove","owned","shipped","optimized","grew","cut","automated","mentored","analyzed","negotiated"];
 const SECTIONS = [

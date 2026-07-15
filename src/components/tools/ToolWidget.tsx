@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { getDictionary, INTL_LOCALE, type Locale } from "@/lib/i18n";
-import { MergePdf, SplitPdf, JpgToPdf, PdfToJpg, ResumeAtsChecker } from "./file-tools";
+import { MergePdf, SplitPdf, JpgToPdf, PdfToJpg, ImageConverter, ResumeAtsChecker } from "./file-tools";
 import {
   ProposalBuilder, PricingCalculator, ScopeGenerator, ContractGenerator, NdaGenerator,
   TermsGenerator, LetterGenerator, ResignationLetterGenerator, RecommendationLetterGenerator,
@@ -257,6 +257,7 @@ const WIDGETS: Record<string, () => React.ReactElement> = {
   "split-pdf": SplitPdf,
   "jpg-to-pdf": JpgToPdf,
   "pdf-to-jpg": PdfToJpg,
+  "image-converter": ImageConverter,
   "resume-ats-checker": ResumeAtsChecker,
   // Document generators (form → PDF/Word/copy) — see ./doc-tools.
   "proposal-builder": ProposalBuilder,

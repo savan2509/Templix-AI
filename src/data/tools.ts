@@ -124,6 +124,20 @@ export const TOOLS: ToolMeta[] = [
     icon: "Images",
   },
   {
+    slug: "image-converter",
+    category: "pdf",
+    title: "Image Converter: PNG, JPG, WEBP & More",
+    short: "Image Converter",
+    description:
+      "Free image converter — convert PNG to JPG, JPG to PNG, WEBP to PNG, PNG to WEBP, HEIC to JPG, GIF, BMP, AVIF and SVG to any format. Batch convert and adjust quality right in your browser. No upload, no watermark, no sign-up.",
+    keywords: [
+      "image converter", "convert image format free", "image format converter online",
+      "png to jpg", "jpg to png", "webp to png", "png to webp", "jpg to webp", "webp to jpg",
+      "heic to jpg", "gif to png", "avif to jpg", "bmp to jpg", "svg to png", "jpeg to png",
+    ],
+    icon: "FileImage",
+  },
+  {
     slug: "resume-ats-checker",
     category: "resume",
     title: "Resume ATS Score Checker",
