@@ -204,7 +204,7 @@ export default async function HomePage({ params }: PageProps) {
             {/* Main Brand Position Headline */}
             <div className="space-y-4 max-w-4xl mx-auto">
               <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-                {t.heroTitleLine1} <br />
+                {t.heroTitleLine1}<br />
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
                   {t.heroTitleLine2}
                 </span>
