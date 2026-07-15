@@ -24,7 +24,9 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
 
   const isNew = docId === "new";
 
-  // Login is disabled — the editor is open to everyone for new templates.
+  // Editing requires login — enforced in the proxy/middleware, which redirects a
+  // signed-out visitor to /login?next=<this editor URL> before this ever renders
+  // (a real 307, which a streaming page-level redirect() can't guarantee).
   // Existing saved documents belong to accounts, so send those requests home.
   if (!isNew) {
     redirect(`/${locale}`);

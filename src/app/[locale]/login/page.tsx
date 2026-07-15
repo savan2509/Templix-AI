@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 
 interface Props {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; next?: string }>;
+}
+
+// Only follow an internal path (no protocol-relative "//", no absolute URLs) —
+// prevents an open-redirect via the ?next= param.
+function safeNext(next: string | undefined, locale: string): string {
+  return next && next.startsWith("/") && !next.startsWith("//") ? next : `/${locale}/dashboard`;
 }
 
 const features = [
@@ -22,14 +28,17 @@ const features = [
   { icon: Zap, text: "Instant one-click editing" },
 ];
 
-export default async function LoginPage({ params }: Props) {
+export default async function LoginPage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const { next } = await searchParams;
+  const dest = safeNext(next, locale);
 
-  // Redirect to dashboard if already signed in (skip when Supabase isn't configured)
+  // Already signed in → skip the form and go where they were headed (the page
+  // that gated them, via ?next=) or the dashboard.
   const supabase = await createClient();
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
-    if (user) redirect(`/${locale}/dashboard`);
+    if (user) redirect(dest);
   }
 
   // Only offer OAuth buttons for providers that are actually enabled — a
@@ -116,7 +125,7 @@ export default async function LoginPage({ params }: Props) {
               </p>
             </div>
 
-            <AuthForm locale={locale} googleEnabled={providers.google} />
+            <AuthForm locale={locale} googleEnabled={providers.google} next={next} />
           </div>
 
           {/* Footer */}

@@ -27,12 +27,19 @@ interface Props {
    * so the user would land on a raw Supabase JSON error page instead.
    */
   googleEnabled?: boolean;
+  /** Where to send the user after a successful sign-in (e.g. back to the editor
+   * they were gated from). Must be an internal path; falls back to the dashboard. */
+  next?: string;
 }
 
-export default function AuthForm({ locale, googleEnabled = false }: Props) {
+export default function AuthForm({ locale, googleEnabled = false, next }: Props) {
   const router = useRouter();
   // Memoised: an unstable client would retrigger the confirmation poll below.
   const supabase = useMemo(() => createClient(), []);
+
+  // Post-auth destination: return to the gated page (`next`, validated as an
+  // internal path to prevent open-redirects) or the dashboard by default.
+  const dest = next && next.startsWith("/") && !next.startsWith("//") ? next : `/${locale}/dashboard`;
 
   const [tab, setTab] = useState<Tab>("signin");
   const [email, setEmail] = useState("");
@@ -70,7 +77,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
       if (!cancelled && !error && data.session) {
         clearInterval(timer);
         setAwaitingConfirm(false);
-        router.push(`/${locale}/dashboard`);
+        router.push(dest);
         router.refresh();
       }
     }, 5000);
@@ -90,7 +97,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/dashboard`,
+        redirectTo: `${window.location.origin}/api/auth/supabase/callback?next=${encodeURIComponent(dest)}`,
       },
     });
     if (error) {
@@ -121,7 +128,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
         : error.message);
       return;
     }
-    router.push(`/${locale}/dashboard`);
+    router.push(dest);
     router.refresh();
   };
 
@@ -171,7 +178,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
         data: { full_name: fullName },
         // `signup=1` tells the callback this confirmation is a first-time
         // account creation, so it emails the team the new user's details once.
-        emailRedirectTo: `${window.location.origin}/api/auth/supabase/callback?next=/${locale}/dashboard&signup=1`,
+        emailRedirectTo: `${window.location.origin}/api/auth/supabase/callback?next=${encodeURIComponent(dest)}&signup=1`,
       },
     });
     setLoading(false);
@@ -181,7 +188,7 @@ export default function AuthForm({ locale, googleEnabled = false }: Props) {
     // normally does this is skipped in this flow) and go to the dashboard.
     if (data.session) {
       try { await fetch("/api/auth/signup-notify", { method: "POST" }); } catch {}
-      router.push(`/${locale}/dashboard`);
+      router.push(dest);
       router.refresh();
       return;
     }

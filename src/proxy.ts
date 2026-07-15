@@ -68,6 +68,12 @@ export default async function proxy(req: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+  // Track the session so the editor gate below can act on it. `sessionChecked`
+  // stays false if Supabase is unreachable, so a transient outage never falsely
+  // bounces a logged-in user to /login.
+  let sessionChecked = false;
+  let hasUser = false;
+
   if (supabaseUrl && supabaseKey) {
     try {
       const supabase = createServerClient(supabaseUrl, supabaseKey, {
@@ -88,7 +94,9 @@ export default async function proxy(req: NextRequest) {
       });
 
       // Best-effort session refresh, never blocks request on network/DB failure
-      await supabase.auth.getUser();
+      const { data } = await supabase.auth.getUser();
+      hasUser = !!data.user;
+      sessionChecked = true;
     } catch {
       // Continue if Supabase is unreachable
     }
@@ -123,6 +131,22 @@ export default async function proxy(req: NextRequest) {
     // Preserve any search parameters or hash (e.g. for password resets)
     redirectUrl.search = req.nextUrl.search;
     return NextResponse.redirect(redirectUrl);
+  }
+
+  // ── Require login before the document editor ────────────────────────────────
+  // Opening a template in the editor (/en/editor/…) needs an account so the work
+  // can be saved. Gate it here with a real 307 — a page-level redirect() during
+  // the streaming render only emits a client-side meta tag. Signed-out visitors
+  // go to /login with a `next` that returns them to this exact editor URL
+  // (template + prefilled fields preserved) the moment they authenticate. Placed
+  // after locale consolidation so a retired-locale editor URL resolves to /en
+  // first, keeping the login round-trip on the canonical locale.
+  const editorMatch = pathname.match(/^\/([a-z]{2})\/editor(?:\/|$)/);
+  if (editorMatch && sessionChecked && !hasUser) {
+    const loc = editorMatch[1];
+    const loginUrl = new URL(`/${loc}/login`, req.url);
+    loginUrl.searchParams.set("next", pathname + req.nextUrl.search);
+    return NextResponse.redirect(loginUrl);
   }
 
   return supabaseResponse;
