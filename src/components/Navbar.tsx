@@ -274,17 +274,25 @@ export default function Navbar() {
                     role="menu"
                     className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                   >
-                    {TOOL_CATEGORIES.map((cat) => (
-                      <Link
-                        key={cat.key}
-                        href={`${toolsHref}#${cat.key}`}
-                        role="menuitem"
-                        onClick={() => setToolsOpen(false)}
-                        className="flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
-                      >
-                        {catLabel(cat.label)}
-                      </Link>
-                    ))}
+                    {TOOL_CATEGORIES.map((cat) => {
+                      const isAi = cat.key === "ai";
+                      return (
+                        <Link
+                          key={cat.key}
+                          href={`${toolsHref}#${cat.key}`}
+                          role="menuitem"
+                          onClick={() => setToolsOpen(false)}
+                          className={`flex items-center justify-between px-3 py-2 text-sm font-medium rounded-xl transition-colors ${isAi ? "text-violet-700 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-violet-950/30" : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"}`}
+                        >
+                          <span>{catLabel(cat.label)}</span>
+                          {isAi && (
+                            <span className="ml-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                              AI
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
                     <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
                     <Link
                       href={toolsHref}
@@ -525,16 +533,24 @@ export default function Navbar() {
             </button>
             {mobileToolsOpen && (
               <div className="pl-3 space-y-1">
-                {TOOL_CATEGORIES.map((cat) => (
-                  <Link
-                    key={cat.key}
-                    href={`${toolsHref}#${cat.key}`}
-                    className="flex items-center px-3.5 py-2 text-sm font-semibold rounded-xl transition-all text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900/50"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {catLabel(cat.label)}
-                  </Link>
-                ))}
+                {TOOL_CATEGORIES.map((cat) => {
+                  const isAi = cat.key === "ai";
+                  return (
+                    <Link
+                      key={cat.key}
+                      href={`${toolsHref}#${cat.key}`}
+                      className={`flex items-center justify-between px-3.5 py-2 text-sm font-semibold rounded-xl transition-all ${isAi ? "text-violet-700 hover:bg-violet-50 dark:text-violet-300 dark:hover:bg-violet-950/30" : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900/50"}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <span>{catLabel(cat.label)}</span>
+                      {isAi && (
+                        <span className="ml-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                          AI
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
                 <Link
                   href={toolsHref}
                   className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
