@@ -138,8 +138,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
     // The layout appends " | Templix AI" (13 chars), so the metaTitle must stay
     // under 47 for the rendered <title> to land in the 50-60 character budget.
-    // Target the long-tail pattern: free + [document] + free/PDF/Word.
+    // Lead with the "No Sign-Up" differentiator (our biggest CTR hook vs Canva/
+    // Zety), fitting the format keywords (PDF/Word) alongside it where the budget
+    // allows, and falling back to the format-only variant for longer names.
     const candidates = [
+      `Free ${docName} — PDF & No Sign-Up`,
+      `Free ${docName} — No Sign-Up`,
       `Free ${docName} (PDF & Word)`,
       `Free ${docName} — PDF & Word`,
       `Free ${docName} 2026`,
@@ -196,13 +200,16 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     pageTitle = parts.join(" ");
   }
 
-  // Searchers add the year and the file format. A bare category page title is
-  // outranked by one that answers "…2026" and "…PDF & Word". Only append when
-  // there's room inside the 47-char budget (the layout adds " | Templix AI").
+  // Lead with the "No Sign-Up" differentiator, then fall back to the format/year
+  // variants searchers also use ("…PDF & Word", "…2026"). Only append what fits
+  // inside the 47-char budget (the layout adds " | Templix AI"); longer titles
+  // (e.g. niche/location variants) keep the bare, already-descriptive title.
+  const withBoth = `${pageTitle} — PDF & No Sign-Up`;
+  const withNoSignup = `${pageTitle} — No Sign-Up`;
   const withFormat = `${pageTitle} 2026 — PDF & Word`;
   const withYear = `${pageTitle} 2026`;
   const metaTitle =
-    withFormat.length <= 47 ? withFormat : withYear.length <= 47 ? withYear : pageTitle;
+    [withBoth, withNoSignup, withFormat, withYear].find((c) => c.length <= 47) ?? pageTitle;
 
   // Paginated pages self-canonicalize (page 2 → its own ?page=2 URL) so Google
   // crawls templates on pages 2+; page 1 keeps the clean category URL. A search
