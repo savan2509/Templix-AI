@@ -121,7 +121,13 @@ export default async function proxy(req: NextRequest) {
     const redirectUrl = new URL(targetPath, req.url);
     // Preserve any search parameters or hash (e.g. for password resets)
     redirectUrl.search = req.nextUrl.search;
-    return NextResponse.redirect(redirectUrl);
+    // 308 (Permanent), not the NextResponse.redirect default of 307 (Temporary).
+    // A 307 tells Google the un-prefixed URL is only temporarily elsewhere, so it
+    // keeps that URL indexed, never consolidates its ranking signals onto /en, and
+    // re-surfaces it as "Page with redirect" on every crawl. 308 makes the move
+    // permanent — Google folds the signals into /en and drops the bare URL — while
+    // still preserving the request method (unlike a 301).
+    return NextResponse.redirect(redirectUrl, 308);
   }
 
   // ── Require login before the document editor ────────────────────────────────
