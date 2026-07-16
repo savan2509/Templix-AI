@@ -9,6 +9,7 @@ import Schema from "@/components/seo/Schema";
 import { buildFaqSchema } from "@/lib/blog-seo";
 import { ALL_TOOLS, getTool } from "@/data/tools";
 import { getAiTool } from "@/data/ai-tools";
+import { getLocalizedTool, FULLY_TRANSLATED_LOCALES } from "@/lib/i18n/content";
 
 // Answer-Engine Optimization: give every tool page a short, honest FAQ so AI
 // search (Google AI Overview, ChatGPT, Perplexity, etc.) and Google's Q&A rich
@@ -43,22 +44,26 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = getDictionary(locale).tools;
-  const tool = getTool(slug);
-  if (!tool) return { title: t.notFoundTitle };
+  const base = getTool(slug);
+  if (!base) return { title: t.notFoundTitle };
+  const tool = getLocalizedTool(base, locale);
   return SEOEngine.generateMetadata({
     title: `${tool.title}${t.metaTitleSuffix}`,
     description: tool.description,
     slug: `/tools/${tool.slug}`,
     locale,
     keywords: tool.keywords,
+    // Every tool is translated in all locales → self-canonical + hreflang.
+    hreflangLocales: FULLY_TRANSLATED_LOCALES,
   }) as Metadata;
 }
 
 export default async function ToolPage({ params }: PageProps) {
   const { locale, slug } = await params;
   const t = getDictionary(locale).tools;
-  const tool = getTool(slug);
-  if (!tool) notFound();
+  const base = getTool(slug);
+  if (!base) notFound();
+  const tool = getLocalizedTool(base, locale);
   const aiTool = getAiTool(slug);
 
   // Related: prefer same-category tools, then fill from the rest.
@@ -140,7 +145,7 @@ export default async function ToolPage({ params }: PageProps) {
           {related.map((tl) => (
             <li key={tl.slug}>
               <Link href={`/${locale}/tools/${tl.slug}`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                {tl.title}
+                {getLocalizedTool(tl, locale).title}
               </Link>
             </li>
           ))}

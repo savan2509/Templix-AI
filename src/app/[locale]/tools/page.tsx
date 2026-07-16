@@ -4,6 +4,7 @@ import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import Schema from "@/components/seo/Schema";
 import { ALL_TOOLS, TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
+import { getLocalizedTool } from "@/lib/i18n/content";
 import { getDictionary } from "@/lib/i18n";
 import { siteConfig } from "@/config/site";
 import { Percent, Tag, TrendingUp, Hash, Clock, Combine, Scissors, FileImage, Images, ClipboardCheck, FileSignature, Calculator, ListChecks, FileText, ShieldCheck, Scale, Mail, LogOut, Award, FileStack, Sparkles, PenLine, SpellCheck, Wand2, Palette, Languages, ScrollText, MessageSquare, Briefcase, Megaphone, Quote, Newspaper, Search, AlignLeft, Users, ArrowRight, type LucideIcon } from "lucide-react";
@@ -100,7 +101,8 @@ export default async function ToolsHubPage({ params }: PageProps) {
               )}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {cat.tools.map((tool) => {
+              {cat.tools.map((baseTool) => {
+                const tool = getLocalizedTool(baseTool, locale);
                 const Icon = ICONS[tool.icon] ?? Percent;
                 return (
                   <Link

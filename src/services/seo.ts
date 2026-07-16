@@ -14,6 +14,11 @@ export interface SEOPageData {
   keywords?: string[];   // meta keywords
   canonical?: string;    // explicit canonical URL override
   image?: string;        // social share image (absolute URL or /public path)
+  // Locales this exact page is translated for (always includes "en"). When set,
+  // each locale self-canonicalizes and the pages cross-reference via hreflang.
+  // Omit it and the page consolidates on /en (correct for not-yet-translated
+  // pages, so they never create duplicate-content across locales).
+  hreflangLocales?: string[];
 }
 
 export interface InternalLinkingData {
@@ -37,12 +42,29 @@ export class SEOEngine {
    * Generates standard head meta attributes (used in Next.js generateMetadata lifecycle)
    */
   static generateMetadata(data: SEOPageData) {
-    // Only English (/en) is served — the other locales were retired and
-    // 308-redirect to /en (see proxy.ts). The canonical therefore always points
-    // at the /en variant regardless of the incoming locale. An explicit
-    // `canonical` still wins.
-    const canonical =
-      data.canonical || `${this.APP_URL}/en${data.slug === "/" ? "" : data.slug}`;
+    // Canonical + hreflang resolution:
+    //  • explicit `canonical` always wins;
+    //  • a page translated for several locales (`hreflangLocales`) self-
+    //    canonicalizes and cross-references the others via hreflang alternates;
+    //  • everything else consolidates on /en, so not-yet-translated locale
+    //    variants never split ranking signals or create duplicate content.
+    const locale = data.locale || "en";
+    const slugPath = data.slug === "/" ? "" : data.slug;
+    const enUrl = `${this.APP_URL}/en${slugPath}`;
+    let canonical: string;
+    let languages: Record<string, string> | undefined;
+    if (data.canonical) {
+      canonical = data.canonical;
+    } else if (data.hreflangLocales && data.hreflangLocales.length > 1) {
+      canonical = `${this.APP_URL}/${locale}${slugPath}`;
+      languages = {};
+      for (const loc of data.hreflangLocales) {
+        languages[loc] = `${this.APP_URL}/${loc}${slugPath}`;
+      }
+      languages["x-default"] = enUrl;
+    } else {
+      canonical = enUrl;
+    }
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and
     // Twitter titles are not templated, so we brand those explicitly.
@@ -58,9 +80,11 @@ export class SEOEngine {
       title: pageTitle,
       description: data.description,
       keywords: data.keywords,
-      // Single-locale site: only a canonical, no hreflang alternates.
       alternates: {
         canonical: canonical,
+        // hreflang cluster — only emitted for pages actually translated across
+        // locales; consolidated pages get a bare canonical (no languages).
+        ...(languages ? { languages } : {}),
       },
       openGraph: {
         title: fullTitle,
