@@ -525,6 +525,172 @@ export const AI_TOOLS: AiToolMeta[] = [
     promptTemplate:
       "Generate a set of tailored interview questions for the role below. Group them into: Technical/Role-specific, Behavioral, and Situational — 4-5 questions each. Return only the grouped questions.\n\n{input}",
   },
+
+  // ── Business AI (more) ───────────────────────────────────────────────────────
+  {
+    slug: "business-name-generator",
+    title: "Business Name Generator",
+    short: "Business Name",
+    description:
+      "Free AI business name generator. Describe your idea and get memorable, brandable company name ideas with the reasoning behind each.",
+    keywords: ["business name generator", "ai business name generator", "company name generator", "brand name generator free"],
+    icon: "Award",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "What's the business?",
+    inputPlaceholder: "e.g. A subscription meal-prep service for busy gym-goers, premium but friendly",
+    outputLabel: "Name ideas",
+    promptTemplate:
+      "Generate 15 memorable, brandable business name ideas for the business described below. Mix styles (invented words, compound words, real words used unexpectedly). After each name add a 5-8 word note on why it works. Number them 1-15. Return only the list.\n\n{input}",
+  },
+  {
+    slug: "executive-summary-generator",
+    title: "Executive Summary Generator",
+    short: "Executive Summary",
+    description:
+      "Free AI executive summary generator. Turn a long plan, report or proposal into a sharp one-page executive summary decision-makers actually read.",
+    keywords: ["executive summary generator", "ai executive summary", "executive summary writer", "business plan summary generator"],
+    icon: "FileText",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Your plan, report or proposal",
+    inputPlaceholder: "Paste the long document (or its key points) to summarize…",
+    outputLabel: "Executive summary",
+    promptTemplate:
+      "Write a sharp executive summary of the document below, aimed at a busy decision-maker. Lead with the outcome/ask, then cover the problem, the approach, and the key numbers. Keep it under one page and use short paragraphs. Return only the summary.\n\n{input}",
+  },
+  {
+    slug: "swot-analysis-generator",
+    title: "SWOT Analysis Generator",
+    short: "SWOT Analysis",
+    description:
+      "Free AI SWOT analysis generator. Describe your business and get Strengths, Weaknesses, Opportunities and Threats laid out clearly.",
+    keywords: ["swot analysis generator", "ai swot analysis", "free swot analysis tool", "swot template generator"],
+    icon: "Scale",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Your business or project",
+    inputPlaceholder: "e.g. A local bakery with 2 staff, strong walk-in trade, no online ordering yet",
+    outputLabel: "SWOT analysis",
+    promptTemplate:
+      "Produce a practical SWOT analysis for the business below. Give 4-5 specific, concrete points under each of Strengths, Weaknesses, Opportunities and Threats — grounded in the details provided, not generic filler. Return only the four labelled sections.\n\n{input}",
+  },
+  {
+    slug: "sop-generator",
+    title: "SOP Generator",
+    short: "SOP Generator",
+    description:
+      "Free AI SOP generator. Turn a process into a clear standard operating procedure with numbered steps, owners and checks.",
+    keywords: ["sop generator", "standard operating procedure generator", "ai sop writer", "sop template generator free"],
+    icon: "ListChecks",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "The process to document",
+    inputPlaceholder: "e.g. How we onboard a new client: contract, deposit, kickoff call, asset collection…",
+    outputLabel: "Standard operating procedure",
+    promptTemplate:
+      "Write a clear standard operating procedure (SOP) for the process below. Include: Purpose, Scope, Roles/Owners, numbered Step-by-step Procedure, and a short Quality Checks list. Keep each step actionable and unambiguous. Return only the SOP.\n\n{input}",
+  },
+  {
+    slug: "meeting-agenda-generator",
+    title: "Meeting Agenda Generator",
+    short: "Meeting Agenda",
+    description:
+      "Free AI meeting agenda generator. Describe the meeting and get a focused, timed agenda that keeps everyone on track.",
+    keywords: ["meeting agenda generator", "ai meeting agenda", "agenda template generator", "free meeting agenda maker"],
+    icon: "ClipboardCheck",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Meeting purpose + attendees",
+    inputPlaceholder: "e.g. 45-min quarterly planning with 5 people; decide Q4 priorities and budget",
+    outputLabel: "Meeting agenda",
+    promptTemplate:
+      "Write a focused meeting agenda for the meeting below. Include the objective, a timed item list (each with an owner and a decision or outcome to reach), and a short pre-read/prep note. Keep the timings adding up to the stated length. Return only the agenda.\n\n{input}",
+  },
+
+  // ── Marketing AI (more) ──────────────────────────────────────────────────────
+  {
+    slug: "press-release-generator",
+    title: "Press Release Generator",
+    short: "Press Release",
+    description:
+      "Free AI press release generator. Turn your announcement into a properly formatted, newsroom-ready press release in seconds.",
+    keywords: ["press release generator", "ai press release generator", "free press release template", "press release writer"],
+    icon: "Newspaper",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "What are you announcing?",
+    inputPlaceholder: "e.g. Acme launches a free invoice tool for freelancers, available today, based in Austin",
+    outputLabel: "Press release",
+    promptTemplate:
+      "Write a properly formatted press release for the announcement below. Follow the standard structure: headline, dateline, a strong lead paragraph answering who/what/when/where/why, two supporting paragraphs, a quote placeholder attributed to a named spokesperson, a short boilerplate, and press contact placeholders. Use [square brackets] for details not provided. Return only the press release.\n\n{input}",
+  },
+  {
+    slug: "elevator-pitch-generator",
+    title: "Elevator Pitch Generator",
+    short: "Elevator Pitch",
+    description:
+      "Free AI elevator pitch generator. Describe what you do and get a crisp 30-second pitch that lands with investors and clients.",
+    keywords: ["elevator pitch generator", "ai elevator pitch", "30 second pitch generator", "startup pitch generator free"],
+    icon: "Megaphone",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "What you do + who it's for",
+    inputPlaceholder: "e.g. We help small builders quote jobs in minutes instead of evenings of spreadsheets",
+    outputLabel: "Elevator pitch",
+    promptTemplate:
+      "Write 3 elevator pitch options (about 30 seconds / 60-80 words each) for the business below. Each must open with the problem, state the solution plainly, name who it's for, and end with a clear hook. Vary the angle: one problem-led, one outcome-led, one contrarian. Number them 1-3. Return only the pitches.\n\n{input}",
+  },
+  {
+    slug: "case-study-generator",
+    title: "Case Study Generator",
+    short: "Case Study",
+    description:
+      "Free AI case study generator. Turn a client win into a persuasive challenge-solution-results case study for your site.",
+    keywords: ["case study generator", "ai case study writer", "customer case study template", "free case study generator"],
+    icon: "ScrollText",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "The client, the problem, the result",
+    inputPlaceholder: "e.g. Dental clinic, manual bookings losing leads, we built online booking, no-shows down",
+    outputLabel: "Case study",
+    promptTemplate:
+      "Write a persuasive case study from the details below, structured as: headline, client snapshot, The Challenge, The Solution, The Results, and a closing quote placeholder. Only use figures explicitly provided — where a metric is missing, use a [bracketed placeholder] rather than inventing a number. Return only the case study.\n\n{input}",
+  },
+  {
+    slug: "cold-email-generator",
+    title: "Cold Email Generator",
+    short: "Cold Email",
+    description:
+      "Free AI cold email generator. Describe your offer and prospect to get a short, personalized outreach email that gets replies.",
+    keywords: ["cold email generator", "ai cold email writer", "outreach email generator", "sales email generator free"],
+    icon: "Mail",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "Your offer + who you're emailing",
+    inputPlaceholder: "e.g. I build booking sites for dentists; emailing a 3-clinic practice with no online booking",
+    outputLabel: "Cold email",
+    promptTemplate:
+      "Write a short cold outreach email for the scenario below. Rules: subject line under 6 words, opening line about THEM (not you), one sentence on the offer, one specific proof point or [placeholder], and a low-friction ask (not 'book a 30-min call'). Under 120 words, no jargon, no fake flattery. Return only the email.\n\n{input}",
+  },
+
+  // ── Resume AI (more) ─────────────────────────────────────────────────────────
+  {
+    slug: "linkedin-headline-generator",
+    title: "LinkedIn Headline Generator",
+    short: "LinkedIn Headline",
+    description:
+      "Free AI LinkedIn headline generator. Turn your role and strengths into a headline that gets your profile found and clicked.",
+    keywords: ["linkedin headline generator", "ai linkedin headline", "linkedin profile headline generator", "linkedin summary generator"],
+    icon: "TrendingUp",
+    category: "ai",
+    group: "Resume AI",
+    inputLabel: "Your role, skills & who you help",
+    inputPlaceholder: "e.g. Data analyst, 5 years, SQL/Python, help retail teams cut reporting time",
+    outputLabel: "LinkedIn headlines",
+    promptTemplate:
+      "Write 8 LinkedIn headline options for the person below. Each must stay under 220 characters, front-load the searchable job title/keywords, and make the value to others clear. Vary the format (title + specialism, outcome-led, keyword-stacked). Number them 1-8. Return only the headlines.\n\n{input}",
+  },
 ];
 
 export function getAiTool(slug: string): AiToolMeta | undefined {
