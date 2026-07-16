@@ -1,7 +1,12 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Templix AI – Static Blog Data (10 Production Posts)
+// Templix AI – Static Blog Data
 // Rendered as fallback when DB is unavailable; fully SEO-optimised.
+// Newer posts live in ./blog/* modules and are spread into STATIC_BLOG_POSTS at
+// the bottom of this file, so the sitemap/listing keep reading one export.
 // ─────────────────────────────────────────────────────────────────────────────
+import { aiToolsPosts } from "./blog/posts-ai";
+import { contractsPosts } from "./blog/posts-contracts";
+import { proposalsPosts } from "./blog/posts-proposals";
 
 export interface BlogPost {
   id: string;
@@ -3291,6 +3296,15 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
 <p>Create the signed document from a template and export to PDF, or use a free e-signature service — both avoid editing the PDF's raw text.</p>
     `,
   },
+
+  // ── Second wave ─────────────────────────────────────────────────────────────
+  // Cluster-depth posts, split into per-topic modules to keep this file workable.
+  // They deepen the three thinnest clusters (AI Tools had 2 posts covering 28 AI
+  // tools; Contracts and Proposals were similarly light) and each one links to its
+  // matching template and tool, closing the topic → article → template → tool loop.
+  ...aiToolsPosts,
+  ...contractsPosts,
+  ...proposalsPosts,
 ];
 
 // Helper — get a post by slug
