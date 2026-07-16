@@ -529,14 +529,22 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* JSON-LD: Organization + WebSite (SearchAction) + WebApplication (free
-            Offer) + FAQPage — the brand entity, sitelinks searchbox and CTR. */}
+            Offer) + FAQPage — the brand entity, sitelinks searchbox and CTR.
+
+            These three are SINGLETON entities: they describe the site itself, not
+            the page being viewed, so they must always point at the canonical /en
+            root — never at the rendering locale. Emitting `/{locale}` declared
+            five competing brand entities (one per locale) on pages that all
+            canonicalize to /en, and advertised five SearchAction endpoints whose
+            URLs robots.txt blocks (`/*?q=`), which Google then reported under
+            "Blocked by robots.txt". */}
         <Schema
           data={[
             {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Templix AI",
-              url: `${SITE_URL}/${locale}`,
+              url: `${SITE_URL}/en`,
               logo: `${SITE_URL}/icon-512.png`,
               description:
                 "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
@@ -546,12 +554,12 @@ export default async function HomePage({ params }: PageProps) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Templix AI",
-              url: `${SITE_URL}/${locale}`,
+              url: `${SITE_URL}/en`,
               potentialAction: {
                 "@type": "SearchAction",
                 target: {
                   "@type": "EntryPoint",
-                  urlTemplate: `${SITE_URL}/${locale}/templates?q={search_term_string}`,
+                  urlTemplate: `${SITE_URL}/en/templates?q={search_term_string}`,
                 },
                 "query-input": "required name=search_term_string",
               },
@@ -560,7 +568,7 @@ export default async function HomePage({ params }: PageProps) {
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "Templix AI",
-              url: `${SITE_URL}/${locale}`,
+              url: `${SITE_URL}/en`,
               applicationCategory: "BusinessApplication",
               operatingSystem: "All",
               description:
