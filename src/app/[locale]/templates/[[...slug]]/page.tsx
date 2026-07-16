@@ -675,65 +675,50 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
 
 
-  // Load list from db or fallback
-  let templates: any[] = [];
-  let isFallbackUsed = false;
+  // The in-code catalog is the single source of truth for the template library:
+  // the homepage counts it, the sitemap emits it, and the detail pages render
+  // from it. This listing previously preferred the database whenever it held any
+  // rows, which silently forked the site — a stale DB served old counts and old
+  // preview content here while every other surface used the code. Start from the
+  // catalog and only append database templates that don't exist in code, so
+  // DB-managed additions still surface and nothing is ever hidden.
+  let templates: any[] = [...allFallbackTemplates];
 
   try {
     if (isDbOnline && process.env.DATABASE_URL) {
-      let catId: string | null = null;
-      if (categorySlug) {
-        const cat = await db.category.findUnique({ where: { slug: categorySlug } });
-        if (cat) catId = cat.id;
-      }
-
-      const dbTemplates = await db.template.findMany({
-        where: {
-          ...(catId ? { categoryId: catId } : {}),
-          ...(q ? {
-            OR: [
-              { title: { contains: q, mode: "insensitive" } },
-              { description: { contains: q, mode: "insensitive" } }
-            ]
-          } : {})
-        },
-        include: { category: true }
-      });
-
+      const dbTemplates = await db.template.findMany({ include: { category: true } });
       if (dbTemplates && dbTemplates.length > 0) {
-        templates = dbTemplates.map((t) => ({
-          id: t.id,
-          slug: t.slug,
-          title: t.title,
-          description: t.description,
-          isPremium: t.isPremium,
-          categorySlug: t.category.slug,
-          categoryName: t.category.name,
-          content: t.content as any
-        }));
-      } else {
-        isFallbackUsed = true;
+        const known = new Set(templates.map((t) => t.slug));
+        for (const t of dbTemplates) {
+          if (known.has(t.slug)) continue; // code wins for a shared slug
+          templates.push({
+            id: t.id,
+            slug: t.slug,
+            title: t.title,
+            description: t.description,
+            isPremium: t.isPremium,
+            categorySlug: t.category.slug,
+            categoryName: t.category.name,
+            content: t.content as any,
+          });
+        }
       }
-    } else {
-      isFallbackUsed = true;
     }
   } catch (err) {
-    console.warn("DB Query bypass in Templates page list, rendering fallbacks.");
-    isFallbackUsed = true;
+    console.warn("DB unavailable — rendering the in-code template catalog.");
   }
 
-  if (isFallbackUsed) {
-    templates = allFallbackTemplates;
-    if (categorySlug) {
-      templates = templates.filter((t) => t.categorySlug === categorySlug);
-    }
-    if (q) {
-      templates = templates.filter(
-        (t) =>
-          t.title.toLowerCase().includes(q.toLowerCase()) ||
-          t.description.toLowerCase().includes(q.toLowerCase())
-      );
-    }
+  // Filter uniformly, whatever the source, so counts always agree with the
+  // homepage and the sitemap.
+  if (categorySlug) {
+    templates = templates.filter((t) => t.categorySlug === categorySlug);
+  }
+  if (q) {
+    templates = templates.filter(
+      (t) =>
+        t.title.toLowerCase().includes(q.toLowerCase()) ||
+        t.description.toLowerCase().includes(q.toLowerCase())
+    );
   }
 
   // Paginate templates
