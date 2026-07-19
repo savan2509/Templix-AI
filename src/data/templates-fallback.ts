@@ -21,6 +21,14 @@ import { reportsExtraTemplates } from "./templates/reports-extra";
 import { businessPlansExtraTemplates } from "./templates/business-plans-extra";
 import { quotationsExtraTemplates } from "./templates/quotations-extra";
 
+// India-format documents — high-volume, low-competition local formats
+// (salary slip, relieving letter, rent receipt for HRA, GST delivery challan,
+// leave & license agreement, employment bond, etc.), filed under their existing
+// categories so they surface in the right listings.
+import { indiaLettersTemplates } from "./templates/india-letters";
+import { indiaInvoicesTemplates } from "./templates/india-invoices";
+import { indiaContractsTemplates } from "./templates/india-contracts";
+
 export const allFallbackTemplates: any[] = [
   ...invoicesTemplates,
   ...invoicesExtraTemplates,
@@ -38,4 +46,7 @@ export const allFallbackTemplates: any[] = [
   ...businessPlansExtraTemplates,
   ...quotationsTemplates,
   ...quotationsExtraTemplates,
+  ...indiaLettersTemplates,
+  ...indiaInvoicesTemplates,
+  ...indiaContractsTemplates,
 ];
