@@ -3,6 +3,7 @@ import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
 import { ALL_TOOLS } from "@/data/tools";
+import { professionRoutes } from "@/features/templates/profession-content";
 
 import { siteConfig } from "@/config/site";
 
@@ -129,6 +130,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Template detail pages (canonical /{category}/{slug} shape)
     ...templateEntries,
+
+    // Profession landing pages (/{category}/{profession}) — each carries bespoke
+    // long-form copy + FAQs (see profession-content.ts), so they're indexable
+    // unique pages, not doorway duplicates.
+    ...professionRoutes().map(({ category, niche }) =>
+      entry(`/templates/${category}/${niche}`, { changeFrequency: "weekly", priority: 0.6 })
+    ),
 
     // Blog articles — <lastmod> reflects the last edit: prefer `updatedAt`, fall
     // back to the publish date, and guard against a malformed value.

@@ -18,6 +18,7 @@ import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
+import { getProfessionContent, PROFESSION_SLUGS } from "@/features/templates/profession-content";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 
 // Template slug → preview image mapping
@@ -208,8 +209,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const withNoSignup = `${pageTitle} — No Sign-Up`;
   const withFormat = `${pageTitle} 2026 — PDF & Word`;
   const withYear = `${pageTitle} 2026`;
+  // A profession landing page ships its own hand-written title + description
+  // (unique copy, not a keyword-swap), so prefer those when this niche is one.
+  const professionMeta = getProfessionContent(slug[0] || null, slug[1] || null);
   const metaTitle =
-    [withBoth, withNoSignup, withFormat, withYear].find((c) => c.length <= 47) ?? pageTitle;
+    professionMeta?.metaTitle ??
+    ([withBoth, withNoSignup, withFormat, withYear].find((c) => c.length <= 47) ?? pageTitle);
 
   // Paginated pages self-canonicalize (page 2 → its own ?page=2 URL) so Google
   // crawls templates on pages 2+; page 1 keeps the clean category URL. A search
@@ -224,7 +229,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     title: pageTitle,
     metaTitle,
     canonical,
-    description: `Download free ${pageTitle.replace(/^Free /, "").toLowerCase()}. Editable, print-ready layouts that export to PDF and Word — no sign-up and no watermark.`,
+    description: professionMeta?.subtitle
+      ?? `Download free ${pageTitle.replace(/^Free /, "").toLowerCase()}. Editable, print-ready layouts that export to PDF and Word — no sign-up and no watermark.`,
     slug: slugPath,
     locale,
     categoryName: category || undefined,
@@ -358,6 +364,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   // Return a real 404 instead of a soft-404 listing with a nonsense H1. Extend
   // these sets when new niche/country landing pages are intentionally added.
   const KNOWN_NICHES = new Set([
+    // Profession landing pages carry bespoke content (see profession-content.ts).
+    ...PROFESSION_SLUGS,
     "freelancer", "legal", "general", "small-business", "hourly", "contractor", "consulting",
   ]);
   const KNOWN_LOCATIONS = new Set(["usa", "canada", "uk", "india", "australia"]);
@@ -777,8 +785,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   // Every category page used to render the homepage's four generic questions —
   // duplicate content across nine URLs, with no FAQPage schema. Use questions
   // written for this category, and emit the schema behind them.
-  const categoryFaqs = getCategoryFaqs(categorySlug);
-  const categoryFaqSchema = categoryFaqs ? faqPageSchema(categoryFaqs) : null;
+  // Profession landing page (e.g. /templates/invoices/photographer) → its own
+  // hand-written subtitle, long-form sections and FAQs, so the page is genuinely
+  // unique rather than a keyword-swapped clone of the category listing.
+  const profession = getProfessionContent(categorySlug, nicheSlug);
+  const pageFaqs = profession?.faqs ?? getCategoryFaqs(categorySlug);
+  const categoryFaqSchema = pageFaqs ? faqPageSchema(pageFaqs) : null;
   const categoryDef = getCategoryDefinition(categorySlug);
 
   // CollectionPage wrapping the templates as an ItemList — tells Google the
@@ -842,7 +854,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-3xl">
               {/* Unique per category / niche / country so ~200 listing URLs no
                   longer share one boilerplate subtitle. Bare hub keeps t.hubSubtitle. */}
-              {getHubIntro(categorySlug, nicheName, locationName) || t.hubSubtitle}
+              {profession?.subtitle || getHubIntro(categorySlug, nicheName, locationName) || t.hubSubtitle}
             </p>
           </div>
 
@@ -1073,13 +1085,31 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               </div>
             </section>
           </div>
+
+          {/* Profession-specific long-form content — the unique information gain
+              that keeps a /{category}/{profession} page from being a thin,
+              keyword-swapped clone of the category listing. */}
+          {profession && (
+            <article className="mx-auto max-w-3xl border-t border-zinc-200 dark:border-zinc-800 pt-10 space-y-8">
+              {profession.sections.map((s) => (
+                <section key={s.heading} className="space-y-3">
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{s.heading}</h2>
+                  <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">{s.body}</p>
+                </section>
+              ))}
+            </article>
+          )}
         </div>
       </main>
 
       <FAQ
         locale={locale}
-        items={categoryFaqs ?? undefined}
-        heading={categoryFaqs ? `${categoryDisplayName} — frequently asked questions` : undefined}
+        items={pageFaqs ?? undefined}
+        heading={
+          pageFaqs
+            ? `${profession ? profession.profession + " invoices" : categoryDisplayName} — frequently asked questions`
+            : undefined
+        }
       />
       <Footer />
     </>
