@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download, Lock, MessageCircle } from "lucide-react";
+import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download, Lock, MessageCircle, Sparkles, Loader2 } from "lucide-react";
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
 import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
+import { aiFillTemplateAction } from "@/features/tools/ai-actions";
 
 interface TemplateContent {
   title: string;
@@ -101,6 +102,28 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
     setFieldValues((prev) => ({ ...prev, [field]: val }));
   };
 
+  // ── AI Fill ─────────────────────────────────────────────────────────────────
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+
+  const handleAiFill = async () => {
+    setAiError(null);
+    setAiLoading(true);
+    try {
+      const res = await aiFillTemplateAction(template.title, template.content.fields, aiPrompt);
+      if (res.ok && res.values) {
+        setFieldValues((prev) => ({ ...prev, ...res.values }));
+      } else {
+        setAiError(res.error || "Couldn't generate. Try again.");
+      }
+    } catch {
+      setAiError("Something went wrong. Please try again.");
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   const handleCustomizeClick = () => {
     // Build the editor URL with the template slug + pre-filled variables.
     const params = new URLSearchParams();
@@ -134,6 +157,32 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
               {t.fillParams}
             </p>
+          </div>
+
+          {/* AI Fill — describe the situation, Gemini fills every field. Gives
+              each template an AI hook (uses the AI document workspace angle) and
+              a reason to engage before opening the editor. */}
+          <div className="rounded-xl border border-violet-200 dark:border-violet-900/60 bg-violet-50/60 dark:bg-violet-950/20 p-3 space-y-2">
+            <label htmlFor="ai-fill" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+              <Sparkles className="h-3.5 w-3.5" /> Fill with AI
+            </label>
+            <textarea
+              id="ai-fill"
+              rows={2}
+              value={aiPrompt}
+              onChange={(e) => setAiPrompt(e.target.value)}
+              placeholder="Describe your situation — e.g. Web design for a dental clinic, ₹40,000, due in 2 weeks"
+              className="w-full px-3 py-2 rounded-lg border border-violet-200 dark:border-violet-900/60 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all resize-none"
+            />
+            <button
+              onClick={handleAiFill}
+              disabled={aiLoading || !aiPrompt.trim()}
+              className="w-full h-9 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed hover:from-violet-700 hover:to-fuchsia-700 transition-all"
+            >
+              {aiLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Sparkles className="h-3.5 w-3.5" />}
+              {aiLoading ? "Generating…" : "Generate & fill the fields"}
+            </button>
+            {aiError && <p className="text-[11px] text-red-600 dark:text-red-400">{aiError}</p>}
           </div>
 
           <div className="space-y-4 max-h-[360px] overflow-y-auto overflow-x-hidden pr-3">
