@@ -19,6 +19,7 @@ import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
 import { getProfessionContent, PROFESSION_SLUGS } from "@/features/templates/profession-content";
+import { getTemplateInsight } from "@/features/templates/template-insights";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 
 // Template slug → preview image mapping
@@ -404,6 +405,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     // pages were the preview plus one sentence — indistinguishable to Google.
     const copy = getTemplateCopy(activeTemplate);
     const templateFaqs = getTemplateFaqs(activeTemplate);
+    // Template-specific expert section (unique per page — see template-insights).
+    const insight = getTemplateInsight(activeTemplate.slug);
     const templateFaqSchema = faqPageSchema(templateFaqs);
 
     // Freshness: visible "Updated …" + schema dateModified. Templates skew to
@@ -500,6 +503,22 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
                 {copy.intro}
               </p>
+
+              {/* Template-specific expert section — unique per page (US + India
+                  specifics where relevant), the information gain that makes each
+                  detail page genuinely distinct rather than near-duplicate. */}
+              {insight && (
+                <section className="space-y-3">
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                    {insight.heading}
+                  </h2>
+                  {insight.paragraphs.map((para, i) => (
+                    <p key={i} className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                      {para}
+                    </p>
+                  ))}
+                </section>
+              )}
 
               <section className="space-y-3">
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
