@@ -2204,10 +2204,21 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
     }
   }
 
+  // Milestone invoices bill only the CURRENT release, but the schedule table
+  // lists every milestone (M1+M2+M3 = $20,000). Basing the summary on the table
+  // sum made the amount due ($21,600) contradict the document's "This Release
+  // (M2): $8,000 → $8,640" lines. Bill the current milestone instead.
+  let subtotalOut = subtotalStr;
+  if (template.slug === "invoice-milestone") {
+    const release = 8000;
+    subtotalOut = formatMoney(release);
+    totalAmount = release + release * taxRate;
+  }
+
   const totalStr = formatMoney(totalAmount);
 
   return {
-    subtotal: subtotalStr,
+    subtotal: subtotalOut,
     tax: taxVal,
     taxAmount: taxStr,
     total: totalStr,
