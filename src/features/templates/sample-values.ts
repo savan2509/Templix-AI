@@ -19,6 +19,11 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   phone: "+1 (555) 382-9281",
   website: "www.acmeglobal.com",
   address: "1200 Business Way, Suite 100, San Francisco, CA 94105",
+  // Fallbacks so newer templates that use these field names never render the
+  // literal placeholder (branded templates override via deriveContactValues).
+  companyAddress: "1200 Business Way, Suite 100, San Francisco, CA 94105",
+  companyPhone: "+1 (555) 382-9281",
+  gratuity: "18%",
   invoiceNumber: "INV-2026-001",
   invoiceDate: "2026-06-28",
   dueDate: "2026-07-12",
@@ -1061,6 +1066,9 @@ export const SLUG_BRAND: Record<string, string> = {
   "character-reference-letter": "Robert Vance",
   "promotion-request-letter": "Daniel Reed",
   // New invoice templates
+  "invoice-construction": "Summit Build Contractors",
+  "invoice-it-services": "Nexus IT Solutions",
+  "invoice-restaurant": "The Copper Kitchen",
   "invoice-catering": "Savory Spoon Catering",
   "invoice-landscaping": "GreenScape Grounds Co.",
   "invoice-tutoring": "BrightMinds Tutoring",
@@ -2165,7 +2173,14 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
   const subtotalStr = formatMoney(computedSubtotal);
   const taxAmount = computedSubtotal * taxRate;
   const taxStr = formatMoney(taxAmount);
-  let totalAmount = computedSubtotal + taxAmount;
+  // Only fold tax into the total when the document actually SHOWS a tax line.
+  // Many invoices list items and a grand total with no "Tax" row — adding 8%
+  // there made the total inexplicably higher than the items add up to (e.g.
+  // cleaning $970 rendered as $1,047.60). Detecting a tax/GST/VAT reference in
+  // the document keeps the arithmetic self-consistent on every template.
+  const docStr = JSON.stringify(template?.content?.editorState || {});
+  const showsTax = /\b(tax|gst|vat|cgst|sgst|igst)\b/i.test(docStr);
+  let totalAmount = computedSubtotal + (showsTax ? taxAmount : 0);
 
   // Shipping and order-level discounts are shown as their own summary lines, not
   // as table rows, so the line-item sum never includes them. Fold them into the
@@ -2251,14 +2266,33 @@ function deriveContactValues(
   if (brand) {
     const letters = brand.replace(/[^a-zA-Z]/g, "");
     const handle = brand.toLowerCase().replace(/[^a-z0-9]+/g, "");
-    const cities = [
+    // India context (a ₹ invoice, or a known India template) → Indian address +
+    // a +91 number, so a GST / proforma / export invoice never shows a US
+    // letterhead — the exact pages meant to win Indian searches.
+    const isIndia =
+      specific.currency === "₹" ||
+      ["invoice-gst", "invoice-proforma", "invoice-commercial-export", "gst-quotation"].includes(template?.slug);
+    const usCities = [
       "New York, NY 10001", "Austin, TX 78701", "San Francisco, CA 94105",
       "Seattle, WA 98101", "Chicago, IL 60601",
     ];
+    const inCities = [
+      "Mumbai, Maharashtra 400001", "Bengaluru, Karnataka 560001",
+      "Pune, Maharashtra 411001", "New Delhi 110001", "Hyderabad, Telangana 500034",
+    ];
+    const seed = letters.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
     const streetNum = 100 + (letters.charCodeAt(0) || 0) * 2;
-    out.address = `${streetNum} Business Way, ${cities[letters.length % 5]}`;
+    out.address = isIndia
+      ? `${streetNum}, ${inCities[letters.length % 5]}`
+      : `${streetNum} Business Way, ${usCities[letters.length % 5]}`;
     if (handle) out.email = `hello@${handle}.com`;
-    out.phone = phoneFor(brand);
+    out.phone = isIndia
+      ? `+91 ${String(90000 + (seed % 9999))} ${String(10000 + ((seed * 7) % 89999))}`
+      : phoneFor(brand);
+    // Templates that use companyAddress/companyPhone (rather than address/phone)
+    // must resolve too, or they render the literal field name.
+    out.companyAddress = out.address;
+    out.companyPhone = out.phone;
   }
   return out;
 }
