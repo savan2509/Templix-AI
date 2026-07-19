@@ -230,9 +230,6 @@ export default function Navbar() {
                 priority
                 className="hidden h-9 w-9 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="transition-all duration-200 group-hover:translate-x-0.5">
-                Templix<span className="text-zinc-900 dark:text-white font-extrabold">AI</span>
-              </span>
             </Link>
 
             {/* Desktop Menu items */}
