@@ -3,10 +3,16 @@ import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { PRODUCTION_URL } from "@/config/site";
 
-// Locale prefixes the app serves. UI is localized in all five; content is being
-// translated locale-by-locale (see src/lib/i18n/content). Untranslated pages
-// still render but canonicalize to /en, so no locale creates duplicate content.
+// Locale prefixes the app still recognizes in incoming URLs. Only `en` is served;
+// es/fr/de/ar are RETIRED — they 308-redirect to /en (see the block below). They
+// were briefly un-retired to pilot localization, but only the UI + tools were
+// translated while templates and blog posts stayed English, so Google indexed
+// them as half-translated duplicates and drained crawl budget on a subdomain that
+// can't spare it. Retiring consolidates every ranking signal on /en. Re-enable a
+// locale only once its content is genuinely translated (its files still exist in
+// src/lib/i18n/content).
 const locales = ["en", "es", "de", "fr", "ar"];
+const RETIRED_LOCALES = ["es", "de", "fr", "ar"];
 const defaultLocale = "en";
 
 // Deployment-platform alias suffixes. A production request that lands on one of
@@ -100,11 +106,19 @@ export default async function proxy(req: NextRequest) {
     }
   }
 
-  // 0. All five locales (en/es/fr/de/ar) are served again. UI is fully localized;
-  // tools are translated end-to-end. Pages whose content isn't translated yet
-  // still render, but canonicalize to their /en variant (see seo.ts), so a
-  // locale URL never creates duplicate content — it "lights up" (self-canonical
-  // + hreflang) once its content is translated.
+  // 0. Retire the non-English locales. Their template/blog content only ever
+  // served English, so a /{es,de,fr,ar}/… URL is permanently redirected to its
+  // /en equivalent — Google then drops the half-translated duplicate URLs and
+  // keeps /en, refocusing scarce crawl budget on the real pages.
+  const retired = RETIRED_LOCALES.find(
+    (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
+  );
+  if (retired) {
+    const rest = pathname.replace(/^\/(?:es|de|fr|ar)(?=\/|$)/, "");
+    const dest = new URL(`/en${rest}`, req.url);
+    dest.search = req.nextUrl.search;
+    return NextResponse.redirect(dest, 308);
+  }
 
   // 1. Redirect bare paths (missing locale prefix) to the default locale
   const pathnameIsMissingLocale = locales.every(

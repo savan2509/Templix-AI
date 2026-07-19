@@ -34,9 +34,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency?: ChangeFrequency;
       priority?: number;
       images?: string[];
-      // Locales this URL is translated for (excluding en). Emits hreflang
-      // alternates so Google clusters the language versions together.
-      hreflang?: readonly string[];
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
@@ -46,22 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Image sitemap extension — helps the page's cover/OG image surface in
     // Google Images and rich results. Absolute URLs only.
     ...(opts.images && opts.images.length ? { images: opts.images } : {}),
-    // hreflang cluster — x-default is the /en URL; each translated locale gets
-    // its own alternate so all language versions are discovered together.
-    ...(opts.hreflang && opts.hreflang.length
-      ? {
-          alternates: {
-            languages: {
-              en: `${baseUrl}/en${path}`,
-              ...Object.fromEntries(opts.hreflang.map((l) => [l, `${baseUrl}/${l}${path}`])),
-            },
-          },
-        }
-      : {}),
   });
-
-  // Tools + categories are translated in every locale (see src/lib/i18n/content).
-  const TRANSLATED_LOCALES = ["es", "fr", "de", "ar"] as const;
 
   // Only indexable, canonical routes belong here — auth, login, dashboard,
   // editor, admin, confirm/reset and other app surfaces are intentionally
@@ -118,14 +100,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
     ),
 
-    // One entry per free tool (the /tools hub is a static route above) — tools
-    // are fully translated, so emit hreflang alternates.
+    // One entry per free tool (the /tools hub is a static route above). en-only:
+    // the non-English locales are retired (308 → /en), so no hreflang alternates.
     ...ALL_TOOLS.map((tool) =>
-      entry(`/tools/${tool.slug}`, {
-        changeFrequency: "monthly",
-        priority: 0.6,
-        hreflang: TRANSLATED_LOCALES,
-      })
+      entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6 })
     ),
 
     // Template detail pages (canonical /{category}/{slug} shape)

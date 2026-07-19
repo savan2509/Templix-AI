@@ -9,7 +9,7 @@ import Schema from "@/components/seo/Schema";
 import { buildFaqSchema } from "@/lib/blog-seo";
 import { ALL_TOOLS, getTool } from "@/data/tools";
 import { getAiTool } from "@/data/ai-tools";
-import { getLocalizedTool, FULLY_TRANSLATED_LOCALES } from "@/lib/i18n/content";
+import { getLocalizedTool } from "@/lib/i18n/content";
 
 // Answer-Engine Optimization: give every tool page a short, honest FAQ so AI
 // search (Google AI Overview, ChatGPT, Perplexity, etc.) and Google's Q&A rich
@@ -53,8 +53,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     slug: `/tools/${tool.slug}`,
     locale,
     keywords: tool.keywords,
-    // Every tool is translated in all locales → self-canonical + hreflang.
-    hreflangLocales: FULLY_TRANSLATED_LOCALES,
   }) as Metadata;
 }
 
