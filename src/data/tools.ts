@@ -84,6 +84,16 @@ export const TOOLS: ToolMeta[] = [
     icon: "Clock",
   },
   {
+    slug: "notice-period-calculator",
+    category: "invoice",
+    title: "Notice Period Calculator",
+    short: "Notice Period Calculator",
+    description:
+      "Free notice period calculator. Enter your resignation date and notice length to find your exact last working day, with an option to offset it using leave.",
+    keywords: ["notice period calculator", "last working day calculator", "resignation date calculator", "notice period end date"],
+    icon: "Clock",
+  },
+  {
     slug: "merge-pdf",
     category: "pdf",
     title: "Merge PDF Files",

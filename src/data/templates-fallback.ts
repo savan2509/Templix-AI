@@ -28,6 +28,7 @@ import { quotationsExtraTemplates } from "./templates/quotations-extra";
 import { indiaLettersTemplates } from "./templates/india-letters";
 import { indiaInvoicesTemplates } from "./templates/india-invoices";
 import { indiaContractsTemplates } from "./templates/india-contracts";
+import { indiaExtraTemplates } from "./templates/india-extra";
 
 export const allFallbackTemplates: any[] = [
   ...invoicesTemplates,
@@ -49,4 +50,5 @@ export const allFallbackTemplates: any[] = [
   ...indiaLettersTemplates,
   ...indiaInvoicesTemplates,
   ...indiaContractsTemplates,
+  ...indiaExtraTemplates,
 ];

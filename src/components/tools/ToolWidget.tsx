@@ -246,8 +246,58 @@ function HourlyRateCalculator() {
   );
 }
 
+// Notice Period Calculator — last-working-day from a resignation date + notice
+// length, with an optional leave adjustment. Runs entirely in the browser.
+function NoticePeriodCalculator() {
+  const [resignDate, setResignDate] = useState("");
+  const [amount, setAmount] = useState("30");
+  const [unit, setUnit] = useState<"days" | "months">("days");
+  const [leaveOffset, setLeaveOffset] = useState("0");
+
+  let lastDay = "";
+  let totalDays = 0;
+  if (resignDate) {
+    const start = new Date(`${resignDate}T00:00:00`);
+    if (!isNaN(start.getTime())) {
+      const end = new Date(start);
+      if (unit === "months") end.setMonth(end.getMonth() + Math.max(0, Math.round(num(amount))));
+      else end.setDate(end.getDate() + Math.max(0, Math.round(num(amount))));
+      end.setDate(end.getDate() - Math.max(0, Math.round(num(leaveOffset))));
+      totalDays = Math.max(0, Math.round((end.getTime() - start.getTime()) / 86400000));
+      lastDay = end.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    }
+  }
+
+  return (
+    <Card>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Resignation / last-day-of-service date">
+          <input type="date" className={inputCls} value={resignDate} onChange={(e) => setResignDate(e.target.value)} />
+        </Field>
+        <Field label="Notice period">
+          <input className={inputCls} inputMode="numeric" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        </Field>
+        <Field label="Notice unit">
+          <select value={unit} onChange={(e) => setUnit(e.target.value as "days" | "months")} className={`${inputCls} cursor-pointer`}>
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+          </select>
+        </Field>
+        <Field label="Leave to offset the notice (days)">
+          <input className={inputCls} inputMode="numeric" value={leaveOffset} onChange={(e) => setLeaveOffset(e.target.value)} />
+        </Field>
+      </div>
+      <div className="mt-6">
+        <ResultRow label="Total notice days served" value={resignDate ? String(totalDays) : "—"} />
+        <ResultRow label="Last working day" value={lastDay || "—"} strong />
+      </div>
+    </Card>
+  );
+}
+
 const WIDGETS: Record<string, () => React.ReactElement> = {
   "gst-calculator": GstCalculator,
+  "notice-period-calculator": NoticePeriodCalculator,
   "discount-calculator": DiscountCalculator,
   "profit-margin-calculator": MarginCalculator,
   "invoice-number-generator": InvoiceNumberGenerator,
