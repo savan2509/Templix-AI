@@ -217,18 +217,18 @@ export default function Navbar() {
               <Image
                 src="/Templix-ai-light.png"
                 alt="Templix AI"
-                width={36}
-                height={36}
+                width={48}
+                height={48}
                 priority
-                className="h-9 w-9 rounded-xl object-contain dark:hidden group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-12 rounded-xl object-contain dark:hidden group-hover:scale-105 transition-transform duration-300"
               />
               <Image
                 src="/Templix-ai-dark.png"
                 alt="Templix AI"
-                width={36}
-                height={36}
+                width={48}
+                height={48}
                 priority
-                className="hidden h-9 w-9 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
+                className="hidden h-12 w-12 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
 
