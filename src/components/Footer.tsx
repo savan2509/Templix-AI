@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 import {
-  Sparkles,
   Mail,
   ArrowRight,
   Heart,
@@ -64,9 +64,8 @@ export default function Footer() {
               href={`/${locale}`} 
               className="flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
             >
-              <div className="flex items-center justify-center h-8.5 w-8.5 rounded-lg bg-gradient-to-tr from-blue-500 to-indigo-600 shadow-sm shadow-blue-500/10">
-                <Sparkles className="h-4.5 w-4.5 text-white" />
-              </div>
+              <Image src="/Templix-ai-light.png" alt="Templix AI" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
+              <Image src="/Templix-ai-dark.png" alt="Templix AI" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
               <span>Templix<span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
             </Link>
             

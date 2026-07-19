@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
@@ -211,9 +212,24 @@ export default function Navbar() {
               href={`/${currentLocale}`}
               className="group flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
             >
-              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                <Sparkles className="h-5 w-5 text-white animate-pulse" />
-              </div>
+              {/* Theme-aware logo: light mark in light mode, dark mark in dark
+                  mode. Swapped via CSS `dark:` so there's no hydration flicker. */}
+              <Image
+                src="/Templix-ai-light.png"
+                alt="Templix AI"
+                width={36}
+                height={36}
+                priority
+                className="h-9 w-9 rounded-xl object-contain dark:hidden group-hover:scale-105 transition-transform duration-300"
+              />
+              <Image
+                src="/Templix-ai-dark.png"
+                alt="Templix AI"
+                width={36}
+                height={36}
+                priority
+                className="hidden h-9 w-9 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
+              />
               <span className="transition-all duration-200 group-hover:translate-x-0.5">
                 Templix<span className="text-zinc-900 dark:text-white font-extrabold">AI</span>
               </span>
