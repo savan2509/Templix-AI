@@ -393,7 +393,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   tenantSignature: "Marcus Lang",
 
   // — Sales Contract —
-  sellerName: "Daniel Craig",
+  sellerName: "Marcus Craig",
   sellerCompany: "Craig Automotive Dealers",
   sellerAddress: "890 Auto Row, Detroit, MI 48201",
   buyerName: "Jonathan Reed",
@@ -1028,7 +1028,7 @@ export const SLUG_BRAND: Record<string, string> = {
   "consulting-agreement": "Turing Consulting",
   "rental-agreement": "Hendricks Properties",
   "sales-contract": "Craig Automotive",
-  "partnership-agreement": "Pied Piper Inc.",
+  "partnership-agreement": "Northgate Partners",
   "vendor-agreement": "Global Hardware Corp",
   "residential-lease-agreement": "Palo Alto Realty",
   "influencer-collaboration-agreement": "Nova Brands",
@@ -1386,8 +1386,8 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
   "sales-contract": {
     deliveryAddress: "1400 Commerce Center Dr, Detroit, MI 48226",
     governingLaw: "the laws of the State of Michigan",
-    sellerSignature: "Daniel Craig",
-    buyerSignature: "James Bond"
+    sellerSignature: "Marcus Craig",
+    buyerSignature: "Jonathan Reed"
   },
   "vendor-agreement": {
     deliverySchedule: "Monthly deliveries by the 5th of each month"
