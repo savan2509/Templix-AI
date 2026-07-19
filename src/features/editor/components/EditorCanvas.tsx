@@ -6,8 +6,14 @@ import StarterKit from "@tiptap/starter-kit";
 import { TableKit } from "@tiptap/extension-table";
 import { exportToDocx, exportToPdf } from "../services";
 import { saveDocumentAction, rewriteTextAction } from "../actions";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { TemplateEngine } from "@/features/templates/engine";
+import {
+  trackTemplateOpened,
+  trackTemplateCustomized,
+  trackPdfExported,
+  trackDocxExported,
+} from "@/lib/analytics";
 import {
   Bold,
   Italic,
@@ -39,7 +45,15 @@ export default function EditorCanvas({
 }: EditorCanvasProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const currentLocale = pathname.split("/")[1] || "en";
+
+  // GA4 label: the template being edited (from ?template=slug), falling back to
+  // the document id for a saved doc.
+  const gaTemplate = searchParams.get("template") || docId;
+  // Fire template_opened once per mount; guard the "first edit" event too.
+  const openedRef = useRef(false);
+  const customizedRef = useRef(false);
 
   const [title, setTitle] = useState(initialTitle);
   const [saveStatus, setSaveStatus] = useState<"saved" | "saving" | "error">("saved");
@@ -121,10 +135,22 @@ export default function EditorCanvas({
       },
     },
     onUpdate({ editor }) {
+      // First real edit → engagement signal (fires once per session).
+      if (!customizedRef.current) {
+        customizedRef.current = true;
+        trackTemplateCustomized(gaTemplate);
+      }
       const json = editor.getJSON();
       handleSave(json, titleRef.current);
     },
   });
+
+  // Template opened in the editor — fire once on mount.
+  useEffect(() => {
+    if (openedRef.current) return;
+    openedRef.current = true;
+    trackTemplateOpened(gaTemplate);
+  }, [gaTemplate]);
 
   // Track title updates and trigger save
   const handleTitleChange = (newTitle: string) => {
@@ -143,6 +169,7 @@ export default function EditorCanvas({
       return;
     }
     exportToPdf(editor.getJSON(), title);
+    trackPdfExported(gaTemplate); // primary conversion
   };
 
   const handleExportDOCX = () => {
@@ -151,6 +178,7 @@ export default function EditorCanvas({
       return;
     }
     exportToDocx(editor.getJSON(), title);
+    trackDocxExported(gaTemplate); // primary conversion
   };
 
   const handleCopyText = () => {

@@ -109,10 +109,12 @@ export default async function RootLayout({
           </ThemeProvider>
         </AuthProvider>
         <Analytics />
+        {/* GA4 — only mounts when the Measurement ID is set (env-gated so local
+            builds without it stay clean). Inside <body> for valid HTML nesting. */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
-      {process.env.NEXT_PUBLIC_GA_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-      )}
     </html>
   );
 }
