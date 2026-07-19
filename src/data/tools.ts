@@ -94,6 +94,16 @@ export const TOOLS: ToolMeta[] = [
     icon: "Clock",
   },
   {
+    slug: "salary-breakup-calculator",
+    category: "invoice",
+    title: "Salary Breakup Calculator (CTC to In-Hand)",
+    short: "CTC Calculator",
+    description:
+      "Free CTC to in-hand salary calculator. Break your annual CTC into Basic, HRA, PF, gratuity and allowances, and estimate your monthly take-home pay (India).",
+    keywords: ["ctc calculator", "in hand salary calculator", "salary breakup calculator", "ctc to in hand salary", "take home salary calculator india"],
+    icon: "Calculator",
+  },
+  {
     slug: "merge-pdf",
     category: "pdf",
     title: "Merge PDF Files",

@@ -295,9 +295,79 @@ function NoticePeriodCalculator() {
   );
 }
 
+// Salary Breakup / CTC → In-Hand Calculator (India). Breaks an annual CTC into
+// the standard components and estimates monthly take-home. Runs in the browser.
+function SalaryBreakupCalculator() {
+  const [ctc, setCtc] = useState("1200000");
+  const [metro, setMetro] = useState(true);
+  const c = num(ctc);
+  const inr = (n: number) => "₹" + Math.round(n).toLocaleString("en-IN");
+
+  // Standard Indian CTC structure.
+  const basic = c * 0.5;                          // Basic = 50% of CTC
+  const hra = basic * (metro ? 0.5 : 0.4);        // HRA = 50% (metro) / 40% (non-metro) of Basic
+  const employerPf = Math.min(basic, 180000) * 0.12; // employer PF (part of CTC)
+  const gratuity = basic * 0.0481;                // ~4.81% of Basic
+  const special = Math.max(0, c - basic - hra - employerPf - gratuity);
+
+  const grossAnnual = basic + hra + special;      // paid monthly (employer PF/gratuity are CTC, not paid out)
+  const employeePf = Math.min(basic, 180000) * 0.12;
+  const profTax = 2400;                           // ₹200/month (varies by state)
+
+  // Simplified new-regime (FY 2025-26) income-tax estimate: ₹75k standard
+  // deduction, 87A rebate up to ₹12L taxable, then slabs + 4% cess.
+  const taxable = Math.max(0, grossAnnual - 75000);
+  let tax = 0;
+  const brackets: [number, number][] = [
+    [400000, 0], [800000, 0.05], [1200000, 0.1], [1600000, 0.15],
+    [2000000, 0.2], [2400000, 0.25], [Infinity, 0.3],
+  ];
+  let prev = 0;
+  for (const [cap, rate] of brackets) {
+    if (taxable <= prev) break;
+    tax += (Math.min(taxable, cap) - prev) * rate;
+    prev = cap;
+  }
+  if (taxable <= 1200000) tax = 0; // Section 87A rebate under the new regime
+  tax *= 1.04;                     // 4% health & education cess
+
+  const inHandMonthly = (grossAnnual - employeePf - profTax - tax) / 12;
+
+  return (
+    <Card>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Annual CTC (₹)">
+          <input className={inputCls} inputMode="decimal" value={ctc} onChange={(e) => setCtc(e.target.value)} />
+        </Field>
+        <Field label="City">
+          <select value={metro ? "metro" : "non"} onChange={(e) => setMetro(e.target.value === "metro")} className={`${inputCls} cursor-pointer`}>
+            <option value="metro">Metro (50% HRA)</option>
+            <option value="non">Non-metro (40% HRA)</option>
+          </select>
+        </Field>
+      </div>
+      <div className="mt-6">
+        <ResultRow label="Basic (50% of CTC)" value={inr(basic)} />
+        <ResultRow label="HRA" value={inr(hra)} />
+        <ResultRow label="Special allowance" value={inr(special)} />
+        <ResultRow label="Employer PF (in CTC)" value={inr(employerPf)} />
+        <ResultRow label="Gratuity (in CTC)" value={inr(gratuity)} />
+        <ResultRow label="Less: Employee PF" value={inr(employeePf)} />
+        <ResultRow label="Less: Professional tax" value={inr(profTax)} />
+        <ResultRow label="Less: Income tax (est., new regime)" value={inr(tax)} />
+        <ResultRow label="Estimated in-hand / month" value={inr(inHandMonthly)} strong />
+      </div>
+      <p className="mt-3 text-xs text-zinc-400 dark:text-zinc-500 leading-relaxed">
+        Estimate only. Actual tax depends on your regime, declarations and investments; the exact Basic/HRA split and PF/gratuity terms vary by employer.
+      </p>
+    </Card>
+  );
+}
+
 const WIDGETS: Record<string, () => React.ReactElement> = {
   "gst-calculator": GstCalculator,
   "notice-period-calculator": NoticePeriodCalculator,
+  "salary-breakup-calculator": SalaryBreakupCalculator,
   "discount-calculator": DiscountCalculator,
   "profit-margin-calculator": MarginCalculator,
   "invoice-number-generator": InvoiceNumberGenerator,
