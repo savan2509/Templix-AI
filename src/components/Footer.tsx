@@ -79,6 +79,18 @@ export default function Footer() {
               <span>{t.trustBadge}</span>
             </div>
 
+            {/* Smol Launch featured badge (third-party image → plain img). */}
+            <a href="https://smollaunch.com" target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://smollaunch.com/badges/featured.svg"
+                alt="templix-ai — Featured on Smol Launch"
+                loading="lazy"
+                width={250}
+                height={60}
+              />
+            </a>
+
             {/* Direct contact — highlighted so a visitor with a question can't
                 miss how to reach us. */}
             <a
