@@ -216,6 +216,24 @@ export default async function HomePage({ params }: PageProps) {
 
             {/* Global Search Component */}
             <SearchHero locale={locale} />
+
+            {/* StartupBase Launch Badge */}
+            <div className="flex justify-center pt-2" style={{animation: 'fadeIn 0.8s ease 0.3s both'}}>
+              <a
+                href="https://startupbase.io/products/templix-ai?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Launched on StartupBase"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://statics.startupbase.io/site/badges/launched-on-sb.svg"
+                  alt="Launched on StartupBase"
+                  height={55}
+                  style={{ height: "55px", width: "auto" }}
+                />
+              </a>
+            </div>
           </div>
         </section>
 
