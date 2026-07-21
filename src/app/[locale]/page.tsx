@@ -93,16 +93,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
+    // Single-locale site: es/fr/de/ar are retired (308 → /en, see proxy.ts), so
+    // the homepage canonicalizes to /en with no hreflang alternates. Emitting
+    // language alternates here would advertise locale URLs that only redirect.
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: {
-        en: `${SITE_URL}/en`,
-        es: `${SITE_URL}/es`,
-        de: `${SITE_URL}/de`,
-        fr: `${SITE_URL}/fr`,
-        ar: `${SITE_URL}/ar`,
-        "x-default": `${SITE_URL}/en`,
-      },
+      canonical: `${SITE_URL}/en`,
     },
     openGraph: {
       // Keep the OG/Twitter title aligned with the document <title> (brand
@@ -110,10 +105,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       // the page presents one consistent message in search and social.
       title: `${title} | Templix AI`,
       description,
-      url: `${SITE_URL}/${locale}`,
+      url: `${SITE_URL}/en`,
       siteName: "Templix AI",
       type: "website",
-      locale: locale === "ar" ? "ar_AR" : locale === "es" ? "es_ES" : locale === "de" ? "de_DE" : locale === "fr" ? "fr_FR" : "en_US",
+      locale: "en_US",
       images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: "Templix AI" }],
     },
     twitter: {
