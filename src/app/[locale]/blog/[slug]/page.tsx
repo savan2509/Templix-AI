@@ -313,7 +313,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
           <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
             <Image
               src={post.image}
-              alt={post.title}
+              alt=""
               fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"
@@ -568,7 +568,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     <div className="relative h-36 w-full overflow-hidden">
                       <Image
                         src={p.image}
-                        alt={p.title}
+                        alt=""
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

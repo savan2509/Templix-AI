@@ -499,7 +499,7 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-44 w-full overflow-hidden">
                     <Image
                       src={article.image}
-                      alt={article.title}
+                      alt=""
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"

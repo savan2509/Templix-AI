@@ -233,7 +233,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 <div className="md:w-64 lg:w-80 shrink-0 relative h-56 md:h-auto overflow-hidden">
                   <Image
                     src={featured.image}
-                    alt={featured.title}
+                    alt=""
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 320px"
@@ -303,7 +303,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                     <div className="relative h-44 w-full overflow-hidden">
                       <Image
                         src={post.image}
-                        alt={post.title}
+                        alt=""
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
