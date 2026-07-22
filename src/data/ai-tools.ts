@@ -691,6 +691,182 @@ export const AI_TOOLS: AiToolMeta[] = [
     promptTemplate:
       "Write 8 LinkedIn headline options for the person below. Each must stay under 220 characters, front-load the searchable job title/keywords, and make the value to others clear. Vary the format (title + specialism, outcome-led, keyword-stacked). Number them 1-8. Return only the headlines.\n\n{input}",
   },
+
+  // ── Marketing AI (more) ──────────────────────────────────────────────────────
+  {
+    slug: "email-subject-line-generator",
+    title: "Email Subject Line Generator",
+    short: "Subject Line Generator",
+    description:
+      "Free AI email subject line generator. Get high-open-rate subject lines for newsletters, cold emails and campaigns in seconds.",
+    keywords: ["email subject line generator", "ai subject line generator", "catchy email subject lines", "cold email subject line generator"],
+    icon: "Mail",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "What's the email about?",
+    inputPlaceholder: "e.g. Black Friday 40% off ending tonight for our skincare line",
+    outputLabel: "Subject lines",
+    promptTemplate:
+      "Generate 10 high-open-rate email subject lines for the email described below. Mix curiosity, urgency, benefit and personalization styles; keep most under 50 characters; avoid spammy all-caps and excessive punctuation. Number them 1-10. Return only the subject lines.\n\n{input}",
+  },
+  {
+    slug: "hashtag-generator",
+    title: "Hashtag Generator",
+    short: "Hashtag Generator",
+    description:
+      "Free AI hashtag generator. Get relevant, mixed-reach hashtags for Instagram, TikTok, LinkedIn and X from any topic or caption.",
+    keywords: ["hashtag generator", "ai hashtag generator", "instagram hashtag generator", "hashtags for instagram"],
+    icon: "Hash",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "Post topic or caption",
+    inputPlaceholder: "e.g. Homemade sourdough bread baking tips for beginners",
+    outputLabel: "Hashtags",
+    options: [
+      { key: "platform", label: "Platform", values: ["Instagram", "TikTok", "LinkedIn", "X (Twitter)"] },
+    ],
+    promptTemplate:
+      "Generate 20-30 relevant {platform} hashtags for the post below. Mix high-reach, medium and niche tags for better discovery, grouped by reach. Do not invent fake brand hashtags. Return only the hashtags.\n\n{input}",
+  },
+  {
+    slug: "call-to-action-generator",
+    title: "Call to Action Generator",
+    short: "CTA Generator",
+    description:
+      "Free AI call-to-action generator. Get punchy CTA button text and lines for landing pages, ads and emails that drive clicks.",
+    keywords: ["call to action generator", "cta generator", "ai cta generator", "button text generator"],
+    icon: "Megaphone",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "What you're promoting + the action",
+    inputPlaceholder: "e.g. Free invoice template — want them to click and customize it",
+    outputLabel: "CTAs",
+    promptTemplate:
+      "Write 12 call-to-action options for the offer below: a mix of short button text (2-4 words) and one-line CTAs. Make them action-led and benefit-driven, not generic like 'Submit'. Number them 1-12. Return only the CTAs.\n\n{input}",
+  },
+
+  // ── Business AI (more) ───────────────────────────────────────────────────────
+  {
+    slug: "value-proposition-generator",
+    title: "Value Proposition Generator",
+    short: "Value Proposition",
+    description:
+      "Free AI value proposition generator. Turn your product and audience into a clear value proposition that explains why you're worth it.",
+    keywords: ["value proposition generator", "ai value proposition generator", "unique value proposition generator", "value prop generator"],
+    icon: "Tag",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Product + audience + main benefit",
+    inputPlaceholder: "e.g. Free document templates for freelancers who want to send invoices fast",
+    outputLabel: "Value propositions",
+    promptTemplate:
+      "Write 5 value proposition options for the business below. Each names the target customer, the core benefit, and what makes it different — in one or two crisp sentences, no jargon. Number them 1-5. Return only the value propositions.\n\n{input}",
+  },
+  {
+    slug: "mission-statement-generator",
+    title: "Mission Statement Generator",
+    short: "Mission Statement",
+    description:
+      "Free AI mission statement generator. Describe your company and get a clear, inspiring mission statement for your website or plan.",
+    keywords: ["mission statement generator", "ai mission statement generator", "company mission statement", "vision statement generator"],
+    icon: "Quote",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "What your company does + why",
+    inputPlaceholder: "e.g. We make professional document creation free and instant for small businesses",
+    outputLabel: "Mission statements",
+    promptTemplate:
+      "Write 5 mission statement options for the company described below. Keep each to 1-2 sentences: clear, specific and free of buzzwords, stating who you serve and the change you create. Number them 1-5. Return only the statements.\n\n{input}",
+  },
+  {
+    slug: "performance-review-generator",
+    title: "Performance Review Generator",
+    short: "Performance Review",
+    description:
+      "Free AI performance review generator. Turn notes on an employee (or yourself) into a balanced, professional review with examples.",
+    keywords: ["performance review generator", "ai performance review generator", "self appraisal generator", "employee review generator"],
+    icon: "ClipboardCheck",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Role + notes on performance",
+    inputPlaceholder: "e.g. Support rep — cut response time, mentored 2 hires, sometimes misses docs",
+    outputLabel: "Performance review",
+    options: [
+      { key: "pointOfView", label: "Point of view", values: ["Manager review", "Self-appraisal"] },
+    ],
+    promptTemplate:
+      "Write a balanced, professional {pointOfView} from the notes below. Cover Strengths, Areas for Improvement and Goals, using specific behavior-based examples (no vague praise) and a constructive, respectful tone. Return only the review.\n\n{input}",
+  },
+
+  // ── AI Writing (more) ────────────────────────────────────────────────────────
+  {
+    slug: "thank-you-note-generator",
+    title: "Thank You Note Generator",
+    short: "Thank You Note",
+    description:
+      "Free AI thank you note generator. Write a warm, personal thank-you message for a gift, interview, client or colleague in seconds.",
+    keywords: ["thank you note generator", "ai thank you note generator", "thank you message generator", "thank you letter generator"],
+    icon: "ScrollText",
+    category: "ai",
+    group: "AI Writing",
+    inputLabel: "Who + what for",
+    inputPlaceholder: "e.g. Thank a client for a referral that led to a new project",
+    outputLabel: "Thank you note",
+    options: [TONE],
+    promptTemplate:
+      "Write a warm, sincere thank-you note for the situation below in a {tone} tone. Be specific about what you're grateful for and its impact, keep it concise, and close naturally. Return only the note.\n\n{input}",
+  },
+  {
+    slug: "complaint-letter-generator",
+    title: "Complaint Letter Generator",
+    short: "Complaint Letter",
+    description:
+      "Free AI complaint letter generator. Describe the issue and get a firm, professional complaint letter that gets a resolution.",
+    keywords: ["complaint letter generator", "ai complaint letter generator", "complaint letter writer", "how to write a complaint letter"],
+    icon: "Scale",
+    category: "ai",
+    group: "AI Writing",
+    inputLabel: "The issue + what you want",
+    inputPlaceholder: "e.g. Laptop arrived damaged — want a replacement or refund within 7 days",
+    outputLabel: "Complaint letter",
+    promptTemplate:
+      "Write a firm but professional complaint letter from the details below. State the facts and dates clearly, explain the impact, and end with a specific, reasonable resolution and deadline in an assertive, courteous tone. Use [brackets] for missing details. Return only the letter.\n\n{input}",
+  },
+  {
+    slug: "conclusion-generator",
+    title: "Conclusion Generator",
+    short: "Conclusion Generator",
+    description:
+      "Free AI conclusion generator. Paste your essay, article or report and get a strong closing paragraph that ties it together.",
+    keywords: ["conclusion generator", "ai conclusion generator", "essay conclusion generator", "conclusion paragraph generator"],
+    icon: "AlignLeft",
+    category: "ai",
+    group: "AI Writing",
+    inputLabel: "Your text (or key points)",
+    inputPlaceholder: "Paste the essay/article, or its main points, to conclude…",
+    outputLabel: "Conclusion",
+    promptTemplate:
+      "Write a strong concluding paragraph for the text below. Restate the main point in fresh words, tie the key ideas together, and end with a memorable closing thought — without introducing new arguments. Return only the conclusion.\n\n{input}",
+  },
+
+  // ── Resume AI (more) ─────────────────────────────────────────────────────────
+  {
+    slug: "linkedin-summary-generator",
+    title: "LinkedIn Summary Generator",
+    short: "LinkedIn Summary",
+    description:
+      "Free AI LinkedIn summary generator. Turn your role and achievements into a compelling LinkedIn 'About' section that gets you noticed.",
+    keywords: ["linkedin summary generator", "ai linkedin summary generator", "linkedin about section generator", "linkedin bio generator"],
+    icon: "Users",
+    category: "ai",
+    group: "Resume AI",
+    inputLabel: "Your role, skills & achievements",
+    inputPlaceholder: "e.g. Marketing manager, 6 years, grew organic traffic 3x, led a team of 4, SaaS",
+    outputLabel: "LinkedIn summary",
+    options: [TONE],
+    promptTemplate:
+      "Write a compelling first-person LinkedIn 'About' summary from the details below in a {tone} tone. Open with a strong hook, cover what you do, key achievements with specifics, and what you're looking for, in short readable paragraphs. Return only the summary.\n\n{input}",
+  },
 ];
 
 export function getAiTool(slug: string): AiToolMeta | undefined {
