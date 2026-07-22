@@ -251,9 +251,10 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-28 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      // Decorative cover — the link's visible label + count already
-                      // name it, so empty alt avoids a duplicate screen-reader announce.
-                      alt=""
+                      // Informative category visual — a descriptive alt helps this
+                      // rank in Google Images for "{category} templates" and gives
+                      // the cover meaning for assistive tech.
+                      alt={`Free ${categoryName(cat.slug)} templates`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
