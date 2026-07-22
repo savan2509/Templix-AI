@@ -373,7 +373,10 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  {t.pillar1Desc}
+                  {/* Live template count, rounded down to a clean "N+" so the
+                      claim is always accurate as the catalog grows (was a stale
+                      hardcoded "200+"). */}
+                  {t.pillar1Desc.replace("{count}", String(Math.floor(allFallbackTemplates.length / 10) * 10))}
                 </p>
               </div>
 

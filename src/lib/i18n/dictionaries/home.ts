@@ -18,7 +18,7 @@ const en = {
     "Combining high-quality layout directories, AI text processing, and print-ready downloads.",
   pillar1Title: "1. Choose a Template",
   pillar1Desc:
-    "Search and discover 200+ professionally designed templates across invoices, resumes, contracts, proposals, and more.",
+    "Search and discover {count}+ professionally designed templates across invoices, resumes, contracts, proposals, and more.",
   pillar2Title: "2. AI-Powered Writing",
   pillar2Desc:
     "Adjust the tone, rewrite paragraphs, and fix grammar instantly with the built-in AI writing assistant, right inside the editor.",
@@ -82,7 +82,7 @@ const es: Shape = {
     "Combinando directorios de diseños de alta calidad, procesamiento de texto con IA y descargas listas para imprimir.",
   pillar1Title: "1. Elige una plantilla",
   pillar1Desc:
-    "Busca y descubre más de 200 plantillas diseñadas profesionalmente de facturas, currículums, contratos, propuestas y más.",
+    "Busca y descubre más de {count} plantillas diseñadas profesionalmente de facturas, currículums, contratos, propuestas y más.",
   pillar2Title: "2. Redacción con IA",
   pillar2Desc:
     "Ajusta el tono, reescribe párrafos y corrige errores gramaticales al instante con nuestra capa de modelos de IA intercambiables dentro del espacio visual Tiptap.",
@@ -144,7 +144,7 @@ const de: Shape = {
     "Kombiniert hochwertige Layout-Verzeichnisse, KI-Textverarbeitung und druckfertige Downloads.",
   pillar1Title: "1. Vorlage wählen",
   pillar1Desc:
-    "Durchsuche und entdecke über 200 professionell gestaltete Vorlagen für Rechnungen, Lebensläufe, Verträge, Angebote und mehr.",
+    "Durchsuche und entdecke über {count} professionell gestaltete Vorlagen für Rechnungen, Lebensläufe, Verträge, Angebote und mehr.",
   pillar2Title: "2. KI-gestütztes Schreiben",
   pillar2Desc:
     "Passe den Ton an, schreibe Absätze um und korrigiere Grammatikfehler sofort mit unserer austauschbaren KI-Modellschicht im visuellen Tiptap-Arbeitsbereich.",
@@ -206,7 +206,7 @@ const fr: Shape = {
     "Alliant des répertoires de mises en page de qualité, le traitement de texte par IA et des téléchargements prêts à imprimer.",
   pillar1Title: "1. Choisissez un modèle",
   pillar1Desc:
-    "Recherchez et découvrez plus de 200 modèles conçus par des professionnels : factures, CV, contrats, propositions et plus encore.",
+    "Recherchez et découvrez plus de {count} modèles conçus par des professionnels : factures, CV, contrats, propositions et plus encore.",
   pillar2Title: "2. Rédaction assistée par IA",
   pillar2Desc:
     "Ajustez le ton, réécrivez des paragraphes et corrigez les fautes de grammaire instantanément grâce à notre couche de modèles IA interchangeables dans l’espace visuel Tiptap.",
@@ -267,7 +267,7 @@ const ar: Shape = {
     "يجمع بين أدلة تصاميم عالية الجودة ومعالجة النصوص بالذكاء الاصطناعي وتنزيلات جاهزة للطباعة.",
   pillar1Title: "١. اختر قالبًا",
   pillar1Desc:
-    "ابحث واكتشف أكثر من 200 قالبًا مصممًا باحترافية للفواتير والسير الذاتية والعقود والمقترحات والمزيد.",
+    "ابحث واكتشف أكثر من {count} قالبًا مصممًا باحترافية للفواتير والسير الذاتية والعقود والمقترحات والمزيد.",
   pillar2Title: "٢. كتابة مدعومة بالذكاء الاصطناعي",
   pillar2Desc:
     "اضبط النبرة وأعد صياغة الفقرات وصحّح الأخطاء النحوية فورًا باستخدام طبقة نماذج الذكاء الاصطناعي القابلة للتبديل داخل مساحة عمل Tiptap المرئية.",
