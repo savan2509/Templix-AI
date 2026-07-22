@@ -867,6 +867,180 @@ export const AI_TOOLS: AiToolMeta[] = [
     promptTemplate:
       "Write a compelling first-person LinkedIn 'About' summary from the details below in a {tone} tone. Open with a strong hook, cover what you do, key achievements with specifics, and what you're looking for, in short readable paragraphs. Return only the summary.\n\n{input}",
   },
+
+  // ── Business AI (more) ───────────────────────────────────────────────────────
+  {
+    slug: "review-response-generator",
+    title: "Review Response Generator",
+    short: "Review Response",
+    description:
+      "Free AI review response generator. Reply to Google, Yelp and app-store reviews — positive or negative — professionally in seconds.",
+    keywords: ["review response generator", "ai review reply generator", "respond to google reviews", "negative review response generator"],
+    icon: "MessageSquare",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Paste the customer review",
+    inputPlaceholder: "Paste the review you want to respond to…",
+    outputLabel: "Response",
+    options: [TONE],
+    promptTemplate:
+      "Write a professional {tone} reply to the customer review below. Thank them, address the specific points they raised, and for negative reviews stay calm and constructive — acknowledge, apologize where fair, and offer to make it right, never defensive. Keep it concise. Return only the reply.\n\n{input}",
+  },
+  {
+    slug: "out-of-office-generator",
+    title: "Out of Office Message Generator",
+    short: "Out of Office",
+    description:
+      "Free AI out-of-office generator. Create a professional auto-reply for holidays, leave or travel with dates and a backup contact.",
+    keywords: ["out of office message generator", "ai out of office generator", "auto reply message generator", "vacation auto reply generator"],
+    icon: "Clock",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "Dates + backup contact + reason (optional)",
+    inputPlaceholder: "e.g. Away Aug 5-12, contact priya@company.com for urgent, back Aug 13",
+    outputLabel: "Out-of-office message",
+    options: [TONE],
+    promptTemplate:
+      "Write a {tone} out-of-office auto-reply from the details below. State the dates away, when you'll respond, and who to contact for urgent matters. Keep it brief and clear. Return only the message.\n\n{input}",
+  },
+  {
+    slug: "survey-question-generator",
+    title: "Survey Question Generator",
+    short: "Survey Questions",
+    description:
+      "Free AI survey question generator. Get clear, unbiased survey questions for feedback, research or NPS on any topic.",
+    keywords: ["survey question generator", "ai survey generator", "questionnaire generator", "feedback survey questions"],
+    icon: "Users",
+    category: "ai",
+    group: "Business AI",
+    inputLabel: "What you want to learn",
+    inputPlaceholder: "e.g. Why free-trial users don't upgrade to paid",
+    outputLabel: "Survey questions",
+    promptTemplate:
+      "Generate a set of clear, unbiased survey questions to learn what's described below. Include a mix of types (multiple choice, a 1-5 rating scale, and one or two open-ended), avoid leading or double-barreled wording, and group them logically. Return only the questions.\n\n{input}",
+  },
+
+  // ── Marketing AI (more) ──────────────────────────────────────────────────────
+  {
+    slug: "follow-up-email-generator",
+    title: "Follow-Up Email Generator",
+    short: "Follow-Up Email",
+    description:
+      "Free AI follow-up email generator. Write polite, effective follow-up emails after meetings, quotes, applications or no replies.",
+    keywords: ["follow up email generator", "ai follow up email generator", "sales follow up email generator", "polite follow up email"],
+    icon: "Mail",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "Context (what you're following up on)",
+    inputPlaceholder: "e.g. Sent a quote 5 days ago, no reply, want to nudge without being pushy",
+    outputLabel: "Follow-up email",
+    options: [TONE],
+    promptTemplate:
+      "Write a {tone} follow-up email for the situation below. Reference the prior context briefly, add a light reason to reply now, keep it under 120 words, and end with a clear low-friction next step. Include a subject line. Return only the email.\n\n{input}",
+  },
+  {
+    slug: "welcome-email-generator",
+    title: "Welcome Email Generator",
+    short: "Welcome Email",
+    description:
+      "Free AI welcome email generator. Onboard new subscribers, customers or employees with a warm, useful first email.",
+    keywords: ["welcome email generator", "ai welcome email generator", "onboarding email generator", "welcome email template"],
+    icon: "Sparkles",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "Who's being welcomed + next step",
+    inputPlaceholder: "e.g. New free-trial signup — welcome them and point to the getting-started guide",
+    outputLabel: "Welcome email",
+    options: [TONE],
+    promptTemplate:
+      "Write a warm {tone} welcome email for the scenario below. Include a subject line, a genuine welcome, one clear next step or quick win, and a friendly sign-off. Keep it concise. Return only the email.\n\n{input}",
+  },
+  {
+    slug: "newsletter-generator",
+    title: "Newsletter Generator",
+    short: "Newsletter Generator",
+    description:
+      "Free AI newsletter generator. Turn your updates into a clear, engaging email newsletter with a subject line and sections.",
+    keywords: ["newsletter generator", "ai newsletter generator", "email newsletter writer", "newsletter content generator"],
+    icon: "Newspaper",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "This edition's updates / topics",
+    inputPlaceholder: "e.g. New feature launch, a customer story, a tip, and an upcoming webinar",
+    outputLabel: "Newsletter",
+    options: [TONE],
+    promptTemplate:
+      "Write an engaging {tone} email newsletter from the updates below. Include a subject line, a short intro, 2-4 clearly-headed sections, and a closing call to action. Keep it scannable with short paragraphs. Return only the newsletter.\n\n{input}",
+  },
+  {
+    slug: "video-script-generator",
+    title: "Video Script Generator",
+    short: "Video Script",
+    description:
+      "Free AI video script generator. Get a hook, structured script and CTA for YouTube, TikTok, Reels or explainer videos.",
+    keywords: ["video script generator", "ai video script generator", "youtube script generator", "tiktok script generator"],
+    icon: "ScrollText",
+    category: "ai",
+    group: "Marketing AI",
+    inputLabel: "Video topic + length + platform",
+    inputPlaceholder: "e.g. 60-second TikTok explaining how to make a free invoice",
+    outputLabel: "Video script",
+    promptTemplate:
+      "Write a video script for the brief below. Open with a 3-second hook, deliver the content in a clear structure with on-screen cues where helpful, keep the pacing tight for the stated length, and end with a strong call to action. Return only the script.\n\n{input}",
+  },
+
+  // ── AI Writing (more) ────────────────────────────────────────────────────────
+  {
+    slug: "essay-outline-generator",
+    title: "Essay Outline Generator",
+    short: "Essay Outline",
+    description:
+      "Free AI essay outline generator. Turn a topic or prompt into a structured essay outline with thesis, points and evidence.",
+    keywords: ["essay outline generator", "ai essay outline generator", "essay structure generator", "essay plan generator"],
+    icon: "ListChecks",
+    category: "ai",
+    group: "AI Writing",
+    inputLabel: "Essay topic or prompt",
+    inputPlaceholder: "e.g. The impact of remote work on productivity",
+    outputLabel: "Essay outline",
+    options: [LENGTH],
+    promptTemplate:
+      "Create a {length} essay outline for the topic below. Include a working thesis, an introduction hook, 3-5 body sections each with a main point and supporting evidence/examples, and a conclusion. Return only the outline.\n\n{input}",
+  },
+  {
+    slug: "abstract-generator",
+    title: "Abstract Generator",
+    short: "Abstract Generator",
+    description:
+      "Free AI abstract generator. Paste your paper, report or project and get a concise, structured abstract in seconds.",
+    keywords: ["abstract generator", "ai abstract generator", "research abstract generator", "paper abstract writer"],
+    icon: "AlignLeft",
+    category: "ai",
+    group: "AI Writing",
+    inputLabel: "Your paper / report (or key points)",
+    inputPlaceholder: "Paste the paper or its objective, method, results and conclusion…",
+    outputLabel: "Abstract",
+    promptTemplate:
+      "Write a concise academic abstract (150-250 words) for the work below. Cover the background/objective, methods, key results and conclusion in a single structured paragraph, in a formal tone, without citations. Return only the abstract.\n\n{input}",
+  },
+
+  // ── Resume AI (more) ─────────────────────────────────────────────────────────
+  {
+    slug: "linkedin-recommendation-generator",
+    title: "LinkedIn Recommendation Generator",
+    short: "LinkedIn Recommendation",
+    description:
+      "Free AI LinkedIn recommendation generator. Write a specific, credible recommendation for a colleague, report or manager.",
+    keywords: ["linkedin recommendation generator", "ai linkedin recommendation generator", "recommendation generator", "write a linkedin recommendation"],
+    icon: "Award",
+    category: "ai",
+    group: "Resume AI",
+    inputLabel: "Who + your relationship + their strengths",
+    inputPlaceholder: "e.g. Managed Priya 2 years; led our redesign, great under pressure, mentors juniors",
+    outputLabel: "Recommendation",
+    promptTemplate:
+      "Write a specific, credible LinkedIn recommendation from the details below. State your relationship and how long, give 1-2 concrete examples of their strengths and impact, and close with a genuine endorsement. Keep it warm, professional and first-person. Return only the recommendation.\n\n{input}",
+  },
 ];
 
 export function getAiTool(slug: string): AiToolMeta | undefined {

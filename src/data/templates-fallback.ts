@@ -30,6 +30,16 @@ import { indiaInvoicesTemplates } from "./templates/india-invoices";
 import { indiaContractsTemplates } from "./templates/india-contracts";
 import { indiaExtraTemplates } from "./templates/india-extra";
 
+// Third wave — 10 more per category.
+import { invoicesExtra2Templates } from "./templates/invoices-extra2";
+import { resumesExtra2Templates } from "./templates/resumes-extra2";
+import { contractsExtra2Templates } from "./templates/contracts-extra2";
+import { proposalsExtra2Templates } from "./templates/proposals-extra2";
+import { lettersExtra2Templates } from "./templates/letters-extra2";
+import { reportsExtra2Templates } from "./templates/reports-extra2";
+import { businessPlansExtra2Templates } from "./templates/business-plans-extra2";
+import { quotationsExtra2Templates } from "./templates/quotations-extra2";
+
 export const allFallbackTemplates: any[] = [
   ...invoicesTemplates,
   ...invoicesExtraTemplates,
@@ -51,4 +61,12 @@ export const allFallbackTemplates: any[] = [
   ...indiaInvoicesTemplates,
   ...indiaContractsTemplates,
   ...indiaExtraTemplates,
+  ...invoicesExtra2Templates,
+  ...resumesExtra2Templates,
+  ...contractsExtra2Templates,
+  ...proposalsExtra2Templates,
+  ...lettersExtra2Templates,
+  ...reportsExtra2Templates,
+  ...businessPlansExtra2Templates,
+  ...quotationsExtra2Templates,
 ];
