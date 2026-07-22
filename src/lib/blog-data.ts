@@ -8,6 +8,8 @@ import { aiToolsPosts } from "./blog/posts-ai";
 import { contractsPosts } from "./blog/posts-contracts";
 import { proposalsPosts } from "./blog/posts-proposals";
 import { keywordMapPosts } from "./blog/posts-keyword-map";
+import { batch3aPosts } from "./blog/posts-batch3a";
+import { batch3bPosts } from "./blog/posts-batch3b";
 
 export interface BlogPost {
   id: string;
@@ -3307,6 +3309,8 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...contractsPosts,
   ...proposalsPosts,
   ...keywordMapPosts,
+  ...batch3aPosts,
+  ...batch3bPosts,
 ];
 
 // Helper — get a post by slug
