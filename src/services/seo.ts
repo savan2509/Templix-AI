@@ -1,4 +1,38 @@
 import { siteConfig } from "@/config/site";
+import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+
+// Template category -> blog category, so a template's "related guides" are
+// topically relevant instead of a fixed list. Reports/business-plans have no
+// dedicated blog category, so they draw from the general guides.
+const BLOG_CATEGORY_FOR_TEMPLATE: Record<string, string> = {
+  invoices: "Invoices",
+  quotations: "Invoices",
+  resumes: "Resumes",
+  contracts: "Contracts",
+  proposals: "Proposals",
+  letters: "Letters",
+  reports: "Guides",
+  "business-plans": "Guides",
+  // Tool categories are singular, so they share this map without colliding with
+  // the plural template categories above.
+  ai: "AI Tools",
+  pdf: "Guides",
+  resume: "Resumes",
+  invoice: "Invoices",
+  proposal: "Proposals",
+  contract: "Contracts",
+  letter: "Letters",
+};
+
+// Stable, non-random offset per slug so each template surfaces a *different*
+// slice of the matching posts. Without this, one hardcoded set of 8 posts got
+// every internal link and the other ~70 were effectively orphaned.
+function slugOffset(slug: string, modulo: number): number {
+  if (modulo <= 0) return 0;
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  return h % modulo;
+}
 
 export interface SEOPageData {
   title: string;
@@ -286,18 +320,23 @@ export class SEOEngine {
       href: `/${locale}/templates/${t.category}/${t.slug}`,
     }));
 
-    // NOTE: every href below must map to a real slug in STATIC_BLOG_POSTS,
-    // otherwise the template pages render dead links / soft-404s.
-    const relatedBlogs = [
-      { title: "How to Write a Freelance Invoice (Step-by-Step)", href: `/${locale}/blog/how-to-write-freelance-invoice` },
-      { title: "ATS Resume Format: Beat the Bots in 2026", href: `/${locale}/blog/ats-resume-format-guide` },
-      { title: "How to Write a Business Proposal That Wins Clients", href: `/${locale}/blog/how-to-write-a-business-proposal` },
-      { title: "Best Contract Templates for Freelancers & Businesses", href: `/${locale}/blog/best-contract-templates` },
-      { title: "Two Weeks Notice Letter: Templates & Etiquette", href: `/${locale}/blog/two-weeks-notice-letter` },
-      { title: "Best Cover Letter Examples for Every Job", href: `/${locale}/blog/best-cover-letter-examples` },
-      { title: "Thank You Letter After an Interview", href: `/${locale}/blog/thank-you-letter-after-interview` },
-      { title: "Web Design Proposal: Structure & Free Template", href: `/${locale}/blog/project-proposal-template-guide` },
-    ];
+    // Built from STATIC_BLOG_POSTS itself, so hrefs are always real slugs (a
+    // hardcoded list silently rots into dead links / soft-404s when a post is
+    // renamed) and every post gets internal links as the blog grows.
+    const wantedBlogCategory = BLOG_CATEGORY_FOR_TEMPLATE[categorySlug];
+    const onTopic = STATIC_BLOG_POSTS.filter((p) => p.category === wantedBlogCategory);
+    const offTopic = STATIC_BLOG_POSTS.filter((p) => p.category !== wantedBlogCategory);
+    // Rotate within the on-topic pool so sibling templates don't all link to the
+    // same posts, then top up from the rest to always fill 8 slots.
+    const rotated = onTopic.length
+      ? onTopic
+          .slice(slugOffset(currentSlug, onTopic.length))
+          .concat(onTopic.slice(0, slugOffset(currentSlug, onTopic.length)))
+      : [];
+    const relatedBlogs = [...rotated, ...offTopic]
+      .filter((p) => p.slug !== currentSlug)
+      .slice(0, 8)
+      .map((p) => ({ title: p.title, href: `/${locale}/blog/${p.slug}` }));
 
     const relatedCategories = [
       { name: "Invoices & Billings", href: `/${locale}/templates/invoices` },

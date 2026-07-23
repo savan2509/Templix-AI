@@ -101,6 +101,11 @@ export default async function ToolPage({ params }: PageProps) {
   const faqs = buildToolFaqs(tool, !!aiTool, t.howToBody);
   const faqSchema = buildFaqSchema(faqs);
 
+  // Tool pages linked to zero articles, leaving 80 pages with no path into the
+  // blog. Pull topically-matching guides (tool.category maps to a blog category).
+  const guides = SEOEngine.generateInternalLinks(tool.category, tool.slug, locale)
+    .relatedBlogs.slice(0, 4);
+
   return (
     <InfoPageShell
       locale={locale}
@@ -154,6 +159,20 @@ export default async function ToolPage({ params }: PageProps) {
           {t.orCreatePost}
         </p>
       </Section>
+
+      {guides.length > 0 && (
+        <Section heading="Related guides">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {guides.map((g) => (
+              <li key={g.href}>
+                <Link href={g.href} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                  {g.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
     </InfoPageShell>
   );
 }

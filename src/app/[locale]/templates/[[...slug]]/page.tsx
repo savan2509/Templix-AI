@@ -812,6 +812,15 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const categoryFaqSchema = pageFaqs ? faqPageSchema(pageFaqs) : null;
   const categoryDef = getCategoryDefinition(categorySlug);
 
+  // Category/niche listings previously linked to zero blog posts, so the guides
+  // were reachable only from the blog hub. These are the site's strongest pages,
+  // so link them into the topically-matching articles.
+  const listingGuides = SEOEngine.generateInternalLinks(
+    categorySlug ?? "",
+    nicheSlug || categorySlug || "templates",
+    locale
+  ).relatedBlogs.slice(0, 6);
+
   // CollectionPage wrapping the templates as an ItemList — tells Google the
   // category is an ordered collection (helps understanding + sitelinks).
   const collectionSchema = paginatedTemplates.length > 0
@@ -1117,6 +1126,30 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </section>
               ))}
             </article>
+          )}
+
+          {/* Related guides — internal links from the listing into the blog. */}
+          {listingGuides.length > 0 && (
+            <section className="mx-auto max-w-5xl border-t border-zinc-200 dark:border-zinc-800 pt-10 mt-10">
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">
+                {categoryDisplayName} guides &amp; how-tos
+              </h2>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6">
+                Step-by-step articles on writing, formatting and sending these documents.
+              </p>
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {listingGuides.map((b) => (
+                  <li key={b.href}>
+                    <Link
+                      href={b.href}
+                      className="block h-full rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      {b.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
         </div>
       </main>

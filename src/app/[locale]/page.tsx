@@ -129,8 +129,14 @@ export default async function HomePage({ params }: PageProps) {
     c.categoryNames[slug as keyof typeof c.categoryNames] ?? slug;
 
   let templates = fallbackTemplates;
-  // Use real static blog posts (first 2) — always valid slugs
-  let blogs = STATIC_BLOG_POSTS.slice(0, 2).map((p) => ({
+  // Newest static blog posts — always valid slugs. Sorted by date (not source
+  // order) so the section refreshes as posts are added instead of showing the
+  // same two forever, which also spreads internal links to the latest articles.
+  const HOME_BLOG_COUNT = 6;
+  let blogs = [...STATIC_BLOG_POSTS]
+    .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+    .slice(0, HOME_BLOG_COUNT)
+    .map((p) => ({
     id: p.id,
     slug: p.slug,
     title: p.title,
@@ -146,7 +152,7 @@ export default async function HomePage({ params }: PageProps) {
         db.template.findMany({ take: 3, include: { category: true } }),
         db.blog.findMany({
           where: { published: true },
-          take: 2,
+          take: HOME_BLOG_COUNT,
           orderBy: { createdAt: "desc" }
         })
       ]);
@@ -467,7 +473,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Featured Blogs Section — deferred paint until visible */}
-        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 500px'}}>
+        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 1200px'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
@@ -475,7 +481,7 @@ export default async function HomePage({ params }: PageProps) {
                   {t.blogsHeading}
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
-                  {t.blogsSubtitle}
+                  {t.blogsSubtitle.replace("{count}", String(STATIC_BLOG_POSTS.length))}
                 </p>
               </div>
               <Link
@@ -487,7 +493,7 @@ export default async function HomePage({ params }: PageProps) {
               </Link>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogs.map((article) => (
                 <Link
                   key={article.id}
@@ -501,7 +507,7 @@ export default async function HomePage({ params }: PageProps) {
                       alt=""
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <span className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white border border-white/30 backdrop-blur-sm">

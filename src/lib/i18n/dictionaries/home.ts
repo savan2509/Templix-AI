@@ -44,7 +44,8 @@ const en = {
     "Layout guidelines built under industry-standard schema structures ensure ATS compatibility and audit readiness.",
 
   blogsHeading: "Document Writing Tips & Guidelines",
-  blogsSubtitle: "Increase compilation quality with detailed step-by-step guides.",
+  blogsSubtitle:
+    "{count} in-depth guides on writing invoices, resumes, contracts, proposals, and more.",
 
   complianceHeading: "Document Standardization & Compliance",
   complianceText1:
