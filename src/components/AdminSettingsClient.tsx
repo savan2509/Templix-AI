@@ -344,7 +344,12 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
 
                   <button
                     onClick={() => toggleAd(key as keyof typeof adConfig)}
-                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                    // Unlabelled switch with no focus indicator: give it a name,
+                    // switch semantics and a visible focus-visible ring.
+                    role="switch"
+                    aria-checked={enabled}
+                    aria-label={`Toggle ${key.replace(/([A-Z])/g, " $1").trim()} ad slot`}
+                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                       enabled ? "bg-blue-600" : "bg-zinc-200 dark:bg-zinc-800"
                     }`}
                   >
@@ -389,7 +394,10 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
 
                   <button
                     onClick={() => toggleFlag(key as keyof typeof featureFlags)}
-                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                    role="switch"
+                    aria-checked={enabled}
+                    aria-label={`Toggle ${key.replace(/([A-Z])/g, " $1").trim()} feature`}
+                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 ${
                       enabled ? "bg-purple-600" : "bg-zinc-200 dark:bg-zinc-800"
                     }`}
                   >

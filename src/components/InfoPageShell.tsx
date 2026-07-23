@@ -29,7 +29,7 @@ export default function InfoPageShell({
         {/* Hero */}
         <header className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/30">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-14">
-            <nav className="mb-4 text-xs font-medium text-zinc-400 dark:text-zinc-500">
+            <nav className="mb-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
               <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{c.homeBreadcrumb}</Link>
               <span className="mx-1.5">/</span>
               <span className="text-zinc-600 dark:text-zinc-300">{title}</span>
@@ -48,7 +48,7 @@ export default function InfoPageShell({
               </p>
             )}
             {updated && (
-              <p className="mt-4 text-xs font-semibold text-zinc-400 dark:text-zinc-500">
+              <p className="mt-4 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                 {c.lastUpdated} {updated}
               </p>
             )}

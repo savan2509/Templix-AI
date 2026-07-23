@@ -182,7 +182,7 @@ export default function ForgotPasswordPage() {
                 we&apos;ll take you straight to the new-password form.
               </p>
             </div>
-            <div className="flex items-center justify-center gap-2 text-xs font-medium text-zinc-400 dark:text-zinc-500">
+            <div className="flex items-center justify-center gap-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
               <span>Waiting for you to open the link…</span>
             </div>

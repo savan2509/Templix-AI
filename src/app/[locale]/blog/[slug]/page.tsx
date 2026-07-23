@@ -313,7 +313,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
           <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
             <Image
               src={post.image}
-              alt=""
+              // The article's own cover — the single most Google-Images-eligible
+              // image on the page, so it gets a descriptive alt, not alt="".
+              alt={`${post.title} — illustration`}
               fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"
@@ -459,7 +461,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
               {/* Article info card */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.aboutArticle}</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.aboutArticle}</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-zinc-400" />
@@ -485,7 +487,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
               {/* Quick links */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.freeTemplatesLabel}</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.freeTemplatesLabel}</h3>
                 {[
                   { name: t.templatesCta.Invoices, href: `/${locale}/templates/invoices` },
                   { name: t.templatesCta.Resumes, href: `/${locale}/templates/resumes` },
@@ -508,7 +510,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Free tools — contextual to the article topic */}
               {relatedTools.length > 0 && (
                 <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.freeToolsLabel}</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.freeToolsLabel}</h3>
                   {relatedTools.map((tool) => (
                     <Link
                       key={tool.slug}
@@ -526,7 +528,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Related posts — hidden if none */}
               {related.length > 0 && (
                 <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-4">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{t.relatedArticles}</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.relatedArticles}</h3>
                   <div className="space-y-3">
                     {related.map((rel) => (
                       <Link
@@ -568,7 +570,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     <div className="relative h-36 w-full overflow-hidden">
                       <Image
                         src={p.image}
-                        alt=""
+                        alt={`${p.title} — illustration`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

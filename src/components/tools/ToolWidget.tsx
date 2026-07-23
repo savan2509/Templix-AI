@@ -38,12 +38,15 @@ const inputCls =
   "w-full h-11 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm transition-all";
 const labelCls = "block text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2";
 
+// The label wraps the control so the two are implicitly associated. Previously
+// it was a sibling <label> with no htmlFor and the input had no id, which left
+// every calculator field unlabelled for screen readers across all tool pages.
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div>
-      <label className={labelCls}>{label}</label>
+    <label className="block">
+      <span className={labelCls}>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }
 
@@ -357,7 +360,7 @@ function SalaryBreakupCalculator() {
         <ResultRow label="Less: Income tax (est., new regime)" value={inr(tax)} />
         <ResultRow label="Estimated in-hand / month" value={inr(inHandMonthly)} strong />
       </div>
-      <p className="mt-3 text-xs text-zinc-400 dark:text-zinc-500 leading-relaxed">
+      <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
         Estimate only. Actual tax depends on your regime, declarations and investments; the exact Basic/HRA split and PF/gratuity terms vary by employer.
       </p>
     </Card>

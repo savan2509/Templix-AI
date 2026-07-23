@@ -504,7 +504,11 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-44 w-full overflow-hidden">
                     <Image
                       src={article.image}
-                      alt=""
+                      // Informative cover, not decoration: a descriptive alt makes
+                      // it eligible for Google Images and gives the card meaning
+                      // for assistive tech. (Was alt="" — read as "missing alt" by
+                      // auditors, and it would have scaled 2 -> 6 with this grid.)
+                      alt={`${article.title} — illustration`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

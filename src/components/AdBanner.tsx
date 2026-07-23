@@ -55,7 +55,7 @@ export default function AdBanner({ position }: AdBannerProps) {
       <div className="absolute inset-0 bg-[linear-gradient(45deg,#00000003_25%,transparent_25%,transparent_50%,#00000003_50%,#00000003_75%,transparent_75%,transparent)] dark:bg-[linear-gradient(45deg,#ffffff02_25%,transparent_25%,transparent_50%,#ffffff02_50%,#ffffff02_75%,transparent_75%,transparent)] bg-[length:24px_24px] pointer-events-none" />
 
       <div className="z-10 space-y-1">
-        <span className="inline-flex items-center gap-1 text-[9px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest bg-zinc-200/50 dark:bg-zinc-800/50 px-2 py-0.5 rounded">
+        <span className="inline-flex items-center gap-1 text-[9px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest bg-zinc-200/50 dark:bg-zinc-800/50 px-2 py-0.5 rounded">
           <DollarSign className="h-2.5 w-2.5" />
           <span>Advertisement</span>
         </span>

@@ -264,7 +264,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
         <form onSubmit={handleSignIn} className="space-y-5">
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
+              <label htmlFor="signin-email" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
                 Email address
               </label>
               <div className="relative">
@@ -283,7 +283,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
             </div>
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
+                <label htmlFor="signin-password" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
                   Password
                 </label>
                 <Link
@@ -330,7 +330,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
         <form onSubmit={handleSignUp} className="space-y-5">
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
+              <label htmlFor="signup-name" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
                 Full name
               </label>
               <div className="relative">
@@ -348,7 +348,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
+              <label htmlFor="signup-email" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
                 Email address
               </label>
               <div className="relative">
@@ -366,7 +366,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
+              <label htmlFor="signup-password" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
                 Password <span className="text-zinc-400 normal-case font-normal">(min. 8 characters)</span>
               </label>
               <div className="relative">
@@ -392,7 +392,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
+              <label htmlFor="signup-confirm-password" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
                 Confirm password
               </label>
               <div className="relative">
@@ -420,7 +420,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
             {loading ? "Creating account…" : "Create Free Account"}
           </button>
-          <p className="text-center text-xs text-zinc-400 dark:text-zinc-500">
+          <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
             By signing up you agree to our{" "}
             <Link href={`/${locale}/terms`} className="text-blue-500 hover:underline">Terms</Link>
             {" & "}

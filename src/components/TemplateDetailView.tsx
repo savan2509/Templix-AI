@@ -251,7 +251,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
 
       {/* Right side: dynamic live preview paper */}
       <div className="lg:col-span-7 space-y-4">
-        <h3 className="font-bold text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
+        <h3 className="font-bold text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
           <FileText className="h-4 w-4 text-zinc-400" />
           <span>{t.livePreview}</span>
           <span className="ml-auto text-[10px] text-green-500 font-semibold uppercase tracking-widest animate-pulse">● {t.liveLabel}</span>

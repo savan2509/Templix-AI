@@ -131,6 +131,7 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder={t.emailPlaceholder}
+                  aria-label={t.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
@@ -323,7 +324,7 @@ export default function Footer() {
             <Heart className="h-3 w-3 text-red-500 fill-red-500 shrink-0" aria-hidden="true" />
             <span aria-hidden="true">&nbsp;{t.designedWithPost}</span>
           </div>
-          <div className="text-zinc-400 dark:text-zinc-500">
+          <div className="text-zinc-500 dark:text-zinc-400">
             {t.freeForever}
           </div>
         </div>

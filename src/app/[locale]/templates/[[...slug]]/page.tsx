@@ -439,7 +439,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
             {/* Breadcrumb */}
-            <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
+            <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
               <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
                 <Home className="h-3 w-3" />
                 <span>{common.homeBreadcrumb}</span>
@@ -467,7 +467,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
                   {common.free}
                 </span>
-                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                <span className="text-xs text-zinc-500 dark:text-zinc-400">
                   {t.updatedLabel} {updatedLabel}
                 </span>
               </div>
@@ -845,7 +845,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
         <Schema data={[breadcrumbSchema, categoryFaqSchema, collectionSchema]} />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
-          <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
+          <nav className="flex flex-wrap items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
             <Link href={`/${locale}`} className="hover:text-blue-500 flex items-center gap-1 transition-colors">
               <Home className="h-3 w-3" />
               <span>{common.homeBreadcrumb}</span>
@@ -915,7 +915,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   <p className={`font-bold text-sm truncate ${ !categorySlug ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200" }`}>
                     {t.allDocuments}
                   </p>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{allFallbackTemplates.length} {common.templatesLabel}</p>
+                  <p className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate">{allFallbackTemplates.length} {common.templatesLabel}</p>
                 </div>
                 {!categorySlug && (
                   <span className="ml-auto shrink-0 w-1.5 h-6 rounded-full bg-blue-500" />
@@ -924,7 +924,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
               {/* Category cards */}
               <div className="space-y-2.5">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 px-1">{t.documentTypes}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 px-1">{t.documentTypes}</p>
                 {CATEGORIES.map((cat) => {
                   const isActive = categorySlug === cat.slug;
                   return (
@@ -941,7 +941,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                       <div className="relative h-12 w-16 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 group-hover:scale-105 transition-transform duration-300">
                         <Image
                           src={cat.image}
-                          alt=""
+                          alt={`Free ${cat.name} templates`}
                           fill
                           className="object-cover"
                           sizes="64px"
@@ -953,7 +953,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <p className={`font-bold text-sm truncate ${ isActive ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400" } transition-colors`}>
                           {common.categoryNames[cat.slug as keyof typeof common.categoryNames] ?? cat.name}
                         </p>
-                        <p className="text-[10px] text-zinc-400 dark:text-zinc-500 truncate">{common.categoryDescriptions[cat.slug as keyof typeof common.categoryDescriptions] ?? cat.description}</p>
+                        <p className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate">{common.categoryDescriptions[cat.slug as keyof typeof common.categoryDescriptions] ?? cat.description}</p>
                         <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
                           {allFallbackTemplates.filter((tpl) => tpl.categorySlug === cat.slug).length} {common.templatesLabel}
                         </p>
@@ -970,7 +970,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
               {/* Related Searches box */}
               <div className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="font-bold text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                <h3 className="font-bold text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                   {t.relatedSearchesTitle}
                 </h3>
                 <div className="flex flex-col gap-2">

@@ -486,7 +486,7 @@ export default function Navbar() {
                 {userMenuOpen && (
                   <div className="absolute right-0 mt-2 w-52 z-50 origin-top-right rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200">
                     <div className="px-3 py-2 mb-1 border-b border-zinc-100 dark:border-zinc-800">
-                      <p className="text-xs text-zinc-400 dark:text-zinc-500 truncate">{user.email}</p>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{user.email}</p>
                     </div>
                     <Link
                       href={`/${currentLocale}/dashboard`}
@@ -542,7 +542,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50"
+              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               aria-label="Toggle theme"
             >
               {!mounted ? (
@@ -555,7 +555,14 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-850 text-zinc-700 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 focus:outline-none"
+              // Icon-only trigger: it needs an explicit name, expanded state and
+              // a visible focus ring (focus:outline-none left keyboard users
+              // with no indicator). dark:border-zinc-850 was a no-op — Tailwind
+              // has no 850 step — so the dark border never rendered.
+              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 bg-white/50 dark:bg-zinc-900/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -565,7 +572,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
+        <div id="mobile-menu" className="lg:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-4 py-5 space-y-4 shadow-inner">
           <div className="space-y-1">
             {/* Templates group */}
             <button

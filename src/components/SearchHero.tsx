@@ -29,12 +29,15 @@ export default function SearchHero({ locale }: { locale: string }) {
     <div className="w-full max-w-2xl mx-auto space-y-4">
       <form onSubmit={handleSearch} className="relative">
         <div className="relative flex items-center">
-          <Search className="absolute left-4 h-5 w-5 text-zinc-400 dark:text-zinc-500" />
+          <Search className="absolute left-4 h-5 w-5 text-zinc-500 dark:text-zinc-400" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t.placeholder}
+            // A placeholder is not an accessible name — it disappears on input
+            // and screen readers may ignore it. Label the field explicitly.
+            aria-label={t.placeholder}
             className="w-full h-14 pl-12 pr-32 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 shadow-lg shadow-zinc-100 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
           />
           <button
