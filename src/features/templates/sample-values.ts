@@ -1,5 +1,6 @@
 // Shared realistic sample values used to render live document previews and the
 // matching template thumbnails, so both show identical content across modules.
+import { collectTemplateTokens, deriveFallbackValue, CONTEXT_SENSITIVE_FIELDS } from "./field-fallbacks";
 
 export const FIELD_DEFAULTS: Record<string, string> = {
   // — Universal / Shared —
@@ -2454,14 +2455,47 @@ export function getTemplateValues(template: any): Record<string, string> {
       brandDefault = handle ? `${handle}@email.com` : undefined;
     }
 
+    // A few globals are written for a software/design persona and read as a
+    // content leak elsewhere (CS degree on a chef's CV, Figma files as a
+    // photography deliverable). Resolve those per-document instead.
+    if (!specific[field] && !brandDefault && CONTEXT_SENSITIVE_FIELDS.has(field)) {
+      brandDefault = deriveFallbackValue(field, template, {
+        brand: brand || "",
+        values: initial,
+        defaults: FIELD_DEFAULTS,
+      });
+    }
+
     initial[field] = specific[field] || brandDefault || FIELD_DEFAULTS[field] || "";
   });
 
-  if (template?.categorySlug === "invoices") {
+  // Derive money totals for any priced document, not just invoices. Quotations
+  // and the expense report declare subtotal+total and carry a line-item table
+  // too, but were excluded here — so they fell through to the generic
+  // FIELD_DEFAULTS ($4,250 subtotal / $4,500 total), which don't even agree with
+  // each other, let alone with the rows above them.
+  const declaredFields: string[] = template?.content?.fields || [];
+  const isPricedDoc =
+    template?.categorySlug === "invoices" ||
+    (declaredFields.includes("subtotal") && declaredFields.includes("total"));
+  if (isPricedDoc) {
     const computedTotals = computeInvoiceTotals(template, totalsContext(specific, initial));
     Object.entries(computedTotals).forEach(([k, v]) => {
       initial[k] = v;
     });
+  }
+
+  // Safety net. `fields` only lists the tokens a template *declares*; anything
+  // used in the body but left undeclared (or declared with no default anywhere)
+  // reaches DocumentPaper unresolved and renders as its humanized field name —
+  // that's how "shipping from Origin to Destination" and "Job Title1 — Company1"
+  // shipped. Resolve every token the body actually uses, preferring explicit
+  // values, then a derivation from this template's own identity.
+  const ctx = { brand: brand || "", values: initial, defaults: FIELD_DEFAULTS };
+  for (const key of collectTemplateTokens(template)) {
+    if (initial[key]) continue;
+    const value = specific[key] || FIELD_DEFAULTS[key] || deriveFallbackValue(key, template, ctx);
+    if (value) initial[key] = value;
   }
 
   return initial;
