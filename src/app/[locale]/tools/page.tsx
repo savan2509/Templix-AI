@@ -95,7 +95,10 @@ export default async function ToolsHubPage({ params }: PageProps) {
               </span>
               {label(cat.label)}
               {isAi && (
-                <span className="rounded-full bg-violet-100 dark:bg-violet-950/60 px-2 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300 ring-1 ring-violet-300/50 dark:ring-violet-800">
+                <span
+                  aria-hidden="true"
+                  className="rounded-full bg-violet-100 dark:bg-violet-950/60 px-2 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300 ring-1 ring-violet-300/50 dark:ring-violet-800"
+                >
                   AI
                 </span>
               )}
@@ -110,8 +113,14 @@ export default async function ToolsHubPage({ params }: PageProps) {
                     href={`/${locale}/tools/${tool.slug}`}
                     className={`group relative rounded-2xl border bg-white dark:bg-zinc-900 p-5 transition-all ${isAi ? "border-violet-200 dark:border-violet-900/60 hover:border-violet-400 hover:shadow-md hover:shadow-violet-500/10" : "border-zinc-200 dark:border-zinc-800 hover:border-blue-400/60 hover:shadow-md"}`}
                   >
+                    {/* Decorative: this badge sits inside the card's link, so
+                        without aria-hidden the accessible name (and the anchor
+                        text a crawler sees) becomes "AI AI Writer". */}
                     {isAi && (
-                      <span className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+                      <span
+                        aria-hidden="true"
+                        className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm"
+                      >
                         AI
                       </span>
                     )}

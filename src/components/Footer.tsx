@@ -64,9 +64,14 @@ export default function Footer() {
               href={`/${locale}`} 
               className="flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
             >
-              <Image src="/Templix-ai-light.png" alt="Templix AI" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
-              <Image src="/Templix-ai-dark.png" alt="Templix AI" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
-              <span>Templix<span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
+              {/* The wordmark beside these already names the brand, so the marks
+                  are decorative here — otherwise the link reads "Templix AI
+                  Templix AI". */}
+              <Image src="/Templix-ai-light.png" alt="" aria-hidden="true" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
+              <Image src="/Templix-ai-dark.png" alt="" aria-hidden="true" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
+              {/* Keep the space: the brand is "Templix AI" everywhere else, and
+                  splitting it across spans without one renders "TemplixAI". */}
+              <span>Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
             </Link>
             
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm">

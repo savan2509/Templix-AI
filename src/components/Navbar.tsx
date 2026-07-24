@@ -356,7 +356,7 @@ export default function Navbar() {
                 >
                   <Sparkles className="h-3.5 w-3.5 text-violet-500" />
                   <span>{aiToolsText}</span>
-                  <span className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
+                  <span aria-hidden="true" className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
                   <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${aiToolsOpen ? "rotate-180" : ""}`} />
                   {isAiActive && (
                     <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />
@@ -671,7 +671,7 @@ export default function Navbar() {
               <span className="flex items-center gap-1.5">
                 <Sparkles className="h-4 w-4 text-violet-500" />
                 {aiToolsText}
-                <span className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
+                <span aria-hidden="true" className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
               </span>
               <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileAiToolsOpen ? "rotate-180" : ""}`} />
             </button>
