@@ -64,14 +64,15 @@ export default function Footer() {
               href={`/${locale}`} 
               className="flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
             >
-              {/* The wordmark beside these already names the brand, so the marks
-                  are decorative here — otherwise the link reads "Templix AI
-                  Templix AI". */}
-              <Image src="/Templix-ai-light.png" alt="" aria-hidden="true" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
-              <Image src="/Templix-ai-dark.png" alt="" aria-hidden="true" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
+              {/* The logo carries the brand name (image-SEO + a real accessible
+                  name), and the wordmark beside it is aria-hidden — so the link
+                  announces "Templix AI" exactly once, not twice. Only one of the
+                  two marks is ever in the a11y tree (the other is display:none). */}
+              <Image src="/Templix-ai-light.png" alt="Templix AI" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
+              <Image src="/Templix-ai-dark.png" alt="Templix AI" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
               {/* Keep the space: the brand is "Templix AI" everywhere else, and
                   splitting it across spans without one renders "TemplixAI". */}
-              <span>Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
+              <span aria-hidden="true">Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
             </Link>
             
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm">
