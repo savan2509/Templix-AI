@@ -19,8 +19,21 @@ function buildToolFaqs(
   isAi: boolean,
   howTo: string,
 ): { question: string; answer: string }[] {
+  // The first answer must NOT be a verbatim copy of tool.description — that's
+  // also the meta description, and duplicating it is a thin-content signal that
+  // costs FAQ rich results. Wrap it with distinct framing so each tool's answer
+  // is unique and adds context beyond the meta tag.
+  const whatIs = `The ${tool.title} is a free ${isAi ? "AI-powered " : ""}tool from Templix AI. ${tool.description} You can use it instantly online — no account, no install, and no limit on how often you use it.`;
+
+  // "How to use" must be accurate per tool type. The browser-only copy is true
+  // for client-side calculators but false for AI tools, which send input to a
+  // model — claiming otherwise on an AI page is a privacy misstatement.
+  const howToAnswer = isAi
+    ? `Enter your details in the field above and generate a draft in seconds. Your input is sent securely to the AI model to produce the result — it isn't stored or used for training. Edit the output as much as you like, free and without an account.`
+    : howTo;
+
   return [
-    { question: `What is the ${tool.title}?`, answer: tool.description },
+    { question: `What is the ${tool.title}?`, answer: whatIs },
     {
       question: `Is the ${tool.title} free to use?`,
       answer: `Yes. The ${tool.title} is completely free with no sign-up, no watermark and no usage limits.`,
@@ -31,7 +44,7 @@ function buildToolFaqs(
         ? "Your input is sent securely to generate the result and is not stored or used to train AI models."
         : "Everything runs directly in your browser — nothing is uploaded to a server, so your data stays on your device.",
     },
-    { question: `How do I use the ${tool.title}?`, answer: howTo },
+    { question: `How do I use the ${tool.title}?`, answer: howToAnswer },
   ];
 }
 import { getDictionary } from "@/lib/i18n";
@@ -93,7 +106,7 @@ export default async function ToolPage({ params }: PageProps) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t.toolEyebrow, item: `${siteConfig.url}/${locale}/tools` },
+      { "@type": "ListItem", position: 2, name: t.toolsCrumb ?? "Tools", item: `${siteConfig.url}/${locale}/tools` },
       { "@type": "ListItem", position: 3, name: tool.title, item: toolUrl },
     ],
   };
@@ -128,7 +141,11 @@ export default async function ToolPage({ params }: PageProps) {
 
       <Section heading={t.howToHeading}>
         <p>
-          {t.howToBody}
+          {/* howToBody says "nothing is sent to a server", true only for the
+              client-side tools. AI tools call a model, so use the accurate copy. */}
+          {aiTool
+            ? "Enter your details in the field above and generate a draft in seconds. Your input is sent securely to the AI model to produce the result — it isn't stored or used for training. Edit the output as much as you like, free and without an account."
+            : t.howToBody}
         </p>
       </Section>
 

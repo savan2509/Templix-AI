@@ -18,6 +18,7 @@ const en = {
   metaTitleSuffix: " — Free Online Tool",
   notFoundTitle: "Tool not found",
   toolEyebrow: "Free Tool",
+  toolsCrumb: "Tools",
   howToHeading: "How to use this tool",
   howToBody:
     "Everything runs right here in your browser — nothing is sent to a server, so it’s fast and completely private. Use it as many times as you like, free and without an account.",
@@ -45,6 +46,7 @@ const es: Shape = {
   metaTitleSuffix: " — Herramienta en línea gratuita",
   notFoundTitle: "Herramienta no encontrada",
   toolEyebrow: "Herramienta gratuita",
+  toolsCrumb: "Herramientas",
   howToHeading: "Cómo usar esta herramienta",
   howToBody:
     "Todo funciona aquí mismo en tu navegador: no se envía nada a ningún servidor, por lo que es rápido y totalmente privado. Úsala tantas veces como quieras, gratis y sin cuenta.",
@@ -70,6 +72,7 @@ const de: Shape = {
   metaTitleSuffix: " – Kostenloses Online-Tool",
   notFoundTitle: "Tool nicht gefunden",
   toolEyebrow: "Kostenloses Tool",
+  toolsCrumb: "Tools",
   howToHeading: "So verwendest du dieses Tool",
   howToBody:
     "Alles läuft direkt hier in deinem Browser – es wird nichts an einen Server gesendet, daher ist es schnell und völlig privat. Nutze es so oft du möchtest, kostenlos und ohne Konto.",
@@ -95,6 +98,7 @@ const fr: Shape = {
   metaTitleSuffix: " — Outil en ligne gratuit",
   notFoundTitle: "Outil introuvable",
   toolEyebrow: "Outil gratuit",
+  toolsCrumb: "Outils",
   howToHeading: "Comment utiliser cet outil",
   howToBody:
     "Tout fonctionne directement dans votre navigateur — rien n’est envoyé à un serveur, c’est donc rapide et totalement privé. Utilisez-le autant de fois que vous le souhaitez, gratuitement et sans compte.",
@@ -120,6 +124,7 @@ const ar: Shape = {
   metaTitleSuffix: " — أداة مجانية عبر الإنترنت",
   notFoundTitle: "الأداة غير موجودة",
   toolEyebrow: "أداة مجانية",
+  toolsCrumb: "الأدوات",
   howToHeading: "كيفية استخدام هذه الأداة",
   howToBody:
     "كل شيء يعمل مباشرة هنا في متصفحك — لا يُرسَل أي شيء إلى الخادم، لذا فهي سريعة وخاصة تمامًا. استخدمها كما تشاء، مجانًا وبدون حساب.",
