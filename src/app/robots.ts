@@ -16,14 +16,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
         disallow: [
           "/api/",
-          "/*/admin",
-          "/*/editor",
-          "/*/dashboard",
-          "/*/login",
-          "/*/auth/",
-          // Token-based, one-time transactional URLs (expire after use)
-          "/*/confirm/",
-          "/*/reset/",
         ],
       },
 
@@ -47,7 +39,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "PerplexityBot", allow: ["/"], disallow: ["/api/"] },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
   };
 }
 

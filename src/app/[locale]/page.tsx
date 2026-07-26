@@ -217,25 +217,6 @@ export default async function HomePage({ params }: PageProps) {
 
             {/* Global Search Component */}
             <SearchHero locale={locale} />
-
-            {/* StartupBase Launch Badge */}
-            <div className="flex justify-center pt-2" style={{animation: 'fadeIn 0.8s ease 0.3s both'}}>
-              <a
-                href="https://startupbase.io/products/templix-ai?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Launched on StartupBase"
-              >
-                <Image
-                  src="/badges/launched-on-sb.svg"
-                  alt="Launched on StartupBase"
-                  title="Launched on StartupBase"
-                  width={200}
-                  height={54}
-                  className="h-[54px] w-auto object-contain transition-opacity hover:opacity-90"
-                />
-              </a>
-            </div>
           </div>
         </section>
 
@@ -338,9 +319,9 @@ export default async function HomePage({ params }: PageProps) {
                       <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold">
                         {c.categoryNames[temp.category.slug as keyof typeof c.categoryNames] ?? temp.category.name}
                       </span>
-                      <h3 className="font-bold text-zinc-900 dark:text-white text-lg">
+                      <p className="font-bold text-zinc-900 dark:text-white text-lg">
                         {temp.title}
-                      </h3>
+                      </p>
                       <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                         {temp.description}
                       </p>
@@ -349,8 +330,9 @@ export default async function HomePage({ params }: PageProps) {
                     <Link
                       href={`/${locale}/templates/${temp.category?.slug ? `${temp.category.slug}/` : ""}${temp.slug}`}
                       className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
+                      aria-label={`Customize ${temp.title}`}
                     >
-                      <span>{c.customizeTemplate}</span>
+                      <span>{c.customizeTemplate} — {temp.title.split(" ")[0]}</span>
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -377,11 +359,8 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-sm">
                   <FileText className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
+                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  {/* Live template count, rounded down to a clean "N+" so the
-                      claim is always accurate as the catalog grows (was a stale
-                      hardcoded "200+"). */}
                   {t.pillar1Desc.replace("{count}", String(Math.floor(allFallbackTemplates.length / 10) * 10))}
                 </p>
               </div>
@@ -390,7 +369,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto shadow-sm">
                   <Sparkles className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</h3>
+                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar2Desc}
                 </p>
@@ -400,7 +379,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-sm">
                   <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</h3>
+                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar3Desc}
                 </p>
@@ -430,7 +409,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why1Desc}
                 </p>
@@ -441,7 +420,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why2Desc}
                 </p>
@@ -452,7 +431,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                   <Zap className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why3Desc}
                 </p>
@@ -463,7 +442,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                   <FileText className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why4Desc}
                 </p>
@@ -487,6 +466,7 @@ export default async function HomePage({ params }: PageProps) {
               <Link
                 href={`/${locale}/blog`}
                 className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                aria-label="Explore All Document Guides and Articles"
               >
                 <span>{c.viewAllArticles}</span>
                 <ArrowRight className="h-4 w-4" />
@@ -525,14 +505,14 @@ export default async function HomePage({ params }: PageProps) {
                         year: "numeric"
                       })}
                     </span>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <p className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {article.title}
-                    </h3>
+                    </p>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                       {article.description}
                     </p>
                     <div className="pt-2 flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                      {c.readArticle} <ArrowRight className="h-3.5 w-3.5" />
+                      <span>Read Guide: {article.title}</span> <ArrowRight className="h-3.5 w-3.5 shrink-0" />
                     </div>
                   </div>
                 </Link>
@@ -565,15 +545,15 @@ export default async function HomePage({ params }: PageProps) {
                     VH
                   </div>
                   <div>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Victoria Hayes, JD</h3>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Victoria Hayes, JD</p>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Legal & Contract Advisory</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
                 </p>
-                <a href="https://linkedin.com/in/victoria-hayes-jd" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline pt-1">
-                  LinkedIn Profile &rarr;
+                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline pt-1">
+                  Victoria Hayes on LinkedIn &rarr;
                 </a>
               </div>
 
@@ -583,15 +563,15 @@ export default async function HomePage({ params }: PageProps) {
                     MV
                   </div>
                   <div>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Marcus Vance, CISSP</h3>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Marcus Vance, CISSP</p>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Data Security & Privacy Auditor</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
                 </p>
-                <a href="https://linkedin.com/in/marcus-vance-cissp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline pt-1">
-                  LinkedIn Profile &rarr;
+                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline pt-1">
+                  Marcus Vance on LinkedIn &rarr;
                 </a>
               </div>
 
@@ -601,15 +581,15 @@ export default async function HomePage({ params }: PageProps) {
                     ER
                   </div>
                   <div>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Elena Rostova, SHRM-SCP</h3>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Elena Rostova, SHRM-SCP</p>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">HR & Resume Standards Director</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Ensures all resume blueprints adhere strictly to modern ATS algorithms, HR Open Standards resume parsing rules, and HR standards.
                 </p>
-                <a href="https://linkedin.com/in/elena-rostova-shrm" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 dark:text-violet-400 hover:underline pt-1">
-                  LinkedIn Profile &rarr;
+                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 dark:text-violet-400 hover:underline pt-1">
+                  Elena Rostova on LinkedIn &rarr;
                 </a>
               </div>
             </div>
@@ -630,7 +610,7 @@ export default async function HomePage({ params }: PageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</p>
                 <p>
                   A professional invoice must contain explicit identification elements including a unique sequential invoice number, issuance date, payment due date, seller and buyer business registration details, itemized goods or services with unit rates, applicable tax breakdown (such as VAT or GST), and clear payment instructions (bank transfer details or online payment links). Setting explicit payment terms such as Net 15, Net 30, or 2% 10 Net 30 reduces payment delays and establishes legal clarity for tax authority accounting audits.
                 </p>
@@ -640,7 +620,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</p>
                 <p>
                   Modern Applicant Tracking Systems (ATS) scan resumes for clear section headings, standard font hierarchies, and quantifiable achievements. Templix AI resume templates use HRXML-compliant document layouts with distinct sections for Professional Summary, Technical Skills, Work Experience, and Education. Using reverse-chronological order and action verbs ensures your credentials parse accurately through automated hiring screeners.
                 </p>
@@ -650,7 +630,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</p>
                 <p>
                   Legal contracts require five core structural pillars: identification of entering parties, detailed scope of work, financial consideration, timeline or milestones, and protective boilerplate clauses covering intellectual property rights, confidentiality, limitation of liability, and governing law. Aligning with E-SIGN Act standards guarantees that digital signatures and exported contract PDFs remain legally binding.
                 </p>
@@ -660,7 +640,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</p>
                 <p>
                   Winning client proposals begin with an executive summary articulating the client&rsquo;s core problem statement, followed by proposed strategic solutions, project deliverables, transparent pricing tables, team qualifications, and formal acceptance sign-off lines. Clear structural presentation demonstrates professionalism and accelerates contract approval cycles.
                 </p>
@@ -670,7 +650,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</p>
                 <p>
                   Templix AI document generation operates with client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using HTML5 Canvas and WebAssembly compiled engines. Your confidential business data, financial totals, and personal credentials are never saved, stored, or transmitted to remote servers.
                 </p>
@@ -680,7 +660,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</h3>
+                <p className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</p>
                 <p>
                   Standardizing document layouts across your organization ensures brand consistency, reduces administrative prep time, and prevents formatting errors in customer-facing proposals or billing invoices. Using pre-tested document blueprints maintains consistent visual typography, margin alignment, and corporate color palettes across every department.
                 </p>
@@ -692,67 +672,9 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* JSON-LD: Organization + WebSite + WebApplication + Author/Publisher Schema */}
+        {/* JSON-LD: WebApplication + FAQ Schema (Organization & WebSite provided globally by layout) */}
         <Schema
           data={[
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Templix AI",
-              url: `${SITE_URL}/en`,
-              logo: `${SITE_URL}/icon-512.png`,
-              description:
-                "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
-              sameAs: [
-                "https://facebook.com/templixai",
-                "https://instagram.com/templixai",
-                "https://youtube.com/@templixai",
-                "https://linkedin.com/company/templixai",
-                "https://twitter.com/templix_ai"
-              ],
-              publishingPrinciples: `${SITE_URL}/en/about`,
-              knowsAbout: [
-                "Commercial Contracts",
-                "Invoice Standards",
-                "ATS Resume Formatting",
-                "Document Security & Privacy",
-                "ISO 27001 Security Controls"
-              ],
-              member: [
-                {
-                  "@type": "Person",
-                  name: "Victoria Hayes, JD",
-                  jobTitle: "Legal & Contract Advisory Chair",
-                  sameAs: "https://linkedin.com/in/victoria-hayes-jd",
-                },
-                {
-                  "@type": "Person",
-                  name: "Marcus Vance, CISSP",
-                  jobTitle: "Data Security & Compliance Lead",
-                  sameAs: "https://linkedin.com/in/marcus-vance-cissp",
-                },
-                {
-                  "@type": "Person",
-                  name: "Elena Rostova, SHRM-SCP",
-                  jobTitle: "HR & Resume Standards Director",
-                  sameAs: "https://linkedin.com/in/elena-rostova-shrm",
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Templix AI",
-              url: `${SITE_URL}/en`,
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: `${SITE_URL}/en/templates?q={search_term_string}`,
-                },
-                "query-input": "required name=search_term_string",
-              },
-            },
             {
               "@context": "https://schema.org",
               "@type": "WebApplication",
@@ -765,28 +687,53 @@ export default async function HomePage({ params }: PageProps) {
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
               aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "820" },
             },
-            {
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Templix AI",
-              image: `${SITE_URL}/icon-512.png`,
-              url: `${SITE_URL}/en`,
-              telephone: "+1-800-555-0199",
-              priceRange: "$0",
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "US"
-              },
-              openingHoursSpecification: {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                opens: "00:00",
-                closes: "23:59"
-              }
-            },
             faqSchema,
           ]}
         />
+        {/* Dedicated Featured & Launch Badges Showcase Section */}
+        <section className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/30">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+              Recognized &amp; Featured On
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+              <a
+                href="https://startupbase.io/products/templix-ai?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Launched on StartupBase"
+                className="transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src="/badges/launched-on-sb.svg"
+                  alt="Launched on StartupBase"
+                  title="Launched on StartupBase"
+                  width={200}
+                  height={54}
+                  className="h-[52px] w-auto object-contain transition-opacity hover:opacity-90"
+                />
+              </a>
+
+              <a
+                href="https://smollaunch.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Featured on Smol Launch"
+                className="transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src="/badges/smol-launch.svg"
+                  alt="templix-ai — Featured on Smol Launch"
+                  title="templix-ai — Featured on Smol Launch"
+                  width={220}
+                  height={54}
+                  className="h-[48px] w-auto object-contain transition-opacity hover:opacity-90"
+                />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <FAQ locale={locale} />
       </main>
 

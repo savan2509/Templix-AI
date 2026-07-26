@@ -8,6 +8,7 @@ import { getTemplateValues } from "@/features/templates/sample-values";
 import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
 import { aiFillTemplateAction } from "@/features/tools/ai-actions";
+import SocialShare from "./SocialShare";
 
 interface TemplateContent {
   title: string;
@@ -217,17 +218,10 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             <p className="text-[10px] text-center text-zinc-400">
               {locked ? t.signInToEditHint : t.customizeHint}
             </p>
-            {/* Share on WhatsApp — document formats spread through WhatsApp
-                groups, especially in India; a share is also a discovery loop. */}
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(`${template.title} — free, editable, no sign-up: ${shareUrl}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 h-10 rounded-xl border border-emerald-500/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold hover:bg-emerald-50 dark:hover:bg-emerald-950/30 transition-colors"
-            >
-              <MessageCircle className="h-3.5 w-3.5" />
-              Share this format on WhatsApp
-            </a>
+            {/* Social Share Component */}
+            <div className="pt-2 border-t border-zinc-100 dark:border-zinc-800">
+              <SocialShare title={`${template.title} — Free Editable Template | Templix AI`} />
+            </div>
           </div>
         </div>
 

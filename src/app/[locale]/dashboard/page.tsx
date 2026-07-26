@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+
+export const metadata: Metadata = {
+  title: "Dashboard | Templix AI",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 import { createClient } from "@/lib/supabase/server";
 import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";

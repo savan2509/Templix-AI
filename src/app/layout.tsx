@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   alternates: {
-    canonical: siteConfig.url,
+    canonical: `${siteConfig.url}/en`,
   },
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -93,12 +93,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Resource hints — establish early connections to reduce latency */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        {/* Resource hints — prioritize primary domain assets; defer third-party connections */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://va.vercel-scripts.com" crossOrigin="anonymous" />
+        
         {/* Supabase — auth & DB connections start earlier, reducing TTFB for auth checks */}
         {process.env.NEXT_PUBLIC_SUPABASE_URL && (
           <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} crossOrigin="anonymous" />
@@ -123,9 +121,7 @@ export default async function RootLayout({
           }}
         />
         <HtmlDirSync />
-        {/* Global JSON-LD: Organization + WebSite schemas emitted on every page.
-            Tells Google who we are, where we're located, all social profiles,
-            and powers the Sitelinks Search Box in SERPs. */}
+        {/* Global JSON-LD: Organization + WebSite schemas emitted on every page */}
         <Schema data={globalSchemas} />
         <AuthProvider>
           <ThemeProvider defaultTheme="system">
@@ -133,16 +129,15 @@ export default async function RootLayout({
           </ThemeProvider>
         </AuthProvider>
         <Analytics />
-        {/* GA4 — only mounts when the Measurement ID is set (env-gated so local
-            builds without it stay clean). Inside <body> for valid HTML nesting. */}
+        {/* GA4 — mounted with lazyOnload so analytics never blocks FCP/LCP paint */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        {/* Facebook Pixel — env-gated for performance & privacy */}
+        {/* Facebook Pixel — lazy loaded after initial page paint */}
         {process.env.NEXT_PUBLIC_FB_PIXEL_ID && (
           <Script
             id="fb-pixel"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');fbq('track','PageView');`,
             }}

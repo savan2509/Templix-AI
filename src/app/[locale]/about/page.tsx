@@ -44,7 +44,6 @@ export default async function AboutPage({ params }: PageProps) {
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/about`,
             telephone: "+1-800-555-0199",
-            email: "support@templix-ai.whitesparksoft.com",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
@@ -102,7 +101,7 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">Legal & Contract Advisory</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">E-SIGN Act (15 U.S.C. ch. 96) & commercial agreement models.</p>
               </div>
-              <a href="https://linkedin.com/in/victoria-hayes-jd" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline pt-2">
+              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline pt-2">
                 LinkedIn &rarr;
               </a>
             </div>
@@ -112,7 +111,7 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Security & Privacy Audit</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ISO 27001 controls, SOC2 compliance & zero client data logging.</p>
               </div>
-              <a href="https://linkedin.com/in/marcus-vance-cissp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-2">
+              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-2">
                 LinkedIn &rarr;
               </a>
             </div>
@@ -122,7 +121,7 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">HR & ATS Parser Specialist</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">HR Open Standards &amp; HRXML resume parsing rules &amp; corporate HR compliance.</p>
               </div>
-              <a href="https://linkedin.com/in/elena-rostova-shrm" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-violet-600 dark:text-violet-400 hover:underline pt-2">
+              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-violet-600 dark:text-violet-400 hover:underline pt-2">
                 LinkedIn &rarr;
               </a>
             </div>

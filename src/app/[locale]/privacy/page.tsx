@@ -34,11 +34,11 @@ export default async function PrivacyPage({ params }: PageProps) {
 
       <Section heading={t.s1Heading}>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li><strong>{t.s1Item1Label}</strong> — {t.s1Item1Text}</li>
-          <li><strong>{t.s1Item2Label}</strong> — {t.s1Item2Text}</li>
-          <li><strong>{t.s1Item3Label}</strong> — {t.s1Item3Text}</li>
+          <li><span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.s1Item1Label}</span> — {t.s1Item1Text}</li>
+          <li><span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.s1Item2Label}</span> — {t.s1Item2Text}</li>
+          <li><span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.s1Item3Label}</span> — {t.s1Item3Text}</li>
         </ul>
-        <p>{t.s1NoSellPre} <strong>{t.s1NoSellEmphasis}</strong> {t.s1NoSellPost}</p>
+        <p>{t.s1NoSellPre} <span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.s1NoSellEmphasis}</span> {t.s1NoSellPost}</p>
       </Section>
 
       <Section heading={t.s2Heading}>

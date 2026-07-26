@@ -39,7 +39,6 @@ export default async function ContactPage({ params }: PageProps) {
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/contact`,
             telephone: "+1-800-555-0199",
-            email: "support@templix-ai.whitesparksoft.com",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
@@ -76,7 +75,7 @@ export default async function ContactPage({ params }: PageProps) {
             <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
               Send us a message
             </h2>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
               It lands straight in our inbox and we reply to the email you give us —
               usually within one business day.
             </p>
@@ -86,32 +85,13 @@ export default async function ContactPage({ params }: PageProps) {
         <ContactForm />
 
         <div className="mt-7 border-t border-zinc-100 pt-5 dark:border-zinc-800 space-y-3">
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs text-zinc-700 dark:text-zinc-300">
             Prefer your own mail client? Write to{" "}
             <ObfuscatedEmail
               user="support"
               domain="templix-ai.whitesparksoft.com"
               className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
             />
-          </p>
-
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            Prefer to call? Phone us toll-free at{" "}
-            <a href="tel:+18005550199" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">
-              +1 (800) 555-0199
-            </a>
-          </p>
-
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            Google Business Profile:{" "}
-            <a
-              href="https://maps.google.com/?cid=1082391203912"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-            >
-              View Location Map &amp; Business Profile &rarr;
-            </a>
           </p>
         </div>
       </div>

@@ -38,13 +38,20 @@ export default async function proxy(req: NextRequest) {
     (forwardedHost.length > 0 && forwardedHost !== prodHost && forwardedHost.includes(prodHost));
   const isHttp = proto === "http";
 
-  // Unconditionally redirect any www. subdomain or platform alias request to canonical host using 301 (Moved Permanently)
+  // Unconditionally redirect any www. subdomain, platform alias, or HTTP request to production domain using 301
   if (isWwwSubdomain || isPlatformAlias || (isHttp && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"))) {
-    const dest = new URL(req.nextUrl.pathname + req.nextUrl.search, PRODUCTION_URL);
+    const cleanPath = req.nextUrl.pathname === "/" ? "/en" : req.nextUrl.pathname;
+    const dest = new URL(cleanPath + req.nextUrl.search, PRODUCTION_URL);
     return NextResponse.redirect(dest, 301);
   }
 
   const { pathname } = req.nextUrl;
+
+  // Consolidate bare root `/` onto canonical locale `/en` (301 Moved Permanently)
+  if (pathname === "/") {
+    const dest = new URL(`/en${req.nextUrl.search}`, PRODUCTION_URL);
+    return NextResponse.redirect(dest, 301);
+  }
   let supabaseResponse = NextResponse.next({ request: req });
 
   // ── Passthrough: api routes, Next.js internals, static assets ───────────────
@@ -117,6 +124,16 @@ export default async function proxy(req: NextRequest) {
     "dashboard", "admin", "confirm", "reset", "auth"
   ];
 
+  // Helper to build clean search params (strips page=1 and empty page)
+  const cleanSearch = (searchParams: URLSearchParams): string => {
+    const clean = new URLSearchParams(searchParams);
+    if (clean.get("page") === "1" || clean.get("page") === "0" || clean.get("page") === "") {
+      clean.delete("page");
+    }
+    const str = clean.toString();
+    return str ? `?${str}` : "";
+  };
+
   // 0. Retire non-English locales (301 Moved Permanently ONLY for valid routes)
   const retired = RETIRED_LOCALES.find(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
@@ -125,8 +142,7 @@ export default async function proxy(req: NextRequest) {
     const rest = pathname.replace(/^\/(?:es|de|fr|ar)(?=\/|$)/, "");
     const isValidSubRoute = rest === "" || rest === "/" || VALID_BARE_ROUTES.some((r) => rest === `/${r}` || rest.startsWith(`/${r}/`));
     if (isValidSubRoute) {
-      const dest = new URL(`/en${rest}`, req.url);
-      dest.search = req.nextUrl.search;
+      const dest = new URL(`/en${rest}${cleanSearch(req.nextUrl.searchParams)}`, req.url);
       return NextResponse.redirect(dest, 301);
     }
   }
@@ -137,11 +153,22 @@ export default async function proxy(req: NextRequest) {
   );
 
   if (isKnownBareRoute) {
-    const targetPath = `/${defaultLocale}${pathname}`;
+    const targetPath = `/${defaultLocale}${pathname}${cleanSearch(req.nextUrl.searchParams)}`;
     const redirectUrl = new URL(targetPath, req.url);
-    redirectUrl.search = req.nextUrl.search;
     return NextResponse.redirect(redirectUrl, 301);
   }
+
+  // 1b. Clean redundant page=1 parameter or trailing slash from URLs (301 Moved Permanently)
+  const hasTrailingSlash = pathname.length > 1 && pathname.endsWith("/");
+  const hasZeroPage = req.nextUrl.searchParams.get("page") === "1" || req.nextUrl.searchParams.get("page") === "0";
+
+  if (hasTrailingSlash || hasZeroPage) {
+    const cleanPath = hasTrailingSlash ? pathname.replace(/\/+$/, "") : pathname;
+    const cleanQs = cleanSearch(req.nextUrl.searchParams);
+    const dest = new URL(cleanPath + cleanQs, req.url);
+    return NextResponse.redirect(dest, 301);
+  }
+
 
   // ── Require login before the document editor ────────────────────────────────
   // Opening a template in the editor (/en/editor/…) needs an account so the work

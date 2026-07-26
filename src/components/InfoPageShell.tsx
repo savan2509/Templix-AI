@@ -43,7 +43,7 @@ export default function InfoPageShell({
               {title}
             </h1>
             {subtitle && (
-              <p className="mt-3 max-w-2xl text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              <p className="mt-3 max-w-2xl text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
                 {subtitle}
               </p>
             )}

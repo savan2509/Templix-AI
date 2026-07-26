@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogGetInTouch from "@/components/BlogGetInTouch";
 import BlogReadPopup from "@/components/BlogReadPopup";
+import SocialShare from "@/components/SocialShare";
 import Schema from "@/components/seo/Schema";
 import { db } from "@/lib/db";
 import {
@@ -297,6 +298,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
             <p className="speakable-summary text-white/80 text-base leading-relaxed max-w-2xl">
               {post.description}
             </p>
+
+            {/* Interactive Social Share */}
+            <div className="pt-2">
+              <SocialShare title={`${post.title} | Templix AI Guides`} />
+            </div>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2">

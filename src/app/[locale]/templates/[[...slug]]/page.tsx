@@ -361,21 +361,18 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     notFound();
   }
 
-  // A 2nd-level slug under a known category that is neither a real template nor a
-  // recognized niche/location is a garbage URL (e.g. /templates/invoices/xyz-fake).
-  // Return a real 404 instead of a soft-404 listing with a nonsense H1. Extend
-  // these sets when new niche/country landing pages are intentionally added.
-  const KNOWN_NICHES = new Set([
-    // Profession landing pages carry bespoke content (see profession-content.ts).
-    ...PROFESSION_SLUGS,
-    "freelancer", "legal", "general", "small-business", "hourly", "contractor", "consulting",
-  ]);
-  const KNOWN_LOCATIONS = new Set(["usa", "canada", "uk", "india", "australia"]);
+  // A 2nd-level+ path under a category that is neither a real template nor a
+  // bespoke profession landing page (e.g. /templates/reports/general/canada)
+  // is an unmapped filter variant. 301-redirect it to the clean category canonical
+  // URL to prevent Google Search Console "Alternative page with proper canonical tag"
+  // warnings and consolidate crawl budget.
   if (categorySlug && isKnownCategory && !activeTemplate && nicheSlug) {
-    const nicheOk = KNOWN_NICHES.has(nicheSlug) || KNOWN_LOCATIONS.has(nicheSlug);
-    const locationOk = !locationSlug || KNOWN_LOCATIONS.has(locationSlug);
-    if (!nicheOk || !locationOk) notFound();
+    const isProfession = !!getProfessionContent(categorySlug, nicheSlug);
+    if (!isProfession) {
+      permanentRedirect(`/${locale}/templates/${categorySlug}`);
+    }
   }
+
 
   // If active template detail view, render preview template detail screen
   if (activeTemplate) {

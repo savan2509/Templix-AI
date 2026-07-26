@@ -25,16 +25,27 @@ export default function ObfuscatedEmail({
   }, []);
 
   const fullEmail = `${user}@${domain}`;
-  const content = children || label || fullEmail;
 
   if (!mounted) {
-    // HTML entity representation for initial SSR HTML — unparseable by email scraping bots
+    // Render obfuscated HTML entities on server (e.g., support&#64;templix-ai.whitesparksoft.com)
+    // Email harvesting bots searching raw HTML for email patterns will fail to detect it.
     return (
-      <span className={className}>
-        {content}
-      </span>
+      <span
+        className={className}
+        dangerouslySetInnerHTML={{
+          __html: children
+            ? typeof children === "string"
+              ? children.replace(/@/g, "&#64;").replace(/\./g, "&#46;")
+              : ""
+            : label
+            ? label.replace(/@/g, "&#64;").replace(/\./g, "&#46;")
+            : `${user}&#64;${domain.replace(/\./g, "&#46;")}`,
+        }}
+      />
     );
   }
+
+  const content = children || label || fullEmail;
 
   return (
     <a href={`mailto:${fullEmail}`} className={className}>

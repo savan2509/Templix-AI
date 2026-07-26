@@ -5,11 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { usePathname } from "next/navigation";
+import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/lib/i18n";
 import {
   Mail,
-  Phone,
-  MapPin,
   ArrowRight,
   Heart,
   CheckCircle2
@@ -78,27 +77,15 @@ export default function Footer() {
               <span aria-hidden="true">Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
             </Link>
             
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-sm">
               {t.tagline}
             </p>
 
             {/* Trust badge */}
-            <div className="flex items-center gap-2 pt-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-              <CheckCircle2 className="h-4.5 w-4.5 text-emerald-500 dark:text-emerald-400" />
+            <div className="flex items-center gap-2 pt-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 dark:text-emerald-400" />
               <span>{t.trustBadge}</span>
             </div>
-
-            {/* Smol Launch featured badge */}
-            <a href="https://smollaunch.com" target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
-              <Image
-                src="/badges/smol-launch.svg"
-                alt="templix-ai — Featured on Smol Launch"
-                title="templix-ai — Featured on Smol Launch"
-                width={220}
-                height={54}
-                className="h-[48px] w-auto object-contain transition-opacity hover:opacity-90"
-              />
-            </a>
 
             {/* Direct contact & Phone links */}
             <div className="flex flex-col gap-2">
@@ -115,39 +102,11 @@ export default function Footer() {
                     Email Support
                   </span>
                   <span className="block truncate text-xs font-bold group-hover:underline">
-                    support@templix-ai.whitesparksoft.com
+                    <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" />
                   </span>
                 </span>
               </ObfuscatedEmail>
 
-              <a
-                href="tel:+18005550199"
-                aria-label="Call Templix AI Toll-Free Support +1-800-555-0199"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2.5 text-emerald-700 shadow-sm transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
-              >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
-                  <Phone className="h-3.5 w-3.5" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-600/80 dark:text-emerald-400/80">
-                    Call Us (Toll-Free)
-                  </span>
-                  <span className="block truncate text-xs font-bold group-hover:underline">
-                    +1 (800) 555-0199
-                  </span>
-                </span>
-              </a>
-
-              <a
-                href="https://maps.google.com/?cid=1082391203912"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View Templix AI Google Business Profile & Location Map"
-                className="group inline-flex items-center gap-2 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors pt-1"
-              >
-                <MapPin className="h-3.5 w-3.5 text-red-500 shrink-0" />
-                <span>Google Business Profile & Location</span>
-              </a>
             </div>
           </div>
 
@@ -371,7 +330,7 @@ export default function Footer() {
             <a href="https://youtube.com/@templixai" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" className="hover:text-red-600 transition-colors">
               YouTube
             </a>
-            <a href="https://linkedin.com/company/templixai" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
+            <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
               LinkedIn
             </a>
             <a href="https://twitter.com/templix_ai" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="hover:text-sky-500 transition-colors">

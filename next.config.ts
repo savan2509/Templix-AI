@@ -120,24 +120,10 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Cache static badges for 1 year.
-        source: "/badges/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        // Cache Next static JS/CSS chunks on CDN for 1 year.
-        source: "/_next/static/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        // Cache public images for 7 days (revalidatable).
+        // Cache public images, badges & icons on CDN for 1 year (immutable).
         source: "/:path*.{jpg,jpeg,png,svg,webp,avif,gif,ico}",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" },
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
     ];

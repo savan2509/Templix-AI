@@ -38,8 +38,9 @@ export function buildCanonical(
   slugPath: string,
   searchParams?: Record<string, string | string[] | undefined>
 ): string {
-  // Normalize path: lowercase, strip trailing slash, ensure leading /
-  const normalizedPath = `/${slugPath.replace(/^\/+|\/+$/g, "").toLowerCase()}`;
+  // Normalize path: lowercase, strip leading/trailing slashes
+  const stripped = slugPath.replace(/^\/+|\/+$/g, "").toLowerCase();
+  const normalizedPath = stripped ? `/${stripped}` : "";
   const base = `${BASE}/${locale}${normalizedPath}`;
 
   if (!searchParams || Object.keys(searchParams).length === 0) return base;
@@ -48,7 +49,7 @@ export function buildCanonical(
   const clean = new URLSearchParams();
   for (const [key, value] of Object.entries(searchParams)) {
     if (STRIP_PARAMS.has(key)) continue;
-    if (key === "page" && (value === "1" || value === "")) continue;
+    if (key === "page" && (value === "1" || value === "0" || value === "")) continue;
 
     if (value === undefined || value === null || value === "") continue;
     const v = Array.isArray(value) ? value[0] : value;

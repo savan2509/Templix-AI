@@ -35,7 +35,6 @@ export const organizationSchema = {
   image: `${BASE}/og-default.jpg`,
   description:
     "Templix AI is a free online document creation platform that uses AI to help users quickly generate and customize professional invoices, resumes, contracts, proposals, and other business documents for export to PDF or Word.",
-  email: "support@templix-ai.whitesparksoft.com",
   telephone: "+1-800-555-0199",
   address: {
     "@type": "PostalAddress",
@@ -50,7 +49,6 @@ export const organizationSchema = {
       "@type": "ContactPoint",
       telephone: "+1-800-555-0199",
       contactType: "customer support",
-      email: "support@templix-ai.whitesparksoft.com",
       availableLanguage: ["English"],
       hoursAvailable: {
         "@type": "OpeningHoursSpecification",

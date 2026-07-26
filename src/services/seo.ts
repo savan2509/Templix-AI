@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { buildCanonical } from "@/lib/canonical";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 
@@ -92,17 +93,17 @@ export class SEOEngine {
     //  • everything else consolidates on /en, so not-yet-translated locale
     //    variants never split ranking signals or create duplicate content.
     const locale = data.locale || "en";
-    const slugPath = data.slug === "/" ? "" : data.slug;
-    const enUrl = `${this.APP_URL}/en${slugPath}`;
+    const slugPath = data.slug || "";
+    const enUrl = buildCanonical("en", slugPath);
     let canonical: string;
     let languages: Record<string, string> | undefined;
     if (data.canonical) {
       canonical = data.canonical;
     } else if (data.hreflangLocales && data.hreflangLocales.length > 1) {
-      canonical = `${this.APP_URL}/${locale}${slugPath}`;
+      canonical = buildCanonical(locale, slugPath);
       languages = {};
       for (const loc of data.hreflangLocales) {
-        languages[loc] = `${this.APP_URL}/${loc}${slugPath}`;
+        languages[loc] = buildCanonical(loc, slugPath);
       }
       languages["x-default"] = enUrl;
     } else {
