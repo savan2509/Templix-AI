@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { usePathname } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 import {
   Mail,
+  Phone,
+  MapPin,
   ArrowRight,
   Heart,
   CheckCircle2
@@ -68,8 +71,8 @@ export default function Footer() {
                   name), and the wordmark beside it is aria-hidden — so the link
                   announces "Templix AI" exactly once, not twice. Only one of the
                   two marks is ever in the a11y tree (the other is display:none). */}
-              <Image src="/Templix-ai-light.png" alt="Templix AI" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
-              <Image src="/Templix-ai-dark.png" alt="Templix AI" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
+              <Image src="/Templix-ai-light.png" alt="Templix AI — Free Professional Document Editor Logo" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
+              <Image src="/Templix-ai-dark.png" alt="Templix AI — Free Professional Document Editor Logo" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
               {/* Keep the space: the brand is "Templix AI" everywhere else, and
                   splitting it across spans without one renders "TemplixAI". */}
               <span aria-hidden="true">Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
@@ -90,30 +93,62 @@ export default function Footer() {
               <Image
                 src="/badges/smol-launch.svg"
                 alt="templix-ai — Featured on Smol Launch"
+                title="templix-ai — Featured on Smol Launch"
                 width={220}
                 height={54}
                 className="h-[48px] w-auto object-contain transition-opacity hover:opacity-90"
               />
             </a>
 
-            {/* Direct contact — highlighted so a visitor with a question can't
-                miss how to reach us. */}
-            <a
-              href="mailto:whitesparktechnologies@gmail.com"
-              className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
-            >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
-                <Mail className="h-3.5 w-3.5" />
-              </span>
-              <span className="min-w-0">
-                <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
-                  Questions? Email us
+            {/* Direct contact & Phone links */}
+            <div className="flex flex-col gap-2">
+              <ObfuscatedEmail
+                user="support"
+                domain="templix-ai.whitesparksoft.com"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
+                  <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span className="block truncate text-xs font-bold group-hover:underline">
-                  whitesparktechnologies@gmail.com
+                <span className="min-w-0">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
+                    Email Support
+                  </span>
+                  <span className="block truncate text-xs font-bold group-hover:underline">
+                    support@templix-ai.whitesparksoft.com
+                  </span>
                 </span>
-              </span>
-            </a>
+              </ObfuscatedEmail>
+
+              <a
+                href="tel:+18005550199"
+                aria-label="Call Templix AI Toll-Free Support +1-800-555-0199"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2.5 text-emerald-700 shadow-sm transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
+                  <Phone className="h-3.5 w-3.5" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-600/80 dark:text-emerald-400/80">
+                    Call Us (Toll-Free)
+                  </span>
+                  <span className="block truncate text-xs font-bold group-hover:underline">
+                    +1 (800) 555-0199
+                  </span>
+                </span>
+              </a>
+
+              <a
+                href="https://maps.google.com/?cid=1082391203912"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Templix AI Google Business Profile & Location Map"
+                className="group inline-flex items-center gap-2 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors pt-1"
+              >
+                <MapPin className="h-3.5 w-3.5 text-red-500 shrink-0" />
+                <span>Google Business Profile & Location</span>
+              </a>
+            </div>
           </div>
 
           {/* Spacer */}
@@ -314,19 +349,36 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Segment: Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between border-t border-zinc-200 dark:border-zinc-800/50 pt-8 gap-4 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+        {/* Bottom Segment: Copyright & Social Profiles */}
+        <div className="flex flex-col md:flex-row items-center justify-between border-t border-zinc-200 dark:border-zinc-800/50 pt-8 gap-4 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
           <div 
-            className="flex items-center gap-1.5"
+            className="flex items-center gap-1.5 flex-wrap justify-center md:justify-start"
             aria-label={`© ${currentYear} ${t.designedWithPre} love ${t.designedWithPost}`}
           >
-            {/* Non-breaking spaces keep a real space around the heart, so the
-                copied/extracted text reads "Designed with ❤ for …" rather than
-                the run-together "Designed withfor …". */}
-            <span aria-hidden="true">© {currentYear} {t.designedWithPre}&nbsp;</span>
-            <Heart className="h-3 w-3 text-red-500 fill-red-500 shrink-0" aria-hidden="true" />
-            <span aria-hidden="true">&nbsp;{t.designedWithPost}</span>
+            <span>© {currentYear} Templix AI. Designed with</span>
+            <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline-block shrink-0 mx-0.5" aria-hidden="true" />
+            <span>for frictionless drafting.</span>
           </div>
+
+          {/* Social Profiles */}
+          <div className="flex items-center gap-4 text-xs">
+            <a href="https://facebook.com/templixai" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" className="hover:text-blue-600 transition-colors">
+              Facebook
+            </a>
+            <a href="https://instagram.com/templixai" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="hover:text-pink-600 transition-colors">
+              Instagram
+            </a>
+            <a href="https://youtube.com/@templixai" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" className="hover:text-red-600 transition-colors">
+              YouTube
+            </a>
+            <a href="https://linkedin.com/company/templixai" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
+              LinkedIn
+            </a>
+            <a href="https://twitter.com/templix_ai" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="hover:text-sky-500 transition-colors">
+              Twitter
+            </a>
+          </div>
+
           <div className="text-zinc-500 dark:text-zinc-400">
             {t.freeForever}
           </div>

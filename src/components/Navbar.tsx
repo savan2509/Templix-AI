@@ -216,7 +216,8 @@ export default function Navbar() {
                   mode. Swapped via CSS `dark:` so there's no hydration flicker. */}
               <Image
                 src="/Templix-ai-light.png"
-                alt="Templix AI"
+                alt="Templix AI — Free Professional Document Editor Logo"
+                title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}
                 priority
@@ -224,7 +225,8 @@ export default function Navbar() {
               />
               <Image
                 src="/Templix-ai-dark.png"
-                alt="Templix AI"
+                alt="Templix AI — Free Professional Document Editor Logo"
+                title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}
                 priority
@@ -356,7 +358,6 @@ export default function Navbar() {
                 >
                   <Sparkles className="h-3.5 w-3.5 text-violet-500" />
                   <span>{aiToolsText}</span>
-                  <span aria-hidden="true" className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">AI</span>
                   <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${aiToolsOpen ? "rotate-180" : ""}`} />
                   {isAiActive && (
                     <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />

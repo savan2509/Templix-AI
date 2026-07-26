@@ -247,6 +247,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt={`${post.title} — Header Background`}
+              title={`${post.title} — Header Background`}
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
               quality={55}
@@ -315,6 +316,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               // The article's own cover — the single most Google-Images-eligible
               // image on the page, so it gets a descriptive alt, not alt="".
               alt={`${post.title} — illustration`}
+              title={`${post.title} — illustration`}
               fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"
@@ -570,6 +572,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                       <Image
                         src={p.image}
                         alt={`${p.title} — illustration`}
+                        title={`${p.title} — illustration`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

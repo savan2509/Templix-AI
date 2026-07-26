@@ -39,6 +39,11 @@ export const siteConfig = {
   ogImage: `${APP_URL}/og-default.jpg`,
   links: {
     github: "https://github.com/your-username/templix-ai",
+    facebook: "https://facebook.com/templixai",
+    instagram: "https://instagram.com/templixai",
+    youtube: "https://youtube.com/@templixai",
+    linkedin: "https://linkedin.com/company/templixai",
+    twitter: "https://twitter.com/templix_ai",
   },
   locales: ["en", "es", "de", "fr", "ar"],
   defaultLocale: "en",

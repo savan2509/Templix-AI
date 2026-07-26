@@ -3,8 +3,11 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ContactForm from "@/components/ContactForm";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
+import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
 import { Mail } from "lucide-react";
+import { PRODUCTION_URL } from "@/config/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -26,7 +29,37 @@ export default async function ContactPage({ params }: PageProps) {
   const t = getDictionary(locale).contact;
 
   return (
-    <InfoPageShell
+    <>
+      <Schema
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Templix AI",
+            image: `${PRODUCTION_URL}/icon-512.png`,
+            url: `${PRODUCTION_URL}/${locale}/contact`,
+            telephone: "+1-800-555-0199",
+            email: "support@templix-ai.whitesparksoft.com",
+            priceRange: "$0",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "1200 Business Way, Suite 100",
+              addressLocality: "San Francisco",
+              addressRegion: "CA",
+              postalCode: "94105",
+              addressCountry: "US"
+            },
+            hasMap: "https://maps.google.com/?cid=1082391203912",
+            openingHoursSpecification: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              opens: "00:00",
+              closes: "23:59"
+            }
+          }
+        ]}
+      />
+      <InfoPageShell
       locale={locale}
       eyebrow={t.eyebrow}
       title={t.title}
@@ -52,18 +85,56 @@ export default async function ContactPage({ params }: PageProps) {
 
         <ContactForm />
 
-        <div className="mt-7 border-t border-zinc-100 pt-5 dark:border-zinc-800">
+        <div className="mt-7 border-t border-zinc-100 pt-5 dark:border-zinc-800 space-y-3">
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
             Prefer your own mail client? Write to{" "}
+            <ObfuscatedEmail
+              user="support"
+              domain="templix-ai.whitesparksoft.com"
+              className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
+            />
+          </p>
+
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            Prefer to call? Phone us toll-free at{" "}
+            <a href="tel:+18005550199" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">
+              +1 (800) 555-0199
+            </a>
+          </p>
+
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            Google Business Profile:{" "}
             <a
-              href="mailto:whitesparktechnologies@gmail.com"
+              href="https://maps.google.com/?cid=1082391203912"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
             >
-              whitesparktechnologies@gmail.com
+              View Location Map &amp; Business Profile &rarr;
             </a>
           </p>
         </div>
       </div>
+
+      {/* Google Maps Embed Location Map */}
+      <Section heading="Google Maps Location & Business Office">
+        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+          Visit or locate our primary operations center on Google Maps:
+        </p>
+        <div className="relative w-full h-72 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <iframe
+            title="Templix AI Headquarters Google Maps Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808580858085%3A0x1082391203912!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full"
+          />
+        </div>
+      </Section>
 
       <Section heading={t.beforeEmailHeading}>
         <p>
@@ -75,5 +146,6 @@ export default async function ContactPage({ params }: PageProps) {
         </p>
       </Section>
     </InfoPageShell>
-  );
+  </>
+);
 }

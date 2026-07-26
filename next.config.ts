@@ -1,16 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // ── Compression ────────────────────────────────────────────────────────────
-  compress: true,
-
-  // ── Tree-shake heavy icon / animation packages ──────────────────────────
-  // Next.js will only bundle the specific exports that are actually imported
-  // instead of loading the entire library. Saves ~40-80 KB on first load.
+  // SWC Compiler & Tree-Shaking Optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
+  },
   experimental: {
     optimizePackageImports: [
       "lucide-react",
       "framer-motion",
+      "@supabase/supabase-js",
+      "clsx",
+      "tailwind-merge",
       "@tiptap/react",
       "@tiptap/starter-kit",
       "@tiptap/extension-table",
@@ -33,8 +34,9 @@ const nextConfig: NextConfig = {
         hostname: "cdn.templix.ai",
       },
     ],
-    // Optimise formats served to modern browsers
+    // Optimise formats served to modern browsers & 1-year CDN cache
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
   },
 
   // ── HTTP headers: security + caching ──────────────────────────────────────
@@ -73,6 +75,29 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
+      },
+      {
+        // Cache Next static JS/CSS chunks on CDN for 1 year.
+        source: "/_next/static/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+    ];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.templix-ai.whitesparksoft.com",
+          },
+        ],
+        destination: "https://templix-ai.whitesparksoft.com/:path*",
+        permanent: true,
       },
     ];
   },

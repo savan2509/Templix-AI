@@ -157,6 +157,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
             <Image
               src="/blog/blog-hero-bg.jpg"
               alt="Templix AI Document Guides & Editorial Articles"
+              title="Templix AI Document Guides & Editorial Articles"
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
               quality={55}
@@ -233,6 +234,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                   <Image
                     src={featured.image}
                     alt={`${featured.title} — illustration`}
+                    title={`${featured.title} — illustration`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 320px"
@@ -303,6 +305,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       <Image
                         src={post.image}
                         alt={`${post.title} — illustration`}
+                        title={`${post.title} — illustration`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

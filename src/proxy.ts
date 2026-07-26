@@ -22,18 +22,26 @@ const defaultLocale = "en";
 const PLATFORM_ALIAS = /\.(vercel\.app|netlify\.app|onrender\.com)$/i;
 
 export default async function proxy(req: NextRequest) {
-  // ── Consolidate platform aliases, www subdomains, and HTTP onto production domain (308) ──
-  const host = (req.headers.get("host") || "").toLowerCase();
+  // ── Consolidate platform aliases, www subdomains, and HTTP onto production domain (301) ──
+  const hostHeader = (req.headers.get("host") || "").toLowerCase();
+  const forwardedHost = (req.headers.get("x-forwarded-host") || "").toLowerCase();
+  const nextHost = (req.nextUrl.hostname || "").toLowerCase();
   const proto = req.headers.get("x-forwarded-proto") || "";
   const prodHost = new URL(PRODUCTION_URL).hostname.toLowerCase();
 
-  const isPlatformAlias = PLATFORM_ALIAS.test(host);
-  const isWwwSubdomain = host.startsWith("www.") || (host.length > 0 && host !== prodHost && host.includes(prodHost));
+  const isPlatformAlias = PLATFORM_ALIAS.test(hostHeader) || PLATFORM_ALIAS.test(forwardedHost) || PLATFORM_ALIAS.test(nextHost);
+  const isWwwSubdomain =
+    hostHeader.startsWith("www.") ||
+    forwardedHost.startsWith("www.") ||
+    nextHost.startsWith("www.") ||
+    (hostHeader.length > 0 && hostHeader !== prodHost && hostHeader.includes(prodHost)) ||
+    (forwardedHost.length > 0 && forwardedHost !== prodHost && forwardedHost.includes(prodHost));
   const isHttp = proto === "http";
 
-  if ((process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (isPlatformAlias || isWwwSubdomain || isHttp)) {
+  // Unconditionally redirect any www. subdomain or platform alias request to canonical host using 301 (Moved Permanently)
+  if (isWwwSubdomain || isPlatformAlias || (isHttp && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"))) {
     const dest = new URL(req.nextUrl.pathname + req.nextUrl.search, PRODUCTION_URL);
-    return NextResponse.redirect(dest, 308);
+    return NextResponse.redirect(dest, 301);
   }
 
   const { pathname } = req.nextUrl;
@@ -44,16 +52,13 @@ export default async function proxy(req: NextRequest) {
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname.includes(".") ||
-    pathname === "/favicon.ico"
+    pathname === "/favicon.ico" ||
+    pathname === "/ads.txt"
   ) {
     return supabaseResponse;
   }
 
   // ── Self-heal Supabase auth code on the wrong path ──────────────────────────
-  // Supabase email links land on whatever its "Site URL" points at. If that is
-  // misconfigured (e.g. the site root instead of the callback), the confirmation
-  // arrives as /?code=… and the session is never established. Route any stray
-  // ?code= to the real callback so the user still ends up logged in.
   const authCode = req.nextUrl.searchParams.get("code");
   const tokenHash = req.nextUrl.searchParams.get("token_hash");
   if (authCode || tokenHash) {
@@ -73,13 +78,9 @@ export default async function proxy(req: NextRequest) {
   }
 
   // ── Supabase Session Refresh ────────────────────────────────────────────────
-  // Refresh the user's session cookie on every request so they stay logged in.
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  // Track the session so the editor gate below can act on it. `sessionChecked`
-  // stays false if Supabase is unreachable, so a transient outage never falsely
-  // bounces a logged-in user to /login.
   let sessionChecked = false;
   let hasUser = false;
 
@@ -102,7 +103,6 @@ export default async function proxy(req: NextRequest) {
         },
       });
 
-      // Best-effort session refresh, never blocks request on network/DB failure
       const { data } = await supabase.auth.getUser();
       hasUser = !!data.user;
       sessionChecked = true;
@@ -111,42 +111,36 @@ export default async function proxy(req: NextRequest) {
     }
   }
 
-  // 0. Retire the non-English locales. Their template/blog content only ever
-  // served English, so a /{es,de,fr,ar}/… URL is permanently redirected to its
-  // /en equivalent — Google then drops the half-translated duplicate URLs and
-  // keeps /en, refocusing scarce crawl budget on the real pages.
+  const VALID_BARE_ROUTES = [
+    "templates", "blog", "tools", "about", "contact",
+    "privacy", "terms", "faq", "login", "editor",
+    "dashboard", "admin", "confirm", "reset", "auth"
+  ];
+
+  // 0. Retire non-English locales (301 Moved Permanently ONLY for valid routes)
   const retired = RETIRED_LOCALES.find(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   );
   if (retired) {
     const rest = pathname.replace(/^\/(?:es|de|fr|ar)(?=\/|$)/, "");
-    const dest = new URL(`/en${rest}`, req.url);
-    dest.search = req.nextUrl.search;
-    return NextResponse.redirect(dest, 308);
+    const isValidSubRoute = rest === "" || rest === "/" || VALID_BARE_ROUTES.some((r) => rest === `/${r}` || rest.startsWith(`/${r}/`));
+    if (isValidSubRoute) {
+      const dest = new URL(`/en${rest}`, req.url);
+      dest.search = req.nextUrl.search;
+      return NextResponse.redirect(dest, 301);
+    }
   }
 
-  // 1. Redirect bare paths (missing locale prefix) to the default locale
-  const pathnameIsMissingLocale = locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  // 1. Known bare routes redirect to default locale /en. Invalid paths pass through directly so Next.js renders HTTP 404 without redirecting.
+  const isKnownBareRoute = VALID_BARE_ROUTES.some(
+    (r) => pathname === `/${r}` || pathname.startsWith(`/${r}/`)
   );
 
-  if (pathnameIsMissingLocale) {
-    // Redirect to the locale-prefixed path in a SINGLE hop. The root "/" must
-    // map to "/{locale}" with no trailing slash — appending pathname ("/")
-    // produced "/en/", which Next then re-redirected to "/en", a needless
-    // 2-hop chain on the site's most-linked URL. Other paths already start with
-    // "/" so they carry through unchanged (e.g. "/templates" → "/en/templates").
-    const targetPath = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+  if (isKnownBareRoute) {
+    const targetPath = `/${defaultLocale}${pathname}`;
     const redirectUrl = new URL(targetPath, req.url);
-    // Preserve any search parameters or hash (e.g. for password resets)
     redirectUrl.search = req.nextUrl.search;
-    // 308 (Permanent), not the NextResponse.redirect default of 307 (Temporary).
-    // A 307 tells Google the un-prefixed URL is only temporarily elsewhere, so it
-    // keeps that URL indexed, never consolidates its ranking signals onto /en, and
-    // re-surfaces it as "Page with redirect" on every crawl. 308 makes the move
-    // permanent — Google folds the signals into /en and drops the bare URL — while
-    // still preserving the request method (unlike a 301).
-    return NextResponse.redirect(redirectUrl, 308);
+    return NextResponse.redirect(redirectUrl, 301);
   }
 
   // ── Require login before the document editor ────────────────────────────────

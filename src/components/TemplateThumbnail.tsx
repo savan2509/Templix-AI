@@ -24,10 +24,10 @@ import { getTemplateValues } from "@/features/templates/sample-values";
  *     dominates the preview — each list is trimmed to LIST_ITEM_CAP items.
  */
 function selectThumbnailBlocks(blocks: any[]): any[] {
-  const MAX_LEAD        = 5;  // lead blocks shown before the table
-  const MAX_TRAIL       = 4;  // trailing blocks shown after the table
-  const MAX_TEXT_BLOCKS = 14; // total top-level blocks for text documents
-  const LIST_ITEM_CAP   = 3;  // max bullet/ordered list items per list block
+  const MAX_LEAD        = 3;  // lead blocks shown before the table
+  const MAX_TRAIL       = 2;  // trailing blocks shown after the table
+  const MAX_TEXT_BLOCKS = 6;  // total top-level blocks for text documents
+  const LIST_ITEM_CAP   = 2;  // max bullet/ordered list items per list block
 
   const tableIdx = blocks.findIndex((b: any) => b.type === "table");
 

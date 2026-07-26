@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SEOEngine } from "@/services/seo";
 import { getDictionary } from "@/lib/i18n";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -64,7 +65,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s6Heading}>
         <p>
           {t.s6Body}{" "}
-          <a href="mailto:whitesparktechnologies@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">whitesparktechnologies@gmail.com</a>.
+          <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
         </p>
       </Section>
 
@@ -75,7 +76,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s8Heading}>
         <p>
           {t.s8Body}{" "}
-          <a href="mailto:whitesparktechnologies@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">whitesparktechnologies@gmail.com</a>.
+          <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
         </p>
       </Section>
     </InfoPageShell>

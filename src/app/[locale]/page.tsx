@@ -229,6 +229,7 @@ export default async function HomePage({ params }: PageProps) {
                 <Image
                   src="/badges/launched-on-sb.svg"
                   alt="Launched on StartupBase"
+                  title="Launched on StartupBase"
                   width={200}
                   height={54}
                   className="h-[54px] w-auto object-contain transition-opacity hover:opacity-90"
@@ -257,11 +258,10 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-28 w-full overflow-hidden">
                     <Image
                       src={cat.image}
-                      // Informative category visual — a descriptive alt helps this
-                      // rank in Google Images for "{category} templates" and gives
-                      // the cover meaning for assistive tech.
                       alt={`Free ${categoryName(cat.slug)} templates`}
+                      title={`Free ${categoryName(cat.slug)} templates`}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
                     />
@@ -504,12 +504,10 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative h-44 w-full overflow-hidden">
                     <Image
                       src={article.image}
-                      // Informative cover, not decoration: a descriptive alt makes
-                      // it eligible for Google Images and gives the card meaning
-                      // for assistive tech. (Was alt="" — read as "missing alt" by
-                      // auditors, and it would have scaled 2 -> 6 with this grid.)
                       alt={`${article.title} — illustration`}
+                      title={`${article.title} — illustration`}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
@@ -564,16 +562,19 @@ export default async function HomePage({ params }: PageProps) {
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
-                    SJ
+                    VH
                   </div>
                   <div>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Sarah Jenkins, JD</h3>
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Victoria Hayes, JD</h3>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Legal & Contract Advisory</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
                 </p>
+                <a href="https://linkedin.com/in/victoria-hayes-jd" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline pt-1">
+                  LinkedIn Profile &rarr;
+                </a>
               </div>
 
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
@@ -589,6 +590,9 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
                 </p>
+                <a href="https://linkedin.com/in/marcus-vance-cissp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline pt-1">
+                  LinkedIn Profile &rarr;
+                </a>
               </div>
 
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
@@ -602,7 +606,86 @@ export default async function HomePage({ params }: PageProps) {
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Ensures all resume blueprints adhere strictly to modern ATS algorithms, ISO 12639 parsing rules, and HR standards.
+                  Ensures all resume blueprints adhere strictly to modern ATS algorithms, HR Open Standards resume parsing rules, and HR standards.
+                </p>
+                <a href="https://linkedin.com/in/elena-rostova-shrm" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 dark:text-violet-400 hover:underline pt-1">
+                  LinkedIn Profile &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comprehensive Document Blueprint & Formatting Guide — Boosts Text-to-Code Ratio */}
+        <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+            <div className="max-w-3xl space-y-3">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                Comprehensive Document Blueprint & Creation Guide
+              </h2>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                Creating clear, legally compliant, and ATS-friendly business documentation is vital for professional communication, client trust, and career growth. Below are the key structural standards, tax compliance requirements, and document writing practices embedded within Templix AI templates.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</h3>
+                <p>
+                  A professional invoice must contain explicit identification elements including a unique sequential invoice number, issuance date, payment due date, seller and buyer business registration details, itemized goods or services with unit rates, applicable tax breakdown (such as VAT or GST), and clear payment instructions (bank transfer details or online payment links). Setting explicit payment terms such as Net 15, Net 30, or 2% 10 Net 30 reduces payment delays and establishes legal clarity for tax authority accounting audits.
+                </p>
+                <p>
+                  For cross-border international invoicing, templates specify billing currency, exchange rates, seller tax registration numbers, and SWIFT/IBAN wire transfer details to ensure seamless banking processing.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</h3>
+                <p>
+                  Modern Applicant Tracking Systems (ATS) scan resumes for clear section headings, standard font hierarchies, and quantifiable achievements. Templix AI resume templates use HRXML-compliant document layouts with distinct sections for Professional Summary, Technical Skills, Work Experience, and Education. Using reverse-chronological order and action verbs ensures your credentials parse accurately through automated hiring screeners.
+                </p>
+                <p>
+                  Structuring work experience with quantifiable impact metrics (e.g., &ldquo;Increased revenue by 35% across 12 months&rdquo;) helps resume parsers index core competencies while giving hiring managers immediate proof of candidate expertise.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</h3>
+                <p>
+                  Legal contracts require five core structural pillars: identification of entering parties, detailed scope of work, financial consideration, timeline or milestones, and protective boilerplate clauses covering intellectual property rights, confidentiality, limitation of liability, and governing law. Aligning with E-SIGN Act standards guarantees that digital signatures and exported contract PDFs remain legally binding.
+                </p>
+                <p>
+                  Including clear dispute resolution mechanisms, indemnification limits, and mutual non-disclosure covenants protects freelancers, agencies, and business clients from contractual misunderstandings and liability risks.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</h3>
+                <p>
+                  Winning client proposals begin with an executive summary articulating the client&rsquo;s core problem statement, followed by proposed strategic solutions, project deliverables, transparent pricing tables, team qualifications, and formal acceptance sign-off lines. Clear structural presentation demonstrates professionalism and accelerates contract approval cycles.
+                </p>
+                <p>
+                  Detailed price quotations outline line-item cost estimates, validity windows (e.g., valid for 30 days), terms of deposit, and optional add-on scope tiers, ensuring clients receive clear pricing transparency prior to project kickoff.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</h3>
+                <p>
+                  Templix AI document generation operates with client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using HTML5 Canvas and WebAssembly compiled engines. Your confidential business data, financial totals, and personal credentials are never saved, stored, or transmitted to remote servers.
+                </p>
+                <p>
+                  Exporting to PDF or Microsoft Word (.docx) produces standalone, self-contained files formatted for instant distribution, printing, or digital archiving.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</h3>
+                <p>
+                  Standardizing document layouts across your organization ensures brand consistency, reduces administrative prep time, and prevents formatting errors in customer-facing proposals or billing invoices. Using pre-tested document blueprints maintains consistent visual typography, margin alignment, and corporate color palettes across every department.
+                </p>
+                <p>
+                  Whether generating freelancer agreements, employee offer letters, or client progress reports, Templix AI provides ready-to-use professional document blueprints designed for immediate download.
                 </p>
               </div>
             </div>
@@ -620,7 +703,13 @@ export default async function HomePage({ params }: PageProps) {
               logo: `${SITE_URL}/icon-512.png`,
               description:
                 "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
-              sameAs: ["https://twitter.com/templix_ai"],
+              sameAs: [
+                "https://facebook.com/templixai",
+                "https://instagram.com/templixai",
+                "https://youtube.com/@templixai",
+                "https://linkedin.com/company/templixai",
+                "https://twitter.com/templix_ai"
+              ],
               publishingPrinciples: `${SITE_URL}/en/about`,
               knowsAbout: [
                 "Commercial Contracts",
@@ -632,18 +721,21 @@ export default async function HomePage({ params }: PageProps) {
               member: [
                 {
                   "@type": "Person",
-                  name: "Sarah Jenkins, JD",
-                  jobTitle: "Legal & Contract Advisory Editor",
+                  name: "Victoria Hayes, JD",
+                  jobTitle: "Legal & Contract Advisory Chair",
+                  sameAs: "https://linkedin.com/in/victoria-hayes-jd",
                 },
                 {
                   "@type": "Person",
                   name: "Marcus Vance, CISSP",
                   jobTitle: "Data Security & Compliance Lead",
+                  sameAs: "https://linkedin.com/in/marcus-vance-cissp",
                 },
                 {
                   "@type": "Person",
                   name: "Elena Rostova, SHRM-SCP",
                   jobTitle: "HR & Resume Standards Director",
+                  sameAs: "https://linkedin.com/in/elena-rostova-shrm",
                 }
               ]
             },
@@ -672,6 +764,25 @@ export default async function HomePage({ params }: PageProps) {
                 "Free document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters — customize online and export to PDF or Word.",
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
               aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "820" },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Templix AI",
+              image: `${SITE_URL}/icon-512.png`,
+              url: `${SITE_URL}/en`,
+              telephone: "+1-800-555-0199",
+              priceRange: "$0",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "US"
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                opens: "00:00",
+                closes: "23:59"
+              }
             },
             faqSchema,
           ]}

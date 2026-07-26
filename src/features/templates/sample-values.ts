@@ -34,7 +34,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   total: "$4,500.00",
   subtotal: "$4,250.00",
   notes: "Payment is due within 30 days of invoice date.",
-  signature: "Sarah Jenkins",
+  signature: "Alex R. Morgan",
   // Common report / business-plan / proposal fields — without these, previews
   // rendered the humanized field name ("Owner Name", "Report Period") because
   // the field had no sample value.
@@ -47,8 +47,8 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   projectName: "Templix AI Platform Development",
 
   // — Freelancer Invoice —
-  freelancerName: "Sarah Jenkins",
-  businessName: "Jenkins Digital Studio",
+  freelancerName: "Alex Morgan",
+  businessName: "Morgan Digital Studio",
   clientCompanyName: "TechVentures Corp.",
   clientAddress: "1600 Amphitheatre Parkway, Mountain View, CA",
   clientEmail: "billing@techventures.com",
@@ -168,11 +168,11 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   customerSignature: "Jane Smith",
 
   // — Resume fields —
-  fullName: "Sarah Jenkins",
+  fullName: "Alex R. Morgan",
   jobTitle: "Principal Lead Engineer",
-  github: "sarahj-dev",
-  linkedin: "sarah-jenkins-lead",
-  portfolio: "sarahjenkins.dev",
+  github: "alexm-dev",
+  linkedin: "alex-morgan-lead",
+  portfolio: "alexmorgan.dev",
   amountDue: "$4,500.00",
   taxRate: "15",
   profilePhoto: "👤",

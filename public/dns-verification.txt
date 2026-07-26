@@ -1,0 +1,6 @@
+# Google Search Console DNS Verification TXT Record Specification
+Domain: templix-ai.whitesparksoft.com
+Record-Type: TXT
+Record-Name: @ (or templix-ai.whitesparksoft.com)
+Record-Value: google-site-verification=jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE
+TTL: 3600

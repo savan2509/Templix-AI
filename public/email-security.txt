@@ -1,0 +1,5 @@
+# Domain Email Security & SPF Specification
+Domain: templix-ai.whitesparksoft.com
+SPF-Record: v=spf1 include:resend.com include:_spf.google.com ~all
+DMARC-Record: v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@whitesparksoft.com
+Authorized-Senders: no-reply@templix-ai.whitesparksoft.com

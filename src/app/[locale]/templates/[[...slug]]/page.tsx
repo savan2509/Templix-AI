@@ -558,7 +558,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                       <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[11px] font-bold text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
                         {i + 1}
                       </span>
-                      <span>{step}</span>
+                      <span>{step.replace(/^\d+[\.\s]+\s*/, "")}</span>
                     </li>
                   ))}
                 </ol>
@@ -909,7 +909,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 }`}
               >
                 <div className="relative h-12 w-16 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700">
-                  <Image src="/cat-all-docs-cover.jpg" alt="All documents" fill className="object-cover" sizes="64px" />
+                  <Image src="/cat-all-docs-cover.jpg" alt="All document templates" title="All document templates" fill className="object-cover" sizes="64px" />
                 </div>
                 <div className="min-w-0">
                   <p className={`font-bold text-sm truncate ${ !categorySlug ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200" }`}>
@@ -942,6 +942,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <Image
                           src={cat.image}
                           alt={`Free ${cat.name} templates`}
+                          title={`Free ${cat.name} templates`}
                           fill
                           className="object-cover"
                           sizes="64px"
