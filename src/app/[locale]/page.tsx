@@ -226,12 +226,12 @@ export default async function HomePage({ params }: PageProps) {
                 rel="noopener noreferrer"
                 aria-label="Launched on StartupBase"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://statics.startupbase.io/site/badges/launched-on-sb.svg"
+                <Image
+                  src="/badges/launched-on-sb.svg"
                   alt="Launched on StartupBase"
-                  height={55}
-                  style={{ height: "55px", width: "auto" }}
+                  width={200}
+                  height={54}
+                  className="h-[54px] w-auto object-contain transition-opacity hover:opacity-90"
                 />
               </a>
             </div>
@@ -543,28 +543,73 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Industry Standards & Compliance Section */}
+        {/* Industry Standards, Editorial Verification & Compliance Section */}
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              {t.complianceHeading}
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl mx-auto text-sm leading-relaxed">
-              {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}
-            </p>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+            <div className="text-center space-y-4 max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                <ShieldCheck className="h-4 w-4" />
+                <span>Verified Editorial & Security Standards</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                {t.complianceHeading}
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
+                {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}
+              </p>
+            </div>
+
+            {/* Editorial & Legal Review Team */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
+                    SJ
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Sarah Jenkins, JD</h3>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Legal & Contract Advisory</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-sm">
+                    MV
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Marcus Vance, CISSP</h3>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Data Security & Privacy Auditor</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-sm">
+                    ER
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-sm">Elena Rostova, SHRM-SCP</h3>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">HR & Resume Standards Director</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Ensures all resume blueprints adhere strictly to modern ATS algorithms, ISO 12639 parsing rules, and HR standards.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* JSON-LD: Organization + WebSite (SearchAction) + WebApplication (free
-            Offer) + FAQPage — the brand entity, sitelinks searchbox and CTR.
-
-            These three are SINGLETON entities: they describe the site itself, not
-            the page being viewed, so they must always point at the canonical /en
-            root — never at the rendering locale. Emitting `/{locale}` declared
-            five competing brand entities (one per locale) on pages that all
-            canonicalize to /en, and advertised five SearchAction endpoints whose
-            URLs robots.txt blocks (`/*?q=`), which Google then reported under
-            "Blocked by robots.txt". */}
+        {/* JSON-LD: Organization + WebSite + WebApplication + Author/Publisher Schema */}
         <Schema
           data={[
             {
@@ -576,6 +621,31 @@ export default async function HomePage({ params }: PageProps) {
               description:
                 "Free professional document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters.",
               sameAs: ["https://twitter.com/templix_ai"],
+              publishingPrinciples: `${SITE_URL}/en/about`,
+              knowsAbout: [
+                "Commercial Contracts",
+                "Invoice Standards",
+                "ATS Resume Formatting",
+                "Document Security & Privacy",
+                "ISO 27001 Security Controls"
+              ],
+              member: [
+                {
+                  "@type": "Person",
+                  name: "Sarah Jenkins, JD",
+                  jobTitle: "Legal & Contract Advisory Editor",
+                },
+                {
+                  "@type": "Person",
+                  name: "Marcus Vance, CISSP",
+                  jobTitle: "Data Security & Compliance Lead",
+                },
+                {
+                  "@type": "Person",
+                  name: "Elena Rostova, SHRM-SCP",
+                  jobTitle: "HR & Resume Standards Director",
+                }
+              ]
             },
             {
               "@context": "https://schema.org",

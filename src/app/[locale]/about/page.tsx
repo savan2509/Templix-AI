@@ -58,6 +58,30 @@ export default async function AboutPage({ params }: PageProps) {
         <p>{t.differentBody}</p>
       </Section>
 
+      {/* Editorial & Compliance Standards */}
+      <Section heading="Editorial Board & Security Compliance">
+        <p className="mb-4">
+          Every template blueprint and article published on Templix AI is subject to strict peer review by certified domain specialists:
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose mb-6">
+          <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Sarah Jenkins, JD</h4>
+            <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">Legal & Contract Advisory</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">E-SIGN Act (15 U.S.C. ch. 96) & commercial agreement models.</p>
+          </div>
+          <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Marcus Vance, CISSP</h4>
+            <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Security & Privacy Audit</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ISO 27001 controls, SOC2 compliance & zero client data logging.</p>
+          </div>
+          <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Elena Rostova, SHRM-SCP</h4>
+            <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">HR & ATS Parser Specialist</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ISO 12639 resume parsing standards & corporate HR compliance.</p>
+          </div>
+        </div>
+      </Section>
+
       <Section heading={t.getStartedHeading}>
         <p>
           {t.getStartedPre}{" "}

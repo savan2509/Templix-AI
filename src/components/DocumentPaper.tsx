@@ -89,58 +89,58 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   const phoneLine = renderText("{{phone}}");
   const initial = (companyLine.trim()[0] || "A").toUpperCase();
 
-  // ---- Heading renderer (3 styles) ----
+  // ---- Heading renderer (3 styles, rendered as styled divs to preserve page SEO H2 outline) ----
   const renderHeading = (idx: number, lvl: number, replaced: string) => {
     if (hstyle === 1) {
       if (lvl === 1)
         return (
-          <h2 key={idx} className="text-lg font-black mt-4 mb-1 pl-3 border-l-4" style={{ color: primary, borderColor: primary }}>
+          <div key={idx} role="heading" aria-level={2} className="text-lg font-black mt-4 mb-1 pl-3 border-l-4" style={{ color: primary, borderColor: primary }}>
             {replaced}
-          </h2>
+          </div>
         );
       if (lvl === 2)
         return (
-          <h2 key={idx} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider flex items-center gap-2" style={{ color: primary }}>
+          <div key={idx} role="heading" aria-level={3} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider flex items-center gap-2" style={{ color: primary }}>
             <span className="h-2 w-2 rounded-sm shrink-0" style={{ backgroundColor: primary }} />
             {replaced}
-          </h2>
+          </div>
         );
       return (
-        <h3 key={idx} className="text-xs font-bold mt-2 text-zinc-500 uppercase tracking-wide">{replaced}</h3>
+        <div key={idx} role="heading" aria-level={4} className="text-xs font-bold mt-2 text-zinc-500 uppercase tracking-wide">{replaced}</div>
       );
     }
     if (hstyle === 2) {
       if (lvl === 1)
         return (
-          <h2 key={idx} className="text-base font-black mt-4 mb-1 inline-block px-3 py-1 rounded-md text-white" style={{ backgroundColor: primary }}>
+          <div key={idx} role="heading" aria-level={2} className="text-base font-black mt-4 mb-1 inline-block px-3 py-1 rounded-md text-white" style={{ backgroundColor: primary }}>
             {replaced}
-          </h2>
+          </div>
         );
       if (lvl === 2)
         return (
-          <h2 key={idx} className="text-sm font-bold mt-3 mb-0.5 pb-1 border-b-2" style={{ color: primary, borderColor: `${primary}55` }}>
+          <div key={idx} role="heading" aria-level={3} className="text-sm font-bold mt-3 mb-0.5 pb-1 border-b-2" style={{ color: primary, borderColor: `${primary}55` }}>
             {replaced}
-          </h2>
+          </div>
         );
       return (
-        <h3 key={idx} className="text-xs font-bold mt-2 text-zinc-600 tracking-wide">{replaced}</h3>
+        <div key={idx} role="heading" aria-level={4} className="text-xs font-bold mt-2 text-zinc-600 tracking-wide">{replaced}</div>
       );
     }
     // hstyle 0 — classic
     if (lvl === 1)
       return (
-        <h2 key={idx} className="text-lg font-black mt-4 mb-1 pb-1 border-b" style={{ color: primary, borderColor: primary }}>
+        <div key={idx} role="heading" aria-level={2} className="text-lg font-black mt-4 mb-1 pb-1 border-b" style={{ color: primary, borderColor: primary }}>
           {replaced}
-        </h2>
+        </div>
       );
     if (lvl === 2)
       return (
-        <h2 key={idx} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider" style={{ color: primary }}>
+        <div key={idx} role="heading" aria-level={3} className="text-sm font-bold mt-3 mb-0.5 uppercase tracking-wider" style={{ color: primary }}>
           {replaced}
-        </h2>
+        </div>
       );
     return (
-      <h3 key={idx} className="text-xs font-bold mt-2 text-zinc-600 uppercase tracking-wide">{replaced}</h3>
+      <div key={idx} role="heading" aria-level={4} className="text-xs font-bold mt-2 text-zinc-600 uppercase tracking-wide">{replaced}</div>
     );
   };
 

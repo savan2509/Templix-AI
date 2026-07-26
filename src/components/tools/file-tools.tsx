@@ -338,7 +338,7 @@ export function PdfToJpg() {
           {pages.map((src, i) => (
             <div key={i} className="space-y-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt={`Page ${i + 1}`} className="w-full rounded-lg border border-zinc-200 dark:border-zinc-800" />
+              <img src={src} alt={`Page ${i + 1}`} className="w-full h-auto object-contain rounded-lg border border-zinc-200 dark:border-zinc-800" />
               <a href={src} download={`page-${i + 1}.${fmt.ext}`} className="flex items-center justify-center gap-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
                 <Download className="h-3.5 w-3.5" /> Page {i + 1}
               </a>
@@ -473,7 +473,7 @@ export function ImageConverter() {
           {results.map((r, i) => (
             <div key={i} className="space-y-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={r.url} alt={r.name} className="w-full rounded-lg border border-zinc-200 dark:border-zinc-800" />
+              <img src={r.url} alt={r.name} className="w-full h-auto object-contain rounded-lg border border-zinc-200 dark:border-zinc-800" />
               <a href={r.url} download={r.name} className="flex items-center justify-center gap-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
                 <Download className="h-3.5 w-3.5" /> {r.name.length > 16 ? `${fmt.label} · ${fmtSize(r.size)}` : `${r.name} · ${fmtSize(r.size)}`}
               </a>

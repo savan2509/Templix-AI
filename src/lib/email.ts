@@ -38,6 +38,7 @@ interface NewUserInfo {
  */
 export async function sendNewUserAdminEmail(user: NewUserInfo): Promise<void> {
   const to = ADMIN_NOTIFICATION_EMAIL;
+  // Domain sender address matching SPF/DKIM DNS records (see docs/EMAIL_SECURITY_SPF.md)
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||

@@ -22,11 +22,16 @@ const defaultLocale = "en";
 const PLATFORM_ALIAS = /\.(vercel\.app|netlify\.app|onrender\.com)$/i;
 
 export default async function proxy(req: NextRequest) {
-  // ── Consolidate the platform alias onto the production domain (301/308) ──────
-  // Gated on VERCEL_ENV === "production" so preview and development deployments,
-  // which legitimately serve on *.vercel.app, are never redirected.
-  const host = req.headers.get("host") || "";
-  if (process.env.VERCEL_ENV === "production" && PLATFORM_ALIAS.test(host)) {
+  // ── Consolidate platform aliases, www subdomains, and HTTP onto production domain (308) ──
+  const host = (req.headers.get("host") || "").toLowerCase();
+  const proto = req.headers.get("x-forwarded-proto") || "";
+  const prodHost = new URL(PRODUCTION_URL).hostname.toLowerCase();
+
+  const isPlatformAlias = PLATFORM_ALIAS.test(host);
+  const isWwwSubdomain = host.startsWith("www.") || (host.length > 0 && host !== prodHost && host.includes(prodHost));
+  const isHttp = proto === "http";
+
+  if ((process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (isPlatformAlias || isWwwSubdomain || isHttp)) {
     const dest = new URL(req.nextUrl.pathname + req.nextUrl.search, PRODUCTION_URL);
     return NextResponse.redirect(dest, 308);
   }

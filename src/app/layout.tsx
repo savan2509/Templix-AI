@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import AuthProvider from "@/providers/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: siteConfig.url,
+  },
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   publisher: siteConfig.name,
@@ -84,18 +88,18 @@ export default async function RootLayout({
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
         
-        {/* Native blocking script: reads localStorage synchronously before HTML parser paints the body (fixes white white/dark flash FOUC) */}
-        <script
+        {/* Non render-blocking init scripts with beforeInteractive strategy */}
+        <Script
           id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('templix-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
           }}
         />
 
-        {/* Blocking script: sets lang/dir from the URL locale before paint. The
-            root layout can't read the [locale] param, so Arabic (rtl) is fixed here. */}
-        <script
+        <Script
           id="locale-dir-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=location.pathname.split('/')[1];if(s){document.documentElement.lang=s;document.documentElement.dir=(s==='ar')?'rtl':'ltr';}}catch(e){}})();`,
           }}

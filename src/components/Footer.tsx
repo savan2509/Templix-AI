@@ -85,15 +85,14 @@ export default function Footer() {
               <span>{t.trustBadge}</span>
             </div>
 
-            {/* Smol Launch featured badge (third-party image → plain img). */}
+            {/* Smol Launch featured badge */}
             <a href="https://smollaunch.com" target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://smollaunch.com/badges/featured.svg"
+              <Image
+                src="/badges/smol-launch.svg"
                 alt="templix-ai — Featured on Smol Launch"
-                loading="lazy"
-                width={250}
-                height={60}
+                width={220}
+                height={54}
+                className="h-[48px] w-auto object-contain transition-opacity hover:opacity-90"
               />
             </a>
 
@@ -122,11 +121,9 @@ export default function Footer() {
 
           {/* Interactive Newsletter */}
           <div className="lg:col-span-6 space-y-4">
-            {/* h2 (first footer heading) so the outline never skips a level even
-                on content-light pages (h1 → h2). Nav columns below are h3. */}
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
+            <p className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-200">
               {t.newsletterTitle}
-            </h2>
+            </p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-md">
               {t.newsletterDesc}
             </p>
@@ -187,9 +184,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12">
           {/* Column 1: Templates categories */}
           <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <p className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colDocuments}
-            </h3>
+            </p>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/templates/invoices`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -231,9 +228,9 @@ export default function Footer() {
 
           {/* Column 2: Letters */}
           <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <p className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colLetters}
-            </h3>
+            </p>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/templates/letters/cover-letter`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -260,9 +257,9 @@ export default function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <p className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colResources}
-            </h3>
+            </p>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/blog`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
@@ -294,9 +291,9 @@ export default function Footer() {
 
           {/* Column 4: Legal & Policies */}
           <div>
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
+            <p className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-zinc-200 mb-4">
               {t.colLegal}
-            </h3>
+            </p>
             <ul className="space-y-3 text-sm font-semibold">
               <li>
                 <Link href={`/${locale}/privacy`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">

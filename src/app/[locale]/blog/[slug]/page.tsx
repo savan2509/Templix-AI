@@ -246,8 +246,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 source. Cap the requested width and drop quality to protect LCP. */}
             <Image
               src="/blog/blog-hero-bg.jpg"
-              alt=""
-              aria-hidden="true"
+              alt={`${post.title} — Header Background`}
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
               quality={55}

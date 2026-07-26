@@ -156,8 +156,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 width and quality so mobile never downloads a 4K background. */}
             <Image
               src="/blog/blog-hero-bg.jpg"
-              alt=""
-              aria-hidden="true"
+              alt="Templix AI Document Guides & Editorial Articles"
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
               quality={55}
