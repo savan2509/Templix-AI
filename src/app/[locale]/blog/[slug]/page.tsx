@@ -64,6 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     locale,
     isBlogPost: true,
     publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt ?? post.publishedAt,
   }) as Metadata;
 }
 

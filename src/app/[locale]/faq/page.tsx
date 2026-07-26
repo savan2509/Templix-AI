@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
+import Schema from "@/components/seo/Schema";
 import { faqData, faqSchema } from "@/data/faq";
 import { getDictionary } from "@/lib/i18n";
 import { ChevronDown } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -24,6 +26,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function FaqPage({ params }: PageProps) {
   const { locale } = await params;
   const t = getDictionary(locale).faqPage;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "FAQ", item: `${siteConfig.url}/${locale}/faq` },
+    ],
+  };
+
   return (
     <InfoPageShell
       locale={locale}
@@ -31,11 +43,8 @@ export default async function FaqPage({ params }: PageProps) {
       title={t.title}
       subtitle={t.subtitle}
     >
-      {/* FAQ structured data for rich results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {/* FAQ + Breadcrumb structured data for rich results */}
+      <Schema data={[faqSchema, breadcrumbSchema]} />
 
       <div className="space-y-3">
         {faqData.map((item, i) => (
@@ -62,3 +71,4 @@ export default async function FaqPage({ params }: PageProps) {
     </InfoPageShell>
   );
 }
+

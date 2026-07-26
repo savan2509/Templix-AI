@@ -5,6 +5,8 @@ import "./globals.css";
 import AuthProvider from "@/providers/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
 import HtmlDirSync from "@/components/HtmlDirSync";
+import Schema from "@/components/seo/Schema";
+import { globalSchemas } from "@/data/schemas/organization";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -35,8 +37,14 @@ export const metadata: Metadata = {
   },
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: "Templix AI",
   publisher: siteConfig.name,
   category: "productivity",
+  keywords: [
+    "free invoice template", "free resume template", "free contract template",
+    "free proposal template", "document editor", "AI document generator",
+    "PDF export", "Word export", "professional templates",
+  ],
   verification: {
     google: "google-site-verification=jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE",
   },
@@ -60,6 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    site: "@templix_ai",
     creator: "@templix_ai",
     images: ["/og-default.jpg"],
   },
@@ -84,9 +93,16 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Resource hints for CDN preconnection */}
+        {/* Resource hints — establish early connections to reduce latency */}
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://va.vercel-scripts.com" crossOrigin="anonymous" />
+        {/* Supabase — auth & DB connections start earlier, reducing TTFB for auth checks */}
+        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
+          <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} crossOrigin="anonymous" />
+        )}
         
         {/* Theme meta: browsers use this to color the mobile browser chrome */}
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
@@ -107,6 +123,10 @@ export default async function RootLayout({
           }}
         />
         <HtmlDirSync />
+        {/* Global JSON-LD: Organization + WebSite schemas emitted on every page.
+            Tells Google who we are, where we're located, all social profiles,
+            and powers the Sitelinks Search Box in SERPs. */}
+        <Schema data={globalSchemas} />
         <AuthProvider>
           <ThemeProvider defaultTheme="system">
             {children}

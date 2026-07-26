@@ -21,6 +21,7 @@ import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
 import { getProfessionContent, PROFESSION_SLUGS } from "@/features/templates/profession-content";
 import { getTemplateInsight } from "@/features/templates/template-insights";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
+import { generateProductSchema } from "@/data/schemas/product";
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -430,12 +431,22 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
       })),
     };
 
+    const productSchemaJson = generateProductSchema({
+      slug: activeTemplate.slug,
+      title: activeTemplate.title,
+      description: activeTemplate.description,
+      categoryName: activeTemplate.categoryName,
+      categorySlug: activeTemplate.categorySlug,
+      image: getTemplateImage(activeTemplate.slug, activeTemplate.categorySlug)
+        ?? `/cat-${activeTemplate.categorySlug}-cover.jpg`,
+    });
+
     return (
       <>
         <Navbar />
         <main className="flex-1 bg-zinc-50 dark:bg-zinc-950/20 py-10 transition-colors">
-          {/* JSON-LD: BreadcrumbList + SoftwareApplication + HowTo + FAQPage */}
-          <Schema data={[breadcrumbsJson, templateSchemaWithDate, howToSchema, templateFaqSchema]} />
+          {/* JSON-LD: BreadcrumbList + SoftwareApplication + Product + HowTo + FAQPage */}
+          <Schema data={[breadcrumbsJson, templateSchemaWithDate, productSchemaJson, howToSchema, templateFaqSchema]} />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
             {/* Breadcrumb */}

@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { allFallbackTemplates } from "@/data/templates-fallback";
 
 // Template category -> blog category, so a template's "related guides" are
 // topically relevant instead of a fixed list. Reports/business-plans have no
@@ -44,6 +45,7 @@ export interface SEOPageData {
   isTemplate?: boolean;
   isBlogPost?: boolean;
   publishedTime?: string;
+  modifiedTime?: string;   // article:modified_time for blog posts
   metaTitle?: string;    // explicit <title>/OG title override
   keywords?: string[];   // meta keywords
   canonical?: string;    // explicit canonical URL override
@@ -53,6 +55,13 @@ export interface SEOPageData {
   // Omit it and the page consolidates on /en (correct for not-yet-translated
   // pages, so they never create duplicate-content across locales).
   hreflangLocales?: string[];
+  // Robots directives — default: index + follow. Pass noIndex:true for
+  // auth/dashboard/search pages that shouldn't be indexed.
+  noIndex?: boolean;
+  noFollow?: boolean;
+  noArchive?: boolean;
+  noImagePreview?: boolean;
+  noSnippet?: boolean;
 }
 
 export interface InternalLinkingData {
@@ -120,6 +129,21 @@ export class SEOEngine {
         // locales; consolidated pages get a bare canonical (no languages).
         ...(languages ? { languages } : {}),
       },
+      // Robots: default is index+follow. Explicit overrides for noindex pages.
+      robots: {
+        index: !data.noIndex,
+        follow: !data.noFollow,
+        googleBot: {
+          index: !data.noIndex,
+          follow: !data.noFollow,
+          ...(data.noArchive ? { noarchive: true } : {}),
+          ...(data.noImagePreview ? { noimagepreview: true } : {}),
+          ...(data.noSnippet ? { nosnippet: true } : {}),
+          "max-video-preview": -1,
+          "max-image-preview": "large" as const,
+          "max-snippet": -1,
+        },
+      },
       openGraph: {
         title: fullTitle,
         description: data.description,
@@ -131,9 +155,16 @@ export class SEOEngine {
         ...(data.isBlogPost && data.publishedTime ? {
           publishedTime: data.publishedTime,
         } : {}),
+        ...(data.isBlogPost && data.modifiedTime ? {
+          modifiedTime: data.modifiedTime,
+        } : {}),
+        ...(data.isBlogPost ? {
+          authors: [`${this.APP_URL}/en/about`],
+        } : {}),
       },
       twitter: {
         card: "summary_large_image",
+        site: "@templix_ai",
         title: fullTitle,
         description: data.description,
         images: [ogImage],
@@ -188,17 +219,35 @@ export class SEOEngine {
       "@type": "SoftwareApplication",
       name: data.title,
       operatingSystem: "All",
+      browserRequirements: "Requires a modern browser with JavaScript enabled",
       applicationCategory: "BusinessApplication",
+      softwareVersion: "1.0",
+      featureList: [
+        "Editable template fields",
+        "PDF export",
+        "Word/DOCX export",
+        "AI-powered content customization",
+        "No sign-up required",
+        "No watermark",
+      ].join(", "),
       offers: {
         "@type": "Offer",
         price: "0.00",
         priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
       },
       description: data.description,
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.9",
+        bestRating: "5",
+        worstRating: "1",
         ratingCount: "820",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Templix AI",
+        url: this.APP_URL,
       },
     };
   }
@@ -247,6 +296,7 @@ export class SEOEngine {
     description: string;
     url: string;
     category?: string;
+    featureList?: string[];
   }) {
     return {
       "@context": "https://schema.org",
@@ -256,7 +306,17 @@ export class SEOEngine {
       url: data.url,
       applicationCategory: data.category || "BusinessApplication",
       operatingSystem: "All",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      browserRequirements: "Requires a modern browser with JavaScript enabled",
+      softwareVersion: "1.0",
+      ...(data.featureList && data.featureList.length > 0
+        ? { featureList: data.featureList.join(", ") }
+        : {}),
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock" },
+      publisher: {
+        "@type": "Organization",
+        name: "Templix AI",
+        url: this.APP_URL,
+      },
     };
   }
 
@@ -268,56 +328,25 @@ export class SEOEngine {
     currentSlug: string,
     locale: string
   ): InternalLinkingData {
-    // Generate programmatic, related links to maximize page authority pass-downs
-    const templatesList = [
-      { slug: "invoice-freelancer", title: "Freelancer Invoice Template", category: "invoices" },
-      { slug: "resume-software-engineer", title: "Software Engineer Resume", category: "resumes" },
-      { slug: "freelance-agreement", title: "Freelance Service Agreement", category: "contracts" },
-      { slug: "employment-contract", title: "Employment Contract", category: "contracts" },
-      { slug: "freelance-contract", title: "Freelance Contract", category: "contracts" },
-      { slug: "independent-contractor-agreement", title: "Independent Contractor Agreement", category: "contracts" },
-      { slug: "service-agreement", title: "Service Agreement", category: "contracts" },
-      { slug: "nda-template", title: "Non-Disclosure Agreement (NDA)", category: "contracts" },
-      { slug: "consulting-agreement", title: "Consulting Agreement", category: "contracts" },
-      { slug: "rental-agreement", title: "Rental Agreement", category: "contracts" },
-      { slug: "sales-contract", title: "Sales Contract", category: "contracts" },
-      { slug: "partnership-agreement", title: "Partnership Agreement", category: "contracts" },
-      { slug: "vendor-agreement", title: "Vendor Agreement", category: "contracts" },
-      { slug: "business-proposal", title: "Business Proposal", category: "proposals" },
-      { slug: "project-proposal", title: "Project Proposal", category: "proposals" },
-      { slug: "marketing-proposal", title: "Marketing Proposal", category: "proposals" },
-      { slug: "web-design-proposal", title: "Web Design Proposal", category: "proposals" },
-      { slug: "software-development-proposal", title: "Software Development Proposal", category: "proposals" },
-      { slug: "consulting-proposal", title: "Consulting Proposal", category: "proposals" },
-      { slug: "digital-marketing-proposal", title: "Digital Marketing Proposal", category: "proposals" },
-      { slug: "construction-proposal", title: "Construction Proposal", category: "proposals" },
-      { slug: "event-proposal", title: "Event Proposal", category: "proposals" },
-      { slug: "grant-proposal", title: "Grant Proposal", category: "proposals" },
-      { slug: "cover-letter", title: "Cover Letter", category: "letters" },
-      { slug: "resignation-letter", title: "Resignation Letter", category: "letters" },
-      { slug: "recommendation-letter", title: "Recommendation Letter", category: "letters" },
-      { slug: "offer-letter", title: "Offer Letter", category: "letters" },
-      { slug: "business-letter", title: "Business Letter", category: "letters" },
-      { slug: "complaint-letter", title: "Complaint Letter", category: "letters" },
-      { slug: "thank-you-letter", title: "Thank You Letter", category: "letters" },
-      { slug: "request-letter", title: "Request Letter", category: "letters" },
-      { slug: "appointment-letter", title: "Appointment Letter", category: "letters" },
-      { slug: "experience-letter", title: "Experience Letter", category: "letters" },
-    ];
+    // Build the related-templates list from the full fallback dataset (181+
+    // templates) instead of a hardcoded 30-item list. This way every template
+    // automatically gets internal links as the library grows — no edits here.
+    const categoryTemplates = allFallbackTemplates.filter(
+      (t) => t.categorySlug === categorySlug && t.slug !== currentSlug
+    );
+    const otherTemplates = allFallbackTemplates.filter(
+      (t) => t.categorySlug !== categorySlug && t.slug !== currentSlug
+    );
 
-    const categoryTemplates = templatesList.filter(
-      (t) => t.category === categorySlug && t.slug !== currentSlug
-    );
-    const otherTemplates = templatesList.filter(
-      (t) => t.category !== categorySlug && t.slug !== currentSlug
-    );
-    const sortedTemplates = [...categoryTemplates, ...otherTemplates].slice(0, 8);
+    // Prioritize same-category templates, then cross-category to fill 8 slots.
+    const sortedTemplates = [
+      ...categoryTemplates,
+      ...otherTemplates,
+    ].slice(0, 8);
 
     const relatedTemplates = sortedTemplates.map((t) => ({
       title: t.title,
-      // Use the canonical /{category}/{slug} shape so link equity isn't lost to
-      // the soft-duplicate /{slug} URL.
-      href: `/${locale}/templates/${t.category}/${t.slug}`,
+      href: `/${locale}/templates/${t.categorySlug}/${t.slug}`,
     }));
 
     // Built from STATIC_BLOG_POSTS itself, so hrefs are always real slugs (a
