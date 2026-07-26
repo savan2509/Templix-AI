@@ -40,6 +40,15 @@ import { reportsExtra2Templates } from "./templates/reports-extra2";
 import { businessPlansExtra2Templates } from "./templates/business-plans-extra2";
 import { quotationsExtra2Templates } from "./templates/quotations-extra2";
 
+// Fourth wave — Week 2 (70 new templates)
+import { invoicesExtra3Templates } from "./templates/invoices-extra3";
+import { resumesExtra3Templates } from "./templates/resumes-extra3";
+import { contractsExtra3Templates } from "./templates/contracts-extra3";
+import { proposalsExtra3Templates } from "./templates/proposals-extra3";
+import { lettersExtra3Templates } from "./templates/letters-extra3";
+import { reportsExtra3Templates } from "./templates/reports-extra3";
+import { businessPlansExtra3Templates } from "./templates/business-plans-extra3";
+
 export const allFallbackTemplates: any[] = [
   ...invoicesTemplates,
   ...invoicesExtraTemplates,
@@ -69,4 +78,12 @@ export const allFallbackTemplates: any[] = [
   ...reportsExtra2Templates,
   ...businessPlansExtra2Templates,
   ...quotationsExtra2Templates,
+  ...invoicesExtra3Templates,
+  ...resumesExtra3Templates,
+  ...contractsExtra3Templates,
+  ...proposalsExtra3Templates,
+  ...lettersExtra3Templates,
+  ...reportsExtra3Templates,
+  ...businessPlansExtra3Templates,
 ];
+

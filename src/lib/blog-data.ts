@@ -10,6 +10,7 @@ import { proposalsPosts } from "./blog/posts-proposals";
 import { keywordMapPosts } from "./blog/posts-keyword-map";
 import { batch3aPosts } from "./blog/posts-batch3a";
 import { batch3bPosts } from "./blog/posts-batch3b";
+import { week2Posts } from "./blog/posts-week2";
 
 export interface BlogPost {
   id: string;
@@ -3311,6 +3312,9 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...keywordMapPosts,
   ...batch3aPosts,
   ...batch3bPosts,
+  // Week 2 — 14 new posts covering payment reminders, business plans,
+  // purchase orders, MOU, retainers, termination, SOW and more.
+  ...week2Posts,
 ];
 
 // Helper — get a post by slug

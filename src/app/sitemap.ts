@@ -4,6 +4,7 @@ import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
 import { ALL_TOOLS } from "@/data/tools";
 import { professionRoutes } from "@/features/templates/profession-content";
+import { FAQ_TOPIC_SLUGS } from "@/data/faq-topics";
 
 import { siteConfig } from "@/config/site";
 
@@ -125,6 +126,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
         images: post.image ? [`${baseUrl}${post.image}`] : undefined,
       })
+    ),
+
+    // Dedicated FAQ topic pages — each targets a high-volume keyword cluster
+    // with 10–15 unique Q&As and FAQPage JSON-LD schema.
+    ...FAQ_TOPIC_SLUGS.map((slug) =>
+      entry(`/faq/${slug}`, { changeFrequency: "monthly", priority: 0.6 })
     ),
   ];
 }
