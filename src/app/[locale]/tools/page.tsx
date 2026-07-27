@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ToolsHubPage({ params }: PageProps) {
   const { locale } = await params;
   const t = getDictionary(locale).tools;
-  const categories = TOOL_CATEGORIES.map((c) => ({ ...c, tools: toolsByCategory(c.key) })).filter((c) => c.tools.length > 0);
+  // Show newest-added tools first within each category (descending insertion order)
+  const categories = TOOL_CATEGORIES.map((c) => ({ ...c, tools: toolsByCategory(c.key).slice().reverse() })).filter((c) => c.tools.length > 0);
   const label = (rec: Record<string, string>) => rec[locale] || rec.en;
 
   // Dynamic JSON-LD: a CollectionPage wrapping every tool as an ordered ItemList
@@ -40,7 +41,7 @@ export default async function ToolsHubPage({ params }: PageProps) {
     description: t.hubSubtitle,
     url: toolsUrl,
     locale,
-    items: ALL_TOOLS.map((tool) => ({ name: tool.title, url: `${siteConfig.url}/${locale}/tools/${tool.slug}` })),
+    items: ALL_TOOLS.slice().reverse().map((tool) => ({ name: tool.title, url: `${siteConfig.url}/${locale}/tools/${tool.slug}` })),
   });
   const breadcrumbSchema = {
     "@context": "https://schema.org",

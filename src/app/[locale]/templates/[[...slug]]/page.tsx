@@ -717,7 +717,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   // preview content here while every other surface used the code. Start from the
   // catalog and only append database templates that don't exist in code, so
   // DB-managed additions still surface and nothing is ever hidden.
-  let templates: any[] = [...allFallbackTemplates];
+  // Show newest-added templates first (descending insertion order).
+  let templates: any[] = [...allFallbackTemplates].reverse();
 
   try {
     if (isDbOnline && process.env.DATABASE_URL) {

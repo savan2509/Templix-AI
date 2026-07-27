@@ -13,6 +13,7 @@ import { batch3bPosts } from "./blog/posts-batch3b";
 import { week2Posts } from "./blog/posts-week2";
 import { comparisonPosts } from "./blog/posts-comparisons";
 import { useCasePosts } from "./blog/posts-use-cases";
+import { batch4Posts } from "./blog/posts-batch4";
 
 export interface BlogPost {
   id: string;
@@ -3321,6 +3322,8 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...comparisonPosts,
   // Use Case Pages — 10 targeted use case articles
   ...useCasePosts,
+  // Batch 4 — 20 targeted SEO blog guides
+  ...batch4Posts,
 ];
 
 // Helper — get a post by slug

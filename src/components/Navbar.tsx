@@ -25,6 +25,7 @@ import {
   User as UserIcon,
   Heart,
   LayoutDashboard,
+  GitCompare,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -40,6 +41,8 @@ export default function Navbar() {
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [aiToolsOpen, setAiToolsOpen] = useState(false);
   const [mobileAiToolsOpen, setMobileAiToolsOpen] = useState(false);
+  const [comparisonsOpen, setComparisonsOpen] = useState(false);
+  const [mobileComparisonsOpen, setMobileComparisonsOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -48,6 +51,7 @@ export default function Navbar() {
   const templatesRef = useRef<HTMLDivElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
   const aiToolsRef = useRef<HTMLDivElement>(null);
+  const comparisonsRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -75,6 +79,8 @@ export default function Navbar() {
     setMobileToolsOpen(false);
     setAiToolsOpen(false);
     setMobileAiToolsOpen(false);
+    setComparisonsOpen(false);
+    setMobileComparisonsOpen(false);
     setUserMenuOpen(false);
   }, [pathname]);
 
@@ -92,6 +98,9 @@ export default function Navbar() {
       }
       if (aiToolsRef.current && !aiToolsRef.current.contains(event.target as Node)) {
         setAiToolsOpen(false);
+      }
+      if (comparisonsRef.current && !comparisonsRef.current.contains(event.target as Node)) {
+        setComparisonsOpen(false);
       }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setUserMenuOpen(false);
@@ -392,6 +401,70 @@ export default function Navbar() {
                     >
                       <Sparkles className="h-4 w-4" />
                       <span>{allAiToolsText}</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Comparisons dropdown */}
+              <div className="relative" ref={comparisonsRef}>
+                <button
+                  onClick={() => setComparisonsOpen((v) => !v)}
+                  aria-expanded={comparisonsOpen}
+                  aria-haspopup="menu"
+                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
+                    pathname.includes("vs")
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  }`}
+                >
+                  <GitCompare className="h-3.5 w-3.5 text-blue-500" />
+                  <span>Comparisons</span>
+                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${comparisonsOpen ? "rotate-180" : ""}`} />
+                  {pathname.includes("vs") && (
+                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                  )}
+                </button>
+                {comparisonsOpen && (
+                  <div
+                    role="menu"
+                    className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  >
+                    {[
+                      { title: "vs Canva", slug: "templix-ai-vs-canva" },
+                      { title: "vs Microsoft 365", slug: "templix-ai-vs-microsoft-365" },
+                      { title: "vs ChatGPT", slug: "templix-ai-vs-chatgpt" },
+                      { title: "vs Google Docs", slug: "templix-ai-vs-google-docs" },
+                      { title: "vs Notion AI", slug: "templix-ai-vs-notion-ai" },
+                      { title: "vs Adobe Express", slug: "templix-ai-vs-adobe-express" },
+                      { title: "vs Gamma", slug: "templix-ai-vs-gamma" },
+                      { title: "vs PandaDoc", slug: "templix-ai-vs-pandadoc" },
+                      { title: "vs DocuSign", slug: "templix-ai-vs-docusign" },
+                      { title: "vs GrammarlyGO", slug: "templix-ai-vs-grammarlygo" },
+                    ].map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/${currentLocale}/blog/${item.slug}`}
+                        role="menuitem"
+                        onClick={() => setComparisonsOpen(false)}
+                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                          pathname.endsWith(item.slug)
+                            ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
+                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                        }`}
+                      >
+                        Templix AI {item.title}
+                      </Link>
+                    ))}
+                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                    <Link
+                      href={`/${currentLocale}/blog`}
+                      role="menuitem"
+                      onClick={() => setComparisonsOpen(false)}
+                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                    >
+                      <GitCompare className="h-4 w-4" />
+                      <span>All 48 Comparisons</span>
                     </Link>
                   </div>
                 )}

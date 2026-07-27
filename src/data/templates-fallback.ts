@@ -42,7 +42,9 @@ import { quotationsExtra2Templates } from "./templates/quotations-extra2";
 
 // Fourth wave — Week 2 (70 new templates)
 import { invoicesExtra3Templates } from "./templates/invoices-extra3";
+import { invoicesExtra4Templates } from "./templates/invoices-extra4";
 import { resumesExtra3Templates } from "./templates/resumes-extra3";
+import { resumesExtra4Templates } from "./templates/resumes-extra4";
 import { contractsExtra3Templates } from "./templates/contracts-extra3";
 import { proposalsExtra3Templates } from "./templates/proposals-extra3";
 import { lettersExtra3Templates } from "./templates/letters-extra3";
@@ -79,7 +81,9 @@ export const allFallbackTemplates: any[] = [
   ...businessPlansExtra2Templates,
   ...quotationsExtra2Templates,
   ...invoicesExtra3Templates,
+  ...invoicesExtra4Templates,
   ...resumesExtra3Templates,
+  ...resumesExtra4Templates,
   ...contractsExtra3Templates,
   ...proposalsExtra3Templates,
   ...lettersExtra3Templates,

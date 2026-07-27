@@ -128,14 +128,14 @@ export default async function UseCasesIndexPage({
 
         {/* Directory Grid */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 space-y-12">
-          {USE_CASE_CATEGORIES.map((cat, idx) => (
+          {[...USE_CASE_CATEGORIES].reverse().map((cat, idx) => (
             <section key={idx} className="space-y-4">
               <div className="border-b border-zinc-200 dark:border-zinc-800 pb-3">
                 <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{cat.name}</h2>
                 <p className="text-xs text-zinc-500 mt-1">{cat.desc}</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {cat.items.map((item) => (
+                {[...cat.items].reverse().map((item) => (
                   <Link
                     key={item.slug}
                     href={`/${locale}/use-cases/${item.slug}`}

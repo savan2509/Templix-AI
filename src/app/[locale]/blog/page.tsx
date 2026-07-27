@@ -77,7 +77,10 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
   const c = getDictionary(locale).common;
 
   // Load from DB if available, always fall back to static data
-  let posts: BlogPost[] = STATIC_BLOG_POSTS;
+  // Show newest posts first — sort by publishedAt descending (non-mutating)
+  let posts: BlogPost[] = STATIC_BLOG_POSTS.slice().sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
   try {
     if (isDbOnline && process.env.DATABASE_URL) {
       const dbPosts = await db.blog.findMany({
@@ -96,7 +99,9 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
           publishedAt: p.createdAt.toISOString().slice(0, 10),
           image: "/blog/blog-business-proposal.jpg", // generic fallback for DB posts
           content: p.content,
-        }));
+        })).sort((a: BlogPost, b: BlogPost) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
       }
     }
   } catch {
