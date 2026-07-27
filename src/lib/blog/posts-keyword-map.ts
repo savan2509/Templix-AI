@@ -1,4 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
+﻿// ─────────────────────────────────────────────────────────────────────────────
 // Templix AI – Blog Posts: Keyword-map batch (blog-63 … blog-69)
 // General informational guides — not legal advice.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -18,7 +18,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["rent", "rental", "lease", "contracts", "india"],
     readTime: 9,
     publishedAt: "2026-07-17",
-    image: "/blog/blog-contract-templates.jpg",
+    image: "/blog/blog-11-month-rent-agreement.jpg",
     keywords: [
       "11 month rent agreement",
       "why rent agreement is for 11 months",
@@ -97,7 +97,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["letters", "hiring", "hr", "onboarding", "employment"],
     readTime: 8,
     publishedAt: "2026-07-17",
-    image: "/blog/blog-business-letter.jpg",
+    image: "/blog/blog-offer-letter-vs-appointment-letter.jpg",
     keywords: [
       "offer letter vs appointment letter",
       "difference between offer letter and appointment letter",
@@ -177,7 +177,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["salary", "payroll", "hra", "guides", "india"],
     readTime: 9,
     publishedAt: "2026-07-18",
-    image: "/blog/blog-business-letter.jpg",
+    image: "/blog/blog-salary-slip-components-explained.jpg",
     keywords: [
       "salary slip components",
       "basic hra pf explained",
@@ -258,7 +258,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["nda", "contracts", "confidentiality", "legal", "business"],
     readTime: 8,
     publishedAt: "2026-07-18",
-    image: "/blog/blog-service-agreement-vs-contract.jpg",
+    image: "/blog/blog-mutual-vs-one-way-nda.jpg",
     keywords: [
       "mutual nda vs one way",
       "difference between unilateral and bilateral nda",
@@ -343,7 +343,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["letters", "hr", "employment", "offboarding", "career"],
     readTime: 8,
     publishedAt: "2026-07-19",
-    image: "/blog/blog-business-letter.jpg",
+    image: "/blog/blog-experience-letter-vs-relieving-letter.jpg",
     keywords: [
       "experience letter vs relieving letter",
       "difference between experience and relieving letter",
@@ -420,7 +420,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["contracts", "hiring", "hr", "freelance", "employment"],
     readTime: 9,
     publishedAt: "2026-07-19",
-    image: "/blog/blog-service-agreement-vs-contract.jpg",
+    image: "/blog/blog-employee-vs-independent-contractor.jpg",
     keywords: [
       "employee vs independent contractor",
       "difference between employee and contractor",
@@ -499,7 +499,7 @@ export const keywordMapPosts: BlogPost[] = [
     tags: ["loan", "contracts", "personal finance", "friends", "money"],
     readTime: 8,
     publishedAt: "2026-07-19",
-    image: "/blog/blog-contract-templates.jpg",
+    image: "/blog/blog-personal-loan-agreement-between-friends.jpg",
     keywords: [
       "personal loan agreement between friends",
       "loan agreement between friends template",

@@ -616,9 +616,8 @@ export const FIELD_DEFAULTS: Record<string, string> = {
 export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   "invoice-freelancer": {
     unitPrice: "$1,200",
-    // subtotal $4,250 + 8% tax ($340) = $4,590 due — keep these internally consistent.
     total: "$4,590.00",
-    amountDue: "4,590.00",
+    amountDue: "$4,590.00",
     subtotal: "$4,250.00",
     tax: "8%",
     discount: "$50.00"
@@ -627,45 +626,80 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     unitPrice: "$24.99",
     tax: "8%",
     discount: "$50.00",
-    subtotal: "$749.70",
-    total: "$858.27",
-    grandTotal: "$858.27"
+    subtotal: "$291.88",
+    shippingCost: "$45.00",
+    taxAmount: "$23.35",
+    total: "$360.23",
+    grandTotal: "$360.23",
+    amountDue: "$360.23"
   },
   "invoice-consulting": {
     hourlyRate: "$150.00",
-    total: "$2,400.00",
+    subtotal: "$2,400.00",
     tax: "8%",
-    // Body renders {{paymentTerms}}; keep it Net 15 to match the footer's
-    // "Net 15 terms" instead of the global Net 30 default.
-    paymentTerms: "Net 15"
+    total: "$2,592.00",
+    amountDue: "$2,592.00",
+    paymentTerms: "Net 30"
   },
   "invoice-web-developer": {
     hourlyRate: "$95.00",
-    total: "$15,200.00",
+    subtotal: "$15,200.00",
     tax: "8%",
+    total: "$16,416.00",
+    amountDue: "$16,416.00",
     discount: "$50.00"
   },
   "invoice-graphic-designer": {
-    total: "$3,600.00",
+    subtotal: "$3,600.00",
+    total: "$3,888.00",
+    amountDue: "$3,888.00",
     tax: "8%"
   },
   "invoice-photography": {
-    total: "$3,800.00",
+    packagePrice: "$3,800.00",
+    subtotal: "$3,800.00",
+    total: "$4,104.00",
+    amountDue: "$4,104.00",
     tax: "8%"
   },
   "invoice-contractor": {
-    // Labor Subtotal must equal the two hardcoded labor rows in the preview
-    // table (demolition $1,680 + framing $6,720), or the breakdown won't add up.
     laborCost: "$8,400.00",
+    materialCost: "$8,500.00",
+    equipmentCost: "$1,200.00",
+    total: "$18,100.00",
+    amountDue: "$18,100.00",
     tax: "8%"
   },
   "invoice-cleaning-service": {
-    total: "$970.00",
+    serviceFee: "$850.00",
+    extraCharges: "$120.00",
+    subtotal: "$970.00",
+    total: "$1,047.60",
+    amountDue: "$1,047.60",
     tax: "8%"
   },
   "invoice-plumbing": {
-    total: "$825.00",
+    partsCost: "$285.00",
+    laborCost: "$540.00",
+    subtotal: "$1,225.00",
+    total: "$1,225.00",
+    amountDue: "$1,225.00",
+    paymentTerms: "Net 30",
     tax: "8%"
+  },
+  "invoice-timesheet": {
+    hourlyRate: "$45.00",
+    totalHours: "160",
+    subtotal: "$7,200.00",
+    total: "$7,776.00",
+    amountDue: "$7,776.00",
+    tax: "8%"
+  },
+  "invoice-milestone": {
+    subtotal: "$8,000.00",
+    tax: "8%",
+    total: "$8,640.00",
+    amountDue: "$8,640.00"
   },
   "invoice-hvac-service": {
     grandTotal: "$635.00",

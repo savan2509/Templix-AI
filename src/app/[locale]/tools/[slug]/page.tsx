@@ -15,28 +15,26 @@ import { getLocalizedTool } from "@/lib/i18n/content";
 // search (Google AI Overview, ChatGPT, Perplexity, etc.) and Google's Q&A rich
 // result can directly answer "what is it / is it free / is it private / how".
 function buildToolFaqs(
-  tool: { title: string; description: string },
+  tool: { title: string; description: string; slug: string },
   isAi: boolean,
   howTo: string,
 ): { question: string; answer: string }[] {
-  // The first answer must NOT be a verbatim copy of tool.description — that's
-  // also the meta description, and duplicating it is a thin-content signal that
-  // costs FAQ rich results. Wrap it with distinct framing so each tool's answer
-  // is unique and adds context beyond the meta tag.
-  const whatIs = `The ${tool.title} is a free ${isAi ? "AI-powered " : ""}tool from Templix AI. ${tool.description} You can use it instantly online — no account, no install, and no limit on how often you use it.`;
+  const isGst = tool.slug === "gst-calculator";
+  const whatIs = isGst
+    ? `The GST & Tax Calculator is an instant financial utility that computes Goods and Services Tax (GST), Value Added Tax (VAT), and general sales taxes. It allows business owners, freelancers, and accounting teams to easily add tax to net amounts or extract tax from gross amounts.`
+    : `The ${tool.title} is a specialized document tool from Templix AI designed for fast, accurate calculation and formatting. It helps you generate precise business figures and structured outputs online instantly.`;
 
-  // "How to use" must be accurate per tool type. The browser-only copy is true
-  // for client-side calculators but false for AI tools, which send input to a
-  // model — claiming otherwise on an AI page is a privacy misstatement.
-  const howToAnswer = isAi
-    ? `Enter your details in the field above and generate a draft in seconds. Your input is sent securely to the AI model to produce the result — it isn't stored or used for training. Edit the output as much as you like, free and without an account.`
+  const howToAnswer = isGst
+    ? `1. Enter your starting amount in the value field.\n2. Enter or select your applicable tax rate percentage.\n3. Choose "Exclusive" to add GST to a net price, or "Inclusive" to extract tax from a total price.\n4. View the net amount, calculated tax, and final gross total updated live.`
+    : isAi
+    ? `Enter your details in the field above and generate a draft in seconds. Your input is sent securely to the AI model to produce the result — it isn't stored or used for training.`
     : howTo;
 
   return [
     { question: `What is the ${tool.title}?`, answer: whatIs },
     {
       question: `Is the ${tool.title} free to use?`,
-      answer: `Yes. The ${tool.title} is completely free with no sign-up, no watermark and no usage limits.`,
+      answer: `Yes. The ${tool.title} is completely free with no sign-up, no watermarks, and zero usage limits.`,
     },
     {
       question: "Is my data private?",
@@ -65,13 +63,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: tool.description,
     slug: `/tools/${tool.slug}`,
     locale,
-    keywords: tool.keywords,
   }) as Metadata;
 }
 
 export default async function ToolPage({ params }: PageProps) {
   const { locale, slug } = await params;
   const t = getDictionary(locale).tools;
+  const c = getDictionary(locale).common;
   const base = getTool(slug);
   if (!base) notFound();
   const tool = getLocalizedTool(base, locale);
@@ -125,6 +123,11 @@ export default async function ToolPage({ params }: PageProps) {
       eyebrow={t.toolEyebrow}
       title={tool.title}
       subtitle={tool.description}
+      breadcrumbs={[
+        { label: c.homeBreadcrumb, href: `/${locale}` },
+        { label: t.toolsCrumb ?? "Tools", href: `/${locale}/tools` },
+        { label: tool.title },
+      ]}
     >
       <Schema data={[softwareSchema, breadcrumbSchema, faqSchema]} />
       {aiTool ? (

@@ -1,4 +1,4 @@
-import type { BlogPost } from "../blog-data";
+﻿import type { BlogPost } from "../blog-data";
 
 export const aiToolsPosts: BlogPost[] = [
   // ── 53 ──────────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ export const aiToolsPosts: BlogPost[] = [
     ],
     readTime: 9,
     publishedAt: "2026-07-12",
-    image: "/blog/blog-cover-letter.jpg",
+    image: "/blog/blog-ai-cover-letter-generator-guide.jpg",
     content: `
 <h2>What an AI Cover Letter Generator Actually Does</h2>
 <p>An AI cover letter generator takes the details you already know — the role, the company, and your relevant experience — and turns them into a structured one-page letter. It is not a research tool. It does not know your work history, and it cannot read the job posting unless you paste it in. What it does well is the part most people find hardest: turning a pile of facts into fluent, confident prose with a proper opening and a clear closing ask.</p>
@@ -121,7 +121,7 @@ is what I've been arguing for internally for two years."</code></pre>
     ],
     readTime: 8,
     publishedAt: "2026-07-13",
-    image: "/blog/blog-formal-email-writing-guide.jpg",
+    image: "/blog/blog-humanize-ai-text-guide.jpg",
     content: `
 <h2>Why AI Text Sounds Robotic in the First Place</h2>
 <p>AI writing rarely fails on grammar. It fails on rhythm, specificity, and stance. A language model produces the most probable next word, and the most probable word is, by definition, the least surprising one. Stack a few hundred of those together and you get prose that is technically correct and completely inert — the written equivalent of elevator music.</p>
@@ -238,7 +238,7 @@ That's the whole fix.</code></pre>
     ],
     readTime: 8,
     publishedAt: "2026-07-15",
-    image: "/blog/blog-formal-email-writing-guide.jpg",
+    image: "/blog/blog-ai-email-generator-guide.jpg",
     content: `
 <h2>What an AI Email Generator Is Good For</h2>
 <p>Most professional email is not creative work. It is a known message type — a follow-up, a decline, a status update, a chase on an unpaid invoice — where the only real question is how to say a slightly awkward thing without sounding rude or spineless. That hesitation is what eats the time. People do not spend fifteen minutes on an email because they are typing slowly; they spend it because they rewrote the second sentence six times.</p>
@@ -359,7 +359,7 @@ TONE: Persuasive</code></pre>
     ],
     readTime: 10,
     publishedAt: "2026-07-16",
-    image: "/blog/blog-ai-resume-builder.jpg",
+    image: "/blog/blog-best-free-ai-writing-tools.jpg",
     content: `
 <h2>What "Free" Usually Means — and What It Should Mean</h2>
 <p>Most AI writing tools marketed as free are not. The common patterns: a word cap that runs out mid-document, a mandatory account before you see any output, a watermark on export, or a trial that quietly becomes a subscription. None of these are scams exactly, but they make the tool useless for the case that matters most — the one where you need a paragraph rewritten right now and do not want a relationship with a company over it.</p>

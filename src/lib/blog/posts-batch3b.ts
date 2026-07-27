@@ -1,4 +1,4 @@
-import type { BlogPost } from "../blog-data";
+﻿import type { BlogPost } from "../blog-data";
 
 export const batch3bPosts: BlogPost[] = [
   // ── 1 ───────────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ export const batch3bPosts: BlogPost[] = [
     ],
     readTime: 9,
     publishedAt: "2026-07-20",
-    image: "/blog/blog-resume-templates.jpg",
+    image: "/blog/blog-resume-summary-vs-objective.jpg",
     content: `
 <h2>The Three Lines That Decide Everything</h2>
 <p>Recruiters spend roughly six to eight seconds on a first pass through a resume. In that window, the block of text sitting directly under your name does most of the work. It is the one paragraph almost everyone reads, and it decides whether the rest of the page gets a real look or a polite skim. That paragraph is either a <strong>summary</strong> or an <strong>objective</strong> — and confusing the two is one of the most common reasons a strong candidate reads as an average one.</p>
@@ -129,7 +129,7 @@ export const batch3bPosts: BlogPost[] = [
     ],
     readTime: 10,
     publishedAt: "2026-07-20",
-    image: "/blog/blog-business-proposal.jpg",
+    image: "/blog/blog-how-to-write-a-freelance-proposal.jpg",
     content: `
 <h2>Why Most Freelance Proposals Lose</h2>
 <p>A freelance proposal is the document that turns a conversation into a contract. It is where a friendly discovery call either converts into paid work or quietly goes cold. And yet most proposals fail for the same handful of reasons: they talk about the freelancer instead of the client, they list tasks instead of outcomes, they leave the scope so vague that month two becomes an argument, and they present a single intimidating price with no context.</p>
@@ -243,7 +243,7 @@ export const batch3bPosts: BlogPost[] = [
     ],
     readTime: 9,
     publishedAt: "2026-07-21",
-    image: "/blog/blog-invoice-vs-receipt.jpg",
+    image: "/blog/blog-what-is-a-delivery-challan.jpg",
     content: `
 <h2>What Is a Delivery Challan?</h2>
 <p>A delivery challan is a document that accompanies goods when they are transported from one place to another <strong>without a tax invoice being raised at that moment</strong>. It records what is being moved, how much of it, and between whom — but it does not, by itself, demand payment. That single distinction is the whole reason the document exists, and it is the source of most of the confusion around it.</p>
@@ -353,7 +353,7 @@ export const batch3bPosts: BlogPost[] = [
     ],
     readTime: 10,
     publishedAt: "2026-07-21",
-    image: "/blog/blog-business-letter.jpg",
+    image: "/blog/blog-how-to-ask-for-a-raise.jpg",
     content: `
 <h2>Asking Is a Skill, Not a Gamble</h2>
 <p>Most people treat a raise conversation as something that happens <em>to</em> them — they wait, hope it is noticed, and feel awkward bringing it up. But a raise is rarely handed out for loyalty alone. It is granted when someone makes a clear, well-timed, evidence-backed case that the value they deliver has outgrown their current pay. The awkwardness people feel is almost always the absence of preparation, and preparation is entirely within your control.</p>
@@ -458,7 +458,7 @@ Sincerely,<br/>
     ],
     readTime: 10,
     publishedAt: "2026-07-21",
-    image: "/blog/blog-create-invoice.jpg",
+    image: "/blog/blog-ctc-to-in-hand-salary-guide.jpg",
     content: `
 <h2>Why Your CTC Never Hits Your Bank Account</h2>
 <p>Almost everyone who accepts a job offer in India experiences the same small shock at the end of the first month: the figure that lands in the bank is meaningfully smaller than the impressive CTC on the offer letter. Nothing has gone wrong. CTC and in-hand salary are simply two different things measuring two different points in the pay pipeline — and understanding the gap between them is one of the most useful money skills you can build.</p>

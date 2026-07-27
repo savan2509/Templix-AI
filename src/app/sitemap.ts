@@ -5,6 +5,7 @@ import { CATEGORIES } from "@/constants";
 import { ALL_TOOLS } from "@/data/tools";
 import { professionRoutes } from "@/features/templates/profession-content";
 import { FAQ_TOPIC_SLUGS } from "@/data/faq-topics";
+import { ALL_USE_CASE_SLUGS } from "@/lib/use-case-data";
 
 import { siteConfig } from "@/config/site";
 
@@ -58,6 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/templates", { changeFrequency: "daily", priority: 0.9 }],
     ["/blog", { changeFrequency: "daily", priority: 0.8 }],
     ["/tools", { changeFrequency: "weekly", priority: 0.7 }],
+    ["/use-cases", { changeFrequency: "daily", priority: 0.8 }],
     ["/about", { changeFrequency: "monthly", priority: 0.5 }],
     ["/contact", { changeFrequency: "monthly", priority: 0.5 }],
     ["/faq", { changeFrequency: "monthly", priority: 0.5 }],
@@ -132,6 +134,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // with 10–15 unique Q&As and FAQPage JSON-LD schema.
     ...FAQ_TOPIC_SLUGS.map((slug) =>
       entry(`/faq/${slug}`, { changeFrequency: "monthly", priority: 0.6 })
+    ),
+
+    // Dedicated Use Case landing pages (all 93 high-intent landing pages)
+    ...ALL_USE_CASE_SLUGS.map((slug) =>
+      entry(`/use-cases/${slug}`, { changeFrequency: "weekly", priority: 0.8 })
     ),
   ];
 }

@@ -1,4 +1,4 @@
-import type { BlogPost } from "../blog-data";
+﻿import type { BlogPost } from "../blog-data";
 
 /**
  * Week 2 Blog Posts — 14 new articles targeting keyword gaps verified
@@ -33,9 +33,9 @@ export const week2Posts: BlogPost[] = [
       "payment reminder template",
     ],
     readTime: 10,
-    publishedAt: "2026-08-04",
-    updatedAt: "2026-08-04",
-    image: "/blog/blog-payment-reminder.jpg",
+    publishedAt: "2026-07-01",
+    updatedAt: "2026-07-01",
+    image: "/blog/blog-how-to-write-payment-reminder-letter.jpg",
     content: `
 <h2>When to Send a Payment Reminder</h2>
 <p>Timing your reminders correctly turns a nervous chase into a professional process. Here is the schedule that works for most freelancers and small businesses:</p>
@@ -147,8 +147,8 @@ export const week2Posts: BlogPost[] = [
       "freelance agreement essentials",
     ],
     readTime: 12,
-    publishedAt: "2026-08-07",
-    updatedAt: "2026-08-07",
+    publishedAt: "2026-07-03",
+    updatedAt: "2026-07-03",
     featured: true,
     image: "/blog/blog-freelance-contract-clauses.jpg",
     content: `
@@ -237,10 +237,10 @@ export const week2Posts: BlogPost[] = [
       "startup business plan",
     ],
     readTime: 15,
-    publishedAt: "2026-08-11",
-    updatedAt: "2026-08-11",
+    publishedAt: "2026-07-05",
+    updatedAt: "2026-07-05",
     featured: true,
-    image: "/blog/blog-business-plan.jpg",
+    image: "/blog/blog-how-to-write-a-business-plan.jpg",
     content: `
 <h2>What Makes a Winning Business Plan</h2>
 <p>A business plan is not a formality. It is the document that forces you to confront every assumption about your business — market size, unit economics, competitive advantages, funding needs — before you spend money or time finding out you were wrong. Done well, it is also the document that persuades investors, partners, and lenders to back you.</p>
@@ -337,9 +337,9 @@ export const week2Posts: BlogPost[] = [
       "purchase order template",
     ],
     readTime: 8,
-    publishedAt: "2026-08-14",
-    updatedAt: "2026-08-14",
-    image: "/blog/blog-purchase-order.jpg",
+    publishedAt: "2026-07-08",
+    updatedAt: "2026-07-08",
+    image: "/blog/blog-what-is-a-purchase-order.jpg",
     content: `
 <h2>What Is a Purchase Order?</h2>
 <p>A purchase order (PO) is a commercial document issued by a buyer to a seller, formally authorizing a purchase. It specifies the goods or services required, quantities, agreed prices, and delivery terms — before any goods change hands or any work begins.</p>
@@ -436,9 +436,9 @@ export const week2Posts: BlogPost[] = [
       "recommendation letter email template",
     ],
     readTime: 9,
-    publishedAt: "2026-08-18",
-    updatedAt: "2026-08-18",
-    image: "/blog/blog-recommendation-request.jpg",
+    publishedAt: "2026-07-10",
+    updatedAt: "2026-07-10",
+    image: "/blog/blog-how-to-ask-for-a-letter-of-recommendation.jpg",
     content: `
 <h2>When to Ask for a Recommendation Letter</h2>
 <p>The timing of your request matters as much as how you ask. Here are the key windows:</p>
@@ -550,9 +550,9 @@ export const week2Posts: BlogPost[] = [
       "statement of work template",
     ],
     readTime: 11,
-    publishedAt: "2026-08-21",
-    updatedAt: "2026-08-21",
-    image: "/blog/blog-scope-of-work.jpg",
+    publishedAt: "2026-07-12",
+    updatedAt: "2026-07-12",
+    image: "/blog/blog-how-to-write-scope-of-work.jpg",
     content: `
 <h2>What Is a Scope of Work?</h2>
 <p>A scope of work (SOW) is a document that defines exactly what will be done, by whom, by when, and for how much. It is the most important single document in any service-based project — because everything that goes wrong in a project can usually be traced back to an unclear or missing scope.</p>
@@ -656,10 +656,10 @@ export const week2Posts: BlogPost[] = [
       "ATS resume format",
     ],
     readTime: 13,
-    publishedAt: "2026-08-25",
-    updatedAt: "2026-08-25",
+    publishedAt: "2026-07-15",
+    updatedAt: "2026-07-15",
     featured: true,
-    image: "/blog/blog-resume-formats.jpg",
+    image: "/blog/blog-best-resume-formats-2026.jpg",
     content: `
 <h2>Why Resume Format Matters in 2026</h2>
 <p>In 2026, most mid-to-large companies route applications through an Applicant Tracking System (ATS) before a human ever reads them. The ATS parses your resume into structured data — name, contact, experience, education, skills — and scores it against the job description. Format affects how accurately that parsing happens.</p>
@@ -767,9 +767,9 @@ export const week2Posts: BlogPost[] = [
       "dismissal letter",
     ],
     readTime: 10,
-    publishedAt: "2026-08-28",
-    updatedAt: "2026-08-28",
-    image: "/blog/blog-termination-letter.jpg",
+    publishedAt: "2026-07-17",
+    updatedAt: "2026-07-17",
+    image: "/blog/blog-how-to-write-termination-letter.jpg",
     content: `
 <h2>What Is a Termination Letter?</h2>
 <p>A termination letter (also called a dismissal letter, separation letter, or notice of termination) is a formal written document from an employer to an employee confirming that their employment is ending. It documents the reason, the effective date, and any relevant terms (notice period, final pay, return of equipment).</p>
@@ -865,9 +865,9 @@ export const week2Posts: BlogPost[] = [
       "freelance retainer",
     ],
     readTime: 10,
-    publishedAt: "2026-09-01",
-    updatedAt: "2026-09-01",
-    image: "/blog/blog-retainer-agreement.jpg",
+    publishedAt: "2026-07-19",
+    updatedAt: "2026-07-19",
+    image: "/blog/blog-what-is-a-retainer-agreement.jpg",
     content: `
 <h2>What Is a Retainer Agreement?</h2>
 <p>A retainer agreement is a contract between a service provider (a freelancer, consultant, or agency) and a client, where the client pays a fixed monthly fee to retain the provider's services and availability for an agreed scope or number of hours. Think of it as reserving a seat on an expert's calendar every month.</p>
@@ -943,11 +943,12 @@ export const week2Posts: BlogPost[] = [
       "B2B proposal",
     ],
     readTime: 12,
-    publishedAt: "2026-09-04",
-    updatedAt: "2026-09-04",
-    image: "/blog/blog-sales-proposal.jpg",
+    publishedAt: "2026-07-20",
+    updatedAt: "2026-07-20",
+    image: "/blog/blog-how-to-write-sales-proposal.jpg",
     content: `
 <h2>What Makes a Sales Proposal Win</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-sales-proposal.jpg" alt="How to Write a Winning Sales Proposal" class="w-full object-cover max-h-[420px]" /></div>
 <p>Most proposals fail not because the service is bad, but because the proposal is about the provider, not the client. The classic mistake: page one lists your company history, credentials, and awards. Page two lists your services. Page three — finally — mentions the client's situation.</p>
 <p>The best proposals reverse this. They start with the client's problem, stated more clearly than the client has stated it themselves. Everything else follows from there.</p>
 
@@ -1032,11 +1033,12 @@ export const week2Posts: BlogPost[] = [
       "invoice in word document",
     ],
     readTime: 9,
-    publishedAt: "2026-09-08",
-    updatedAt: "2026-09-08",
-    image: "/blog/blog-invoice-in-word.jpg",
+    publishedAt: "2026-07-22",
+    updatedAt: "2026-07-22",
+    image: "/blog/blog-how-to-make-invoice-in-word.jpg",
     content: `
 <h2>Option 1 — Start from a Built-In Word Template</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-invoice-in-word.jpg" alt="How to Make an Invoice in Microsoft Word" class="w-full object-cover max-h-[420px]" /></div>
 <p>Microsoft Word includes several invoice templates. Here is how to find and use them:</p>
 <ol>
   <li>Open Microsoft Word</li>
@@ -1153,12 +1155,13 @@ export const week2Posts: BlogPost[] = [
       "professional proposal template",
     ],
     readTime: 14,
-    publishedAt: "2026-09-11",
-    updatedAt: "2026-09-11",
+    publishedAt: "2026-07-23",
+    updatedAt: "2026-07-23",
     featured: true,
-    image: "/blog/blog-client-proposal.jpg",
+    image: "/blog/blog-how-to-write-proposal-for-client.jpg",
     content: `
 <h2>What Is a Client Proposal?</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-client-proposal.jpg" alt="How to Write a Proposal for a Client" class="w-full object-cover max-h-[420px]" /></div>
 <p>A client proposal is a document you send to a potential client that explains: the problem you understand them to have, the solution you are proposing, how you'll deliver it, when, and how much it will cost. It is persuasive (it is designed to win the work) and operational (it defines what will happen if the client says yes).</p>
 <p>A proposal is not a quote (which is just a price list), not a pitch deck (which is for live presentations), and not a contract (which comes after the proposal is accepted). It is the bridge between interest and commitment.</p>
 
@@ -1251,11 +1254,12 @@ export const week2Posts: BlogPost[] = [
       "MOU example",
     ],
     readTime: 10,
-    publishedAt: "2026-09-15",
-    updatedAt: "2026-09-15",
-    image: "/blog/blog-mou.jpg",
+    publishedAt: "2026-07-24",
+    updatedAt: "2026-07-24",
+    image: "/blog/blog-memorandum-of-understanding-guide.jpg",
     content: `
 <h2>What Is a Memorandum of Understanding?</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-mou.jpg" alt="Memorandum of Understanding MOU Guide" class="w-full object-cover max-h-[420px]" /></div>
 <p>A Memorandum of Understanding (MOU) is a written document that outlines the agreed intentions, responsibilities, and framework of a proposed relationship between two or more parties — before a formal binding contract is negotiated and signed. It is a statement of intent, not a final agreement.</p>
 <p>Think of it as the handshake written down: "We agree on the broad outlines. Here is what we each intend to do. We will formalise the details in a contract shortly." MOUs are widely used in business partnerships, government agreements, international relations, and nonprofit collaborations.</p>
 
@@ -1343,11 +1347,12 @@ export const week2Posts: BlogPost[] = [
       "WO vs PO",
     ],
     readTime: 8,
-    publishedAt: "2026-09-18",
-    updatedAt: "2026-09-18",
-    image: "/blog/blog-work-order-vs-po.jpg",
+    publishedAt: "2026-07-25",
+    updatedAt: "2026-07-25",
+    image: "/blog/blog-work-order-vs-purchase-order.jpg",
     content: `
 <h2>What Is a Work Order?</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-work-order-vs-po.jpg" alt="Work Order vs Purchase Order" class="w-full object-cover max-h-[420px]" /></div>
 <p>A work order (WO) is an internal or external document that authorizes and describes the work to be performed. It includes the specific task, who is responsible for it, the expected completion time, and any required materials or equipment. Work orders are used extensively in maintenance, field service, manufacturing, and construction.</p>
 <p>The key distinction: a work order describes <em>what work needs to be done</em>. A purchase order describes <em>what needs to be bought</em>.</p>
 
@@ -1375,6 +1380,7 @@ export const week2Posts: BlogPost[] = [
   <li>You are assigning a task internally to a team member or technician</li>
   <li>You are hiring a contractor to perform a specific service (repair, installation, inspection)</li>
   <li>You need to track maintenance tasks and completion</li>
+{{ ... }}
   <li>You are in field services, facilities management, or construction</li>
 </ul>
 <p>Use a <strong>purchase order</strong> when:</p>
@@ -1425,4 +1431,170 @@ export const week2Posts: BlogPost[] = [
 <p>Sequential with a prefix: WO-2026-001, WO-2026-002. Use a date prefix (WO-20260918-001) if volume is high and date-based tracking is useful. Never reuse numbers — each work order needs a unique identifier for traceability.</p>
     `,
   },
+
+  // ── 95 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-95",
+    slug: "nda-template-guide-protect-business-ideas",
+    title: "NDA Template Guide: Protect Your Business Ideas in 2026",
+    metaTitle: "NDA Template Guide: Protect Your Business Ideas in 2026",
+    description:
+      "Comprehensive guide to Non-Disclosure Agreements (NDAs). Learn when you need one, key legal clauses, non-compete vs non-solicit, and download free templates.",
+    metaDescription:
+      "Protect your trade secrets and business ideas with a Non-Disclosure Agreement. Complete guide covering unilateral vs mutual NDAs, key clauses, and free templates.",
+    category: "Contracts",
+    tags: ["NDA", "contracts", "business protection", "confidentiality", "legal templates"],
+    keywords: [
+      "NDA template guide",
+      "non disclosure agreement",
+      "confidentiality agreement",
+      "mutual NDA vs unilateral NDA",
+      "business idea protection",
+    ],
+    readTime: 11,
+    publishedAt: "2026-07-26",
+    updatedAt: "2026-07-26",
+    image: "/blog/blog-nda-template-guide-protect-business-ideas.jpg",
+    content: `
+<h2>What Is a Non-Disclosure Agreement (NDA)?</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-nda-template-guide.jpg" alt="NDA Template Guide" class="w-full object-cover max-h-[420px]" /></div>
+<p>A Non-Disclosure Agreement (NDA), also known as a confidentiality agreement, is a legally binding contract that establishes a confidential relationship between parties. The party or parties signing the agreement agree that sensitive information they may obtain will not be made available to any others.</p>
+<p>NDAs are commonly used when businesses or individuals discuss commercial proposals, product prototypes, proprietary technology, or financial data with potential partners, contractors, investors, or employees.</p>
+
+<h2>Unilateral vs. Mutual NDAs — Which Do You Need?</h2>
+<table>
+  <thead><tr><th>Feature</th><th>Unilateral (One-Way) NDA</th><th>Mutual (Two-Way) NDA</th></tr></thead>
+  <tbody>
+    <tr><td>Information Flow</td><td>Only one party discloses confidential info</td><td>Both parties disclose confidential info</td></tr>
+    <tr><td>Common Use Cases</td><td>Hiring contractors, sharing pitch with vendors</td><td>Partnerships, joint ventures, merger talks</td></tr>
+    <tr><td>Protective Scope</td><td>Protects discloser only</td><td>Protects both parties equally</td></tr>
+  </tbody>
+</table>
+
+<h2>Key Elements Every NDA Must Contain</h2>
+<ol>
+  <li><strong>Identification of Parties:</strong> Full legal names and legal entity details of the disclosing and receiving parties.</li>
+  <li><strong>Definition of Confidential Information:</strong> Clear criteria specifying what data is protected (trade secrets, customer lists, code).</li>
+  <li><strong>Exclusions from Confidentiality:</strong> Public domain data, independently developed information, or legally required disclosures.</li>
+  <li><strong>Term of Confidentiality:</strong> Specific duration (typically 2 to 5 years) that confidentiality obligations remain active.</li>
+  <li><strong>Permitted Uses:</strong> Restricts the receiving party from using the information for any purpose other than the agreed evaluation.</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I create an NDA for free online?</h3>
+<p>Yes. Templix AI provides free, legally vetted NDA templates that can be customized and downloaded as print-ready PDF or editable DOCX files.</p>
+<h3>Are NDAs enforceable in court?</h3>
+<p>Yes. A properly drafted NDA with clear definitions, reasonable geographic boundaries, and time limits is fully enforceable in court.</p>
+    `,
+  },
+
+  // ── 96 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-96",
+    slug: "thank-you-letter-after-interview-templates",
+    title: "Thank You Letter After an Interview: Templates & Examples",
+    metaTitle: "Thank You Letter After an Interview: Templates & Examples",
+    description:
+      "How to write a winning post-interview thank you email. Includes 5 copy-paste templates for phone screens, second rounds, executive roles, and follow-ups.",
+    metaDescription:
+      "Stand out after your interview with a professional thank you email. 5 free copy-paste templates for phone screens, hiring managers, and second-round interviews.",
+    category: "Letters",
+    tags: ["thank you letter", "interview", "job search", "career", "letter template"],
+    keywords: [
+      "thank you letter after interview",
+      "post interview thank you email",
+      "interview thank you letter template",
+      "job interview follow up email",
+      "executive thank you email sample",
+    ],
+    readTime: 10,
+    publishedAt: "2026-07-27",
+    updatedAt: "2026-07-27",
+    image: "/blog/blog-thank-you-letter-after-interview-templates.jpg",
+    content: `
+<h2>Why a Post-Interview Thank You Letter Matters</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-thank-you-interview.jpg" alt="Thank You Letter After an Interview" class="w-full object-cover max-h-[420px]" /></div>
+<p>Sending a prompt, tailored thank-you letter within 24 hours of a job interview is one of the most effective ways to reinforce your qualifications, express enthusiasm, and address any key points you missed during the conversation.</p>
+<p>Studies show that over 80% of hiring managers consider post-interview thank you notes when making final candidate selections — yet fewer than 25% of candidates actually send them.</p>
+
+<h2>The 4-Part Structure of a Perfect Thank You Email</h2>
+<ol>
+  <li><strong>Clear Subject Line:</strong> Include "Thank You" along with your full name and the job title (e.g., <em>Thank You — Sarah Jenkins (Senior Marketing Manager Role)</em>).</li>
+  <li><strong>Personalized Greeting & Opening:</strong> Thank the interviewer for their time and mention a specific topic discussed.</li>
+  <li><strong>Value Reinforcement:</strong> Briefly connect your key expertise to a challenge or initiative the team discussed.</li>
+  <li><strong>Professional Call to Action:</strong> Express eagerness for next steps and provide any supplementary portfolio links.</li>
+</ol>
+
+<h2>Template 1 — Standard Post-Interview Thank You Email</h2>
+<p><em>Dear [Interviewer Name],<br><br>Thank you so much for taking the time to speak with me today about the [Job Title] role at [Company Name]. I really enjoyed learning more about your team's upcoming plans for [Specific Project/Topic].<br><br>Our conversation confirmed my enthusiasm for the role. My experience in [Key Skill/Achievement] aligns directly with your goals for [Team Target].<br><br>Please let me know if you need any additional portfolio samples or references. I look forward to hearing about next steps.<br><br>Best regards,<br>[Your Name]</em></p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>When should I send a post-interview thank you email?</h3>
+<p>Send your email within 24 hours of the interview, ideally during standard business hours (between 8:00 AM and 5:00 PM).</p>
+<h3>Should I send separate emails if interviewed by multiple people?</h3>
+<p>Yes. Send individual, customized thank you notes to each interviewer mentioning a specific topic discussed with them.</p>
+    `,
+  },
+
+  // ── 97 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "blog-97",
+    slug: "pdf-vs-word-format-comparison",
+    title: "PDF vs Word: Which Document Format Should You Use?",
+    metaTitle: "PDF vs Word: Which Document Format Should You Use?",
+    description:
+      "Compare PDF vs Microsoft Word DOCX formats. Discover when to send a PDF vs Word document for invoices, resumes, contracts, and proposals.",
+    metaDescription:
+      "PDF vs Word DOCX format comparison. Learn when to use PDF vs Word for business invoices, resumes, legal contracts, and corporate proposals.",
+    category: "AI Tools",
+    tags: ["PDF", "Word", "document formats", "productivity", "office tools"],
+    keywords: [
+      "pdf vs word",
+      "should i send pdf or word resume",
+      "pdf format vs word docx",
+      "when to use pdf vs word",
+      "convert word to pdf online",
+    ],
+    readTime: 9,
+    publishedAt: "2026-07-27",
+    updatedAt: "2026-07-27",
+    image: "/blog/blog-pdf-vs-word-format-comparison.jpg",
+    content: `
+<h2>PDF vs Microsoft Word — Understanding the Core Differences</h2>
+<div class="my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm"><img src="/blog/blog-pdf-vs-word.jpg" alt="PDF vs Word Format Comparison" class="w-full object-cover max-h-[420px]" /></div>
+<p>Choosing between Portable Document Format (PDF) and Microsoft Word (.docx) can determine whether your business document looks polished, stays secure, or opens correctly on a client's device.</p>
+<p>While Word documents are built for dynamic editing and collaboration, PDF files act as digital paper — preserving precise fonts, layouts, images, and formatting across every operating system.</p>
+
+<h2>PDF vs Word Comparison Matrix</h2>
+<table>
+  <thead><tr><th>Criteria</th><th>PDF Format (.pdf)</th><th>Microsoft Word (.docx)</th></tr></thead>
+  <tbody>
+    <tr><td>Layout Consistency</td><td>100% fixed cross-device layout</td><td>Varies depending on Word version & fonts installed</td></tr>
+    <tr><td>Editability</td><td>Read-only by default (requires editor)</td><td>Fully editable and collaborative</td></tr>
+    <tr><td>Security & Encryption</td><td>Supports password lock & digital signatures</td><td>Basic protection, easily editable</td></tr>
+    <tr><td>Best Use Cases</td><td>Final Invoices, Contracts, Signed NDAs</td><td>Drafting, Internal Notes, Collaborative Writing</td></tr>
+  </tbody>
+</table>
+
+<h2>When to Use PDF</h2>
+<ul>
+  <li>Sending final client invoices, payment receipts, and billing estimates.</li>
+  <li>Distributing legal contracts, executed NDAs, and signed agreements.</li>
+  <li>Exporting final resumes to ensure fonts and layout do not shift during recruiter review.</li>
+</ul>
+
+<h2>When to Use Word (.docx)</h2>
+<ul>
+  <li>Co-authoring document drafts with colleagues or clients.</li>
+  <li>Creating reusable master templates for internal team distribution.</li>
+  <li>Submitting job applications when an employer explicitly requests an editable DOCX file for ATS parsing.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I convert Word files to PDF for free?</h3>
+<p>Yes. Templix AI allows instant one-click conversion and export of any document blueprint to PDF or Word formats for free.</p>
+<h3>Which file format is better for ATS resume screeners?</h3>
+<p>Both standard PDF and DOCX formats are supported by modern ATS screeners (Workday, Taleo, Greenhouse). However, single-column PDF files preserve visual typography best.</p>
+    `,
+  }
 ];

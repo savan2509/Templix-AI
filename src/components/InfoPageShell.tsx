@@ -12,6 +12,7 @@ export default function InfoPageShell({
   title,
   subtitle,
   updated,
+  breadcrumbs,
   children,
 }: {
   locale: string;
@@ -19,9 +20,14 @@ export default function InfoPageShell({
   title: string;
   subtitle?: string;
   updated?: string;
+  breadcrumbs?: { label: string; href?: string }[];
   children: React.ReactNode;
 }) {
   const c = getDictionary(locale).common;
+  const crumbs = breadcrumbs || [
+    { label: c.homeBreadcrumb, href: `/${locale}` },
+    { label: title },
+  ];
   return (
     <>
       <Navbar />
@@ -29,10 +35,19 @@ export default function InfoPageShell({
         {/* Hero */}
         <header className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/30">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-14">
-            <nav className="mb-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-              <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{c.homeBreadcrumb}</Link>
-              <span className="mx-1.5">/</span>
-              <span className="text-zinc-600 dark:text-zinc-300">{title}</span>
+            <nav className="mb-4 text-xs font-medium text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5 flex-wrap">
+              {crumbs.map((crumb, idx) => (
+                <span key={idx} className="flex items-center gap-1.5">
+                  {idx > 0 && <span>/</span>}
+                  {crumb.href ? (
+                    <Link href={crumb.href} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      {crumb.label}
+                    </Link>
+                  ) : (
+                    <span className="text-zinc-600 dark:text-zinc-300 font-semibold">{crumb.label}</span>
+                  )}
+                </span>
+              ))}
             </nav>
             {eyebrow && (
               <p className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">

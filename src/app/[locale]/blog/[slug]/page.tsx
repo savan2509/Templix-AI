@@ -162,7 +162,15 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   // Resolve links first, then add anchors — so the ids match what renders.
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
-  const { html: articleHtml, toc } = withHeadingIds(linkedHtml);
+  let { html: articleHtml, toc } = withHeadingIds(linkedHtml);
+
+  // If the article content doesn't have an inline image, embed the cover illustration after the first </h2>
+  if (!articleHtml.includes("<img")) {
+    articleHtml = articleHtml.replace(
+      /<\/h2>/i,
+      `</h2>\n<div class="my-8 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-md"><img src="${post.image}" alt="${post.title.replace(/"/g, "&quot;")}" class="w-full object-cover max-h-[420px]" /></div>`
+    );
+  }
   // Every article gets an FAQ. If the post already ships its own "Frequently
   // Asked Questions" section, use those; otherwise generate a category-specific
   // set to render below the article + emit FAQPage schema.
@@ -301,7 +309,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
             {/* Interactive Social Share */}
             <div className="pt-2">
-              <SocialShare title={`${post.title} | Templix AI Guides`} />
+              <SocialShare title={`${post.title} | Templix AI Guides`} url={`${siteConfig.url}/${locale}/blog/${slug}`} />
             </div>
 
             {/* Tags */}

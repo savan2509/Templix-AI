@@ -1072,12 +1072,14 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                       const isActive = p === currentPage;
                       const queryParams = new URLSearchParams();
                       if (q) queryParams.set("q", q);
-                      queryParams.set("page", String(p));
+                      if (p > 1) queryParams.set("page", String(p));
+                      const qs = queryParams.toString();
                       const urlPath = slug.length > 0 ? `/templates/${slug.join("/")}` : "/templates";
+                      const href = `/${locale}${urlPath}${qs ? `?${qs}` : ""}`;
                       return (
                         <Link
                           key={p}
-                          href={`/${locale}${urlPath}?${queryParams.toString()}`}
+                          href={href}
                           className={`w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${
                             isActive
                               ? "bg-blue-600 border-blue-600 text-white shadow-sm"

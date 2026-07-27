@@ -1,4 +1,4 @@
-import type { BlogPost } from "../blog-data";
+﻿import type { BlogPost } from "../blog-data";
 
 export const batch3aPosts: BlogPost[] = [
   // ── blog-70 ────────────────────────────────────────────────────────────────
@@ -13,7 +13,7 @@ export const batch3aPosts: BlogPost[] = [
     tags: ["invoices", "billing", "gst", "freelancing", "accounting"],
     readTime: 9,
     publishedAt: "2026-07-20",
-    image: "/blog/blog-create-invoice.jpg",
+    image: "/blog/blog-types-of-invoices.jpg",
     keywords: [
       "types of invoices",
       "different types of invoices",
@@ -105,7 +105,7 @@ export const batch3aPosts: BlogPost[] = [
     tags: ["letter of intent", "letters", "business", "job", "template"],
     readTime: 8,
     publishedAt: "2026-07-20",
-    image: "/blog/blog-business-letter.jpg",
+    image: "/blog/blog-how-to-write-a-letter-of-intent.jpg",
     keywords: [
       "how to write a letter of intent",
       "letter of intent format",
@@ -193,7 +193,7 @@ export const batch3aPosts: BlogPost[] = [
     tags: ["rent agreement", "lease agreement", "contracts", "tenancy", "landlord"],
     readTime: 9,
     publishedAt: "2026-07-21",
-    image: "/blog/blog-contract-templates.jpg",
+    image: "/blog/blog-rent-agreement-vs-lease-agreement.jpg",
     keywords: [
       "rent agreement vs lease agreement",
       "difference between rent and lease",
@@ -264,7 +264,7 @@ export const batch3aPosts: BlogPost[] = [
     tags: ["gst", "tax", "india", "small business", "compliance"],
     readTime: 10,
     publishedAt: "2026-07-21",
-    image: "/blog/blog-invoice-vs-receipt.jpg",
+    image: "/blog/blog-gst-rates-in-india-explained.jpg",
     keywords: [
       "gst rates in india",
       "gst slabs 5 12 18 28",
@@ -346,7 +346,7 @@ export const batch3aPosts: BlogPost[] = [
     tags: ["offer letter", "hiring", "hr", "letters", "employer"],
     readTime: 9,
     publishedAt: "2026-07-20",
-    image: "/blog/blog-cover-letter.jpg",
+    image: "/blog/blog-how-to-write-a-job-offer-letter.jpg",
     keywords: [
       "how to write a job offer letter",
       "job offer letter format",

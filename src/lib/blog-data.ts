@@ -11,6 +11,8 @@ import { keywordMapPosts } from "./blog/posts-keyword-map";
 import { batch3aPosts } from "./blog/posts-batch3a";
 import { batch3bPosts } from "./blog/posts-batch3b";
 import { week2Posts } from "./blog/posts-week2";
+import { comparisonPosts } from "./blog/posts-comparisons";
+import { useCasePosts } from "./blog/posts-use-cases";
 
 export interface BlogPost {
   id: string;
@@ -3315,6 +3317,10 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   // Week 2 — 14 new posts covering payment reminders, business plans,
   // purchase orders, MOU, retainers, termination, SOW and more.
   ...week2Posts,
+  // SEO Comparisons — 28 high-intent comparison articles
+  ...comparisonPosts,
+  // Use Case Pages — 10 targeted use case articles
+  ...useCasePosts,
 ];
 
 // Helper — get a post by slug

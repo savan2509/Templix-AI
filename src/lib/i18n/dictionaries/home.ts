@@ -86,7 +86,7 @@ const es: Shape = {
     "Busca y descubre más de {count} plantillas diseñadas profesionalmente de facturas, currículums, contratos, propuestas y más.",
   pillar2Title: "2. Redacción con IA",
   pillar2Desc:
-    "Ajusta el tono, reescribe párrafos y corrige errores gramaticales al instante con nuestra capa de modelos de IA intercambiables dentro del espacio visual Tiptap.",
+    "Ajusta el tono, reescribe párrafos y corrige errores gramaticales al instante con nuestra capa de modelos de IA dentro del editor interactivo.",
   pillar3Title: "3. Exporta al instante",
   pillar3Desc:
     "Compila tus diseños personalizados en el cliente o el servidor en archivos PDF de precisión y formatos MS Word.",

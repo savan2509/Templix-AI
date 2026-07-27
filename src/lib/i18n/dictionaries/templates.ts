@@ -78,7 +78,7 @@ const es: Shape = {
   templatesBreadcrumb: "Plantillas",
   templateNoun: "Plantilla",
   detailIntroExtra:
-    "Ajusta los campos en el controlador para personalizar las variables dinámicamente. Ábrelo en nuestro espacio visual de documentos tiptap para editar bloques de texto, activar reescrituras con el asistente de IA y exportar a PDF/Word.",
+    "Ajusta los campos en el controlador para personalizar las variables dinámicamente. Ábrelo en nuestro editor de documentos interactivo para editar bloques de texto, activar reescrituras con el asistente de IA y exportar a PDF/Word.",
 
   exploreRelatedResources: "Explora recursos relacionados",
   relatedTemplates: "Plantillas relacionadas",

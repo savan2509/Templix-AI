@@ -85,7 +85,7 @@ export const invoicesTemplates = [
       fields: ["companyName", "businessAddress", "clientName", "billingAddress", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "shippingCost", "taxAmount", "grandTotal", "amountDue"],
       layout: {
         header: "SMALL BUSINESS INVOICE",
-        footer: "Terms: Due within 30 days. Returns accepted with receipt."
+        footer: "Terms: Due within 30 days. Thank you for your business!"
       },
       styles: {
         primaryColor: "#e11d48",
@@ -130,7 +130,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Shipping: " }, { type: "text", text: "{{shippingCost}}    Sales Tax: {{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Grand Total: " }, { type: "text", text: "{{grandTotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "Returns accepted within 14 days with this receipt. We appreciate your support of our local shop." }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "Payment is due within 30 days of invoice date. We appreciate your support of our business!" }] }
         ]
       }
     }
@@ -148,7 +148,7 @@ export const invoicesTemplates = [
       fields: ["companyName", "companyEmail", "clientName", "clientCompany", "invoiceNumber", "invoiceDate", "dueDate", "consultingPackage", "hourlyRate", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
       layout: {
         header: "CONSULTING INVOICE",
-        footer: "Please send payment via bank wire transfer. Net 15 terms."
+        footer: "Please send payment via bank wire transfer. Net 30 terms."
       },
       styles: {
         primaryColor: "#059669",
@@ -385,6 +385,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (160 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$1,216.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Handover: " }, { type: "text", text: "Repository {{repositoryLink}} and deployment logs are shared on payment confirmation. Includes {{maintenancePlan}}." }] }
         ]
@@ -401,7 +402,7 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Cleaning Service Invoice Template",
-      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "cleaningType", "numberOfRooms", "serviceDate", "suppliesUsed", "serviceFee", "extraCharges", "total", "amountDue"],
+      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "cleaningType", "numberOfRooms", "serviceDate", "suppliesUsed", "serviceFee", "extraCharges", "tax", "total", "amountDue"],
       layout: {
         header: "CLEANING SERVICE STATEMENT",
         footer: "Thank you for letting us clean your environment!"
@@ -448,7 +449,8 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{extraCharges}}" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Service Fee: " }, { type: "text", text: "{{serviceFee}}    Add-ons: {{extraCharges}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$77.60" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Supplies Used: " }, { type: "text", text: "{{suppliesUsed}}. All products are non-toxic and pet-safe." }] }
         ]
@@ -513,6 +515,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Package Price: " }, { type: "text", text: "{{packagePrice}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$304.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery: " }, { type: "text", text: "High-resolution gallery links are released within 3 weeks of full payment. A 30% retainer secured the date." }] }
         ]
@@ -594,10 +597,10 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Plumbing Invoice Template",
-      fields: ["companyName", "clientName", "invoiceNumber", "serviceDate", "dueDate", "problemDescription", "partsUsed", "partsCost", "laborCost", "total", "amountDue", "warrantyPeriod"],
+      fields: ["companyName", "clientName", "invoiceNumber", "serviceDate", "dueDate", "problemDescription", "partsUsed", "partsCost", "laborCost", "subtotal", "tax", "total", "amountDue", "warrantyPeriod"],
       layout: {
         header: "PLUMBING SERVICE STATEMENT",
-        footer: "Thank you for choosing our plumbing services! Net 15 terms."
+        footer: "Thank you for choosing our plumbing services! Net 30 terms."
       },
       styles: {
         primaryColor: "#0d9488",
@@ -638,12 +641,12 @@ export const invoicesTemplates = [
             { type: "tableRow", content: [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Labor (pipe repair)" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4 hrs" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$140.00" }] }] }
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$540.00" }] }] }
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parts: " }, { type: "text", text: "{{partsCost}}    Service & Labor: {{laborCost}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Net 15 payment terms apply." }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warrantyPeriod}}. Net 30 payment terms apply." }] }
         ]
       }
     }
@@ -658,7 +661,7 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Timesheet Invoice Template",
-      fields: ["companyName", "clientName", "invoiceNumber", "billingPeriodStart", "billingPeriodEnd", "hourlyRate", "totalHours", "subtotal", "total", "amountDue"],
+      fields: ["companyName", "clientName", "invoiceNumber", "billingPeriodStart", "billingPeriodEnd", "hourlyRate", "totalHours", "subtotal", "tax", "total", "amountDue"],
       layout: {
         header: "TIMESHEET BILLING INVOICE",
         footer: "Hours logged are verified by project management software."
@@ -677,36 +680,43 @@ export const invoicesTemplates = [
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Rate: " }, { type: "text", text: "{{hourlyRate}}/hr — {{totalHours}} total hours logged" }] },
-          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Daily Hours Log" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Weekly Hours Log" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
-              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Date" }] }] },
-              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Task" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Period" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Task Summary" }] }] },
               { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Hours" }] }] },
               { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Mon" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Inbox & scheduling" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$680.00" }] }] }
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Week 1" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Inbox management & scheduling" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Wed" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Research & reporting" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$680.00" }] }] }
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Week 2" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Market research & data analysis" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Fri" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "CRM data entry" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "8" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$680.00" }] }] }
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Week 3" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "CRM data entry & reporting" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Week 4" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Client communications & support" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (160 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$576.00" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "All logged hours are verified against the project management timesheet export. Payment due within 15 days." }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "All 160 logged hours are verified against the project management timesheet export. Payment due within 30 days." }] }
         ]
       }
     }

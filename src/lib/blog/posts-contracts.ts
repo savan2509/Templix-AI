@@ -1,4 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
+﻿// ─────────────────────────────────────────────────────────────────────────────
 // Templix AI – Blog Posts: Contracts category
 // General informational guides — not legal advice.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -18,7 +18,7 @@ export const contractsPosts: BlogPost[] = [
     tags: ["contracts", "employment", "hiring", "hr", "template"],
     readTime: 10,
     publishedAt: "2026-07-12",
-    image: "/blog/blog-contract-templates.jpg",
+    image: "/blog/blog-employment-contract-guide.jpg",
     keywords: [
       "free employment contract template pdf",
       "what to include in an employment contract",
@@ -124,7 +124,7 @@ export const contractsPosts: BlogPost[] = [
     tags: ["contracts", "non-compete", "employment", "legal"],
     readTime: 9,
     publishedAt: "2026-07-14",
-    image: "/blog/blog-contract-templates.jpg",
+    image: "/blog/blog-non-compete-agreement-guide.jpg",
     keywords: [
       "non-compete agreement template free",
       "are non-compete agreements enforceable",
@@ -224,7 +224,7 @@ export const contractsPosts: BlogPost[] = [
     tags: ["contracts", "partnership", "business", "startup", "template"],
     readTime: 10,
     publishedAt: "2026-07-16",
-    image: "/blog/blog-service-agreement-vs-contract.jpg",
+    image: "/blog/blog-partnership-agreement-guide.jpg",
     keywords: [
       "free partnership agreement template pdf",
       "how to split profits in a business partnership",

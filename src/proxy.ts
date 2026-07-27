@@ -134,17 +134,14 @@ export default async function proxy(req: NextRequest) {
     return str ? `?${str}` : "";
   };
 
-  // 0. Retire non-English locales (301 Moved Permanently ONLY for valid routes)
+  // 0. Retire non-English locales (301 Moved Permanently to /en/...)
   const retired = RETIRED_LOCALES.find(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   );
   if (retired) {
     const rest = pathname.replace(/^\/(?:es|de|fr|ar)(?=\/|$)/, "");
-    const isValidSubRoute = rest === "" || rest === "/" || VALID_BARE_ROUTES.some((r) => rest === `/${r}` || rest.startsWith(`/${r}/`));
-    if (isValidSubRoute) {
-      const dest = new URL(`/en${rest}${cleanSearch(req.nextUrl.searchParams)}`, req.url);
-      return NextResponse.redirect(dest, 301);
-    }
+    const dest = new URL(`/en${rest}${cleanSearch(req.nextUrl.searchParams)}`, req.url);
+    return NextResponse.redirect(dest, 301);
   }
 
   // 1. Known bare routes redirect to default locale /en. Invalid paths pass through directly so Next.js renders HTTP 404 without redirecting.

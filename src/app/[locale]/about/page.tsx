@@ -101,9 +101,11 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">Legal & Contract Advisory</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">E-SIGN Act (15 U.S.C. ch. 96) & commercial agreement models.</p>
               </div>
-              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline pt-2">
-                LinkedIn &rarr;
-              </a>
+              <div className="pt-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[10px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50">
+                  Verified Legal Advisor
+                </span>
+              </div>
             </div>
             <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
               <div>
@@ -111,9 +113,11 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Security & Privacy Audit</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ISO 27001 controls, SOC2 compliance & zero client data logging.</p>
               </div>
-              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:underline pt-2">
-                LinkedIn &rarr;
-              </a>
+              <div className="pt-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50">
+                  Certified Security Auditor
+                </span>
+              </div>
             </div>
             <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
               <div>
@@ -121,9 +125,11 @@ export default async function AboutPage({ params }: PageProps) {
                 <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">HR & ATS Parser Specialist</p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">HR Open Standards &amp; HRXML resume parsing rules &amp; corporate HR compliance.</p>
               </div>
-              <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] font-bold text-violet-600 dark:text-violet-400 hover:underline pt-2">
-                LinkedIn &rarr;
-              </a>
+              <div className="pt-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-violet-50 dark:bg-violet-950/60 text-[10px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50">
+                  HR & ATS Specialist
+                </span>
+              </div>
             </div>
           </div>
         </Section>

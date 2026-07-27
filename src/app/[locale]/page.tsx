@@ -552,9 +552,11 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
                 </p>
-                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline pt-1">
-                  Victoria Hayes on LinkedIn &rarr;
-                </a>
+                <div className="pt-1">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50">
+                    Verified Legal Advisor
+                  </span>
+                </div>
               </div>
 
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
@@ -570,9 +572,11 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
                 </p>
-                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline pt-1">
-                  Marcus Vance on LinkedIn &rarr;
-                </a>
+                <div className="pt-1">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50">
+                    Certified Security Auditor
+                  </span>
+                </div>
               </div>
 
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
@@ -588,9 +592,11 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Ensures all resume blueprints adhere strictly to modern ATS algorithms, HR Open Standards resume parsing rules, and HR standards.
                 </p>
-                <a href="https://www.linkedin.com/in/whitespark-technologies-472b15420/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 dark:text-violet-400 hover:underline pt-1">
-                  Elena Rostova on LinkedIn &rarr;
-                </a>
+                <div className="pt-1">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 dark:bg-violet-950/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50">
+                    HR & ATS Specialist
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -652,7 +658,7 @@ export default async function HomePage({ params }: PageProps) {
               <div className="space-y-3">
                 <p className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</p>
                 <p>
-                  Templix AI document generation operates with client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using HTML5 Canvas and WebAssembly compiled engines. Your confidential business data, financial totals, and personal credentials are never saved, stored, or transmitted to remote servers.
+                  Templix AI document generation operates with a client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using client-side engines. Your confidential document drafts and financial totals are never stored or logged on remote servers. When using opt-in AI writing tools, prompt requests are processed securely over encrypted TLS connections with zero permanent data retention.
                 </p>
                 <p>
                   Exporting to PDF or Microsoft Word (.docx) produces standalone, self-contained files formatted for instant distribution, printing, or digital archiving.

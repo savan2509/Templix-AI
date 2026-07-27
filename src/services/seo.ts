@@ -99,15 +99,21 @@ export class SEOEngine {
     let languages: Record<string, string> | undefined;
     if (data.canonical) {
       canonical = data.canonical;
-    } else if (data.hreflangLocales && data.hreflangLocales.length > 1) {
-      canonical = buildCanonical(locale, slugPath);
+    } else {
+      canonical = enUrl;
+    }
+
+    if (data.hreflangLocales && data.hreflangLocales.length > 1) {
       languages = {};
       for (const loc of data.hreflangLocales) {
         languages[loc] = buildCanonical(loc, slugPath);
       }
       languages["x-default"] = enUrl;
     } else {
-      canonical = enUrl;
+      languages = {
+        en: enUrl,
+        "x-default": enUrl,
+      };
     }
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and

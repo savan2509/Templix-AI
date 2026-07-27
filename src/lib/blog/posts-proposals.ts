@@ -1,4 +1,4 @@
-import type { BlogPost } from "../blog-data";
+﻿import type { BlogPost } from "../blog-data";
 
 export const proposalsPosts: BlogPost[] = [
   // ── 1 ───────────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ export const proposalsPosts: BlogPost[] = [
     ],
     readTime: 10,
     publishedAt: "2026-07-13",
-    image: "/blog/blog-business-proposal.jpg",
+    image: "/blog/blog-seo-proposal-template-guide.jpg",
     content: `
 <h2>What Is an SEO Proposal?</h2>
 <p>An SEO proposal is the document you send after a discovery call that explains <strong>what is wrong with a prospect's search visibility, what you will do about it, and what it costs</strong>. It is not a menu of services. It is an argument: here is the gap between where your site ranks today and where your competitors rank, here is why that gap exists, and here is the work required to close it.</p>
@@ -201,7 +201,7 @@ Happy to walk through it Thursday or Friday if that helps.
     ],
     readTime: 11,
     publishedAt: "2026-07-15",
-    image: "/blog/blog-consulting-proposal-template-guide.jpg",
+    image: "/blog/blog-grant-proposal-writing-guide.jpg",
     content: `
 <h2>What Is a Grant Proposal?</h2>
 <p>A grant proposal is a formal request for funding submitted to a foundation, government agency, or corporate giving programme. Unlike a business proposal, you are not selling to someone who wants your service — <strong>you are competing for a fixed pool of money against applicants who are often just as deserving as you are</strong>. The proposal is the only thing standing between your work and their decision.</p>
@@ -382,7 +382,7 @@ Thank you for considering the request.
     ],
     readTime: 9,
     publishedAt: "2026-07-12",
-    image: "/blog/blog-business-proposal.jpg",
+    image: "/blog/blog-web-design-proposal-guide.jpg",
     content: `
 <h2>What Is a Web Design Proposal?</h2>
 <p>A web design proposal is the document that converts an enquiry into a signed project. It sets out what you will build, what the client must provide, how long it takes, what it costs, and — the part most freelancers skip — <strong>exactly where the work stops</strong>.</p>
