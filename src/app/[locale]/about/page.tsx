@@ -90,10 +90,11 @@ export default async function AboutPage({ params }: PageProps) {
         </Section>
 
         {/* Editorial & Compliance Standards */}
-        <Section heading="Editorial Board & Security Compliance">
-          <p className="mb-4">
-            Every template blueprint and article published on Templix AI is subject to strict peer review by certified domain specialists:
-          </p>
+        <div id="editorial-board">
+          <Section heading="Editorial Board & Security Compliance">
+            <p className="mb-4">
+              Every template blueprint and article published on Templix AI is subject to strict peer review by certified domain specialists:
+            </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose mb-6">
             <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
               <div>
@@ -133,6 +134,7 @@ export default async function AboutPage({ params }: PageProps) {
             </div>
           </div>
         </Section>
+        </div>
 
         <Section heading={t.getStartedHeading}>
           <p>

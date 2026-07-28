@@ -14,6 +14,8 @@ import {
   getRelatedPosts,
   STATIC_BLOG_POSTS,
   type BlogPost,
+  resolvePostImage,
+  resolveImagePath,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
 import {
@@ -60,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: post.metaDescription || post.description,
     keywords: post.keywords,
     canonical: post.canonicalUrl,
-    image: post.image,
+    image: resolvePostImage(post),
     slug: `/blog/${slug}`,
     locale,
     isBlogPost: true,
@@ -164,11 +166,16 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
   let { html: articleHtml, toc } = withHeadingIds(linkedHtml);
 
+  // Replace any broken inline image paths in content with resolved images
+  articleHtml = articleHtml.replace(/src=["'](\/blog\/[^"']+)["']/g, (_, srcPath) => {
+    return `src="${resolveImagePath(srcPath, post?.category)}"`;
+  });
+
   // If the article content doesn't have an inline image, embed the cover illustration after the first </h2>
   if (!articleHtml.includes("<img")) {
     articleHtml = articleHtml.replace(
       /<\/h2>/i,
-      `</h2>\n<div class="my-8 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-md"><img src="${post.image}" alt="${post.title.replace(/"/g, "&quot;")}" class="w-full object-cover max-h-[420px]" /></div>`
+      `</h2>\n<div class="my-8 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-md"><img src="${resolvePostImage(post)}" alt="${post.title.replace(/"/g, "&quot;")}" class="w-full object-cover max-h-[420px]" /></div>`
     );
   }
   // Every article gets an FAQ. If the post already ships its own "Frequently
@@ -200,7 +207,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    image: `${siteConfig.url}${post.image}`,
+    image: `${siteConfig.url}${resolvePostImage(post)}`,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
     author: { "@type": "Organization", name: "Templix AI", url: siteConfig.url },
@@ -327,7 +334,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-0 mb-2">
           <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
             <Image
-              src={post.image}
+              src={resolvePostImage(post)}
               // The article's own cover — the single most Google-Images-eligible
               // image on the page, so it gets a descriptive alt, not alt="".
               alt={`${post.title} — illustration`}
@@ -418,23 +425,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   <p className="text-sm font-bold text-zinc-900 dark:text-white">{t.foundHelpful}</p>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">{t.shareNetwork}</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Share2 className="h-4 w-4 text-zinc-400" />
-                  <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${siteConfig.url}/${locale}/blog/${slug}`)}`}
-                    target="_blank" rel="noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                  >
-                    Twitter
-                  </a>
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${siteConfig.url}/${locale}/blog/${slug}`)}`}
-                    target="_blank" rel="noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
+                <SocialShare title={post.title} url={`${siteConfig.url}/${locale}/blog/${slug}`} />
               </div>
 
               {/* CTA block */}
@@ -585,7 +576,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   >
                     <div className="relative h-36 w-full overflow-hidden">
                       <Image
-                        src={p.image}
+                        src={resolvePostImage(p)}
                         alt={`${p.title} — illustration`}
                         title={`${p.title} — illustration`}
                         fill

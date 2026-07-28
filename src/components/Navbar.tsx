@@ -230,6 +230,7 @@ export default function Navbar() {
                 width={56}
                 height={56}
                 priority
+                loading="eager"
                 className="h-14 w-14 rounded-xl object-contain dark:hidden group-hover:scale-105 transition-transform duration-300"
               />
               <Image
@@ -239,6 +240,7 @@ export default function Navbar() {
                 width={56}
                 height={56}
                 priority
+                loading="eager"
                 className="hidden h-14 w-14 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
               />
             </Link>

@@ -46,7 +46,7 @@ export const BLOG_CATEGORIES = [
   "Guides",
 ] as const;
 
-export const STATIC_BLOG_POSTS: BlogPost[] = [
+const RAW_STATIC_BLOG_POSTS: BlogPost[] = [
   // ── 1 ───────────────────────────────────────────────────────────────────────
   {
     id: "blog-01",
@@ -3326,6 +3326,12 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...batch4Posts,
 ];
 
+// Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely
+const CURRENT_DATE = new Date();
+export const STATIC_BLOG_POSTS: BlogPost[] = RAW_STATIC_BLOG_POSTS.filter(
+  (p: BlogPost) => new Date(p.publishedAt) <= CURRENT_DATE
+);
+
 // Helper — get a post by slug
 export function getBlogPost(slug: string): BlogPost | undefined {
   return STATIC_BLOG_POSTS.find((p) => p.slug === slug);
@@ -3346,4 +3352,84 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   return STATIC_BLOG_POSTS.filter(
     (p) => p.slug !== currentSlug && p.category === current.category
   ).slice(0, limit);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Image resolver — maps a post's image path to a guaranteed-existing file.
+//
+// Strategy (server-side, zero network requests):
+//   1. If the path exactly matches a known file in /public/blog/ → use it.
+//   2. Otherwise fall back to a category-appropriate cover image that was
+//      AI-generated and always exists in /public/blog/.
+//   3. Ultimate safety net: the invoice-freelancers hero.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** All filenames that physically exist in public/blog/ */
+const KNOWN_IMAGES = new Set([
+  "/blog/blog-ai-resume-builder.jpg",
+  "/blog/blog-ats-resume-format-guide.jpg",
+  "/blog/blog-business-letter.jpg",
+  "/blog/blog-business-proposal.jpg",
+  "/blog/blog-client-proposal.jpg",
+  "/blog/blog-consulting-proposal-template-guide.jpg",
+  "/blog/blog-contract-templates.jpg",
+  "/blog/blog-cover-aitools.jpg",
+  "/blog/blog-cover-contracts.jpg",
+  "/blog/blog-cover-guides.jpg",
+  "/blog/blog-cover-invoices.jpg",
+  "/blog/blog-cover-letter.jpg",
+  "/blog/blog-cover-letters.jpg",
+  "/blog/blog-cover-proposals.jpg",
+  "/blog/blog-cover-resumes.jpg",
+  "/blog/blog-create-invoice.jpg",
+  "/blog/blog-formal-email-writing-guide.jpg",
+  "/blog/blog-freelancer-tax-forms-w9-w8ben.jpg",
+  "/blog/blog-google-docs-vs-word-vs-templix.jpg",
+  "/blog/blog-hero-bg.jpg",
+  "/blog/blog-how-to-write-freelance-invoice.jpg",
+  "/blog/blog-how-to-write-statement-of-work.jpg",
+  "/blog/blog-invoice-freelancers.jpg",
+  "/blog/blog-invoice-in-word.jpg",
+  "/blog/blog-invoice-vs-receipt.jpg",
+  "/blog/blog-linkedin-profile-tips.jpg",
+  "/blog/blog-mou.jpg",
+  "/blog/blog-nda-template-guide.jpg",
+  "/blog/blog-pdf-vs-word.jpg",
+  "/blog/blog-resume-freshers.jpg",
+  "/blog/blog-resume-templates.jpg",
+  "/blog/blog-sales-proposal.jpg",
+  "/blog/blog-service-agreement-vs-contract.jpg",
+  "/blog/blog-thank-you-interview.jpg",
+  "/blog/blog-two-weeks-notice-letter.jpg",
+  "/blog/blog-work-order-vs-po.jpg",
+]);
+
+/** Per-category AI-generated covers — always present in /public/blog/ */
+const CATEGORY_COVER: Record<string, string> = {
+  Invoices:   "/blog/blog-cover-invoices.jpg",
+  Resumes:    "/blog/blog-cover-resumes.jpg",
+  Contracts:  "/blog/blog-cover-contracts.jpg",
+  Proposals:  "/blog/blog-cover-proposals.jpg",
+  Letters:    "/blog/blog-cover-letters.jpg",
+  "AI Tools": "/blog/blog-cover-aitools.jpg",
+  Guides:     "/blog/blog-cover-guides.jpg",
+};
+
+const ULTIMATE_FALLBACK = "/blog/blog-invoice-freelancers.jpg";
+
+/**
+ * Returns a guaranteed-existing image path for a raw image path string.
+ */
+export function resolveImagePath(imgPath: string, category?: string): string {
+  if (KNOWN_IMAGES.has(imgPath)) return imgPath;
+  if (category && CATEGORY_COVER[category]) return CATEGORY_COVER[category];
+  return ULTIMATE_FALLBACK;
+}
+
+/**
+ * Returns a guaranteed-existing image path for a blog post.
+ * Call this in Server Components before passing `image` to <Image>.
+ */
+export function resolvePostImage(post: BlogPost): string {
+  return resolveImagePath(post.image, post.category);
 }

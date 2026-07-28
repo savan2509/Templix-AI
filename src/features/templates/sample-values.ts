@@ -373,7 +373,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   // — Consulting Agreement —
   consultantCompany: "AI Cryptography Consultants",
   consultantContact: "+1 (555) 700-1122 | adrian@coleconsulting.com",
-  fixedFee: "$15,000.00 fixed project fee",
+  fixedFee: "$15,000.00",
   expenses: "Travel and lodging expenses pre-approved up to $2,000.00",
   intellectualProperty: "All work product created by Consultant vests exclusively in the Client upon payment.",
   consultantSignature: "Adrian Cole",
@@ -666,6 +666,7 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     laborCost: "$8,400.00",
     materialCost: "$8,500.00",
     equipmentCost: "$1,200.00",
+    subtotal: "$18,100.00",
     total: "$18,100.00",
     amountDue: "$18,100.00",
     tax: "8%"
@@ -680,12 +681,106 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
   },
   "invoice-plumbing": {
     partsCost: "$285.00",
-    laborCost: "$540.00",
+    laborCost: "$940.00",
     subtotal: "$1,225.00",
     total: "$1,225.00",
     amountDue: "$1,225.00",
     paymentTerms: "Net 30",
     tax: "8%"
+  },
+  "invoice-electrician": {
+    partsCost: "$2,480.00",
+    laborCost: "$950.00",
+    permitFee: "$185.00",
+    subtotal: "$3,615.00",
+    total: "$3,615.00",
+    amountDue: "$3,615.00",
+    warrantyPeriod: "1-year warranty on parts & labor"
+  },
+  "invoice-auto-repair": {
+    partsCost: "$429.00",
+    laborCost: "$530.00",
+    subtotal: "$959.00",
+    total: "$959.00",
+    amountDue: "$959.00",
+    warrantyPeriod: "90-day parts & labor repair guarantee"
+  },
+  "invoice-ecommerce": {
+    subtotal: "$184.96",
+    shippingCost: "$15.00",
+    discount: "$0.00",
+    taxAmount: "$14.80",
+    grandTotal: "$214.76",
+    total: "$214.76",
+    amountDue: "$214.76",
+    paymentMethod: "Credit Card"
+  },
+  "invoice-saas-subscription": {
+    subtotal: "$354.00",
+    tax: "8%",
+    taxAmount: "$28.32",
+    total: "$382.32",
+    amountDue: "$382.32"
+  },
+  "invoice-catering": {
+    guestCount: "120",
+    menuPackage: "Three-course plated dinner & open bar",
+    subtotal: "$9,040.00",
+    gratuity: "$1,627.20",
+    tax: "8%",
+    taxAmount: "$723.20",
+    total: "$11,390.40",
+    amountDue: "$11,390.40"
+  },
+  "invoice-tutoring": {
+    subtotal: "$877.50",
+    tax: "0%",
+    taxAmount: "$0.00",
+    total: "$877.50",
+    amountDue: "$877.50"
+  },
+  "invoice-landscaping": {
+    subtotal: "$1,850.00",
+    tax: "8%",
+    taxAmount: "$148.00",
+    total: "$1,998.00",
+    amountDue: "$1,998.00"
+  },
+  "invoice-daycare": {
+    subtotal: "$1,450.00",
+    tax: "0%",
+    taxAmount: "$0.00",
+    total: "$1,450.00",
+    amountDue: "$1,450.00"
+  },
+  "invoice-legal-services": {
+    subtotal: "$6,500.00",
+    retainerApplied: "$2,500.00",
+    total: "$4,000.00",
+    amountDue: "$4,000.00"
+  },
+  "invoice-marketing-agency": {
+    subtotal: "$5,500.00",
+    tax: "8%",
+    taxAmount: "$440.00",
+    total: "$5,940.00",
+    amountDue: "$5,940.00"
+  },
+  "invoice-interior-design": {
+    projectName: "Luxury Living Room & Master Suite Redesign",
+    subtotal: "$7,800.00",
+    tax: "8%",
+    taxAmount: "$624.00",
+    total: "$8,424.00",
+    amountDue: "$8,424.00"
+  },
+  "invoice-hourly-rate": {
+    hourlyRate: "$85.00",
+    subtotal: "$3,400.00",
+    tax: "8%",
+    taxAmount: "$272.00",
+    total: "$3,672.00",
+    amountDue: "$3,672.00"
   },
   "invoice-timesheet": {
     hourlyRate: "$45.00",
@@ -747,8 +842,6 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     clientEmail: "jessica.w@apexmarketing.com",
     clientPhone: "+1 (555) 877-6622",
     projectDescription: "Complete overhaul of company branding assets, style guides, and headless web layouts",
-    // Fixed-term engagement: 6-week sprint. Concrete dates so the clause doesn't
-    // read "commence on  and conclude by N/A (Indefinite)".
     startDate: "July 15, 2026",
     endDate: "August 26, 2026"
   },
@@ -765,16 +858,41 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     endDate: "August 26, 2026"
   },
   "independent-contractor-agreement": {
-    contractorName: "Robert Chen"
+    contractorName: "Robert Chen",
+    clientName: "John Doe Services",
+    clientSignature: "John Doe",
+    contractorSignature: "Robert Chen",
+    deliverables: "Database migration plan, custom schema scripts, PostgreSQL indexing guidelines, and system backup configurations."
   },
   "service-agreement": {
     serviceDescription: "Commercial janitorial and office cleaning services.",
     serviceFee: "$1,200.00 per month",
     startDate: "August 1, 2026",
-    endDate: "July 31, 2027"
+    endDate: "July 31, 2027",
+    clientName: "John Doe Services",
+    clientSignature: "John Doe",
+    providerName: "Thomas Briggs",
+    providerSignature: "Thomas Briggs"
+  },
+  "subcontractor-agreement": {
+    contractorName: "Mark Thompson",
+    contractorSignature: "Mark Thompson",
+    subcontractorName: "Carlos Mendez",
+    subcontractorSignature: "Carlos Mendez",
+    startDate: "September 1, 2026",
+    completionDate: "October 15, 2026"
+  },
+  "commercial-lease-agreement": {
+    leaseStartDate: "September 1, 2026",
+    leaseEndDate: "August 31, 2031"
   },
   "consulting-agreement": {
-    consultantName: "Professor Adrian Cole"
+    consultantName: "Professor Adrian Cole",
+    clientName: "John Doe Services",
+    clientSignature: "John Doe",
+    consultantSignature: "Adrian Cole",
+    deliverables: "Strategic market research report, product growth roadmap, and weekly advisory session slide decks.",
+    fixedFee: "$15,000.00"
   },
   // Resumes: graduation must precede the first job in the (hardcoded) experience
   // timeline, otherwise the sample reads as impossible (e.g. "5+ yrs, first job

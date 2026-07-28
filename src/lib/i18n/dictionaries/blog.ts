@@ -81,7 +81,7 @@ const en = {
   authorityWikipedia: "Wikipedia Business Docs",
   relatedArticles: "Related Articles",
   moreArticles: "More Articles",
-  tocTitle: "Table of Content",
+  tocTitle: "Table of Contents",
 
   // ── Article page: "Get in touch" side tab + modal ──
   getInTouch: {

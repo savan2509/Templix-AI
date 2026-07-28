@@ -42,7 +42,7 @@ export const siteConfig = {
     facebook: "https://facebook.com/templixai",
     instagram: "https://instagram.com/templixai",
     youtube: "https://youtube.com/@templixai",
-    linkedin: "https://www.linkedin.com/in/whitespark-technologies-472b15420/",
+    linkedin: "https://www.linkedin.com/company/templix-ai",
     twitter: "https://twitter.com/templix_ai",
   },
   locales: ["en", "es", "de", "fr", "ar"],

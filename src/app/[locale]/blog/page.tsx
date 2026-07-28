@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Schema from "@/components/seo/Schema";
 import Footer from "@/components/Footer";
 import { db, isDbOnline } from "@/lib/db";
-import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
+import { STATIC_BLOG_POSTS, BLOG_CATEGORIES, type BlogPost, resolvePostImage } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
 import { readingTime } from "@/lib/blog-seo";
 import { siteConfig } from "@/config/site";
@@ -237,7 +237,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 {/* Cover Image */}
                 <div className="md:w-64 lg:w-80 shrink-0 relative h-56 md:h-auto overflow-hidden">
                   <Image
-                    src={featured.image}
+                    src={resolvePostImage(featured)}
                     alt={`${featured.title} — illustration`}
                     title={`${featured.title} — illustration`}
                     fill
@@ -308,7 +308,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                     {/* Cover image */}
                     <div className="relative h-44 w-full overflow-hidden">
                       <Image
-                        src={post.image}
+                        src={resolvePostImage(post)}
                         alt={`${post.title} — illustration`}
                         title={`${post.title} — illustration`}
                         fill

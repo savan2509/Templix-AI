@@ -425,7 +425,7 @@ export const contractsExtra2Templates: any[] = [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "WEDDING PHOTOGRAPHY CONTRACT" }] },
           { type: "paragraph", content: [{ type: "text", text: "This Agreement is entered into on {{effectiveDate}} between {{partyOne}} (the Photographer) and {{partyTwo}} (the Couple)." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "1. Scope of Coverage" }] },
-          { type: "paragraph", content: [{ type: "text", text: "The Photographer will photograph the Couple's wedding on {{weddingDate}}, providing {{coverageHours}} of coverage. Deliverables include {{deliverables}}." }] },
+          { type: "paragraph", content: [{ type: "text", text: "The Photographer will photograph the Couple's wedding on {{weddingDate}}, providing {{coverageHours}} hours of coverage. Deliverables include {{deliverables}}." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "2. Term & Delivery" }] },
           { type: "paragraph", content: [{ type: "text", text: "This Agreement remains in effect through the wedding date and until the final edited images have been delivered within the agreed turnaround time." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "3. Package Fee & Payment" }] },

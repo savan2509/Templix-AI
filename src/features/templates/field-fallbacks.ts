@@ -252,6 +252,11 @@ export const CONTEXT_SENSITIVE_FIELDS = new Set([
   "degree",
   "deliverables",
   "projectDescription",
+  "projectName",
+  "serviceDescription",
+  "royaltyRate",
+  "guestCount",
+  "ownerName",
 ]);
 
 const DEGREE_BY_PROFESSION: Record<string, string> = {

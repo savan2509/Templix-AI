@@ -32,19 +32,29 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: `${siteConfig.url}/en`,
+    languages: {
+      "en": `${siteConfig.url}/en`,
+      "x-default": `${siteConfig.url}/en`,
+    },
   },
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: "Templix AI",
   publisher: siteConfig.name,
   category: "productivity",
-  keywords: [
-    "free invoice template", "free resume template", "free contract template",
-    "free proposal template", "document editor", "AI document generator",
-    "PDF export", "Word export", "professional templates",
-  ],
   verification: {
     google: "google-site-verification=jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE",
   },
@@ -106,7 +116,7 @@ export default async function RootLayout({
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
       </head>
-      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50">
+      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50" suppressHydrationWarning={true}>
         {/* Non render-blocking inline init scripts inside <body> prior to paint */}
         <script
           id="theme-init"

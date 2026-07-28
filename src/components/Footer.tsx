@@ -311,7 +311,7 @@ export default function Footer() {
         {/* Bottom Segment: Copyright & Social Profiles */}
         <div className="flex flex-col md:flex-row items-center justify-between border-t border-zinc-200 dark:border-zinc-800/50 pt-8 gap-4 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
           <div 
-            className="flex items-center gap-1.5 flex-wrap justify-center md:justify-start"
+            className="flex items-center gap-1 flex-wrap justify-center md:justify-start"
           >
             <span>© {currentYear} Templix AI. Designed with</span>
             <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline-block shrink-0 mx-0.5" role="img" aria-label="love" />

@@ -11,7 +11,7 @@ import Schema from "@/components/seo/Schema";
 import { faqSchema } from "@/data/faq";
 import { CATEGORIES } from "@/constants";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
-import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { STATIC_BLOG_POSTS, resolvePostImage } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import {
   FileText,
@@ -141,7 +141,7 @@ export default async function HomePage({ params }: PageProps) {
     slug: p.slug,
     title: p.title,
     description: p.description,
-    image: p.image,
+    image: resolvePostImage(p),
     category: p.category,
     createdAt: new Date(p.publishedAt),
   }));
@@ -169,15 +169,18 @@ export default async function HomePage({ params }: PageProps) {
       }
 
       if (dbBlogs && dbBlogs.length > 0) {
-        blogs = dbBlogs.map((b: any) => ({
-          id: b.id,
-          slug: b.slug,
-          title: b.title,
-          description: b.description,
-          image: STATIC_BLOG_POSTS.find((p) => p.slug === b.slug)?.image ?? "/blog/blog-create-invoice.jpg",
-          category: "Guides",
-          createdAt: b.createdAt,
-        }));
+        blogs = dbBlogs.map((b: any) => {
+          const match = STATIC_BLOG_POSTS.find((p) => p.slug === b.slug);
+          return {
+            id: b.id,
+            slug: b.slug,
+            title: b.title,
+            description: b.description,
+            image: match ? resolvePostImage(match) : resolvePostImage({ image: b.image ?? "", category: "Guides" } as any),
+            category: match?.category ?? "Guides",
+            createdAt: b.createdAt,
+          };
+        });
       }
     }
   } catch (err) {
@@ -553,9 +556,9 @@ export default async function HomePage({ params }: PageProps) {
                   Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
                 </p>
                 <div className="pt-1">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50">
-                    Verified Legal Advisor
-                  </span>
+                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-colors">
+                    Verified Legal Advisor &rarr;
+                  </Link>
                 </div>
               </div>
 
@@ -573,9 +576,9 @@ export default async function HomePage({ params }: PageProps) {
                   Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
                 </p>
                 <div className="pt-1">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50">
-                    Certified Security Auditor
-                  </span>
+                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-colors">
+                    Certified Security Auditor &rarr;
+                  </Link>
                 </div>
               </div>
 
@@ -593,9 +596,9 @@ export default async function HomePage({ params }: PageProps) {
                   Ensures all resume blueprints adhere strictly to modern ATS algorithms, HR Open Standards resume parsing rules, and HR standards.
                 </p>
                 <div className="pt-1">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 dark:bg-violet-950/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50">
-                    HR & ATS Specialist
-                  </span>
+                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-colors">
+                    HR & ATS Specialist &rarr;
+                  </Link>
                 </div>
               </div>
             </div>

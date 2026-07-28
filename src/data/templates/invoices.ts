@@ -192,7 +192,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (16 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$192.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Remit by bank wire transfer; wire details provided under separate cover." }] }
         ]

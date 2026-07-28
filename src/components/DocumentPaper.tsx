@@ -358,15 +358,19 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   }
 
   // 0 / classic (also the original five categories).
+  const hasDocumentHeading = blocks.length > 0 && blocks[0]?.type === "heading";
+
   return (
     <div className="bg-white text-zinc-800 font-sans">
       <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${primary}, ${secondary})` }} />
       <div className="px-5 sm:px-10 py-6 sm:py-8 space-y-5">
-        <div className="pb-5 border-b-2" style={{ borderColor: primary }}>
-          <div className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: primary }}>{companyLine}</div>
-          <div className="text-xs text-zinc-400 mt-0.5">{addressLine}</div>
-          <div className="text-xs text-zinc-400">{emailLine} · {phoneLine}</div>
-        </div>
+        {!hasDocumentHeading && (
+          <div className="pb-5 border-b-2" style={{ borderColor: primary }}>
+            <div className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: primary }}>{companyLine}</div>
+            <div className="text-xs text-zinc-400 mt-0.5">{addressLine}</div>
+            <div className="text-xs text-zinc-400">{emailLine} · {phoneLine}</div>
+          </div>
+        )}
         {body}
         {footer}
       </div>
