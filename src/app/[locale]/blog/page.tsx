@@ -18,11 +18,13 @@ import {
   TrendingUp,
   Sparkles,
   Tag,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; page?: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -70,9 +72,24 @@ function formatDate(iso: string, locale: string) {
   );
 }
 
+function getPaginationRange(activePage: number, totalPages: number): (number | string)[] {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  if (activePage <= 4) {
+    return [1, 2, 3, 4, 5, "...", totalPages];
+  }
+  if (activePage >= totalPages - 3) {
+    return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+  return [1, "...", activePage - 1, activePage, activePage + 1, "...", totalPages];
+}
+
 export default async function BlogListingPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
-  const { category = "All" } = await searchParams;
+  const { category = "All", page = "1" } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page, 10) || 1);
+  const POSTS_PER_PAGE = 10;
   const t = getDictionary(locale).blog;
   const c = getDictionary(locale).common;
 
@@ -119,6 +136,21 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
   const grid = category === "All" && featured
     ? filtered.filter((p) => p.slug !== featured.slug)
     : filtered;
+
+  const totalPosts = grid.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE) || 1;
+  const activePage = Math.min(currentPage, totalPages);
+  const startIndex = (activePage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const paginatedPosts = grid.slice(startIndex, endIndex);
+
+  const buildPageUrl = (pNum: number) => {
+    const query = new URLSearchParams();
+    if (category && category !== "All") query.set("category", category);
+    if (pNum > 1) query.set("page", String(pNum));
+    const qStr = query.toString();
+    return `/${locale}/blog${qStr ? `?${qStr}` : ""}`;
+  };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -298,73 +330,146 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 <Link href={`/${locale}/blog`} className="text-xs text-blue-500 underline">{c.viewAllArticles}</Link>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {(category === "All" ? grid : filtered).map((post) => (
-                  <Link
-                    key={post.id}
-                    href={`/${locale}/blog/${post.slug}`}
-                    className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-                  >
-                    {/* Cover image */}
-                    <div className="relative h-44 w-full overflow-hidden">
-                      <Image
-                        src={resolvePostImage(post)}
-                        alt={`${post.title} — illustration`}
-                        title={`${post.title} — illustration`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      {/* Category badge over image */}
-                      <div className="absolute top-2 left-2">
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border backdrop-blur-sm ${CATEGORY_ACCENT[post.category] ?? "bg-zinc-100/80 text-zinc-600"}`}>
-                          {post.category}
-                        </span>
-                      </div>
-                      {/* Subtle gradient at bottom */}
-                      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/60 dark:from-zinc-900/60 to-transparent" />
-                    </div>
-
-                    <div className="p-5 flex flex-col flex-1 space-y-3">
-                      {/* Meta — category badge removed here (already shown over image) */}
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[10px] text-zinc-400 flex items-center gap-1 ml-auto">
-                          <Clock className="h-2.5 w-2.5" /> {readingTime(post.content)} {t.min}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="font-bold text-zinc-900 dark:text-white text-base leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-3 flex-1">
-                        {post.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
-                            <Tag className="h-2 w-2" />{tag}
+              <>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {paginatedPosts.map((post) => (
+                    <Link
+                      key={post.id}
+                      href={`/${locale}/blog/${post.slug}`}
+                      className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                    >
+                      {/* Cover image */}
+                      <div className="relative h-44 w-full overflow-hidden">
+                        <Image
+                          src={resolvePostImage(post)}
+                          alt={`${post.title} — illustration`}
+                          title={`${post.title} — illustration`}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        {/* Category badge over image */}
+                        <div className="absolute top-2 left-2">
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border backdrop-blur-sm ${CATEGORY_ACCENT[post.category] ?? "bg-zinc-100/80 text-zinc-600"}`}>
+                            {post.category}
                           </span>
-                        ))}
+                        </div>
+                        {/* Subtle gradient at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/60 dark:from-zinc-900/60 to-transparent" />
                       </div>
 
-                      {/* Footer */}
-                      <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
-                        <span className="text-[10px] text-zinc-400 flex items-center gap-1">
-                          <Calendar className="h-2.5 w-2.5" /> {formatDate(post.publishedAt, locale)}
-                        </span>
-                        <span className="flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                          {t.read} <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-                        </span>
+                      <div className="p-5 flex flex-col flex-1 space-y-3">
+                        {/* Meta — category badge removed here (already shown over image) */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[10px] text-zinc-400 flex items-center gap-1 ml-auto">
+                            <Clock className="h-2.5 w-2.5" /> {readingTime(post.content)} {t.min}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="font-bold text-zinc-900 dark:text-white text-base leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-3 flex-1">
+                          {post.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1">
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                              <Tag className="h-2 w-2" />{tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
+                          <span className="text-[10px] text-zinc-400 flex items-center gap-1">
+                            <Calendar className="h-2.5 w-2.5" /> {formatDate(post.publishedAt, locale)}
+                          </span>
+                          <span className="flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                            {t.read} <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                          </span>
+                        </div>
                       </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* ── Pagination Bar ── */}
+                {totalPages > 1 && (
+                  <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-6">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                      Showing <span className="font-semibold text-zinc-900 dark:text-white">{startIndex + 1}–{Math.min(endIndex, totalPosts)}</span> of <span className="font-semibold text-zinc-900 dark:text-white">{totalPosts}</span> articles
+                    </p>
+
+                    <div className="flex items-center gap-1.5">
+                      {/* Previous */}
+                      {activePage > 1 ? (
+                        <Link
+                          href={buildPageUrl(activePage - 1)}
+                          className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-sm"
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                          <span>Previous</span>
+                        </Link>
+                      ) : (
+                        <span className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold border border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-400 dark:text-zinc-600 cursor-not-allowed">
+                          <ChevronLeft className="h-4 w-4" />
+                          <span>Previous</span>
+                        </span>
+                      )}
+
+                      {/* Number buttons with ellipsis */}
+                      {getPaginationRange(activePage, totalPages).map((item, idx) => {
+                        if (item === "...") {
+                          return (
+                            <span
+                              key={`ellipsis-${idx}`}
+                              className="flex h-9 w-9 items-center justify-center text-xs font-bold text-zinc-400 dark:text-zinc-500 select-none"
+                            >
+                              •••
+                            </span>
+                          );
+                        }
+                        const pNum = item as number;
+                        return (
+                          <Link
+                            key={pNum}
+                            href={buildPageUrl(pNum)}
+                            className={`flex h-9 w-9 items-center justify-center rounded-xl text-xs font-bold border transition-colors shadow-sm ${
+                              pNum === activePage
+                                ? "bg-blue-600 text-white border-blue-600 shadow-blue-500/20"
+                                : "bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400"
+                            }`}
+                          >
+                            {pNum}
+                          </Link>
+                        );
+                      })}
+
+                      {/* Next */}
+                      {activePage < totalPages ? (
+                        <Link
+                          href={buildPageUrl(activePage + 1)}
+                          className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-sm"
+                        >
+                          <span>Next</span>
+                          <ChevronRight className="h-4 w-4" />
+                        </Link>
+                      ) : (
+                        <span className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold border border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-400 dark:text-zinc-600 cursor-not-allowed">
+                          <span>Next</span>
+                          <ChevronRight className="h-4 w-4" />
+                        </span>
+                      )}
                     </div>
-                  </Link>
-                ))}
-              </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
 

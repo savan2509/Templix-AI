@@ -252,7 +252,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
         </h3>
 
         {/* A4 Paper simulation — same DocumentPaper as the card thumbnail */}
-        <div className="w-full border border-zinc-300 rounded-xl shadow-2xl overflow-hidden relative" style={{ minHeight: "700px" }}>
+        <div className="w-full border border-zinc-300 rounded-xl shadow-2xl overflow-hidden relative bg-white">
           <DocumentPaper template={template} values={fieldValues} />
         </div>
       </div>

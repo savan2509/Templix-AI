@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Share2, Check, Link2, MessageSquare } from "lucide-react";
 
 interface SocialShareProps {
@@ -15,8 +15,15 @@ export default function SocialShare({
   className = "",
 }: SocialShareProps) {
   const [copied, setCopied] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState(url || "https://templix-ai.whitesparksoft.com/en");
 
-  const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "https://templix-ai.whitesparksoft.com/en");
+  useEffect(() => {
+    if (!url && typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, [url]);
+
+  const shareUrl = currentUrl;
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
 

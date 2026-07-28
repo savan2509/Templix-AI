@@ -894,6 +894,87 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     deliverables: "Strategic market research report, product growth roadmap, and weekly advisory session slide decks.",
     fixedFee: "$15,000.00"
   },
+  "nda-agreement": {
+    disclosingParty: "Apex Innovation Labs Inc.",
+    receivingParty: "John Doe Services",
+    confidentialInfo: "Proprietary software source code, trade secrets, customer lists, and financial models",
+    termYears: "3",
+    jurisdiction: "State of Delaware"
+  },
+  "contractor-agreement": {
+    contractorName: "Apex General Contractors LLC",
+    projectSite: "450 Industrial Parkway, Suite 200",
+    scopeOfWork: "Interior renovation, structural wiring, HVAC duct installation, and dry-walling",
+    safetyCompliance: "Full compliance with OSHA guidelines and local commercial building codes",
+    contractValue: "$48,500.00",
+    paymentMilestones: "30% upfront, 40% at mid-inspection, 30% upon final sign-off"
+  },
+  "website-development-contract": {
+    clientName: "John Doe Services",
+    developerName: "Sarah Jenkins, Lead Web Engineer",
+    projectSpecifications: "Responsive Next.js application, headless CMS integration, and SEO optimization",
+    milestoneSchedule: "30% on kickoff, 30% on beta delivery, 40% on launch",
+    hostingHandover: "Full GitHub repository transfer and Vercel production deployment",
+    warrantyPeriod: "90 days bug-fix support following launch"
+  },
+  "maintenance-agreement": {
+    equipmentCovered: "Enterprise Server Fleet & Cloud Infrastructure",
+    maintenanceSchedule: "Bi-weekly security updates, weekly automated backups, and 24/7 uptime monitoring",
+    slaResponseTime: "Under 1 hour for P1 critical issues",
+    monthlyFee: "$2,500.00 per month",
+    termLength: "12 Months"
+  },
+  "employment-offer-agreement": {
+    companyName: "Templix Technologies Inc.",
+    candidateName: "Jordan Miller",
+    jobTitle: "Senior Software Engineer",
+    annualSalary: "$135,000.00 per annum",
+    startDate: "August 15, 2026",
+    benefitsSummary: "Comprehensive Health, Dental, Vision, 401(k) matching up to 5%, and 20 days PTO",
+    probationPeriod: "90 Days"
+  },
+  "internship-agreement": {
+    companyName: "Templix Technologies Inc.",
+    internName: "Emily Zhao",
+    internshipRole: "UI/UX Design Intern",
+    stipendAmount: "$25.00 / hour",
+    workHours: "20 hours / week",
+    learningObjectives: "User research methods, Figma design systems, and rapid prototyping workflows",
+    durationWeeks: "12"
+  },
+  "confidentiality-agreement": {
+    purposeOfDisclosure: "Evaluating potential joint venture and product integration possibilities",
+    confidentialInformation: "Financial statements, technical architecture blueprints, and strategic roadmaps",
+    exclusions: "Information already in the public domain or independently developed without reference to disclosed data",
+    termPeriod: "2 Years from date of signing",
+    governingLaw: "State of California"
+  },
+  "purchase-agreement": {
+    sellerName: "Industrial Asset Holdings LLC",
+    buyerName: "John Doe Services",
+    itemDescription: "Three (3) High-Capacity Commercial Printing Units (Model XP-900)",
+    purchasePrice: "$34,000.00",
+    paymentMethod: "Wire Transfer / Escrow",
+    deliveryTerms: "FOB Origin — Delivered within 10 business days of contract execution",
+    inspectionPeriod: "5 business days after delivery"
+  },
+  "business-contract": {
+    businessPurpose: "Strategic supply chain collaboration and distribution rights",
+    obligationsA: "Supply verified raw materials according to agreed monthly forecast schedules",
+    obligationsB: "Maintain local warehousing and complete retail order fulfillment within 48 hours",
+    contractValue: "$120,000.00 per year",
+    terminationClause: "30 days written notice by either party for material breach",
+    governingLaw: "State of New York"
+  },
+  "consulting-services-contract": {
+    consultantName: "Vanguard Strategic Consulting Group",
+    clientName: "John Doe Services",
+    advisoryScope: "Operational efficiency audit, cloud cost optimization, and executive team coaching",
+    feeStructure: "$250.00 / hour (not to exceed $25,000 total)",
+    billingCadence: "Bi-weekly detailed invoicing",
+    reimbursableExpenses: "Pre-approved travel, lodging, and specialized data API costs",
+    confidentiality: "Strict mutual non-disclosure and non-circumvention terms"
+  },
   // Resumes: graduation must precede the first job in the (hardcoded) experience
   // timeline, otherwise the sample reads as impossible (e.g. "5+ yrs, first job
   // 2019" but "graduated 2024"). Fresher/entry resumes keep the recent default.

@@ -26,8 +26,8 @@ import { getTemplateValues } from "@/features/templates/sample-values";
 function selectThumbnailBlocks(blocks: any[]): any[] {
   const MAX_LEAD        = 3;  // lead blocks shown before the table
   const MAX_TRAIL       = 2;  // trailing blocks shown after the table
-  const MAX_TEXT_BLOCKS = 6;  // total top-level blocks for text documents
-  const LIST_ITEM_CAP   = 2;  // max bullet/ordered list items per list block
+  const MAX_TEXT_BLOCKS = 25; // total top-level blocks for text documents
+  const LIST_ITEM_CAP   = 4;  // max bullet/ordered list items per list block
 
   const tableIdx = blocks.findIndex((b: any) => b.type === "table");
 
@@ -92,8 +92,8 @@ export default function TemplateThumbnail({ template }: { template: any }) {
     <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-2 sm:p-2.5" aria-hidden="true">
       <div className="relative h-full w-full overflow-hidden rounded-md bg-white shadow-md ring-1 ring-black/5">
         <div
-          className="origin-top-left pointer-events-none"
-          style={{ width: "150%", transform: "scale(0.667)" }}
+          className="origin-top-left pointer-events-none min-h-[150%] bg-white"
+          style={{ width: "150%", minHeight: "150%", transform: "scale(0.667)" }}
         >
           <DocumentPaper template={truncatedTemplate} values={values} />
         </div>

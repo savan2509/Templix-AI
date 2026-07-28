@@ -46,6 +46,7 @@ import { invoicesExtra4Templates } from "./templates/invoices-extra4";
 import { resumesExtra3Templates } from "./templates/resumes-extra3";
 import { resumesExtra4Templates } from "./templates/resumes-extra4";
 import { contractsExtra3Templates } from "./templates/contracts-extra3";
+import { contractsExtra4Templates } from "./templates/contracts-extra4";
 import { proposalsExtra3Templates } from "./templates/proposals-extra3";
 import { lettersExtra3Templates } from "./templates/letters-extra3";
 import { reportsExtra3Templates } from "./templates/reports-extra3";
@@ -85,6 +86,7 @@ export const allFallbackTemplates: any[] = [
   ...resumesExtra3Templates,
   ...resumesExtra4Templates,
   ...contractsExtra3Templates,
+  ...contractsExtra4Templates,
   ...proposalsExtra3Templates,
   ...lettersExtra3Templates,
   ...reportsExtra3Templates,
