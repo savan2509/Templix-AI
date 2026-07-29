@@ -16,7 +16,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Laundromat Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "machineCount", "fundingAsk"],
       layout: { header: "LAUNDROMAT BUSINESS PLAN", footer: "Confidential — prepared for lenders and investors." },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#22d3ee" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#22d3ee", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -86,7 +86,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Vending Machine Business Plan Template",
       fields: ["businessName", "founderName", "date", "serviceArea", "machineCount", "fundingAsk"],
       layout: { header: "VENDING MACHINE BUSINESS PLAN", footer: "Confidential — prepared for lenders and partners." },
-      styles: { primaryColor: "#dc2626", secondaryColor: "#f87171" },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#f87171", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -156,7 +156,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Brewery Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "brewCapacity", "fundingAsk"],
       layout: { header: "BREWERY BUSINESS PLAN", footer: "Confidential — prepared for investors and lenders." },
-      styles: { primaryColor: "#b45309", secondaryColor: "#f59e0b" },
+      styles: { primaryColor: "#b45309", secondaryColor: "#f59e0b", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -226,7 +226,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Dropshipping Business Plan Template",
       fields: ["businessName", "founderName", "date", "productNiche", "salesPlatform", "fundingAsk"],
       layout: { header: "DROPSHIPPING BUSINESS PLAN", footer: "Confidential — prepared for partners and investors." },
-      styles: { primaryColor: "#4f46e5", secondaryColor: "#818cf8" },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#818cf8", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -296,7 +296,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Car Rental Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "fleetSize", "fundingAsk"],
       layout: { header: "CAR RENTAL BUSINESS PLAN", footer: "Confidential — prepared for lenders and investors." },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#60a5fa" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#60a5fa", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -366,7 +366,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Tutoring Center Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "subjectFocus", "fundingAsk"],
       layout: { header: "TUTORING CENTER BUSINESS PLAN", footer: "Confidential — prepared for investors and partners." },
-      styles: { primaryColor: "#16a34a", secondaryColor: "#4ade80" },
+      styles: { primaryColor: "#16a34a", secondaryColor: "#4ade80", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -436,7 +436,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Medical Practice Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "specialty", "fundingAsk"],
       layout: { header: "MEDICAL PRACTICE BUSINESS PLAN", footer: "Confidential — prepared for lenders and partners." },
-      styles: { primaryColor: "#0d9488", secondaryColor: "#2dd4bf" },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#2dd4bf", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -506,7 +506,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Yoga Studio Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "studioStyle", "fundingAsk"],
       layout: { header: "YOGA STUDIO BUSINESS PLAN", footer: "Confidential — prepared for investors and partners." },
-      styles: { primaryColor: "#9333ea", secondaryColor: "#c084fc" },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#c084fc", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -576,7 +576,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Cloud Kitchen Business Plan Template",
       fields: ["businessName", "founderName", "date", "location", "cuisineType", "fundingAsk"],
       layout: { header: "CLOUD KITCHEN BUSINESS PLAN", footer: "Confidential — prepared for investors and partners." },
-      styles: { primaryColor: "#ea580c", secondaryColor: "#fb923c" },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#fb923c", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -646,7 +646,7 @@ export const businessPlansExtra2Templates: any[] = [
       title: "Subscription Box Business Plan Template",
       fields: ["businessName", "founderName", "date", "boxTheme", "targetCustomer", "fundingAsk"],
       layout: { header: "SUBSCRIPTION BOX BUSINESS PLAN", footer: "Confidential — prepared for investors and partners." },
-      styles: { primaryColor: "#db2777", secondaryColor: "#f472b6" },
+      styles: { primaryColor: "#db2777", secondaryColor: "#f472b6", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [

@@ -11,7 +11,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Veterinary Invoice Template",
       fields: ["companyName", "companyAddress", "companyPhone", "clientName", "petName", "petSpecies", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "VETERINARY INVOICE", footer: "Thank you for trusting us with your pet's health." },
-      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -72,7 +72,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Accounting Services Invoice Template",
       fields: ["companyName", "companyAddress", "companyPhone", "clientName", "clientBusiness", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "ACCOUNTING INVOICE", footer: "Payment due within 15 days of invoice date." },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -133,7 +133,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Copywriter Invoice Template",
       fields: ["companyName", "companyEmail", "clientName", "projectName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "COPYWRITING INVOICE", footer: "Words that convert — thank you for your business." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -188,7 +188,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Moving Services Invoice Template",
       fields: ["companyName", "companyAddress", "companyPhone", "clientName", "originAddress", "destinationAddress", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "MOVING SERVICES INVOICE", footer: "Fully licensed and insured movers." },
-      styles: { primaryColor: "#ea580c", secondaryColor: "#9a3412" },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#9a3412", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -250,7 +250,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Pest Control Invoice Template",
       fields: ["companyName", "companyPhone", "clientName", "serviceAddress", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "PEST CONTROL INVOICE", footer: "Guaranteed protection — call us if pests return." },
-      styles: { primaryColor: "#65a30d", secondaryColor: "#365314" },
+      styles: { primaryColor: "#65a30d", secondaryColor: "#365314", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -305,7 +305,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Solar Installation Invoice Template",
       fields: ["companyName", "companyAddress", "companyPhone", "clientName", "systemSize", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "SOLAR INSTALLATION INVOICE", footer: "Powering your home with clean energy." },
-      styles: { primaryColor: "#f59e0b", secondaryColor: "#b45309" },
+      styles: { primaryColor: "#f59e0b", secondaryColor: "#b45309", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -366,7 +366,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Roofing Invoice Template",
       fields: ["companyName", "companyPhone", "companyLicense", "clientName", "propertyAddress", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "ROOFING INVOICE", footer: "Workmanship warranty included on all roofing." },
-      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d" },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -427,7 +427,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Painting Invoice Template",
       fields: ["companyName", "companyPhone", "clientName", "jobAddress", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "PAINTING INVOICE", footer: "Two-year finish warranty on all work." },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -488,7 +488,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Carpentry Invoice Template",
       fields: ["companyName", "companyPhone", "clientName", "projectName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "CARPENTRY INVOICE", footer: "Handcrafted quality — thank you for your business." },
-      styles: { primaryColor: "#92400e", secondaryColor: "#451a03" },
+      styles: { primaryColor: "#92400e", secondaryColor: "#451a03", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -543,7 +543,7 @@ export const invoicesExtra2Templates: any[] = [
       title: "Security Services Invoice Template",
       fields: ["companyName", "companyPhone", "companyLicense", "clientName", "siteName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "SECURITY SERVICES INVOICE", footer: "Licensed and bonded security professionals." },
-      styles: { primaryColor: "#334155", secondaryColor: "#0f172a" },
+      styles: { primaryColor: "#334155", secondaryColor: "#0f172a", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [

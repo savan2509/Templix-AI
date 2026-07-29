@@ -26,7 +26,7 @@ function hashStr(s: string) {
   return h >>> 0;
 }
 
-const VARIANT_CATEGORIES = new Set(["reports", "business-plans", "quotations"]);
+const VARIANT_CATEGORIES = new Set(["proposals", "contracts", "invoices", "reports", "business-plans", "quotations", "letters", "resumes"]);
 const LAYOUT_COUNT = 6;
 const HEADING_STYLE_COUNT = 3;
 
@@ -255,7 +255,7 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   // 1 — Sidebar: full-height colored rail on the left.
   if (layout === 1) {
     return (
-      <div className="bg-white text-zinc-800 font-sans flex">
+      <div className="bg-white text-zinc-800 font-sans flex min-h-full w-full">
         <div className="w-1/3 shrink-0 px-5 py-8 text-white flex flex-col" style={{ background: grad }}>
           <div className="text-lg sm:text-2xl font-black leading-tight tracking-tight">{companyLine}</div>
           <div className="mt-3 h-1 w-10 rounded bg-white/70" />
@@ -281,7 +281,7 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   // 2 — Banner: full-width solid header band.
   if (layout === 2) {
     return (
-      <div className="bg-white text-zinc-800 font-sans">
+      <div className="bg-white text-zinc-800 font-sans min-h-full w-full">
         <div className="px-5 sm:px-10 py-6" style={{ background: grad }}>
           <div className="text-2xl sm:text-3xl font-black tracking-tight text-white">{companyLine}</div>
           <div className="mt-1 text-[11px] text-white/85 flex flex-wrap gap-x-3 gap-y-0.5">
@@ -301,7 +301,7 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   // 3 — Centered: minimalist centered letterhead.
   if (layout === 3) {
     return (
-      <div className="bg-white text-zinc-800 font-sans">
+      <div className="bg-white text-zinc-800 font-sans min-h-full w-full">
         <div className="px-5 sm:px-12 pt-9 pb-6 text-center border-b" style={{ borderColor: `${primary}33` }}>
           <div className="text-2xl sm:text-3xl font-black tracking-tight" style={{ color: primary }}>{companyLine}</div>
           <div className="mx-auto mt-2 h-1 w-14 rounded" style={{ backgroundColor: primary }} />
@@ -320,7 +320,7 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   // 4 — Accent bar + monogram badge.
   if (layout === 4) {
     return (
-      <div className="bg-white text-zinc-800 font-sans flex">
+      <div className="bg-white text-zinc-800 font-sans flex min-h-full w-full">
         <div className="w-1.5 shrink-0" style={{ background: `linear-gradient(180deg, ${primary}, ${secondary})` }} />
         <div className="flex-1 px-5 sm:px-9 py-7 space-y-5 min-w-0">
           <div className="flex items-center gap-4 pb-5 border-b" style={{ borderColor: `${primary}22` }}>
@@ -342,8 +342,8 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   // 5 — Boxed: whole document framed with a colored border.
   if (layout === 5) {
     return (
-      <div className="bg-white text-zinc-800 font-sans p-3 sm:p-4">
-        <div className="rounded-xl border-2 overflow-hidden" style={{ borderColor: primary }}>
+      <div className="bg-white text-zinc-800 font-sans p-3 sm:p-4 min-h-full w-full">
+        <div className="rounded-xl border-2 overflow-hidden min-h-full" style={{ borderColor: primary }}>
           <div className="px-5 sm:px-8 py-5" style={{ backgroundColor: `${primary}0F` }}>
             <div className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: primary }}>{companyLine}</div>
             <div className="text-[11px] text-zinc-400 mt-0.5">{addressLine} · {emailLine} · {phoneLine}</div>
@@ -361,7 +361,7 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   const hasDocumentHeading = blocks.length > 0 && blocks[0]?.type === "heading";
 
   return (
-    <div className="bg-white text-zinc-800 font-sans">
+    <div className="bg-white text-zinc-800 font-sans min-h-full w-full">
       <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${primary}, ${secondary})` }} />
       <div className="px-5 sm:px-10 py-6 sm:py-8 space-y-5">
         {!hasDocumentHeading && (

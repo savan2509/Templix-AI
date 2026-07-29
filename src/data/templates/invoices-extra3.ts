@@ -10,7 +10,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Payment Reminder Invoice Template",
       fields: ["companyName","companyAddress","clientName","invoiceNumber","invoiceDate","dueDate","originalAmount","lateFee","totalDue","paymentMethod"],
       layout: { header: "PAYMENT REMINDER NOTICE", footer: "Please settle your balance immediately to avoid further fees." },
-      styles: { primaryColor: "#dc2626", secondaryColor: "#7f1d1d" },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#7f1d1d", layoutVariant: 0, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PAYMENT REMINDER NOTICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}" }] },
@@ -38,7 +38,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Milestone Invoice Template",
       fields: ["companyName","companyAddress","clientName","projectName","invoiceNumber","invoiceDate","dueDate","milestoneName","milestonePercent","milestoneAmount","totalProjectFee","paymentTerms"],
       layout: { header: "MILESTONE INVOICE", footer: "Thank you for your business." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 1, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MILESTONE INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}" }] },
@@ -64,7 +64,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Deposit Invoice Template",
       fields: ["companyName","companyAddress","clientName","projectName","invoiceNumber","invoiceDate","dueDate","totalFee","depositPercent","depositAmount","remainingBalance","paymentMethod"],
       layout: { header: "DEPOSIT INVOICE", footer: "Work will commence upon receipt of deposit payment." },
-      styles: { primaryColor: "#059669", secondaryColor: "#064e3b" },
+      styles: { primaryColor: "#059669", secondaryColor: "#064e3b", layoutVariant: 2, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "DEPOSIT INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}" }] },
@@ -91,7 +91,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Subscription Invoice Template",
       fields: ["companyName","companyAddress","clientName","subscriptionPlan","billingPeriod","invoiceNumber","invoiceDate","dueDate","planFee","tax","total","paymentMethod"],
       layout: { header: "SUBSCRIPTION INVOICE", footer: "Manage your subscription at {{companyName}}." },
-      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SUBSCRIPTION INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}" }] },
@@ -117,7 +117,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Retainer Invoice Template",
       fields: ["companyName","companyAddress","clientName","retainerScope","billingMonth","invoiceNumber","invoiceDate","dueDate","retainerFee","hoursIncluded","additionalHours","additionalHoursRate","additionalAmount","tax","total","paymentMethod"],
       layout: { header: "MONTHLY RETAINER INVOICE", footer: "Thank you for our ongoing partnership." },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#164e63" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#164e63", layoutVariant: 4, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MONTHLY RETAINER INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{companyName}}, {{companyAddress}}" }] },
@@ -144,7 +144,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Medical Services Invoice Template",
       fields: ["providerName","providerAddress","providerNPI","patientName","patientDOB","invoiceNumber","invoiceDate","dueDate","serviceCodes","subtotal","insurance","patientDue","paymentMethod"],
       layout: { header: "MEDICAL SERVICES INVOICE", footer: "Please retain this document for your medical and insurance records." },
-      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e" },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e", layoutVariant: 5, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "MEDICAL SERVICES INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{providerName}}, {{providerAddress}}   NPI: {{providerNPI}}" }] },
@@ -172,7 +172,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Cleaning Services Invoice Template",
       fields: ["companyName","companyAddress","companyPhone","clientName","propertyAddress","invoiceNumber","invoiceDate","dueDate","subtotal","tax","total","paymentMethod","paymentTerms"],
       layout: { header: "CLEANING SERVICES INVOICE", footer: "Thank you for choosing {{companyName}}. We look forward to keeping your space spotless." },
-      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a", layoutVariant: 0, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "CLEANING SERVICES INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "From: " }, { type: "text", text: "{{companyName}}, {{companyAddress}} — {{companyPhone}}" }] },
@@ -202,7 +202,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Photography Invoice Template",
       fields: ["photographerName","photographerAddress","photographerPhone","clientName","eventType","eventDate","invoiceNumber","invoiceDate","dueDate","shootFee","editingFee","printFee","usageRights","subtotal","tax","total","depositPaid","balanceDue","paymentMethod"],
       layout: { header: "PHOTOGRAPHY INVOICE", footer: "Images remain the copyright of {{photographerName}} until paid in full." },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 1, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "PHOTOGRAPHY INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Photographer: " }, { type: "text", text: "{{photographerName}}, {{photographerAddress}} — {{photographerPhone}}" }] },
@@ -232,7 +232,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Legal Services Invoice Template",
       fields: ["firmName","firmAddress","firmSolicitorRef","clientName","clientRef","matterDescription","invoiceNumber","invoiceDate","dueDate","fees","disbursements","vat","total","paymentDetails"],
       layout: { header: "SOLICITOR'S INVOICE", footer: "This firm is regulated by the Solicitors Regulation Authority." },
-      styles: { primaryColor: "#1e40af", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1e40af", secondaryColor: "#1e3a8a", layoutVariant: 2, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "SOLICITOR'S INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Firm: " }, { type: "text", text: "{{firmName}}, {{firmAddress}}" }] },
@@ -262,7 +262,7 @@ export const invoicesExtra3Templates: any[] = [
       title: "Tutoring Invoice Template",
       fields: ["tutorName","tutorEmail","studentName","parentName","subject","billingPeriod","invoiceNumber","invoiceDate","dueDate","hours","hourlyRate","subtotal","tax","total","paymentMethod"],
       layout: { header: "TUTORING INVOICE", footer: "Thank you for investing in your child's education." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 3, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "TUTORING INVOICE" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tutor: " }, { type: "text", text: "{{tutorName}} — {{tutorEmail}}" }] },

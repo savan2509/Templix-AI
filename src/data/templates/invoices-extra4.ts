@@ -40,10 +40,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "INVOICE",
         "footer": "Thank you for your business!"
       },
-      "styles": {
-        "primaryColor": "#1d4ed8",
-        "secondaryColor": "#1e3a8a"
-      },
+      "styles": {"primaryColor": "#1d4ed8",
+        "secondaryColor": "#1e3a8a", "layoutVariant": 1, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -427,10 +425,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "TAX INVOICE (GST)",
         "footer": "E. & O.E. — This is a computer-generated invoice. No signature required."
       },
-      "styles": {
-        "primaryColor": "#15803d",
-        "secondaryColor": "#14532d"
-      },
+      "styles": {"primaryColor": "#15803d",
+        "secondaryColor": "#14532d", "layoutVariant": 2, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -980,10 +976,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "FREELANCE INVOICE",
         "footer": "Ownership of all deliverables transfers upon receipt of final payment."
       },
-      "styles": {
-        "primaryColor": "#6366f1",
-        "secondaryColor": "#312e81"
-      },
+      "styles": {"primaryColor": "#6366f1",
+        "secondaryColor": "#312e81", "layoutVariant": 3, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -1554,10 +1548,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "CONSULTING SERVICES INVOICE",
         "footer": "All intellectual property created during this engagement remains the property of the consulting firm until payment is received in full."
       },
-      "styles": {
-        "primaryColor": "#0f172a",
-        "secondaryColor": "#1e40af"
-      },
+      "styles": {"primaryColor": "#0f172a",
+        "secondaryColor": "#1e40af", "layoutVariant": 4, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -2179,10 +2171,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "PHOTOGRAPHY INVOICE",
         "footer": "All images remain copyright of the photographer until full payment is received."
       },
-      "styles": {
-        "primaryColor": "#7c3aed",
-        "secondaryColor": "#4c1d95"
-      },
+      "styles": {"primaryColor": "#7c3aed",
+        "secondaryColor": "#4c1d95", "layoutVariant": 5, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -2913,10 +2903,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "CREATIVE DESIGN INVOICE",
         "footer": "Source files are delivered only upon receipt of full payment. IP transfers upon settlement."
       },
-      "styles": {
-        "primaryColor": "#db2777",
-        "secondaryColor": "#831843"
-      },
+      "styles": {"primaryColor": "#db2777",
+        "secondaryColor": "#831843", "layoutVariant": 0, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -3626,10 +3614,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "CONSTRUCTION INVOICE",
         "footer": "All work is warranted for 12 months from project completion date. License #{{contractorLicenseNumber}}"
       },
-      "styles": {
-        "primaryColor": "#92400e",
-        "secondaryColor": "#451a03"
-      },
+      "styles": {"primaryColor": "#92400e",
+        "secondaryColor": "#451a03", "layoutVariant": 1, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -4464,10 +4450,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "DIGITAL MARKETING INVOICE",
         "footer": "Campaign performance reports are delivered on the 5th of every month."
       },
-      "styles": {
-        "primaryColor": "#0891b2",
-        "secondaryColor": "#164e63"
-      },
+      "styles": {"primaryColor": "#0891b2",
+        "secondaryColor": "#164e63", "layoutVariant": 2, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -5205,10 +5189,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "WEB DEVELOPMENT INVOICE",
         "footer": "Full source code and IP transfers to the client upon final payment settlement."
       },
-      "styles": {
-        "primaryColor": "#059669",
-        "secondaryColor": "#064e3b"
-      },
+      "styles": {"primaryColor": "#059669",
+        "secondaryColor": "#064e3b", "layoutVariant": 3, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -6262,10 +6244,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "CLEANING SERVICE INVOICE",
         "footer": "100% Satisfaction Guarantee — if not satisfied, we re-clean for free within 24 hours."
       },
-      "styles": {
-        "primaryColor": "#0284c7",
-        "secondaryColor": "#0c4a6e"
-      },
+      "styles": {"primaryColor": "#0284c7",
+        "secondaryColor": "#0c4a6e", "layoutVariant": 4, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -7201,10 +7181,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "CATERING & RESTAURANT INVOICE",
         "footer": "Food prepared fresh using FSSAI-certified ingredients. Leftover food policy: {{leftoverFoodPolicy}}"
       },
-      "styles": {
-        "primaryColor": "#dc2626",
-        "secondaryColor": "#7f1d1d"
-      },
+      "styles": {"primaryColor": "#dc2626",
+        "secondaryColor": "#7f1d1d", "layoutVariant": 5, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -8056,10 +8034,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "RETAIL / WHOLESALE INVOICE",
         "footer": "Returns accepted within {{returnWindowDays}} days with original invoice. Warranty: {{warrantyPeriod}}."
       },
-      "styles": {
-        "primaryColor": "#d97706",
-        "secondaryColor": "#78350f"
-      },
+      "styles": {"primaryColor": "#d97706",
+        "secondaryColor": "#78350f", "layoutVariant": 0, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -8789,10 +8765,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "MEDICAL SERVICES INVOICE",
         "footer": "This statement is for billing purposes only. Consult your insurer for coverage details."
       },
-      "styles": {
-        "primaryColor": "#0d9488",
-        "secondaryColor": "#134e4a"
-      },
+      "styles": {"primaryColor": "#0d9488",
+        "secondaryColor": "#134e4a", "layoutVariant": 1, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -9643,10 +9617,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "LEGAL BILLING STATEMENT",
         "footer": "Privileged & Confidential — Attorney-Client Communication. Governed by applicable professional conduct rules."
       },
-      "styles": {
-        "primaryColor": "#1e3a5f",
-        "secondaryColor": "#0f172a"
-      },
+      "styles": {"primaryColor": "#1e3a5f",
+        "secondaryColor": "#0f172a", "layoutVariant": 2, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -10656,10 +10628,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "SOFTWARE LICENSE & SERVICE INVOICE",
         "footer": "Subscription auto-renews on {{autoRenewalDate}}. Cancel with {{cancellationNoticePeriod}} written notice."
       },
-      "styles": {
-        "primaryColor": "#7c3aed",
-        "secondaryColor": "#4c1d95"
-      },
+      "styles": {"primaryColor": "#7c3aed",
+        "secondaryColor": "#4c1d95", "layoutVariant": 3, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -11649,10 +11619,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "PURCHASE INVOICE",
         "footer": "Payment subject to satisfactory GRN and quality inspection approval. TDS deducted as applicable."
       },
-      "styles": {
-        "primaryColor": "#0369a1",
-        "secondaryColor": "#082f49"
-      },
+      "styles": {"primaryColor": "#0369a1",
+        "secondaryColor": "#082f49", "layoutVariant": 4, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -12601,10 +12569,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "SALES INVOICE",
         "footer": "Prices are subject to change. Returns and refunds governed by company policy: {{returnAndRefundPolicy}}"
       },
-      "styles": {
-        "primaryColor": "#16a34a",
-        "secondaryColor": "#14532d"
-      },
+      "styles": {"primaryColor": "#16a34a",
+        "secondaryColor": "#14532d", "layoutVariant": 5, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -13576,10 +13542,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "OFFICIAL TAX INVOICE",
         "footer": "Tax issued by: {{taxAuthority}}. Retain this invoice for your tax records."
       },
-      "styles": {
-        "primaryColor": "#1e40af",
-        "secondaryColor": "#1e3a8a"
-      },
+      "styles": {"primaryColor": "#1e40af",
+        "secondaryColor": "#1e3a8a", "layoutVariant": 0, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -14502,10 +14466,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "COMMERCIAL INVOICE FOR EXPORT",
         "footer": "I/We declare that this invoice shows the actual price of the goods described and all particulars are true and correct."
       },
-      "styles": {
-        "primaryColor": "#374151",
-        "secondaryColor": "#111827"
-      },
+      "styles": {"primaryColor": "#374151",
+        "secondaryColor": "#111827", "layoutVariant": 1, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -15391,10 +15353,8 @@ export const invoicesExtra4Templates: any[] = [
         "header": "INVOICE",
         "footer": "{{thankYouMessage}}"
       },
-      "styles": {
-        "primaryColor": "#334155",
-        "secondaryColor": "#0f172a"
-      },
+      "styles": {"primaryColor": "#334155",
+        "secondaryColor": "#0f172a", "layoutVariant": 2, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [

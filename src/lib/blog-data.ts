@@ -3328,8 +3328,14 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
 
 // Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely
 const CURRENT_DATE = new Date();
+const seenBlogSlugs = new Set<string>();
 export const STATIC_BLOG_POSTS: BlogPost[] = RAW_STATIC_BLOG_POSTS.filter(
-  (p: BlogPost) => new Date(p.publishedAt) <= CURRENT_DATE
+  (p: BlogPost) => {
+    if (new Date(p.publishedAt) > CURRENT_DATE) return false;
+    if (seenBlogSlugs.has(p.slug)) return false;
+    seenBlogSlugs.add(p.slug);
+    return true;
+  }
 );
 
 // Helper — get a post by slug

@@ -1,7 +1,7 @@
 // reports-extra3.ts — 10 additional report templates (Week 2)
 const mkReport = (id: string, title: string, desc: string, color: string, heading: string, fields: string[], rows: [string, string][]): any => ({
   id, slug: id, title, description: desc, isPremium: false, categorySlug: "reports", categoryName: "Reports",
-  content: { title, fields, layout: { header: heading }, styles: { primaryColor: color, secondaryColor: "#1e3a8a" },
+  content: { title, fields, layout: { header: heading }, styles: {primaryColor: color, secondaryColor: "#1e3a8a", layoutVariant: 4, headingStyle: 0 },
     editorState: { type: "doc", content: [
       { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: heading }] },
       { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Prepared by: " }, { type: "text", text: "{{authorName}}, {{authorRole}}" }] },

@@ -11,7 +11,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Truck Driver Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "CDL TRUCK DRIVER", footer: "Clean MVR and references available on request" },
-      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 5, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -58,7 +58,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Social Worker Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "LICENSED SOCIAL WORKER", footer: "License number and references available on request" },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6", layoutVariant: 0, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -104,7 +104,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Dentist Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "DOCTOR OF DENTAL SURGERY", footer: "License and references available on request" },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 1, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -151,7 +151,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Bank Teller Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "BANK TELLER", footer: "References available on request" },
-      styles: { primaryColor: "#166534", secondaryColor: "#14532d" },
+      styles: { primaryColor: "#166534", secondaryColor: "#14532d", layoutVariant: 2, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -197,7 +197,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Warehouse Associate Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "WAREHOUSE ASSOCIATE", footer: "References available on request" },
-      styles: { primaryColor: "#c2410c", secondaryColor: "#7c2d12" },
+      styles: { primaryColor: "#c2410c", secondaryColor: "#7c2d12", layoutVariant: 3, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -243,7 +243,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Receptionist Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "FRONT DESK RECEPTIONIST", footer: "References available on request" },
-      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d" },
+      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d", layoutVariant: 4, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -289,7 +289,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Video Editor Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "VIDEO EDITOR", footer: "Portfolio and reel available on request" },
-      styles: { primaryColor: "#e11d48", secondaryColor: "#9f1239" },
+      styles: { primaryColor: "#e11d48", secondaryColor: "#9f1239", layoutVariant: 5, headingStyle: 2 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -335,7 +335,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Network Administrator Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "NETWORK ADMINISTRATOR", footer: "References and certifications available on request" },
-      styles: { primaryColor: "#2563eb", secondaryColor: "#1e40af" },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e40af", layoutVariant: 0, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -382,7 +382,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Paralegal Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "PARALEGAL", footer: "References available on request" },
-      styles: { primaryColor: "#1e3a8a", secondaryColor: "#172554" },
+      styles: { primaryColor: "#1e3a8a", secondaryColor: "#172554", layoutVariant: 1, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -428,7 +428,7 @@ export const resumesExtra2Templates: any[] = [
       title: "Recruiter Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "TALENT ACQUISITION RECRUITER", footer: "References available on request" },
-      styles: { primaryColor: "#0d9488", secondaryColor: "#115e59" },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#115e59", layoutVariant: 2, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },

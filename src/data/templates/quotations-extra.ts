@@ -13,7 +13,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Manufacturing Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "partNumber", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "MANUFACTURING QUOTATION", footer: "Quoted prices assume approved engineering drawings and confirmed volumes." },
-      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -96,7 +96,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Furniture Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "deliveryAddress", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "FURNITURE QUOTATION", footer: "Handcrafted to order — lead times confirmed at deposit." },
-      styles: { primaryColor: "#92400e", secondaryColor: "#78350f" },
+      styles: { primaryColor: "#92400e", secondaryColor: "#78350f", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -179,7 +179,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Logistics Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "originPort", "destinationPort", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "LOGISTICS QUOTATION", footer: "Rates subject to fuel and currency surcharges at booking." },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -262,7 +262,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Signage Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "installSite", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "SIGNAGE QUOTATION", footer: "Includes permits where noted; power supply by others." },
-      styles: { primaryColor: "#be123c", secondaryColor: "#881337" },
+      styles: { primaryColor: "#be123c", secondaryColor: "#881337", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -345,7 +345,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Solar Installation Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "systemSize", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "SOLAR INSTALLATION QUOTATION", footer: "Estimated output based on site survey and local irradiance data." },
-      styles: { primaryColor: "#ca8a04", secondaryColor: "#854d0e" },
+      styles: { primaryColor: "#ca8a04", secondaryColor: "#854d0e", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -428,7 +428,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Pest Control Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "propertyAddress", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "PEST CONTROL QUOTATION", footer: "All treatments use EPA-registered, family-safe products." },
-      styles: { primaryColor: "#15803d", secondaryColor: "#14532d" },
+      styles: { primaryColor: "#15803d", secondaryColor: "#14532d", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -511,7 +511,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Moving Services Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "originAddress", "destinationAddress", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "MOVING SERVICES QUOTATION", footer: "Binding estimate based on declared inventory and access." },
-      styles: { primaryColor: "#4338ca", secondaryColor: "#3730a3" },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#3730a3", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -594,7 +594,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Tour & Travel Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "destination", "travelDates", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "TOUR & TRAVEL QUOTATION", footer: "Prices per person; subject to airline and hotel availability." },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -677,7 +677,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "App Development Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "appName", "platforms", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "APP DEVELOPMENT QUOTATION", footer: "Estimate assumes agreed scope; change requests billed hourly." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -760,7 +760,7 @@ export const quotationsExtraTemplates: any[] = [
       title: "Video Production Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "projectTitle", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "VIDEO PRODUCTION QUOTATION", footer: "Final deliverables licensed for use on approval of full payment." },
-      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d" },
+      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [

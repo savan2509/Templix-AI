@@ -29,7 +29,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#1e3a8a",
-        secondaryColor: "#2563eb"
+        secondaryColor: "#2563eb",
+        layoutVariant: 0,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -128,7 +130,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#0f766e",
-        secondaryColor: "#14b8a6"
+        secondaryColor: "#14b8a6",
+        layoutVariant: 1,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",
@@ -172,7 +176,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#7c2d12",
-        secondaryColor: "#ea580c"
+        secondaryColor: "#ea580c",
+        layoutVariant: 0,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",
@@ -273,7 +279,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#5b21b6",
-        secondaryColor: "#8b5cf6"
+        secondaryColor: "#8b5cf6",
+        layoutVariant: 4,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -314,7 +322,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#155e75",
-        secondaryColor: "#06b6d4"
+        secondaryColor: "#06b6d4",
+        layoutVariant: 1,
+        headingStyle: 1
       },
       editorState: {
         type: "doc",
@@ -356,7 +366,9 @@ export const indiaLettersTemplates: any[] = [
       },
       styles: {
         primaryColor: "#166534",
-        secondaryColor: "#22c55e"
+        secondaryColor: "#22c55e",
+        layoutVariant: 3,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",

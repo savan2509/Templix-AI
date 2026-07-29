@@ -19,10 +19,7 @@ export const proposalsTemplates = [
         header: "BUSINESS PROJECT PROPOSAL",
         footer: "This proposal is subject to pricing validation within the validity period."
       },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#3b82f6"
-      },
+      styles: { primaryColor: "#0f172a", secondaryColor: "#3b82f6", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -92,10 +89,7 @@ export const proposalsTemplates = [
         header: "PROJECT IMPLEMENTATION PROPOSAL",
         footer: "Confidential document for review by client sponsors only."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#0f766e"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#0f766e", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -167,10 +161,7 @@ export const proposalsTemplates = [
         header: "MARKETING CAMPAIGN PROPOSAL",
         footer: "Proposed KPIs are estimates based on initial market research metrics."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#6d28d9"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#6d28d9", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -240,10 +231,7 @@ export const proposalsTemplates = [
         header: "WEBSITE DEVELOPMENT PROPOSAL",
         footer: "Standard design includes 30 days of post-launch technical support."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#be185d"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#be185d", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -310,10 +298,7 @@ export const proposalsTemplates = [
         header: "TECHNICAL SOFTWARE PROPOSAL",
         footer: "Software architectures adhere to OWASP and standard cloud deployment security regulations."
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0369a1"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#0369a1", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -381,10 +366,7 @@ export const proposalsTemplates = [
         header: "STRATEGY CONSULTING PROPOSAL",
         footer: "Independent consulting services. Out-of-pocket expenses billed at cost."
       },
-      styles: {
-        primaryColor: "#475569",
-        secondaryColor: "#334155"
-      },
+      styles: { primaryColor: "#475569", secondaryColor: "#334155", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -447,10 +429,7 @@ export const proposalsTemplates = [
         header: "DIGITAL MARKETING INITIATIVE",
         footer: "Performance target metrics estimates based on initial keyword indices search volume."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#c2410c"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#c2410c", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -517,10 +496,7 @@ export const proposalsTemplates = [
         header: "BUILD & CONSTRUCTION PROPOSAL",
         footer: "Subject to structural permits, building codes, and inspections."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#047857"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#047857", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -588,10 +564,7 @@ export const proposalsTemplates = [
         header: "EVENT MANAGEMENT PROPOSAL",
         footer: "Catering and venue costs subject to headcount confirmation 14 days prior."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#9d174d"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -658,10 +631,7 @@ export const proposalsTemplates = [
         header: "GRANT APPLICATION PROPOSAL",
         footer: "Financial audits and registration certificates attached for validation."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#3730a3"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#3730a3", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -728,10 +698,7 @@ export const proposalsTemplates = [
         header: "SEO SERVICES PROPOSAL",
         footer: "This proposal is valid for 14 days from the date of issue."
       },
-      styles: {
-        primaryColor: "#16a34a",
-        secondaryColor: "#14532d"
-      },
+      styles: { primaryColor: "#16a34a", secondaryColor: "#14532d", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -800,10 +767,7 @@ export const proposalsTemplates = [
         header: "VIDEO PRODUCTION PROPOSAL",
         footer: "Includes one round of revisions. Additional edits billed separately."
       },
-      styles: {
-        primaryColor: "#e11d48",
-        secondaryColor: "#881337"
-      },
+      styles: { primaryColor: "#e11d48", secondaryColor: "#881337", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -871,10 +835,7 @@ export const proposalsTemplates = [
         header: "BRANDING PROPOSAL",
         footer: "Final logo files and brand assets are delivered upon receipt of the final payment."
       },
-      styles: {
-        primaryColor: "#9333ea",
-        secondaryColor: "#6b21a8"
-      },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#6b21a8", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -943,10 +904,7 @@ export const proposalsTemplates = [
         header: "APP DEVELOPMENT PROPOSAL",
         footer: "Includes 60 days of post-launch bug fixes and app store submission support."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1015,10 +973,7 @@ export const proposalsTemplates = [
         header: "SOCIAL MEDIA PROPOSAL",
         footer: "Reported reach and engagement metrics are estimates based on current account benchmarks."
       },
-      styles: {
-        primaryColor: "#0ea5e9",
-        secondaryColor: "#0c4a6e"
-      },
+      styles: { primaryColor: "#0ea5e9", secondaryColor: "#0c4a6e", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1087,10 +1042,7 @@ export const proposalsTemplates = [
         header: "INTERIOR DESIGN PROPOSAL",
         footer: "Furniture and material costs are estimates and confirmed at the specification stage."
       },
-      styles: {
-        primaryColor: "#b45309",
-        secondaryColor: "#78350f"
-      },
+      styles: { primaryColor: "#b45309", secondaryColor: "#78350f", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1159,10 +1111,7 @@ export const proposalsTemplates = [
         header: "CATERING PROPOSAL",
         footer: "Final headcount and menu selections are confirmed 10 days before the event."
       },
-      styles: {
-        primaryColor: "#c026d3",
-        secondaryColor: "#701a75"
-      },
+      styles: { primaryColor: "#c026d3", secondaryColor: "#701a75", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1229,10 +1178,7 @@ export const proposalsTemplates = [
         header: "REAL ESTATE LISTING PROPOSAL",
         footer: "Commission and marketing terms are governed by the signed listing agreement."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1300,10 +1246,7 @@ export const proposalsTemplates = [
         header: "SPONSORSHIP PROPOSAL",
         footer: "Sponsorship benefits are secured on a first-come, first-served basis per tier."
       },
-      styles: {
-        primaryColor: "#d97706",
-        secondaryColor: "#92400e"
-      },
+      styles: { primaryColor: "#d97706", secondaryColor: "#92400e", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1371,10 +1314,7 @@ export const proposalsTemplates = [
         header: "CORPORATE TRAINING PROPOSAL",
         footer: "Course materials and completion certificates are included for all enrolled participants."
       },
-      styles: {
-        primaryColor: "#4338ca",
-        secondaryColor: "#312e81"
-      },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1442,10 +1382,7 @@ export const proposalsTemplates = [
         header: "RESEARCH PROPOSAL",
         footer: "This proposal complies with institutional ethics review and data governance policies."
       },
-      styles: {
-        primaryColor: "#1d4ed8",
-        secondaryColor: "#1e40af"
-      },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e40af", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1514,10 +1451,7 @@ export const proposalsTemplates = [
         header: "STRATEGIC PARTNERSHIP PROPOSAL",
         footer: "This proposal is a non-binding framework pending a definitive partnership agreement."
       },
-      styles: {
-        primaryColor: "#be123c",
-        secondaryColor: "#881337"
-      },
+      styles: { primaryColor: "#be123c", secondaryColor: "#881337", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1583,7 +1517,7 @@ export const proposalsTemplates = [
       title: "One-Page Business Proposal",
       fields: ["companyName", "clientName", "proposalNumber", "validUntil", "theAsk", "whyUs", "keyBenefits", "socialProof", "singlePrice", "deadlineToAccept", "proposalSignature"],
       layout: { header: "ONE-PAGE PROPOSAL", footer: "One page, one price, one clear next step." },
-      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12" },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1616,7 +1550,7 @@ export const proposalsTemplates = [
       title: "Cleaning Services Proposal",
       fields: ["companyName", "clientName", "clientCompany", "proposalNumber", "validUntil", "facilityType", "facilityArea", "cleaningFrequency", "monthlyContractPrice", "oneTimeDeepCleanPrice", "ecoFriendlyProducts", "insuranceCoverage", "proposalSignature"],
       layout: { header: "CLEANING SERVICES PROPOSAL", footer: "Fully insured. Satisfaction guaranteed or we re-clean free." },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1635,6 +1569,306 @@ export const proposalsTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "One-time deep clean: " }, { type: "text", text: "{{oneTimeDeepCleanPrice}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Assurance" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{insuranceCoverage}}. To proceed, countersign below. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "it-proposal",
+    slug: "it-proposal",
+    title: "IT Proposal Template",
+    description: "Comprehensive IT infrastructure, cloud engineering, cybersecurity, and system management proposal layout.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "IT Proposal",
+      fields: ["companyName", "clientName", "clientCompany", "proposalNumber", "validUntil", "executiveSummary", "infrastructureScope", "cloudMigration", "cybersecurityCoverage", "supportTier", "monthlyFee", "setupFee", "proposalSignature"],
+      layout: { header: "IT INFRASTRUCTURE PROPOSAL", footer: "SLA metrics: 99.9% network uptime guaranteed." },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 2 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "IT Infrastructure & Systems Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}}, {{clientCompany}} by {{companyName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Technical Scope & Systems Architecture" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Infrastructure Audit: " }, { type: "text", text: "{{infrastructureScope}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Cloud & Migration: " }, { type: "text", text: "{{cloudMigration}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Cybersecurity & Firewall: " }, { type: "text", text: "{{cybersecurityCoverage}}" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Support Level: " }, { type: "text", text: "{{supportTier}}" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Investment & Monthly Managed Services" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Service Component" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Billing Cadence" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Price" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Initial Setup & Cloud Migration" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "One-time" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{setupFee}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Managed IT & Network Support" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Monthly" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{monthlyFee}}" }] }] }
+            ] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Authorisation" }] },
+          { type: "paragraph", content: [{ type: "text", text: "To accept this IT proposal, sign below. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "website-proposal",
+    slug: "website-proposal",
+    title: "Website Proposal Template",
+    description: "Web development, UI/UX design, mobile responsiveness, and CMS integration project proposal layout.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Website Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "websiteType", "pageCount", "cmsPlatform", "designFee", "developmentFee", "hostingFee", "totalProjectFee", "timeline", "proposalSignature"],
+      layout: { header: "WEBSITE DEVELOPMENT PROPOSAL", footer: "Includes 30 days post-launch support and CMS training." },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#312e81", layoutVariant: 4, headingStyle: 2 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Website Development Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Overview" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Building a {{websiteType}} comprising approximately {{pageCount}} pages on {{cmsPlatform}}." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Deliverables" }] },
+          { type: "bulletList", content: [
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Custom responsive UI/UX Figma designs (mobile & desktop)" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Clean Next.js / React frontend build with SEO metadata" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "CMS configuration, content migration, and form setup" }] }] },
+            { type: "listItem", content: [{ type: "paragraph", content: [{ type: "text", text: "Speed optimization and analytics tracking integration" }] }] }
+          ] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Investment Breakdown" }] },
+          { type: "table", content: [
+            { type: "tableRow", content: [
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Phase" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Deliverables" }] }] },
+              { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Cost" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "UI/UX Design" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Figma wireframes & prototypes" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{designFee}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Frontend & Backend" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Next.js code & API integration" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{developmentFee}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Deployment & Hosting" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Vercel / AWS setup & SSL" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{hostingFee}}" }] }] }
+            ] },
+            { type: "tableRow", content: [
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Project Fee" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Timeline: {{timeline}}" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "{{totalProjectFee}}" }] }] }
+            ] }
+          ] },
+          { type: "paragraph", content: [{ type: "text", text: "Accept by signing below. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "graphic-design-proposal",
+    slug: "graphic-design-proposal",
+    title: "Graphic Design Proposal Template",
+    description: "Creative design proposal for brand identity, logo suites, marketing collateral, and digital asset packages.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Graphic Design Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "brandScope", "deliverablesList", "revisionRounds", "totalDesignFee", "deliveryTimeline", "proposalSignature"],
+      layout: { header: "GRAPHIC DESIGN PROPOSAL", footer: "All vector source files provided upon project completion." },
+      styles: { primaryColor: "#db2777", secondaryColor: "#831843", layoutVariant: 5, headingStyle: 2 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Graphic & Brand Design Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative Vision" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Scope: {{brandScope}}. Includes {{revisionRounds}} revision rounds per deliverable." }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Design Package Deliverables" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{deliverablesList}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing & Timeline" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Design Fee: " }, { type: "text", text: "{{totalDesignFee}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Timeline: " }, { type: "text", text: "{{deliveryTimeline}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign below to begin design production. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "startup-proposal",
+    slug: "startup-proposal",
+    title: "Startup Proposal Template",
+    description: "High-impact pitch proposal for startups presenting business model, MVP architecture, market validation, and seed funding asks.",
+    isPremium: true,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Startup Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "problemStatement", "solutionOverview", "marketSize", "fundingRequired", "equityOffered", "proposalSignature"],
+      layout: { header: "STARTUP INVESTMENT PROPOSAL", footer: "Strictly confidential document for accredited investors only." },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 0, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Startup Venture Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Presented by {{companyName}} to {{clientName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Problem & Solution" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "The Problem: " }, { type: "text", text: "{{problemStatement}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Our Solution: " }, { type: "text", text: "{{solutionOverview}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Addressable Market: " }, { type: "text", text: "{{marketSize}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Investment Request" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Funding Ask: " }, { type: "text", text: "{{fundingRequired}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Equity / Terms Offered: " }, { type: "text", text: "{{equityOffered}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Acknowledged by investor: — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "mobile-app-proposal",
+    slug: "mobile-app-proposal",
+    title: "Mobile App Proposal Template",
+    description: "iOS and Android mobile app development proposal detailing feature architecture, UI wireframes, API integrations, and release roadmap.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Mobile App Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "appPlatform", "coreFeatures", "backendArchitecture", "developmentFee", "maintenanceFee", "timeline", "proposalSignature"],
+      layout: { header: "MOBILE APP DEVELOPMENT PROPOSAL", footer: "App Store & Google Play publishing included." },
+      styles: { primaryColor: "#059669", secondaryColor: "#064e3b", layoutVariant: 1, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Mobile App Development Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "App Concept & Architecture" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Platforms: " }, { type: "text", text: "{{appPlatform}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Core Features: " }, { type: "text", text: "{{coreFeatures}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Backend: " }, { type: "text", text: "{{backendArchitecture}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Investment" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Development Fee: " }, { type: "text", text: "{{developmentFee}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Maintenance Plan: " }, { type: "text", text: "{{maintenanceFee}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery Timeline: " }, { type: "text", text: "{{timeline}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign below to accept. — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "product-proposal",
+    slug: "product-proposal",
+    title: "Product Proposal Template",
+    description: "New product pitch proposal covering product specifications, target demographics, production costs, and launch milestones.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Product Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "productName", "targetAudience", "keySpecifications", "unitProductionCost", "projectedRetailPrice", "proposalSignature"],
+      layout: { header: "NEW PRODUCT PITCH PROPOSAL", footer: "Product designs and specifications protected under copyright law." },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12", layoutVariant: 2, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "New Product Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared by {{companyName}} for {{clientName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Product Pitch" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Product Name: " }, { type: "text", text: "{{productName}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Target Audience: " }, { type: "text", text: "{{targetAudience}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Key Specifications: " }, { type: "text", text: "{{keySpecifications}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Financial Model" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Production Cost / Unit: " }, { type: "text", text: "{{unitProductionCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Projected Retail Price: " }, { type: "text", text: "{{projectedRetailPrice}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Approved by: — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "client-proposal",
+    slug: "client-proposal",
+    title: "Client Proposal Template",
+    description: "Universal client services proposal detailing service packages, deliverable timelines, SLAs, and commercial pricing terms.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Client Proposal",
+      fields: ["companyName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "proposedServices", "serviceTier", "monthlyRetainer", "onboardingFee", "paymentTerms", "proposalSignature"],
+      layout: { header: "CLIENT SERVICES PROPOSAL", footer: "Thank you for considering our team as your growth partner." },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1d4ed8", layoutVariant: 3, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Client Services Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{companyName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Executive Summary" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Proposed Service Scope" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{proposedServices}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Service Level: " }, { type: "text", text: "{{serviceTier}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Pricing & Retainer Terms" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Onboarding Fee: " }, { type: "text", text: "{{onboardingFee}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Monthly Retainer: " }, { type: "text", text: "{{monthlyRetainer}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Accepted by: — {{proposalSignature}}" }] }
+        ]
+      }
+    }
+  },
+  {
+    id: "freelancer-proposal",
+    slug: "freelancer-proposal",
+    title: "Freelancer Proposal Template",
+    description: "Independent freelancer proposal format for project-based gigs, hourly billing, portfolio highlights, and milestone payment schedules.",
+    isPremium: false,
+    categorySlug: "proposals",
+    categoryName: "Proposals",
+    content: {
+      title: "Freelancer Proposal",
+      fields: ["freelancerName", "clientName", "proposalNumber", "validUntil", "executiveSummary", "projectTitle", "hourlyRate", "estimatedHours", "milestoneSchedule", "totalProjectFee", "proposalSignature"],
+      layout: { header: "FREELANCE PROJECT PROPOSAL", footer: "Work performed as an independent contractor." },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#312e81", layoutVariant: 4, headingStyle: 0 },
+      editorState: {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "Freelance Project Proposal" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Prepared for {{clientName}} by {{freelancerName}} · Proposal No. {{proposalNumber}} · Valid until {{validUntil}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Pitch & Approach" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{executiveSummary}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{projectTitle}}" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Rate & Milestones" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Hourly Rate: " }, { type: "text", text: "{{hourlyRate}}/hr (est. {{estimatedHours}} hours)" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Project Fee: " }, { type: "text", text: "{{totalProjectFee}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Schedule: " }, { type: "text", text: "{{milestoneSchedule}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "Sign below to accept proposal. — {{proposalSignature}}" }] }
         ]
       }
     }

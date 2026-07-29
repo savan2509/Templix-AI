@@ -89,16 +89,16 @@ export default function TemplateThumbnail({ template }: { template: any }) {
     // Decorative snapshot filled with sample data — hide it from the a11y tree
     // so screen readers don't announce dummy names/figures; the card's real
     // linked heading conveys the template. (The card link carries the true label.)
-    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-2 sm:p-2.5" aria-hidden="true">
-      <div className="relative h-full w-full overflow-hidden rounded-md bg-white shadow-md ring-1 ring-black/5">
+    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-0 overflow-hidden" aria-hidden="true">
+      <div className="relative h-full w-full overflow-hidden bg-white">
         <div
-          className="origin-top-left pointer-events-none min-h-[150%] bg-white"
+          className="origin-top-left pointer-events-none min-h-[150%] bg-white w-full"
           style={{ width: "150%", minHeight: "150%", transform: "scale(0.667)" }}
         >
           <DocumentPaper template={truncatedTemplate} values={values} />
         </div>
         {/* soft fade so cropped content tapers off gracefully */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
     </div>
   );

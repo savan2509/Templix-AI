@@ -17,10 +17,7 @@ export const contractsExtraTemplates: any[] = [
         header: "GRAPHIC DESIGN CONTRACT",
         footer: "A legally binding agreement between the Designer and the Client."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#5b21b6"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -62,10 +59,7 @@ export const contractsExtraTemplates: any[] = [
         header: "PERSONAL TRAINING AGREEMENT",
         footer: "Client confirms fitness to participate in physical exercise programs."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#c2410c"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#c2410c", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -107,10 +101,7 @@ export const contractsExtraTemplates: any[] = [
         header: "EVENT PLANNING CONTRACT",
         footer: "Binding agreement between the Event Planner and the Client."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#9d174d"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#9d174d", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -152,10 +143,7 @@ export const contractsExtraTemplates: any[] = [
         header: "TUTORING AGREEMENT",
         footer: "Agreement between the Tutor and the Student or Parent/Guardian."
       },
-      styles: {
-        primaryColor: "#0891b2",
-        secondaryColor: "#155e75"
-      },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -195,10 +183,7 @@ export const contractsExtraTemplates: any[] = [
         header: "PROPERTY MANAGEMENT AGREEMENT",
         footer: "Binding agreement between the Property Owner and the Managing Agent."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -240,10 +225,7 @@ export const contractsExtraTemplates: any[] = [
         header: "SAAS SUBSCRIPTION AGREEMENT",
         footer: "Governs access to and use of the hosted software service."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#3730a3"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#3730a3", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -285,10 +267,7 @@ export const contractsExtraTemplates: any[] = [
         header: "MEMORANDUM OF UNDERSTANDING",
         footer: "A statement of mutual intent between the cooperating parties."
       },
-      styles: {
-        primaryColor: "#1e40af",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#1e40af", secondaryColor: "#1e3a8a", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -330,10 +309,7 @@ export const contractsExtraTemplates: any[] = [
         header: "VIDEOGRAPHY CONTRACT",
         footer: "Binding agreement between the Videographer and the Client."
       },
-      styles: {
-        primaryColor: "#b91c1c",
-        secondaryColor: "#7f1d1d"
-      },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -375,10 +351,7 @@ export const contractsExtraTemplates: any[] = [
         header: "CONSTRUCTION CONTRACT",
         footer: "Binding construction agreement between the Contractor and the Owner."
       },
-      styles: {
-        primaryColor: "#a16207",
-        secondaryColor: "#854d0e"
-      },
+      styles: { primaryColor: "#a16207", secondaryColor: "#854d0e", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -422,10 +395,7 @@ export const contractsExtraTemplates: any[] = [
         header: "DJ SERVICES CONTRACT",
         footer: "Binding performance agreement between the DJ and the Client."
       },
-      styles: {
-        primaryColor: "#9333ea",
-        secondaryColor: "#6b21a8"
-      },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#6b21a8", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [

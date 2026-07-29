@@ -56,10 +56,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "PROFESSIONAL RESUME",
         "footer": "ATS-formatted resume. References available upon request."
       },
-      "styles": {
-        "primaryColor": "#1e293b",
-        "secondaryColor": "#0f172a"
-      },
+      "styles": {"primaryColor": "#1e293b",
+        "secondaryColor": "#0f172a", "layoutVariant": 3, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -487,10 +485,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "SOFTWARE ENGINEER",
         "footer": "GitHub: {{githubProfile}} · LeetCode: {{leetcodeProfile}} · References on request."
       },
-      "styles": {
-        "primaryColor": "#0ea5e9",
-        "secondaryColor": "#0c4a6e"
-      },
+      "styles": {"primaryColor": "#0ea5e9",
+        "secondaryColor": "#0c4a6e", "layoutVariant": 4, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -1213,10 +1209,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "GRAPHIC DESIGNER",
         "footer": "Portfolio: {{portfolioWebsite}} · Behance: {{behanceProfile}} · Dribbble: {{dribbbleProfile}}"
       },
-      "styles": {
-        "primaryColor": "#ec4899",
-        "secondaryColor": "#831843"
-      },
+      "styles": {"primaryColor": "#ec4899",
+        "secondaryColor": "#831843", "layoutVariant": 5, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -1878,10 +1872,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "DIGITAL MARKETING PROFESSIONAL",
         "footer": "Marketing Portfolio: {{marketingPortfolio}}"
       },
-      "styles": {
-        "primaryColor": "#f59e0b",
-        "secondaryColor": "#78350f"
-      },
+      "styles": {"primaryColor": "#f59e0b",
+        "secondaryColor": "#78350f", "layoutVariant": 0, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -2611,10 +2603,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "SALES PROFESSIONAL",
         "footer": "Quota Achievement Average: {{quotaAchievementPercent}}% | Total Revenue Generated: {{salesTotalRevenue}}"
       },
-      "styles": {
-        "primaryColor": "#16a34a",
-        "secondaryColor": "#14532d"
-      },
+      "styles": {"primaryColor": "#16a34a",
+        "secondaryColor": "#14532d", "layoutVariant": 1, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -3404,10 +3394,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "CERTIFIED PUBLIC ACCOUNTANT",
         "footer": "CPA License: {{cpaLicenseNumber}} | References available upon request."
       },
-      "styles": {
-        "primaryColor": "#0369a1",
-        "secondaryColor": "#082f49"
-      },
+      "styles": {"primaryColor": "#0369a1",
+        "secondaryColor": "#082f49", "layoutVariant": 2, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -4102,10 +4090,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "LICENSED EDUCATOR",
         "footer": "Teaching License #{{teachingLicenseNumber}} — State of {{licenseState}} — Expires {{licenseExpiryDate}}"
       },
-      "styles": {
-        "primaryColor": "#7c3aed",
-        "secondaryColor": "#4c1d95"
-      },
+      "styles": {"primaryColor": "#7c3aed",
+        "secondaryColor": "#4c1d95", "layoutVariant": 3, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -4825,10 +4811,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "REGISTERED NURSE",
         "footer": "RN License #{{nursingLicenseNumber}} — {{nursingLicenseState}} — Expires {{licenseExpiryDate}}"
       },
-      "styles": {
-        "primaryColor": "#0d9488",
-        "secondaryColor": "#134e4a"
-      },
+      "styles": {"primaryColor": "#0d9488",
+        "secondaryColor": "#134e4a", "layoutVariant": 4, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -5556,10 +5540,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "LICENSED CIVIL ENGINEER, PE",
         "footer": "PE License #{{peLicenseNumber}} — {{peState}} — Expires {{peLicenseExpiry}}"
       },
-      "styles": {
-        "primaryColor": "#92400e",
-        "secondaryColor": "#451a03"
-      },
+      "styles": {"primaryColor": "#92400e",
+        "secondaryColor": "#451a03", "layoutVariant": 5, "headingStyle": 1 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -6322,10 +6304,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "MECHANICAL ENGINEER",
         "footer": "PE License: {{peLicenseNumber}} | Specialty: {{mechanicalSpecialty}}"
       },
-      "styles": {
-        "primaryColor": "#059669",
-        "secondaryColor": "#064e3b"
-      },
+      "styles": {"primaryColor": "#059669",
+        "secondaryColor": "#064e3b", "layoutVariant": 0, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -7076,10 +7056,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "HUMAN RESOURCES PROFESSIONAL",
         "footer": "{{shrm_sphr_cert}} Certified | HRIS: {{hrisSystems}}"
       },
-      "styles": {
-        "primaryColor": "#8b5cf6",
-        "secondaryColor": "#4c1d95"
-      },
+      "styles": {"primaryColor": "#8b5cf6",
+        "secondaryColor": "#4c1d95", "layoutVariant": 1, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -7790,10 +7768,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "CUSTOMER SERVICE PROFESSIONAL",
         "footer": "CSAT Score: {{csatScore}} | FCR Rate: {{fcrRate}}%"
       },
-      "styles": {
-        "primaryColor": "#f59e0b",
-        "secondaryColor": "#92400e"
-      },
+      "styles": {"primaryColor": "#f59e0b",
+        "secondaryColor": "#92400e", "layoutVariant": 2, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -8562,10 +8538,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "UNDERGRADUATE STUDENT RESUME",
         "footer": "Expected Graduation: {{expectedGraduationDate}} | References: {{references}}"
       },
-      "styles": {
-        "primaryColor": "#6366f1",
-        "secondaryColor": "#312e81"
-      },
+      "styles": {"primaryColor": "#6366f1",
+        "secondaryColor": "#312e81", "layoutVariant": 3, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -9051,10 +9025,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "ENTRY-LEVEL PROFESSIONAL",
         "footer": "Available to join: {{noticeOrJoiningDate}} | Open to relocation: {{availableForRelocation}}"
       },
-      "styles": {
-        "primaryColor": "#0891b2",
-        "secondaryColor": "#0c4a6e"
-      },
+      "styles": {"primaryColor": "#0891b2",
+        "secondaryColor": "#0c4a6e", "layoutVariant": 4, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -9570,10 +9542,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "MBA PROFESSIONAL",
         "footer": "{{mbaSchool}} MBA · Class of {{mbaGraduationYear}} · Concentration: {{mbaConcentration}}"
       },
-      "styles": {
-        "primaryColor": "#1e3a8a",
-        "secondaryColor": "#0f172a"
-      },
+      "styles": {"primaryColor": "#1e3a8a",
+        "secondaryColor": "#0f172a", "layoutVariant": 5, "headingStyle": 2 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -10106,10 +10076,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "DATA ANALYST",
         "footer": "Kaggle: {{kaggleProfile}} · GitHub: {{githubProfile}}"
       },
-      "styles": {
-        "primaryColor": "#0284c7",
-        "secondaryColor": "#1e3a8a"
-      },
+      "styles": {"primaryColor": "#0284c7",
+        "secondaryColor": "#1e3a8a", "layoutVariant": 0, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -10836,10 +10804,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "UI / UX DESIGNER",
         "footer": "Portfolio: {{portfolioUrl}} · Dribbble: {{dribbbleUrl}} · Behance: {{behanceUrl}}"
       },
-      "styles": {
-        "primaryColor": "#db2777",
-        "secondaryColor": "#9d174d"
-      },
+      "styles": {"primaryColor": "#db2777",
+        "secondaryColor": "#9d174d", "layoutVariant": 1, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -11575,10 +11541,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "PROJECT MANAGER, PMP",
         "footer": "PMP License #{{pmpLicenseNumber}} | Methodologies: {{projectMethodologies}}"
       },
-      "styles": {
-        "primaryColor": "#7c3aed",
-        "secondaryColor": "#4c1d95"
-      },
+      "styles": {"primaryColor": "#7c3aed",
+        "secondaryColor": "#4c1d95", "layoutVariant": 2, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -12386,10 +12350,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "BUSINESS ANALYST",
         "footer": "{{baCertification}} | Elicitation: {{requirementsElicitation}}"
       },
-      "styles": {
-        "primaryColor": "#0f766e",
-        "secondaryColor": "#134e4a"
-      },
+      "styles": {"primaryColor": "#0f766e",
+        "secondaryColor": "#134e4a", "layoutVariant": 3, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [
@@ -13154,10 +13116,8 @@ export const resumesExtra4Templates: any[] = [
         "header": "EXECUTIVE PROFESSIONAL RESUME",
         "footer": "{{referenceAvailability}} · LinkedIn: {{linkedinUrl}} · Website: {{personalWebsite}}"
       },
-      "styles": {
-        "primaryColor": "#1e293b",
-        "secondaryColor": "#334155"
-      },
+      "styles": {"primaryColor": "#1e293b",
+        "secondaryColor": "#334155", "layoutVariant": 4, "headingStyle": 0 },
       "editorState": {
         "type": "doc",
         "content": [

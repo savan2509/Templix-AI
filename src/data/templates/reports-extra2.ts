@@ -17,10 +17,7 @@ export const reportsExtra2Templates: any[] = [
         header: "ENVIRONMENTAL PERFORMANCE REPORT",
         footer: "Prepared in line with ISO 14001 environmental management standards."
       },
-      styles: {
-        primaryColor: "#15803d",
-        secondaryColor: "#86efac"
-      },
+      styles: { primaryColor: "#15803d", secondaryColor: "#86efac", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -83,10 +80,7 @@ export const reportsExtra2Templates: any[] = [
         header: "QUALITY ASSURANCE REPORT",
         footer: "QA sign-off required before release to production."
       },
-      styles: {
-        primaryColor: "#0369a1",
-        secondaryColor: "#7dd3fc"
-      },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#7dd3fc", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -149,10 +143,7 @@ export const reportsExtra2Templates: any[] = [
         header: "PRODUCTION OUTPUT REPORT",
         footer: "Distributed to plant operations and supply planning teams."
       },
-      styles: {
-        primaryColor: "#b45309",
-        secondaryColor: "#fcd34d"
-      },
+      styles: { primaryColor: "#b45309", secondaryColor: "#fcd34d", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -215,10 +206,7 @@ export const reportsExtra2Templates: any[] = [
         header: "IT INFRASTRUCTURE REPORT",
         footer: "Prepared by the IT operations team for the technology steering committee."
       },
-      styles: {
-        primaryColor: "#1e3a8a",
-        secondaryColor: "#93c5fd"
-      },
+      styles: { primaryColor: "#1e3a8a", secondaryColor: "#93c5fd", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -281,10 +269,7 @@ export const reportsExtra2Templates: any[] = [
         header: "CASE STUDY REPORT",
         footer: "Published with client permission for marketing and sales use."
       },
-      styles: {
-        primaryColor: "#9d174d",
-        secondaryColor: "#f9a8d4"
-      },
+      styles: { primaryColor: "#9d174d", secondaryColor: "#f9a8d4", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -349,10 +334,7 @@ export const reportsExtra2Templates: any[] = [
         header: "SURVEY RESULTS REPORT",
         footer: "Results weighted to reflect the target population."
       },
-      styles: {
-        primaryColor: "#4338ca",
-        secondaryColor: "#a5b4fc"
-      },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#a5b4fc", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -415,10 +397,7 @@ export const reportsExtra2Templates: any[] = [
         header: "BUDGET VARIANCE REPORT",
         footer: "Figures in USD; favorable variances shown as positive."
       },
-      styles: {
-        primaryColor: "#065f46",
-        secondaryColor: "#6ee7b7"
-      },
+      styles: { primaryColor: "#065f46", secondaryColor: "#6ee7b7", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -481,10 +460,7 @@ export const reportsExtra2Templates: any[] = [
         header: "DUE DILIGENCE REPORT",
         footer: "Strictly confidential — prepared for the transaction committee."
       },
-      styles: {
-        primaryColor: "#334155",
-        secondaryColor: "#94a3b8"
-      },
+      styles: { primaryColor: "#334155", secondaryColor: "#94a3b8", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -548,10 +524,7 @@ export const reportsExtra2Templates: any[] = [
         header: "PROJECT CLOSURE REPORT",
         footer: "Signed off by the project sponsor to formally close the project."
       },
-      styles: {
-        primaryColor: "#7e22ce",
-        secondaryColor: "#d8b4fe"
-      },
+      styles: { primaryColor: "#7e22ce", secondaryColor: "#d8b4fe", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -614,10 +587,7 @@ export const reportsExtra2Templates: any[] = [
         header: "USER ACCEPTANCE TESTING REPORT",
         footer: "Business sign-off required before promotion to go-live."
       },
-      styles: {
-        primaryColor: "#0e7490",
-        secondaryColor: "#67e8f9"
-      },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#67e8f9", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [

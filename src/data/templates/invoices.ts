@@ -17,10 +17,7 @@ export const invoicesTemplates = [
         header: "FREELANCER INVOICE",
         footer: "Thank you for your business!"
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#1e1b4b"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#1e1b4b", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -30,7 +27,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Freelancer: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}} ({{clientEmail}})" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{projectName}} — {{milestone}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{projectName}} â€” {{milestone}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Project Deliverables" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -65,9 +62,9 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$340.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment: " }, { type: "text", text: "{{paymentMethod}} — {{paymentTerms}}." }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment: " }, { type: "text", text: "{{paymentMethod}} â€” {{paymentTerms}}." }] }
         ]
       }
     }
@@ -87,10 +84,7 @@ export const invoicesTemplates = [
         header: "SMALL BUSINESS INVOICE",
         footer: "Terms: Due within 30 days. Thank you for your business!"
       },
-      styles: {
-        primaryColor: "#e11d48",
-        secondaryColor: "#4c0519"
-      },
+      styles: { primaryColor: "#e11d48", secondaryColor: "#4c0519", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -150,10 +144,7 @@ export const invoicesTemplates = [
         header: "CONSULTING INVOICE",
         footer: "Please send payment via bank wire transfer. Net 30 terms."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#064e3b"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#064e3b", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -214,10 +205,7 @@ export const invoicesTemplates = [
         header: "CONTRACTOR INVOICE",
         footer: "Warranties apply as specified in master services construction contracts."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#431407"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#431407", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -279,10 +267,7 @@ export const invoicesTemplates = [
         header: "DESIGN SERVICES INVOICE",
         footer: "All raw design assets delivered upon receipt of full payment."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#4d0728"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#4d0728", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -292,7 +277,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Studio: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{designProject}} — License: {{licenseType}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Project: " }, { type: "text", text: "{{designProject}} â€” License: {{licenseType}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Creative Services" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -343,10 +328,7 @@ export const invoicesTemplates = [
         header: "DEVELOPER BILLING STATEMENT",
         footer: "Code repositories and deployment logs shared post transaction confirmation."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -356,7 +338,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Developer: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Phase: " }, { type: "text", text: "{{developmentPhase}} — {{featureDelivered}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Phase: " }, { type: "text", text: "{{developmentPhase}} â€” {{featureDelivered}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Engineering Time" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -384,8 +366,8 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$3,800.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (160 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$1,216.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Handover: " }, { type: "text", text: "Repository {{repositoryLink}} and deployment logs are shared on payment confirmation. Includes {{maintenancePlan}}." }] }
         ]
@@ -402,15 +384,12 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Cleaning Service Invoice Template",
-      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "cleaningType", "numberOfRooms", "serviceDate", "suppliesUsed", "serviceFee", "extraCharges", "tax", "total", "amountDue"],
+      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "cleaningType", "numberOfRooms", "serviceDate", "suppliesUsed", "serviceFee", "extraCharges", "subtotal", "tax", "taxAmount", "total", "amountDue"],
       layout: {
         header: "CLEANING SERVICE STATEMENT",
         footer: "Thank you for letting us clean your environment!"
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0c4a6e"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#0c4a6e", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -420,7 +399,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Service: " }, { type: "text", text: "{{cleaningType}} — {{numberOfRooms}} rooms" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Service: " }, { type: "text", text: "{{cleaningType}} â€” {{numberOfRooms}} rooms" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Cleaning Breakdown" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -450,7 +429,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$77.60" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Supplies Used: " }, { type: "text", text: "{{suppliesUsed}}. All products are non-toxic and pet-safe." }] }
         ]
@@ -467,15 +446,12 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Photography Invoice Template",
-      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "eventName", "eventDate", "venue", "shootingHours", "numberOfPhotos", "albumIncluded", "packagePrice", "total", "amountDue"],
+      fields: ["companyName", "clientName", "invoiceNumber", "invoiceDate", "eventName", "eventDate", "venue", "shootingHours", "numberOfPhotos", "albumIncluded", "subtotal", "tax", "taxAmount", "total", "amountDue"],
       layout: {
         header: "PHOTOGRAPHY INVOICE",
         footer: "High-resolution digital gallery links delivered upon payment."
       },
-      styles: {
-        primaryColor: "#d97706",
-        secondaryColor: "#451a03"
-      },
+      styles: { primaryColor: "#d97706", secondaryColor: "#451a03", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -514,8 +490,8 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$200.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Package Price: " }, { type: "text", text: "{{packagePrice}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$304.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Package Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Delivery: " }, { type: "text", text: "High-resolution gallery links are released within 3 weeks of full payment. A 30% retainer secured the date." }] }
         ]
@@ -537,10 +513,7 @@ export const invoicesTemplates = [
         header: "HVAC SERVICE STATEMENT",
         footer: "Heating and cooling technicians certification guarantees apply."
       },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#450a0a"
-      },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#450a0a", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -602,10 +575,7 @@ export const invoicesTemplates = [
         header: "PLUMBING SERVICE STATEMENT",
         footer: "Thank you for choosing our plumbing services! Net 30 terms."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#115e59"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#115e59", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -666,10 +636,7 @@ export const invoicesTemplates = [
         header: "TIMESHEET BILLING INVOICE",
         footer: "Hours logged are verified by project management software."
       },
-      styles: {
-        primaryColor: "#8b5cf6",
-        secondaryColor: "#4c1d95"
-      },
+      styles: { primaryColor: "#8b5cf6", secondaryColor: "#4c1d95", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -679,7 +646,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Rate: " }, { type: "text", text: "{{hourlyRate}}/hr — {{totalHours}} total hours logged" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Rate: " }, { type: "text", text: "{{hourlyRate}}/hr â€” {{totalHours}} total hours logged" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Weekly Hours Log" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -713,8 +680,8 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$1,800.00" }] }] }
             ] }
           ] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal (160 hrs): " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$576.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "All 160 logged hours are verified against the project management timesheet export. Payment due within 30 days." }] }
         ]
@@ -736,10 +703,7 @@ export const invoicesTemplates = [
         header: "MILESTONE RELEASE BILLING",
         footer: "Billed in accordance with signed Master Service Agreement schedules."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -749,7 +713,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Agency: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Milestone {{milestoneNumber}}: " }, { type: "text", text: "{{milestoneName}} — Status: {{milestoneStatus}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Milestone {{milestoneNumber}}: " }, { type: "text", text: "{{milestoneName}} â€” Status: {{milestoneStatus}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Milestone Schedule" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -759,19 +723,19 @@ export const invoicesTemplates = [
               { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Amount" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M1 — Discovery" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M1 â€” Discovery" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Paid" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "20%" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$4,000.00" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M2 — Build (this invoice)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M2 â€” Build (this invoice)" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{milestoneStatus}}" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40%" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$8,000.00" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M3 — Launch" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "M3 â€” Launch" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Pending" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "40%" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$8,000.00" }] }] }
@@ -800,10 +764,7 @@ export const invoicesTemplates = [
         header: "OFFICIAL PAYMENT RECEIPT",
         footer: "Thank you for your payment! Balance due: $0.00."
       },
-      styles: {
-        primaryColor: "#10b981",
-        secondaryColor: "#065f46"
-      },
+      styles: { primaryColor: "#10b981", secondaryColor: "#065f46", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -828,7 +789,7 @@ export const invoicesTemplates = [
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Transaction ID: " }, { type: "text", text: "{{transactionId}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Paid: " }, { type: "text", text: "{{amountPaid}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Balance Due: " }, { type: "text", text: "$0.00 — PAID IN FULL" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Balance Due: " }, { type: "text", text: "$0.00 â€” PAID IN FULL" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "This receipt confirms your payment has been received and processed. Please retain it for your records." }] }
         ]
       }
@@ -849,10 +810,7 @@ export const invoicesTemplates = [
         header: "RENTAL PAYMENT STATEMENT",
         footer: "Late payments are subject to a 10% penalty after 5 days."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#4c1d95"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -908,10 +866,7 @@ export const invoicesTemplates = [
         header: "COST ESTIMATE & QUOTE",
         footer: "Estimate pricing is valid for 30 days from date of issue."
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0c4a6e"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#0c4a6e", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -971,10 +926,7 @@ export const invoicesTemplates = [
         header: "COMMERCIAL PURCHASE ORDER",
         footer: "Subject to standard B2B commercial terms and shipping conditions."
       },
-      styles: {
-        primaryColor: "#334155",
-        secondaryColor: "#0f172a"
-      },
+      styles: { primaryColor: "#334155", secondaryColor: "#0f172a", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1034,10 +986,7 @@ export const invoicesTemplates = [
         header: "HOURLY INVOICE",
         footer: "Payment due within 15 days of invoice date. Thank you for your business!"
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1097,10 +1046,7 @@ export const invoicesTemplates = [
         header: "SUBSCRIPTION INVOICE",
         footer: "This is a recurring charge. Contact us to update your billing plan."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#4c1d95"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1139,7 +1085,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$28.32" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Auto-Renewal: " }, { type: "text", text: "This subscription renews automatically each month. Update or cancel your plan anytime from your account dashboard." }] }
         ]
@@ -1161,10 +1107,7 @@ export const invoicesTemplates = [
         header: "MEDICAL INVOICE",
         footer: "Please retain this invoice for insurance and tax records."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1183,12 +1126,12 @@ export const invoicesTemplates = [
               { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Charge" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Office visit — established patient" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Office visit â€” established patient" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "99214" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$180.00" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Lab panel — comprehensive metabolic" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Lab panel â€” comprehensive metabolic" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "80053" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$95.00" }] }] }
             ] },
@@ -1220,10 +1163,7 @@ export const invoicesTemplates = [
         header: "CATERING INVOICE",
         footer: "Thank you for letting us cater your event! Final headcount due 7 days prior."
       },
-      styles: {
-        primaryColor: "#c2410c",
-        secondaryColor: "#431407"
-      },
+      styles: { primaryColor: "#c2410c", secondaryColor: "#431407", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1268,7 +1208,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}    Gratuity (18%): {{gratuity}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$723.20" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 40% deposit reserved your date; the balance above is due before the event." }] }
         ]
@@ -1290,10 +1230,7 @@ export const invoicesTemplates = [
         header: "LANDSCAPING INVOICE",
         footer: "Keeping your grounds green year-round. Payment due within 15 days."
       },
-      styles: {
-        primaryColor: "#16a34a",
-        secondaryColor: "#14532d"
-      },
+      styles: { primaryColor: "#16a34a", secondaryColor: "#14532d", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1333,7 +1270,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$103.60" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Recurring weekly maintenance plans available at a 10% discount." }] }
         ]
@@ -1355,10 +1292,7 @@ export const invoicesTemplates = [
         header: "TUTORING INVOICE",
         footer: "Investing in bright futures, one session at a time. Payment due on receipt."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#2e1065"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#2e1065", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1368,7 +1302,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tutor: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parent / Client: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Student: " }, { type: "text", text: "{{studentName}} — {{totalHours}} hours at {{hourlyRate}}/hr" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Student: " }, { type: "text", text: "{{studentName}} â€” {{totalHours}} hours at {{hourlyRate}}/hr" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sessions by Subject" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -1418,10 +1352,7 @@ export const invoicesTemplates = [
         header: "LEGAL SERVICES INVOICE",
         footer: "This statement reflects legal services rendered. Trust account balances applied where noted."
       },
-      styles: {
-        primaryColor: "#1e40af",
-        secondaryColor: "#172554"
-      },
+      styles: { primaryColor: "#1e40af", secondaryColor: "#172554", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1456,7 +1387,7 @@ export const invoicesTemplates = [
             ] },
             { type: "tableRow", content: [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Court filing fees & disbursements" }] }] },
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "—" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "â€”" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$435.00" }] }] }
             ] }
           ] },
@@ -1483,10 +1414,7 @@ export const invoicesTemplates = [
         header: "MARKETING INVOICE",
         footer: "Driving measurable growth. Ad spend is billed at cost with no markup."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#500724"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#500724", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1526,7 +1454,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$876.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. Monthly retainer invoices are issued on the 1st and support the full campaign calendar." }] }
         ]
@@ -1548,10 +1476,7 @@ export const invoicesTemplates = [
         header: "ELECTRICAL INVOICE",
         footer: "Licensed & insured. All work meets current NEC code. Payment due within 15 days."
       },
-      styles: {
-        primaryColor: "#ca8a04",
-        secondaryColor: "#422006"
-      },
+      styles: { primaryColor: "#ca8a04", secondaryColor: "#422006", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1617,10 +1542,7 @@ export const invoicesTemplates = [
         header: "INTERIOR DESIGN INVOICE",
         footer: "Curating spaces you love. Furnishing orders placed on receipt of deposit."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#042f2e"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#042f2e", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1660,7 +1582,7 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "$780.00" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "{{paymentTerms}}. A 50% design deposit is applied; furnishings ship after the balance clears." }] }
         ]
@@ -1682,10 +1604,7 @@ export const invoicesTemplates = [
         header: "AUTO REPAIR INVOICE",
         footer: "All parts and labor guaranteed. Please retain this invoice for your warranty."
       },
-      styles: {
-        primaryColor: "#b91c1c",
-        secondaryColor: "#450a0a"
-      },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#450a0a", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1695,7 +1614,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Shop: " }, { type: "text", text: "{{companyName}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Customer: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vehicle: " }, { type: "text", text: "{{vehicleMakeModel}} — VIN {{vehicleVin}} — {{odometer}} mi" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vehicle: " }, { type: "text", text: "{{vehicleMakeModel}} â€” VIN {{vehicleVin}} â€” {{odometer}} mi" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Parts & Labor" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -1746,10 +1665,7 @@ export const invoicesTemplates = [
         header: "CHILDCARE INVOICE",
         footer: "Where little ones grow and thrive. Tuition is billed monthly in advance."
       },
-      styles: {
-        primaryColor: "#e11d48",
-        secondaryColor: "#4c0519"
-      },
+      styles: { primaryColor: "#e11d48", secondaryColor: "#4c0519", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1759,7 +1675,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Center: " }, { type: "text", text: "{{companyName}} ({{companyEmail}})" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Bill To" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Parent / Guardian: " }, { type: "text", text: "{{clientName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Child: " }, { type: "text", text: "{{childName}} — Billing period {{billingPeriodStart}} to {{billingPeriodEnd}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Child: " }, { type: "text", text: "{{childName}} â€” Billing period {{billingPeriodStart}} to {{billingPeriodEnd}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Tuition & Care Charges" }] },
           { type: "table", content: [
             { type: "tableRow", content: [
@@ -1810,10 +1726,7 @@ export const invoicesTemplates = [
         header: "ORDER INVOICE",
         footer: "Thanks for shopping with us! Track your order in your account dashboard."
       },
-      styles: {
-        primaryColor: "#4338ca",
-        secondaryColor: "#1e1b4b"
-      },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#1e1b4b", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1874,10 +1787,7 @@ export const invoicesTemplates = [
         header: "TAX INVOICE",
         footer: "This is a computer-generated tax invoice."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1936,10 +1846,7 @@ export const invoicesTemplates = [
         header: "PROFORMA INVOICE",
         footer: "This is not a tax invoice. No payment is due against this document."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#4c1d95"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1992,14 +1899,14 @@ export const invoicesTemplates = [
       title: "Commercial Export Invoice",
       fields: ["companyName", "companyAddress", "companyEmail", "clientName", "clientAddress", "invoiceNumber", "invoiceDate", "hsCode", "incoterms", "countryOfOrigin", "countryOfDestination", "currencyCode", "grossWeight", "netWeight", "packageCount", "subtotal", "tax", "total", "amountDue", "paymentTerms"],
       layout: { header: "COMMERCIAL EXPORT INVOICE", footer: "Goods exported under zero-rated supply. Certified true and correct for customs purposes." },
-      styles: { primaryColor: "#0e7490", secondaryColor: "#164e63" },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#164e63", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
           { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "COMMERCIAL INVOICE" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Invoice #: " }, { type: "text", text: "{{invoiceNumber}}   Date: {{invoiceDate}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Exporter" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} — {{companyEmail}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} â€” {{companyEmail}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Consignee / Importer" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{clientName}}, {{clientAddress}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Terms: " }, { type: "text", text: "Incoterms {{incoterms}}   |   Origin: {{countryOfOrigin}}   |   Destination: {{countryOfDestination}}   |   Currency: {{currencyCode}}" }] },
@@ -2044,7 +1951,7 @@ export const invoicesTemplates = [
       title: "Credit Note",
       fields: ["companyName", "companyAddress", "companyEmail", "clientName", "clientAddress", "creditNoteNumber", "invoiceDate", "originalInvoiceNumber", "originalInvoiceDate", "refundReason", "refundMethod", "subtotal", "tax", "total", "amountDue", "approvedBy"],
       layout: { header: "CREDIT NOTE", footer: "This credit note adjusts the referenced invoice. Retain for your records." },
-      styles: { primaryColor: "#be123c", secondaryColor: "#4c0519" },
+      styles: { primaryColor: "#be123c", secondaryColor: "#4c0519", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -2052,7 +1959,7 @@ export const invoicesTemplates = [
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Credit Note #: " }, { type: "text", text: "{{creditNoteNumber}}   Date: {{invoiceDate}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Against Invoice: " }, { type: "text", text: "{{originalInvoiceNumber}} dated {{originalInvoiceDate}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "From" }] },
-          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} — {{companyEmail}}" }] },
+          { type: "paragraph", content: [{ type: "text", text: "{{companyName}}, {{companyAddress}} â€” {{companyEmail}}" }] },
           { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Credited To" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{clientName}}, {{clientAddress}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Reason: " }, { type: "text", text: "{{refundReason}}" }] },
@@ -2064,7 +1971,7 @@ export const invoicesTemplates = [
               { type: "tableHeader", content: [{ type: "paragraph", content: [{ type: "text", text: "Credit" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Returned goods — damaged in transit" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Returned goods â€” damaged in transit" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "2" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$180.00" }] }] }
             ] },
@@ -2083,3 +1990,4 @@ export const invoicesTemplates = [
     }
   }
 ];
+

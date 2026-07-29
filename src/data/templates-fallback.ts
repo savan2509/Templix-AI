@@ -52,7 +52,7 @@ import { lettersExtra3Templates } from "./templates/letters-extra3";
 import { reportsExtra3Templates } from "./templates/reports-extra3";
 import { businessPlansExtra3Templates } from "./templates/business-plans-extra3";
 
-export const allFallbackTemplates: any[] = [
+const rawFallbackTemplates: any[] = [
   ...invoicesTemplates,
   ...invoicesExtraTemplates,
   ...resumesTemplates,
@@ -92,4 +92,12 @@ export const allFallbackTemplates: any[] = [
   ...reportsExtra3Templates,
   ...businessPlansExtra3Templates,
 ];
+
+const seenTemplates = new Set<string>();
+export const allFallbackTemplates: any[] = rawFallbackTemplates.filter((t) => {
+  const key = `${t.categorySlug}/${t.slug}`;
+  if (seenTemplates.has(key)) return false;
+  seenTemplates.add(key);
+  return true;
+});
 

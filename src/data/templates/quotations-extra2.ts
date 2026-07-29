@@ -13,7 +13,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Fencing Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "siteAddress", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "FENCING QUOTATION", footer: "Prices assume clear, level ground and confirmed boundary line." },
-      styles: { primaryColor: "#4d7c0f", secondaryColor: "#365314" },
+      styles: { primaryColor: "#4d7c0f", secondaryColor: "#365314", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -97,7 +97,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Flooring Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "roomArea", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "FLOORING QUOTATION", footer: "Areas confirmed on site measure; wastage allowance included." },
-      styles: { primaryColor: "#b45309", secondaryColor: "#7c2d12" },
+      styles: { primaryColor: "#b45309", secondaryColor: "#7c2d12", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -181,7 +181,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Medical Equipment Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "facilityName", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "MEDICAL EQUIPMENT QUOTATION", footer: "Prices include commissioning; regulatory compliance certificates provided." },
-      styles: { primaryColor: "#0e7490", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#155e75", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -265,7 +265,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Website Maintenance Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "websiteUrl", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "WEBSITE MAINTENANCE QUOTATION", footer: "Monthly retainer billed in advance; support during business hours." },
-      styles: { primaryColor: "#4338ca", secondaryColor: "#3730a3" },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#3730a3", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -349,7 +349,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "AC Repair Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "unitModel", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "AC REPAIR QUOTATION", footer: "Diagnosis fee waived if repair is approved and completed." },
-      styles: { primaryColor: "#0369a1", secondaryColor: "#075985" },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#075985", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -433,7 +433,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Car Rental Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "rentalPeriod", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "CAR RENTAL QUOTATION", footer: "Rates include standard mileage; fuel on a full-to-full basis." },
-      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d" },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -517,7 +517,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Advertising Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "campaignName", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "ADVERTISING QUOTATION", footer: "Media rates are indicative and confirmed on booking." },
-      styles: { primaryColor: "#be185d", secondaryColor: "#9d174d" },
+      styles: { primaryColor: "#be185d", secondaryColor: "#9d174d", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -601,7 +601,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Graphic Design Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "projectName", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "GRAPHIC DESIGN QUOTATION", footer: "Deliverables provided as print-ready and web files on final payment." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -685,7 +685,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Welding & Fabrication Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "drawingRef", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "WELDING & FABRICATION QUOTATION", footer: "Prices assume approved drawings and confirmed material grades." },
-      styles: { primaryColor: "#57534e", secondaryColor: "#292524" },
+      styles: { primaryColor: "#57534e", secondaryColor: "#292524", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -769,7 +769,7 @@ export const quotationsExtra2Templates: any[] = [
       title: "Security Camera Installation Quotation Template",
       fields: ["companyName", "clientName", "quoteNumber", "quoteDate", "validUntil", "siteAddress", "subtotal", "taxRate", "tax", "grandTotal", "notes"],
       layout: { header: "SECURITY CAMERA INSTALLATION QUOTATION", footer: "Prices include configuration and a walkthrough on handover." },
-      styles: { primaryColor: "#1e3a8a", secondaryColor: "#1e40af" },
+      styles: { primaryColor: "#1e3a8a", secondaryColor: "#1e40af", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [

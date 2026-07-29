@@ -160,11 +160,13 @@ export default function Navbar() {
     badge?: Record<string, string>;
   }[] = [
     { name: { en: "Invoices", es: "Facturas", de: "Rechnungen", fr: "Factures", ar: "الفواتير" }, href: `/${currentLocale}/templates/invoices` },
-    { name: { en: "Resumes", es: "Currículums", de: "Lebensläufe", fr: "CVs", ar: "السير الذاتية" }, href: `/${currentLocale}/templates/resumes` },
+    { name: { en: "Resumes & CVs", es: "Currículums", de: "Lebensläufe", fr: "CVs", ar: "السير الذاتية" }, href: `/${currentLocale}/templates/resumes` },
     { name: { en: "Contracts", es: "Contratos", de: "Verträge", fr: "Contrats", ar: "العقود" }, href: `/${currentLocale}/templates/contracts` },
     { name: { en: "Proposals", es: "Propuestas", de: "Vorschläge", fr: "Propositions", ar: "المقترحات" }, href: `/${currentLocale}/templates/proposals` },
-    { name: { en: "Letters", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" }, href: `/${currentLocale}/templates/letters` },
+    { name: { en: "Letters & Memos", es: "Cartas", de: "Briefe", fr: "Lettres", ar: "الرسائل" }, href: `/${currentLocale}/templates/letters` },
     { name: { en: "Reports", es: "Informes", de: "Berichte", fr: "Rapports", ar: "التقارير" }, href: `/${currentLocale}/templates/reports` },
+    { name: { en: "Business Plans", es: "Planes de negocio", de: "Businesspläne", fr: "Plans d'affaires", ar: "خطط العمل" }, href: `/${currentLocale}/templates/business-plans` },
+    { name: { en: "Quotations", es: "Cotizaciones", de: "Angebote", fr: "Devis", ar: "عروض الأسعار" }, href: `/${currentLocale}/templates/quotations` },
     { name: { en: "Tools", es: "Herramientas", de: "Tools", fr: "Outils", ar: "أدوات" }, href: `/${currentLocale}/tools` },
     { name: { en: "Blog", es: "Blog", de: "Blog", fr: "Blog", ar: "المدونة" }, href: `/${currentLocale}/blog` },
     { name: { en: "FAQ", es: "FAQ", de: "FAQ", fr: "FAQ", ar: "الأسئلة" }, href: `/${currentLocale}/faq` },
@@ -172,9 +174,9 @@ export default function Navbar() {
     { name: { en: "Contact", es: "Contacto", de: "Kontakt", fr: "Contact", ar: "اتصل بنا" }, href: `/${currentLocale}/contact` },
   ];
 
-  const categoryItems = menuItems.slice(0, 6);
-  const toolsItem = menuItems[6]; // "Tools" — rendered as its own dropdown
-  const standaloneItems = menuItems.slice(7);
+  const categoryItems = menuItems.slice(0, 8);
+  const toolsItem = menuItems[8]; // "Tools" — rendered as its own dropdown
+  const standaloneItems = menuItems.slice(9);
   const templatesLabel: Record<string, string> = {
     en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب",
   };
@@ -268,7 +270,7 @@ export default function Navbar() {
                 {templatesOpen && (
                   <div
                     role="menu"
-                    className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                    className="absolute left-0 mt-2 w-64 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                   >
                     {categoryItems.map((item) => (
                       <Link

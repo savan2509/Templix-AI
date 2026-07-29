@@ -19,10 +19,7 @@ export const contractsExtra2Templates: any[] = [
         header: "COACHING AGREEMENT",
         footer: "A coaching relationship between the Coach and the Client — not therapy or professional advice."
       },
-      styles: {
-        primaryColor: "#0ea5e9",
-        secondaryColor: "#0369a1"
-      },
+      styles: { primaryColor: "#0ea5e9", secondaryColor: "#0369a1", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -63,10 +60,7 @@ export const contractsExtra2Templates: any[] = [
         header: "SOFTWARE LICENSE AGREEMENT",
         footer: "Grant of a limited license from the Licensor to the Licensee."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#3730a3"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#3730a3", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -107,10 +101,7 @@ export const contractsExtra2Templates: any[] = [
         header: "DISTRIBUTION AGREEMENT",
         footer: "Appointment of the Distributor by the Supplier for defined territory."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#047857"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#047857", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -151,10 +142,7 @@ export const contractsExtra2Templates: any[] = [
         header: "FRANCHISE AGREEMENT",
         footer: "Grant of franchise rights from the Franchisor to the Franchisee."
       },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#991b1b"
-      },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#991b1b", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -195,10 +183,7 @@ export const contractsExtra2Templates: any[] = [
         header: "SPONSORSHIP AGREEMENT",
         footer: "Agreement between the Sponsor and the Organizer for defined benefits."
       },
-      styles: {
-        primaryColor: "#f59e0b",
-        secondaryColor: "#b45309"
-      },
+      styles: { primaryColor: "#f59e0b", secondaryColor: "#b45309", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -239,10 +224,7 @@ export const contractsExtra2Templates: any[] = [
         header: "REFERRAL AGREEMENT",
         footer: "Agreement between the Referrer and the Business for referral commissions."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#0f766e"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#0f766e", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -283,10 +265,7 @@ export const contractsExtra2Templates: any[] = [
         header: "AFFILIATE AGREEMENT",
         footer: "Agreement between the Merchant and the Affiliate for performance-based marketing."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#6d28d9"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#6d28d9", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -327,10 +306,7 @@ export const contractsExtra2Templates: any[] = [
         header: "RETAINER AGREEMENT",
         footer: "Ongoing retainer engagement between the Provider and the Client."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1d4ed8"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1d4ed8", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -371,10 +347,7 @@ export const contractsExtra2Templates: any[] = [
         header: "CO-FOUNDER AGREEMENT",
         footer: "Founding terms agreed between the co-founders of the company."
       },
-      styles: {
-        primaryColor: "#9333ea",
-        secondaryColor: "#7e22ce"
-      },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#7e22ce", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -415,10 +388,7 @@ export const contractsExtra2Templates: any[] = [
         header: "WEDDING PHOTOGRAPHY CONTRACT",
         footer: "Agreement between the Photographer and the Couple for wedding coverage."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#be185d"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#be185d", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [

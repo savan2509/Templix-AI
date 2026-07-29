@@ -335,6 +335,12 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
   if (key === "projectDescription") {
     return `${subject} work for ${client}`;
   }
+  if (key === "projectName" || key === "projectTitle") {
+    return ctx.defaults.projectName || `${subject} Platform Development`;
+  }
+  if (key === "serviceDescription") {
+    return `Professional ${subject.toLowerCase()} services provided by ${brand} for ${client}`;
+  }
 
   // ── 0b. Hand-written domain values (one template each) ────────────────────
   if (DOMAIN_VALUES[key]) return DOMAIN_VALUES[key];
@@ -412,7 +418,12 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
   if (/(terms|policy|disclosure|waiver|nature|responsibility|rights|authority|protection)$/i.test(key)) {
     return `As set out in this ${subject.toLowerCase() || "agreement"}, agreed in writing by both parties.`;
   }
-  if (/(name)$/i.test(key)) return /company|firm|vendor|agency|studio|contractor/i.test(k) ? brand : person;
+  if (/(name)$/i.test(key)) {
+    if (/project|product|app|package|domain|file|service|course|item/i.test(k)) {
+      return `${subject} ${key.replace(/name$/i, "").replace(/^[a-z]/, (c) => c.toUpperCase())}`.trim();
+    }
+    return /company|firm|vendor|agency|studio|contractor/i.test(k) ? brand : person;
+  }
   if (/(email)$/i.test(key)) return ctx.values.email || ctx.values.companyEmail || "hello@example.com";
   if (/(phone|mobile|contact)$/i.test(key)) return ctx.values.phone || "+1 (555) 204-8811";
   if (/(address|location|venue|site|origin|destination)$/i.test(key)) return pick(CITIES);

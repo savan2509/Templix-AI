@@ -11,7 +11,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Construction Invoice Template",
       fields: ["companyName", "companyAddress", "companyPhone", "clientName", "projectName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "CONSTRUCTION INVOICE", footer: "Licensed & insured — thank you for building with us." },
-      styles: { primaryColor: "#c2410c", secondaryColor: "#7c2d12" },
+      styles: { primaryColor: "#c2410c", secondaryColor: "#7c2d12", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -66,7 +66,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "IT Services Invoice Template",
       fields: ["companyName", "companyEmail", "clientName", "clientCompany", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "IT SERVICES INVOICE", footer: "Your technology, running smoothly." },
-      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e" },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -121,7 +121,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Restaurant Invoice Template",
       fields: ["companyName", "companyPhone", "clientName", "eventDate", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "gratuity", "tax", "total", "paymentTerms"],
       layout: { header: "RESTAURANT INVOICE", footer: "Bon appetit — we hope to serve you again soon." },
-      styles: { primaryColor: "#b91c1c", secondaryColor: "#450a0a" },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#450a0a", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -177,7 +177,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Transport And Logistics Invoice Template",
       fields: ["companyName", "companyPhone", "clientName", "origin", "destination", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "fuelSurcharge", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "TRANSPORT & LOGISTICS INVOICE", footer: "Delivered on time, every time." },
-      styles: { primaryColor: "#15803d", secondaryColor: "#14532d" },
+      styles: { primaryColor: "#15803d", secondaryColor: "#14532d", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -232,7 +232,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Event Planning Invoice Template",
       fields: ["companyName", "companyEmail", "clientName", "eventName", "eventDate", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "deposit", "balanceDue", "paymentTerms"],
       layout: { header: "EVENT PLANNING INVOICE", footer: "Turning your vision into an unforgettable event." },
-      styles: { primaryColor: "#be185d", secondaryColor: "#831843" },
+      styles: { primaryColor: "#be185d", secondaryColor: "#831843", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -287,7 +287,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Real Estate Commission Invoice Template",
       fields: ["companyName", "agentName", "clientName", "propertyAddress", "salePrice", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "REAL ESTATE COMMISSION INVOICE", footer: "Congratulations on your closing!" },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -341,7 +341,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Fitness Trainer Invoice Template",
       fields: ["companyName", "trainerName", "clientName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "discount", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "PERSONAL TRAINING INVOICE", footer: "Stronger every session — keep it up!" },
-      styles: { primaryColor: "#ea580c", secondaryColor: "#9a3412" },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#9a3412", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -396,7 +396,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Social Media Manager Invoice Template",
       fields: ["companyName", "companyEmail", "clientName", "billingPeriod", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "SOCIAL MEDIA MANAGEMENT INVOICE", footer: "Growing your audience, one post at a time." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -451,7 +451,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Dental Invoice Template",
       fields: ["companyName", "companyPhone", "patientName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "insuranceCovered", "patientBalance", "paymentTerms"],
       layout: { header: "DENTAL INVOICE", footer: "Keep smiling — see you at your next visit." },
-      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#134e4a", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -506,7 +506,7 @@ export const invoicesExtraTemplates: any[] = [
       title: "Architect Invoice Template",
       fields: ["companyName", "companyEmail", "clientName", "projectName", "invoiceNumber", "invoiceDate", "dueDate", "subtotal", "tax", "total", "paymentMethod", "paymentTerms"],
       layout: { header: "ARCHITECTURAL SERVICES INVOICE", footer: "Designing spaces that inspire." },
-      styles: { primaryColor: "#334155", secondaryColor: "#0f172a" },
+      styles: { primaryColor: "#334155", secondaryColor: "#0f172a", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [

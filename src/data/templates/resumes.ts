@@ -20,10 +20,7 @@ export const resumesTemplates = [
         header: "SOFTWARE ENGINEER CURRICULUM VITAE",
         footer: "References available upon request."
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#1e293b"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#1e293b", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -73,10 +70,7 @@ export const resumesTemplates = [
         header: "DATA ANALYST PORTFOLIO",
         footer: "Additional certifications shared upon request."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#115e59"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#115e59", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -127,10 +121,7 @@ export const resumesTemplates = [
         header: "PROJECT MANAGER PROFILE",
         footer: "PMP Certified. Agile Methodology Expert."
       },
-      styles: {
-        primaryColor: "#334155",
-        secondaryColor: "#0f172a"
-      },
+      styles: { primaryColor: "#334155", secondaryColor: "#0f172a", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -180,10 +171,7 @@ export const resumesTemplates = [
         header: "CREATIVE RESUME",
         footer: "View full online design portfolio at personal website."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#4d0728"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#4d0728", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -232,10 +220,7 @@ export const resumesTemplates = [
         header: "CLINICAL NURSE CV",
         footer: "Registered Nurse (RN) License in good standing."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#064e3b"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#064e3b", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -283,10 +268,7 @@ export const resumesTemplates = [
         header: "EDUCATOR PROFILE",
         footer: "State Certified Educator. References available."
       },
-      styles: {
-        primaryColor: "#d97706",
-        secondaryColor: "#451a03"
-      },
+      styles: { primaryColor: "#d97706", secondaryColor: "#451a03", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -334,10 +316,7 @@ export const resumesTemplates = [
         header: "MARKETING PROFESSIONAL CV",
         footer: "ROI metrics documented in online campaign case studies."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#2e1065"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#2e1065", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -387,10 +366,7 @@ export const resumesTemplates = [
         header: "CUSTOMER SUPPORT SPECIALIST",
         footer: "Available for shifts. Bilingual support agent."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#1e1b4b"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#1e1b4b", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -438,10 +414,7 @@ export const resumesTemplates = [
         header: "ACCOUNTING & FINANCE PROFILE",
         footer: "CPA Licensed. Audit Ready."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -490,10 +463,7 @@ export const resumesTemplates = [
         header: "SALES PROFESSIONAL PROFILE",
         footer: "Consistent over-achiever in pipeline sales targets."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#431407"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#431407", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -543,10 +513,7 @@ export const resumesTemplates = [
         header: "GRADUATE RESUME",
         footer: "References available upon request."
       },
-      styles: {
-        primaryColor: "#0891b2",
-        secondaryColor: "#155e75"
-      },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#155e75", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -595,10 +562,7 @@ export const resumesTemplates = [
         header: "PRODUCT MANAGER RESUME",
         footer: "Portfolio and references available on request."
       },
-      styles: {
-        primaryColor: "#4338ca",
-        secondaryColor: "#312e81"
-      },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -645,10 +609,7 @@ export const resumesTemplates = [
         header: "DEVOPS ENGINEER RESUME",
         footer: "GitHub and certifications available on request."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -696,10 +657,7 @@ export const resumesTemplates = [
         header: "UX DESIGNER RESUME",
         footer: "Interactive case studies available in online portfolio."
       },
-      styles: {
-        primaryColor: "#9333ea",
-        secondaryColor: "#3b0764"
-      },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#3b0764", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -750,10 +708,7 @@ export const resumesTemplates = [
         header: "FINANCIAL ANALYST RESUME",
         footer: "CFA Level II Candidate. Detailed models available on request."
       },
-      styles: {
-        primaryColor: "#1d4ed8",
-        secondaryColor: "#172554"
-      },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#172554", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -804,10 +759,7 @@ export const resumesTemplates = [
         header: "HR MANAGER RESUME",
         footer: "SHRM-CP Certified. People-first leadership."
       },
-      styles: {
-        primaryColor: "#be123c",
-        secondaryColor: "#4c0519"
-      },
+      styles: { primaryColor: "#be123c", secondaryColor: "#4c0519", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -858,10 +810,7 @@ export const resumesTemplates = [
         header: "MECHANICAL ENGINEER RESUME",
         footer: "EIT Certified. Portfolio of CAD drawings available."
       },
-      styles: {
-        primaryColor: "#b45309",
-        secondaryColor: "#422006"
-      },
+      styles: { primaryColor: "#b45309", secondaryColor: "#422006", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -912,10 +861,7 @@ export const resumesTemplates = [
         header: "CONTENT WRITER RESUME",
         footer: "Full writing portfolio and published bylines available online."
       },
-      styles: {
-        primaryColor: "#0e7490",
-        secondaryColor: "#164e63"
-      },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#164e63", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -965,10 +911,7 @@ export const resumesTemplates = [
         header: "BUSINESS ANALYST RESUME",
         footer: "CBAP Certified. Requirements documentation available on request."
       },
-      styles: {
-        primaryColor: "#3730a3",
-        secondaryColor: "#1e1b4b"
-      },
+      styles: { primaryColor: "#3730a3", secondaryColor: "#1e1b4b", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1019,10 +962,7 @@ export const resumesTemplates = [
         header: "EXECUTIVE ASSISTANT RESUME",
         footer: "Trusted with confidential executive and board communications."
       },
-      styles: {
-        primaryColor: "#9d174d",
-        secondaryColor: "#500724"
-      },
+      styles: { primaryColor: "#9d174d", secondaryColor: "#500724", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1072,10 +1012,7 @@ export const resumesTemplates = [
         header: "CYBERSECURITY ANALYST RESUME",
         footer: "CISSP Certified. Security clearance details on request."
       },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#450a0a"
-      },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#450a0a", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1126,10 +1063,7 @@ export const resumesTemplates = [
         header: "PHARMACIST RESUME",
         footer: "Licensed Pharmacist (RPh) in good standing."
       },
-      styles: {
-        primaryColor: "#047857",
-        secondaryColor: "#022c22"
-      },
+      styles: { primaryColor: "#047857", secondaryColor: "#022c22", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1179,10 +1113,7 @@ export const resumesTemplates = [
         header: "CIVIL ENGINEER RESUME",
         footer: "Professional Engineer (PE) licensed. Project portfolio on request."
       },
-      styles: {
-        primaryColor: "#a16207",
-        secondaryColor: "#422006"
-      },
+      styles: { primaryColor: "#a16207", secondaryColor: "#422006", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1230,7 +1161,7 @@ export const resumesTemplates = [
       title: "Career Change Resume",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "portfolio", "careerSummary", "targetIndustry", "degree", "university", "graduationYear"],
       layout: { header: "CAREER CHANGE RESUME", footer: "Functional format — references available on request." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1274,7 +1205,7 @@ export const resumesTemplates = [
       title: "Internship CV",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "portfolio", "careerObjective", "degree", "university", "graduationYear", "gpa"],
       layout: { header: "INTERNSHIP CURRICULUM VITAE", footer: "Available for a summer / semester internship." },
-      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e3a8a", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1313,7 +1244,7 @@ export const resumesTemplates = [
       title: "Academic CV",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "linkedin", "researchInterests", "dissertationTitle", "advisorName", "degree", "university", "graduationYear"],
       layout: { header: "ACADEMIC CURRICULUM VITAE", footer: "Full publication list and references available on request." },
-      styles: { primaryColor: "#065f46", secondaryColor: "#064e3b" },
+      styles: { primaryColor: "#065f46", secondaryColor: "#064e3b", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [

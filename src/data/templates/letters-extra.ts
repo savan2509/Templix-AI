@@ -20,7 +20,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#1e3a8a",
-        secondaryColor: "#3b82f6"
+        secondaryColor: "#3b82f6",
+        layoutVariant: 5,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -57,7 +59,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#b45309",
-        secondaryColor: "#f59e0b"
+        secondaryColor: "#f59e0b",
+        layoutVariant: 2,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -94,7 +98,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#991b1b",
-        secondaryColor: "#dc2626"
+        secondaryColor: "#dc2626",
+        layoutVariant: 3,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",
@@ -131,7 +137,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#374151",
-        secondaryColor: "#6b7280"
+        secondaryColor: "#6b7280",
+        layoutVariant: 4,
+        headingStyle: 1
       },
       editorState: {
         type: "doc",
@@ -168,7 +176,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#15803d",
-        secondaryColor: "#22c55e"
+        secondaryColor: "#22c55e",
+        layoutVariant: 5,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -205,7 +215,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#1d4ed8",
-        secondaryColor: "#60a5fa"
+        secondaryColor: "#60a5fa",
+        layoutVariant: 0,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",
@@ -242,7 +254,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#0f766e",
-        secondaryColor: "#14b8a6"
+        secondaryColor: "#14b8a6",
+        layoutVariant: 1,
+        headingStyle: 1
       },
       editorState: {
         type: "doc",
@@ -279,7 +293,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#7c2d12",
-        secondaryColor: "#ea580c"
+        secondaryColor: "#ea580c",
+        layoutVariant: 2,
+        headingStyle: 2
       },
       editorState: {
         type: "doc",
@@ -316,7 +332,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#5b21b6",
-        secondaryColor: "#8b5cf6"
+        secondaryColor: "#8b5cf6",
+        layoutVariant: 3,
+        headingStyle: 0
       },
       editorState: {
         type: "doc",
@@ -353,7 +371,9 @@ export const lettersExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#0e7490",
-        secondaryColor: "#06b6d4"
+        secondaryColor: "#06b6d4",
+        layoutVariant: 4,
+        headingStyle: 1
       },
       editorState: {
         type: "doc",

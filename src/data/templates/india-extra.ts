@@ -18,10 +18,7 @@ export const indiaExtraTemplates: any[] = [
         header: "QUOTATION",
         footer: "This quotation is valid only until the date mentioned above and is subject to the terms stated herein."
       },
-      styles: {
-        primaryColor: "#1d4ed8",
-        secondaryColor: "#1e3a8a"
-      },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -106,7 +103,9 @@ export const indiaExtraTemplates: any[] = [
       },
       styles: {
         primaryColor: "#7c3aed",
-        secondaryColor: "#5b21b6"
+        secondaryColor: "#5b21b6",
+        layoutVariant: 2,
+        headingStyle: 1
       },
       editorState: {
         type: "doc",
@@ -182,10 +181,7 @@ export const indiaExtraTemplates: any[] = [
         header: "VEHICLE SALE AGREEMENT",
         footer: "Executed in duplicate, both parties retaining one signed copy each."
       },
-      styles: {
-        primaryColor: "#b91c1c",
-        secondaryColor: "#7f1d1d"
-      },
+      styles: { primaryColor: "#b91c1c", secondaryColor: "#7f1d1d", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [

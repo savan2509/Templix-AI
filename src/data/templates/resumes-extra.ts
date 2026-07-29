@@ -11,7 +11,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Electrician Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "LICENSED ELECTRICIAN", footer: "License and references available on request" },
-      styles: { primaryColor: "#b45309", secondaryColor: "#78350f" },
+      styles: { primaryColor: "#b45309", secondaryColor: "#78350f", layoutVariant: 1, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -58,7 +58,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Chef Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "EXECUTIVE CHEF", footer: "Portfolio and references available on request" },
-      styles: { primaryColor: "#be123c", secondaryColor: "#881337" },
+      styles: { primaryColor: "#be123c", secondaryColor: "#881337", layoutVariant: 2, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -104,7 +104,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Flight Attendant Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "FLIGHT ATTENDANT", footer: "References available on request" },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -151,7 +151,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Dental Hygienist Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "REGISTERED DENTAL HYGIENIST", footer: "License and references available on request" },
-      styles: { primaryColor: "#0e7490", secondaryColor: "#155e75" },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#155e75", layoutVariant: 4, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -198,7 +198,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Attorney Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "ATTORNEY AT LAW", footer: "Bar admission and references available on request" },
-      styles: { primaryColor: "#1e293b", secondaryColor: "#0f172a" },
+      styles: { primaryColor: "#1e293b", secondaryColor: "#0f172a", layoutVariant: 5, headingStyle: 0 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -244,7 +244,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Real Estate Agent Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "REAL ESTATE AGENT", footer: "References available on request" },
-      styles: { primaryColor: "#047857", secondaryColor: "#065f46" },
+      styles: { primaryColor: "#047857", secondaryColor: "#065f46", layoutVariant: 0, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -290,7 +290,7 @@ export const resumesExtraTemplates: any[] = [
       title: "QA Engineer Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "QA ENGINEER", footer: "References available on request" },
-      styles: { primaryColor: "#6d28d9", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#6d28d9", secondaryColor: "#4c1d95", layoutVariant: 1, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -336,7 +336,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Scrum Master Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "SCRUM MASTER", footer: "References available on request" },
-      styles: { primaryColor: "#c2410c", secondaryColor: "#9a3412" },
+      styles: { primaryColor: "#c2410c", secondaryColor: "#9a3412", layoutVariant: 2, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -383,7 +383,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Machine Learning Engineer Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "MACHINE LEARNING ENGINEER", footer: "Portfolio and references available on request" },
-      styles: { primaryColor: "#0891b2", secondaryColor: "#164e63" },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#164e63", layoutVariant: 3, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },
@@ -429,7 +429,7 @@ export const resumesExtraTemplates: any[] = [
       title: "Physical Therapist Resume Template",
       fields: ["fullName", "jobTitle", "email", "phone", "location", "summary", "jobTitle1", "company1", "role1dates", "jobTitle2", "company2", "role2dates", "degree", "school"],
       layout: { header: "PHYSICAL THERAPIST", footer: "License and references available on request" },
-      styles: { primaryColor: "#15803d", secondaryColor: "#14532d" },
+      styles: { primaryColor: "#15803d", secondaryColor: "#14532d", layoutVariant: 4, headingStyle: 1 },
       editorState: { type: "doc", content: [
         { type: "heading", attrs: { level: 1 }, content: [{ type: "text", text: "{{fullName}}" }] },
         { type: "paragraph", content: [{ type: "text", text: "{{jobTitle}} | {{email}} | {{phone}} | {{location}}" }] },

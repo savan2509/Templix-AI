@@ -18,10 +18,7 @@ export const indiaInvoicesTemplates: any[] = [
         header: "RENT RECEIPT",
         footer: "Retain this receipt for your HRA exemption and income tax records."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#134e4a"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -70,10 +67,7 @@ export const indiaInvoicesTemplates: any[] = [
         header: "DELIVERY CHALLAN",
         footer: "This is a Delivery Challan and NOT a Tax Invoice."
       },
-      styles: {
-        primaryColor: "#b45309",
-        secondaryColor: "#78350f"
-      },
+      styles: { primaryColor: "#b45309", secondaryColor: "#78350f", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [

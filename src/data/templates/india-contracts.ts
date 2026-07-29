@@ -18,10 +18,7 @@ export const indiaContractsTemplates: any[] = [
         header: "LEAVE AND LICENSE AGREEMENT",
         footer: "Must be registered under the Registration Act, 1908 and applicable state rules. Retain a stamped copy."
       },
-      styles: {
-        primaryColor: "#7c2d12",
-        secondaryColor: "#b45309"
-      },
+      styles: { primaryColor: "#7c2d12", secondaryColor: "#b45309", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -75,10 +72,7 @@ export const indiaContractsTemplates: any[] = [
         header: "EMPLOYMENT BOND AGREEMENT",
         footer: "Enforceable in India only to the extent of reasonable, actual costs incurred, not as a penalty."
       },
-      styles: {
-        primaryColor: "#1e3a8a",
-        secondaryColor: "#0e7490"
-      },
+      styles: { primaryColor: "#1e3a8a", secondaryColor: "#0e7490", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [

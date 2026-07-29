@@ -18,10 +18,7 @@ export const lettersTemplates = [
         header: "APPLICATION COVER LETTER",
         footer: "Enclosures: Resume & Professional Portfolio References."
       },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#3b82f6"
-      },
+      styles: { primaryColor: "#0f172a", secondaryColor: "#3b82f6", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -60,10 +57,7 @@ export const lettersTemplates = [
         header: "FORMAL RESIGNATION LETTER",
         footer: "Copy filed with Human Resources Department."
       },
-      styles: {
-        primaryColor: "#475569",
-        secondaryColor: "#334155"
-      },
+      styles: { primaryColor: "#475569", secondaryColor: "#334155", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -100,10 +94,7 @@ export const lettersTemplates = [
         header: "RECOMMENDATION LETTER",
         footer: "Shared in confidence for candidate evaluation only."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#115e59"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#115e59", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -140,10 +131,7 @@ export const lettersTemplates = [
         header: "OFFER OF EMPLOYMENT",
         footer: "Subject to background reference verifications. Acme is an equal opportunity employer."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1d4ed8"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1d4ed8", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -186,10 +174,7 @@ export const lettersTemplates = [
         header: "BUSINESS CORRESPONDENCE",
         footer: "Official document of the sender corporation."
       },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#475569"
-      },
+      styles: { primaryColor: "#0f172a", secondaryColor: "#475569", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -226,10 +211,7 @@ export const lettersTemplates = [
         header: "FORMAL COMPLAINT RECORD",
         footer: "Requires a formal response within 14 business days."
       },
-      styles: {
-        primaryColor: "#be123c",
-        secondaryColor: "#881337"
-      },
+      styles: { primaryColor: "#be123c", secondaryColor: "#881337", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -271,10 +253,7 @@ export const lettersTemplates = [
         header: "LETTER OF APPRECIATION",
         footer: "With sincere thanks and professional regards."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#047857"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#047857", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -310,10 +289,7 @@ export const lettersTemplates = [
         header: "FORMAL REQUEST FOR ACTION",
         footer: "Supporting documentation attached where applicable."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#3730a3"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#3730a3", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -350,10 +326,7 @@ export const lettersTemplates = [
         header: "APPOINTMENT CONFIRMATION",
         footer: "Please return signed duplicate copy to HR department upon onboarding."
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#0369a1"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#0369a1", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -389,10 +362,7 @@ export const lettersTemplates = [
         header: "TO WHOM IT MAY CONCERN",
         footer: "We wish them all the best in future endeavors."
       },
-      styles: {
-        primaryColor: "#475569",
-        secondaryColor: "#334155"
-      },
+      styles: { primaryColor: "#475569", secondaryColor: "#334155", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -428,10 +398,7 @@ export const lettersTemplates = [
         header: "INTERNSHIP APPLICATION",
         footer: "Thank you for considering my application."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1e40af"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1e40af", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -466,10 +433,7 @@ export const lettersTemplates = [
         header: "CHARACTER REFERENCE",
         footer: "I am happy to provide further information if required."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#115e59"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#115e59", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -504,10 +468,7 @@ export const lettersTemplates = [
         header: "PROMOTION REQUEST",
         footer: "Thank you for considering my request. I welcome the chance to discuss it."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#5b21b6"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#5b21b6", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -543,10 +504,7 @@ export const lettersTemplates = [
         header: "REFERENCE LETTER",
         footer: "Provided in confidence at the candidate's request."
       },
-      styles: {
-        primaryColor: "#1d4ed8",
-        secondaryColor: "#1e40af"
-      },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e40af", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -582,10 +540,7 @@ export const lettersTemplates = [
         header: "APOLOGY LETTER",
         footer: "We value your trust and appreciate your patience."
       },
-      styles: {
-        primaryColor: "#dc2626",
-        secondaryColor: "#b91c1c"
-      },
+      styles: { primaryColor: "#dc2626", secondaryColor: "#b91c1c", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -620,10 +575,7 @@ export const lettersTemplates = [
         header: "INVITATION LETTER",
         footer: "Please RSVP by the date indicated above."
       },
-      styles: {
-        primaryColor: "#0891b2",
-        secondaryColor: "#0e7490"
-      },
+      styles: { primaryColor: "#0891b2", secondaryColor: "#0e7490", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -659,10 +611,7 @@ export const lettersTemplates = [
         header: "WARNING LETTER",
         footer: "A copy of this letter will be placed in your personnel file."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#c2410c"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#c2410c", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -699,10 +648,7 @@ export const lettersTemplates = [
         header: "TERMINATION LETTER",
         footer: "We wish you well in your future endeavors."
       },
-      styles: {
-        primaryColor: "#991b1b",
-        secondaryColor: "#7f1d1d"
-      },
+      styles: { primaryColor: "#991b1b", secondaryColor: "#7f1d1d", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -738,10 +684,7 @@ export const lettersTemplates = [
         header: "WELCOME LETTER",
         footer: "We are thrilled to have you on the team!"
       },
-      styles: {
-        primaryColor: "#16a34a",
-        secondaryColor: "#15803d"
-      },
+      styles: { primaryColor: "#16a34a", secondaryColor: "#15803d", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -777,10 +720,7 @@ export const lettersTemplates = [
         header: "AUTHORIZATION LETTER",
         footer: "This authorization is valid until formally revoked in writing."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#4338ca"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#4338ca", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -817,10 +757,7 @@ export const lettersTemplates = [
         header: "SPONSORSHIP REQUEST",
         footer: "Your generosity makes a lasting difference in our community."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#be185d"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#be185d", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -856,10 +793,7 @@ export const lettersTemplates = [
         header: "FAREWELL LETTER",
         footer: "Keep in touch - this is not goodbye, just see you later."
       },
-      styles: {
-        primaryColor: "#0d9488",
-        secondaryColor: "#0f766e"
-      },
+      styles: { primaryColor: "#0d9488", secondaryColor: "#0f766e", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -894,10 +828,7 @@ export const lettersTemplates = [
         header: "FOLLOW-UP LETTER",
         footer: "Thank you again for your time and consideration."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1d4ed8"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1d4ed8", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -930,7 +861,7 @@ export const lettersTemplates = [
       title: "Salary Increment Request Letter",
       fields: ["fullName", "jobTitle", "department", "companyName", "email", "phone", "letterDate", "managerName", "currentSalary", "requestedSalary", "incrementPercent", "yearsInRole", "proposedEffectiveDate", "signatureFullName"],
       layout: { header: "SALARY INCREMENT REQUEST", footer: "Submitted for your review and consideration." },
-      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -967,7 +898,7 @@ export const lettersTemplates = [
       title: "Leave Application Letter",
       fields: ["fullName", "employeeId", "jobTitle", "department", "companyName", "letterDate", "managerName", "leaveType", "leaveFromDate", "leaveToDate", "totalDays", "leaveReason", "workHandoverTo", "contactDuringLeave", "rejoiningDate", "signatureFullName"],
       layout: { header: "LEAVE APPLICATION", footer: "Kindly approve and forward to HR for records." },
-      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81" },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#312e81", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -997,7 +928,7 @@ export const lettersTemplates = [
       title: "No Objection Certificate",
       fields: ["companyName", "address", "email", "phone", "letterDate", "referenceNumber", "applicantName", "applicantId", "designation", "nocPurpose", "objectDescription", "validityPeriod", "issuingAuthorityName", "issuingAuthorityDesignation"],
       layout: { header: "NO OBJECTION CERTIFICATE", footer: "This certificate is issued on request and is valid for the stated purpose only." },
-      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a" },
+      styles: { primaryColor: "#1d4ed8", secondaryColor: "#1e3a8a", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -1027,7 +958,7 @@ export const lettersTemplates = [
       title: "Business Introduction Letter",
       fields: ["fullName", "jobTitle", "companyName", "email", "phone", "letterDate", "recipientName", "recipientCompany", "yourCompanyOneLiner", "painPointHook", "valueProposition", "socialProofLine", "callToAction", "meetingLink", "signatureFullName"],
       layout: { header: "BUSINESS INTRODUCTION", footer: "Sent as a brief introduction — no obligation." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -1057,7 +988,7 @@ export const lettersTemplates = [
       title: "Payment Reminder Email",
       fields: ["companyName", "email", "phone", "letterDate", "recipientName", "clientCompany", "invoiceNumber", "invoiceAmount", "dueDate", "daysOverdue", "paymentLink", "lateFeeWarning", "signatureFullName"],
       layout: { header: "PAYMENT REMINDER", footer: "If payment has already been sent, please disregard this notice." },
-      styles: { primaryColor: "#b45309", secondaryColor: "#78350f" },
+      styles: { primaryColor: "#b45309", secondaryColor: "#78350f", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1086,7 +1017,7 @@ export const lettersTemplates = [
       title: "Reference Request Email",
       fields: ["fullName", "jobTitle", "email", "phone", "letterDate", "recipientName", "targetJobTitle", "targetCompany", "relationshipContext", "workedTogetherPeriod", "referenceDeadline", "signatureFullName"],
       layout: { header: "REFERENCE REQUEST", footer: "Thank you for considering this request." },
-      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e" },
+      styles: { primaryColor: "#0369a1", secondaryColor: "#0c4a6e", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [

@@ -20,7 +20,7 @@ const mkFullContract = (
     title,
     fields,
     layout: { header: heading, footer: "Executed as a legally binding contract under governing law. Copy retained by both parties." },
-    styles: { primaryColor: color, secondaryColor: "#1e3a8a" },
+    styles: {primaryColor: color, secondaryColor: "#1e3a8a", layoutVariant: 3, headingStyle: 0 },
     editorState: {
       type: "doc",
       content: [

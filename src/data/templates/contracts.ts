@@ -19,10 +19,7 @@ export const contractsTemplates = [
         header: "FREELANCE AGREEMENT",
         footer: "Executed as a legally binding contract between Freelancer and Client."
       },
-      styles: {
-        primaryColor: "#0f172a",
-        secondaryColor: "#475569"
-      },
+      styles: { primaryColor: "#0f172a", secondaryColor: "#475569", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -65,10 +62,7 @@ export const contractsTemplates = [
         header: "EMPLOYMENT AGREEMENT",
         footer: "Subject to governing labor laws. Copy retained by both parties."
       },
-      styles: {
-        primaryColor: "#2563eb",
-        secondaryColor: "#1d4ed8"
-      },
+      styles: { primaryColor: "#2563eb", secondaryColor: "#1d4ed8", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -109,10 +103,7 @@ export const contractsTemplates = [
         header: "INDEPENDENT CONTRACTOR AGREEMENT",
         footer: "Contractor is solely responsible for self-employment taxes and business insurances."
       },
-      styles: {
-        primaryColor: "#0f766e",
-        secondaryColor: "#115e59"
-      },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#115e59", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -153,10 +144,7 @@ export const contractsTemplates = [
         header: "MASTER SERVICE AGREEMENT",
         footer: "Subject to the Service Level Agreement (SLA) metrics included herein."
       },
-      styles: {
-        primaryColor: "#4f46e5",
-        secondaryColor: "#312e81"
-      },
+      styles: { primaryColor: "#4f46e5", secondaryColor: "#312e81", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -197,10 +185,7 @@ export const contractsTemplates = [
         header: "CONFIDENTIALITY DEED",
         footer: "Governed under state laws. Signatures authenticate mutual obligations."
       },
-      styles: {
-        primaryColor: "#be123c",
-        secondaryColor: "#881337"
-      },
+      styles: { primaryColor: "#be123c", secondaryColor: "#881337", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -241,10 +226,7 @@ export const contractsTemplates = [
         header: "CONSULTING CONTRACT",
         footer: "Independent consultant relationship template."
       },
-      styles: {
-        primaryColor: "#d97706",
-        secondaryColor: "#78350f"
-      },
+      styles: { primaryColor: "#d97706", secondaryColor: "#78350f", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -285,10 +267,7 @@ export const contractsTemplates = [
         header: "LEASE AGREEMENT",
         footer: "This document is binding under local landlord-tenant regulations."
       },
-      styles: {
-        primaryColor: "#059669",
-        secondaryColor: "#064e3b"
-      },
+      styles: { primaryColor: "#059669", secondaryColor: "#064e3b", layoutVariant: 4, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -329,10 +308,7 @@ export const contractsTemplates = [
         header: "BILL OF SALE",
         footer: "Merchandise title transfers to Buyer upon receipt of total contract value."
       },
-      styles: {
-        primaryColor: "#ea580c",
-        secondaryColor: "#7c2d12"
-      },
+      styles: { primaryColor: "#ea580c", secondaryColor: "#7c2d12", layoutVariant: 5, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -373,10 +349,7 @@ export const contractsTemplates = [
         header: "PARTNERSHIP DEED",
         footer: "This partnership operates in mutual trust and alignment on common business goals."
       },
-      styles: {
-        primaryColor: "#7c3aed",
-        secondaryColor: "#311042"
-      },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#311042", layoutVariant: 0, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -417,10 +390,7 @@ export const contractsTemplates = [
         header: "VENDOR CONTRACT",
         footer: "This contract defines the supply conditions between Client and Supplier."
       },
-      styles: {
-        primaryColor: "#0284c7",
-        secondaryColor: "#075985"
-      },
+      styles: { primaryColor: "#0284c7", secondaryColor: "#075985", layoutVariant: 1, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -461,10 +431,7 @@ export const contractsTemplates = [
         header: "INFLUENCER COLLABORATION AGREEMENT",
         footer: "Sponsored content must comply with advertising disclosure regulations."
       },
-      styles: {
-        primaryColor: "#db2777",
-        secondaryColor: "#831843"
-      },
+      styles: { primaryColor: "#db2777", secondaryColor: "#831843", layoutVariant: 2, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -507,10 +474,7 @@ export const contractsTemplates = [
         header: "PHOTOGRAPHY SERVICES CONTRACT",
         footer: "Final images delivered within 30 days of the event date."
       },
-      styles: {
-        primaryColor: "#9333ea",
-        secondaryColor: "#581c87"
-      },
+      styles: { primaryColor: "#9333ea", secondaryColor: "#581c87", layoutVariant: 3, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -551,10 +515,7 @@ export const contractsTemplates = [
         header: "COMMERCIAL LEASE AGREEMENT",
         footer: "Binding upon the parties, their successors, and permitted assigns under applicable commercial tenancy law."
       },
-      styles: {
-        primaryColor: "#1e3a8a",
-        secondaryColor: "#1e40af"
-      },
+      styles: { primaryColor: "#1e3a8a", secondaryColor: "#1e40af", layoutVariant: 4, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -597,10 +558,7 @@ export const contractsTemplates = [
         header: "LOAN AGREEMENT",
         footer: "This promissory obligation is legally enforceable upon default by the Borrower."
       },
-      styles: {
-        primaryColor: "#065f46",
-        secondaryColor: "#047857"
-      },
+      styles: { primaryColor: "#065f46", secondaryColor: "#047857", layoutVariant: 5, headingStyle: 2 },
       editorState: {
         type: "doc",
         content: [
@@ -643,10 +601,7 @@ export const contractsTemplates = [
         header: "SUBCONTRACTOR AGREEMENT",
         footer: "Subcontractor obligations flow down from the prime contract between the Contractor and the project Owner."
       },
-      styles: {
-        primaryColor: "#b45309",
-        secondaryColor: "#92400e"
-      },
+      styles: { primaryColor: "#b45309", secondaryColor: "#92400e", layoutVariant: 0, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -689,10 +644,7 @@ export const contractsTemplates = [
         header: "LICENSING AGREEMENT",
         footer: "All rights not expressly granted herein are reserved by the Licensor."
       },
-      styles: {
-        primaryColor: "#6d28d9",
-        secondaryColor: "#5b21b6"
-      },
+      styles: { primaryColor: "#6d28d9", secondaryColor: "#5b21b6", layoutVariant: 1, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -735,10 +687,7 @@ export const contractsTemplates = [
         header: "NON-COMPETE AGREEMENT",
         footer: "Restrictive covenants are enforceable only to the extent reasonable under applicable law."
       },
-      styles: {
-        primaryColor: "#9f1239",
-        secondaryColor: "#881337"
-      },
+      styles: { primaryColor: "#9f1239", secondaryColor: "#881337", layoutVariant: 2, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -781,10 +730,7 @@ export const contractsTemplates = [
         header: "JOINT VENTURE AGREEMENT",
         footer: "This joint venture does not create a general partnership beyond the stated business purpose."
       },
-      styles: {
-        primaryColor: "#0e7490",
-        secondaryColor: "#155e75"
-      },
+      styles: { primaryColor: "#0e7490", secondaryColor: "#155e75", layoutVariant: 3, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -827,10 +773,7 @@ export const contractsTemplates = [
         header: "EQUIPMENT RENTAL AGREEMENT",
         footer: "Title to the equipment remains with the Owner at all times during the rental period."
       },
-      styles: {
-        primaryColor: "#c2410c",
-        secondaryColor: "#9a3412"
-      },
+      styles: { primaryColor: "#c2410c", secondaryColor: "#9a3412", layoutVariant: 4, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -873,10 +816,7 @@ export const contractsTemplates = [
         header: "CATERING SERVICES CONTRACT",
         footer: "Final guest count and menu selections are due no later than the agreed cutoff before the event."
       },
-      styles: {
-        primaryColor: "#be185d",
-        secondaryColor: "#9d174d"
-      },
+      styles: { primaryColor: "#be185d", secondaryColor: "#9d174d", layoutVariant: 5, headingStyle: 0 },
       editorState: {
         type: "doc",
         content: [
@@ -919,10 +859,7 @@ export const contractsTemplates = [
         header: "WEB DEVELOPMENT CONTRACT",
         footer: "Source code ownership transfers to the Client upon receipt of final payment in full."
       },
-      styles: {
-        primaryColor: "#4338ca",
-        secondaryColor: "#3730a3"
-      },
+      styles: { primaryColor: "#4338ca", secondaryColor: "#3730a3", layoutVariant: 0, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -965,10 +902,7 @@ export const contractsTemplates = [
         header: "SEVERANCE AGREEMENT",
         footer: "The employee may consider and revoke this release within the statutory review period before it becomes effective."
       },
-      styles: {
-        primaryColor: "#334155",
-        secondaryColor: "#1e293b"
-      },
+      styles: { primaryColor: "#334155", secondaryColor: "#1e293b", layoutVariant: 1, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1008,7 +942,7 @@ export const contractsTemplates = [
       title: "Roommate Agreement",
       fields: ["primaryTenantName", "roommateName", "propertyAddress", "effectiveDate", "leaseTermMonths", "monthlyRent", "rentSplit", "securityDeposit", "depositSplit", "utilitiesSplitMethod", "choresSchedule", "quietHours", "guestPolicy", "moveOutNoticePeriod", "governingLaw"],
       layout: { header: "ROOMMATE AGREEMENT", footer: "Signed voluntarily by both roommates as a good-faith house agreement." },
-      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a" },
+      styles: { primaryColor: "#0f766e", secondaryColor: "#134e4a", layoutVariant: 2, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [
@@ -1047,7 +981,7 @@ export const contractsTemplates = [
       title: "Social Media Management Contract",
       fields: ["companyName", "clientName", "clientCompany", "effectiveDate", "endDate", "platformScope", "postsPerMonth", "monthlyRetainer", "contentApprovalProcess", "responseTimeSla", "reportingFrequency", "adSpendManagementFee", "contentOwnership", "terminationClause"],
       layout: { header: "SOCIAL MEDIA MANAGEMENT AGREEMENT", footer: "Either party may terminate per the notice terms below." },
-      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95" },
+      styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 3, headingStyle: 1 },
       editorState: {
         type: "doc",
         content: [

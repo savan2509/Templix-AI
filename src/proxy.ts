@@ -29,6 +29,14 @@ export default async function proxy(req: NextRequest) {
   const proto = req.headers.get("x-forwarded-proto") || "";
   const prodHost = new URL(PRODUCTION_URL).hostname.toLowerCase();
 
+  const isLocalhost =
+    hostHeader.includes("localhost") ||
+    hostHeader.includes("127.0.0.1") ||
+    forwardedHost.includes("localhost") ||
+    forwardedHost.includes("127.0.0.1") ||
+    nextHost.includes("localhost") ||
+    nextHost === "127.0.0.1";
+
   const isPlatformAlias = PLATFORM_ALIAS.test(hostHeader) || PLATFORM_ALIAS.test(forwardedHost) || PLATFORM_ALIAS.test(nextHost);
   const isWwwSubdomain =
     hostHeader.startsWith("www.") ||
@@ -38,8 +46,8 @@ export default async function proxy(req: NextRequest) {
     (forwardedHost.length > 0 && forwardedHost !== prodHost && forwardedHost.includes(prodHost));
   const isHttp = proto === "http";
 
-  // Unconditionally redirect any www. subdomain, platform alias, or HTTP request to production domain using 301
-  if (isWwwSubdomain || isPlatformAlias || (isHttp && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"))) {
+  // Unconditionally redirect any www. subdomain, platform alias, or HTTP request to production domain using 301 (never redirect localhost)
+  if (!isLocalhost && (isWwwSubdomain || isPlatformAlias || (isHttp && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")))) {
     const cleanPath = req.nextUrl.pathname === "/" ? "/en" : req.nextUrl.pathname;
     const dest = new URL(cleanPath + req.nextUrl.search, PRODUCTION_URL);
     return NextResponse.redirect(dest, 301);
@@ -49,7 +57,8 @@ export default async function proxy(req: NextRequest) {
 
   // Consolidate bare root `/` onto canonical locale `/en` (301 Moved Permanently)
   if (pathname === "/") {
-    const dest = new URL(`/en${req.nextUrl.search}`, PRODUCTION_URL);
+    const baseUrl = isLocalhost ? req.url : PRODUCTION_URL;
+    const dest = new URL(`/en${req.nextUrl.search}`, baseUrl);
     return NextResponse.redirect(dest, 301);
   }
   let supabaseResponse = NextResponse.next({ request: req });
