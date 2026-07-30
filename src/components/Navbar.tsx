@@ -227,7 +227,7 @@ export default function Navbar() {
                   mode. Swapped via CSS `dark:` so there's no hydration flicker. */}
               <Image
                 src="/Templix-ai-light.png"
-                alt="Templix AI — Free Professional Document Editor Logo"
+                alt="Templix AI Logo"
                 title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}
@@ -237,7 +237,8 @@ export default function Navbar() {
               />
               <Image
                 src="/Templix-ai-dark.png"
-                alt="Templix AI — Free Professional Document Editor Logo"
+                alt=""
+                aria-hidden="true"
                 title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}

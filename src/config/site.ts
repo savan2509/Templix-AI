@@ -38,13 +38,15 @@ export const siteConfig = {
   // domain the site isn't served from, or OG/canonical point at a dead host.
   ogImage: `${APP_URL}/og-default.jpg`,
   links: {
-    github: "https://github.com/your-username/templix-ai",
+    github: "https://github.com/savan2509/Templix-AI",
     facebook: "https://facebook.com/templixai",
     instagram: "https://instagram.com/templixai",
     youtube: "https://youtube.com/@templixai",
     linkedin: "https://www.linkedin.com/company/templix-ai",
     twitter: "https://twitter.com/templix_ai",
   },
+  twitterHandle: "@templix_ai",
+  twitterSite: "@templix_ai",
   locales: ["en", "es", "de", "fr", "ar"],
   defaultLocale: "en",
   themeColor: "#2563eb",

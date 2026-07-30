@@ -214,7 +214,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     publisher: {
       "@type": "Organization",
       name: "Templix AI",
-      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
+      logo: { "@type": "ImageObject", url: `${siteConfig.url}/icon-512.png` },
     },
     url: `${siteConfig.url}/${locale}/blog/${slug}`,
     mainEntityOfPage: `${siteConfig.url}/${locale}/blog/${slug}`,

@@ -771,15 +771,20 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
   const relatedSearches = categorySlug
     ? [
-        { label: `${categoryDisplayName} ${t.rsForFreelancers}`, url: `/${locale}/templates/${categorySlug}/freelancer` },
-        { label: `${t.rsLegal} ${categoryDisplayName}`, url: `/${locale}/templates/${categorySlug}/legal` },
-        { label: `${categoryDisplayName} ${t.inWord} USA`, url: `/${locale}/templates/${categorySlug}/general/usa` },
-        { label: `${categoryDisplayName} ${t.inWord} Canada`, url: `/${locale}/templates/${categorySlug}/general/canada` },
+        {
+          label: `${categoryDisplayName} ${t.rsForFreelancers}`,
+          url: categorySlug === "invoices"
+            ? `/${locale}/templates/invoices/invoice-freelancer`
+            : `/${locale}/templates/${categorySlug}`,
+        },
+        { label: `${t.rsLegal} ${categoryDisplayName}`, url: `/${locale}/templates/${categorySlug}` },
+        { label: `${categoryDisplayName} ${t.inWord} USA`, url: `/${locale}/templates/${categorySlug}` },
+        { label: `${categoryDisplayName} ${t.inWord} Canada`, url: `/${locale}/templates/${categorySlug}` },
       ]
     : [
         { label: t.rsInvoiceTemplates, url: `/${locale}/templates/invoices` },
         { label: t.rsResumeLayouts, url: `/${locale}/templates/resumes` },
-        { label: t.rsFreelancerAgreements, url: `/${locale}/templates/contracts/freelancer` },
+        { label: t.rsFreelancerAgreements, url: `/${locale}/templates/contracts` },
         { label: t.rsMarketingProposals, url: `/${locale}/templates/proposals` },
       ];
 

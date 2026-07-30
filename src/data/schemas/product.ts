@@ -74,6 +74,7 @@ export function generateProductSchema(input: ProductSchemaInput): object {
       "@type": "Offer",
       price: "0.00",
       priceCurrency: "USD",
+      priceValidUntil: "2030-12-31",
       availability: "https://schema.org/InStock",
       url: templateUrl,
       seller: {

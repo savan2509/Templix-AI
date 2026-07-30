@@ -540,24 +540,24 @@ export default async function HomePage({ params }: PageProps) {
               </p>
             </div>
 
-            {/* Editorial & Legal Review Team */}
+            {/* Editorial & Security Standards Pillars */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
-                    VH
+                    LS
                   </div>
                   <div>
-                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Victoria Hayes, JD</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Legal & Contract Advisory</p>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Legal Structure Standard</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">E-SIGN Act Alignment</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Specialist in commercial contract structures, E-SIGN Act compliance, and legal document standardization.
+                  Commercial agreement blueprints and contract templates built in accordance with standard legal formatting principles.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-colors">
-                    Verified Legal Advisor &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-colors">
+                    Explore Legal Standards &rarr;
                   </Link>
                 </div>
               </div>
@@ -565,19 +565,19 @@ export default async function HomePage({ params }: PageProps) {
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-sm">
-                    MV
+                    PS
                   </div>
                   <div>
-                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Marcus Vance, CISSP</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Data Security & Privacy Auditor</p>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Privacy-First Architecture</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Browser-Local Processing</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Oversees zero-retention client processing, SOC2 compliance standards, and 256-bit TLS document encryption.
+                  Document state and PDF exports are processed directly inside your local web browser with zero remote data logging.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-colors">
-                    Certified Security Auditor &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-colors">
+                    Privacy Architecture &rarr;
                   </Link>
                 </div>
               </div>
@@ -585,19 +585,19 @@ export default async function HomePage({ params }: PageProps) {
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-sm">
-                    ER
+                    HR
                   </div>
                   <div>
-                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Elena Rostova, SHRM-SCP</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">HR & Resume Standards Director</p>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">ATS Parser Compliance</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">HRXML Format Compatibility</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Ensures all resume blueprints adhere strictly to modern ATS algorithms, HR Open Standards resume parsing rules, and HR standards.
+                  Resume structures formatted for modern Applicant Tracking Systems to guarantee accurate skill and work experience indexing.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-board`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-colors">
-                    HR & ATS Specialist &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-colors">
+                    ATS Guidelines &rarr;
                   </Link>
                 </div>
               </div>
@@ -713,7 +713,8 @@ export default async function HomePage({ params }: PageProps) {
                 aria-label="Launched on StartupBase"
                 className="transition-transform duration-300 hover:scale-105"
               >
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/badges/launched-on-sb.svg"
                   alt="Launched on StartupBase"
                   title="Launched on StartupBase"
@@ -730,7 +731,8 @@ export default async function HomePage({ params }: PageProps) {
                 aria-label="Featured on Smol Launch"
                 className="transition-transform duration-300 hover:scale-105"
               >
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/badges/smol-launch.svg"
                   alt="templix-ai — Featured on Smol Launch"
                   title="templix-ai — Featured on Smol Launch"

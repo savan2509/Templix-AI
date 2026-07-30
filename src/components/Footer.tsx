@@ -70,8 +70,8 @@ export default function Footer() {
                   name), and the wordmark beside it is aria-hidden — so the link
                   announces "Templix AI" exactly once, not twice. Only one of the
                   two marks is ever in the a11y tree (the other is display:none). */}
-              <Image src="/Templix-ai-light.png" alt="Templix AI — Free Professional Document Editor Logo" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
-              <Image src="/Templix-ai-dark.png" alt="Templix AI — Free Professional Document Editor Logo" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
+              <Image src="/Templix-ai-light.png" alt="Templix AI Logo" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="h-8 w-8 rounded-lg object-contain dark:hidden" />
+              <Image src="/Templix-ai-dark.png" alt="" aria-hidden="true" title="Templix AI — Free Professional Document Editor Logo" width={34} height={34} className="hidden h-8 w-8 rounded-lg object-contain dark:block" />
               {/* Keep the space: the brand is "Templix AI" everywhere else, and
                   splitting it across spans without one renders "TemplixAI". */}
               <span aria-hidden="true">Templix <span className="text-zinc-900 dark:text-white font-extrabold">AI</span></span>
@@ -315,6 +315,7 @@ export default function Footer() {
           >
             <span>© {currentYear} Templix AI. Designed with</span>
             <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline-block shrink-0 mx-0.5" role="img" aria-label="love" />
+            <span className="sr-only">♥</span>
             <span>for frictionless drafting.</span>
           </div>
 

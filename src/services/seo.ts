@@ -172,6 +172,7 @@ export class SEOEngine {
       twitter: {
         card: "summary_large_image",
         site: "@templix_ai",
+        creator: "@templix_ai",
         title: fullTitle,
         description: data.description,
         images: [ogImage],

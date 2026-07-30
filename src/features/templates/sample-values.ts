@@ -2080,6 +2080,39 @@ export const SLUG_EXTRA_DEFAULTS: Record<string, Record<string, string>> = {
 };
 
 const OVERRIDES: Record<string, Record<string, string>> = {
+  "invoice-contractor": {
+    laborCost: "$8,400.00",
+    materialCost: "$8,500.00",
+    equipmentCost: "$1,200.00",
+    subtotal: "$18,100.00",
+    total: "$18,100.00",
+    amountDue: "$18,100.00",
+  },
+  "invoice-graphic-designer": {
+    designFee: "$3,200.00",
+    additionalCharges: "$400.00",
+    subtotal: "$3,600.00",
+    total: "$3,600.00",
+    amountDue: "$3,600.00",
+  },
+  "invoice-plumbing": {
+    partsCost: "$285.00",
+    laborCost: "$940.00",
+    subtotal: "$1,225.00",
+    total: "$1,225.00",
+    amountDue: "$1,225.00",
+  },
+  "invoice-milestone": {
+    subtotal: "$8,000.00",
+    taxAmount: "$640.00",
+    total: "$8,640.00",
+    amountDue: "$8,640.00",
+  },
+  "freelance-agreement": {
+    freelancerAddress: "234 Business Way, New York, NY 10001",
+    freelancerName: "Carter Creative Studio",
+    businessName: "Carter Creative Studio",
+  },
   "invoice-catering": {
     guestCount: "120"
   },

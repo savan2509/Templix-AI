@@ -76,6 +76,7 @@ export const organizationSchema = {
     "@type": "Offer",
     price: "0.00",
     priceCurrency: "USD",
+    priceValidUntil: "2030-12-31",
     description: "Free professional document templates — no sign-up required",
   },
   aggregateRating: {

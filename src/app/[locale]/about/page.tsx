@@ -91,49 +91,51 @@ export default async function AboutPage({ params }: PageProps) {
 
         {/* Editorial & Compliance Standards */}
         <div id="editorial-board">
-          <Section heading="Editorial Board & Security Compliance">
-            <p className="mb-4">
-              Every template blueprint and article published on Templix AI is subject to strict peer review by certified domain specialists:
-            </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose mb-6">
-            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
-              <div>
-                <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Victoria Hayes, JD</h4>
-                <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">Legal & Contract Advisory</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">E-SIGN Act (15 U.S.C. ch. 96) & commercial agreement models.</p>
+          <div id="editorial-standards">
+            <Section heading="Editorial & Security Standards">
+              <p className="mb-4">
+                Templix AI is built on a foundation of privacy-first engineering, rigorous formatting standards, and legal document clarity:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose mb-6">
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Legal Structure Alignment</h4>
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">E-SIGN Act & Contract Standards</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Our blueprints follow commercial agreement conventions and E-SIGN Act compliance guidelines for binding digital execution.</p>
+                  </div>
+                  <div className="pt-3">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[10px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50">
+                      Verified Document Structure
+                    </span>
+                  </div>
+                </div>
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Privacy-First Architecture</h4>
+                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Client-Side Processing & 256-bit TLS</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">All document text compilation occurs locally in your browser over encrypted TLS connections with zero remote document retention.</p>
+                  </div>
+                  <div className="pt-3">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50">
+                      Browser-Local Execution
+                    </span>
+                  </div>
+                </div>
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">ATS & Parsing Quality</h4>
+                    <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">HRXML & Parser Friendly</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Resume templates adhere to standard heading hierarchies and clean layout trees so automated ATS screeners index your credentials without errors.</p>
+                  </div>
+                  <div className="pt-3">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-violet-50 dark:bg-violet-950/60 text-[10px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50">
+                      ATS Verified Blueprints
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="pt-3">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[10px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50">
-                  Verified Legal Advisor
-                </span>
-              </div>
-            </div>
-            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
-              <div>
-                <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Marcus Vance, CISSP</h4>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Security & Privacy Audit</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ISO 27001 controls, SOC2 compliance & zero client data logging.</p>
-              </div>
-              <div className="pt-3">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50">
-                  Certified Security Auditor
-                </span>
-              </div>
-            </div>
-            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 bg-zinc-50/50 dark:bg-zinc-900/50 flex flex-col justify-between">
-              <div>
-                <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Elena Rostova, SHRM-SCP</h4>
-                <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">HR & ATS Parser Specialist</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">HR Open Standards &amp; HRXML resume parsing rules &amp; corporate HR compliance.</p>
-              </div>
-              <div className="pt-3">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-violet-50 dark:bg-violet-950/60 text-[10px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50">
-                  HR & ATS Specialist
-                </span>
-              </div>
-            </div>
+            </Section>
           </div>
-        </Section>
         </div>
 
         <Section heading={t.getStartedHeading}>

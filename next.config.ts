@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
   // ── Images ──────────────────────────────────────────────────────────────────
   // Allow images served from Templix AI CDN and other trusted sources.
   images: {
+    qualities: [55, 75],
     remotePatterns: [
       {
         protocol: "https",

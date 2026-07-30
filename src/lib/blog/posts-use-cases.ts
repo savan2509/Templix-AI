@@ -1,4 +1,4 @@
-﻿import type { BlogPost } from "../blog-data";
+import type { BlogPost } from "../blog-data";
 
 export const useCasePosts: BlogPost[] = [
   // 1. Resume Builder for Freshers
@@ -13,8 +13,8 @@ export const useCasePosts: BlogPost[] = [
     tags: ["resume builder for freshers", "ATS resume builder", "fresher resume template", "AI resume builder", "student resume maker", "free resume builder"],
     keywords: ["resume builder for freshers", "ATS resume builder", "fresher resume template", "AI resume builder", "student resume maker", "free resume builder"],
     readTime: 10,
-    publishedAt: "2026-07-27",
-    updatedAt: "2026-07-27",
+    publishedAt: "2026-06-10",
+    updatedAt: "2026-06-10",
     image: "/blog/blog-resume-builder-for-freshers.jpg",
     content: `
 <h2>Why Freshers Need an ATS-Friendly Resume</h2>
@@ -46,8 +46,8 @@ export const useCasePosts: BlogPost[] = [
     tags: ["resume builder for software engineers", "software engineer resume", "developer resume template", "tech resume builder", "ATS CV builder", "engineering resume"],
     keywords: ["resume builder for software engineers", "software engineer resume", "developer resume template", "tech resume builder", "ATS CV builder", "engineering resume"],
     readTime: 11,
-    publishedAt: "2026-07-27",
-    updatedAt: "2026-07-27",
+    publishedAt: "2026-06-15",
+    updatedAt: "2026-06-15",
     image: "/blog/blog-resume-builder-for-software-engineers.jpg",
     content: `
 <h2>Building a Tech-Focused Software Engineering Resume</h2>
