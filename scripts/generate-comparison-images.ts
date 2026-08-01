@@ -3,6 +3,7 @@ import path from "path";
 import sharp from "sharp";
 import { comparisonPosts } from "../src/lib/blog/posts-comparisons";
 
+const PUBLIC_COMPARE_DIR = path.join(process.cwd(), "public", "compare");
 const PUBLIC_BLOG_DIR = path.join(process.cwd(), "public", "blog");
 
 const COMPETITOR_COLORS: Record<string, { bg: string; accent: string }> = {
@@ -57,7 +58,6 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
   const nameEsc = escapeXml(name);
   const catEsc = escapeXml(post.category || "AI Tools");
 
-  // Dynamic visual variance
   const strokeDash = (hash % 10) + 4;
   const opacityVal = 0.15 + ((hash % 20) / 100);
 
@@ -80,21 +80,15 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
     </linearGradient>
   </defs>
 
-  <!-- Left Side Background -->
   <rect width="600" height="675" fill="url(#bgLeft)" />
-
-  <!-- Right Side Background -->
   <rect x="600" width="600" height="675" fill="url(#bgRight)" />
 
-  <!-- Diagonal Dividing Beam -->
   <path d="M560 0 L640 0 L600 675 L520 675 Z" fill="#3b82f6" fill-opacity="0.3" />
   <line x1="580" y1="0" x2="540" y2="675" stroke="#38bdf8" stroke-width="3" />
 
-  <!-- Background Geometry -->
   <circle cx="250" cy="337" r="240" fill="none" stroke="#6366f1" stroke-opacity="${opacityVal}" stroke-width="2" stroke-dasharray="${strokeDash} ${strokeDash}" />
   <circle cx="950" cy="337" r="240" fill="none" stroke="${compBrand.accent}" stroke-opacity="${opacityVal}" stroke-width="2" stroke-dasharray="${strokeDash} ${strokeDash}" />
 
-  <!-- Top Category Tag -->
   <g transform="translate(60, 60)">
     <rect width="200" height="38" rx="19" fill="#3b82f6" fill-opacity="0.2" stroke="#60a5fa" stroke-opacity="0.5" stroke-width="1.5" />
     <text x="100" y="24" font-family="sans-serif" font-size="13" font-weight="800" fill="#60a5fa" text-anchor="middle" letter-spacing="1.5">${catEsc.toUpperCase()} DUEL</text>
@@ -105,21 +99,16 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
     <text x="100" y="24" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">2026 COMPARISON</text>
   </g>
 
-  <!-- Left Product Card: Templix AI -->
   <g transform="translate(80, 140)">
     <rect width="420" height="420" rx="24" fill="#ffffff" fill-opacity="0.06" stroke="#3b82f6" stroke-width="2" />
-
-    <!-- Brand Header -->
     <rect x="30" y="30" width="160" height="40" rx="12" fill="#3b82f6" />
     <text x="110" y="56" font-family="sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">Templix AI</text>
 
-    <!-- Winner Crown Badge -->
     <g transform="translate(240, 30)">
       <rect width="150" height="32" rx="16" fill="#10b981" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5" />
       <text x="75" y="21" font-family="sans-serif" font-size="11" font-weight="800" fill="#34d399" text-anchor="middle">★ 100% FREE WINNER</text>
     </g>
 
-    <!-- Checklist -->
     <g transform="translate(30, 110)">
       <text x="0" y="30" font-family="sans-serif" font-size="16" font-weight="800" fill="#38bdf8">✓ Zero Subscription / 100% Free</text>
       <text x="0" y="80" font-family="sans-serif" font-size="16" font-weight="800" fill="#38bdf8">✓ Automatic Subtotal &amp; Tax Engine</text>
@@ -129,21 +118,16 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
     </g>
   </g>
 
-  <!-- Center VS Emblem -->
   <g transform="translate(600, 337)">
     <circle cx="0" cy="0" r="50" fill="#0f172a" stroke="url(#vsRingGrad)" stroke-width="4" />
     <text x="0" y="10" font-family="sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">VS</text>
   </g>
 
-  <!-- Right Product Card: Competitor -->
   <g transform="translate(700, 140)">
     <rect width="420" height="420" rx="24" fill="#ffffff" fill-opacity="0.04" stroke="${compBrand.accent}" stroke-opacity="0.4" stroke-width="1.5" />
-
-    <!-- Brand Header -->
     <rect x="30" y="30" width="180" height="40" rx="12" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1" />
     <text x="120" y="56" font-family="sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">${nameEsc}</text>
 
-    <!-- Checklist -->
     <g transform="translate(30, 110)">
       <text x="0" y="30" font-family="sans-serif" font-size="16" font-weight="600" fill="#cbd5e1">→ General Workspace / Software</text>
       <text x="0" y="80" font-family="sans-serif" font-size="16" font-weight="600" fill="#cbd5e1">→ Monthly Paid Subscription Fee</text>
@@ -153,7 +137,6 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
     </g>
   </g>
 
-  <!-- Footer Brand Bar -->
   <g transform="translate(600, 620)">
     <text x="0" y="0" font-family="sans-serif" font-size="13" font-weight="800" fill="#94a3b8" text-anchor="middle" letter-spacing="1">TEMPLIX-AI.WHITESPARKSOFT.COM</text>
   </g>
@@ -161,7 +144,10 @@ function renderComparisonSvg(post: { slug: string; name?: string; category: stri
 }
 
 async function main() {
-  console.log(`🚀 Generating 100% unique & distinct comparison images for all ${comparisonPosts.length} comparison posts...`);
+  console.log(`🚀 Generating comparison images for all ${comparisonPosts.length} posts...`);
+  if (!fs.existsSync(PUBLIC_COMPARE_DIR)) {
+    fs.mkdirSync(PUBLIC_COMPARE_DIR, { recursive: true });
+  }
   if (!fs.existsSync(PUBLIC_BLOG_DIR)) {
     fs.mkdirSync(PUBLIC_BLOG_DIR, { recursive: true });
   }
@@ -169,15 +155,20 @@ async function main() {
   let count = 0;
   for (const post of comparisonPosts) {
     const svgContent = renderComparisonSvg(post);
-    const outPath = path.join(PUBLIC_BLOG_DIR, `blog-${post.slug}.jpg`);
-    await sharp(Buffer.from(svgContent)).jpeg({ quality: 90 }).toFile(outPath);
+    const comparePath = path.join(PUBLIC_COMPARE_DIR, `compare-${post.slug}.jpg`);
+    const blogPath = path.join(PUBLIC_BLOG_DIR, `blog-${post.slug}.jpg`);
+    
+    const buffer = await sharp(Buffer.from(svgContent)).jpeg({ quality: 90 }).toBuffer();
+    fs.writeFileSync(comparePath, buffer);
+    fs.writeFileSync(blogPath, buffer);
+
     count++;
-    if (count % 10 === 0 || count === comparisonPosts.length) {
-      console.log(`✅ Generated ${count}/${comparisonPosts.length} distinct comparison images...`);
+    if (count % 20 === 0 || count === comparisonPosts.length) {
+      console.log(`✅ Generated ${count}/${comparisonPosts.length} comparison artwork files...`);
     }
   }
 
-  console.log(`🎉 All ${comparisonPosts.length} distinct comparison images successfully generated!`);
+  console.log(`🎉 All ${comparisonPosts.length} distinct comparison artwork images written to public/compare/ and public/blog/!`);
 }
 
 main().catch((err) => {

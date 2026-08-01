@@ -256,10 +256,12 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   if (layout === 1) {
     return (
       <div className="bg-white text-zinc-800 font-sans flex min-h-full w-full">
-        <div className="w-1/3 shrink-0 px-5 py-8 text-white flex flex-col" style={{ background: grad }}>
-          <div className="text-lg sm:text-2xl font-black leading-tight tracking-tight">{companyLine}</div>
-          <div className="mt-3 h-1 w-10 rounded bg-white/70" />
-          <div className="mt-auto pt-8 space-y-1 text-[11px] text-white/85">
+        <div className="w-1/3 shrink-0 px-5 py-8 text-white flex flex-col justify-between" style={{ background: grad }}>
+          <div className="space-y-2">
+            <div className="text-lg sm:text-2xl font-black leading-tight tracking-tight">{companyLine}</div>
+            <div className="h-1 w-10 rounded bg-white/70" />
+          </div>
+          <div className="pt-6 space-y-1 text-[11px] text-white/85">
             <div>{addressLine}</div>
             <div>{emailLine}</div>
             <div>{phoneLine}</div>

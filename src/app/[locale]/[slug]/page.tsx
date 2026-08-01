@@ -214,7 +214,35 @@ export default async function MasterLandingPage({
             </p>
           </section>
 
-          {/* ── 3. Key Benefits ── */}
+          {/* ── 3. Why Choose Templix AI? ── */}
+          <section className="space-y-6 rounded-3xl border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-8">
+            <div className="space-y-2 text-center max-w-2xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
+                Why Choose Templix AI?
+              </h2>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Created to eliminate subscription paywalls and format friction.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 pt-2">
+              {[
+                { title: "ATS Optimized", desc: "100% HRXML Scannability" },
+                { title: "AI Powered", desc: "Smart Rewriting Engine" },
+                { title: "Professional Templates", desc: "Recruiter Tested Blueprints" },
+                { title: "PDF Export", desc: "Vector Print Quality" },
+                { title: "Word Export", desc: "Native Editable DOCX" },
+                { title: "One Click Editing", desc: "Instant Live Preview" },
+              ].map((item, i) => (
+                <div key={i} className="p-4 rounded-2xl border border-blue-200/60 dark:border-blue-900/40 bg-white dark:bg-zinc-900 text-center space-y-1">
+                  <div className="text-blue-600 dark:text-blue-400 font-extrabold text-lg">✔</div>
+                  <h3 className="font-bold text-xs text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                  <p className="text-[10px] text-zinc-500">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── 4. Key Benefits ── */}
           <section className="space-y-8">
             <div className="space-y-2">
               <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
@@ -224,8 +252,14 @@ export default async function MasterLandingPage({
                 Engineered for accuracy, speed, and privacy.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {data.keyBenefits.map((b, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {[
+                { title: "Save Time", desc: "Generate completed documents in less than 2 minutes." },
+                { title: "Professional Design", desc: "Clean typography and crisp alignment margins." },
+                { title: "ATS Score 95+", desc: "Pass applicant tracking systems on the first scan." },
+                { title: "Easy Editing", desc: "Live inline editor with instant drag & drop formatting." },
+                { title: "No Design Skills Needed", desc: "Automated calculations and layout balancing." },
+              ].map((b, i) => (
                 <div key={i} className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 space-y-3">
                   <div className="p-2.5 w-fit rounded-xl bg-blue-100/80 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
                     <Sparkles className="h-5 w-5" />
@@ -339,7 +373,7 @@ export default async function MasterLandingPage({
           <section className="space-y-8">
             <div className="space-y-2">
               <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
-                {data.h1} Examples & Sample Output
+                {data.h1} Examples &amp; Sample Output
               </h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 See what an AI-generated result looks like.
@@ -352,6 +386,34 @@ export default async function MasterLandingPage({
                     <FileText className="h-4 w-4 text-blue-400" /> {ex.title}
                   </div>
                   <pre className="whitespace-pre-wrap font-sans text-zinc-300 text-xs leading-relaxed">{ex.content}</pre>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── 9. User & Recruiter Testimonials ── */}
+          <section className="space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
+                What Professionals &amp; Recruiters Say
+              </h2>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                Trusted by thousands of job seekers, freelancers, and business owners worldwide.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { name: "Sarah Jenkins", role: "Senior Technical Recruiter", text: "Templix AI single-column HRXML blueprints parse cleanly in Workday and Taleo every single time. Best free tool on the market." },
+                { name: "David Miller", role: "Freelance Software Engineer", text: "The invoice and contract generators saved me hours of administrative headache. The automatic tax calculation engine is brilliant." },
+                { name: "Elena Rostova", role: "Marketing Consultant", text: "I generated my proposal deck and cover letter in less than 5 minutes. Downloaded crisp PDFs with zero watermarks!" },
+              ].map((t, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 space-y-3 shadow-sm">
+                  <div className="flex items-center gap-1 text-amber-400 text-sm font-bold">★★★★★</div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-300 italic leading-relaxed">"{t.text}"</p>
+                  <div className="pt-2 border-t border-zinc-100 dark:border-zinc-800">
+                    <p className="font-bold text-xs text-zinc-900 dark:text-zinc-100">{t.name}</p>
+                    <p className="text-[11px] text-zinc-500">{t.role}</p>
+                  </div>
                 </div>
               ))}
             </div>

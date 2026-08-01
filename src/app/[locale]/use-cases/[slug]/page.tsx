@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
-import { getUseCaseBySlug, build11SectionHtml, ALL_USE_CASE_SLUGS, type UseCaseData } from "@/lib/use-case-data";
+import { getUseCaseBySlug, build14SectionHtml, ALL_USE_CASE_SLUGS, type UseCaseData } from "@/lib/use-case-data";
 import { ArrowLeft, Clock, Sparkles, CheckCircle2, Home, ArrowRight, Layers } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -90,7 +90,7 @@ export default async function UseCasePage({
     notFound();
   }
 
-  const htmlContent = build11SectionHtml(useCase);
+  const htmlContent = build14SectionHtml(useCase);
   const canonicalUrl = `${siteConfig.url}/${locale}/use-cases/${slug}`;
   const parentHub = getHubLandingPage(useCase);
 

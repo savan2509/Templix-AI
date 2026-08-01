@@ -1,53 +1,33 @@
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
 
-// Card cover = a framed, scaled snapshot of the real live document preview, so
-// the "first view" matches the detail page for every module.
-//
-// Both table-based (invoices) and text-only (resumes) documents use a
-// 150%/scale(0.667) zoom so the content fills the card height without any
-// blank whitespace at the bottom. Content selection is smart per doc type.
-
 /**
- * Smart block selection for the thumbnail preview.
+ * Block selection for card thumbnail preview.
  *
- * For table-based documents (invoices, quotations):
- *   1. Find the first "table" block.
- *   2. Keep up to MAX_LEAD blocks before it (letterhead / meta context).
- *   3. Include the table trimmed to MAX_TABLE_ROWS data rows.
- *   4. Include up to MAX_TRAIL blocks AFTER the table (subtotal, tax, total,
- *      payment lines) so the lower card area is filled, not blank.
+ * For invoice/quotation documents:
+ *   - Include lead blocks + table + subtotal & total blocks.
  *
- * For text-only documents (resumes, letters, contracts):
- *   - Return all blocks up to MAX_TEXT_BLOCKS so the card fills with content.
- *     bulletList items are individually capped so no single section
- *     dominates the preview — each list is trimmed to LIST_ITEM_CAP items.
+ * For ALL other documents (business plans, reports, proposals, contracts, resumes, letters):
+ *   - Return ALL content blocks (up to 60 blocks) so the live document layout
+ *     flows continuously from top to bottom, filling 100% of the thumbnail card
+ *     height without any blank whitespace gap at the bottom!
  */
-function selectThumbnailBlocks(blocks: any[]): any[] {
-  const MAX_LEAD        = 3;  // lead blocks shown before the table
-  const MAX_TRAIL       = 2;  // trailing blocks shown after the table
-  const MAX_TEXT_BLOCKS = 25; // total top-level blocks for text documents
-  const LIST_ITEM_CAP   = 4;  // max bullet/ordered list items per list block
+function selectThumbnailBlocks(blocks: any[], categorySlug?: string): any[] {
+  const MAX_TEXT_BLOCKS = 60; // Include all top-level blocks to fill the full card height
+  const LIST_ITEM_CAP   = 5;  // max list items per list block
 
   const tableIdx = blocks.findIndex((b: any) => b.type === "table");
 
-  // ── Table document (invoices, quotations, etc.) ──────────────────────────
-  if (tableIdx !== -1) {
+  if ((categorySlug === "invoices" || categorySlug === "quotations") && tableIdx !== -1 && tableIdx <= 3) {
+    const MAX_LEAD  = 3;
+    const MAX_TRAIL = 4;
     const leadStart  = Math.max(0, tableIdx - MAX_LEAD);
     const leadBlocks = blocks.slice(leadStart, tableIdx);
-    // Keep EVERY line-item row. Dropping rows while still rendering the
-    // trailing "Subtotal / Total" lines made the visible arithmetic wrong
-    // (e.g. 3 rows summing to $4,000 under a $4,250 subtotal). The card crops
-    // with a fade, so any overflow is hidden rather than contradictory.
     const tableBlock = blocks[tableIdx];
-    // Include trailing blocks after the table (subtotal, tax, total, payment)
-    // — these fill the lower portion of the card so no blank space appears.
     const trailBlocks = blocks.slice(tableIdx + 1, tableIdx + 1 + MAX_TRAIL);
     return [...leadBlocks, tableBlock, ...trailBlocks];
   }
 
-  // ── Text-only document (resumes, letters, contracts, etc.) ───────────────
-  // Show more blocks but cap each list so one section can't eat the card.
   return blocks.slice(0, MAX_TEXT_BLOCKS).map((block: any) => {
     if (
       (block.type === "bulletList" || block.type === "orderedList") &&
@@ -62,13 +42,9 @@ function selectThumbnailBlocks(blocks: any[]): any[] {
 
 export default function TemplateThumbnail({ template }: { template: any }) {
   const allBlocks: any[] = template?.content?.editorState?.content ?? [];
-  const thumbnailBlocks = selectThumbnailBlocks(allBlocks);
+  const categorySlug = template?.categorySlug ?? "";
+  const thumbnailBlocks = selectThumbnailBlocks(allBlocks, categorySlug);
 
-  // Resolve sample values from the FULL document, not the truncated thumbnail
-  // blocks — otherwise invoice subtotal/total would be recomputed from the 3
-  // visible rows and the card would disagree with the detail page (e.g. card
-  // $4,320 vs detail $4,590). Passing these as the `values` prop keeps the
-  // letterhead brand and every total identical to the live preview.
   const values = getTemplateValues(template);
 
   const truncatedTemplate = {
@@ -82,23 +58,17 @@ export default function TemplateThumbnail({ template }: { template: any }) {
     } : undefined,
   };
 
-  // Both doc types use 150% width + scale(0.667): tight enough to fill the
-  // card height with real content, avoiding blank space at the bottom.
-
   return (
-    // Decorative snapshot filled with sample data — hide it from the a11y tree
-    // so screen readers don't announce dummy names/figures; the card's real
-    // linked heading conveys the template. (The card link carries the true label.)
-    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 p-0 overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 bg-white dark:bg-zinc-900 p-0 overflow-hidden" aria-hidden="true">
       <div className="relative h-full w-full overflow-hidden bg-white">
         <div
-          className="origin-top-left pointer-events-none min-h-[150%] bg-white w-full"
-          style={{ width: "150%", minHeight: "150%", transform: "scale(0.667)" }}
+          className="origin-top-left pointer-events-none min-h-[140%] bg-white w-full"
+          style={{ width: "135%", minHeight: "140%", transform: "scale(0.741)" }}
         >
           <DocumentPaper template={truncatedTemplate} values={values} />
         </div>
-        {/* soft fade so cropped content tapers off gracefully */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        {/* Soft bottom gradient fade so document gracefully tapers off into the card border */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-zinc-900 dark:via-zinc-900/80" />
       </div>
     </div>
   );

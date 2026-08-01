@@ -522,31 +522,36 @@ export function getUseCaseBySlug(slug: string): UseCaseData | undefined {
   };
 }
 
-export function build11SectionHtml(uc: UseCaseData): string {
+export function build14SectionHtml(uc: UseCaseData): string {
+  const isResume = uc.slug.includes("resume") || uc.category === "Resumes";
+  const isInvoice = uc.slug.includes("invoice") || uc.category === "Invoices";
+
   return `
 <h2>1. Introduction</h2>
-<p>${uc.solution}</p>
+<p>${uc.description} ${uc.solution}</p>
 
 <h2>2. Who Is This Page For?</h2>
+<p>This specialized tool and guide is built specifically for:</p>
 <ul>
-  ${uc.whoFor.map((w) => `<li>${w}</li>`).join("\n")}
+  ${uc.whoFor.map((w) => `<li><strong>${w}</strong></li>`).join("\n")}
 </ul>
 
-<h2>3. Common Challenges</h2>
+<h2>3. Common Problems &amp; Pain Points</h2>
+<p>Users in this field frequently encounter the following obstacles when creating documents manually:</p>
 <ul>
   ${uc.challenges.map((c) => `<li>${c}</li>`).join("\n")}
 </ul>
 
-<h2>4. How Templix AI Solves Them</h2>
-<p>${uc.solution}</p>
-
-<h2>5. Key Features</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose my-4">
+<h2>4. How Templix AI Solves These Problems</h2>
+<p>Templix AI eliminates these friction points through automated smart layouts and AI writing support:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose my-6">
   ${uc.features
     .map(
       (f) => `
     <div class="border rounded-xl p-4 bg-zinc-50 dark:bg-zinc-900/50">
-      <p class="font-bold text-sm text-zinc-900 dark:text-white">${f.title}</p>
+      <p class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+        <span class="text-blue-500">✔</span> ${f.title}
+      </p>
       <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">${f.desc}</p>
     </div>
   `
@@ -554,21 +559,54 @@ export function build11SectionHtml(uc: UseCaseData): string {
     .join("\n")}
 </div>
 
-<h2>6. Step-by-Step Guide</h2>
-<ol>
-  ${uc.steps.map((s) => `<li>${s}</li>`).join("\n")}
-</ol>
+<h2>5. Best ${isResume ? "Resume Format (Chronological vs Functional vs Combination)" : isInvoice ? "Invoice Structure & Tax Rules" : "Document Formatting Guidelines"}</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose my-6">
+  <div class="border rounded-xl p-4 bg-white dark:bg-zinc-900">
+    <p class="font-bold text-sm text-blue-600 dark:text-blue-400">Reverse-Chronological</p>
+    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Best for demonstrating steady career growth and recruiter scannability. Preferred by 98% of ATS parsers.</p>
+  </div>
+  <div class="border rounded-xl p-4 bg-white dark:bg-zinc-900">
+    <p class="font-bold text-sm text-emerald-600 dark:text-emerald-400">Functional / Skills-Based</p>
+    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Focuses on technical competencies, capstone repos, and certifications rather than strict employment timelines.</p>
+  </div>
+  <div class="border rounded-xl p-4 bg-white dark:bg-zinc-900">
+    <p class="font-bold text-sm text-indigo-600 dark:text-indigo-400">Hybrid / Combination</p>
+    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Combines prominent skill matrix blocks at the top with chronological project and role experience below.</p>
+  </div>
+</div>
 
-<h2>7. Templates Included</h2>
-<ul>
-  ${uc.templates.map((t) => `<li><strong>${t}</strong></li>`).join("\n")}
-</ul>
-
-<h2>8. Example Documents &amp; Sample Outputs</h2>
+<h2>6. Sample Document Output Preview</h2>
+<p>Below is a pre-formatted example of what your final generated document looks like in Templix AI:</p>
 ${uc.sampleOutput}
 
-<h2>9. Frequently Asked Questions</h2>
-<div class="space-y-4 not-prose my-4">
+<h2>7. Pre-Formatted Templates Included</h2>
+<p>Start customizing immediately with these pre-configured blueprints:</p>
+<ul>
+  ${uc.templates.map((t) => `<li><strong>${t}</strong> — Clean, recruiter-tested layout.</li>`).join("\n")}
+</ul>
+
+<h2>8. How to Create Your Document in 4 Easy Steps</h2>
+<ol>
+  ${uc.steps.map((s, idx) => `<li><strong>Step ${idx + 1}:</strong> ${s}</li>`).join("\n")}
+</ol>
+
+<h2>9. Pro Tips for Maximum Success</h2>
+<ul>
+  <li><strong>Keep It Concise:</strong> Limit entry-level and student resumes to exactly 1 page.</li>
+  <li><strong>Quantify Achievements:</strong> Use metrics and percentages (e.g. "Improved page speed by 35%").</li>
+  <li><strong>Use ATS Fonts:</strong> Stick to standard web typography like Inter, Arial, Calibri, or Roboto.</li>
+  <li><strong>Include Keywords:</strong> Match exact skill terms listed in the job description or client contract.</li>
+</ul>
+
+<h2>10. Common Mistakes to Avoid</h2>
+<ul>
+  <li><strong>Grammar &amp; Spelling Errors:</strong> Always proofread your text or use AI automated polish.</li>
+  <li><strong>Unprofessional Photos:</strong> Avoid headshots unless explicitly required in specific European regions.</li>
+  <li><strong>Wrong File Format:</strong> Always send clean PDF files to preserve exact font rendering and layout margins.</li>
+</ul>
+
+<h2>11. Frequently Asked Questions</h2>
+<div class="space-y-4 not-prose my-6">
   ${uc.faqs
     .map(
       (f) => `
@@ -581,20 +619,32 @@ ${uc.sampleOutput}
     .join("\n")}
 </div>
 
-<h2>10. Related AI Tools &amp; Comparisons</h2>
+<h2>12. Related Articles &amp; Helpful Guides</h2>
 <ul class="space-y-1 text-sm">
   ${uc.relatedLinks
-    .map((l) => `<li><a href="${l.href}">${l.title}</a></li>`)
+    .slice(0, 5)
+    .map((l) => `<li><a href="${l.href}" class="text-blue-600 dark:text-blue-400 hover:underline">${l.title}</a></li>`)
     .join("\n")}
 </ul>
 
-<h2>11. Get Started with Templix AI Today</h2>
-<div class="text-center py-6 bg-emerald-500/10 rounded-2xl not-prose my-6 border border-emerald-500/20">
-  <p class="font-bold text-lg text-zinc-900 dark:text-white mb-2">Ready to create your ${uc.title}?</p>
-  <p class="text-xs text-zinc-600 dark:text-zinc-400 mb-4">No sign-up or credit card required. 100% free PDF export.</p>
-  <a href="/en/editor/new" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-colors">
-    Create Free Document Now →
-  </a>
+<h2>13. Software Comparisons</h2>
+<ul class="space-y-1 text-sm">
+  ${uc.relatedLinks
+    .slice(5)
+    .map((l) => `<li><a href="${l.href}" class="text-indigo-600 dark:text-indigo-400 hover:underline">${l.title}</a></li>`)
+    .join("\n")}
+</ul>
+
+<h2>14. Get Started with Templix AI Today</h2>
+<div class="text-center py-8 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl not-prose my-8 shadow-lg space-y-3">
+  <p class="font-extrabold text-xl sm:text-2xl">Create Your Free ${uc.title} Now</p>
+  <p class="text-xs sm:text-sm text-blue-100 max-w-lg mx-auto">No account registration required. 100% free instant PDF &amp; Word exports with zero watermarks.</p>
+  <div class="pt-2">
+    <a href="/en/editor/new" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-blue-600 hover:bg-blue-50 font-bold text-sm shadow-md transition-all">
+      Start Building Now →
+    </a>
+  </div>
 </div>
   `;
 }
+
