@@ -2110,7 +2110,7 @@ const OVERRIDES: Record<string, Record<string, string>> = {
   },
   "freelance-agreement": {
     freelancerAddress: "234 Business Way, New York, NY 10001",
-    freelancerName: "Carter Creative Studio",
+    freelancerName: "Alex Carter",
     businessName: "Carter Creative Studio",
   },
   "invoice-catering": {

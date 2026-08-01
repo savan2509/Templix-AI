@@ -8,6 +8,7 @@ import { useTheme } from "@/providers/theme-provider";
 import { SUPPORTED_LOCALES } from "@/constants";
 import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
+import { logoAlt } from "@/lib/image-alt";
 import { TOOL_CATEGORIES, toolsByCategory } from "@/data/tools";
 import type { User } from "@supabase/supabase-js";
 import {
@@ -223,11 +224,10 @@ export default function Navbar() {
               href={`/${currentLocale}`}
               className="group flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
             >
-              {/* Theme-aware logo: light mark in light mode, dark mark in dark
-                  mode. Swapped via CSS `dark:` so there's no hydration flicker. */}
+              {/* Theme-aware logo: light mark in light mode, dark mark in dark mode */}
               <Image
                 src="/Templix-ai-light.png"
-                alt="Templix AI Logo"
+                alt={logoAlt("light")}
                 title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}
@@ -237,8 +237,7 @@ export default function Navbar() {
               />
               <Image
                 src="/Templix-ai-dark.png"
-                alt=""
-                aria-hidden="true"
+                alt={logoAlt("dark")}
                 title="Templix AI — Free Professional Document Editor Logo"
                 width={56}
                 height={56}

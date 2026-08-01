@@ -141,6 +141,9 @@ for (const t of allFallbackTemplates) {
 
   // D. Identity — header brand/persona must appear in the body.
   const brand = getTemplateBrand(t);
+  if (values.freelancerName && values.businessName && values.freelancerName === values.businessName) {
+    add(slug, "IDENTITY", `freelancerName "${values.freelancerName}" is identical to businessName "${values.businessName}"`);
+  }
   if (brand && t.categorySlug === "resumes") {
     const name = values.fullName || brand;
     if (name && !text.includes(name)) {

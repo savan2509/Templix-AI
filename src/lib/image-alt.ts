@@ -83,5 +83,7 @@ export function generateToolAlt(toolName: string): string {
  * Generates alt for the site logo in navbar / footer.
  */
 export function logoAlt(mode: "light" | "dark" = "light"): string {
-  return `Templix AI logo (${mode} mode) — free professional document templates`;
+  return mode === "dark"
+    ? "Templix AI — Free Professional Document Editor Logo (Dark Mode)"
+    : "Templix AI — Free Professional Document Editor Logo";
 }
