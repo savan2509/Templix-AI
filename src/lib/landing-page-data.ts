@@ -28,15 +28,15 @@ export interface LandingPageData {
 
 // ── Shared Helper Link Bundles ───────────────────────────────────────────────
 const COMMON_COMPARISONS = [
-  { title: "Templix AI vs Zety", href: "/blog/templix-ai-vs-zety" },
-  { title: "Templix AI vs Resume.io", href: "/blog/templix-ai-vs-resume-io" },
-  { title: "Templix AI vs Enhancv", href: "/blog/templix-ai-vs-enhancv" },
-  { title: "Templix AI vs Novorésumé", href: "/blog/templix-ai-vs-novoresume" },
-  { title: "Templix AI vs Kickresume", href: "/blog/templix-ai-vs-kickresume" },
-  { title: "Templix AI vs ChatGPT for Documents", href: "/blog/templix-ai-vs-chatgpt" },
-  { title: "Templix AI vs Canva Docs", href: "/blog/templix-ai-vs-canva-docs" },
-  { title: "Templix AI vs Google Docs", href: "/blog/templix-ai-vs-google-docs" },
-  { title: "Templix AI vs Smallpdf", href: "/blog/templix-ai-vs-smallpdf" },
+  { title: "Templix AI vs Zety", href: "/compare/templix-ai-vs-zety" },
+  { title: "Templix AI vs Resume.io", href: "/compare/templix-ai-vs-resume-io" },
+  { title: "Templix AI vs Enhancv", href: "/compare/templix-ai-vs-enhancv" },
+  { title: "Templix AI vs Novorésumé", href: "/compare/templix-ai-vs-novoresume" },
+  { title: "Templix AI vs Kickresume", href: "/compare/templix-ai-vs-kickresume" },
+  { title: "Templix AI vs ChatGPT for Documents", href: "/compare/templix-ai-vs-chatgpt" },
+  { title: "Templix AI vs Canva Docs", href: "/compare/templix-ai-vs-canva-docs" },
+  { title: "Templix AI vs Google Docs", href: "/compare/templix-ai-vs-google-docs" },
+  { title: "Templix AI vs Smallpdf", href: "/compare/templix-ai-vs-smallpdf" },
   { title: "PDF vs Word: Which Format to Send", href: "/blog/pdf-vs-word-which-format" },
 ];
 

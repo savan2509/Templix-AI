@@ -192,14 +192,14 @@ function getCategoryInternalLinks(cat: string) {
         { text: "AI Resume Builder", href: "/ai-resume-builder" },
         { text: "ATS Resume Checker", href: "/ats-resume-checker" },
         { text: "Resume Templates Hub", href: "/resume-templates" },
-        { text: "Templix AI vs Zety", href: "/blog/templix-ai-vs-zety" }
+        { text: "Templix AI vs Zety", href: "/compare/templix-ai-vs-zety" }
       ];
     case "invoices":
       return [
         { text: "AI Invoice Generator", href: "/ai-invoice-generator" },
         { text: "GST Invoice Generator", href: "/gst-invoice-generator" },
         { text: "Invoice Templates Hub", href: "/invoice-templates" },
-        { text: "Templix AI vs Canva", href: "/blog/templix-ai-vs-canva" }
+        { text: "Templix AI vs Canva", href: "/compare/templix-ai-vs-canva" }
       ];
     case "cover-letters":
       return [
@@ -211,7 +211,7 @@ function getCategoryInternalLinks(cat: string) {
       return [
         { text: "Business Proposal Generator", href: "/business-proposal-generator" },
         { text: "Proposal Templates Hub", href: "/templates/proposals" },
-        { text: "Templix AI vs Notion", href: "/blog/templix-ai-vs-notion" }
+        { text: "Templix AI vs Notion", href: "/compare/templix-ai-vs-notion" }
       ];
     case "contracts":
       return [
@@ -229,13 +229,13 @@ function getCategoryInternalLinks(cat: string) {
       return [
         { text: "Free PDF to Word Converter", href: "/tools/pdf-to-word" },
         { text: "AI PDF Summarizer", href: "/tools/pdf-summarizer" },
-        { text: "Templix AI vs Adobe Acrobat", href: "/blog/templix-ai-vs-adobe-acrobat" }
+        { text: "Templix AI vs Adobe Acrobat", href: "/compare/templix-ai-vs-adobe-acrobat" }
       ];
     default:
       return [
         { text: "AI Document Tools", href: "/tools" },
         { text: "All 30 Master Landing Pages", href: "/use-cases" },
-        { text: "Templix AI vs ChatGPT", href: "/blog/templix-ai-vs-chatgpt" }
+        { text: "Templix AI vs ChatGPT", href: "/compare/templix-ai-vs-chatgpt" }
       ];
   }
 }

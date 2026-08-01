@@ -27,6 +27,7 @@ import {
   Heart,
   LayoutDashboard,
   GitCompare,
+  Users,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -228,7 +229,7 @@ export default function Navbar() {
     { title: "AI Content Generator", slug: "ai-content-generator" },
   ];
   const isLandingPagesActive = masterLandingItems.some((item) => pathname.endsWith(item.slug));
-  const isComparisonsActive = pathname.includes("vs") || pathname.endsWith("/blog");
+  const isComparisonsActive = pathname.startsWith(`/${currentLocale}/compare`);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
@@ -456,13 +457,13 @@ export default function Navbar() {
               {exploreOpen && (
                 <div
                   role="menu"
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-[600px] max-h-[80vh] overflow-y-auto z-50 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in-50 slide-in-from-top-2 duration-200 grid grid-cols-2 gap-6"
+                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-[880px] max-h-[80vh] overflow-y-auto z-50 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in-50 slide-in-from-top-2 duration-200 grid grid-cols-3 gap-6"
                 >
-                  {/* Column 1: 30 SEO Landing Pages */}
+                  {/* Column 1: Landing Pages */}
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
                       <LayoutGrid className="h-4 w-4 text-blue-500 shrink-0" />
-                      <span>30 Landing Pages</span>
+                      <span>Landing Pages</span>
                     </div>
                     <div className="space-y-1">
                       {[
@@ -476,10 +477,6 @@ export default function Navbar() {
                         { title: "AI Business Proposal", slug: "business-proposal-generator" },
                         { title: "AI Contract Generator", slug: "ai-contract-generator" },
                         { title: "NDA Generator", slug: "nda-generator" },
-                        { title: "AI Letter Generator", slug: "ai-letter-generator" },
-                        { title: "AI Email Writer", slug: "ai-email-writer" },
-                        { title: "AI Blog Generator", slug: "ai-blog-generator" },
-                        { title: "AI Content Generator", slug: "ai-content-generator" },
                       ].map((item) => (
                         <Link
                           key={item.slug}
@@ -500,7 +497,45 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  {/* Column 2: Software Comparisons */}
+                  {/* Column 2: Use Cases */}
+                  <div>
+                    <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
+                      <Users className="h-4 w-4 text-emerald-500 shrink-0" />
+                      <span>Use Cases</span>
+                    </div>
+                    <div className="space-y-1">
+                      {[
+                        { title: "Resume Builder for Students", slug: "use-cases/resume-builder-for-students" },
+                        { title: "Resume Builder for Software Engineers", slug: "use-cases/resume-builder-for-software-engineers" },
+                        { title: "Resume Builder for Freshers", slug: "use-cases/resume-builder-for-freshers" },
+                        { title: "Resume Builder for Teachers", slug: "use-cases/resume-builder-for-teachers" },
+                        { title: "Invoice Generator for Freelancers", slug: "use-cases/invoice-generator-for-freelancers" },
+                        { title: "Invoice Generator for Small Business", slug: "use-cases/invoice-generator-for-small-business" },
+                        { title: "Invoice Generator for Consultants", slug: "use-cases/invoice-generator-for-consultants" },
+                        { title: "GST Invoice Generator India", slug: "use-cases/gst-invoice-generator-india" },
+                        { title: "Proposal Generator for Agencies", slug: "use-cases/proposal-generator-for-marketing-agencies" },
+                        { title: "Contract Generator for Freelancers", slug: "use-cases/contract-generator-for-freelancers" },
+                      ].map((item) => (
+                        <Link
+                          key={item.slug}
+                          href={`/${currentLocale}/${item.slug}`}
+                          onClick={() => setExploreOpen(false)}
+                          className="block px-2.5 py-1.5 text-xs font-semibold rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                      <Link
+                        href={`/${currentLocale}/use-cases`}
+                        onClick={() => setExploreOpen(false)}
+                        className="block px-2.5 py-2 text-xs font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline pt-2 border-t border-zinc-100 dark:border-zinc-800"
+                      >
+                        All 93 Use Cases →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Column 3: Software Comparisons */}
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
                       <GitCompare className="h-4 w-4 text-indigo-500 shrink-0" />
@@ -514,14 +549,14 @@ export default function Navbar() {
                         { title: "Templix AI vs Google Docs", slug: "templix-ai-vs-google-docs" },
                         { title: "Templix AI vs Notion AI", slug: "templix-ai-vs-notion-ai" },
                         { title: "Templix AI vs Adobe Express", slug: "templix-ai-vs-adobe-express" },
-                        { title: "Templix AI vs Gamma", slug: "templix-ai-vs-gamma" },
+                        { title: "Templix AI vs Zety", slug: "templix-ai-vs-zety" },
                         { title: "Templix AI vs PandaDoc", slug: "templix-ai-vs-pandadoc" },
                         { title: "Templix AI vs DocuSign", slug: "templix-ai-vs-docusign" },
                         { title: "Templix AI vs GrammarlyGO", slug: "templix-ai-vs-grammarlygo" },
                       ].map((item) => (
                         <Link
                           key={item.slug}
-                          href={`/${currentLocale}/blog/${item.slug}`}
+                          href={`/${currentLocale}/compare/${item.slug}`}
                           onClick={() => setExploreOpen(false)}
                           className="block px-2.5 py-1.5 text-xs font-semibold rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                         >
@@ -529,11 +564,11 @@ export default function Navbar() {
                         </Link>
                       ))}
                       <Link
-                        href={`/${currentLocale}/blog`}
+                        href={`/${currentLocale}/compare`}
                         onClick={() => setExploreOpen(false)}
                         className="block px-2.5 py-2 text-xs font-extrabold text-indigo-600 dark:text-indigo-400 hover:underline pt-2 border-t border-zinc-100 dark:border-zinc-800"
                       >
-                        All 48 Comparisons →
+                        All 86 Comparisons →
                       </Link>
                     </div>
                   </div>
@@ -863,13 +898,14 @@ export default function Navbar() {
               <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileExploreOpen ? "rotate-180" : ""}`} />
             </button>
             {mobileExploreOpen && (
-              <div className="pl-3 space-y-3 pt-1">
+              <div className="pl-3 space-y-4 pt-1">
+                {/* 1. Landing Pages */}
                 <div>
                   <div className="text-[11px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400 px-3.5 py-1">
-                    30 Landing Pages
+                    Landing Pages
                   </div>
                   <div className="space-y-1">
-                    {masterLandingItems.slice(0, 8).map((item) => (
+                    {masterLandingItems.slice(0, 6).map((item) => (
                       <Link
                         key={item.slug}
                         href={`/${currentLocale}/${item.slug}`}
@@ -889,6 +925,39 @@ export default function Navbar() {
                   </div>
                 </div>
 
+                {/* 2. Use Cases */}
+                <div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 px-3.5 py-1">
+                    Use Cases
+                  </div>
+                  <div className="space-y-1">
+                    {[
+                      { title: "For Students", slug: "use-cases/resume-builder-for-students" },
+                      { title: "For Software Engineers", slug: "use-cases/resume-builder-for-software-engineers" },
+                      { title: "For Freelancers", slug: "use-cases/invoice-generator-for-freelancers" },
+                      { title: "For Small Business", slug: "use-cases/invoice-generator-for-small-business" },
+                      { title: "GST Invoice (India)", slug: "use-cases/gst-invoice-generator-india" },
+                    ].map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/${currentLocale}/${item.slug}`}
+                        className="block px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-emerald-600"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                    <Link
+                      href={`/${currentLocale}/use-cases`}
+                      className="block px-3.5 py-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      View All 93 Use Cases →
+                    </Link>
+                  </div>
+                </div>
+
+                {/* 3. Software Comparisons */}
                 <div>
                   <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 px-3.5 py-1">
                     Software Comparisons
@@ -899,11 +968,11 @@ export default function Navbar() {
                       { title: "vs Microsoft 365", slug: "templix-ai-vs-microsoft-365" },
                       { title: "vs ChatGPT", slug: "templix-ai-vs-chatgpt" },
                       { title: "vs Google Docs", slug: "templix-ai-vs-google-docs" },
-                      { title: "vs Notion AI", slug: "templix-ai-vs-notion-ai" },
+                      { title: "vs Zety", slug: "templix-ai-vs-zety" },
                     ].map((item) => (
                       <Link
                         key={item.slug}
-                        href={`/${currentLocale}/blog/${item.slug}`}
+                        href={`/${currentLocale}/compare/${item.slug}`}
                         className="block px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-indigo-600"
                         onClick={() => setMobileMenuOpen(false)}
                       >
@@ -911,11 +980,11 @@ export default function Navbar() {
                       </Link>
                     ))}
                     <Link
-                      href={`/${currentLocale}/blog`}
+                      href={`/${currentLocale}/compare`}
                       className="block px-3.5 py-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      View All 48 Comparisons →
+                      View All 86 Comparisons →
                     </Link>
                   </div>
                 </div>

@@ -3314,7 +3314,7 @@ const COMPARISONS_RAW: CompetitorData[] = [
 function buildStandardContent(comp: CompetitorData): string {
   const otherLinks = COMPARISONS_RAW.filter((c) => c.slug !== comp.slug)
     .slice(0, 4)
-    .map((c) => `<li><a href="/en/blog/${c.slug}">${c.title}</a></li>`)
+    .map((c) => `<li><a href="/en/compare/${c.slug}">${c.title}</a></li>`)
     .join("\n");
 
   return `
@@ -3440,6 +3440,6 @@ export const comparisonPosts: BlogPost[] = COMPARISONS_RAW.map((c, idx) => ({
   readTime: 12,
   publishedAt: "2026-07-26",
   updatedAt: "2026-07-26",
-  image: c.image,
+  image: `/blog/blog-${c.slug}.jpg`,
   content: buildStandardContent(c),
 }));

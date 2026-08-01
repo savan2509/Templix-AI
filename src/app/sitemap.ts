@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { comparisonPosts } from "@/lib/blog/posts-comparisons";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { CATEGORIES } from "@/constants";
 import { ALL_TOOLS } from "@/data/tools";
@@ -59,6 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["", { changeFrequency: "daily", priority: 1.0, images: [`${baseUrl}/og-default.jpg`] }],
     ["/templates", { changeFrequency: "daily", priority: 0.9 }],
     ["/blog", { changeFrequency: "daily", priority: 0.8 }],
+    ["/compare", { changeFrequency: "daily", priority: 0.8 }],
     ["/tools", { changeFrequency: "weekly", priority: 0.7 }],
     ["/use-cases", { changeFrequency: "daily", priority: 0.8 }],
     ["/about", { changeFrequency: "monthly", priority: 0.5 }],
@@ -124,6 +126,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // back to the publish date, and guard against a malformed value.
     ...STATIC_BLOG_POSTS.map((post) =>
       entry(`/blog/${post.slug}`, {
+        lastModified: safeDate(post.updatedAt ?? post.publishedAt),
+        changeFrequency: "monthly",
+        priority: 0.7,
+        images: post.image ? [`${baseUrl}${post.image}`] : undefined,
+      })
+    ),
+
+    // Software Comparison pages — dedicated commercial investigation intent
+    ...comparisonPosts.map((post) =>
+      entry(`/compare/${post.slug}`, {
         lastModified: safeDate(post.updatedAt ?? post.publishedAt),
         changeFrequency: "monthly",
         priority: 0.7,

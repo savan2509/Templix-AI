@@ -4,6 +4,8 @@
 // Newer posts live in ./blog/* modules and are spread into STATIC_BLOG_POSTS at
 // the bottom of this file, so the sitemap/listing keep reading one export.
 // ─────────────────────────────────────────────────────────────────────────────
+import fs from "fs";
+import path from "path";
 import { aiToolsPosts } from "./blog/posts-ai";
 import { contractsPosts } from "./blog/posts-contracts";
 import { proposalsPosts } from "./blog/posts-proposals";
@@ -3320,8 +3322,6 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   // Week 2 — 14 new posts covering payment reminders, business plans,
   // purchase orders, MOU, retainers, termination, SOW and more.
   ...week2Posts,
-  // SEO Comparisons — 28 high-intent comparison articles
-  ...comparisonPosts,
   // Use Case Pages — 10 targeted use case articles
   ...useCasePosts,
   // Batch 4 — 20 targeted SEO blog guides
@@ -3333,14 +3333,17 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
 // Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely
 const CURRENT_DATE = new Date();
 const seenBlogSlugs = new Set<string>();
-export const STATIC_BLOG_POSTS: BlogPost[] = RAW_STATIC_BLOG_POSTS.filter(
-  (p: BlogPost) => {
+export const STATIC_BLOG_POSTS: BlogPost[] = RAW_STATIC_BLOG_POSTS
+  .filter((p: BlogPost) => {
     if (new Date(p.publishedAt) > CURRENT_DATE) return false;
     if (seenBlogSlugs.has(p.slug)) return false;
     seenBlogSlugs.add(p.slug);
     return true;
-  }
-);
+  })
+  .map((p: BlogPost) => ({
+    ...p,
+    image: `/blog/blog-${p.slug}.jpg`,
+  }));
 
 // Helper — get a post by slug
 export function getBlogPost(slug: string): BlogPost | undefined {
@@ -3427,11 +3430,23 @@ const CATEGORY_COVER: Record<string, string> = {
 
 const ULTIMATE_FALLBACK = "/blog/blog-invoice-freelancers.jpg";
 
+const DYNAMIC_BLOG_FILES = (function() {
+  try {
+    const dir = path.join(process.cwd(), "public", "blog");
+    if (fs.existsSync(dir)) {
+      return new Set(fs.readdirSync(dir).map((f) => `/blog/${f}`));
+    }
+  } catch {
+    // fallback if filesystem is unreachable
+  }
+  return new Set<string>();
+})();
+
 /**
  * Returns a guaranteed-existing image path for a raw image path string.
  */
 export function resolveImagePath(imgPath: string, category?: string): string {
-  if (KNOWN_IMAGES.has(imgPath)) return imgPath;
+  if (DYNAMIC_BLOG_FILES.has(imgPath) || KNOWN_IMAGES.has(imgPath)) return imgPath;
   if (category && CATEGORY_COVER[category]) return CATEGORY_COVER[category];
   return ULTIMATE_FALLBACK;
 }

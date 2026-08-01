@@ -129,7 +129,7 @@ export default async function proxy(req: NextRequest) {
   }
 
   const VALID_BARE_ROUTES = [
-    "templates", "blog", "tools", "about", "contact",
+    "templates", "blog", "compare", "tools", "about", "contact",
     "privacy", "terms", "faq", "login", "editor",
     "dashboard", "admin", "confirm", "reset", "auth",
     ...ALL_MASTER_LANDING_SLUGS
@@ -175,6 +175,15 @@ export default async function proxy(req: NextRequest) {
     const cleanQs = cleanSearch(req.nextUrl.searchParams);
     const dest = new URL(cleanPath + cleanQs, req.url);
     return NextResponse.redirect(dest, 301);
+  }
+
+  // Redirect legacy /blog/templix-ai-vs-* URLs to /compare/templix-ai-vs-* (308 Permanent Redirect)
+  const legacyVsMatch = pathname.match(/^\/([a-z]{2})\/blog\/(templix-ai-vs-[a-z0-9-]+)$/);
+  if (legacyVsMatch) {
+    const loc = legacyVsMatch[1];
+    const slug = legacyVsMatch[2];
+    const dest = new URL(`/${loc}/compare/${slug}${cleanSearch(req.nextUrl.searchParams)}`, req.url);
+    return NextResponse.redirect(dest, 308);
   }
 
 

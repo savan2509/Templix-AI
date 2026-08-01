@@ -49,7 +49,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -91,7 +91,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -133,7 +133,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -175,7 +175,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -217,7 +217,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -259,7 +259,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -301,7 +301,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -343,7 +343,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -385,7 +385,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -427,7 +427,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -469,7 +469,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -511,7 +511,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -553,7 +553,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -595,7 +595,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -637,7 +637,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -679,7 +679,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -721,7 +721,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -763,7 +763,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -805,7 +805,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -847,7 +847,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -889,7 +889,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -931,7 +931,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -973,7 +973,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1015,7 +1015,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1057,7 +1057,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1099,7 +1099,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1141,7 +1141,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1183,7 +1183,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1225,7 +1225,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1267,7 +1267,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Zety",
-        "href": "/blog/templix-ai-vs-zety"
+        "href": "/compare/templix-ai-vs-zety"
       }
     ],
     "relatedFaqSlugs": [
@@ -1309,7 +1309,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1351,7 +1351,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1393,7 +1393,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1435,7 +1435,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1477,7 +1477,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1519,7 +1519,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1561,7 +1561,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1603,7 +1603,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1645,7 +1645,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1687,7 +1687,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1729,7 +1729,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1771,7 +1771,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1813,7 +1813,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1855,7 +1855,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1897,7 +1897,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1939,7 +1939,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -1981,7 +1981,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2023,7 +2023,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2065,7 +2065,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2107,7 +2107,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2149,7 +2149,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2191,7 +2191,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2233,7 +2233,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2275,7 +2275,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2317,7 +2317,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Canva",
-        "href": "/blog/templix-ai-vs-canva"
+        "href": "/compare/templix-ai-vs-canva"
       }
     ],
     "relatedFaqSlugs": [
@@ -2925,7 +2925,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -2963,7 +2963,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3001,7 +3001,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3039,7 +3039,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3077,7 +3077,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3115,7 +3115,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3153,7 +3153,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3191,7 +3191,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3229,7 +3229,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3267,7 +3267,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3305,7 +3305,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3343,7 +3343,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3381,7 +3381,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3419,7 +3419,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -3457,7 +3457,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Notion",
-        "href": "/blog/templix-ai-vs-notion"
+        "href": "/compare/templix-ai-vs-notion"
       }
     ],
     "relatedFaqSlugs": [
@@ -4635,7 +4635,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4673,7 +4673,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4711,7 +4711,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4749,7 +4749,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4787,7 +4787,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4825,7 +4825,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4863,7 +4863,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4901,7 +4901,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4939,7 +4939,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -4977,7 +4977,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5015,7 +5015,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5053,7 +5053,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5091,7 +5091,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5129,7 +5129,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5167,7 +5167,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs Adobe Acrobat",
-        "href": "/blog/templix-ai-vs-adobe-acrobat"
+        "href": "/compare/templix-ai-vs-adobe-acrobat"
       }
     ],
     "relatedFaqSlugs": [
@@ -5205,7 +5205,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5243,7 +5243,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5281,7 +5281,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5319,7 +5319,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5357,7 +5357,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5395,7 +5395,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5433,7 +5433,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5471,7 +5471,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5509,7 +5509,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5547,7 +5547,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5585,7 +5585,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5623,7 +5623,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5661,7 +5661,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5699,7 +5699,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5737,7 +5737,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5775,7 +5775,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5813,7 +5813,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5851,7 +5851,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5889,7 +5889,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
@@ -5927,7 +5927,7 @@ export const INDIVIDUAL_FAQS: IndividualFAQ[] = [
       },
       {
         "text": "Templix AI vs ChatGPT",
-        "href": "/blog/templix-ai-vs-chatgpt"
+        "href": "/compare/templix-ai-vs-chatgpt"
       }
     ],
     "relatedFaqSlugs": [
