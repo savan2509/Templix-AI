@@ -94,27 +94,23 @@ export class SEOEngine {
     //    variants never split ranking signals or create duplicate content.
     const locale = data.locale || "en";
     const slugPath = data.slug || "";
+    const currentLocaleUrl = buildCanonical(locale, slugPath);
     const enUrl = buildCanonical("en", slugPath);
+    
     let canonical: string;
-    let languages: Record<string, string> | undefined;
     if (data.canonical) {
       canonical = data.canonical;
     } else {
-      canonical = enUrl;
+      canonical = currentLocaleUrl; // Self-referential canonical per locale
     }
 
-    if (data.hreflangLocales && data.hreflangLocales.length > 1) {
-      languages = {};
-      for (const loc of data.hreflangLocales) {
-        languages[loc] = buildCanonical(loc, slugPath);
-      }
-      languages["x-default"] = enUrl;
-    } else {
-      languages = {
-        en: enUrl,
-        "x-default": enUrl,
-      };
+    // Build full hreflang cluster for all supported locales
+    const supportedLocales = data.hreflangLocales || ["en", "de", "fr", "es", "ar"];
+    const languages: Record<string, string> = {};
+    for (const loc of supportedLocales) {
+      languages[loc] = buildCanonical(loc, slugPath);
     }
+    languages["x-default"] = enUrl;
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and
     // Twitter titles are not templated, so we brand those explicitly.
