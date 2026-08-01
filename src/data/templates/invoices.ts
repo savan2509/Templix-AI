@@ -200,7 +200,7 @@ export const invoicesTemplates = [
     categoryName: "Invoices",
     content: {
       title: "Contractor Invoice Template",
-      fields: ["companyName", "licenseNumber", "clientName", "propertyAddress", "invoiceNumber", "dueDate", "workDescription", "materialCost", "laborCost", "equipmentCost", "total", "amountDue", "warranty"],
+      fields: ["companyName", "licenseNumber", "clientName", "propertyAddress", "invoiceNumber", "dueDate", "workDescription", "materialCost", "laborCost", "equipmentCost", "subtotal", "tax", "taxAmount", "total", "amountDue", "warranty"],
       layout: {
         header: "CONTRACTOR INVOICE",
         footer: "Warranties apply as specified in master services construction contracts."
@@ -246,6 +246,8 @@ export const invoicesTemplates = [
             ] }
           ] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Labor Subtotal: " }, { type: "text", text: "{{laborCost}}    Materials: {{materialCost}}    Equipment: {{equipmentCost}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subtotal: " }, { type: "text", text: "{{subtotal}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Due: " }, { type: "text", text: "{{total}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Warranty: " }, { type: "text", text: "{{warranty}}. Final payment due upon walkthrough and lien-waiver signing." }] }
         ]
@@ -611,7 +613,7 @@ export const invoicesTemplates = [
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{partsCost}}" }] }] }
             ] },
             { type: "tableRow", content: [
-              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Labor (pipe repair)" }] }] },
+              { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "Labor (pipe repair, $135/hr)" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "4 hrs" }] }] },
               { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "$540.00" }] }] }
             ] }

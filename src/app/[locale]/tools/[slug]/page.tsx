@@ -59,7 +59,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!base) return { title: t.notFoundTitle };
   const tool = getLocalizedTool(base, locale);
   return SEOEngine.generateMetadata({
-    title: `${tool.title}${t.metaTitleSuffix}`,
+    title: base.metaTitle || tool.title,
+    metaTitle: base.metaTitle,
     description: tool.description,
     slug: `/tools/${tool.slug}`,
     locale,

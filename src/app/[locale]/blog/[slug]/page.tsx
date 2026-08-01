@@ -18,6 +18,7 @@ import {
   resolveImagePath,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { generateBlogAlt } from "@/lib/image-alt";
 import {
   withHeadingIds,
   extractFaqs,
@@ -263,8 +264,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 source. Cap the requested width and drop quality to protect LCP. */}
             <Image
               src="/blog/blog-hero-bg.jpg"
-              alt={`${post.title} — Header Background`}
-              title={`${post.title} — Header Background`}
+              alt="Header Background"
+              aria-hidden="true"
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
               quality={55}
@@ -337,8 +338,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
               src={resolvePostImage(post)}
               // The article's own cover — the single most Google-Images-eligible
               // image on the page, so it gets a descriptive alt, not alt="".
-              alt={`${post.title} — illustration`}
-              title={`${post.title} — illustration`}
+              alt={generateBlogAlt(post.title)}
+              title={generateBlogAlt(post.title)}
               fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"

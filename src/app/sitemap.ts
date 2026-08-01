@@ -6,6 +6,7 @@ import { ALL_TOOLS } from "@/data/tools";
 import { professionRoutes } from "@/features/templates/profession-content";
 import { FAQ_TOPIC_SLUGS } from "@/data/faq-topics";
 import { ALL_USE_CASE_SLUGS } from "@/lib/use-case-data";
+import { ALL_MASTER_LANDING_SLUGS } from "@/lib/landing-page-data";
 
 import { siteConfig } from "@/config/site";
 
@@ -139,6 +140,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dedicated Use Case landing pages (all 93 high-intent landing pages)
     ...ALL_USE_CASE_SLUGS.map((slug) =>
       entry(`/use-cases/${slug}`, { changeFrequency: "weekly", priority: 0.8 })
+    ),
+
+    // Dedicated Master SEO Landing Pages (all 30 landing pages)
+    ...ALL_MASTER_LANDING_SLUGS.map((slug) =>
+      entry(`/${slug}`, { changeFrequency: "daily", priority: 0.9 })
     ),
   ];
 }

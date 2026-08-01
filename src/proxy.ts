@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { PRODUCTION_URL } from "@/config/site";
+import { ALL_MASTER_LANDING_SLUGS } from "@/lib/landing-page-data";
 
 // Locale prefixes the app still recognizes in incoming URLs. Only `en` is served;
 // es/fr/de/ar are RETIRED — they 308-redirect to /en (see the block below). They
@@ -130,7 +131,8 @@ export default async function proxy(req: NextRequest) {
   const VALID_BARE_ROUTES = [
     "templates", "blog", "tools", "about", "contact",
     "privacy", "terms", "faq", "login", "editor",
-    "dashboard", "admin", "confirm", "reset", "auth"
+    "dashboard", "admin", "confirm", "reset", "auth",
+    ...ALL_MASTER_LANDING_SLUGS
   ];
 
   // Helper to build clean search params (strips page=1 and empty page)

@@ -5,6 +5,7 @@
 export interface ToolMeta {
   slug: string;
   title: string;      // page H1 / <title>
+  metaTitle?: string; // explicit <title> / SEO Title override
   short: string;      // card label
   description: string; // meta description + hero subtitle
   keywords: string[];

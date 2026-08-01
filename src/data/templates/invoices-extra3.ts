@@ -36,7 +36,7 @@ export const invoicesExtra3Templates: any[] = [
     isPremium: false, categorySlug: "invoices", categoryName: "Invoices",
     content: {
       title: "Milestone Invoice Template",
-      fields: ["companyName","companyAddress","clientName","projectName","invoiceNumber","invoiceDate","dueDate","milestoneName","milestonePercent","milestoneAmount","totalProjectFee","paymentTerms"],
+      fields: ["companyName","companyAddress","clientName","projectName","invoiceNumber","invoiceDate","dueDate","milestoneName","milestonePercent","milestoneAmount","totalProjectFee","subtotal","tax","taxAmount","total","amountDue","paymentTerms"],
       layout: { header: "MILESTONE INVOICE", footer: "Thank you for your business." },
       styles: { primaryColor: "#7c3aed", secondaryColor: "#4c1d95", layoutVariant: 1, headingStyle: 0 },
       editorState: { type: "doc", content: [
@@ -49,7 +49,9 @@ export const invoicesExtra3Templates: any[] = [
           { type: "tableRow", content: [{ type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{milestoneName}}" }] }] }, { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{milestonePercent}}%" }] }] }, { type: "tableCell", content: [{ type: "paragraph", content: [{ type: "text", text: "{{milestoneAmount}}" }] }] }] }
         ] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Total Project Fee: " }, { type: "text", text: "{{totalProjectFee}}" }] },
-        { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "This Invoice ({{milestonePercent}}%): " }, { type: "text", text: "{{milestoneAmount}}" }] },
+        { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "This Release ({{milestonePercent}}%): " }, { type: "text", text: "{{milestoneAmount}}" }] },
+        { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tax ({{tax}}): " }, { type: "text", text: "{{taxAmount}}" }] },
+        { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Amount Due This Release: " }, { type: "text", text: "{{amountDue}}" }] },
         { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Payment Terms: " }, { type: "text", text: "{{paymentTerms}}" }] }
       ] }
     }

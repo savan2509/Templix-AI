@@ -148,7 +148,7 @@ const de: Shape = {
     "Durchsuche und entdecke über {count} professionell gestaltete Vorlagen für Rechnungen, Lebensläufe, Verträge, Angebote und mehr.",
   pillar2Title: "2. KI-gestütztes Schreiben",
   pillar2Desc:
-    "Passe den Ton an, schreibe Absätze um und korrigiere Grammatikfehler sofort mit unserer austauschbaren KI-Modellschicht im visuellen Tiptap-Arbeitsbereich.",
+    "Passe den Ton an, schreibe Absätze um und korrigiere Grammatikfehler sofort mit unserer austauschbaren KI-Modellschicht im visuellen Editor-Arbeitsbereich.",
   pillar3Title: "3. Sofort exportieren",
   pillar3Desc:
     "Kompiliere deine angepassten Layouts direkt auf dem Client oder Server in pixelgenaue PDF-Dateien und MS-Word-Formate.",
@@ -210,7 +210,7 @@ const fr: Shape = {
     "Recherchez et découvrez plus de {count} modèles conçus par des professionnels : factures, CV, contrats, propositions et plus encore.",
   pillar2Title: "2. Rédaction assistée par IA",
   pillar2Desc:
-    "Ajustez le ton, réécrivez des paragraphes et corrigez les fautes de grammaire instantanément grâce à notre couche de modèles IA interchangeables dans l’espace visuel Tiptap.",
+    "Ajustez le ton, réécrivez des paragraphes et corrigez les fautes de grammaire instantanément grâce à notre couche de modèles IA interchangeables dans l’espace visuel de l’éditeur.",
   pillar3Title: "3. Exportez instantanément",
   pillar3Desc:
     "Compilez vos mises en page personnalisées côté client ou serveur en fichiers PDF au pixel près et en formats MS Word.",
@@ -271,7 +271,7 @@ const ar: Shape = {
     "ابحث واكتشف أكثر من {count} قالبًا مصممًا باحترافية للفواتير والسير الذاتية والعقود والمقترحات والمزيد.",
   pillar2Title: "٢. كتابة مدعومة بالذكاء الاصطناعي",
   pillar2Desc:
-    "اضبط النبرة وأعد صياغة الفقرات وصحّح الأخطاء النحوية فورًا باستخدام طبقة نماذج الذكاء الاصطناعي القابلة للتبديل داخل مساحة عمل Tiptap المرئية.",
+    "اضبط النبرة وأعد صياغة الفقرات وصحّح الأخطاء النحوية فورًا باستخدام طبقة نماذج الذكاء الاصطناعي القابلة للتبديل داخل مساحة عمل المحرر المرئية.",
   pillar3Title: "٣. صدّر فورًا",
   pillar3Desc:
     "اجمع تصاميمك المخصصة مباشرة على العميل أو الخادم في ملفات PDF دقيقة وتنسيقات MS Word.",

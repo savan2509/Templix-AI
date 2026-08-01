@@ -116,7 +116,7 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   // — Web Developer Invoice —
   developerName: "James Wilson",
   websiteUrl: "https://app.templix.ai",
-  repositoryLink: "github.com/templix/platform",
+  repositoryLink: "github.com/example/platform",
   developmentPhase: "Phase 3 — Production Deployment",
   featureDelivered: "Auth System, Dashboard, Template Engine",
   maintenancePlan: "12-month premium support & updates",
@@ -667,26 +667,29 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     materialCost: "$8,500.00",
     equipmentCost: "$1,200.00",
     subtotal: "$18,100.00",
-    total: "$18,100.00",
-    amountDue: "$18,100.00",
-    tax: "8%"
+    tax: "8%",
+    taxAmount: "$1,448.00",
+    total: "$19,548.00",
+    amountDue: "$19,548.00"
   },
   "invoice-cleaning-service": {
     serviceFee: "$850.00",
     extraCharges: "$120.00",
     subtotal: "$970.00",
+    tax: "8%",
+    taxAmount: "$77.60",
     total: "$1,047.60",
-    amountDue: "$1,047.60",
-    tax: "8%"
+    amountDue: "$1,047.60"
   },
   "invoice-plumbing": {
     partsCost: "$285.00",
-    laborCost: "$940.00",
+    laborCost: "$540.00",
     subtotal: "$1,225.00",
-    total: "$1,225.00",
-    amountDue: "$1,225.00",
-    paymentTerms: "Net 30",
-    tax: "8%"
+    tax: "8%",
+    taxAmount: "$98.00",
+    total: "$1,323.00",
+    amountDue: "$1,323.00",
+    paymentTerms: "Net 30"
   },
   "invoice-electrician": {
     partsCost: "$2,480.00",
@@ -786,19 +789,25 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     hourlyRate: "$45.00",
     totalHours: "160",
     subtotal: "$7,200.00",
+    tax: "8%",
+    taxAmount: "$576.00",
     total: "$7,776.00",
-    amountDue: "$7,776.00",
-    tax: "8%"
+    amountDue: "$7,776.00"
   },
   "invoice-milestone": {
     subtotal: "$8,000.00",
     tax: "8%",
+    taxAmount: "$640.00",
     total: "$8,640.00",
     amountDue: "$8,640.00"
   },
   "invoice-hvac-service": {
-    grandTotal: "$635.00",
-    tax: "8%"
+    subtotal: "$635.00",
+    tax: "8%",
+    taxAmount: "$50.80",
+    grandTotal: "$685.80",
+    total: "$685.80",
+    amountDue: "$685.80"
   },
   // India — GST tax invoice. 50,000 taxable + 9% CGST + 9% SGST = 59,000.
   // Intra-state supply, so IGST is nil; swap to 18% IGST for inter-state.

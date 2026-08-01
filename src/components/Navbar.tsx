@@ -243,6 +243,7 @@ export default function Navbar() {
                 height={56}
                 priority
                 loading="eager"
+                aria-hidden="true"
                 className="hidden h-14 w-14 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
               />
             </Link>

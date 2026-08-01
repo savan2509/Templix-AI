@@ -129,7 +129,7 @@ const es: Shape = {
   signInToEditHint:
     "Editar una plantilla requiere una cuenta gratuita: inicia sesión y volverás aquí con tus datos guardados.",
   customizeHint:
-    "Al tocar se abre nuestro lienzo tiptap completo donde puedes añadir firma, subir logo y exportar a PDF.",
+    "Al tocar se abre nuestro lienzo de edición completo donde puedes añadir firma, subir logo y exportar a PDF.",
   qualityGuarantee: "Garantía de calidad de la plantilla",
   qualityAts:
     "Probada y optimizada para los principales sistemas de seguimiento de candidatos (ATS).",
@@ -146,7 +146,7 @@ const de: Shape = {
   templatesBreadcrumb: "Vorlagen",
   templateNoun: "Vorlage",
   detailIntroExtra:
-    "Passe die Felder im Controller an, um Variablen dynamisch zu personalisieren. Öffne es in unserem visuellen Tiptap-Dokumentbereich, um Textblöcke zu bearbeiten, KI-Assistenten-Umschreibungen auszulösen und als PDF/Word zu exportieren.",
+    "Passe die Felder im Controller an, um Variablen dynamisch zu personalisieren. Öffne es in unserem visuellen Dokumentbereich, um Textblöcke zu bearbeiten, KI-Assistenten-Umschreibungen auszulösen und als PDF/Word zu exportieren.",
 
   exploreRelatedResources: "Verwandte Ressourcen entdecken",
   relatedTemplates: "Ähnliche Vorlagen",
@@ -198,7 +198,7 @@ const de: Shape = {
   signInToEditHint:
     "Zum Bearbeiten einer Vorlage ist ein kostenloses Konto nötig – melde dich an und du kehrst mit deinen Angaben hierher zurück.",
   customizeHint:
-    "Ein Tippen öffnet unsere vollständige Tiptap-Leinwand, wo du eine Signatur hinzufügen, ein Logo hochladen und als PDF exportieren kannst.",
+    "Ein Tippen öffnet unsere vollständige Editor-Leinwand, wo du eine Signatur hinzufügen, ein Logo hochladen und als PDF exportieren kannst.",
   qualityGuarantee: "Qualitätsgarantie für Vorlagen",
   qualityAts:
     "Getestet und optimiert für gängige Bewerbermanagementsysteme (ATS).",
@@ -215,7 +215,7 @@ const fr: Shape = {
   templatesBreadcrumb: "Modèles",
   templateNoun: "Modèle",
   detailIntroExtra:
-    "Ajustez les champs dans le contrôleur pour personnaliser les variables de façon dynamique. Ouvrez-le dans notre espace documentaire visuel tiptap pour modifier des blocs de texte, déclencher des réécritures par l’assistant IA et exporter en PDF/Word.",
+    "Ajustez les champs dans le contrôleur pour personnaliser les variables de façon dynamique. Ouvrez-le dans notre espace documentaire visuel pour modifier des blocs de texte, déclencher des réécritures par l’assistant IA et exporter en PDF/Word.",
 
   exploreRelatedResources: "Explorer les ressources associées",
   relatedTemplates: "Modèles associés",
@@ -267,7 +267,7 @@ const fr: Shape = {
   signInToEditHint:
     "Modifier un modèle nécessite un compte gratuit — connectez-vous et vous reviendrez ici avec vos informations conservées.",
   customizeHint:
-    "Un appui ouvre notre canevas tiptap complet où vous pouvez ajouter une signature, importer un logo et exporter en PDF.",
+    "Un appui ouvre notre canevas d’édition complet où vous pouvez ajouter une signature, importer un logo et exporter en PDF.",
   qualityGuarantee: "Garantie de qualité du modèle",
   qualityAts:
     "Testé et optimisé pour les principaux systèmes de suivi des candidatures (ATS).",
@@ -284,7 +284,7 @@ const ar: Shape = {
   templatesBreadcrumb: "قوالب",
   templateNoun: "قالب",
   detailIntroExtra:
-    "اضبط الحقول في وحدة التحكم لتخصيص المتغيرات ديناميكيًا. افتحه في مساحة عمل المستندات المرئية tiptap لتحرير كتل النص وتشغيل عمليات إعادة الصياغة بمساعد الذكاء الاصطناعي والتصدير إلى PDF/Word.",
+    "اضبط الحقول في وحدة التحكم لتخصيص المتغيرات ديناميكيًا. افتحه في مساحة عمل المستندات المرئية لتحرير كتل النص وتشغيل عمليات إعادة الصياغة بمساعد الذكاء الاصطناعي والتصدير إلى PDF/Word.",
 
   exploreRelatedResources: "استكشف الموارد ذات الصلة",
   relatedTemplates: "قوالب ذات صلة",
@@ -334,7 +334,7 @@ const ar: Shape = {
   signInToEditHint:
     "يتطلب تعديل القالب حسابًا مجانيًا — سجّل الدخول وستعود إلى هنا مع الاحتفاظ ببياناتك.",
   customizeHint:
-    "يفتح النقر لوحة tiptap الكاملة حيث يمكنك إضافة توقيع ورفع شعار وتصدير PDF.",
+    "يفتح النقر لوحة التحرير الكاملة حيث يمكنك إضافة توقيع ورفع شعار وتصدير PDF.",
   qualityGuarantee: "ضمان جودة القالب",
   qualityAts: "مُختبرة ومُحسّنة لأنظمة تتبع المتقدمين الرئيسية (ATS).",
   qualityAudit: "منسّقة وفق إعدادات تدقيق الفواتير القياسية.",
