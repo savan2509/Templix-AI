@@ -124,27 +124,34 @@ export default async function FaqTopicPage({ params }: PageProps) {
             </p>
           </header>
 
-          {/* ── Q&A accordion ── */}
-          <section aria-label="Frequently Asked Questions">
-            <div className="space-y-3">
-              {faqTopic.questions.map((item, i) => (
-                <details
-                  key={i}
-                  className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 open:shadow-sm transition-shadow"
-                >
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
-                    <span className="font-semibold text-zinc-900 dark:text-white leading-snug">
-                      {item.question}
-                    </span>
-                    <ChevronDown className="h-5 w-5 shrink-0 mt-0.5 text-zinc-400 transition-transform group-open:rotate-180" />
-                  </summary>
-                  <p className="mt-3 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
-                    {item.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </section>
+          {/* ── Rich Article Content (Individual FAQ Guides) ── */}
+          {faqTopic.contentHtml ? (
+            <article className="prose dark:prose-invert max-w-none rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8">
+              <div dangerouslySetInnerHTML={{ __html: faqTopic.contentHtml }} />
+            </article>
+          ) : (
+            /* ── Q&A accordion (Topic Clusters) ── */
+            <section aria-label="Frequently Asked Questions">
+              <div className="space-y-3">
+                {faqTopic.questions.map((item, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 open:shadow-sm transition-shadow"
+                  >
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                      <span className="font-semibold text-zinc-900 dark:text-white leading-snug">
+                        {item.question}
+                      </span>
+                      <ChevronDown className="h-5 w-5 shrink-0 mt-0.5 text-zinc-400 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <p className="mt-3 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
+                      {item.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* ── Internal links ── */}
           {faqTopic.internalLinks.length > 0 && (

@@ -1181,14 +1181,48 @@ const faqTopics: FAQTopic[] = [
   { slug: "recommendation-letter-faqs", metaTitle: "Recommendation Letter FAQ: 10 Questions Answered", metaDescription: "What is a letter of recommendation, who should write it, what should it include, and how long should it be? 10 clear answers plus a free template.", h1: "Letter of Recommendation FAQ: 10 Key Questions", intro: "A strong recommendation letter can be the difference between two equally qualified candidates. Here's everything you need to know.", questions: [{ question: "What is a letter of recommendation?", answer: "A document written by someone who can vouch for your skills, character, and achievements — typically a professor, manager, or mentor. It is submitted with job or academic applications." }], internalLinks: [{ text: "Recommendation Letter Template", href: "/en/templates/letters/recommendation-letter" }, { text: "How to Write a Letter of Recommendation", href: "/en/blog/how-to-write-a-letter-of-recommendation" }], relatedFaqs: ["cover-letter-faqs", "resume-faqs"] },
 ];
 
-// ── Lookup ────────────────────────────────────────────────────────────────────
+import { INDIVIDUAL_FAQS, IndividualFAQ, getIndividualFaq } from "./faq-individual";
 
-/** All FAQ topic slugs — used to build sitemap and route allowlist */
-export const FAQ_TOPIC_SLUGS: string[] = faqTopics.map((t) => t.slug);
+export interface ExtendedFAQTopic extends FAQTopic {
+  contentHtml?: string;
+}
 
-/** Get a single FAQ topic by slug */
-export function getFaqTopic(slug: string): FAQTopic | undefined {
-  return faqTopics.find((t) => t.slug === slug);
+function adaptIndividualToTopic(ind: IndividualFAQ): ExtendedFAQTopic {
+  return {
+    slug: ind.slug,
+    metaTitle: ind.metaTitle,
+    metaDescription: ind.metaDescription,
+    h1: ind.h1,
+    intro: ind.summary,
+    questions: [
+      {
+        question: ind.question,
+        answer: ind.summary,
+      },
+    ],
+    internalLinks: ind.internalLinks,
+    relatedFaqs: ind.relatedFaqSlugs,
+    contentHtml: ind.contentHtml,
+  };
+}
+
+// ── Combined Slugs & Lookup ───────────────────────────────────────────────────
+
+/** All FAQ topic slugs — includes topic clusters and 150 individual FAQ pages */
+export const FAQ_TOPIC_SLUGS: string[] = [
+  ...faqTopics.map((t) => t.slug),
+  ...INDIVIDUAL_FAQS.map((f) => f.slug),
+];
+
+/** Get a single FAQ topic by slug (checks topic clusters + individual FAQs) */
+export function getFaqTopic(slug: string): ExtendedFAQTopic | undefined {
+  const cluster = faqTopics.find((t) => t.slug === slug);
+  if (cluster) return cluster;
+
+  const ind = getIndividualFaq(slug);
+  if (ind) return adaptIndividualToTopic(ind);
+
+  return undefined;
 }
 
 /** Get all FAQ topics (for listing page) */
@@ -1211,3 +1245,4 @@ export function getFaqTopicSchema(topic: FAQTopic): object {
     })),
   };
 }
+

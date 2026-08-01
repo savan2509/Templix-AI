@@ -42,8 +42,8 @@ export default function Navbar() {
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [aiToolsOpen, setAiToolsOpen] = useState(false);
   const [mobileAiToolsOpen, setMobileAiToolsOpen] = useState(false);
-  const [comparisonsOpen, setComparisonsOpen] = useState(false);
-  const [mobileComparisonsOpen, setMobileComparisonsOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -52,7 +52,7 @@ export default function Navbar() {
   const templatesRef = useRef<HTMLDivElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
   const aiToolsRef = useRef<HTMLDivElement>(null);
-  const comparisonsRef = useRef<HTMLDivElement>(null);
+  const exploreRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -80,8 +80,8 @@ export default function Navbar() {
     setMobileToolsOpen(false);
     setAiToolsOpen(false);
     setMobileAiToolsOpen(false);
-    setComparisonsOpen(false);
-    setMobileComparisonsOpen(false);
+    setExploreOpen(false);
+    setMobileExploreOpen(false);
     setUserMenuOpen(false);
   }, [pathname]);
 
@@ -100,8 +100,8 @@ export default function Navbar() {
       if (aiToolsRef.current && !aiToolsRef.current.contains(event.target as Node)) {
         setAiToolsOpen(false);
       }
-      if (comparisonsRef.current && !comparisonsRef.current.contains(event.target as Node)) {
-        setComparisonsOpen(false);
+      if (exploreRef.current && !exploreRef.current.contains(event.target as Node)) {
+        setExploreOpen(false);
       }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setUserMenuOpen(false);
@@ -211,288 +211,353 @@ export default function Navbar() {
   };
   const allAiToolsText = allAiToolsLabel[currentLocale as keyof typeof allAiToolsLabel] || allAiToolsLabel.en;
 
+  const masterLandingItems = [
+    { title: "AI Resume Builder", slug: "ai-resume-builder" },
+    { title: "ATS Resume Checker", slug: "ats-resume-checker" },
+    { title: "Resume Templates", slug: "resume-templates" },
+    { title: "AI Invoice Generator", slug: "ai-invoice-generator" },
+    { title: "GST Invoice Generator", slug: "gst-invoice-generator" },
+    { title: "Invoice Templates", slug: "invoice-templates" },
+    { title: "AI Cover Letter Generator", slug: "ai-cover-letter-generator" },
+    { title: "AI Business Proposal", slug: "business-proposal-generator" },
+    { title: "AI Contract Generator", slug: "ai-contract-generator" },
+    { title: "NDA Generator", slug: "nda-generator" },
+    { title: "AI Letter Generator", slug: "ai-letter-generator" },
+    { title: "AI Email Writer", slug: "ai-email-writer" },
+    { title: "AI Blog Generator", slug: "ai-blog-generator" },
+    { title: "AI Content Generator", slug: "ai-content-generator" },
+  ];
+  const isLandingPagesActive = masterLandingItems.some((item) => pathname.endsWith(item.slug));
+  const isComparisonsActive = pathname.includes("vs") || pathname.endsWith("/blog");
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
       {/* Decorative top colored line */}
       <div className="h-[2px] w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo Brand */}
-          <div className="flex items-center gap-8">
+        <div className="flex h-16 items-center justify-between gap-4">
+          {/* Logo Brand — fixed on the far left, never squeezed or hidden */}
+          <div className="flex items-center gap-2 shrink-0 min-w-fit">
             <Link
               href={`/${currentLocale}`}
-              className="group flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400"
+              className="group flex items-center gap-2 font-bold text-lg xl:text-xl tracking-tight text-blue-600 dark:text-blue-400 shrink-0"
             >
               {/* Theme-aware logo: light mark in light mode, dark mark in dark mode */}
               <Image
                 src="/Templix-ai-light.png"
                 alt={logoAlt("light")}
-                title="Templix AI — Free Professional Document Editor Logo"
-                width={56}
-                height={56}
+                title="Templix AI Logo"
+                width={44}
+                height={44}
                 priority
                 loading="eager"
-                className="h-14 w-14 rounded-xl object-contain dark:hidden group-hover:scale-105 transition-transform duration-300"
+                className="h-11 w-11 rounded-xl object-contain dark:hidden shrink-0 group-hover:scale-105 transition-transform duration-300"
               />
               <Image
                 src="/Templix-ai-dark.png"
                 alt={logoAlt("dark")}
-                title="Templix AI — Free Professional Document Editor Logo"
-                width={56}
-                height={56}
+                title="Templix AI Logo"
+                width={44}
+                height={44}
                 priority
                 loading="eager"
                 aria-hidden="true"
-                className="hidden h-14 w-14 rounded-xl object-contain dark:block group-hover:scale-105 transition-transform duration-300"
+                className="hidden h-11 w-11 rounded-xl object-contain dark:block shrink-0 group-hover:scale-105 transition-transform duration-300"
               />
+              <span className="font-extrabold text-base xl:text-lg tracking-tight text-zinc-900 dark:text-white shrink-0">
+                Templix AI
+              </span>
             </Link>
+          </div>
 
-            {/* Desktop Menu items */}
-            <div className="hidden lg:flex items-center gap-6">
-              {/* Templates dropdown */}
-              <div className="relative" ref={templatesRef}>
-                <button
-                  onClick={() => setTemplatesOpen((v) => !v)}
-                  aria-expanded={templatesOpen}
-                  aria-haspopup="menu"
-                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
-                    isTemplatesActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
-                  }`}
+          {/* Desktop Menu items */}
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+            {/* Templates dropdown */}
+            <div className="relative" ref={templatesRef}>
+              <button
+                onClick={() => setTemplatesOpen((v) => !v)}
+                aria-expanded={templatesOpen}
+                aria-haspopup="menu"
+                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+                  isTemplatesActive
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                }`}
+              >
+                <span className="whitespace-nowrap">{templatesLabelText}</span>
+                <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${templatesOpen ? "rotate-180" : ""}`} />
+                {isTemplatesActive && (
+                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                )}
+              </button>
+              {templatesOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-0 mt-2 w-64 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                 >
-                  <span>{templatesLabelText}</span>
-                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${templatesOpen ? "rotate-180" : ""}`} />
-                  {isTemplatesActive && (
-                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                  )}
-                </button>
-                {templatesOpen && (
-                  <div
-                    role="menu"
-                    className="absolute left-0 mt-2 w-64 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
-                  >
-                    {categoryItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        role="menuitem"
-                        onClick={() => setTemplatesOpen(false)}
-                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
-                          pathname.startsWith(item.href)
-                            ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
-                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
-                        }`}
-                      >
-                        {localeName(item)}
-                      </Link>
-                    ))}
-                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                  {categoryItems.map((item) => (
                     <Link
-                      href={`/${currentLocale}/templates`}
+                      key={item.href}
+                      href={item.href}
                       role="menuitem"
                       onClick={() => setTemplatesOpen(false)}
-                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                      className={`flex items-center px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${
+                        pathname.startsWith(item.href)
+                          ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                          : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                      }`}
                     >
-                      <LayoutGrid className="h-4 w-4" />
-                      <span>{t.browseTemplates}</span>
+                      {localeName(item)}
                     </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Tools dropdown */}
-              <div className="relative" ref={toolsRef}>
-                <button
-                  onClick={() => setToolsOpen((v) => !v)}
-                  aria-expanded={toolsOpen}
-                  aria-haspopup="menu"
-                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
-                    isToolsActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
-                  }`}
-                >
-                  <span>{toolsLabelText}</span>
-                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${toolsOpen ? "rotate-180" : ""}`} />
-                  {isToolsActive && (
-                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                  )}
-                </button>
-                {toolsOpen && (
-                  <div
-                    role="menu"
-                    className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  ))}
+                  <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                  <Link
+                    href={`/${currentLocale}/templates`}
+                    role="menuitem"
+                    onClick={() => setTemplatesOpen(false)}
+                    className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
                   >
-                    {TOOL_CATEGORIES.map((cat) => {
-                      const isAi = cat.key === "ai";
-                      return (
-                        <Link
-                          key={cat.key}
-                          href={`${toolsHref}#${cat.key}`}
-                          role="menuitem"
-                          onClick={() => setToolsOpen(false)}
-                          className={`flex items-center justify-between px-3 py-2 text-sm font-medium rounded-xl transition-colors ${isAi ? "text-violet-700 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-violet-950/30" : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"}`}
-                        >
-                          <span>{catLabel(cat.label)}</span>
-                          {isAi && (
-                            <span className="ml-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-                              AI
-                            </span>
-                          )}
-                        </Link>
-                      );
-                    })}
-                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
-                    <Link
-                      href={toolsHref}
-                      role="menuitem"
-                      onClick={() => setToolsOpen(false)}
-                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
-                    >
-                      <Wrench className="h-4 w-4" />
-                      <span>{allToolsText}</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
+                    <LayoutGrid className="h-4 w-4 shrink-0" />
+                    <span>{t.browseTemplates}</span>
+                  </Link>
+                </div>
+              )}
+            </div>
 
-              {/* AI Tools dropdown */}
-              <div className="relative" ref={aiToolsRef}>
-                <button
-                  onClick={() => setAiToolsOpen((v) => !v)}
-                  aria-expanded={aiToolsOpen}
-                  aria-haspopup="menu"
-                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
-                    isAiActive
-                      ? "text-violet-600 dark:text-violet-400"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
-                  }`}
+            {/* Tools dropdown */}
+            <div className="relative" ref={toolsRef}>
+              <button
+                onClick={() => setToolsOpen((v) => !v)}
+                aria-expanded={toolsOpen}
+                aria-haspopup="menu"
+                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+                  isToolsActive
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                }`}
+              >
+                <span className="whitespace-nowrap">{toolsLabelText}</span>
+                <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${toolsOpen ? "rotate-180" : ""}`} />
+                {isToolsActive && (
+                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                )}
+              </button>
+              {toolsOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                 >
-                  <Sparkles className="h-3.5 w-3.5 text-violet-500" />
-                  <span>{aiToolsText}</span>
-                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${aiToolsOpen ? "rotate-180" : ""}`} />
-                  {isAiActive && (
-                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />
-                  )}
-                </button>
-                {aiToolsOpen && (
-                  <div
-                    role="menu"
-                    className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-violet-200/70 dark:border-violet-900/60 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
-                  >
-                    {aiTools.map((tl) => (
+                  {TOOL_CATEGORIES.map((cat) => {
+                    const isAi = cat.key === "ai";
+                    return (
                       <Link
-                        key={tl.slug}
-                        href={`/${currentLocale}/tools/${tl.slug}`}
+                        key={cat.key}
+                        href={`${toolsHref}#${cat.key}`}
                         role="menuitem"
-                        onClick={() => setAiToolsOpen(false)}
-                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
-                          pathname === `/${currentLocale}/tools/${tl.slug}`
-                            ? "bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
-                            : "text-zinc-700 dark:text-zinc-300 hover:bg-violet-50 dark:hover:bg-violet-950/30 hover:text-violet-700 dark:hover:text-violet-300"
-                        }`}
+                        onClick={() => setToolsOpen(false)}
+                        className={`flex items-center justify-between px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${isAi ? "text-violet-700 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-violet-950/30" : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"}`}
                       >
-                        {tl.title}
+                        <span>{catLabel(cat.label)}</span>
+                        {isAi && (
+                          <span className="ml-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                            AI
+                          </span>
+                        )}
                       </Link>
-                    ))}
-                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                    );
+                  })}
+                  <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                  <Link
+                    href={toolsHref}
+                    role="menuitem"
+                    onClick={() => setToolsOpen(false)}
+                    className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                  >
+                    <Wrench className="h-4 w-4 shrink-0" />
+                    <span>{allToolsText}</span>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* AI Tools dropdown */}
+            <div className="relative" ref={aiToolsRef}>
+              <button
+                onClick={() => setAiToolsOpen((v) => !v)}
+                aria-expanded={aiToolsOpen}
+                aria-haspopup="menu"
+                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+                  isAiActive
+                    ? "text-violet-600 dark:text-violet-400"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                }`}
+              >
+                <Sparkles className="h-3.5 w-3.5 text-violet-500 shrink-0" />
+                <span className="whitespace-nowrap">{aiToolsText}</span>
+                <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${aiToolsOpen ? "rotate-180" : ""}`} />
+                {isAiActive && (
+                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />
+                )}
+              </button>
+              {aiToolsOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-violet-200/70 dark:border-violet-900/60 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                >
+                  {aiTools.map((tl) => (
                     <Link
-                      href={aiToolsHref}
+                      key={tl.slug}
+                      href={`/${currentLocale}/tools/${tl.slug}`}
                       role="menuitem"
                       onClick={() => setAiToolsOpen(false)}
-                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/30 transition-colors"
+                      className={`flex items-center px-3 py-2 text-xs font-semibold rounded-xl transition-colors ${
+                        pathname === `/${currentLocale}/tools/${tl.slug}`
+                          ? "bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
+                          : "text-zinc-700 dark:text-zinc-300 hover:bg-violet-50 dark:hover:bg-violet-950/30 hover:text-violet-700 dark:hover:text-violet-300"
+                      }`}
                     >
-                      <Sparkles className="h-4 w-4" />
-                      <span>{allAiToolsText}</span>
+                      {tl.title}
                     </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Comparisons dropdown */}
-              <div className="relative" ref={comparisonsRef}>
-                <button
-                  onClick={() => setComparisonsOpen((v) => !v)}
-                  aria-expanded={comparisonsOpen}
-                  aria-haspopup="menu"
-                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
-                    pathname.includes("vs")
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
-                  }`}
-                >
-                  <GitCompare className="h-3.5 w-3.5 text-blue-500" />
-                  <span>Comparisons</span>
-                  <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${comparisonsOpen ? "rotate-180" : ""}`} />
-                  {pathname.includes("vs") && (
-                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                  )}
-                </button>
-                {comparisonsOpen && (
-                  <div
-                    role="menu"
-                    className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  ))}
+                  <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                  <Link
+                    href={aiToolsHref}
+                    role="menuitem"
+                    onClick={() => setAiToolsOpen(false)}
+                    className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-xl text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/30 transition-colors"
                   >
-                    {[
-                      { title: "vs Canva", slug: "templix-ai-vs-canva" },
-                      { title: "vs Microsoft 365", slug: "templix-ai-vs-microsoft-365" },
-                      { title: "vs ChatGPT", slug: "templix-ai-vs-chatgpt" },
-                      { title: "vs Google Docs", slug: "templix-ai-vs-google-docs" },
-                      { title: "vs Notion AI", slug: "templix-ai-vs-notion-ai" },
-                      { title: "vs Adobe Express", slug: "templix-ai-vs-adobe-express" },
-                      { title: "vs Gamma", slug: "templix-ai-vs-gamma" },
-                      { title: "vs PandaDoc", slug: "templix-ai-vs-pandadoc" },
-                      { title: "vs DocuSign", slug: "templix-ai-vs-docusign" },
-                      { title: "vs GrammarlyGO", slug: "templix-ai-vs-grammarlygo" },
-                    ].map((item) => (
-                      <Link
-                        key={item.slug}
-                        href={`/${currentLocale}/blog/${item.slug}`}
-                        role="menuitem"
-                        onClick={() => setComparisonsOpen(false)}
-                        className={`flex items-center px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
-                          pathname.endsWith(item.slug)
-                            ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
-                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
-                        }`}
-                      >
-                        Templix AI {item.title}
-                      </Link>
-                    ))}
-                    <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
-                    <Link
-                      href={`/${currentLocale}/blog`}
-                      role="menuitem"
-                      onClick={() => setComparisonsOpen(false)}
-                      className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
-                    >
-                      <GitCompare className="h-4 w-4" />
-                      <span>All 48 Comparisons</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Standalone links */}
-              {standaloneItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`relative flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md ${
-                    pathname.startsWith(item.href)
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
-                  }`}
-                >
-                  <span>{localeName(item)}</span>
-                  {pathname.startsWith(item.href) && (
-                    <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                  )}
-                </Link>
-              ))}
+                    <Sparkles className="h-4 w-4 shrink-0" />
+                    <span>{allAiToolsText}</span>
+                  </Link>
+                </div>
+              )}
             </div>
+
+            {/* Combined Explore (Landing Pages & Comparisons) Dropdown */}
+            <div className="relative" ref={exploreRef}>
+              <button
+                onClick={() => setExploreOpen((v) => !v)}
+                aria-expanded={exploreOpen}
+                aria-haspopup="menu"
+                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1.5 rounded-md whitespace-nowrap shrink-0 ${
+                  isLandingPagesActive || isComparisonsActive
+                    ? "text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                }`}
+              >
+                <LayoutGrid className="h-3.5 w-3.5 text-blue-500 shrink-0" />
+                <span className="whitespace-nowrap font-bold">Explore</span>
+                <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${exploreOpen ? "rotate-180" : ""}`} />
+                {(isLandingPagesActive || isComparisonsActive) && (
+                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                )}
+              </button>
+              {exploreOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-[600px] max-h-[80vh] overflow-y-auto z-50 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in-50 slide-in-from-top-2 duration-200 grid grid-cols-2 gap-6"
+                >
+                  {/* Column 1: 30 SEO Landing Pages */}
+                  <div>
+                    <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
+                      <LayoutGrid className="h-4 w-4 text-blue-500 shrink-0" />
+                      <span>30 Landing Pages</span>
+                    </div>
+                    <div className="space-y-1">
+                      {[
+                        { title: "AI Resume Builder", slug: "ai-resume-builder" },
+                        { title: "ATS Resume Checker", slug: "ats-resume-checker" },
+                        { title: "Resume Templates", slug: "resume-templates" },
+                        { title: "AI Invoice Generator", slug: "ai-invoice-generator" },
+                        { title: "GST Invoice Generator", slug: "gst-invoice-generator" },
+                        { title: "Invoice Templates", slug: "invoice-templates" },
+                        { title: "AI Cover Letter Generator", slug: "ai-cover-letter-generator" },
+                        { title: "AI Business Proposal", slug: "business-proposal-generator" },
+                        { title: "AI Contract Generator", slug: "ai-contract-generator" },
+                        { title: "NDA Generator", slug: "nda-generator" },
+                        { title: "AI Letter Generator", slug: "ai-letter-generator" },
+                        { title: "AI Email Writer", slug: "ai-email-writer" },
+                        { title: "AI Blog Generator", slug: "ai-blog-generator" },
+                        { title: "AI Content Generator", slug: "ai-content-generator" },
+                      ].map((item) => (
+                        <Link
+                          key={item.slug}
+                          href={`/${currentLocale}/${item.slug}`}
+                          onClick={() => setExploreOpen(false)}
+                          className="block px-2.5 py-1.5 text-xs font-semibold rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                      <Link
+                        href={`/${currentLocale}/use-cases`}
+                        onClick={() => setExploreOpen(false)}
+                        className="block px-2.5 py-2 text-xs font-extrabold text-blue-600 dark:text-blue-400 hover:underline pt-2 border-t border-zinc-100 dark:border-zinc-800"
+                      >
+                        All 30 Landing Pages →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Column 2: Software Comparisons */}
+                  <div>
+                    <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
+                      <GitCompare className="h-4 w-4 text-indigo-500 shrink-0" />
+                      <span>Software Comparisons</span>
+                    </div>
+                    <div className="space-y-1">
+                      {[
+                        { title: "Templix AI vs Canva", slug: "templix-ai-vs-canva" },
+                        { title: "Templix AI vs Microsoft 365", slug: "templix-ai-vs-microsoft-365" },
+                        { title: "Templix AI vs ChatGPT", slug: "templix-ai-vs-chatgpt" },
+                        { title: "Templix AI vs Google Docs", slug: "templix-ai-vs-google-docs" },
+                        { title: "Templix AI vs Notion AI", slug: "templix-ai-vs-notion-ai" },
+                        { title: "Templix AI vs Adobe Express", slug: "templix-ai-vs-adobe-express" },
+                        { title: "Templix AI vs Gamma", slug: "templix-ai-vs-gamma" },
+                        { title: "Templix AI vs PandaDoc", slug: "templix-ai-vs-pandadoc" },
+                        { title: "Templix AI vs DocuSign", slug: "templix-ai-vs-docusign" },
+                        { title: "Templix AI vs GrammarlyGO", slug: "templix-ai-vs-grammarlygo" },
+                      ].map((item) => (
+                        <Link
+                          key={item.slug}
+                          href={`/${currentLocale}/blog/${item.slug}`}
+                          onClick={() => setExploreOpen(false)}
+                          className="block px-2.5 py-1.5 text-xs font-semibold rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                      <Link
+                        href={`/${currentLocale}/blog`}
+                        onClick={() => setExploreOpen(false)}
+                        className="block px-2.5 py-2 text-xs font-extrabold text-indigo-600 dark:text-indigo-400 hover:underline pt-2 border-t border-zinc-100 dark:border-zinc-800"
+                      >
+                        All 48 Comparisons →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Standalone links */}
+            {standaloneItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+                  pathname.startsWith(item.href)
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                }`}
+              >
+                <span className="whitespace-nowrap">{localeName(item)}</span>
+                {pathname.startsWith(item.href) && (
+                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
+                )}
+              </Link>
+            ))}
           </div>
 
           {/* Right actions */}
@@ -778,6 +843,82 @@ export default function Navbar() {
                   <Sparkles className="h-4 w-4" />
                   <span>{allAiToolsText}</span>
                 </Link>
+              </div>
+            )}
+
+            {/* Explore group (Landing Pages & Comparisons) */}
+            <button
+              onClick={() => setMobileExploreOpen((v) => !v)}
+              aria-expanded={mobileExploreOpen}
+              className={`flex w-full items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
+                isLandingPagesActive || isComparisonsActive
+                  ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                  : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <LayoutGrid className="h-4 w-4 text-blue-500" />
+                Explore (Pages & Comparisons)
+              </span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileExploreOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileExploreOpen && (
+              <div className="pl-3 space-y-3 pt-1">
+                <div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400 px-3.5 py-1">
+                    30 Landing Pages
+                  </div>
+                  <div className="space-y-1">
+                    {masterLandingItems.slice(0, 8).map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/${currentLocale}/${item.slug}`}
+                        className="block px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-blue-600"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                    <Link
+                      href={`/${currentLocale}/use-cases`}
+                      className="block px-3.5 py-1.5 text-xs font-bold text-blue-600 dark:text-blue-400"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      View All 30 Landing Pages →
+                    </Link>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 px-3.5 py-1">
+                    Software Comparisons
+                  </div>
+                  <div className="space-y-1">
+                    {[
+                      { title: "vs Canva", slug: "templix-ai-vs-canva" },
+                      { title: "vs Microsoft 365", slug: "templix-ai-vs-microsoft-365" },
+                      { title: "vs ChatGPT", slug: "templix-ai-vs-chatgpt" },
+                      { title: "vs Google Docs", slug: "templix-ai-vs-google-docs" },
+                      { title: "vs Notion AI", slug: "templix-ai-vs-notion-ai" },
+                    ].map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/${currentLocale}/blog/${item.slug}`}
+                        className="block px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-indigo-600"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Templix AI {item.title}
+                      </Link>
+                    ))}
+                    <Link
+                      href={`/${currentLocale}/blog`}
+                      className="block px-3.5 py-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      View All 48 Comparisons →
+                    </Link>
+                  </div>
+                </div>
               </div>
             )}
 
