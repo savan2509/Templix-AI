@@ -49,7 +49,7 @@ function render(template: any, values: Record<string, string>) {
     out = out.replace(new RegExp(`\\{\\{${key}\\}\\}`, "g"), val || humanize(key));
     if (!val) unresolved.push(key);
   }
-  out = out.replace(/\{\{([a-zA-Z0-9_]+)\}\}/g, (_m, v) => {
+  out = out.replace(/\{\{([a-zA-Z0-9_&]+)\}\}/g, (_m, v) => {
     unresolved.push(v);
     return humanize(v);
   });
@@ -66,7 +66,7 @@ const near = (a: number, b: number, tol = 0.02) => Math.abs(a - b) <= tol;
 const tokenUsers = new Map<string, number>();
 for (const t of allFallbackTemplates) {
   const raw = JSON.stringify(t?.content?.editorState ?? {});
-  for (const k of new Set([...raw.matchAll(/\{\{([a-zA-Z0-9_]+)\}\}/g)].map((m) => m[1]))) {
+  for (const k of new Set([...raw.matchAll(/\{\{([a-zA-Z0-9_&]+)\}\}/g)].map((m) => m[1]))) {
     tokenUsers.set(k, (tokenUsers.get(k) ?? 0) + 1);
   }
 }

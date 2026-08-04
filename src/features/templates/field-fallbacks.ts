@@ -27,7 +27,7 @@ function seedOf(s: string): number {
 /** Collects every {{token}} used anywhere in the document body. */
 export function collectTemplateTokens(template: any): string[] {
   const raw = JSON.stringify(template?.content?.editorState ?? {});
-  return [...new Set([...raw.matchAll(/\{\{([a-zA-Z0-9_]+)\}\}/g)].map((m) => m[1]))];
+  return [...new Set([...raw.matchAll(/\{\{([a-zA-Z0-9_&]+)\}\}/g)].map((m) => m[1]))];
 }
 
 const PERSONAS = [
@@ -124,6 +124,8 @@ const DOMAIN_VALUES: Record<string, string> = {
   maintenanceCharges: "₹2,500 per month, payable by the Licensee",
   permittedUse: "Residential use by the Licensee and immediate family only",
   stampDutyBorneBy: "the Licensee",
+  "r&dProjects": "Advanced thermal management and composite structural research initiatives",
+  "p&lResponsibility": "$18M annual revenue budget and financial oversight across operations",
 
   // ── Contracts ──────────────────────────────────────────────────────────────
   finalFileFormats: "Layered source files plus print-ready PDF, SVG and PNG exports",
@@ -404,35 +406,59 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
       return `the ${pick(CITIES).split(",")[0]} metro area`;
   }
 
-  // ── 2. Semantic shape of the field name ───────────────────────────────────
   const k = key.toLowerCase();
 
   if (/(^|[a-z])date$|^date[A-Z]|deadline|expiry|expiration/i.test(key)) return date;
-  if (/(fee|cost|price|amount|budget|balance|deposit|surcharge|ask|revenue|salary|funding|investment|valuation)$/i.test(key)) {
+  if (/(fee|cost|price|amount|balance|deposit|surcharge|ask|revenue|salary|funding|investment|valuation|subtotal|total)$/i.test(key)) {
     const amounts = ["$1,250.00", "$2,400.00", "$4,800.00", "$7,500.00", "$12,000.00", "$18,500.00"];
     return pick(amounts);
   }
   if (/(rate)$/i.test(key)) return pick(["$85/hour", "$120/hour", "8%", "12%"]);
-  if (/(hours|duration|length|period|cycle)$/i.test(key)) return pick(["4 hours", "8 hours", "30 days", "12 months"]);
-  if (/(schedule|timeline)$/i.test(key)) return pick(["Weekdays, 9:00 AM – 5:00 PM", "Two sessions per week", "4–6 weeks from kickoff"]);
-  if (/(terms|policy|disclosure|waiver|nature|responsibility|rights|authority|protection)$/i.test(key)) {
-    return `As set out in this ${subject.toLowerCase() || "agreement"}, agreed in writing by both parties.`;
-  }
-  if (/(name)$/i.test(key)) {
-    if (/project|product|app|package|domain|file|service|course|item/i.test(k)) {
-      return `${subject} ${key.replace(/name$/i, "").replace(/^[a-z]/, (c) => c.toUpperCase())}`.trim();
-    }
-    return /company|firm|vendor|agency|studio|contractor/i.test(k) ? brand : person;
-  }
-  if (/(email)$/i.test(key)) return ctx.values.email || ctx.values.companyEmail || "hello@example.com";
-  if (/(phone|mobile|contact)$/i.test(key)) return ctx.values.phone || "+1 (555) 204-8811";
-  if (/(address|location|venue|site|origin|destination)$/i.test(key)) return pick(CITIES);
-  if (/(number|no|id|reference|code)$/i.test(key)) return `${subject.slice(0, 3).toUpperCase() || "DOC"}-${2000 + (seed % 8000)}`;
+  if (/(hours|duration|length|period|cycle|months|days)$/i.test(key)) return pick(["4 hours", "8 hours", "30 days", "12 months"]);
   if (/(count|quantity|qty|units|sessions|rounds|revisions)$/i.test(key)) return String(2 + (seed % 10));
-  if (/(percent|percentage|share|margin)$/i.test(key)) return `${5 + (seed % 25)}%`;
-  if (/(goal|objective|purpose|reason|summary|scope|statement|recommendation|deliverables?|included|covered|provided)$/i.test(key)) {
-    return `${subject} work agreed between ${brand} and ${client}.`;
+
+  if (/(url|link|profile|website|dribbble|behance|github|leetcode|linkedin|portfolio)/i.test(k)) {
+    if (/github/i.test(k)) return "https://github.com/alex-morgan";
+    if (/linkedin/i.test(k)) return "https://linkedin.com/in/alex-morgan";
+    if (/dribbble/i.test(k)) return "https://dribbble.com/alex-morgan";
+    if (/behance/i.test(k)) return "https://behance.net/alex-morgan";
+    if (/leetcode/i.test(k)) return "https://leetcode.com/alex-morgan";
+    return "https://example.com/portfolio";
+  }
+  if (/(cert|certification|license|shrm|sphr|pmp|scrum|sixsigma|cba|cpa|emr)/i.test(k)) {
+    return "Professional Certification";
+  }
+  if (/(tools|systems|software|skills|expertise|frameworks|libraries|packages|methods|platforms|languages|competenc)/i.test(k)) {
+    return "Industry standard tools & methods";
+  }
+  if (/(employer|company|hospital|unit|school|university|institution|college|firm|agency)/i.test(k)) {
+    return pick(EMPLOYERS);
+  }
+  if (/(title|role|position|designation|specialty|specialization)/i.test(k)) {
+    return `Senior ${subject} Specialist`;
+  }
+  if (/(date|dates|tenure|year|period|shift)/i.test(k)) {
+    return "2022 – Present";
+  }
+  if (/(major|degree|concentration|field)/i.test(k)) {
+    return "Bachelor of Science";
+  }
+  if (/(metric|impact|achievement|result|growth|outcome|roi|built|delivered|won|generated|reduced|improved|score|rate|stats|rank|ranking|size|budget|value|gpa|participants|census|impressions|traffic|keywords|conversions|backlinks|demos|validity)/i.test(k)) {
+    return "+25% growth & key targets met";
+  }
+  if (/(partya|partyone|employername|licensor|lender|contractor)/i.test(k)) {
+    return brand;
+  }
+  if (/(partyb|partytwo|clientname|licensee|borrower|subcontractor)/i.test(k)) {
+    return client;
+  }
+  if (/(philosophy|approach|process|style|focus|niche|theme|model|category|type|differentiated|governing)/i.test(k)) {
+    return "Standard operational & technical methodology";
+  }
+  if (/(description|details|notes|overview|scope|spec|requirement|deliverable|deliverables|feature|action|solution|target|market)/i.test(k)) {
+    return `${subject} scope and key deliverables agreed between ${brand} and ${client}.`;
   }
 
-  return "";
+  const humanized = key.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim().toLowerCase();
+  return `Standard ${humanized}`;
 }

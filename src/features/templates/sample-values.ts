@@ -30,6 +30,9 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   dueDate: "2026-07-12",
   currency: "$",
   tax: "8%",
+  taxZone: "Standard State Tax",
+  taxPercent: "8%",
+  shippingCost: "$45.00",
   discount: "$50.00",
   total: "$4,500.00",
   subtotal: "$4,250.00",
@@ -76,7 +79,6 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   sku: "WDG-PRO-500",
   description: "High-quality industrial-grade widgets, box of 500",
   lineTotal: "$749.70",
-  shippingCost: "$45.00",
   taxAmount: "$63.57",
   grandTotal: "$858.27",
   authorizedSignature: "Michael Chen, Operations Manager",
@@ -1266,6 +1268,8 @@ export const SLUG_BRAND: Record<string, string> = {
   "resume-fresher-graduate": "Ava Martinez",
   "resume-product-manager": "Ryan Cooper",
   "resume-devops-engineer": "Nina Patel",
+  "resume-executive": "Eleanor Vance",
+  "resume-sales": "Marcus Bell",
   // Contracts
   "freelance-agreement": "Carter Creative Studio",
   "employment-contract": "Acme Global Inc.",
@@ -2409,20 +2413,19 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
 
   let computedSubtotal = 0;
   const rows = table.content;
+  const ctx = { brand: "", values: currentValues, defaults: FIELD_DEFAULTS };
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
     if (row && row.content && row.content.length > 0) {
       const lastCell = row.content[row.content.length - 1];
-      const cellText = extractText(lastCell).trim();
-      
-      let resolvedText = cellText;
-      Object.entries(currentValues).forEach(([k, v]) => {
-        if (resolvedText.includes(`{{${k}}}`)) {
-          resolvedText = resolvedText.replace(new RegExp(`\\{\\{${k}\\}\\}`, "g"), v || "0");
-        }
+      let cellText = extractText(lastCell).trim();
+
+      cellText = cellText.replace(/\{\{([a-zA-Z0-9_&]+)\}\}/g, (_, k) => {
+        const v = currentValues[k] || deriveFallbackValue(k, template, ctx);
+        return v || "0";
       });
       
-      const cleaned = resolvedText.replace(/[^\d.-]/g, "");
+      const cleaned = cellText.replace(/[^\d.-]/g, "");
       const val = parseFloat(cleaned);
       if (!isNaN(val)) {
         computedSubtotal += val;
@@ -2447,16 +2450,11 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
   }
 
   const subtotalStr = formatMoney(computedSubtotal);
-  const taxAmount = computedSubtotal * taxRate;
-  const taxStr = formatMoney(taxAmount);
-  // Only fold tax into the total when the document actually SHOWS a tax line.
-  // Many invoices list items and a grand total with no "Tax" row — adding 8%
-  // there made the total inexplicably higher than the items add up to (e.g.
-  // cleaning $970 rendered as $1,047.60). Detecting a tax/GST/VAT reference in
-  // the document keeps the arithmetic self-consistent on every template.
   const docStr = JSON.stringify(template?.content?.editorState || {});
   const showsTax = /\b(tax|gst|vat|cgst|sgst|igst)\b/i.test(docStr);
-  let totalAmount = computedSubtotal + (showsTax ? taxAmount : 0);
+  const effectiveTaxAmount = showsTax ? computedSubtotal * taxRate : 0;
+  const taxStr = formatMoney(effectiveTaxAmount);
+  let totalAmount = computedSubtotal + effectiveTaxAmount;
 
   // Shipping and order-level discounts are shown as their own summary lines, not
   // as table rows, so the line-item sum never includes them. Fold them into the
@@ -2485,21 +2483,28 @@ function computeInvoiceTotals(template: any, currentValues: Record<string, strin
   // sum made the amount due ($21,600) contradict the document's "This Release
   // (M2): $8,000 → $8,640" lines. Bill the current milestone instead.
   let subtotalOut = subtotalStr;
+  let taxStrOut = taxStr;
   if (template.slug === "invoice-milestone") {
     const release = 8000;
     subtotalOut = formatMoney(release);
-    totalAmount = release + release * taxRate;
+    taxStrOut = formatMoney(showsTax ? release * taxRate : 0);
+    totalAmount = release + (showsTax ? release * taxRate : 0);
   }
 
   const totalStr = formatMoney(totalAmount);
 
   return {
     subtotal: subtotalOut,
-    tax: taxVal,
-    taxAmount: taxStr,
+    tax: showsTax ? taxVal : "0%",
+    taxAmount: taxStrOut,
     total: totalStr,
     amountDue: totalStr,
     grandTotal: totalStr,
+    finalTotal: totalStr,
+    totalDue: totalStr,
+    estimatedTotal: totalStr,
+    commercialTotal: totalStr,
+    totalAmountDue: totalStr,
   };
 }
 
@@ -2649,8 +2654,9 @@ export function getTemplateValues(template: any): Record<string, string> {
   const brand = SLUG_BRAND[template?.slug];
 
   const isResume = template?.categorySlug === "resumes";
-  if (isResume && brand && !specific.fullName) {
-    specific.fullName = brand;
+  if (isResume && brand) {
+    if (!specific.fullName) specific.fullName = brand;
+    if (!specific.name) specific.name = brand;
   }
 
   // Exactly the derivation the defaults underlay applies, so a template's card

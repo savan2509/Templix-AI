@@ -10,6 +10,19 @@ import { SEOEngine } from "@/services/seo";
 import { siteConfig } from "@/config/site";
 import { ArrowRight, ArrowLeft, Scale, Sparkles, CheckCircle2, ShieldCheck, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 
+function getPaginationRange(activePage: number, totalPages: number): (number | string)[] {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  if (activePage <= 4) {
+    return [1, 2, 3, 4, 5, "...", totalPages];
+  }
+  if (activePage >= totalPages - 3) {
+    return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+  return [1, "...", activePage - 1, activePage, activePage + 1, "...", totalPages];
+}
+
 interface PageProps {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ category?: string; page?: string }>;
@@ -232,8 +245,19 @@ export default async function CompareHubPage({ params, searchParams }: PageProps
                 </span>
               )}
 
-              {/* Page Numbers */}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+              {/* Page Numbers with Ellipsis (...) */}
+              {getPaginationRange(safePage, totalPages).map((item, idx) => {
+                if (item === "...") {
+                  return (
+                    <span
+                      key={`ellipsis-${idx}`}
+                      className="w-9 h-9 flex items-center justify-center text-xs font-bold text-zinc-400 select-none"
+                    >
+                      ...
+                    </span>
+                  );
+                }
+                const pageNum = Number(item);
                 const isCurrent = pageNum === safePage;
                 return (
                   <Link

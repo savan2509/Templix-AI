@@ -1292,7 +1292,7 @@ export const invoicesExtra4Templates: any[] = [
                         "content": [
                           {
                             "type": "text",
-                            "text": "{{subtotal}}"
+                            "text": "{{hourlyTotal}}"
                           }
                         ]
                       }

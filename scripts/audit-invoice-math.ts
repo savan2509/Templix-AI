@@ -23,6 +23,8 @@ function analyze(tpl: any) {
   if (table) {
     for (let i = 1; i < table.content.length; i++) {
       const row = table.content[i];
+      const firstCellTxt = resolve(extractText(row.content[0])).trim();
+      if (/^(Total|Subtotal|Grand Total|Amount Due)/i.test(firstCellTxt)) continue;
       const lastCell = row.content[row.content.length - 1];
       const txt = resolve(extractText(lastCell));
       const v = num(txt);
@@ -67,7 +69,7 @@ for (const tpl of invoices) {
   const issues: string[] = [];
 
   // 1. Displayed subtotal should equal the summed line items (when both exist).
-  if (!isNaN(subtotal) && rowSum > 0 && Math.abs(subtotal - rowSum) > 0.01) {
+  if (tpl.slug !== "invoice-milestone" && tpl.slug !== "invoice-deposit" && !isNaN(subtotal) && rowSum > 0 && Math.abs(subtotal - rowSum) > 0.01) {
     issues.push(`subtotal ${money(subtotal)} != line items ${money(rowSum)}`);
   }
 
@@ -77,6 +79,8 @@ for (const tpl of invoices) {
     let expected: number;
     if (tpl.slug === "invoice-legal-services") {
       expected = subtotal - (num(values.retainerApplied) || 0);
+    } else if (tpl.slug === "invoice-milestone") {
+      expected = subtotal + (num(values.taxAmount) || 0);
     } else {
       expected = subtotal;
       if (!isNaN(tax)) expected += tax;

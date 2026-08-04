@@ -12,7 +12,7 @@ import Schema from "@/components/seo/Schema";
 import FavoriteButton from "@/components/FavoriteButton";
 import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
-import { FileText, ArrowRight, Home, Sparkles, AlertCircle } from "lucide-react";
+import { FileText, ArrowRight, Home, Sparkles, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
@@ -22,6 +22,19 @@ import { getProfessionContent, PROFESSION_SLUGS } from "@/features/templates/pro
 import { getTemplateInsight } from "@/features/templates/template-insights";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 import { generateProductSchema } from "@/data/schemas/product";
+
+function getPaginationRange(activePage: number, totalPages: number): (number | string)[] {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  if (activePage <= 4) {
+    return [1, 2, 3, 4, 5, "...", totalPages];
+  }
+  if (activePage >= totalPages - 3) {
+    return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+  return [1, "...", activePage - 1, activePage, activePage + 1, "...", totalPages];
+}
 
 // Template slug → preview image mapping
 const TEMPLATE_IMAGES: Record<string, string> = {
@@ -909,101 +922,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               (minmax(0,1fr)); without it the column is auto-sized and a wide
               child — e.g. the many-page pagination row — stretched it past the
               screen, dragging the sidebar into horizontal overflow. */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* ── Sidebar ── */}
-            <aside className="lg:col-span-1 space-y-5">
-
-              {/* All Documents card */}
-              <Link
-                href={`/${locale}/templates`}
-                className={`group flex items-center gap-3 p-3 rounded-2xl border transition-all duration-200 ${
-                  !categorySlug
-                    ? "border-blue-400/60 bg-blue-50 dark:bg-blue-950/30 dark:border-blue-600/40 shadow-sm"
-                    : "border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-blue-400/50 hover:shadow-md hover:-translate-y-0.5"
-                }`}
-              >
-                <div className="relative h-12 w-16 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700">
-                  <Image src="/cat-all-docs-cover.jpg" alt="All document templates" title="All document templates" fill className="object-cover" sizes="64px" />
-                </div>
-                <div className="min-w-0">
-                  <p className={`font-bold text-sm truncate ${ !categorySlug ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200" }`}>
-                    {t.allDocuments}
-                  </p>
-                  <p className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate">{allFallbackTemplates.length} {common.templatesLabel}</p>
-                </div>
-                {!categorySlug && (
-                  <span className="ml-auto shrink-0 w-1.5 h-6 rounded-full bg-blue-500" />
-                )}
-              </Link>
-
-              {/* Category cards */}
-              <div className="space-y-2.5">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 px-1">{t.documentTypes}</p>
-                {CATEGORIES.map((cat) => {
-                  const isActive = categorySlug === cat.slug;
-                  return (
-                    <Link
-                      key={cat.slug}
-                      href={`/${locale}/templates/${cat.slug}`}
-                      className={`group flex items-center gap-3 p-3 rounded-2xl border transition-all duration-200 ${
-                        isActive
-                          ? "border-blue-400/60 bg-blue-50 dark:bg-blue-950/30 dark:border-blue-600/40 shadow-sm"
-                          : "border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-blue-400/50 hover:shadow-md hover:-translate-y-0.5"
-                      }`}
-                    >
-                      {/* Thumbnail */}
-                      <div className="relative h-12 w-16 shrink-0 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 group-hover:scale-105 transition-transform duration-300">
-                        <Image
-                          src={cat.image}
-                          alt={`Free ${cat.name} templates`}
-                          title={`Free ${cat.name} templates`}
-                          fill
-                          className="object-cover"
-                          sizes="64px"
-                        />
-                      </div>
-
-                      {/* Text */}
-                      <div className="min-w-0 flex-1">
-                        <p className={`font-bold text-sm truncate ${ isActive ? "text-blue-600 dark:text-blue-400" : "text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400" } transition-colors`}>
-                          {common.categoryNames[cat.slug as keyof typeof common.categoryNames] ?? cat.name}
-                        </p>
-                        <p className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate">{common.categoryDescriptions[cat.slug as keyof typeof common.categoryDescriptions] ?? cat.description}</p>
-                        <p className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
-                          {allFallbackTemplates.filter((tpl) => tpl.categorySlug === cat.slug).length} {common.templatesLabel}
-                        </p>
-                      </div>
-
-                      {/* Active indicator */}
-                      {isActive && (
-                        <span className="ml-auto shrink-0 w-1.5 h-6 rounded-full bg-blue-500" />
-                      )}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* Related Searches box */}
-              <div className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="font-bold text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-                  {t.relatedSearchesTitle}
-                </h3>
-                <div className="flex flex-col gap-2">
-                  {relatedSearches.map((rel) => (
-                    <Link
-                      key={rel.label}
-                      href={rel.url}
-                      className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"
-                    >
-                      <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all text-blue-500" />
-                      {rel.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </aside>
-
-            <section className="lg:col-span-3 space-y-6">
+          <div className="space-y-8">
+            <section className="space-y-6">
               {templates.length === 0 ? (
                 <div className="p-12 text-center border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3">
                   <AlertCircle className="h-10 w-10 text-zinc-400 mx-auto" />
@@ -1014,7 +934,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </div>
               ) : (
                 <>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {paginatedTemplates.map((temp) => {
                     return (
                     <div
@@ -1053,9 +973,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           </p>
                         </div>
 
-                        {/* Redirects to category/slug path representing specific preview page.
-                            aria-label carries the template name so the link has real keyword
-                            relevance instead of a generic "Preview Details". */}
+                        {/* Redirects to category/slug path representing specific preview page. */}
                         <Link
                           href={`/${locale}/templates/${temp.categorySlug}/${temp.slug}`}
                           aria-label={`${t.previewDetails}: ${temp.title}`}
@@ -1070,11 +988,44 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
                 </div>
 
-                {/* Simple Pagination Controls */}
+                {/* Smart Truncated Pagination Controls with ... (Ellipsis) */}
                 {totalPages > 1 && (
-                  <div className="flex flex-wrap items-center justify-center gap-2 pt-8">
-                    {Array.from({ length: totalPages }).map((_, idx) => {
-                      const p = idx + 1;
+                  <nav aria-label="Template catalog pagination" className="flex flex-wrap items-center justify-center gap-2 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+                    {/* Previous Button */}
+                    {currentPage > 1 ? (
+                      <Link
+                        href={`/${locale}${slug.length > 0 ? `/templates/${slug.join("/")}` : "/templates"}${(() => {
+                          const queryParams = new URLSearchParams();
+                          if (q) queryParams.set("q", q);
+                          if (currentPage - 1 > 1) queryParams.set("page", String(currentPage - 1));
+                          const qs = queryParams.toString();
+                          return qs ? `?${qs}` : "";
+                        })()}`}
+                        className="px-3.5 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                        <span>Previous</span>
+                      </Link>
+                    ) : (
+                      <span className="px-3.5 h-9 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold text-zinc-400 opacity-50 cursor-not-allowed flex items-center gap-1.5">
+                        <ChevronLeft className="h-4 w-4" />
+                        <span>Previous</span>
+                      </span>
+                    )}
+
+                    {/* Page Numbers with Ellipsis (...) */}
+                    {getPaginationRange(currentPage, totalPages).map((item, idx) => {
+                      if (item === "...") {
+                        return (
+                          <span
+                            key={`ellipsis-${idx}`}
+                            className="w-9 h-9 flex items-center justify-center text-xs font-bold text-zinc-400 select-none"
+                          >
+                            ...
+                          </span>
+                        );
+                      }
+                      const p = Number(item);
                       const isActive = p === currentPage;
                       const queryParams = new URLSearchParams();
                       if (q) queryParams.set("q", q);
@@ -1086,7 +1037,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         <Link
                           key={p}
                           href={href}
-                          className={`w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${
+                          className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold transition-all border ${
                             isActive
                               ? "bg-blue-600 border-blue-600 text-white shadow-sm"
                               : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300"
@@ -1096,11 +1047,55 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                         </Link>
                       );
                     })}
-                  </div>
+
+                    {/* Next Button */}
+                    {currentPage < totalPages ? (
+                      <Link
+                        href={`/${locale}${slug.length > 0 ? `/templates/${slug.join("/")}` : "/templates"}${(() => {
+                          const queryParams = new URLSearchParams();
+                          if (q) queryParams.set("q", q);
+                          queryParams.set("page", String(currentPage + 1));
+                          const qs = queryParams.toString();
+                          return qs ? `?${qs}` : "";
+                        })()}`}
+                        className="px-3.5 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5"
+                      >
+                        <span>Next</span>
+                        <ChevronRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <span className="px-3.5 h-9 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold text-zinc-400 opacity-50 cursor-not-allowed flex items-center gap-1.5">
+                        <span>Next</span>
+                        <ChevronRight className="h-4 w-4" />
+                      </span>
+                    )}
+                  </nav>
                 )}
               </>
             )}
             </section>
+
+            {/* Related Searches Box */}
+            {relatedSearches.length > 0 && (
+              <div className="p-6 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3">
+                <h3 className="font-bold text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                  {t.relatedSearchesTitle}
+                </h3>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {relatedSearches.map((rel) => (
+                    <Link
+                      key={rel.label}
+                      href={rel.url}
+                      className="px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5"
+                    >
+                      <ArrowRight className="h-3 w-3 text-blue-500" />
+                      <span>{rel.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
             {/* "What is a [document]?" — a definitional section (unique 80–110
                 words per category) that helps the page rank as a topical page,
@@ -1129,7 +1124,6 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                 </p>
               </div>
             </section>
-          </div>
 
           {/* Profession-specific long-form content — the unique information gain
               that keeps a /{category}/{profession} page from being a thin,

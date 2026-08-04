@@ -6860,7 +6860,7 @@ export const resumesExtra4Templates: any[] = [
                     "content": [
                       {
                         "type": "text",
-                        "text": "R&D Projects: {{r&dProjects}}"
+                        "text": "Key Research & Development: {{r&dProjects}}"
                       }
                     ]
                   }
@@ -9666,7 +9666,7 @@ export const resumesExtra4Templates: any[] = [
                     "content": [
                       {
                         "type": "text",
-                        "text": "P&L Responsibility: {{p&lResponsibility}}"
+                        "text": "P&L Scope & Budget: {{p&lResponsibility}}"
                       }
                     ]
                   }
