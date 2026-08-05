@@ -26,7 +26,7 @@ export const batch4Posts: BlogPost[] = [
       "job resume"
     ],
     "readTime": 12,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-01",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-to-write-an-ats-friendly-resume-2026.jpg",
     "content": "\n<h2>What Is an ATS-Friendly Resume?</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-to-write-an-ats-friendly-resume-2026.jpg\" alt=\"How to Write an ATS-Friendly Resume in 2026\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>An Applicant Tracking System (ATS) is automated recruiting software used by over 98% of Fortune 500 companies and growing numbers of small-to-medium businesses. ATS software scans, parses, and ranks incoming resumes based on job description keyword match rates before a human recruiter ever sees them.</p>\n<p>An ATS-friendly resume uses standard single-column typography, unambiguous section headings (e.g. <em>Work Experience</em> instead of <em>My Journey</em>), clean bullet points, and high-density relevance keywords extracted from the target job posting.</p>\n\n<h2>Essential ATS Formatting Guidelines</h2>\n<table>\n  <thead><tr><th>Format Element</th><th>ATS Best Practice</th><th>What to Avoid</th></tr></thead>\n  <tbody>\n    <tr><td>Layout</td><td>Single-column vertical hierarchy</td><td>Multi-column grids, text boxes, tables</td></tr>\n    <tr><td>File Format</td><td>Clean PDF or editable DOCX</td><td>JPG, PNG, Photoshop, PSD, Canva graphics</td></tr>\n    <tr><td>Fonts</td><td>Inter, Arial, Calibri, Roboto (10-12pt)</td><td>Custom decorative or script fonts</td></tr>\n    <tr><td>Section Titles</td><td>Standard HR keywords (Education, Experience)</td><td>Creative headings like \"Where I've Been\"</td></tr>\n  </tbody>\n</table>\n\n<h2>5 Steps to Build an ATS-Optimized Resume</h2>\n<ol>\n  <li><strong>Analyze the Job Description:</strong> Identify top required hard skills, software names, and job duties.</li>\n  <li><strong>Choose a Clean Template:</strong> Select an HRXML-compliant single-column template from <a href=\"/en/templates/resumes\">Templix AI Resume Builder</a>.</li>\n  <li><strong>Integrate Keywords Naturally:</strong> Weave exact match keywords into action bullet points (e.g. \"Managed cross-functional Agile sprint cycles\").</li>\n  <li><strong>Quantify Achievements:</strong> Use metrics (percentages, revenue growth, time savings) to prove impact.</li>\n  <li><strong>Export as ATS PDF:</strong> Download print-ready PDF or Word file with no graphic layers.</li>\n</ol>\n\n<h2>Frequently Asked Questions</h2>\n<h3>Which file format is best for ATS — PDF or Word?</h3>\n<p>Both PDF and DOCX files are parsed successfully by modern ATS engines (Workday, Greenhouse, Taleo). PDF preserves visual layout, while DOCX is universally compatible.</p>\n<h3>Are multi-column Canva resumes ATS compliant?</h3>\n<p>No. Graphic software like Canva places text inside unparseable visual layers that cause ATS screeners to scramble content or score it 0%.</p>\n    "
@@ -56,7 +56,7 @@ export const batch4Posts: BlogPost[] = [
       "job resume"
     ],
     "readTime": 14,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-04",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-50-professional-resume-examples-for-every-job-role.jpg",
     "content": "\n<h2>Why Role-Specific Resume Examples Matter</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-50-professional-resume-examples-for-every-job-role.jpg\" alt=\"50 Professional Resume Examples\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Hiring managers spend an average of 6 seconds reviewing a resume before making an initial pass/fail decision. A tailored resume featuring industry-specific terminology, technical skill matrices, and quantified achievements immediately signals candidate competence.</p>\n<p>Whether you are a fresh graduate or an executive leader, Templix AI provides ready-to-customize <a href=\"/en/templates/resumes\">resume templates</a> tailored for every career level.</p>\n\n<h2>Top Resume Examples by Industry</h2>\n<ul>\n  <li><strong>Technology &amp; Engineering:</strong> Software Engineers, Frontend Developers, DevOps, Data Scientists, Civil Engineers.</li>\n  <li><strong>Healthcare &amp; Nursing:</strong> Registered Nurses (RN), Nurse Practitioners, Medical Assistants, Pharmacists.</li>\n  <li><strong>Finance &amp; Business:</strong> Accountants, Financial Analysts, MBA Graduates, Sales Executives, Project Managers.</li>\n  <li><strong>Education &amp; Creative:</strong> Teachers, Academic Professors, Graphic Designers, Digital Marketers.</li>\n</ul>\n\n<h2>Frequently Asked Questions</h2>\n<h3>Can I customize these resume examples for free?</h3>\n<p>Yes. Every resume template on Templix AI can be edited online and downloaded as a PDF or Word file for free with no sign-up.</p>\n    "
@@ -86,7 +86,7 @@ export const batch4Posts: BlogPost[] = [
       "online invoice"
     ],
     "readTime": 10,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-08",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-to-create-a-professional-invoice-for-freelancers.jpg",
     "content": "\n<h2>Why Freelancers Need Professional Invoices</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-to-create-a-professional-invoice-for-freelancers.jpg\" alt=\"How to Create a Professional Invoice for Freelancers\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Clear, professional invoices establish credibility, prevent payment disputes, and ensure fast remittance. Independent contractors and freelancers who issue formatted invoices with explicit payment terms get paid up to 14 days faster than those sending informal text emails.</p>\n\n<h2>8 Essential Invoice Elements</h2>\n<ol>\n  <li><strong>Header:</strong> \"INVOICE\" label clearly displayed at the top.</li>\n  <li><strong>Business Information:</strong> Your full name, brand name, address, email, and tax ID.</li>\n  <li><strong>Client Details:</strong> Client business name, contact person, and billing address.</li>\n  <li><strong>Invoice Meta:</strong> Unique sequential invoice number (e.g. INV-2026-001) and issue date.</li>\n  <li><strong>Itemized Line Items:</strong> Description of deliverables, hours/quantities, rate, and line total.</li>\n  <li><strong>Financial Totals:</strong> Subtotal, applicable taxes (GST/VAT), discounts, and grand total.</li>\n  <li><strong>Payment Instructions:</strong> Bank transfer details (IBAN/SWIFT), PayPal, or digital payment link.</li>\n  <li><strong>Payment Terms:</strong> Clear due date (e.g., <em>Due upon receipt</em> or <em>Net 30</em>).</li>\n</ol>\n\n<h2>Frequently Asked Questions</h2>\n<h3>How do I generate a free freelancer invoice PDF?</h3>\n<p>Use the <a href=\"/en/templates/invoices\">Templix AI Invoice Generator</a> to enter project line items, auto-calculate tax rows, and export a clean PDF instantly.</p>\n    "
@@ -116,7 +116,7 @@ export const batch4Posts: BlogPost[] = [
       "invoice software"
     ],
     "readTime": 11,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-11",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-what-is-a-gst-invoice-guide.jpg",
     "content": "\n<h2>What Is a GST Invoice?</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-what-is-a-gst-invoice-guide.jpg\" alt=\"What Is a GST Invoice\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>A GST invoice is a legal bill issued by a registered taxpayer in India upon selling goods or services. It documents the transaction details and explicit tax breakdowns (CGST, SGST, IGST) required for claiming Input Tax Credit (ITC).</p>\n\n<h2>CGST, SGST, and IGST — Tax Breakdown Rules</h2>\n<table>\n  <thead><tr><th>Transaction Type</th><th>Applicable Taxes</th><th>Tax Calculation</th></tr></thead>\n  <tbody>\n    <tr><td>Intra-State (Same State)</td><td>CGST + SGST</td><td>Divided equally (e.g. 18% GST = 9% CGST + 9% SGST)</td></tr>\n    <tr><td>Inter-State (Different State)</td><td>IGST</td><td>Full rate applied as IGST (e.g. 18% IGST)</td></tr>\n    <tr><td>Export / SEZ Supply</td><td>Zero-Rated IGST</td><td>0% GST with LUT bond declaration</td></tr>\n  </tbody>\n</table>\n\n<h2>Frequently Asked Questions</h2>\n<h3>Can I create GST invoices for free?</h3>\n<p>Yes. Templix AI provides compliant <a href=\"/en/templates/invoices\">GST invoice templates</a> with automated tax splits and HSN/SAC code support.</p>\n    "
@@ -146,7 +146,7 @@ export const batch4Posts: BlogPost[] = [
       "career advice"
     ],
     "readTime": 9,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-15",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-cover-letter-vs-resume-difference.jpg",
     "content": "\n<h2>Resume vs. Cover Letter — Key Distinctions</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-cover-letter-vs-resume-difference.jpg\" alt=\"Cover Letter vs Resume Difference\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>While both documents form the core of a professional job application, they serve distinct purposes:</p>\n<ul>\n  <li><strong>Resume:</strong> A structured, bulleted summary of your work history, technical skills, education, and credentials.</li>\n  <li><strong>Cover Letter:</strong> A personalized letter explaining <em>why</em> you are applying, how your experience connects to team goals, and why you are a cultural fit.</li>\n</ul>\n\n<h2>Frequently Asked Questions</h2>\n<h3>Should I send a cover letter if optional?</h3>\n<p>Yes! Submitting a tailored cover letter sets you apart from candidates who skip it, demonstrating initiative and genuine interest.</p>\n    "
@@ -176,7 +176,7 @@ export const batch4Posts: BlogPost[] = [
       "job search"
     ],
     "readTime": 10,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-18",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-10-resume-mistakes-that-prevent-interviews.jpg",
     "content": "\n<h2>Top 10 Resume Rejection Triggers</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-10-resume-mistakes-that-prevent-interviews.jpg\" alt=\"10 Resume Mistakes That Prevent Interviews\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<ol>\n  <li><strong>Multi-Column Canva Layouts:</strong> Complex graphic columns confuse ATS scanners.</li>\n  <li><strong>Vague Bullet Points:</strong> Listing job duties instead of measurable achievements.</li>\n  <li><strong>Spelling &amp; Grammar Typos:</strong> Immediate sign of carelessness.</li>\n  <li><strong>Unprofessional Email Addresses:</strong> Using informal personal handles instead of standard name formats.</li>\n  <li><strong>Missing Keywords:</strong> Failing to mirror target skills from the job description.</li>\n  <li><strong>Excessive Length:</strong> Exceeding 2 pages for non-executive roles.</li>\n  <li><strong>Including Personal Photos:</strong> Triggers unconscious bias and ATS parsing errors in Western markets.</li>\n  <li><strong>Passive Tone:</strong> Using weak verbs like \"Responsible for\" instead of strong action verbs like \"Engineered\", \"Spearheaded\".</li>\n  <li><strong>Outdated Contact Information:</strong> Broken LinkedIn links or outdated phone numbers.</li>\n  <li><strong>Generic Resumes:</strong> Submitting one identical resume to 50 different job listings.</li>\n</ol>\n    "
@@ -206,7 +206,7 @@ export const batch4Posts: BlogPost[] = [
       "AI software"
     ],
     "readTime": 11,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-22",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-ai-is-changing-document-creation-for-businesses.jpg",
     "content": "\n<h2>The Shift to Intelligent Document Workflows</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-ai-is-changing-document-creation-for-businesses.jpg\" alt=\"How AI Is Changing Document Creation\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Modern businesses are moving away from manual word processing toward automated AI document generation suites. Platforms like <a href=\"/en/tools\">Templix AI Tools</a> combine structured schema blueprints with real-time AI rephrasing, tax engines, and instant PDF rendering.</p>\n    "
@@ -236,7 +236,7 @@ export const batch4Posts: BlogPost[] = [
       "ATS resume"
     ],
     "readTime": 12,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-25",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-best-free-resume-builders-compared-2026.jpg",
     "content": "\n<h2>Evaluating Free Resume Builders in 2026</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-best-free-resume-builders-compared-2026.jpg\" alt=\"Best Free Resume Builders Compared\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Many resume sites advertise as \"free\" only to demand credit card payments at the final download step. Templix AI is committed to 100% free, unlimited, watermark-free PDF and DOCX resume downloads.</p>\n    "
@@ -266,7 +266,7 @@ export const batch4Posts: BlogPost[] = [
       "accounting basics"
     ],
     "readTime": 8,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-06-29",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-invoice-vs-receipt-difference.jpg",
     "content": "\n<h2>Invoice vs. Receipt Comparison</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-invoice-vs-receipt-difference.jpg\" alt=\"Invoice vs Receipt Difference\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<ul>\n  <li><strong>Invoice:</strong> Issued <em>before</em> payment to request remittance for delivered goods or services.</li>\n  <li><strong>Receipt:</strong> Issued <em>after</em> payment is completed as official proof of settlement.</li>\n</ul>\n    "
@@ -296,7 +296,7 @@ export const batch4Posts: BlogPost[] = [
       "business documents"
     ],
     "readTime": 13,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-02",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-to-write-a-winning-business-proposal.jpg",
     "content": "\n<h2>The Structure of a Winning Proposal</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-to-write-a-winning-business-proposal.jpg\" alt=\"How to Write a Winning Business Proposal\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<ol>\n  <li><strong>Executive Summary:</strong> Overview of client problem and proposed solution.</li>\n  <li><strong>Scope of Work (SOW):</strong> Detailed project phases and deliverables.</li>\n  <li><strong>Timeline &amp; Milestones:</strong> Schedule of delivery dates.</li>\n  <li><strong>Pricing &amp; Fee Schedule:</strong> Itemized costs and payment milestones.</li>\n  <li><strong>Terms &amp; Signatures:</strong> Acceptance clauses and signature block.</li>\n</ol>\n    "
@@ -326,7 +326,7 @@ export const batch4Posts: BlogPost[] = [
       "HR templates"
     ],
     "readTime": 12,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-06",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-top-20-free-business-document-templates.jpg",
     "content": "\n<h2>20 Must-Have Business Documents</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-top-20-free-business-document-templates.jpg\" alt=\"Top 20 Free Business Document Templates\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>From invoices and non-disclosure agreements to offer letters and service agreements, browse <a href=\"/en/templates\">Templix AI Document Library</a> for 100% free downloadable blueprints.</p>\n    "
@@ -354,7 +354,7 @@ export const batch4Posts: BlogPost[] = [
       "business contract"
     ],
     "readTime": 11,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-09",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-to-create-a-legally-valid-service-agreement.jpg",
     "content": "\n<h2>Key Clauses for Service Agreements</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-to-create-a-legally-valid-service-agreement.jpg\" alt=\"How to Create a Legally Valid Service Agreement\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<ul>\n  <li>Identification of Parties</li>\n  <li>Scope of Services</li>\n  <li>Compensation &amp; Billing Terms</li>\n  <li>Intellectual Property Ownership</li>\n  <li>Termination &amp; Dispute Resolution</li>\n</ul>\n    "
@@ -384,7 +384,7 @@ export const batch4Posts: BlogPost[] = [
       "HR templates"
     ],
     "readTime": 10,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-13",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-ultimate-guide-to-offer-letters-and-hr-documents.jpg",
     "content": "\n<h2>Essential Onboarding Documents</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-ultimate-guide-to-offer-letters-and-hr-documents.jpg\" alt=\"Ultimate Guide to Offer Letters and HR Documents\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Create professional, legally compliant offer letters and employment contracts with Templix AI HR templates.</p>\n    "
@@ -414,7 +414,7 @@ export const batch4Posts: BlogPost[] = [
       "document sharing"
     ],
     "readTime": 9,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-16",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-pdf-vs-word-which-format-is-better.jpg",
     "content": "\n<h2>Comparing PDF and DOCX Document Formats</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-pdf-vs-word-which-format-is-better.jpg\" alt=\"PDF vs Word Comparison\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Choose PDF for final non-editable business delivery (Invoices, Signed Contracts); choose Word for collaborative drafting.</p>\n    "
@@ -444,7 +444,7 @@ export const batch4Posts: BlogPost[] = [
       "AI software"
     ],
     "readTime": 11,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-20",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-top-ai-writing-tools-compared-2026.jpg",
     "content": "\n<h2>Best AI Writing Tools of 2026</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-top-ai-writing-tools-compared-2026.jpg\" alt=\"Top AI Writing Tools Compared\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Discover how integrated document AI engines outperform general chatbot tools for structured corporate document creation.</p>\n    "
@@ -472,7 +472,7 @@ export const batch4Posts: BlogPost[] = [
       "professional writing"
     ],
     "readTime": 9,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-23",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-how-to-write-a-professional-job-application-letter.jpg",
     "content": "\n<h2>Structure of a Job Application Letter</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-how-to-write-a-professional-job-application-letter.jpg\" alt=\"How to Write a Professional Job Application Letter\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Draft job application letters using free templates at <a href=\"/en/templates/letters\">Templix AI Letters Studio</a>.</p>\n    "
@@ -532,7 +532,7 @@ export const batch4Posts: BlogPost[] = [
       "legal documents"
     ],
     "readTime": 12,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-07-30",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-complete-guide-to-business-contracts-for-beginners.jpg",
     "content": "\n<h2>Understanding Legal Business Contracts</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-complete-guide-to-business-contracts-for-beginners.jpg\" alt=\"Complete Guide to Business Contracts\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Draft contracts using vetted legal blueprints at <a href=\"/en/templates/contracts\">Templix AI Contracts Studio</a>.</p>\n    "
@@ -562,7 +562,7 @@ export const batch4Posts: BlogPost[] = [
       "business documents"
     ],
     "readTime": 11,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-08-02",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-10-essential-documents-every-freelancer-needs.jpg",
     "content": "\n<h2>Essential Freelance Document Checklist</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-10-essential-documents-every-freelancer-needs.jpg\" alt=\"10 Essential Documents Every Freelancer Needs\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Equip your freelance business with contracts, invoices, and proposals from Templix AI.</p>\n    "
@@ -592,7 +592,7 @@ export const batch4Posts: BlogPost[] = [
       "workflow automation"
     ],
     "readTime": 10,
-    "publishedAt": "2026-07-27",
+    "publishedAt": "2026-08-04",
     "updatedAt": "2026-07-27",
     "image": "/blog/blog-ai-vs-traditional-document-creation-time-saving.jpg",
     "content": "\n<h2>Speed &amp; Accuracy Comparison</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-ai-vs-traditional-document-creation-time-saving.jpg\" alt=\"AI vs Traditional Document Creation\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Automate your business workflow today with <a href=\"/en/tools\">Templix AI Tools</a>.</p>\n    "

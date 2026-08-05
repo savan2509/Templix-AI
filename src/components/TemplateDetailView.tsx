@@ -9,6 +9,7 @@ import { getDictionary } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
 import { aiFillTemplateAction } from "@/features/tools/ai-actions";
 import SocialShare from "./SocialShare";
+import { siteConfig } from "@/config/site";
 import { useTemplateLimit, FREE_TEMPLATE_LIMIT } from "@/hooks/useTemplateLimit";
 import FreeLimitModal from "./FreeLimitModal";
 
@@ -184,8 +185,8 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
                   <Zap className="h-4 w-4 text-amber-500 shrink-0 animate-pulse" />
                   <span>
                     {isLimitReached && !hasUsedTemplate(template.slug)
-                      ? `Free Guest Trial Full (${FREE_TEMPLATE_LIMIT}/${FREE_TEMPLATE_LIMIT} Used)`
-                      : `Free Trial: ${usedCount}/${FREE_TEMPLATE_LIMIT} Templates Used`}
+                      ? `Guest Allowance Reached (${FREE_TEMPLATE_LIMIT}/${FREE_TEMPLATE_LIMIT} Used)`
+                      : `Guest Access: ${usedCount}/${FREE_TEMPLATE_LIMIT} Free Documents Created`}
                   </span>
                 </div>
                 <span className="font-bold text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-zinc-800 shadow-xs border border-zinc-200 dark:border-zinc-700">
@@ -252,7 +253,10 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
 
               {/* Social Share Component */}
               <div className="pt-2 border-t border-zinc-100 dark:border-zinc-800">
-                <SocialShare title={`${template.title} — Free Editable Template | Templix AI`} />
+                <SocialShare
+                  title={`${template.title} — Free Editable Template | Templix AI`}
+                  url={`${siteConfig.url}/${locale}/templates/${template.categorySlug}/${template.slug}`}
+                />
               </div>
             </div>
           </div>

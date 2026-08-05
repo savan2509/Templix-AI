@@ -8,6 +8,7 @@ import BlogGetInTouch from "@/components/BlogGetInTouch";
 import BlogReadPopup from "@/components/BlogReadPopup";
 import SocialShare from "@/components/SocialShare";
 import Schema from "@/components/seo/Schema";
+import AuthorBio from "@/components/AuthorBio";
 import { db } from "@/lib/db";
 import {
   getBlogPost,
@@ -171,14 +172,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
   articleHtml = articleHtml.replace(/src=["'](\/blog\/[^"']+)["']/g, (_, srcPath) => {
     return `src="${resolveImagePath(srcPath, post?.category)}"`;
   });
-
-  // If the article content doesn't have an inline image, embed the cover illustration after the first </h2>
-  if (!articleHtml.includes("<img")) {
-    articleHtml = articleHtml.replace(
-      /<\/h2>/i,
-      `</h2>\n<div class="my-8 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-md"><img src="${resolvePostImage(post)}" alt="${post.title.replace(/"/g, "&quot;")}" class="w-full object-cover max-h-[420px]" /></div>`
-    );
-  }
   // Every article gets an FAQ. If the post already ships its own "Frequently
   // Asked Questions" section, use those; otherwise generate a category-specific
   // set to render below the article + emit FAQPage schema.
@@ -419,6 +412,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   </div>
                 </section>
               )}
+
+              {/* Author E-E-A-T Bio Box */}
+              <AuthorBio
+                publishedAt={post.publishedAt}
+                updatedAt={post.updatedAt}
+                category={post.category}
+                readTime={minutes}
+              />
 
               {/* Share row */}
               <div className="mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

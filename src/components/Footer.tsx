@@ -267,6 +267,21 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/services`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  AI &amp; Document Services
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Product Suite (30)
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/category`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Category Hubs (9)
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/faq`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.helpCenter}
                 </Link>
@@ -320,22 +335,16 @@ export default function Footer() {
             <span> for frictionless drafting.</span>
           </div>
 
-          {/* Social Profiles */}
+          {/* Social & Community Profiles */}
           <div className="flex items-center gap-4 text-xs">
-            <a href="https://facebook.com/templixai" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" className="hover:text-blue-600 transition-colors">
-              Facebook
-            </a>
-            <a href="https://instagram.com/templixai" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="hover:text-pink-600 transition-colors">
-              Instagram
-            </a>
-            <a href="https://youtube.com/@templixai" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" className="hover:text-red-600 transition-colors">
-              YouTube
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+              GitHub
             </a>
             <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
               LinkedIn
             </a>
-            <a href="https://twitter.com/templix_ai" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="hover:text-sky-500 transition-colors">
-              Twitter
+            <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter Profile" className="hover:text-sky-500 transition-colors">
+              X (Twitter)
             </a>
           </div>
 

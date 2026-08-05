@@ -7,6 +7,7 @@
 import { professionContentA } from "./profession-content-a";
 import { professionContentB } from "./profession-content-b";
 import { professionContentC } from "./profession-content-c";
+import { professionContentD } from "./profession-content-d";
 
 export interface ProfessionEntry {
   profession: string;                               // plural display noun
@@ -21,6 +22,7 @@ const PROFESSION_CONTENT: Record<string, ProfessionEntry> = {
   ...professionContentA,
   ...professionContentB,
   ...professionContentC,
+  ...professionContentD,
 };
 
 /** All profession slugs (for the route allowlist + sitemap). */

@@ -8,6 +8,9 @@ import { professionRoutes } from "@/features/templates/profession-content";
 import { FAQ_TOPIC_SLUGS } from "@/data/faq-topics";
 import { ALL_USE_CASE_SLUGS } from "@/lib/use-case-data";
 import { ALL_MASTER_LANDING_SLUGS } from "@/lib/landing-page-data";
+import { SERVICES_DATA } from "@/data/services";
+import { CATEGORY_HUBS } from "@/data/categories";
+import { PRODUCTS_DATA } from "@/data/products";
 
 import { siteConfig } from "@/config/site";
 
@@ -62,6 +65,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/blog", { changeFrequency: "daily", priority: 0.8 }],
     ["/compare", { changeFrequency: "daily", priority: 0.8 }],
     ["/tools", { changeFrequency: "weekly", priority: 0.7 }],
+    ["/services", { changeFrequency: "daily", priority: 0.8 }],
+    ["/category", { changeFrequency: "daily", priority: 0.9 }],
+    ["/products", { changeFrequency: "daily", priority: 0.9 }],
     ["/use-cases", { changeFrequency: "daily", priority: 0.8 }],
     ["/about", { changeFrequency: "monthly", priority: 0.5 }],
     ["/contact", { changeFrequency: "monthly", priority: 0.5 }],
@@ -157,6 +163,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dedicated Master SEO Landing Pages (all 30 landing pages)
     ...ALL_MASTER_LANDING_SLUGS.map((slug) =>
       entry(`/${slug}`, { changeFrequency: "daily", priority: 0.9 })
+    ),
+
+    // Dedicated Automated Document & AI Service Landing Pages (10 service pages)
+    ...SERVICES_DATA.map((service) =>
+      entry(`/services/${service.slug}`, { changeFrequency: "weekly", priority: 0.8 })
+    ),
+
+    // Dedicated Category Hub Pages (9 category pages)
+    ...CATEGORY_HUBS.map((cat) =>
+      entry(`/category/${cat.slug}`, { changeFrequency: "weekly", priority: 0.9 })
+    ),
+
+    // Dedicated Product Pages (30 product pages)
+    ...PRODUCTS_DATA.map((prod) =>
+      entry(`/products/${prod.slug}`, { changeFrequency: "weekly", priority: 0.9 })
     ),
   ];
 }

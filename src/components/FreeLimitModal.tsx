@@ -63,7 +63,7 @@ export default function FreeLimitModal({
         {/* Progress bar */}
         <div className="space-y-1.5 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800">
           <div className="flex justify-between text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-            <span>Free Guest Trial Usage</span>
+            <span>Guest Document Usage</span>
             <span className="text-amber-600 dark:text-amber-400 font-bold">100% Used</span>
           </div>
           <div className="w-full bg-zinc-200 dark:bg-zinc-700 h-2.5 rounded-full overflow-hidden">

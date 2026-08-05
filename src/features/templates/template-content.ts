@@ -515,7 +515,7 @@ export function getTemplateCopy(template: {
 
   // The field list is genuinely different for every template, which is what
   // keeps these pages from reading as 180 copies of one another.
-  const fields = (template.content?.fields ?? []).slice(0, 12).map(humanizeField);
+  const fields = (template.content?.fields ?? []).map(humanizeField);
 
   const intro =
     `This free ${lower} template is a ready-to-use document you can fill in, ` +

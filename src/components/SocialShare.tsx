@@ -18,7 +18,9 @@ export default function SocialShare({
   const [currentUrl, setCurrentUrl] = useState(url || "https://templix-ai.whitesparksoft.com/en");
 
   useEffect(() => {
-    if (!url && typeof window !== "undefined") {
+    if (url) {
+      setCurrentUrl(url);
+    } else if (typeof window !== "undefined") {
       setCurrentUrl(window.location.href);
     }
   }, [url]);

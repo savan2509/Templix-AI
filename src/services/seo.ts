@@ -153,7 +153,7 @@ export class SEOEngine {
         url: canonical,
         siteName: "Templix AI",
         locale: OG_LOCALES[data.locale] || "en_US",
-        type: (data.isTemplate || data.isBlogPost) ? "article" : "website",
+        type: data.isBlogPost ? "article" : "website",
         images: [{ url: ogImage, width: 1200, height: 630, alt: pageTitle }],
         ...(data.isBlogPost && data.publishedTime ? {
           publishedTime: data.publishedTime,

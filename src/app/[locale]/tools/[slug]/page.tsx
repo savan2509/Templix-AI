@@ -25,7 +25,7 @@ function buildToolFaqs(
     : `The ${tool.title} is a specialized document tool from Templix AI designed for fast, accurate calculation and formatting. It helps you generate precise business figures and structured outputs online instantly.`;
 
   const howToAnswer = isGst
-    ? `1. Enter your starting amount in the value field.\n2. Enter or select your applicable tax rate percentage.\n3. Choose "Exclusive" to add GST to a net price, or "Inclusive" to extract tax from a total price.\n4. View the net amount, calculated tax, and final gross total updated live.`
+    ? `1. Enter your starting amount in the value field.\n2. Enter or select your applicable tax rate percentage.\n3. Select "Add tax" (Exclusive) to add GST to a net price, or "Remove tax" (Inclusive) to calculate tax included in a gross total.\n4. View the net amount, calculated tax, and final gross total updated live.`
     : isAi
     ? `Enter your details in the field above and generate a draft in seconds. Your input is sent securely to the AI model to produce the result — it isn't stored or used for training.`
     : howTo;
@@ -40,7 +40,7 @@ function buildToolFaqs(
       question: "Is my data private?",
       answer: isAi
         ? "Your input is sent securely to generate the result and is not stored or used to train AI models."
-        : "Everything runs directly in your browser — nothing is uploaded to a server, so your data stays on your device.",
+        : "Your calculation inputs and document text stay in your browser and are never uploaded to a server. We use privacy-friendly anonymous analytics to improve our tools.",
     },
     { question: `How do I use the ${tool.title}?`, answer: howToAnswer },
   ];
