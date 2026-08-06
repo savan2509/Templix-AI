@@ -23,11 +23,14 @@ import {
   Wrench,
   LogIn,
   LogOut,
-  User as UserIcon,
   Heart,
   LayoutDashboard,
   GitCompare,
   Users,
+  Briefcase,
+  Package,
+  FolderTree,
+  HelpCircle,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -181,7 +184,35 @@ export default function Navbar() {
 
   const categoryItems = menuItems.slice(0, 8);
   const toolsItem = menuItems[8]; // "Tools" — rendered as its own dropdown
-  const standaloneItems = menuItems.slice(9);
+  const standaloneItems = [menuItems[12], menuItems[14], menuItems[15]]; // Blog, About, Contact
+
+  const catalogItems = [
+    {
+      href: `/${currentLocale}/services`,
+      name: { en: "Services", es: "Servicios", de: "Dienste", fr: "Services", ar: "الخدمات" },
+      desc: { en: "AI development & professional services", es: "Servicios de desarrollo y soluciones IA", de: "KI-Entwicklung & Dienste", fr: "Services de développement IA", ar: "خدمات التطوير والذكاء الاصطناعي" },
+      icon: Briefcase,
+    },
+    {
+      href: `/${currentLocale}/products`,
+      name: { en: "Products", es: "Productos", de: "Produkte", fr: "Produits", ar: "المنتجات" },
+      desc: { en: "Explore our full suite of AI product tools", es: "Explora nuestra suite de productos de IA", de: "Entdecken Sie unsere KI-Produktpalette", fr: "Découvrez notre suite de produits IA", ar: "استكشف مجموعتنا الكاملة من أدوات الذكاء الاصطناعي" },
+      icon: Package,
+    },
+    {
+      href: `/${currentLocale}/category`,
+      name: { en: "Categories", es: "Categorías", de: "Kategorien", fr: "Catégories", ar: "الفئات" },
+      desc: { en: "Browse by document & tool categories", es: "Explorar por categorías de documentos y herramientas", de: "Nach Kategorien durchsuchen", fr: "Parcourir par catégories", ar: "تصفح حسب فئات المستندات والأدوات" },
+      icon: FolderTree,
+    },
+    {
+      href: `/${currentLocale}/faq`,
+      name: { en: "FAQ & Help", es: "FAQ y Ayuda", de: "FAQ & Hilfe", fr: "FAQ & Aide", ar: "الأسئلة الشائعة" },
+      desc: { en: "Frequently asked questions & guidance", es: "Preguntas frecuentes y ayuda", de: "Häufig gestellte Fragen", fr: "Foire aux questions", ar: "الأسئلة المتكررة والتعليمات" },
+      icon: HelpCircle,
+    },
+  ];
+
   const templatesLabel: Record<string, string> = {
     en: "Templates", es: "Plantillas", de: "Vorlagen", fr: "Modèles", ar: "القوالب",
   };
@@ -190,8 +221,7 @@ export default function Navbar() {
     item.name[currentLocale as keyof typeof item.name] || item.name.en;
   const isTemplatesActive = pathname.startsWith(`/${currentLocale}/templates`);
 
-  // Tools dropdown: mirrors Templates, listing tool categories that anchor to
-  // sections on the /tools hub (e.g. /tools#pdf).
+  // Tools dropdown
   const toolsHref = `/${currentLocale}/tools`;
   const toolsLabelText = localeName(toolsItem);
   const isToolsActive = pathname.startsWith(toolsHref);
@@ -201,8 +231,7 @@ export default function Navbar() {
   };
   const allToolsText = allToolsLabel[currentLocale as keyof typeof allToolsLabel] || allToolsLabel.en;
 
-  // Dedicated AI Tools dropdown — surfaces the AI-powered tools directly in the
-  // navbar (violet-accented) instead of hiding them under a Tools-hub anchor.
+  // Dedicated AI Tools dropdown
   const aiTools = toolsByCategory("ai");
   const aiToolsLabel: Record<string, string> = {
     en: "AI Tools", es: "Herramientas IA", de: "KI-Tools", fr: "Outils IA", ar: "أدوات الذكاء الاصطناعي",
@@ -231,8 +260,12 @@ export default function Navbar() {
     { title: "AI Blog Generator", slug: "ai-blog-generator" },
     { title: "AI Content Generator", slug: "ai-content-generator" },
   ];
-  const isLandingPagesActive = masterLandingItems.some((item) => pathname.endsWith(item.slug));
-  const isComparisonsActive = pathname.startsWith(`/${currentLocale}/compare`);
+
+  const isExploreActive =
+    masterLandingItems.some((item) => pathname.endsWith(item.slug)) ||
+    pathname.startsWith(`/${currentLocale}/compare`) ||
+    pathname.startsWith(`/${currentLocale}/use-cases`) ||
+    catalogItems.some((item) => pathname.startsWith(item.href));
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
@@ -438,14 +471,14 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Combined Explore (Landing Pages & Comparisons) Dropdown */}
+            {/* Combined Explore Mega Dropdown (Services, Products, FAQ, Landing Pages, Use Cases & Comparisons) */}
             <div className="relative" ref={exploreRef}>
               <button
                 onClick={() => setExploreOpen((v) => !v)}
                 aria-expanded={exploreOpen}
                 aria-haspopup="menu"
                 className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1.5 rounded-md whitespace-nowrap shrink-0 ${
-                  isLandingPagesActive || isComparisonsActive
+                  isExploreActive
                     ? "text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
@@ -453,16 +486,58 @@ export default function Navbar() {
                 <LayoutGrid className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                 <span className="whitespace-nowrap font-bold">Explore</span>
                 <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${exploreOpen ? "rotate-180" : ""}`} />
-                {(isLandingPagesActive || isComparisonsActive) && (
+                {isExploreActive && (
                   <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
                 )}
               </button>
               {exploreOpen && (
                 <div
                   role="menu"
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-[880px] max-h-[80vh] overflow-y-auto z-50 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in-50 slide-in-from-top-2 duration-200 grid grid-cols-3 gap-6"
+                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-[1040px] max-h-[85vh] overflow-y-auto z-50 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in-50 slide-in-from-top-2 duration-200 grid grid-cols-4 gap-5"
                 >
-                  {/* Column 1: Landing Pages */}
+                  {/* Column 1: Services, Products & FAQ */}
+                  <div>
+                    <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
+                      <Briefcase className="h-4 w-4 text-blue-500 shrink-0" />
+                      <span>Services & Products</span>
+                    </div>
+                    <div className="space-y-1.5">
+                      {catalogItems.map((item) => {
+                        const IconComponent = item.icon;
+                        const isActive = pathname.startsWith(item.href);
+                        const title = item.name[currentLocale as keyof typeof item.name] || item.name.en;
+                        const description = item.desc[currentLocale as keyof typeof item.desc] || item.desc.en;
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setExploreOpen(false)}
+                            className={`flex items-start gap-2.5 p-2 rounded-xl transition-all ${
+                              isActive
+                                ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
+                                : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                            }`}
+                          >
+                            <div className={`p-1.5 rounded-lg shrink-0 ${
+                              isActive
+                                ? "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400"
+                                : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400"
+                            }`}>
+                              <IconComponent className="h-3.5 w-3.5" />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="text-xs font-bold truncate">{title}</div>
+                              <div className="text-[10px] text-zinc-500 dark:text-zinc-400 line-clamp-1 font-normal">
+                                {description}
+                              </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Column 2: Landing Pages */}
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
                       <LayoutGrid className="h-4 w-4 text-blue-500 shrink-0" />
@@ -500,7 +575,7 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  {/* Column 2: Use Cases */}
+                  {/* Column 3: Use Cases */}
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
                       <Users className="h-4 w-4 text-emerald-500 shrink-0" />
@@ -538,7 +613,7 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  {/* Column 3: Software Comparisons */}
+                  {/* Column 4: Software Comparisons */}
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 pb-1 border-b border-zinc-100 dark:border-zinc-800">
                       <GitCompare className="h-4 w-4 text-indigo-500 shrink-0" />
@@ -884,25 +959,49 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Explore group (Landing Pages & Comparisons) */}
+            {/* Explore group (Services, Products, FAQ, Landing Pages, Use Cases & Comparisons) */}
             <button
               onClick={() => setMobileExploreOpen((v) => !v)}
               aria-expanded={mobileExploreOpen}
               className={`flex w-full items-center justify-between px-3.5 py-2.5 text-base font-bold rounded-xl transition-all ${
-                isLandingPagesActive || isComparisonsActive
+                isExploreActive
                   ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
                   : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
               }`}
             >
               <span className="flex items-center gap-2">
                 <LayoutGrid className="h-4 w-4 text-blue-500" />
-                Explore (Pages & Comparisons)
+                Explore
               </span>
               <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileExploreOpen ? "rotate-180" : ""}`} />
             </button>
             {mobileExploreOpen && (
               <div className="pl-3 space-y-4 pt-1">
-                {/* 1. Landing Pages */}
+                {/* 1. Services & Products */}
+                <div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400 px-3.5 py-1">
+                    Services & Products
+                  </div>
+                  <div className="space-y-1">
+                    {catalogItems.map((item) => {
+                      const IconComponent = item.icon;
+                      const title = item.name[currentLocale as keyof typeof item.name] || item.name.en;
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-blue-600"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <IconComponent className="h-3.5 w-3.5 text-zinc-400 shrink-0" />
+                          <span>{title}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 2. Landing Pages */}
                 <div>
                   <div className="text-[11px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400 px-3.5 py-1">
                     Landing Pages
@@ -928,7 +1027,7 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* 2. Use Cases */}
+                {/* 3. Use Cases */}
                 <div>
                   <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 px-3.5 py-1">
                     Use Cases
@@ -960,7 +1059,7 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* 3. Software Comparisons */}
+                {/* 4. Software Comparisons */}
                 <div>
                   <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 px-3.5 py-1">
                     Software Comparisons

@@ -106,8 +106,9 @@ export default async function RootLayout({
     >
       <head>
         {/* Google Tag Manager */}
-        <script
+        <Script
           id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -140,14 +141,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* Non render-blocking inline init scripts inside <body> prior to paint */}
-        <script
+        <Script
           id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('templix-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
           }}
         />
-        <script
+        <Script
           id="locale-dir-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=location.pathname.split('/')[1];if(s){document.documentElement.lang=s;document.documentElement.dir=(s==='ar')?'rtl':'ltr';}}catch(e){}})();`,
           }}

@@ -12,7 +12,24 @@ import Schema from "@/components/seo/Schema";
 import FavoriteButton from "@/components/FavoriteButton";
 import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
-import { FileText, ArrowRight, Home, Sparkles, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  FileText,
+  ArrowRight,
+  Home,
+  Sparkles,
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  LayoutGrid,
+  FolderTree,
+  FileCheck,
+  Send,
+  Mail,
+  BarChart3,
+  Briefcase,
+  Receipt,
+  User as UserIcon,
+} from "lucide-react";
 import { SEOEngine } from "@/services/seo";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
@@ -757,6 +774,25 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     console.warn("DB unavailable — rendering the in-code template catalog.");
   }
 
+  const allTemplatesList = [...templates];
+  const categoryCounts = allTemplatesList.reduce((acc: Record<string, number>, item: { categorySlug?: string }) => {
+    const cSlug = item.categorySlug;
+    if (cSlug) acc[cSlug] = (acc[cSlug] || 0) + 1;
+    return acc;
+  }, {});
+
+  const sidebarCategories = [
+    { slug: "", name: common.browseTemplates || "All Templates", href: `/${locale}/templates`, count: allTemplatesList.length, icon: LayoutGrid },
+    { slug: "invoices", name: common.categoryNames.invoices || "Invoices", href: `/${locale}/templates/invoices`, count: categoryCounts["invoices"] || 0, icon: FileText },
+    { slug: "resumes", name: common.categoryNames.resumes || "Resumes & CVs", href: `/${locale}/templates/resumes`, count: categoryCounts["resumes"] || 0, icon: UserIcon },
+    { slug: "contracts", name: common.categoryNames.contracts || "Contracts", href: `/${locale}/templates/contracts`, count: categoryCounts["contracts"] || 0, icon: FileCheck },
+    { slug: "proposals", name: common.categoryNames.proposals || "Proposals", href: `/${locale}/templates/proposals`, count: categoryCounts["proposals"] || 0, icon: Send },
+    { slug: "letters", name: common.categoryNames.letters || "Letters & Memos", href: `/${locale}/templates/letters`, count: categoryCounts["letters"] || 0, icon: Mail },
+    { slug: "reports", name: common.categoryNames.reports || "Reports", href: `/${locale}/templates/reports`, count: categoryCounts["reports"] || 0, icon: BarChart3 },
+    { slug: "business-plans", name: common.categoryNames["business-plans"] || "Business Plans", href: `/${locale}/templates/business-plans`, count: categoryCounts["business-plans"] || 0, icon: Briefcase },
+    { slug: "quotations", name: common.categoryNames.quotations || "Quotations", href: `/${locale}/templates/quotations`, count: categoryCounts["quotations"] || 0, icon: Receipt },
+  ];
+
   // Filter uniformly, whatever the source, so counts always agree with the
   // homepage and the sitemap.
   if (categorySlug) {
@@ -918,12 +954,58 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               because the sidebar's own h3 would otherwise follow the h1 directly. */}
           <h2 className="sr-only">{pageHeading}</h2>
 
-          {/* grid-cols-1 clamps the single mobile column to the viewport
-              (minmax(0,1fr)); without it the column is auto-sized and a wide
-              child — e.g. the many-page pagination row — stretched it past the
-              screen, dragging the sidebar into horizontal overflow. */}
-          <div className="space-y-8">
-            <section className="space-y-6">
+          {/* Responsive Layout with Left Categories Sidebar on Desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            {/* Left Sidebar Category Navigation */}
+            <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+              <div className="p-4 sm:p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-3 sm:space-y-4">
+                <div className="flex items-center justify-between pb-2 sm:pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                  <div className="flex items-center gap-2">
+                    <FolderTree className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <h2 className="font-extrabold text-xs text-zinc-900 dark:text-white uppercase tracking-wider">
+                      Categories
+                    </h2>
+                  </div>
+                  <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500">
+                    {allTemplatesList.length}
+                  </span>
+                </div>
+
+                <nav className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-1.5 pb-2 lg:pb-0 no-scrollbar">
+                  {sidebarCategories.map((cat) => {
+                    const IconComponent = cat.icon;
+                    const isActive = categorySlug === cat.slug || (!categorySlug && cat.slug === "");
+                    return (
+                      <Link
+                        key={cat.slug || "all"}
+                        href={cat.href}
+                        className={`flex items-center justify-between px-3 py-2 sm:py-2.5 rounded-xl text-xs transition-all whitespace-nowrap lg:whitespace-normal shrink-0 lg:shrink ${
+                          isActive
+                            ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400 font-bold border-l-0 lg:border-l-4 border-blue-600 shadow-xs"
+                            : "text-zinc-700 dark:text-zinc-300 font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                        }`}
+                      >
+                        <span className="flex items-center gap-2.5 min-w-0">
+                          <IconComponent className={`h-4 w-4 shrink-0 ${isActive ? "text-blue-600 dark:text-blue-400" : "text-zinc-400 dark:text-zinc-500"}`} />
+                          <span className="truncate">{cat.name}</span>
+                        </span>
+                        <span className={`ml-2 lg:ml-0 px-2 py-0.5 rounded-md text-[10px] font-bold shrink-0 ${
+                          isActive
+                            ? "bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300"
+                            : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400"
+                        }`}>
+                          {cat.count}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </nav>
+              </div>
+            </aside>
+
+            {/* Right Main Content Area */}
+            <div className="lg:col-span-3 space-y-8">
+              <section className="space-y-6">
               {templates.length === 0 ? (
                 <div className="p-12 text-center border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3">
                   <AlertCircle className="h-10 w-10 text-zinc-400 mx-auto" />
@@ -1163,7 +1245,8 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             </section>
           )}
         </div>
-      </main>
+      </div>
+    </main>
 
       <FAQ
         locale={locale}
