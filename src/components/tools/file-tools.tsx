@@ -31,6 +31,24 @@ function download(bytes: Uint8Array | string, name: string, type: string) {
   setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
+function isAcceptedFile(file: File, accept: string): boolean {
+  if (!accept || accept === "*") return true;
+  const parts = accept.split(",").map((p) => p.trim().toLowerCase()).filter(Boolean);
+  const fileName = file.name.toLowerCase();
+  const fileType = (file.type || "").toLowerCase();
+
+  return parts.some((pattern) => {
+    if (pattern.startsWith(".")) {
+      return fileName.endsWith(pattern);
+    }
+    if (pattern.endsWith("/*")) {
+      const typeGroup = pattern.slice(0, -2);
+      return fileType.startsWith(`${typeGroup}/`);
+    }
+    return fileType === pattern;
+  });
+}
+
 function DropZone({ accept, multiple, onFiles, hint }: {
   accept: string; multiple?: boolean; onFiles: (f: File[]) => void; hint: string;
 }) {
@@ -38,7 +56,7 @@ function DropZone({ accept, multiple, onFiles, hint }: {
   const [over, setOver] = useState(false);
   const take = (list: FileList | null) => {
     if (!list) return;
-    const arr = [...list].filter((f) => new RegExp(accept.replace(/\./g, "\\.").replace(/,/g, "|").replace(/\*/g, ".*")).test(f.name) || accept.includes(f.type));
+    const arr = [...list].filter((f) => isAcceptedFile(f, accept));
     if (arr.length) onFiles(arr);
   };
   return (

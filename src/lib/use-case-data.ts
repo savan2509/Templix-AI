@@ -1,5 +1,3 @@
-import type { BlogPost } from "./blog-data";
-
 export interface UseCaseData {
   slug: string;
   title: string;

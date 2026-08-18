@@ -166,7 +166,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   // Resolve links first, then add anchors — so the ids match what renders.
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
-  let { html: articleHtml, toc } = withHeadingIds(linkedHtml);
+  const parsedHeadings = withHeadingIds(linkedHtml);
+  const toc = parsedHeadings.toc;
+  let articleHtml = parsedHeadings.html;
 
   // Replace any broken inline image paths in content with resolved images
   articleHtml = articleHtml.replace(/src=["'](\/blog\/[^"']+)["']/g, (_, srcPath) => {

@@ -38,10 +38,14 @@ export function buildCanonical(
   slugPath: string,
   searchParams?: Record<string, string | string[] | undefined>
 ): string {
+  // Normalize locale: retired locales (es, de, fr, ar) consolidate on canonical 'en'
+  const RETIRED_LOCALES = new Set(["es", "de", "fr", "ar"]);
+  const targetLocale = !locale || RETIRED_LOCALES.has(locale.toLowerCase()) ? "en" : locale.toLowerCase();
+
   // Normalize path: lowercase, strip leading/trailing slashes
   const stripped = slugPath.replace(/^\/+|\/+$/g, "").toLowerCase();
   const normalizedPath = stripped ? `/${stripped}` : "";
-  const base = `${BASE}/${locale}${normalizedPath}`;
+  const base = `${BASE}/${targetLocale}${normalizedPath}`;
 
   if (!searchParams || Object.keys(searchParams).length === 0) return base;
 

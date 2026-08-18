@@ -24,7 +24,7 @@ export default function LocaleNotFound() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/"
+              href="/en"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md shadow-blue-500/10 transition-colors"
             >
               <Home className="h-4 w-4" />

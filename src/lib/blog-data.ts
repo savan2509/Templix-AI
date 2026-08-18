@@ -3322,6 +3322,8 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   // Week 2 — 14 new posts covering payment reminders, business plans,
   // purchase orders, MOU, retainers, termination, SOW and more.
   ...week2Posts,
+  // Comparison articles
+  ...comparisonPosts,
   // Use Case Pages — 10 targeted use case articles
   ...useCasePosts,
   // Batch 4 — 20 targeted SEO blog guides

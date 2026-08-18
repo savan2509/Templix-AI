@@ -132,11 +132,9 @@ function createLandingEntry(
   categorySlug: string,
   type: "resume" | "invoice" | "proposal" | "contract" | "letter" | "writing"
 ): LandingPageData {
-  const isResume = type === "resume";
   const isInvoice = type === "invoice";
   const isProposal = type === "proposal";
   const isContract = type === "contract";
-  const isLetter = type === "letter";
 
   const templates = isInvoice || isProposal || isContract
     ? COMMON_INVOICE_TEMPLATES

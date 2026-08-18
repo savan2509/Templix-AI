@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
+import { buildCanonical } from "@/lib/canonical";
 import { getUseCaseBySlug, build14SectionHtml, ALL_USE_CASE_SLUGS, type UseCaseData } from "@/lib/use-case-data";
 import { ArrowLeft, Clock, Sparkles, CheckCircle2, Home, ArrowRight, Layers } from "lucide-react";
 
@@ -52,7 +53,7 @@ export async function generateMetadata({
     return { title: "Use Case Not Found" };
   }
 
-  const url = `${siteConfig.url}/${locale}/use-cases/${slug}`;
+  const url = buildCanonical(locale, `use-cases/${slug}`);
 
   return {
     title: useCase.metaTitle,

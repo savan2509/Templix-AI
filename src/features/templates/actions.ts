@@ -1,6 +1,5 @@
 "use server";
 
-import { db } from "@/lib/db";
 import { getSearchService, SearchResultTemplate } from "./search";
 
 export async function searchTemplates(

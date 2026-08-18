@@ -27,8 +27,16 @@ function downloadBlob(blob: Blob, name: string) {
 // drop anything outside Latin-1 so drawText never throws on pasted text.
 function toWinAnsi(s: string): string {
   return s
-    .replace(/[‘’‚]/g, "'").replace(/[“”„]/g, '"')
-    .replace(/[–—]/g, "-").replace(/…/g, "...").replace(/ /g, " ")
+    .replace(/[‘’‚]/g, "'")
+    .replace(/[“”„]/g, '"')
+    .replace(/[–—]/g, "-")
+    .replace(/…/g, "...")
+    .replace(/[•∙]/g, "- ")
+    .replace(/€/g, "EUR ")
+    .replace(/₹/g, "INR ")
+    .replace(/£/g, "GBP ")
+    .replace(/¥/g, "JPY ")
+    .replace(/\u00A0/g, " ")
     .replace(/[^\x20-\x7E\xA0-\xFF\n]/g, "");
 }
 
@@ -97,14 +105,45 @@ function DocGenerator({ config }: { config: GenConfig }) {
   const [v, setV] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState(false);
   const [busy, setBusy] = useState<"" | "pdf" | "word">("");
+  const [err, setErr] = useState<string | null>(null);
   const doc = useMemo(() => config.build(v), [v, config]);
   const set = (name: string, val: string) => setV((p) => ({ ...p, [name]: val }));
 
   const copy = async () => {
-    try { await navigator.clipboard.writeText(`${doc.title}\n\n${doc.body}`); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch { /* clipboard unavailable */ }
+    try {
+      await navigator.clipboard.writeText(`${doc.title}\n\n${doc.body}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard unavailable */
+    }
   };
-  const pdf = async () => { setBusy("pdf"); try { downloadBlob(new Blob([new Uint8Array(await textToPdf(doc.title, doc.body))], { type: "application/pdf" }), `${doc.filename}.pdf`); } finally { setBusy(""); } };
-  const word = async () => { setBusy("word"); try { downloadBlob(await textToDocx(doc.title, doc.body), `${doc.filename}.docx`); } finally { setBusy(""); } };
+
+  const pdf = async () => {
+    setErr(null);
+    setBusy("pdf");
+    try {
+      const bytes = await textToPdf(doc.title, doc.body);
+      downloadBlob(new Blob([new Uint8Array(bytes)], { type: "application/pdf" }), `${doc.filename}.pdf`);
+    } catch {
+      setErr("Failed to generate PDF. Please check your input and try again.");
+    } finally {
+      setBusy("");
+    }
+  };
+
+  const word = async () => {
+    setErr(null);
+    setBusy("word");
+    try {
+      const blob = await textToDocx(doc.title, doc.body);
+      downloadBlob(blob, `${doc.filename}.docx`);
+    } catch {
+      setErr("Failed to generate Word document. Please try again.");
+    } finally {
+      setBusy("");
+    }
+  };
 
   return (
     <div className="grid gap-5 lg:grid-cols-2">
@@ -138,6 +177,11 @@ function DocGenerator({ config }: { config: GenConfig }) {
           <button onClick={pdf} disabled={!!busy} className={btnPrimary}>{busy === "pdf" ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileDown className="h-4 w-4" />}Download PDF</button>
           <button onClick={word} disabled={!!busy} className={btnGhost}>{busy === "word" ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileType2 className="h-4 w-4" />}Download Word</button>
         </div>
+        {err && (
+          <p className="rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400">
+            {err}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Nodemailer from "next-auth/providers/nodemailer";
 import { notifyNewUser } from "@/lib/email";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 
 // ── Persistent global stores ──────────────────────────────────────────────────
 // We use globalThis so that tokens and users survive hot-module-reloads in dev.
@@ -100,7 +101,6 @@ function buildAdapter() {
   }
 
   try {
-    const { PrismaAdapter } = require("@auth/prisma-adapter");
     const base = PrismaAdapter(db);
 
     return new Proxy(base as any, {

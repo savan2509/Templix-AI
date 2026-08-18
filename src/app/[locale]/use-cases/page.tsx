@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/config/site";
+import { buildCanonical } from "@/lib/canonical";
 import { Sparkles, FileText, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -13,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const url = `${siteConfig.url}/${locale}/use-cases`;
+  const url = buildCanonical(locale, "use-cases");
 
   return {
     title: "Document Use Cases & AI Blueprint Directory | Templix AI",

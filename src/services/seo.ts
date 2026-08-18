@@ -104,13 +104,15 @@ export class SEOEngine {
       canonical = currentLocaleUrl; // Self-referential canonical per locale
     }
 
-    // Build full hreflang cluster for all supported locales
-    const supportedLocales = data.hreflangLocales || ["en", "de", "fr", "es", "ar"];
+    // Build hreflang cluster ONLY for pages explicitly translated across locales;
+    // single-locale/consolidated pages get a bare canonical without language alternates.
     const languages: Record<string, string> = {};
-    for (const loc of supportedLocales) {
-      languages[loc] = buildCanonical(loc, slugPath);
+    if (data.hreflangLocales && data.hreflangLocales.length > 1) {
+      for (const loc of data.hreflangLocales) {
+        languages[loc] = buildCanonical(loc, slugPath);
+      }
+      languages["x-default"] = enUrl;
     }
-    languages["x-default"] = enUrl;
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and
     // Twitter titles are not templated, so we brand those explicitly.
@@ -130,7 +132,7 @@ export class SEOEngine {
         canonical: canonical,
         // hreflang cluster — only emitted for pages actually translated across
         // locales; consolidated pages get a bare canonical (no languages).
-        ...(languages ? { languages } : {}),
+        ...(Object.keys(languages).length > 0 ? { languages } : {}),
       },
       // Robots: default is index+follow. Explicit overrides for noindex pages.
       robots: {

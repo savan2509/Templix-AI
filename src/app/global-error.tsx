@@ -1,13 +1,15 @@
 "use client";
 
+import Link from "next/link";
+
 // Global error boundary (HTTP 500 equivalent). Catches errors thrown in the
 // root layout/render. It must render its own <html> and <body> because it
 // replaces the root layout when it activates.
 export default function GlobalError({
-  error,
+  _error,
   reset,
 }: {
-  error: Error & { digest?: string };
+  _error?: Error & { digest?: string };
   reset: () => void;
 }) {
   return (
@@ -50,8 +52,8 @@ export default function GlobalError({
               >
                 Try again
               </button>
-              <a
-                href="/"
+              <Link
+                href="/en"
                 style={{
                   padding: "10px 20px",
                   borderRadius: 12,
@@ -64,7 +66,7 @@ export default function GlobalError({
                 }}
               >
                 Back to home
-              </a>
+              </Link>
             </div>
           </div>
         </div>

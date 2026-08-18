@@ -10,19 +10,25 @@ export function useTemplateLimit() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    let active = true;
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
+        if (Array.isArray(parsed) && active) {
           setUsedSlugs(parsed);
         }
       }
     } catch {
       // Silently handle SSR / localStorage errors
     } finally {
-      setIsLoaded(true);
+      if (active) {
+        setIsLoaded(true);
+      }
     }
+    return () => {
+      active = false;
+    };
   }, []);
 
   const usedCount = usedSlugs.length;

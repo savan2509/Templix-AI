@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Schema from "@/components/seo/Schema";
 import AiToolWidget from "@/components/tools/AiToolWidget";
 import { siteConfig } from "@/config/site";
+import { buildCanonical } from "@/lib/canonical";
 import {
   getLandingPageData,
   ALL_MASTER_LANDING_SLUGS,
@@ -49,7 +50,7 @@ export async function generateMetadata({
     return { title: "Page Not Found" };
   }
 
-  const url = `${siteConfig.url}/${locale}/${slug}`;
+  const url = buildCanonical(locale, slug);
 
   return {
     title: data.metaTitle,

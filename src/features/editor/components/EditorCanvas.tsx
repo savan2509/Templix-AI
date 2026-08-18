@@ -77,6 +77,10 @@ export default function EditorCanvas({
       return;
     }
 
+    if (!editor) {
+      return;
+    }
+
     const { from, to } = editor.state.selection;
     const selectedText = editor.state.doc.textBetween(from, to, " ");
 
@@ -93,7 +97,7 @@ export default function EditorCanvas({
       } else {
         alert(res.error || "AI failed to rewrite selected text.");
       }
-    } catch (err) {
+    } catch {
       alert("Could not establish connection to AI Rewrite service.");
     } finally {
       setAiLoading(false);
@@ -120,7 +124,7 @@ export default function EditorCanvas({
       } else {
         setSaveStatus("error");
       }
-    } catch (err) {
+    } catch {
       setSaveStatus("error");
     }
   };
