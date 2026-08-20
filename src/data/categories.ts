@@ -175,6 +175,58 @@ export const CATEGORY_HUBS: CategoryHubData[] = [
     ],
   },
   {
+    slug: "business-plan",
+    name: "Business Plan Templates",
+    title: "Free Business Plan Templates & Pitch Decks",
+    metaTitle: "Free Business Plan Templates & Pitch Decks | Templix AI",
+    description: "Download investor-ready business plan templates for tech startups, SaaS, restaurants, and e-commerce.",
+    metaDescription: "Free business plan templates. Complete financial forecast models, TAM analysis, go-to-market strategies, and bank loan formats.",
+    primaryKeyword: "business plan templates",
+    h1: "Free Business Plan Templates & Financial Models",
+    heroSubtitle: "Draft investor-ready business plans with structured executive summaries, market size matrices, and 3-year pro-forma financials.",
+    categorySlug: "business-plans",
+    icon: "Briefcase",
+    features: [
+      { title: "Investor-Ready Framework", desc: "Follows venture capital and SBA loan standards: Problem, Solution, Unit Economics, and Go-To-Market." },
+      { title: "Pro-Forma Financial Models", desc: "Project 3-year revenue, COGS, CAC/LTV unit economics, and breakeven runway." },
+      { title: "Bank & SBA Compliance", desc: "Formatted to meet commercial bank underwriting criteria for small business loans." },
+    ],
+    faqs: [
+      { question: "Are these business plans accepted by banks for SBA loans?", answer: "Yes! All Templix AI business plan templates adhere to standard SBA and commercial banking financial formatting guidelines." },
+      { question: "Can I customize the financial tables and charts?", answer: "Yes, all financial figures, revenue models, and operational milestones are fully editable." },
+    ],
+    relatedProducts: [
+      { name: "AI Writer", href: "/products/ai-writer" },
+      { name: "Proposal Generator", href: "/products/proposal-generator" },
+    ],
+  },
+  {
+    slug: "quotation",
+    name: "Quotation Templates",
+    title: "Free Price Quotation & Estimate Templates",
+    metaTitle: "Free Price Quotation & Estimate Templates | Templix AI",
+    description: "Create professional price quotes, bids, and estimates for web development, construction, cleaning, and trades.",
+    metaDescription: "Free quotation templates and online quote maker. Download professional price estimates with automated tax math and signature lines.",
+    primaryKeyword: "quotation templates",
+    h1: "Free Quotation & Estimate Templates",
+    heroSubtitle: "Issue professional price quotes and cost estimates with auto-calculating tax subtotals, validity periods, and sign-off lines.",
+    categorySlug: "quotations",
+    icon: "Receipt",
+    features: [
+      { title: "Auto Tax & Markup Calculations", desc: "Zero calculation errors — material costs, labor hours, and regional taxes compute instantly." },
+      { title: "Price Validity Dates", desc: "Set explicit 30-day quote expiration timelines to lock in project scopes." },
+      { title: "Instant Conversion to Invoice", desc: "Convert approved quotations into final billing invoices with a single click." },
+    ],
+    faqs: [
+      { question: "What is the difference between a quote and an estimate?", answer: "A quotation is a fixed price commitment once accepted, while an estimate provides an approximate cost range subject to final site discovery." },
+      { question: "Can I add terms and payment schedules to quotes?", answer: "Yes! You can specify deposit requirements, progress payment milestones, and quote validity windows." },
+    ],
+    relatedProducts: [
+      { name: "Quotation Generator", href: "/products/quotation-generator" },
+      { name: "AI Invoice Generator", href: "/products/ai-invoice-generator" },
+    ],
+  },
+  {
     slug: "hr",
     name: "HR Templates",
     title: "Free HR & Workplace Document Templates",
@@ -256,6 +308,22 @@ export const CATEGORY_HUBS: CategoryHubData[] = [
   },
 ];
 
+/**
+ * Retrieve a Category Hub by slug, supporting both singular and plural URL variants
+ * (e.g. 'invoices' and 'invoice', 'resumes' and 'resume', 'business-plans' and 'business-plan').
+ */
 export function getCategoryHub(slug: string): CategoryHubData | undefined {
-  return CATEGORY_HUBS.find((c) => c.slug === slug);
+  if (!slug) return undefined;
+  const normalized = slug.toLowerCase().trim();
+  return (
+    CATEGORY_HUBS.find((c) => c.slug === normalized) ||
+    CATEGORY_HUBS.find((c) => c.categorySlug === normalized) ||
+    CATEGORY_HUBS.find(
+      (c) =>
+        c.slug === normalized.replace(/s$/, "") ||
+        c.categorySlug === `${normalized}s` ||
+        c.slug === normalized.replace(/-plans$/, "-plan") ||
+        c.categorySlug === normalized.replace(/-plan$/, "-plans")
+    )
+  );
 }

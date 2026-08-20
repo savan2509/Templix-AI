@@ -2,7 +2,6 @@ datasource db {
   provider = "postgresql"
 }
 
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -56,28 +55,43 @@ model VerificationToken {
 }
 
 model Category {
-  id          String     @id @default(cuid())
-  slug        String     @unique
-  name        String
-  description String?
-  templates   Template[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id              String     @id @default(cuid())
+  slug            String     @unique
+  name            String
+  description     String?
+  metaTitle       String?
+  metaDescription String?
+  seoContent      String?    @db.Text
+  faq             Json?      // Array of { question, answer }
+  ogImage         String?
+  noIndex         Boolean    @default(false)
+  templates       Template[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
 }
 
 model Template {
-  id          String         @id @default(cuid())
-  slug        String         @unique
-  title       String
-  description String
-  content     Json           // Holds structured Tiptap JSON schema: { title, fields: [...], layout: {}, styles: {} }
-  categoryId  String
-  category    Category       @relation(fields: [categoryId], references: [id])
-  isPremium   Boolean        @default(false)
-  status      TemplateStatus @default(PUBLISHED)
-  favorites   Favorite[]
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  id              String         @id @default(cuid())
+  slug            String         @unique
+  title           String
+  description     String
+  content         Json           // Holds structured Tiptap JSON schema: { title, fields: [...], layout: {}, styles: {} }
+  categoryId      String
+  category        Category       @relation(fields: [categoryId], references: [id])
+  isPremium       Boolean        @default(false)
+  status          TemplateStatus @default(PUBLISHED)
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  seoContent      String?        @db.Text
+  keywords        String[]       @default([])
+  tags            String[]       @default([])
+  faq             Json?          // Array of { question, answer }
+  ogImage         String?
+  noIndex         Boolean        @default(false)
+  favorites       Favorite[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Document {
@@ -102,14 +116,105 @@ model Favorite {
 }
 
 model Blog {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  title       String
-  content     String   // Markdown / Rich text body
-  description String
-  published   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  content         String   // Markdown / Rich text body
+  description     String
+  published       Boolean  @default(false)
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  seoContent      String?  @db.Text
+  keywords        String[] @default([])
+  tags            String[] @default([])
+  faq             Json?    // Array of { question, answer }
+  ogImage         String?
+  noIndex         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Tool {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  description     String
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  seoContent      String?  @db.Text
+  keywords        String[] @default([])
+  faq             Json?    // Array of { question, answer }
+  schemaType      String?  @default("WebApplication")
+  ogImage         String?
+  noIndex         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model UseCase {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  description     String
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  seoContent      String?  @db.Text
+  keywords        String[] @default([])
+  faq             Json?    // Array of { question, answer }
+  ogImage         String?
+  noIndex         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Industry {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  description     String
+  headline        String?
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  seoContent      String?  @db.Text
+  keywords        String[] @default([])
+  faq             Json?    // Array of { question, answer }
+  ogImage         String?
+  noIndex         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model SeoHealthAudit {
+  id                    String   @id @default(cuid())
+  healthScorePercentage Int
+  brokenLinks           Int      @default(0)
+  missingMetaTitles     Int      @default(0)
+  missingDescriptions   Int      @default(0)
+  missingAltText        Int      @default(0)
+  duplicateTitles       Int      @default(0)
+  missingCanonical      Int      @default(0)
+  noindexPages          Int      @default(0)
+  orphanPages           Int      @default(0)
+  reportData            Json?
+  createdAt             DateTime @default(now())
+}
+
+model SeoOpportunity {
+  id              String   @id @default(cuid())
+  keyword         String
+  pageUrl         String
+  position        Float
+  impressions     Int
+  clicks          Int
+  ctr             Float
+  opportunityType String
+  recommendation  String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 enum TemplateStatus {

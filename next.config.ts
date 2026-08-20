@@ -30,8 +30,13 @@ const nextConfig: NextConfig = {
       "@tiptap/extension-table-header",
       "@tiptap/extension-table-row",
       "date-fns",
+      "@tanstack/react-query",
+      "zod",
+      "react-hook-form",
+      "docx",
     ],
   },
+
 
   // ── Images ──────────────────────────────────────────────────────────────────
   // Allow images served from Templix AI CDN and other trusted sources.

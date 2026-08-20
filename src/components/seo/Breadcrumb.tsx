@@ -170,6 +170,44 @@ export function buildToolBreadcrumbs(
   return items;
 }
 
+/** Home → Industries → [Industry name] */
+export function buildIndustryBreadcrumbs(
+  locale: string,
+  industryName?: string,
+  industrySlug?: string
+): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = [
+    { label: "Home", href: `/${locale}` },
+    { label: "Industries", href: `/${locale}/industries` },
+  ];
+  if (industryName) {
+    items.push({
+      label: industryName,
+      href: industrySlug ? `/${locale}/industries/${industrySlug}` : undefined,
+    });
+  }
+  return items;
+}
+
+/** Home → Use Cases → [Use Case name] */
+export function buildUseCaseBreadcrumbs(
+  locale: string,
+  useCaseName?: string,
+  useCaseSlug?: string
+): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = [
+    { label: "Home", href: `/${locale}` },
+    { label: "Use Cases", href: `/${locale}/use-cases` },
+  ];
+  if (useCaseName) {
+    items.push({
+      label: useCaseName,
+      href: useCaseSlug ? `/${locale}/use-cases/${useCaseSlug}` : undefined,
+    });
+  }
+  return items;
+}
+
 /** Home → [Page name] */
 export function buildSimpleBreadcrumbs(
   locale: string,
@@ -181,3 +219,4 @@ export function buildSimpleBreadcrumbs(
     { label: pageName, href: pageHref },
   ];
 }
+

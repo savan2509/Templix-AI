@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "validate:templates": "tsx scripts/validate-templates.ts",
+    "report:seo": "tsx scripts/generate-seo-report.ts",
     "postinstall": "prisma generate"
   },
   "prisma": {

@@ -35,7 +35,7 @@ import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
-import { getProfessionContent, PROFESSION_SLUGS } from "@/features/templates/profession-content";
+import { getProfessionContent, getProfessionsByCategory, PROFESSION_SLUGS } from "@/features/templates/profession-content";
 import { getTemplateInsight } from "@/features/templates/template-insights";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 import { generateProductSchema } from "@/data/schemas/product";
@@ -1005,6 +1005,51 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
 
             {/* Right Main Content Area */}
             <div className="lg:col-span-3 space-y-8">
+              {/* Role & Industry Variants Pill Bar */}
+              {categorySlug && getProfessionsByCategory(categorySlug).length > 0 && (
+                <div className="p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-xs space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                      Popular {categoryDisplayName} Roles &amp; Industries:
+                    </span>
+                    <Link
+                      href={`/${locale}/category/${categorySlug.replace(/s$/, "")}`}
+                      className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      View All in Hub &rarr;
+                    </Link>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    <Link
+                      href={`/${locale}/templates/${categorySlug}`}
+                      className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                        !nicheSlug
+                          ? "bg-blue-600 text-white shadow-xs"
+                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                      }`}
+                    >
+                      All {categoryDisplayName}
+                    </Link>
+                    {getProfessionsByCategory(categorySlug).map(({ slug: vSlug, entry: vEntry }) => {
+                      const isCurrent = nicheSlug === vSlug;
+                      return (
+                        <Link
+                          key={vSlug}
+                          href={`/${locale}/templates/${categorySlug}/${vSlug}`}
+                          className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                            isCurrent
+                              ? "bg-blue-600 text-white shadow-xs"
+                              : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                          }`}
+                        >
+                          {vEntry.profession}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               <section className="space-y-6">
               {templates.length === 0 ? (
                 <div className="p-12 text-center border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl space-y-3">
@@ -1253,7 +1298,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
         items={pageFaqs ?? undefined}
         heading={
           pageFaqs
-            ? `${profession ? profession.profession + " invoices" : categoryDisplayName} — frequently asked questions`
+            ? `${profession ? profession.profession + " " + (categoryDisplayName || "Templates") : categoryDisplayName} — frequently asked questions`
             : undefined
         }
       />

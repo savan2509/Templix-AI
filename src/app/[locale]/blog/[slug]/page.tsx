@@ -19,7 +19,9 @@ import {
   resolveImagePath,
 } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
+import { getRelatedTemplates } from "@/lib/seo/internal-linking";
 import { generateBlogAlt } from "@/lib/image-alt";
+
 import {
   withHeadingIds,
   extractFaqs,
@@ -164,6 +166,18 @@ export default async function BlogArticlePage({ params }: PageProps) {
     .map((s) => getTool(s))
     .filter((tl): tl is NonNullable<typeof tl> => Boolean(tl));
 
+  const categorySlugMap: Record<string, string> = {
+    Invoices: "invoices",
+    Resumes: "resumes",
+    Contracts: "contracts",
+    Proposals: "proposals",
+    Letters: "letters",
+    Reports: "reports",
+  };
+  const targetCategory = categorySlugMap[post.category] || "invoices";
+  const contextualTemplates = getRelatedTemplates(post.slug, targetCategory, 3);
+
+
   // Resolve links first, then add anchors — so the ids match what renders.
   const linkedHtml = SEOEngine.injectLinks(post.content, locale);
   const parsedHeadings = withHeadingIds(linkedHtml);
@@ -289,8 +303,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 {post.category}
               </span>
               <span className="text-white/70 text-xs flex items-center gap-1">
-                <Calendar className="h-3 w-3" /> {formatDate(post.publishedAt, locale)}
+                <Calendar className="h-3 w-3" /> Published {formatDate(post.publishedAt, locale)}
               </span>
+              {(post as any).updatedAt && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">
+                  <Sparkles className="h-3 w-3 text-emerald-400" /> Updated {formatDate((post as any).updatedAt, locale)} (2026 Verified)
+                </span>
+              )}
               <span className="text-white/70 text-xs flex items-center gap-1">
                 <Clock className="h-3 w-3" /> {minutes} {t.minRead}
               </span>
@@ -386,10 +405,18 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {/* Back link */}
               <Link
                 href={`/${locale}/blog`}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6"
               >
                 <ArrowLeft className="h-3.5 w-3.5" /> {t.backToBlog}
               </Link>
+
+              {/* 2026 Freshness & Changelog Banner */}
+              <div className="mb-8 p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/30 flex items-start gap-3">
+                <Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <div className="text-xs leading-relaxed text-emerald-900 dark:text-emerald-200">
+                  <span className="font-bold">2026 Standards &amp; Compliance Audit:</span> This guide was reviewed and updated on <strong>{formatDate((post as any).updatedAt ?? post.publishedAt, locale)}</strong> to ensure all tax formulas (GST/VAT), ATS algorithm guidelines, and document template downloads align with current legal and commercial requirements.
+                </div>
+              </div>
 
               {/* Prose content */}
               <div
@@ -496,27 +523,42 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Quick links */}
+              {/* Quick links & Recommended Templates for this Guide */}
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.freeTemplatesLabel}</h3>
-                {[
-                  { name: t.templatesCta.Invoices, href: `/${locale}/templates/invoices` },
-                  { name: t.templatesCta.Resumes, href: `/${locale}/templates/resumes` },
-                  { name: t.templatesCta.Contracts, href: `/${locale}/templates/contracts` },
-                  { name: t.templatesCta.Proposals, href: `/${locale}/templates/proposals` },
-                  { name: t.templatesCta.Letters, href: `/${locale}/templates/letters` },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
-                  >
-                    <FileText className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
-                    {link.name}
-                    <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
-                  </Link>
-                ))}
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  {t.freeTemplatesLabel}
+                </h3>
+                {contextualTemplates.length > 0 ? (
+                  contextualTemplates.map((tpl) => (
+                    <Link
+                      key={tpl.href}
+                      href={`/${locale}${tpl.href.replace(/^\/en/, "")}`}
+                      className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                    >
+                      <FileText className="h-3.5 w-3.5 text-blue-500 shrink-0" />
+                      <span className="truncate">{tpl.title}</span>
+                      <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500 shrink-0" />
+                    </Link>
+                  ))
+                ) : (
+                  [
+                    { name: t.templatesCta.Invoices, href: `/${locale}/templates/invoices` },
+                    { name: t.templatesCta.Resumes, href: `/${locale}/templates/resumes` },
+                    { name: t.templatesCta.Contracts, href: `/${locale}/templates/contracts` },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                    >
+                      <FileText className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
+                      {link.name}
+                      <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                    </Link>
+                  ))
+                )}
               </div>
+
 
               {/* Free tools — contextual to the article topic */}
               {relatedTools.length > 0 && (

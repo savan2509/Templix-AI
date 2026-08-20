@@ -5,6 +5,8 @@ import { getService, SERVICES_DATA } from "@/data/services";
 import { SEOEngine } from "@/services/seo";
 import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import {
   Sparkles,
   ArrowRight,
@@ -17,6 +19,7 @@ import {
   Layers,
   ChevronDown,
 } from "lucide-react";
+
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -113,8 +116,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 py-8 sm:py-12">
-      <Schema data={[serviceSchema, breadcrumbSchema, faqSchema]} />
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 py-8 sm:py-12">
+        <Schema data={[serviceSchema, breadcrumbSchema, faqSchema]} />
+
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Back Link */}
@@ -391,6 +397,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
+

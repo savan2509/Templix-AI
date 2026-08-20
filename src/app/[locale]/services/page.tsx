@@ -4,6 +4,8 @@ import { SEOEngine } from "@/services/seo";
 import { SERVICES_DATA } from "@/data/services";
 import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import {
   FileText,
   Sparkles,
@@ -15,6 +17,7 @@ import {
   Briefcase,
   Layers,
 } from "lucide-react";
+
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -62,8 +65,11 @@ export default async function ServicesHubPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 py-12 sm:py-16">
-      <Schema data={[collectionSchema, breadcrumbSchema]} />
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 py-12 sm:py-16">
+        <Schema data={[collectionSchema, breadcrumbSchema]} />
+
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header Hero Section */}
@@ -189,6 +195,9 @@ export default async function ServicesHubPage({ params }: PageProps) {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
+

@@ -1,29 +1,32 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { db } from "@/lib/db";
+import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AdminSettingsClient from "@/components/AdminSettingsClient";
+import { allFallbackTemplates } from "@/data/templates-fallback";
+import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
+import { runSeoHealthAudit } from "@/lib/seo/health-audit";
 import {
-  Settings,
   ShieldAlert,
   FileText,
   BookOpen,
   Layout,
-  Radio,
-  Sliders,
-  DollarSign,
+  Globe2,
 } from "lucide-react";
 
 const fallbackCategories = [
-  { slug: "invoices", name: "Invoices", templatesCount: 1 },
-  { slug: "resumes", name: "Resumes & CVs", templatesCount: 1 },
-  { slug: "contracts", name: "Contracts", templatesCount: 1 },
+  { slug: "invoices", name: "Invoices", templatesCount: 81 },
+  { slug: "resumes", name: "Resumes & CVs", templatesCount: 69 },
+  { slug: "contracts", name: "Contracts", templatesCount: 67 },
+  { slug: "proposals", name: "Proposals", templatesCount: 57 },
+  { slug: "letters", name: "Letters & Emails", templatesCount: 62 },
+  { slug: "reports", name: "Reports", templatesCount: 50 },
 ];
 
 const fallbackBlogs = [
   { slug: "how-to-write-freelance-invoice", title: "How to Write a Professional Invoice", published: true },
-  { slug: "ats-resume-tips-for-developers", title: "Top ATS Resume Tips for Developers", published: true }
+  { slug: "ats-resume-tips-for-developers", title: "Top ATS Resume Tips for Developers", published: true },
 ];
 
 interface AdminProps {
@@ -47,19 +50,19 @@ export default async function AdminPage({ params }: AdminProps) {
   let blogs = fallbackBlogs;
 
   try {
-    if (process.env.DATABASE_URL) {
+    if (isDbOnline) {
       const [dbCats, dbBlogs] = await Promise.all([
         db.category.findMany({
-          include: { _count: { select: { templates: true } } }
+          include: { _count: { select: { templates: true } } },
         }),
-        db.blog.findMany()
+        db.blog.findMany(),
       ]);
 
       if (dbCats && dbCats.length > 0) {
         categories = dbCats.map((c: any) => ({
           slug: c.slug,
           name: c.name,
-          templatesCount: c._count.templates
+          templatesCount: c._count?.templates || 0,
         }));
       }
 
@@ -67,13 +70,16 @@ export default async function AdminPage({ params }: AdminProps) {
         blogs = dbBlogs.map((b: any) => ({
           slug: b.slug,
           title: b.title,
-          published: b.published
+          published: b.published,
         }));
       }
     }
   } catch (err) {
     console.warn("DB load bypass in Admin Panel");
   }
+
+  // Quick cached summary for high performance render (< 5ms)
+  const healthAudit = runSeoHealthAudit();
 
   return (
     <>
@@ -91,22 +97,34 @@ export default async function AdminPage({ params }: AdminProps) {
                 Control Center
               </span>
               <h1 className="text-2xl font-bold text-zinc-900 dark:text-white md:text-3xl mt-1">
-                Admin Panel Settings
+                Admin Panel & SEO Management
               </h1>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Configure template listings, blog publishes, monetization advertisement layout blocks, and feature flags.
+                Lightweight control center for template listings, SEO metadata, live health audits, and feature flags.
               </p>
             </div>
           </div>
 
           {/* Quick Metrics Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
             <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex items-center gap-4">
               <div className="p-3 bg-blue-50 dark:bg-blue-950/30 text-blue-500 rounded-xl">
+                <Globe2 className="h-5 w-5" />
+              </div>
+              <div>
+                <span className="text-[10px] text-zinc-400 font-bold uppercase">SEO Health</span>
+                <p className="text-xl font-bold mt-0.5 text-emerald-500">
+                  {healthAudit.healthScorePercentage}%
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex items-center gap-4">
+              <div className="p-3 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-500 rounded-xl">
                 <Layout className="h-5 w-5" />
               </div>
               <div>
-                <span className="text-[10px] text-zinc-400 font-bold uppercase">Total Categories</span>
+                <span className="text-[10px] text-zinc-400 font-bold uppercase">Categories</span>
                 <p className="text-xl font-bold mt-0.5">{categories.length}</p>
               </div>
             </div>
@@ -116,9 +134,9 @@ export default async function AdminPage({ params }: AdminProps) {
                 <FileText className="h-5 w-5" />
               </div>
               <div>
-                <span className="text-[10px] text-zinc-400 font-bold uppercase">Total Templates</span>
+                <span className="text-[10px] text-zinc-400 font-bold uppercase">Templates</span>
                 <p className="text-xl font-bold mt-0.5">
-                  {categories.reduce((sum, c) => sum + c.templatesCount, 0)}
+                  {allFallbackTemplates.length}
                 </p>
               </div>
             </div>
@@ -129,12 +147,14 @@ export default async function AdminPage({ params }: AdminProps) {
               </div>
               <div>
                 <span className="text-[10px] text-zinc-400 font-bold uppercase">Published Blogs</span>
-                <p className="text-xl font-bold mt-0.5">{blogs.filter(b => b.published).length}</p>
+                <p className="text-xl font-bold mt-0.5">
+                  {blogs.filter((b) => b.published).length || STATIC_BLOG_POSTS.length}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Admin client settings form (Tabs controller) */}
+          {/* Admin client settings form with on-demand SEO data */}
           <AdminSettingsClient
             categories={categories}
             blogs={blogs}

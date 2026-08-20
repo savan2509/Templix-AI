@@ -17,6 +17,8 @@ import { comparisonPosts } from "./blog/posts-comparisons";
 import { useCasePosts } from "./blog/posts-use-cases";
 import { batch4Posts } from "./blog/posts-batch4";
 import { top10SeoPosts } from "./blog/posts-top10-seo";
+import { bestOfPosts } from "./blog/posts-best-of";
+import { longTailPosts } from "./blog/posts-long-tail";
 
 export interface BlogPost {
   id: string;
@@ -3330,6 +3332,10 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...batch4Posts,
   // Top 10 High-Intent SEO Articles
   ...top10SeoPosts,
+  // Best Of & Comparison Articles (Phase 3 Content Engine)
+  ...bestOfPosts,
+  // Long-Tail Buyer Intent Strategy Guides (Phase 3 Content Engine)
+  ...longTailPosts,
 ];
 
 // Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely

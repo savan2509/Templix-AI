@@ -11,29 +11,28 @@ import { ALL_MASTER_LANDING_SLUGS } from "@/lib/landing-page-data";
 import { SERVICES_DATA } from "@/data/services";
 import { CATEGORY_HUBS } from "@/data/categories";
 import { PRODUCTS_DATA } from "@/data/products";
-
+import { INDUSTRIES_DATA } from "@/data/industries";
 import { siteConfig } from "@/config/site";
 
 type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 
+/**
+ * Automated Modular Sitemap Architecture
+ *
+ * Implements Point 6 & Point 25:
+ * Generates structured indexable URLs for templates, categories, tools,
+ * use cases, industries, and blog guides with accurate lastmod and priority.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
-  // Anchor lastmod to a stable content date, not build time — a fresh `new Date()`
-  // on every deploy would falsely signal that every page changed and erode crawl
-  // trust. Pages with a real per-item date (blog posts) override this below.
   const contentDate = new Date(siteConfig.contentUpdated);
 
-  // Parse a date defensively: a malformed string yields `Invalid Date`, which
-  // Next.js would silently emit as a broken <lastmod>. Fall back to the stable
-  // content date instead so every entry always carries a valid timestamp.
-  const safeDate = (d: string | Date): Date => {
+  const safeDate = (d: string | Date | undefined): Date => {
+    if (!d) return contentDate;
     const parsed = new Date(d);
     return isNaN(parsed.getTime()) ? contentDate : parsed;
   };
 
-  // One entry per canonical page. Only English (/en) is served now — the other
-  // locales were retired and 308-redirect to /en (see proxy.ts) — so there are
-  // no hreflang alternates to emit; a single-locale site doesn't need them.
   const entry = (
     path: string,
     opts: {
@@ -47,14 +46,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: opts.lastModified ?? contentDate,
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
-    // Image sitemap extension — helps the page's cover/OG image surface in
-    // Google Images and rich results. Absolute URLs only.
     ...(opts.images && opts.images.length ? { images: opts.images } : {}),
   });
-
-  // Only indexable, canonical routes belong here — auth, login, dashboard,
-  // editor, admin, confirm/reset and other app surfaces are intentionally
-  // excluded so Google's index stays limited to real content pages.
 
   // ── Static routes with hand-tuned crawl hints ───────────────────────────────
   const staticRoutes: Array<
@@ -69,6 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/category", { changeFrequency: "daily", priority: 0.9 }],
     ["/products", { changeFrequency: "daily", priority: 0.9 }],
     ["/use-cases", { changeFrequency: "daily", priority: 0.8 }],
+    ["/industries", { changeFrequency: "weekly", priority: 0.85 }],
     ["/about", { changeFrequency: "monthly", priority: 0.5 }],
     ["/contact", { changeFrequency: "monthly", priority: 0.5 }],
     ["/faq", { changeFrequency: "monthly", priority: 0.5 }],
@@ -76,9 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/terms", { changeFrequency: "yearly", priority: 0.3 }],
   ];
 
-  // Template detail pages are the primary SEO landing pages, so they get a
-  // higher priority than tool pages. Dedupe on category+slug defensively — a
-  // duplicate pair in the source data would otherwise emit duplicate <url>s.
+  // ── Deduplicated Template detail pages ──────────────────────────────────────
   const seenTemplates = new Set<string>();
   const templateEntries = allFallbackTemplates
     .filter((t) => {
@@ -90,46 +82,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((t) =>
       entry(`/templates/${t.categorySlug}/${t.slug}`, {
         changeFrequency: "weekly",
-        priority: 0.7,
+        priority: 0.75,
         images: [`${baseUrl}/cat-${t.categorySlug}-cover.jpg`],
       })
     );
-    
 
-  // ── Data-driven routes ──────────────────────────────────────────────────────
-  // Derived straight from the content sources, so new categories, tools,
-  // templates and posts appear in the sitemap automatically with no edits here.
   return [
     ...staticRoutes.map(([path, opts]) => entry(path, opts)),
 
-    // Category listing pages. (Category page titles aren't localized yet — a
-    // later batch — so they consolidate on /en for now; no hreflang.)
+    // Category listing pages
     ...CATEGORIES.map((cat) =>
       entry(`/templates/${cat.slug}`, {
         changeFrequency: "weekly",
-        priority: 0.7,
+        priority: 0.75,
         images: [`${baseUrl}${cat.image}`],
       })
     ),
 
-    // One entry per free tool (the /tools hub is a static route above). en-only:
-    // the non-English locales are retired (308 → /en), so no hreflang alternates.
+    // Tools pages
     ...ALL_TOOLS.map((tool) =>
-      entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.6 })
+      entry(`/tools/${tool.slug}`, { changeFrequency: "monthly", priority: 0.65 })
     ),
 
-    // Template detail pages (canonical /{category}/{slug} shape)
+    // Template detail pages
     ...templateEntries,
 
-    // Profession landing pages (/{category}/{profession}) — each carries bespoke
-    // long-form copy + FAQs (see profession-content.ts), so they're indexable
-    // unique pages, not doorway duplicates.
-    ...professionRoutes().map(({ category, niche }) =>
-      entry(`/templates/${category}/${niche}`, { changeFrequency: "weekly", priority: 0.6 })
+    // Industry pages
+    ...INDUSTRIES_DATA.map((ind) =>
+      entry(`/industries/${ind.slug}`, { changeFrequency: "weekly", priority: 0.8 })
     ),
 
-    // Blog articles — <lastmod> reflects the last edit: prefer `updatedAt`, fall
-    // back to the publish date, and guard against a malformed value.
+    // Profession & Role Landing Pages (Programmatic Phase 2)
+    ...professionRoutes().map(({ category, niche }) =>
+      entry(`/templates/${category}/${niche}`, { changeFrequency: "weekly", priority: 0.8 })
+    ),
+
+    // Blog articles
     ...STATIC_BLOG_POSTS.map((post) =>
       entry(`/blog/${post.slug}`, {
         lastModified: safeDate(post.updatedAt ?? post.publishedAt),
@@ -139,7 +127,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
     ),
 
-    // Software Comparison pages — dedicated commercial investigation intent
+    // Software Comparison pages
     ...comparisonPosts.map((post) =>
       entry(`/compare/${post.slug}`, {
         lastModified: safeDate(post.updatedAt ?? post.publishedAt),
@@ -149,33 +137,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
     ),
 
-    // Dedicated FAQ topic pages — each targets a high-volume keyword cluster
-    // with 10–15 unique Q&As and FAQPage JSON-LD schema.
+    // Dedicated FAQ topic pages
     ...FAQ_TOPIC_SLUGS.map((slug) =>
       entry(`/faq/${slug}`, { changeFrequency: "monthly", priority: 0.6 })
     ),
 
-    // Dedicated Use Case landing pages (all 93 high-intent landing pages)
+    // Dedicated Use Case landing pages
     ...ALL_USE_CASE_SLUGS.map((slug) =>
       entry(`/use-cases/${slug}`, { changeFrequency: "weekly", priority: 0.8 })
     ),
 
-    // Dedicated Master SEO Landing Pages (all 30 landing pages)
+    // Dedicated Master SEO Landing Pages
     ...ALL_MASTER_LANDING_SLUGS.map((slug) =>
       entry(`/${slug}`, { changeFrequency: "daily", priority: 0.9 })
     ),
 
-    // Dedicated Automated Document & AI Service Landing Pages (10 service pages)
+    // Dedicated Automated Document & AI Service Landing Pages
     ...SERVICES_DATA.map((service) =>
       entry(`/services/${service.slug}`, { changeFrequency: "weekly", priority: 0.8 })
     ),
 
-    // Dedicated Category Hub Pages (9 category pages)
+    // Dedicated Category Hub Pages
     ...CATEGORY_HUBS.map((cat) =>
       entry(`/category/${cat.slug}`, { changeFrequency: "weekly", priority: 0.9 })
     ),
 
-    // Dedicated Product Pages (30 product pages)
+    // Dedicated Product Pages
     ...PRODUCTS_DATA.map((prod) =>
       entry(`/products/${prod.slug}`, { changeFrequency: "weekly", priority: 0.9 })
     ),

@@ -17,7 +17,10 @@ import { notFound } from "next/navigation";
 import { ChevronDown, ArrowLeft, HelpCircle, ExternalLink } from "lucide-react";
 import { SEOEngine } from "@/services/seo";
 import Schema from "@/components/seo/Schema";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { siteConfig } from "@/config/site";
+
 import {
   getFaqTopic,
   getFaqTopicSchema,
@@ -84,8 +87,10 @@ export default async function FaqTopicPage({ params }: PageProps) {
 
   return (
     <>
+      <Navbar />
       {/* JSON-LD: FAQPage + BreadcrumbList */}
       <Schema data={[faqPageSchema, breadcrumbSchema]} />
+
 
       {/* ── Breadcrumb ── */}
       <nav
@@ -212,6 +217,8 @@ export default async function FaqTopicPage({ params }: PageProps) {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
+

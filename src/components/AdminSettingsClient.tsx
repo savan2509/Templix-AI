@@ -15,6 +15,9 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+import SeoAdminManager from "@/components/seo/SeoAdminManager";
+
+
 interface CategoryItem {
   slug: string;
   name: string;
@@ -30,10 +33,23 @@ interface BlogItem {
 interface AdminSettingsClientProps {
   categories: CategoryItem[];
   blogs: BlogItem[];
+  seoData?: {
+    templates: any[];
+    categories: any[];
+    industries: any[];
+    tools: any[];
+    blogs: any[];
+    healthAudit: any;
+    analytics: any;
+  };
 }
 
-export default function AdminSettingsClient({ categories, blogs }: AdminSettingsClientProps) {
-  const [activeTab, setActiveTab] = useState<"ads" | "flags" | "blogs" | "categories" | "analytics">("analytics");
+export default function AdminSettingsClient({
+  categories,
+  blogs,
+  seoData,
+}: AdminSettingsClientProps) {
+  const [activeTab, setActiveTab] = useState<"seo" | "analytics" | "ads" | "flags" | "blogs" | "categories">("seo");
 
   // Local state representing monetization ads toggles
   const [adConfig, setAdConfig] = useState({
@@ -63,6 +79,18 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
     <div className="grid lg:grid-cols-12 gap-8 items-start">
       {/* Sidebar navigation */}
       <div className="lg:col-span-3 p-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm space-y-1 flex flex-col">
+        <button
+          onClick={() => setActiveTab("seo")}
+          className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
+            activeTab === "seo"
+              ? "bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400"
+              : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
+          }`}
+        >
+          <Globe2 className="h-4 w-4" />
+          <span>SEO Management</span>
+        </button>
+
         <button
           onClick={() => setActiveTab("analytics")}
           className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors text-left ${
@@ -124,8 +152,21 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
         </button>
       </div>
 
+
       {/* Main tab panel area */}
       <div className="lg:col-span-9 p-6 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
+        {activeTab === "seo" && (
+          <SeoAdminManager
+            initialTemplates={seoData?.templates || []}
+            initialCategories={seoData?.categories || []}
+            initialIndustries={seoData?.industries || []}
+            initialTools={seoData?.tools || []}
+            initialBlogs={seoData?.blogs || []}
+            healthAudit={seoData?.healthAudit}
+            analytics={seoData?.analytics}
+          />
+        )}
+
         {activeTab === "analytics" && (
           <div className="space-y-6">
             <div>
@@ -134,6 +175,7 @@ export default function AdminSettingsClient({ categories, blogs }: AdminSettings
                 <span>Dashboard Analytics & Logs</span>
               </h3>
               <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1">
+
                 Real-time tracking of platform search metrics, visitor intent, and file conversions.
               </p>
             </div>

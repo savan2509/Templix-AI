@@ -277,10 +277,21 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/industries`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Industry Templates (6)
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/use-cases`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  Use Cases (90+)
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/category`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   Category Hubs (9)
                 </Link>
               </li>
+
               <li>
                 <Link href={`/${locale}/faq`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.helpCenter}

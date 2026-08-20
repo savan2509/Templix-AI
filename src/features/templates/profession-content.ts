@@ -8,6 +8,8 @@ import { professionContentA } from "./profession-content-a";
 import { professionContentB } from "./profession-content-b";
 import { professionContentC } from "./profession-content-c";
 import { professionContentD } from "./profession-content-d";
+import { professionContentE } from "./profession-content-e";
+import { professionContentF } from "./profession-content-f";
 
 export interface ProfessionEntry {
   profession: string;                               // plural display noun
@@ -23,6 +25,8 @@ const PROFESSION_CONTENT: Record<string, ProfessionEntry> = {
   ...professionContentB,
   ...professionContentC,
   ...professionContentD,
+  ...professionContentE,
+  ...professionContentF,
 };
 
 /** All profession slugs (for the route allowlist + sitemap). */
@@ -40,6 +44,21 @@ export function getProfessionContent(
   if (!categorySlug || !nicheSlug) return undefined;
   const entry = PROFESSION_CONTENT[nicheSlug];
   return entry && entry.category === categorySlug ? entry : undefined;
+}
+
+/**
+ * Retrieve all profession & role landing page entries belonging to a given category.
+ * Used for programmatic hub interlinking on /category/[slug] and /templates/[category].
+ */
+export function getProfessionsByCategory(
+  categorySlug: string | null | undefined
+): { slug: string; entry: ProfessionEntry }[] {
+  if (!categorySlug) return [];
+  // Normalize plural/singular mappings if needed
+  const normalized = categorySlug.endsWith("s") ? categorySlug : `${categorySlug}s`;
+  return Object.entries(PROFESSION_CONTENT)
+    .filter(([_, e]) => e.category === categorySlug || e.category === normalized)
+    .map(([slug, entry]) => ({ slug, entry }));
 }
 
 /** [category, niche] pairs for every profession page — used to build the sitemap. */

@@ -187,11 +187,42 @@ export default async function HomePage({ params }: PageProps) {
     console.warn("Home page database connection bypass, displaying initial seed fallbacks.");
   }
 
+  const homepageSoftwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Templix AI Document Workspace",
+    description: "Free AI-assisted document creation and template editor for invoices, resumes, contracts, proposals, and letters.",
+    url: `${SITE_URL}/${locale}`,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "All",
+    browserRequirements: "Requires JavaScript. Requires HTML5.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+
+  const homepageCollectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Featured Document Templates & Blueprints",
+    numberOfItems: fallbackTemplates.length,
+    itemListElement: fallbackTemplates.map((t, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: t.title,
+      url: `${SITE_URL}/${locale}/templates/${t.category.slug}/${t.slug}`,
+    })),
+  };
+
   return (
     <>
+      <Schema data={[faqSchema, homepageSoftwareSchema, homepageCollectionSchema]} />
       <Navbar />
 
       <main className="flex-1">
+
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-20 pb-16 lg:pt-28 lg:pb-24 bg-gradient-to-b from-blue-50/50 via-white to-white dark:from-zinc-900/30 dark:via-zinc-950 dark:to-zinc-950">
           {/* Ambient Glows */}
