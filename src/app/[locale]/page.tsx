@@ -227,7 +227,13 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
-      <Schema data={[faqSchema, homepageSoftwareSchema, homepageCollectionSchema]} />
+      <Schema
+        data={[
+          faqSchema,
+          homepageSoftwareSchema,
+          homepageCollectionSchema,
+        ]}
+      />
       <Navbar />
 
       <main className="flex-1">
@@ -662,87 +668,56 @@ export default async function HomePage({ params }: PageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</h3>
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
+                  1. Financial Accuracy & Tax Requirements
+                </h3>
                 <p>
-                  A professional invoice must contain explicit identification elements including a unique sequential invoice number, issuance date, payment due date, seller and buyer business registration details, itemized goods or services with unit rates, applicable tax breakdown (such as VAT or GST), and clear payment instructions (bank transfer details or online payment links). Setting explicit payment terms such as Net 15, Net 30, or 2% 10 Net 30 reduces payment delays and establishes legal clarity for tax authority accounting audits.
+                  Every commercial billing record requires clear identifiers: sequential invoice numbers, exact line-item breakdowns, tax rate designations (such as GST, VAT, or local sales taxes), and unambiguous payment windows (Net 15, Net 30).
                 </p>
-                <p>
-                  For cross-border international invoicing, templates specify billing currency, exchange rates, seller tax registration numbers, and SWIFT/IBAN wire transfer details to ensure seamless banking processing.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</h3>
-                <p>
-                  Modern Applicant Tracking Systems (ATS) scan resumes for clear section headings, standard font hierarchies, and quantifiable achievements. Templix AI resume templates use HRXML-compliant document layouts with distinct sections for Professional Summary, Technical Skills, Work Experience, and Education. Using reverse-chronological order and action verbs ensures your credentials parse accurately through automated hiring screeners.
-                </p>
-                <p>
-                  Structuring work experience with quantifiable impact metrics (e.g., &ldquo;Increased revenue by 35% across 12 months&rdquo;) helps resume parsers index core competencies while giving hiring managers immediate proof of candidate expertise.
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                  Providing complete remittance details and banking coordinates reduces payment friction and simplifies financial bookkeeping.
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</h3>
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
+                  2. Career Documentation & ATS Best Practices
+                </h3>
                 <p>
-                  Legal contracts require five core structural pillars: identification of entering parties, detailed scope of work, financial consideration, timeline or milestones, and protective boilerplate clauses covering intellectual property rights, confidentiality, limitation of liability, and governing law. Aligning with E-SIGN Act standards guarantees that digital signatures and exported contract PDFs remain legally binding.
+                  Modern Applicant Tracking Systems parse CVs using standardized heading tokens (Experience, Education, Skills) and linear single-column layouts.
                 </p>
-                <p>
-                  Including clear dispute resolution mechanisms, indemnification limits, and mutual non-disclosure covenants protects freelancers, agencies, and business clients from contractual misunderstandings and liability risks.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</h3>
-                <p>
-                  Winning client proposals begin with an executive summary articulating the client&rsquo;s core problem statement, followed by proposed strategic solutions, project deliverables, transparent pricing tables, team qualifications, and formal acceptance sign-off lines. Clear structural presentation demonstrates professionalism and accelerates contract approval cycles.
-                </p>
-                <p>
-                  Detailed price quotations outline line-item cost estimates, validity windows (e.g., valid for 30 days), terms of deposit, and optional add-on scope tiers, ensuring clients receive clear pricing transparency prior to project kickoff.
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                  Framing achievements with quantifiable outcomes gives hiring teams verifiable evidence of domain competence while ensuring parsers index your data accurately.
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</h3>
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
+                  3. Commercial Agreements & Terms of Engagement
+                </h3>
                 <p>
-                  Templix AI document generation operates with a client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using client-side engines. Your confidential document drafts and financial totals are never stored or logged on remote servers. When using opt-in AI writing tools, prompt requests are processed securely over encrypted TLS connections with zero permanent data retention.
+                  Agreements protect all participating parties when they clearly define milestones, scope boundaries, intellectual property ownership, confidentiality, and termination terms.
                 </p>
-                <p>
-                  Exporting to PDF or Microsoft Word (.docx) produces standalone, self-contained files formatted for instant distribution, printing, or digital archiving.
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                  Standardized commercial drafting conventions ensure mutual understanding and provide a solid reference point for project delivery.
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</h3>
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
+                  4. Privacy-By-Design Document Generation
+                </h3>
                 <p>
-                  Standardizing document layouts across your organization ensures brand consistency, reduces administrative prep time, and prevents formatting errors in customer-facing proposals or billing invoices. Using pre-tested document blueprints maintains consistent visual typography, margin alignment, and corporate color palettes across every department.
+                  Templix AI renders documents and compiles PDF exports locally within your web browser. Confidential figures and personal information remain on your device.
                 </p>
-                <p>
-                  Whether generating freelancer agreements, employee offer letters, or client progress reports, Templix AI provides ready-to-use professional document blueprints designed for immediate download.
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                  Outputs can be immediately exported to clean PDF or Microsoft Word (.docx) formats without watermarks or mandatory registration.
                 </p>
               </div>
             </div>
           </div>
         </section>
-
-        {/* JSON-LD: WebApplication + FAQ Schema (Organization & WebSite provided globally by layout) */}
-        <Schema
-          data={[
-            {
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              name: "Templix AI",
-              url: `${SITE_URL}/en`,
-              applicationCategory: "BusinessApplication",
-              operatingSystem: "All",
-              description:
-                "Free document templates and an AI-powered editor for invoices, resumes, contracts, proposals and letters — customize online and export to PDF or Word.",
-              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-              aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "820" },
-            },
-            faqSchema,
-          ]}
-        />
         {/* Dedicated Featured & Launch Badges Showcase Section */}
         <section className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">

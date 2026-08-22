@@ -19,10 +19,10 @@ export const FIELD_DEFAULTS: Record<string, string> = {
   email: "sarah.j@techsolutions.com",
   phone: "+1 (555) 382-9281",
   website: "www.acmeglobal.com",
-  address: "1200 Business Way, Suite 100, San Francisco, CA 94105",
+  address: "535 Mission Street, 14th Floor, San Francisco, CA 94105",
   // Fallbacks so newer templates that use these field names never render the
   // literal placeholder (branded templates override via deriveContactValues).
-  companyAddress: "1200 Business Way, Suite 100, San Francisco, CA 94105",
+  companyAddress: "535 Mission Street, 14th Floor, San Francisco, CA 94105",
   companyPhone: "+1 (555) 382-9281",
   gratuity: "18%",
   invoiceNumber: "INV-2026-001",
@@ -2122,7 +2122,7 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     amountDue: "$8,640.00",
   },
   "freelance-agreement": {
-    freelancerAddress: "234 Business Way, New York, NY 10001",
+    freelancerAddress: "1088 Sansome Street, Studio 4B, San Francisco, CA 94111",
     freelancerName: "Alex Carter",
     businessName: "Carter Creative Studio",
   },
@@ -2568,15 +2568,21 @@ function deriveContactValues(
       "New York, NY 10001", "Austin, TX 78701", "San Francisco, CA 94105",
       "Seattle, WA 98101", "Chicago, IL 60601",
     ];
+    const usStreets = [
+      "Market Street", "Mission Street", "Broadway", "Lexington Ave",
+      "Montgomery Street", "Peachtree Road", "Michigan Ave", "Grand Ave",
+      "Congress Street", "Pine Street", "Sutter Street", "Sansome Street"
+    ];
     const inCities = [
       "Mumbai, Maharashtra 400001", "Bengaluru, Karnataka 560001",
       "Pune, Maharashtra 411001", "New Delhi 110001", "Hyderabad, Telangana 500034",
     ];
     const seed = letters.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
     const streetNum = 100 + (letters.charCodeAt(0) || 0) * 2;
+    const selectedStreet = usStreets[seed % usStreets.length];
     out.address = isIndia
       ? `${streetNum}, ${inCities[letters.length % 5]}`
-      : `${streetNum} Business Way, ${usCities[letters.length % 5]}`;
+      : `${streetNum} ${selectedStreet}, Suite ${100 + (seed % 500)}, ${usCities[letters.length % 5]}`;
     if (handle) out.email = `hello@${handle}.com`;
     out.phone = isIndia
       ? `+91 ${String(90000 + (seed % 9999))} ${String(10000 + ((seed * 7) % 89999))}`

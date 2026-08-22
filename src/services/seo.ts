@@ -130,9 +130,10 @@ export class SEOEngine {
       keywords: data.keywords,
       alternates: {
         canonical: canonical,
-        // hreflang cluster — only emitted for pages actually translated across
-        // locales; consolidated pages get a bare canonical (no languages).
-        ...(Object.keys(languages).length > 0 ? { languages } : {}),
+        languages: Object.keys(languages).length > 0 ? languages : {
+          [locale]: canonical,
+          "x-default": enUrl,
+        },
       },
       // Robots: default is index+follow. Explicit overrides for noindex pages.
       robots: {
@@ -169,8 +170,8 @@ export class SEOEngine {
       },
       twitter: {
         card: "summary_large_image",
-        site: "@templix_ai",
-        creator: "@templix_ai",
+        site: "@savan2509",
+        creator: "@savan2509",
         title: fullTitle,
         description: data.description,
         images: [ogImage],

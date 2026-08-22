@@ -125,12 +125,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
       </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50" suppressHydrationWarning={true}>
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-M6FBWXVC"
             height="0"
             width="0"
+            style={{ display: "none", visibility: "hidden" }}
             className="hidden invisible"
           />
         </noscript>
