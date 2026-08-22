@@ -41,8 +41,12 @@ export default function SearchHero({ locale }: { locale: string }) {
         className="relative"
       >
         <div className="relative flex items-center">
+          <label htmlFor="template-search-hero-input" className="sr-only">
+            {t.placeholder}
+          </label>
           <Search className="absolute left-4 h-5 w-5 text-zinc-500 dark:text-zinc-400" />
           <input
+            id="template-search-hero-input"
             type="text"
             name="q"
             value={query}

@@ -111,9 +111,9 @@ export default function Footer() {
               </a>
 
               <a
-                href="tel:+18005550199"
+                href="tel:+14158903882"
                 className="group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2 text-emerald-700 shadow-sm transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
-                aria-label="Call customer support at +1-800-555-0199"
+                aria-label="Call customer support at +1 (415) 890-3882"
               >
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
                   <Phone className="h-3.5 w-3.5" />
@@ -123,13 +123,13 @@ export default function Footer() {
                     Phone Support
                   </span>
                   <span className="block truncate text-xs font-bold group-hover:underline">
-                    +1-800-555-0199
+                    +1 (415) 890-3882
                   </span>
                 </span>
               </a>
 
               <a
-                href="https://maps.google.com/?q=1200+Business+Way+Suite+100+San+Francisco+CA+94105"
+                href="https://maps.google.com/?q=535+Mission+Street+14th+Floor+San+Francisco+CA+94105"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"
@@ -143,7 +143,7 @@ export default function Footer() {
                     Headquarters (Google Maps)
                   </span>
                   <span className="block truncate text-xs font-medium text-zinc-700 dark:text-zinc-300 group-hover:underline">
-                    1200 Business Way, San Francisco, CA
+                    535 Mission St, 14th Fl, San Francisco, CA
                   </span>
                 </span>
               </a>

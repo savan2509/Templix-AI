@@ -38,11 +38,11 @@ export default async function ContactPage({ params }: PageProps) {
             name: "Templix AI",
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/contact`,
-            telephone: "+1-800-555-0199",
+            telephone: "+1-415-890-3882",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "1200 Business Way, Suite 100",
+              streetAddress: "535 Mission Street, 14th Floor",
               addressLocality: "San Francisco",
               addressRegion: "CA",
               postalCode: "94105",
@@ -100,16 +100,16 @@ export default async function ContactPage({ params }: PageProps) {
           </a>
 
           <a
-            href="tel:+18005550199"
+            href="tel:+14158903882"
             className="flex items-center gap-3 p-3 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition-colors"
-            aria-label="Call +1-800-555-0199"
+            aria-label="Call +1 (415) 890-3882"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shrink-0">
               <Phone className="h-4 w-4" />
             </span>
             <div className="min-w-0 text-left">
               <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-600/80">Phone Support</span>
-              <span className="block truncate text-xs font-semibold">+1-800-555-0199</span>
+              <span className="block truncate text-xs font-semibold">+1 (415) 890-3882</span>
             </div>
           </a>
         </div>

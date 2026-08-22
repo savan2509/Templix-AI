@@ -43,11 +43,11 @@ export default async function AboutPage({ params }: PageProps) {
             name: "Templix AI",
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/about`,
-            telephone: "+1-800-555-0199",
+            telephone: "+1-415-890-3882",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "1200 Business Way, Suite 100",
+              streetAddress: "535 Mission Street, 14th Floor",
               addressLocality: "San Francisco",
               addressRegion: "CA",
               postalCode: "94105",

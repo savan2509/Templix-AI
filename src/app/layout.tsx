@@ -6,6 +6,7 @@ import AuthProvider from "@/providers/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
 import HtmlDirSync from "@/components/HtmlDirSync";
 import Schema from "@/components/seo/Schema";
+import CookieConsent from "@/components/CookieConsent";
 import { globalSchemas } from "@/data/schemas/organization";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
@@ -156,6 +157,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {children}
           </ThemeProvider>
         </AuthProvider>
+        <CookieConsent />
         <Analytics />
         {/* GA4 — mounted with lazyOnload so analytics never blocks FCP/LCP paint */}
         {process.env.NEXT_PUBLIC_GA_ID && (

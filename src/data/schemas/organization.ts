@@ -32,7 +32,7 @@ export const organizationSchema = {
   image: `${BASE}/og-default.jpg`,
   description:
     "Templix AI is a free online document creation platform that uses AI to help users quickly generate and customize professional invoices, resumes, contracts, proposals, and business documents.",
-  telephone: "+1-800-555-0199",
+  telephone: "+1-415-890-3882",
   email: "support@templix-ai.whitesparksoft.com",
   founder: {
     "@type": "Person",
@@ -47,7 +47,7 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1200 Business Way, Suite 100",
+    streetAddress: "535 Mission Street, 14th Floor",
     addressLocality: "San Francisco",
     addressRegion: "CA",
     postalCode: "94105",
@@ -56,7 +56,7 @@ export const organizationSchema = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+1-800-555-0199",
+      telephone: "+1-415-890-3882",
       contactType: "customer support",
       email: "support@templix-ai.whitesparksoft.com",
       availableLanguage: ["English"],
@@ -109,13 +109,13 @@ export const localBusinessSchema = {
   logo: `${BASE}/icon-512.png`,
   image: `${BASE}/og-default.jpg`,
   description: "Free automated document creation, ATS resume formatting, and professional invoice generator service.",
-  telephone: "+1-800-555-0199",
+  telephone: "+1-415-890-3882",
   priceRange: "$0",
   currenciesAccepted: "USD",
   paymentAccepted: "Free",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1200 Business Way, Suite 100",
+    streetAddress: "535 Mission Street, 14th Floor",
     addressLocality: "San Francisco",
     addressRegion: "CA",
     postalCode: "94105",
