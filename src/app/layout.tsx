@@ -16,7 +16,6 @@ const geistSans = Geist({
   subsets: ["latin"],
   display: "swap",   // show text immediately with fallback font while custom font loads
   preload: true,
-  adjustFontFallback: false,
 });
 
 const geistMono = Geist_Mono({
@@ -24,7 +23,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   preload: false,    // mono is not used above-the-fold, defer it
-  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {

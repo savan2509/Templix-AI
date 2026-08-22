@@ -218,6 +218,13 @@ export default function Footer() {
                 )}
               </button>
             </form>
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+              We respect your privacy. By subscribing you agree to our{" "}
+              <Link href={`/${locale}/privacy`} className="underline hover:text-blue-600 dark:hover:text-blue-400">
+                Privacy Policy
+              </Link>
+              . No spam, unsubscribe anytime.
+            </p>
             {error && (
               <p className="text-xs font-semibold text-red-500 dark:text-red-400">{error}</p>
             )}

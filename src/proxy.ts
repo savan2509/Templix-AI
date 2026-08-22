@@ -132,6 +132,7 @@ export default async function proxy(req: NextRequest) {
     "templates", "blog", "compare", "tools", "about", "contact",
     "privacy", "terms", "faq", "login", "editor",
     "dashboard", "admin", "confirm", "reset", "auth",
+    "services", "products", "category", "industries", "use-cases",
     ...ALL_MASTER_LANDING_SLUGS
   ];
 

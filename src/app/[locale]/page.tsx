@@ -104,11 +104,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // language alternates here would advertise locale URLs that only redirect.
     alternates: {
       canonical: `${SITE_URL}/en`,
+      languages: {
+        en: `${SITE_URL}/en`,
+        "x-default": `${SITE_URL}/en`,
+      },
     },
     openGraph: {
-      // Keep the OG/Twitter title aligned with the document <title> (brand
-      // appended, since OG titles aren't run through the layout's template) so
-      // the page presents one consistent message in search and social.
       title: `${title} | Templix AI`,
       description,
       url: `${SITE_URL}/en`,
@@ -121,6 +122,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `${title} | Templix AI`,
       description,
+      site: "@savan2509",
+      creator: "@savan2509",
       images: ["/og-default.jpg"],
     },
   };
@@ -585,16 +588,16 @@ export default async function HomePage({ params }: PageProps) {
                     LS
                   </div>
                   <div>
-                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Legal Structure Standard</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">E-SIGN Act Alignment</p>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">Commercial Legal Structure</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Standard Agreement Formatting</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Commercial agreement blueprints and contract templates built in accordance with standard legal formatting principles.
+                  Commercial agreement blueprints and contract templates built following standard commercial formatting conventions and digital execution blocks.
                 </p>
                 <div className="pt-1">
                   <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-colors">
-                    Explore Legal Standards &rarr;
+                    Explore Standards &rarr;
                   </Link>
                 </div>
               </div>
@@ -610,7 +613,7 @@ export default async function HomePage({ params }: PageProps) {
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Document state and PDF exports are processed directly inside your local web browser with zero remote data logging.
+                  Document state and PDF exports are processed directly inside your local web browser memory with zero remote storage of document text.
                 </p>
                 <div className="pt-1">
                   <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-colors">
@@ -625,12 +628,12 @@ export default async function HomePage({ params }: PageProps) {
                     HR
                   </div>
                   <div>
-                    <p className="font-bold text-zinc-900 dark:text-white text-sm">ATS Parser Compliance</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">HRXML Format Compatibility</p>
+                    <p className="font-bold text-zinc-900 dark:text-white text-sm">ATS-Friendly Layouts</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Single-Column Hierarchy</p>
                   </div>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Resume structures formatted for modern Applicant Tracking Systems to guarantee accurate skill and work experience indexing.
+                  Single-column resume structures designed with standard section headers so automated Applicant Tracking Systems parse skills and experience cleanly.
                 </p>
                 <div className="pt-1">
                   <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-colors">
@@ -639,6 +642,10 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
               </div>
             </div>
+
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center max-w-2xl mx-auto italic">
+              Disclaimer: Templix AI provides customizable document templates created in accordance with common commercial drafting conventions. Not a substitute for certified legal counsel.
+            </p>
           </div>
         </section>
 
