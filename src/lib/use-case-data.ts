@@ -531,7 +531,7 @@ export function build14SectionHtml(uc: UseCaseData): string {
 <h2>2. Who Is This Page For?</h2>
 <p>This specialized tool and guide is built specifically for:</p>
 <ul>
-  ${uc.whoFor.map((w) => `<li><strong>${w}</strong></li>`).join("\n")}
+  ${uc.whoFor.map((w) => `<li>${w}</li>`).join("\n")}
 </ul>
 
 <h2>3. Common Problems &amp; Pain Points</h2>

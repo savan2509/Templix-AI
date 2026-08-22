@@ -203,6 +203,10 @@ export default async function proxy(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
+  // Inject canonical Link header to inform audit tools and search bots of authoritative domain
+  const canonicalPath = pathname === "/" ? "/en" : pathname;
+  supabaseResponse.headers.set("Link", `<${PRODUCTION_URL}${canonicalPath}>; rel="canonical"`);
+
   return supabaseResponse;
 }
 

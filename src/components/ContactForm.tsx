@@ -66,7 +66,18 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form
+      onSubmit={handleSubmit}
+      name="contact-support"
+      action="/api/contact"
+      method="POST"
+      aria-label="Contact Templix AI Support"
+      data-webmcp-tool="contactSupport"
+      data-webmcp-description="Send inquiry or support request to Templix AI team"
+      itemScope
+      itemType="https://schema.org/ContactAction"
+      className="space-y-5"
+    >
       {error && (
         <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />

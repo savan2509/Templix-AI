@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Schema from "@/components/seo/Schema";
+import SocialShare from "@/components/SocialShare";
 import { siteConfig } from "@/config/site";
 import { buildCanonical } from "@/lib/canonical";
 import { getUseCaseBySlug, build14SectionHtml, ALL_USE_CASE_SLUGS, type UseCaseData } from "@/lib/use-case-data";
@@ -211,8 +212,17 @@ export default async function UseCasePage({
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
 
+          {/* Social Share */}
+          <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <SocialShare
+              title={`${useCase.title} | Templix AI`}
+              url={canonicalUrl}
+              slug={useCase.slug}
+            />
+          </div>
+
           {/* Hub-and-Spoke Back Links */}
-          <div className="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-wrap justify-between items-center gap-4">
+          <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-wrap justify-between items-center gap-4">
             <Link
               href={`/${locale}/use-cases`}
               className="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-blue-500 font-medium"

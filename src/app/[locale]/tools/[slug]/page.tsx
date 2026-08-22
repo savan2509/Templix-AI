@@ -6,6 +6,7 @@ import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ToolWidget from "@/components/tools/ToolWidget";
 import AiToolWidget from "@/components/tools/AiToolWidget";
 import Schema from "@/components/seo/Schema";
+import SocialShare from "@/components/SocialShare";
 import { buildFaqSchema } from "@/lib/blog-seo";
 import { ALL_TOOLS, getTool } from "@/data/tools";
 import { getAiTool } from "@/data/ai-tools";
@@ -194,6 +195,14 @@ export default async function ToolPage({ params }: PageProps) {
           </ul>
         </Section>
       )}
+
+      <Section heading="Share this tool">
+        <SocialShare
+          title={`${tool.title} — Free Online Tool | Templix AI`}
+          url={toolUrl}
+          slug={tool.slug}
+        />
+      </Section>
     </InfoPageShell>
   );
 }

@@ -53,6 +53,12 @@ const fallbackTemplates = [
   }
 ];
 
+export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return [{ locale: "en" }];
+}
+
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
@@ -231,7 +237,7 @@ export default async function HomePage({ params }: PageProps) {
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-8">
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-600 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400 shadow-sm" style={{animation: 'fadeIn 0.6s ease both'}}>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-600 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400 shadow-sm animate-fade-in">
               <Sparkles className="h-3.5 w-3.5" />
               <span>{t.heroBadge}</span>
             </div>
@@ -255,7 +261,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Popular Categories — deferred paint until visible */}
-        <section className="py-12 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 400px'}}>
+        <section className="py-12 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 mb-8 flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-blue-500" />
@@ -270,7 +276,7 @@ export default async function HomePage({ params }: PageProps) {
                   className="group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/70 dark:border-zinc-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
                 >
                   {/* Cover image */}
-                  <div className="relative h-28 w-full overflow-hidden">
+                  <div className="relative aspect-[3/2] w-full overflow-hidden">
                     <Image
                       src={cat.image}
                       alt={`Free ${categoryName(cat.slug)} templates`}
@@ -278,7 +284,7 @@ export default async function HomePage({ params }: PageProps) {
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, 20vw"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
                     />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -286,9 +292,9 @@ export default async function HomePage({ params }: PageProps) {
 
                   {/* Label area */}
                   <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <span className="block font-bold text-white text-xs leading-tight drop-shadow">
+                    <h3 className="block font-bold text-white text-xs leading-tight drop-shadow">
                       {categoryName(cat.slug)}
-                    </span>
+                    </h3>
                     <div className="flex items-center gap-1 text-[10px] text-white/70 mt-0.5 font-medium">
                       <span>{allFallbackTemplates.filter(ft => ft.categorySlug === cat.slug).length} {c.templatesLabel}</span>
                       <ArrowRight className="h-2.5 w-2.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
@@ -302,7 +308,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Featured Templates Grid — deferred paint until visible */}
-        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 600px'}}>
+        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
@@ -353,9 +359,9 @@ export default async function HomePage({ params }: PageProps) {
                       <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold">
                         {c.categoryNames[temp.category.slug as keyof typeof c.categoryNames] ?? temp.category.name}
                       </span>
-                      <p className="font-bold text-zinc-900 dark:text-white text-lg">
+                      <h3 className="font-bold text-zinc-900 dark:text-white text-lg">
                         {temp.title}
-                      </p>
+                      </h3>
                       <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                         {temp.description}
                       </p>
@@ -377,7 +383,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Dynamic 3 Pillars Section — deferred paint until visible */}
-        <section className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 500px'}}>
+        <section className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-12">
             <div className="max-w-2xl mx-auto space-y-3">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -393,7 +399,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-sm">
                   <FileText className="h-6 w-6" />
                 </div>
-                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</p>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar1Desc.replace("{count}", String(Math.floor(allFallbackTemplates.length / 10) * 10))}
                 </p>
@@ -403,7 +409,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto shadow-sm">
                   <Sparkles className="h-6 w-6" />
                 </div>
-                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</p>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar2Desc}
                 </p>
@@ -413,7 +419,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-sm">
                   <Zap className="h-6 w-6" />
                 </div>
-                <p className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</p>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar3Desc}
                 </p>
@@ -423,7 +429,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Why Choose Templix AI Section (100% Free & AI Powered) */}
-        <section className="py-16 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 600px'}}>
+        <section className="py-16 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
@@ -443,7 +449,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</p>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why1Desc}
                 </p>
@@ -454,7 +460,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</p>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why2Desc}
                 </p>
@@ -465,7 +471,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                   <Zap className="h-5 w-5" />
                 </div>
-                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</p>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why3Desc}
                 </p>
@@ -476,7 +482,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                   <FileText className="h-5 w-5" />
                 </div>
-                <p className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</p>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why4Desc}
                 </p>
@@ -486,7 +492,7 @@ export default async function HomePage({ params }: PageProps) {
         </section>
 
         {/* Featured Blogs Section — deferred paint until visible */}
-        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900" style={{contentVisibility: 'auto', containIntrinsicSize: '0 1200px'}}>
+        <section className="py-16 bg-zinc-50/50 dark:bg-zinc-900/20 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-10">
               <div>
@@ -515,7 +521,7 @@ export default async function HomePage({ params }: PageProps) {
                   className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:shadow-lg hover:border-blue-500/30 transition-all overflow-hidden"
                 >
                   {/* Blog cover image */}
-                  <div className="relative h-44 w-full overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
                     <Image
                       src={article.image}
                       alt={`${article.title} — illustration`}
@@ -523,7 +529,7 @@ export default async function HomePage({ params }: PageProps) {
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <span className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white border border-white/30 backdrop-blur-sm">
@@ -539,9 +545,9 @@ export default async function HomePage({ params }: PageProps) {
                         year: "numeric"
                       })}
                     </span>
-                    <p className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {article.title}
-                    </p>
+                    </h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                       {article.description}
                     </p>
@@ -650,7 +656,7 @@ export default async function HomePage({ params }: PageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Invoice Standardization, Tax Compliance & Payment Terms</h3>
                 <p>
                   A professional invoice must contain explicit identification elements including a unique sequential invoice number, issuance date, payment due date, seller and buyer business registration details, itemized goods or services with unit rates, applicable tax breakdown (such as VAT or GST), and clear payment instructions (bank transfer details or online payment links). Setting explicit payment terms such as Net 15, Net 30, or 2% 10 Net 30 reduces payment delays and establishes legal clarity for tax authority accounting audits.
                 </p>
@@ -660,7 +666,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">ATS-Optimized Resume Formatting & Career Engineering</h3>
                 <p>
                   Modern Applicant Tracking Systems (ATS) scan resumes for clear section headings, standard font hierarchies, and quantifiable achievements. Templix AI resume templates use HRXML-compliant document layouts with distinct sections for Professional Summary, Technical Skills, Work Experience, and Education. Using reverse-chronological order and action verbs ensures your credentials parse accurately through automated hiring screeners.
                 </p>
@@ -670,7 +676,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Commercial Contract & Agreement Structure</h3>
                 <p>
                   Legal contracts require five core structural pillars: identification of entering parties, detailed scope of work, financial consideration, timeline or milestones, and protective boilerplate clauses covering intellectual property rights, confidentiality, limitation of liability, and governing law. Aligning with E-SIGN Act standards guarantees that digital signatures and exported contract PDFs remain legally binding.
                 </p>
@@ -680,7 +686,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Business Proposals, Quotations & Project Statements</h3>
                 <p>
                   Winning client proposals begin with an executive summary articulating the client&rsquo;s core problem statement, followed by proposed strategic solutions, project deliverables, transparent pricing tables, team qualifications, and formal acceptance sign-off lines. Clear structural presentation demonstrates professionalism and accelerates contract approval cycles.
                 </p>
@@ -690,7 +696,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Client-Side AI Document Processing & Data Privacy</h3>
                 <p>
                   Templix AI document generation operates with a client-side privacy architecture. All document editing, real-time preview rendering, and PDF compilation take place directly within your web browser using client-side engines. Your confidential document drafts and financial totals are never stored or logged on remote servers. When using opt-in AI writing tools, prompt requests are processed securely over encrypted TLS connections with zero permanent data retention.
                 </p>
@@ -700,7 +706,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="space-y-3">
-                <p className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</p>
+                <h3 className="font-bold text-zinc-900 dark:text-white text-base">Corporate Document Standardization & Governance</h3>
                 <p>
                   Standardizing document layouts across your organization ensures brand consistency, reduces administrative prep time, and prevents formatting errors in customer-facing proposals or billing invoices. Using pre-tested document blueprints maintains consistent visual typography, margin alignment, and corporate color palettes across every department.
                 </p>

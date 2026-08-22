@@ -123,13 +123,15 @@ const nextConfig: NextConfig = {
         source: "/fonts/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "Expires", value: "Fri, 31 Dec 2030 23:59:59 GMT" },
         ],
       },
       {
-        // Cache public images, badges & icons on CDN for 1 year (immutable).
+        // Cache public images, badges & icons on CDN for 1 year (immutable) with Expires header.
         source: "/:path*.{jpg,jpeg,png,svg,webp,avif,gif,ico}",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "Expires", value: "Fri, 31 Dec 2030 23:59:59 GMT" },
         ],
       },
     ];
@@ -143,6 +145,17 @@ const nextConfig: NextConfig = {
           {
             type: "host",
             value: "www.templix-ai.whitesparksoft.com",
+          },
+        ],
+        destination: "https://templix-ai.whitesparksoft.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.templix.ai",
           },
         ],
         destination: "https://templix-ai.whitesparksoft.com/:path*",

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Schema from "@/components/seo/Schema";
+import SocialShare from "@/components/SocialShare";
 import AiToolWidget from "@/components/tools/AiToolWidget";
 import { siteConfig } from "@/config/site";
 import { buildCanonical } from "@/lib/canonical";
@@ -519,6 +520,15 @@ export default async function MasterLandingPage({
               </Link>
             </div>
           </section>
+
+          {/* Social Sharing */}
+          <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="font-bold text-sm text-zinc-900 dark:text-white">Share this resource</h3>
+              <p className="text-xs text-zinc-500">Help colleagues and friends access free professional document tools.</p>
+            </div>
+            <SocialShare title={`${data.h1} — Free Online Generator | Templix AI`} url={canonicalUrl} slug={slug} />
+          </div>
         </div>
       </main>
 

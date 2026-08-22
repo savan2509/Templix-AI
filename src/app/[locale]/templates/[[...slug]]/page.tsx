@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import TemplateDetailView from "@/components/TemplateDetailView";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
 import Schema from "@/components/seo/Schema";
+import SocialShare from "@/components/SocialShare";
 import FavoriteButton from "@/components/FavoriteButton";
 import { createClient } from "@/lib/supabase/server";
 import { CATEGORIES } from "@/constants";
@@ -824,11 +825,15 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           label: `${categoryDisplayName} ${t.rsForFreelancers}`,
           url: categorySlug === "invoices"
             ? `/${locale}/templates/invoices/invoice-freelancer`
+            : categorySlug === "contracts"
+            ? `/${locale}/templates/contracts/freelance-agreement`
+            : categorySlug === "resumes"
+            ? `/${locale}/templates/resumes/resume-software-engineer`
             : `/${locale}/templates/${categorySlug}`,
         },
-        { label: `${t.rsLegal} ${categoryDisplayName}`, url: `/${locale}/templates/${categorySlug}` },
-        { label: `${categoryDisplayName} ${t.inWord} USA`, url: `/${locale}/templates/${categorySlug}` },
-        { label: `${categoryDisplayName} ${t.inWord} Canada`, url: `/${locale}/templates/${categorySlug}` },
+        { label: `${t.rsLegal} ${categoryDisplayName}`, url: `/${locale}/templates/contracts` },
+        { label: `Free ${categoryDisplayName} Tools`, url: `/${locale}/tools` },
+        { label: `${categoryDisplayName} Writing Guides`, url: `/${locale}/blog` },
       ]
     : [
         { label: t.rsInvoiceTemplates, url: `/${locale}/templates/invoices` },
@@ -1092,8 +1097,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                           <span className="text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-blue-400">
                             {common.categoryNames[temp.categorySlug as keyof typeof common.categoryNames] ?? temp.categoryName}
                           </span>
-                          <h3 className="font-bold text-zinc-900 dark:text-white text-base">
-                            {temp.title}
+                          <h3 className="font-bold text-zinc-900 dark:text-white text-base hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <Link href={`/${locale}/templates/${temp.categorySlug}/${temp.slug}`}>
+                              {temp.title}
+                            </Link>
                           </h3>
                           <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-2">
                             {temp.description}
@@ -1289,6 +1296,24 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
               </ul>
             </section>
           )}
+
+          {/* Social Share */}
+          <section className="mx-auto max-w-5xl border-t border-zinc-200 dark:border-zinc-800 pt-8 mt-8">
+            <div className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <h3 className="font-bold text-sm text-zinc-900 dark:text-white">
+                  Share these {categoryDisplayName || "document"} templates
+                </h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                  Spread the word to fellow professionals, contractors, and business owners.
+                </p>
+              </div>
+              <SocialShare
+                title={`Free ${categoryDisplayName || "Business"} Templates — PDF & Word | Templix AI`}
+                url={siteUrl(`/${locale}/templates${slug.length > 0 ? "/" + slug.join("/") : ""}`)}
+              />
+            </div>
+          </section>
         </div>
       </div>
     </main>

@@ -161,7 +161,18 @@ export default function BlogGetInTouch({ articleTitle }: { articleTitle: string 
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  name="inquiry-form"
+                  action="/api/contact"
+                  method="POST"
+                  aria-label="Send Inquiry"
+                  data-webmcp-tool="sendInquiry"
+                  data-webmcp-description="Submit document inquiry or custom template request"
+                  itemScope
+                  itemType="https://schema.org/AskAction"
+                  className="space-y-4"
+                >
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.intro}</p>
 
                   {error && (

@@ -27,21 +27,36 @@ export default function SearchHero({ locale }: { locale: string }) {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4">
-      <form onSubmit={handleSearch} className="relative">
+      <form
+        onSubmit={handleSearch}
+        name="search-templates"
+        action={`/${locale}/templates`}
+        method="GET"
+        role="search"
+        aria-label="Search document templates and tools"
+        data-webmcp-tool="searchTemplates"
+        data-webmcp-description="Search free document templates, resumes, invoices, contracts and AI tools by keyword"
+        itemScope
+        itemType="https://schema.org/SearchAction"
+        className="relative"
+      >
         <div className="relative flex items-center">
           <Search className="absolute left-4 h-5 w-5 text-zinc-500 dark:text-zinc-400" />
           <input
             type="text"
+            name="q"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t.placeholder}
-            // A placeholder is not an accessible name — it disappears on input
-            // and screen readers may ignore it. Label the field explicitly.
             aria-label={t.placeholder}
+            data-webmcp-input="query"
+            itemProp="query-input"
             className="w-full h-14 pl-12 pr-32 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 shadow-lg shadow-zinc-100 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
           />
           <button
             type="submit"
+            aria-label={t.search}
+            data-webmcp-submit="search"
             className="absolute right-2 top-2 h-10 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <Sparkles className="h-3.5 w-3.5" />

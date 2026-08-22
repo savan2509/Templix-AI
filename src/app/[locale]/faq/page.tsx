@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import Schema from "@/components/seo/Schema";
+import SocialShare from "@/components/SocialShare";
 import { faqData, faqSchema } from "@/data/faq";
 import { getAllFaqTopics } from "@/data/faq-topics";
 import { INDIVIDUAL_FAQS } from "@/data/faq-individual";
@@ -85,7 +86,14 @@ export default async function FaqPage({ params }: PageProps) {
         ))}
       </div>
 
-      <p className="pt-6">
+      <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800">
+        <SocialShare
+          title="Frequently Asked Questions | Templix AI Document Platform"
+          url={`${siteConfig.url}/${locale}/faq`}
+        />
+      </div>
+
+      <p className="pt-4">
         {t.stillHavePre}
         <Link href={`/${locale}/contact`} className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">{t.contactLink}</Link>
         {t.stillHavePost}

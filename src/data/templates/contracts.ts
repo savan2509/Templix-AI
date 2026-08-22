@@ -41,8 +41,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Cancellation" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{cancellationPolicy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Freelancer: " }, { type: "text", text: "{{freelancerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Freelancer Signature: " }, { type: "text", text: "{{freelancerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -82,8 +82,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Termination & Restrictive Covenants" }] },
           { type: "paragraph", content: [{ type: "text", text: "Either party may end this agreement with {{noticePeriod}}. Confidentiality: {{confidentialityClause}} Non-compete: {{nonCompeteClause}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer: " }, { type: "text", text: "{{employerSignature}} — Date: {{signatureDate}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee: " }, { type: "text", text: "{{employeeSignature}} — Date: {{signatureDate}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer Signature: " }, { type: "text", text: "{{employerSignature}} — Date: {{signatureDate}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee Signature: " }, { type: "text", text: "{{employeeSignature}} — Date: {{signatureDate}}" }] }
         ]
       }
     }
@@ -123,8 +123,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Termination & Disputes" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{terminationClause}} {{disputeResolution}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor: " }, { type: "text", text: "{{contractorSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor Signature: " }, { type: "text", text: "{{contractorSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -164,8 +164,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Liability, Confidentiality & Cancellation" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{liabilityLimit}} {{confidentialityClause}} {{cancellationPolicy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider: " }, { type: "text", text: "{{providerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Provider Signature: " }, { type: "text", text: "{{providerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -246,8 +246,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Termination" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{terminationClause}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Consultant: " }, { type: "text", text: "{{consultantSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Consultant Signature: " }, { type: "text", text: "{{consultantSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -287,8 +287,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Smoking" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{smokingPolicy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord: " }, { type: "text", text: "{{landlordSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant: " }, { type: "text", text: "{{tenantSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord Signature: " }, { type: "text", text: "{{landlordSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant Signature: " }, { type: "text", text: "{{tenantSignature}}" }] }
         ]
       }
     }
@@ -328,8 +328,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Governing Law" }] },
           { type: "paragraph", content: [{ type: "text", text: "This contract is governed by {{governingLaw}}." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Seller: " }, { type: "text", text: "{{sellerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Buyer: " }, { type: "text", text: "{{buyerSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Seller Signature: " }, { type: "text", text: "{{sellerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Buyer Signature: " }, { type: "text", text: "{{buyerSignature}}" }] }
         ]
       }
     }
@@ -369,8 +369,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Withdrawal & Dissolution" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{exitStrategy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Partner 1: " }, { type: "text", text: "{{partner1Signature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Partner 2: " }, { type: "text", text: "{{partner2Signature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Partner 1 Signature: " }, { type: "text", text: "{{partner1Signature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Partner 2 Signature: " }, { type: "text", text: "{{partner2Signature}}" }] }
         ]
       }
     }
@@ -410,8 +410,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Confidentiality & Termination" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{confidentialityClause}} {{terminationClause}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vendor: " }, { type: "text", text: "{{vendorSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Vendor Signature: " }, { type: "text", text: "{{vendorSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -453,8 +453,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Compensation" }] },
           { type: "paragraph", content: [{ type: "text", text: "The Creator will be paid {{compensation}} per the schedule: {{paymentSchedule}}. Cancellation: {{cancellationPolicy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Brand: " }, { type: "text", text: "{{brandSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Creator: " }, { type: "text", text: "{{influencerSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Brand Signature: " }, { type: "text", text: "{{brandSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Creator Signature: " }, { type: "text", text: "{{influencerSignature}}" }] }
         ]
       }
     }
@@ -494,8 +494,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "5. Cancellation & Rescheduling" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{cancellationPolicy}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Photographer: " }, { type: "text", text: "{{photographerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Photographer Signature: " }, { type: "text", text: "{{photographerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -537,8 +537,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Security Deposit & Renewal" }] },
           { type: "paragraph", content: [{ type: "text", text: "The Tenant shall deposit {{securityDeposit}} as security for performance of its obligations. Renewal option: {{renewalOption}}." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord: " }, { type: "text", text: "{{landlordSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant: " }, { type: "text", text: "{{tenantSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Landlord Signature: " }, { type: "text", text: "{{landlordSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Tenant Signature: " }, { type: "text", text: "{{tenantSignature}}" }] }
         ]
       }
     }
@@ -580,8 +580,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Events of Default" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{defaultTerms}} Upon default, the entire unpaid balance of principal and accrued interest shall become immediately due and payable at the Lender option. This Agreement is governed by {{governingLaw}}." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Lender: " }, { type: "text", text: "{{lenderSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Borrower: " }, { type: "text", text: "{{borrowerSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Lender Signature: " }, { type: "text", text: "{{lenderSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Borrower Signature: " }, { type: "text", text: "{{borrowerSignature}}" }] }
         ]
       }
     }
@@ -623,8 +623,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Lien Waivers" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{lienWaiver}} The Subcontractor shall provide conditional and unconditional lien waivers with each payment application." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor: " }, { type: "text", text: "{{contractorSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subcontractor: " }, { type: "text", text: "{{subcontractorSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Contractor Signature: " }, { type: "text", text: "{{contractorSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Subcontractor Signature: " }, { type: "text", text: "{{subcontractorSignature}}" }] }
         ]
       }
     }
@@ -666,8 +666,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Termination" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{terminationClause}} Upon termination, the Licensee shall cease all use of the licensed property and dispose of remaining inventory only as the Licensor directs." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensor: " }, { type: "text", text: "{{licensorSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensee: " }, { type: "text", text: "{{licenseeSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensor Signature: " }, { type: "text", text: "{{licensorSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensee Signature: " }, { type: "text", text: "{{licenseeSignature}}" }] }
         ]
       }
     }
@@ -709,8 +709,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Remedies & Governing Law" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{remediesClause}} The Company shall be entitled to injunctive relief for any breach. This Agreement is governed by {{governingLaw}}, and any unenforceable provision shall be reformed to the maximum enforceable extent." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Company: " }, { type: "text", text: "{{employerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee: " }, { type: "text", text: "{{employeeSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Company Authorized Signature: " }, { type: "text", text: "{{employerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee Signature: " }, { type: "text", text: "{{employeeSignature}}" }] }
         ]
       }
     }
@@ -752,8 +752,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Exit & Dissolution" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{exitStrategy}} Upon dissolution, the assets of the venture shall be applied first to liabilities and then distributed to the parties in proportion to their capital accounts." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Venturer 1: " }, { type: "text", text: "{{party1Signature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Venturer 2: " }, { type: "text", text: "{{party2Signature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Venturer 1 Signature: " }, { type: "text", text: "{{party1Signature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Venturer 2 Signature: " }, { type: "text", text: "{{party2Signature}}" }] }
         ]
       }
     }
@@ -795,8 +795,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Insurance" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{insuranceRequirement}} The Renter shall name the Owner as an additional insured and provide a certificate of insurance before the equipment is released." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Owner: " }, { type: "text", text: "{{ownerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Renter: " }, { type: "text", text: "{{renterSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Owner Signature: " }, { type: "text", text: "{{ownerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Renter Signature: " }, { type: "text", text: "{{renterSignature}}" }] }
         ]
       }
     }
@@ -838,8 +838,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Food Safety & Compliance" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{foodSafetyTerms}} The Caterer warrants that all food is prepared and handled in compliance with applicable health codes and holds current food handling permits." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Caterer: " }, { type: "text", text: "{{catererSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Caterer Signature: " }, { type: "text", text: "{{catererSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -881,8 +881,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Hosting & Maintenance" }] },
           { type: "paragraph", content: [{ type: "text", text: "{{hostingMaintenance}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Developer: " }, { type: "text", text: "{{developerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Developer Signature: " }, { type: "text", text: "{{developerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientSignature}}" }] }
         ]
       }
     }
@@ -924,8 +924,8 @@ export const contractsTemplates = [
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "6. Review & Revocation" }] },
           { type: "paragraph", content: [{ type: "text", text: "The Employee has the stated period to review this Agreement and may revoke it within {{revocationPeriod}} after signing. This Agreement is governed by {{governingLaw}}." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Company: " }, { type: "text", text: "{{employerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee: " }, { type: "text", text: "{{employeeSignature}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Company Authorized Signature: " }, { type: "text", text: "{{employerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee Signature: " }, { type: "text", text: "{{employeeSignature}}" }] }
         ]
       }
     }
@@ -999,7 +999,7 @@ export const contractsTemplates = [
           { type: "paragraph", content: [{ type: "text", text: "{{terminationClause}}" }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Agency: " }, { type: "text", text: "{{companyName}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client: " }, { type: "text", text: "{{clientName}}, {{clientCompany}}" }] }
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Client Signature: " }, { type: "text", text: "{{clientName}}, {{clientCompany}}" }] }
         ]
       }
     }

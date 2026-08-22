@@ -41,16 +41,16 @@ const COMMON_COMPARISONS = [
 ];
 
 const COMMON_BLOGS = [
-  { title: "How to Write an ATS-Friendly Resume in 2026", href: "/blog/how-to-write-ats-friendly-resume" },
-  { title: "Invoice vs Receipt: Key Differences Explained", href: "/blog/invoice-vs-receipt" },
-  { title: "Service Agreement vs Contract: What You Need to Know", href: "/blog/service-agreement-vs-contract" },
+  { title: "How to Write an ATS-Friendly Resume", href: "/blog/how-to-write-ats-friendly-resume" },
+  { title: "Invoice vs Receipt: Key Differences", href: "/blog/invoice-vs-receipt" },
+  { title: "Service Agreement vs Contract Guide", href: "/blog/service-agreement-vs-contract" },
   { title: "How to Write a Winning Business Proposal", href: "/blog/how-to-write-business-proposal" },
   { title: "Freelance Hourly Rate Calculation Guide", href: "/blog/freelance-hourly-rate-guide" },
-  { title: "Understanding Non-Disclosure Agreements (NDAs)", href: "/blog/nda-guide" },
+  { title: "Understanding Non-Disclosure Agreements", href: "/blog/nda-guide" },
   { title: "W-9 vs W-8BEN: Freelance Tax Forms", href: "/blog/w9-vs-w8ben" },
-  { title: "How to Format Professional Business Letters", href: "/blog/business-letter-formatting-guide" },
-  { title: "GST Invoice Rules and Tax Breakdown India", href: "/blog/gst-invoice-rules-india" },
-  { title: "Top 10 Resume Mistakes That Turn Off Recruiters", href: "/blog/top-resume-mistakes-to-avoid" },
+  { title: "How to Format Professional Letters", href: "/blog/business-letter-formatting-guide" },
+  { title: "GST Invoice Rules and Tax Breakdown", href: "/blog/gst-invoice-rules-india" },
+  { title: "Top 10 Resume Mistakes to Avoid", href: "/blog/top-resume-mistakes-to-avoid" },
 ];
 
 const COMMON_USE_CASES = [

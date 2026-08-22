@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 interface ObfuscatedEmailProps {
   user?: string;
   domain?: string;
@@ -16,12 +18,34 @@ export default function ObfuscatedEmail({
   label,
   children,
 }: ObfuscatedEmailProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
   const fullEmail = `${user}@${domain}`;
-  const content = children || label || fullEmail;
 
   return (
-    <a href={`mailto:${fullEmail}`} className={className}>
-      {content}
+    <a
+      href="#"
+      onClick={handleClick}
+      className={className}
+      aria-label="Send email"
+      title="Contact via email"
+    >
+      {children || (
+        label ? (
+          <span>{label}</span>
+        ) : (
+          <span>{mounted ? fullEmail : `${user} [at] ${domain}`}</span>
+        )
+      )}
     </a>
   );
 }

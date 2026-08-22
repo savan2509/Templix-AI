@@ -49,8 +49,8 @@ export const indiaContractsTemplates: any[] = [
           { type: "paragraph", content: [{ type: "text", text: "This agreement shall be governed by the laws of India, and the courts at {{governingCity}}, {{governingState}} shall have exclusive jurisdiction." }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "This template is general information, not legal advice. Consult a lawyer and register the agreement as required under applicable state law before relying on it." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensor: " }, { type: "text", text: "{{licensorSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensee: " }, { type: "text", text: "{{licenseeSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensor Signature: " }, { type: "text", text: "{{licensorSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Licensee Signature: " }, { type: "text", text: "{{licenseeSignature}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Witness 1: " }, { type: "text", text: "{{witnessOneName}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Witness 2: " }, { type: "text", text: "{{witnessTwoName}}" }] }
         ]
@@ -99,8 +99,8 @@ export const indiaContractsTemplates: any[] = [
           { type: "paragraph", content: [{ type: "text", text: "This agreement shall be governed by the laws of India, and the courts at {{governingCity}}, {{governingState}} shall have exclusive jurisdiction." }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Note: " }, { type: "text", text: "This template is general information, not legal advice. Consult a lawyer before executing, as bond enforceability in India is limited to reasonable actual costs." }] },
           { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Signatures" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer: " }, { type: "text", text: "{{employerSignature}}" }] },
-          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee: " }, { type: "text", text: "{{employeeSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employer Signature: " }, { type: "text", text: "{{employerSignature}}" }] },
+          { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Employee Signature: " }, { type: "text", text: "{{employeeSignature}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Witness 1: " }, { type: "text", text: "{{witnessOneName}}" }] },
           { type: "paragraph", content: [{ type: "text", marks: [{ type: "bold" }], text: "Witness 2: " }, { type: "text", text: "{{witnessTwoName}}" }] }
         ]

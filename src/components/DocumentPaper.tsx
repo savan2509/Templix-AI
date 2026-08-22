@@ -80,6 +80,8 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
     // already end in one ("…web layouts." + "." → "…web layouts.."). Collapse
     // the duplicate. No template copy uses ellipses, so this is safe.
     result = result.replace(/\.{2,}/g, ".");
+    // Obfuscate '@' in sample document emails to prevent email harvester detection
+    result = result.replace(/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, "$1&#64;$2");
     return result;
   };
 

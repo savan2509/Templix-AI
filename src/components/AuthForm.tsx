@@ -261,7 +261,16 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
       )}
 
       {tab === "signin" ? (
-        <form onSubmit={handleSignIn} className="space-y-5">
+        <form
+          onSubmit={handleSignIn}
+          name="user-signin"
+          action="/api/auth/signin"
+          method="POST"
+          aria-label="Sign In to Templix AI"
+          data-webmcp-tool="userSignIn"
+          data-webmcp-description="Authenticate existing user account"
+          className="space-y-5"
+        >
           <div className="space-y-4">
             <div>
               <label htmlFor="signin-email" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">
@@ -327,7 +336,16 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
           </button>
         </form>
       ) : (
-        <form onSubmit={handleSignUp} className="space-y-5">
+        <form
+          onSubmit={handleSignUp}
+          name="user-signup"
+          action="/api/auth/signup"
+          method="POST"
+          aria-label="Create Templix AI Account"
+          data-webmcp-tool="userSignUp"
+          data-webmcp-description="Create new user account for Templix AI editor"
+          className="space-y-5"
+        >
           <div className="space-y-4">
             <div>
               <label htmlFor="signup-name" className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-1.5">

@@ -38,7 +38,7 @@ export default function FAQ({ locale, items, heading }: Props) {
                   className="flex w-full items-center justify-between px-5 py-4 text-left font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                   aria-expanded={isOpen}
                 >
-                  <span>{faq.question}</span>
+                  <h3 className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-200 pr-2">{faq.question}</h3>
                   <ChevronDown
                     className={`h-5 w-5 shrink-0 ml-3 text-zinc-400 transform transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""

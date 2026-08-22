@@ -1,47 +1,47 @@
 import type { Dict } from "../locales";
 
 const en = {
-  heroBadge: "Next-Gen Document AI Workspace",
+  heroBadge: "Next-Gen Free Document AI Workspace",
   heroTitleLine1: "Free Professional Templates",
   heroTitleLine2: "+ AI Document Editor",
   heroSubtitle:
-    "Create invoices, resumes, contracts, proposals and business documents in minutes. Simply choose a template, customize, and export to PDF/Word.",
+    "Create free business document templates in minutes: professional invoices, ATS resumes, contracts, and proposals. Customize online with Templix AI and export to PDF or Word.",
 
-  categoriesHeading: "Browse Categories",
+  categoriesHeading: "Browse Document Categories & Templates",
 
-  featuredHeading: "Trending Document Blueprints",
+  featuredHeading: "Featured Free Templates & Document Blueprints",
   featuredSubtitle:
-    "Ready-to-use, professionally formatted layouts for immediate customization.",
+    "Ready-to-use, professionally formatted business document templates for immediate customization.",
 
-  pillarsHeading: "Engineered for Ultimate Document Productivity",
+  pillarsHeading: "How Templix AI Works: Create Free Business Documents",
   pillarsSubtitle:
-    "Combining high-quality layout directories, AI text processing, and print-ready downloads.",
-  pillar1Title: "1. Choose a Template",
+    "Combining free template directories, smart AI document processing, and instant print-ready downloads.",
+  pillar1Title: "1. Choose a Free Template",
   pillar1Desc:
     "Search and discover {count}+ professionally designed templates across invoices, resumes, contracts, proposals, and more.",
-  pillar2Title: "2. AI-Powered Writing",
+  pillar2Title: "2. AI Document Customization",
   pillar2Desc:
-    "Adjust the tone, rewrite paragraphs, and fix grammar instantly with the built-in AI writing assistant, right inside the editor.",
-  pillar3Title: "3. Export Instantly",
+    "Adjust tone, rewrite paragraphs, and fix grammar instantly with the built-in AI writing assistant, right inside the document editor.",
+  pillar3Title: "3. Export to PDF & Word",
   pillar3Desc:
     "Download your finished document as a polished, print-ready PDF or an editable MS Word file in one click.",
 
   whyBadge: "100% Free & Open Access",
-  whyHeading: "Advanced Features Without the Price Tag",
+  whyHeading: "Why Choose Templix AI for Free Business Templates",
   whySubtitle:
-    "Templix AI provides premium document creation tools completely free of charge. No subscriptions, no hidden limits.",
-  why1Title: "Fully Free & Open",
+    "Templix AI provides premium document creation tools and free templates completely free of charge. No subscriptions, no hidden limits.",
+  why1Title: "100% Free Templates",
   why1Desc:
     "No billing forms, credit card prompts, or gated items. Simply open the app and begin customized layouts.",
-  why2Title: "Unlimited Document AI",
+  why2Title: "Unlimited AI Document Tools",
   why2Desc:
     "Rewrite paragraphs, translate segments, correct syntax, and tailor tones with zero word limits or cost tiers.",
-  why3Title: "Instant Page Loads",
+  why3Title: "Instant PDF & Word Exports",
   why3Desc:
-    "Fast page loads and a smooth, responsive editor mean your documents open immediately.",
-  why4Title: "Clean Compliance",
+    "Fast page loads and a smooth, responsive editor mean your documents open and export immediately.",
+  why4Title: "ATS Resume & Contract Compliance",
   why4Desc:
-    "Layout guidelines built under industry-standard schema structures ensure ATS compatibility and audit readiness.",
+    "Layout guidelines built under industry-standard structures ensure ATS resume compatibility and audit readiness.",
 
   blogsHeading: "Document Writing Tips & Guidelines",
   blogsSubtitle:
