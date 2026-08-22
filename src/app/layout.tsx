@@ -80,8 +80,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    site: "@templix_ai",
-    creator: "@templix_ai",
+    site: "@savan2509",
+    creator: "@savan2509",
     images: ["/og-default.jpg"],
   },
 };
@@ -120,11 +120,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Resource hints — prioritize primary domain assets; defer third-party connections */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        
-        {/* Supabase — auth & DB connections start earlier, reducing TTFB for auth checks */}
-        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
-          <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} crossOrigin="anonymous" />
-        )}
         
         {/* Theme meta: browsers use this to color the mobile browser chrome */}
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />

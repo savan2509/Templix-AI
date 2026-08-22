@@ -57,8 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const post = getBlogPost(slug);
   if (!post) {
-    // Bare title — the root layout appends "| Templix AI" via its title template.
-    return { title: "Article Not Found", robots: { index: false } };
+    notFound();
   }
   return SEOEngine.generateMetadata({
     title: post.title,

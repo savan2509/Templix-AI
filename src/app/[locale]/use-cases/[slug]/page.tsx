@@ -51,7 +51,7 @@ export async function generateMetadata({
   const useCase = getUseCaseBySlug(slug);
 
   if (!useCase) {
-    return { title: "Use Case Not Found" };
+    notFound();
   }
 
   const url = buildCanonical(locale, `use-cases/${slug}`);

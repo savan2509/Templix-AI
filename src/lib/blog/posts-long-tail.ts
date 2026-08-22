@@ -13,8 +13,8 @@ export const longTailPosts: BlogPost[] = [
     tags: ["freelance invoice", "tax compliance", "GST invoice", "VAT invoice", "invoice template"],
     keywords: ["how to create a freelance invoice", "tax compliant invoice template", "gst invoice for freelancers", "vat invoice format freelance", "freelance billing guide 2026"],
     readTime: 12,
-    publishedAt: "2026-08-15",
-    updatedAt: "2026-08-20",
+    publishedAt: "2026-07-18",
+    updatedAt: "2026-07-23",
     featured: true,
     image: "/blog/blog-how-to-create-tax-compliant-freelance-invoice.jpg",
     content: `
@@ -74,8 +74,8 @@ export const longTailPosts: BlogPost[] = [
     tags: ["SaaS business plan", "startup pitch", "financial modeling", "venture capital", "business plan template"],
     keywords: ["how to write a saas business plan", "saas business plan template", "saas unit economics model", "investor pitch business plan", "b2b saas financial model 2026"],
     readTime: 14,
-    publishedAt: "2026-08-17",
-    updatedAt: "2026-08-20",
+    publishedAt: "2026-07-20",
+    updatedAt: "2026-07-23",
     featured: true,
     image: "/blog/blog-how-to-write-saas-business-plan.jpg",
     content: `
@@ -168,8 +168,8 @@ export const longTailPosts: BlogPost[] = [
     tags: ["construction bid", "contractor proposal", "draw schedule", "building estimate", "proposal template"],
     keywords: ["construction bid proposal template", "how to write a contractor bid", "construction draw schedule format", "commercial remodeling proposal", "general contractor bid 2026"],
     readTime: 13,
-    publishedAt: "2026-08-19",
-    updatedAt: "2026-08-20",
+    publishedAt: "2026-07-22",
+    updatedAt: "2026-07-23",
     featured: true,
     image: "/blog/blog-construction-bid-proposal-guide.jpg",
     content: `

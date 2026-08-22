@@ -48,7 +48,7 @@ export async function generateMetadata({
   const data = getLandingPageData(slug);
 
   if (!data) {
-    return { title: "Page Not Found" };
+    notFound();
   }
 
   const url = buildCanonical(locale, slug);

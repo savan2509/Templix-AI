@@ -6,7 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { PRODUCTION_URL } from "@/config/site";
 
 interface PageProps {
@@ -84,15 +84,34 @@ export default async function ContactPage({ params }: PageProps) {
 
         <ContactForm />
 
-        <div className="mt-7 border-t border-zinc-100 pt-5 dark:border-zinc-800 space-y-3">
-          <p className="text-xs text-zinc-700 dark:text-zinc-300">
-            Prefer your own mail client? Write to{" "}
-            <ObfuscatedEmail
-              user="support"
-              domain="templix-ai.whitesparksoft.com"
-              className="font-semibold text-blue-600 hover:underline dark:text-blue-400"
-            />
-          </p>
+        <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-zinc-100 pt-5 dark:border-zinc-800">
+          <a
+            href="mailto:support@templix-ai.whitesparksoft.com"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors"
+            aria-label="Email support@templix-ai.whitesparksoft.com"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
+              <Mail className="h-4 w-4" />
+            </span>
+            <div className="min-w-0 text-left">
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
+              <span className="block truncate text-xs font-semibold">support@templix-ai.whitesparksoft.com</span>
+            </div>
+          </a>
+
+          <a
+            href="tel:+18005550199"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition-colors"
+            aria-label="Call +1-800-555-0199"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shrink-0">
+              <Phone className="h-4 w-4" />
+            </span>
+            <div className="min-w-0 text-left">
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-600/80">Phone Support</span>
+              <span className="block truncate text-xs font-semibold">+1-800-555-0199</span>
+            </div>
+          </a>
         </div>
       </div>
 

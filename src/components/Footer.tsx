@@ -10,6 +10,8 @@ import { getDictionary } from "@/lib/i18n";
 import { logoAlt } from "@/lib/image-alt";
 import {
   Mail,
+  Phone,
+  MapPin,
   ArrowRight,
   Heart,
   CheckCircle2
@@ -89,25 +91,62 @@ export default function Footer() {
             </div>
 
             {/* Direct contact & Phone links */}
-            <div className="flex flex-col gap-2">
-              <ObfuscatedEmail
-                user="support"
-                domain="templix-ai.whitesparksoft.com"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
+            <div className="flex flex-col gap-2.5">
+              <a
+                href="mailto:support@templix-ai.whitesparksoft.com"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
+                aria-label="Send email to support@templix-ai.whitesparksoft.com"
               >
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
-                <span className="min-w-0">
+                <span className="min-w-0 text-left">
                   <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
                     Email Support
                   </span>
                   <span className="block truncate text-xs font-bold group-hover:underline">
-                    Contact Support Team
+                    support@templix-ai.whitesparksoft.com
                   </span>
                 </span>
-              </ObfuscatedEmail>
+              </a>
 
+              <a
+                href="tel:+18005550199"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2 text-emerald-700 shadow-sm transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
+                aria-label="Call customer support at +1-800-555-0199"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
+                  <Phone className="h-3.5 w-3.5" />
+                </span>
+                <span className="min-w-0 text-left">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-600/80 dark:text-emerald-400/80">
+                    Phone Support
+                  </span>
+                  <span className="block truncate text-xs font-bold group-hover:underline">
+                    +1-800-555-0199
+                  </span>
+                </span>
+              </a>
+
+              <a
+                href="https://maps.google.com/?q=1200+Business+Way+Suite+100+San+Francisco+CA+94105"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"
+                aria-label="View Templix AI Headquarters on Google Maps"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white shadow-sm">
+                  <MapPin className="h-3.5 w-3.5" />
+                </span>
+                <span className="min-w-0 text-left">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    Headquarters (Google Maps)
+                  </span>
+                  <span className="block truncate text-xs font-medium text-zinc-700 dark:text-zinc-300 group-hover:underline">
+                    1200 Business Way, San Francisco, CA
+                  </span>
+                </span>
+              </a>
             </div>
           </div>
 
@@ -363,13 +402,13 @@ export default function Footer() {
 
           {/* Social & Community Profiles */}
           <div className="flex items-center gap-4 text-xs">
-            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer nofollow" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
               GitHub
             </a>
-            <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
+            <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
               LinkedIn
             </a>
-            <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter Profile" className="hover:text-sky-500 transition-colors">
+            <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer nofollow" aria-label="X / Twitter Profile" className="hover:text-sky-500 transition-colors">
               X (Twitter)
             </a>
           </div>

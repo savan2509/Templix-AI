@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   const industry = getIndustryBySlug(slug);
 
   if (!industry) {
-    return { title: "Industry Not Found | Templix AI" };
+    notFound();
   }
 
   return generateSeoMetadata({

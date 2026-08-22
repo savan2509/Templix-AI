@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const post = comparisonPosts.find((p) => p.slug === slug);
   if (!post) {
-    return { title: "Comparison Not Found", robots: { index: false } };
+    notFound();
   }
 
   return SEOEngine.generateMetadata({

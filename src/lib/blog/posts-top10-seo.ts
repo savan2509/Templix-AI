@@ -422,8 +422,8 @@ export const top10SeoPosts: BlogPost[] = [
     tags: ["AI cover letter generator", "cover letter template", "job application letter", "AI writer", "professional cover letter"],
     keywords: ["AI cover letter generator", "cover letter template", "job application letter", "AI writer", "professional cover letter", "resume companion"],
     readTime: 9,
-    publishedAt: "2026-08-01",
-    updatedAt: "2026-07-31",
+    publishedAt: "2026-07-10",
+    updatedAt: "2026-07-23",
     featured: false,
     image: "/blog/blog-cover-letter.jpg",
     content: `
@@ -455,8 +455,8 @@ export const top10SeoPosts: BlogPost[] = [
     tags: ["business contracts", "freelance contract", "service agreement", "NDA template", "contract generator"],
     keywords: ["business contracts", "freelance contract", "service agreement", "NDA template", "contract generator", "legal document templates"],
     readTime: 13,
-    publishedAt: "2026-08-05",
-    updatedAt: "2026-08-04",
+    publishedAt: "2026-07-12",
+    updatedAt: "2026-07-23",
     featured: true,
     image: "/blog/blog-contract-templates.jpg",
     content: `

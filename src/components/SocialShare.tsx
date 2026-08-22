@@ -58,7 +58,7 @@ export default function SocialShare({
       <a
         href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on X / Twitter"
         title="Share on X / Twitter"
         onClick={() => handleSocialClick("twitter")}
@@ -73,7 +73,7 @@ export default function SocialShare({
       <a
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on LinkedIn"
         title="Share on LinkedIn"
         onClick={() => handleSocialClick("linkedin")}
@@ -88,7 +88,7 @@ export default function SocialShare({
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on Facebook"
         title="Share on Facebook"
         className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-200 hover:scale-105 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 text-indigo-600 shadow-xs"
@@ -102,7 +102,7 @@ export default function SocialShare({
       <a
         href={`https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on WhatsApp"
         title="Share on WhatsApp"
         className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-200 hover:scale-105 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-emerald-500 shadow-xs"
@@ -114,7 +114,7 @@ export default function SocialShare({
       <a
         href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on Reddit"
         title="Share on Reddit"
         className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-200 hover:scale-105 hover:bg-orange-50 dark:hover:bg-orange-950/40 text-orange-600 shadow-xs"
@@ -128,7 +128,7 @@ export default function SocialShare({
       <a
         href={`https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Share on Telegram"
         title="Share on Telegram"
         className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-200 hover:scale-105 hover:bg-sky-50 dark:hover:bg-sky-950/40 text-sky-500 shadow-xs"

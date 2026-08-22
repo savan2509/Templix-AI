@@ -531,8 +531,8 @@ export const batch4Posts: BlogPost[] = [
       "free contract template"
     ],
     "readTime": 12,
-    "publishedAt": "2026-07-30",
-    "updatedAt": "2026-08-20",
+    "publishedAt": "2026-07-20",
+    "updatedAt": "2026-07-23",
     "image": "/blog/blog-complete-guide-to-business-contracts-for-beginners.jpg",
     "content": `
 <h2>What Makes a Business Contract Legally Binding?</h2>
@@ -652,8 +652,8 @@ export const batch4Posts: BlogPost[] = [
       "business documents"
     ],
     "readTime": 11,
-    "publishedAt": "2026-08-02",
-    "updatedAt": "2026-07-27",
+    "publishedAt": "2026-07-21",
+    "updatedAt": "2026-07-23",
     "image": "/blog/blog-10-essential-documents-every-freelancer-needs.jpg",
     "content": "\n<h2>Essential Freelance Document Checklist</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-10-essential-documents-every-freelancer-needs.jpg\" alt=\"10 Essential Documents Every Freelancer Needs\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Equip your freelance business with contracts, invoices, and proposals from Templix AI.</p>\n    "
   },
@@ -682,8 +682,8 @@ export const batch4Posts: BlogPost[] = [
       "workflow automation"
     ],
     "readTime": 10,
-    "publishedAt": "2026-08-04",
-    "updatedAt": "2026-07-27",
+    "publishedAt": "2026-07-22",
+    "updatedAt": "2026-07-23",
     "image": "/blog/blog-ai-vs-traditional-document-creation-time-saving.jpg",
     "content": "\n<h2>Speed &amp; Accuracy Comparison</h2>\n<div class=\"my-6 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm\"><img src=\"/blog/blog-ai-vs-traditional-document-creation-time-saving.jpg\" alt=\"AI vs Traditional Document Creation\" class=\"w-full object-cover max-h-[420px]\" /></div>\n<p>Automate your business workflow today with <a href=\"/en/tools\">Templix AI Tools</a>.</p>\n    "
   }

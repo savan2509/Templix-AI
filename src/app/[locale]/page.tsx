@@ -336,7 +336,7 @@ export default async function HomePage({ params }: PageProps) {
                 >
                   {/* Thumbnail — mini of the live document preview so the cover
                       matches the detail page for every module */}
-                  <div className="cv-card aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity">
+                  <div className="cv-card aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity" aria-hidden="true">
                     <TemplateThumbnail
                       template={{
                         slug: temp.slug,
@@ -348,7 +348,7 @@ export default async function HomePage({ params }: PageProps) {
                           allFallbackTemplates.find((a) => a.slug === temp.slug)?.content,
                       }}
                     />
-                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
+                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-700 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
                       {c.free}
                     </span>
                   </div>
@@ -356,7 +356,7 @@ export default async function HomePage({ params }: PageProps) {
                   {/* Card Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
-                      <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+                      <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold">
                         {c.categoryNames[temp.category.slug as keyof typeof c.categoryNames] ?? temp.category.name}
                       </span>
                       <h3 className="font-bold text-zinc-900 dark:text-white text-lg">
@@ -396,7 +396,7 @@ export default async function HomePage({ params }: PageProps) {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-sm">
+                <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex items-center justify-center mx-auto shadow-sm">
                   <FileText className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
@@ -406,7 +406,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto shadow-sm">
+                <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto shadow-sm">
                   <Sparkles className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</h3>
@@ -416,7 +416,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
 
               <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-sm">
+                <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300 flex items-center justify-center mx-auto shadow-sm">
                   <Zap className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</h3>
@@ -432,7 +432,7 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
                 {t.whyBadge}
               </span>
               <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
@@ -446,7 +446,7 @@ export default async function HomePage({ params }: PageProps) {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Feature 1 */}
               <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</h3>
@@ -457,7 +457,7 @@ export default async function HomePage({ params }: PageProps) {
 
               {/* Feature 2 */}
               <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 flex items-center justify-center">
                   <Sparkles className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</h3>
@@ -468,7 +468,7 @@ export default async function HomePage({ params }: PageProps) {
 
               {/* Feature 2.5 (Zap/Speed) */}
               <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
                   <Zap className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</h3>
@@ -479,7 +479,7 @@ export default async function HomePage({ params }: PageProps) {
 
               {/* Feature 3 */}
               <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 flex items-center justify-center">
                   <FileText className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</h3>
@@ -505,7 +505,7 @@ export default async function HomePage({ params }: PageProps) {
               </div>
               <Link
                 href={`/${locale}/blog`}
-                className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                className="shrink-0 text-sm font-semibold text-blue-700 dark:text-blue-300 hover:underline flex items-center gap-1"
                 aria-label="Explore All Document Guides and Articles"
               >
                 <span>{c.viewAllArticles}</span>
@@ -538,7 +538,7 @@ export default async function HomePage({ params }: PageProps) {
                   </div>
 
                   <div className="p-6 space-y-2">
-                    <span className="text-xs text-zinc-400 font-medium">
+                    <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">
                       {new Date(article.createdAt).toLocaleDateString(INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US", {
                         month: "long",
                         day: "numeric",
@@ -551,7 +551,7 @@ export default async function HomePage({ params }: PageProps) {
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                       {article.description}
                     </p>
-                    <div className="pt-2 flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                    <div className="pt-2 flex items-center gap-1 text-xs font-semibold text-blue-700 dark:text-blue-300">
                       <span>Read Guide: {article.title}</span> <ArrowRight className="h-3.5 w-3.5 shrink-0" />
                     </div>
                   </div>
@@ -565,7 +565,7 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center space-y-4 max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
                 <ShieldCheck className="h-4 w-4" />
                 <span>Verified Editorial & Security Standards</span>
               </div>
@@ -573,7 +573,7 @@ export default async function HomePage({ params }: PageProps) {
                 {t.complianceHeading}
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.complianceContractLink}</a>{t.complianceText4}
+                {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceContractLink}</a>{t.complianceText4}
               </p>
             </div>
 
@@ -746,7 +746,7 @@ export default async function HomePage({ params }: PageProps) {
               <a
                 href="https://startupbase.io/products/templix-ai?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 aria-label="Launched on StartupBase"
                 className="transition-transform duration-300 hover:scale-105"
               >
@@ -764,7 +764,7 @@ export default async function HomePage({ params }: PageProps) {
               <a
                 href="https://smollaunch.com"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 aria-label="Featured on Smol Launch"
                 className="transition-transform duration-300 hover:scale-105"
               >

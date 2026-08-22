@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const category = getCategoryHub(slug);
   if (!category) {
-    return { title: "Category Not Found", robots: { index: false } };
+    notFound();
   }
 
   return SEOEngine.generateMetadata({

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const product = getProduct(slug);
   if (!product) {
-    return { title: "Product Not Found", robots: { index: false } };
+    notFound();
   }
 
   return SEOEngine.generateMetadata({

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const faqTopic = getFaqTopic(topic);
 
   if (!faqTopic) {
-    return { title: "FAQ Not Found", robots: { index: false } };
+    notFound();
   }
 
   return SEOEngine.generateMetadata({
