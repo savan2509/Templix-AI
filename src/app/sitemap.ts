@@ -87,7 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
     );
 
-  return [
+  const allEntries = [
     ...staticRoutes.map(([path, opts]) => entry(path, opts)),
 
     // Category listing pages
@@ -167,4 +167,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       entry(`/products/${prod.slug}`, { changeFrequency: "weekly", priority: 0.9 })
     ),
   ];
+
+  // Guaranteed global URL deduplication
+  const seenUrls = new Set<string>();
+  return allEntries.filter((item) => {
+    if (seenUrls.has(item.url)) return false;
+    seenUrls.add(item.url);
+    return true;
+  });
 }

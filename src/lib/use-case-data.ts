@@ -113,7 +113,9 @@ export const ALL_USE_CASE_SLUGS = [
   "ai-paragraph-generator",
   "ai-email-writer",
   "ai-letter-generator-online",
-  "ai-content-generator"
+  "ai-content-generator",
+  "word-invoice-template",
+  "word-resume-template",
 ];
 
 export const USE_CASES_RAW: UseCaseData[] = [
@@ -421,10 +423,160 @@ export const USE_CASES_RAW: UseCaseData[] = [
       { title: "Templix AI vs Canva Docs", href: "/en/blog/templix-ai-vs-canva-docs" },
       { title: "Templix AI vs Google Docs", href: "/en/blog/templix-ai-vs-google-docs" },
       { title: "Templix AI vs Smallpdf", href: "/en/blog/templix-ai-vs-smallpdf" },
-      { title: "Templix AI vs Adobe Acrobat", href: "/en/blog/templix-ai-vs-adobe-acrobat" },
-      { title: "Templix AI vs DocHub", href: "/en/blog/templix-ai-vs-dochub" }
-    ]
-  }
+      { title: "Templix AI vs Adobe Acrobat", href: "/en/compare/templix-ai-vs-adobe-acrobat" },
+      { title: "Templix AI vs DocHub", href: "/en/compare/templix-ai-vs-dochub" },
+    ],
+  },
+
+  // 5. word-invoice-template
+  {
+    slug: "word-invoice-template",
+    title: "Free Invoice Template for Word (Editable .docx Download)",
+    metaTitle: "Free Invoice Template for Word: Editable .docx Download",
+    description: "Get a professional invoice template you can open and edit directly in Microsoft Word. Fill in your details online, then export a clean, watermark-free .docx file.",
+    metaDescription: "Free invoice template for Word. Build it online, then download an editable .docx file with tax rows, payment terms, and your logo — no watermark, no sign-up.",
+    category: "Invoices",
+    primaryKeyword: "invoice template for word",
+    secondaryKeywords: ["word invoice template", "editable invoice template", "invoice template docx", "microsoft word invoice template", "free downloadable invoice template"],
+    readTime: 8,
+    image: "/blog/blog-how-to-make-invoice-in-word.jpg",
+    whoFor: [
+      "Freelancers and small businesses who want to keep editing their invoice locally in Microsoft Word after download.",
+      "Anyone who searched for a static Word invoice template but wants the totals and tax calculated automatically first.",
+      "Teams that need a consistent, editable .docx invoice they can adapt per client without rebuilding formatting.",
+      "Users on Mac, Windows, or mobile who just need a clean file that opens correctly in Word every time.",
+    ],
+    challenges: [
+      "Blank Word invoice templates from generic template galleries have broken table formatting once you start editing.",
+      "Manually calculating subtotals, tax, and totals inside a Word table instead of a real generator.",
+      "Most 'free' Word templates require an email signup or add a watermark to the download.",
+      "Re-typing the same business details every time a new client invoice is needed.",
+    ],
+    solution: "Templix AI lets you fill in your invoice details in a live online editor — line items, tax, and totals calculate automatically — then export a clean, editable Microsoft Word (.docx) file alongside a print-ready PDF. You get the accuracy of a generator with the flexibility of a native Word document, with no watermark and no account required.",
+    features: [
+      { title: "True .docx Export", desc: "Downloads as a native Word file, not a locked PDF-to-Word conversion, so every field stays editable." },
+      { title: "Auto-Calculated Totals", desc: "Subtotal, tax, and grand total update automatically as you edit line items in the browser." },
+      { title: "Logo & Brand Colors", desc: "Add your logo and adjust accent colors before exporting, so the Word file matches your brand from the first open." },
+      { title: "No Watermark, No Sign-Up", desc: "Every export is a clean file with no Templix AI branding and no forced account creation." },
+    ],
+    steps: [
+      "Open the invoice editor and choose a Word-friendly invoice layout.",
+      "Add your business details, client information, and logo.",
+      "Enter line items — quantities, rates, and tax rates calculate automatically.",
+      "Set payment terms (e.g. Net 15/30) and any notes or banking details.",
+      "Export as an editable .docx file, or download a matching PDF for sending.",
+    ],
+    templates: [
+      "Word Freelancer Invoice Template",
+      "Word Small Business Invoice Template",
+      "Word Consulting Invoice Template",
+      "Word Contractor Invoice Template",
+    ],
+    sampleOutput: `
+<div class="border rounded-xl p-4 bg-zinc-50 dark:bg-zinc-900 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+  <div class="flex justify-between border-b pb-2 mb-2">
+    <div><strong>RIVERSIDE CONSULTING</strong><br/>Invoice #INV-2026-114</div>
+    <div class="text-right"><strong>DUE DATE:</strong> Sep 05, 2026<br/>Terms: Net 15</div>
+  </div>
+  <table class="w-full text-left my-2 border-t border-b py-1">
+    <tr><th>Description</th><th>Qty</th><th>Rate</th><th>Total</th></tr>
+    <tr><td>Brand Strategy Session</td><td>2</td><td>$450.00</td><td>$900.00</td></tr>
+  </table>
+  <p class="text-right">Subtotal: $900.00 | Tax (7%): $63.00 | <strong>GRAND TOTAL: $963.00</strong></p>
+  <p class="text-zinc-500 mt-2">↳ Exports as editable Riverside_Consulting_Invoice.docx</p>
+</div>
+`,
+    faqs: [
+      { q: "Will the Word file keep its formatting when I open it?", a: "Yes. The .docx export is generated as a native Word document, so tables, fonts, and spacing render correctly in Microsoft Word, Word Online, and most Word-compatible apps." },
+      { q: "Can I still edit the invoice after downloading the Word file?", a: "Yes. Every field — text, table rows, logo placement — stays fully editable once opened in Word, exactly like a normal document." },
+      { q: "Is there a watermark on the free Word invoice download?", a: "No. Templix AI invoices export completely watermark-free, with no account or payment required." },
+      { q: "Can I also get the same invoice as a PDF?", a: "Yes. You can export the identical invoice as a print-ready PDF in addition to the Word file, using the same data." },
+      { q: "Does the Word template support tax fields like GST or VAT?", a: "Yes. You can add percentage-based tax rows, and the total recalculates automatically before you export." },
+    ],
+    relatedLinks: [
+      { title: "Free Invoice Generator for Freelancers", href: "/en/use-cases/invoice-generator-for-freelancers" },
+      { title: "Free Invoice Templates", href: "/en/use-cases/free-invoice-templates" },
+      { title: "Free Invoice Generator Online", href: "/en/use-cases/free-invoice-generator-online" },
+      { title: "Free GST Invoice Generator India", href: "/en/use-cases/gst-invoice-generator-india" },
+      { title: "Receipt Generator", href: "/en/use-cases/receipt-generator" },
+      { title: "PDF vs Word: Which Format Should You Use?", href: "/en/blog/pdf-vs-word-which-format" },
+      { title: "Google Docs vs Word vs Templix", href: "/en/blog/google-docs-vs-word-vs-templix" },
+      { title: "Templix AI vs Google Docs", href: "/en/compare/templix-ai-vs-google-docs" },
+      { title: "Templix AI vs Smallpdf", href: "/en/compare/templix-ai-vs-smallpdf" },
+      { title: "Templix AI vs Adobe Acrobat", href: "/en/compare/templix-ai-vs-adobe-acrobat" },
+    ],
+  },
+
+  // 6. word-resume-template
+  {
+    slug: "word-resume-template",
+    title: "Free Resume Template for Word (ATS-Friendly .docx Download)",
+    metaTitle: "Free Resume Template for Word: ATS-Friendly .docx Download",
+    description: "Download ATS-friendly resume templates for Microsoft Word. Edit online with AI bullet points, then export an editable .docx or PDF file with zero watermark.",
+    metaDescription: "Free ATS resume template for Word. Customize your skills and work history online, then export an editable .docx or PDF format — no paywalls or sign-up.",
+    category: "Resumes",
+    primaryKeyword: "resume template for word",
+    secondaryKeywords: ["word resume template", "ATS resume template word", "editable resume template docx", "microsoft word resume template", "free cv template word"],
+    readTime: 9,
+    image: "/blog/blog-ats-resume-format-guide.jpg",
+    whoFor: [
+      "Job seekers wanting a clean, single-column resume that opens and formats perfectly in Microsoft Word.",
+      "Applicants who want to generate ATS-optimized bullet points online before saving their master .docx file.",
+      "Professionals looking for a compliant Word resume without broken table margins or misaligned tabs.",
+      "Career changers and freshers who need an editable template that passes ATS parsers like Workday and Greenhouse.",
+    ],
+    challenges: [
+      "Stock Word resume templates often use complex tables and text boxes that get scrambled when edited.",
+      "ATS scanners failing to parse contact info and skills trapped in Word header/footer layers.",
+      "Paid resume builders locking Word (.docx) downloads behind monthly subscriptions.",
+      "Difficulty keeping bullet point spacing consistent across multiple pages in Word.",
+    ],
+    solution: "Templix AI allows you to customize your resume in an interactive live editor, optimize bullet points with AI, and export a clean, HRXML-compliant Microsoft Word (.docx) file alongside a print-ready PDF. 100% free with no watermark.",
+    features: [
+      { title: "Native .docx Typography", desc: "Formats with standard ATS-safe fonts and clean margins that render identically in Microsoft Word." },
+      { title: "AI Bullet Polish", desc: "Turns plain job descriptions into quantified achievement metrics before exporting." },
+      { title: "Single-Column HRXML Layout", desc: "Tested across Workday, Taleo, and Greenhouse to guarantee 100% parsing accuracy." },
+      { title: "100% Free Word Export", desc: "Download editable Word files instantly with no account, trial, or watermark." },
+    ],
+    steps: [
+      "Choose a Word-optimized single-column ATS resume layout.",
+      "Enter your job history, contact information, and core skill matrices.",
+      "Use the AI assistant to refine action verbs and quantify achievements.",
+      "Download your editable Microsoft Word (.docx) or print-ready PDF file.",
+    ],
+    templates: [
+      "Single-Column Word ATS Resume",
+      "Technical Developer Word Resume",
+      "Executive Management Word Resume",
+      "Career Transition Hybrid Word Resume",
+    ],
+    sampleOutput: `
+<div class="border rounded-xl p-4 bg-zinc-50 dark:bg-zinc-900 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+  <p class="font-bold text-center text-sm">MICHAEL CHANG</p>
+  <p class="text-center text-zinc-500 mb-2">Senior Full Stack Engineer | San Francisco, CA | michael@email.com</p>
+  <p class="font-bold border-b pb-1 mb-2">EXPERIENCE</p>
+  <p><strong>Senior Software Engineer — CloudScale Systems (2023 - Present)</strong></p>
+  <p>• Engineered Next.js App Router services handling 1.5M monthly visits, improving LCP by 45%.</p>
+  <p class="text-zinc-500 mt-2">↳ Exports as editable Michael_Chang_Resume.docx</p>
+</div>
+`,
+    faqs: [
+      { q: "Will the Word resume format pass ATS screeners?", a: "Yes. Templix AI Word resume templates use single-column layouts and standard header tags tested across Workday, Taleo, and Greenhouse." },
+      { q: "Can I edit my resume in Word after downloading?", a: "Yes. The downloaded .docx file is a fully editable Microsoft Word document." },
+      { q: "Is there any cost or subscription required for Word export?", a: "No. Templix AI provides free Word and PDF downloads without watermarks or forced accounts." },
+      { q: "Can I download my resume as a PDF too?", a: "Yes. You can export both PDF and DOCX formats from the exact same editor." },
+    ],
+    relatedLinks: [
+      { title: "Free Resume Builder for Freshers", href: "/en/use-cases/resume-builder-for-freshers" },
+      { title: "Free Resume Builder for Students", href: "/en/use-cases/resume-builder-for-students" },
+      { title: "AI Resume Builder for Software Engineers", href: "/en/use-cases/resume-builder-for-software-engineers" },
+      { title: "Free Resume Templates", href: "/en/use-cases/free-resume-templates" },
+      { title: "ATS Resume Format Guide", href: "/en/blog/ats-resume-format-guide" },
+      { title: "Templix AI vs Resume.io", href: "/en/compare/templix-ai-vs-resume-io" },
+      { title: "Templix AI vs Zety", href: "/en/compare/templix-ai-vs-zety" },
+      { title: "Templix AI vs Enhancv", href: "/en/compare/templix-ai-vs-enhancv" },
+    ],
+  },
 ];
 
 // Helper generator to build 48 full use cases using structural template if not raw

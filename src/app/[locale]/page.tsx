@@ -99,6 +99,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
+    keywords: [
+      "free invoice generator",
+      "free resume builder ats",
+      "ats resume template 2026",
+      "free contract generator",
+      "business proposal template free",
+      "ai document editor",
+      "pdf to word converter free",
+      "gst tax invoice format",
+      "independent contractor agreement",
+      "quote vs invoice vs estimate",
+      "online document maker no sign up",
+      "free templates download pdf word",
+    ],
     // Single-locale site: es/fr/de/ar are retired (308 → /en, see proxy.ts), so
     // the homepage canonicalizes to /en with no hreflang alternates. Emitting
     // language alternates here would advertise locale URLs that only redirect.

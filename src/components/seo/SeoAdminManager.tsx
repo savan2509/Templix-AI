@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import {
   Search,
   CheckCircle2,
-  AlertTriangle,
   FileText,
   Layout,
   Wrench,
@@ -20,11 +19,10 @@ import {
   RefreshCw,
   ExternalLink,
   Zap,
-  Target,
   Sparkles,
 } from "lucide-react";
 import { SeoHealthReport } from "@/lib/seo/health-audit";
-import { SeoAnalyticsSummary, SeoOpportunity } from "@/lib/seo/analytics";
+import { SeoAnalyticsSummary } from "@/lib/seo/analytics";
 
 interface SeoPageItem {
   id: string;
@@ -72,7 +70,25 @@ export default function SeoAdminManager({
   const [blogs, setBlogs] = useState<SeoPageItem[]>(initialBlogs);
   const [healthAudit, setHealthAudit] = useState<SeoHealthReport | undefined>(initialHealthAudit);
   const [analytics, setAnalytics] = useState<SeoAnalyticsSummary | undefined>(initialAnalytics);
-  const [isLoading, setIsLoading] = useState(initialTemplates.length === 0);
+  const [, setIsLoading] = useState(initialTemplates.length === 0);
+
+  // Current list
+  const currentList =
+    activeSubSection === "templates"
+      ? templates
+      : activeSubSection === "categories"
+      ? categories
+      : activeSubSection === "industries"
+      ? industries
+      : activeSubSection === "tools"
+      ? tools
+      : blogs;
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedItem, setSelectedItem] = useState<SeoPageItem | null>(currentList[0] || null);
+  const [editForm, setEditForm] = useState<SeoPageItem | null>(currentList[0] || null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     if (templates.length === 0) {
@@ -98,24 +114,6 @@ export default function SeoAdminManager({
         .finally(() => setIsLoading(false));
     }
   }, [templates.length]);
-
-  // Current list
-  const currentList =
-    activeSubSection === "templates"
-      ? templates
-      : activeSubSection === "categories"
-      ? categories
-      : activeSubSection === "industries"
-      ? industries
-      : activeSubSection === "tools"
-      ? tools
-      : blogs;
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedItem, setSelectedItem] = useState<SeoPageItem | null>(currentList[0] || null);
-  const [editForm, setEditForm] = useState<SeoPageItem | null>(currentList[0] || null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
 
   const filteredItems = currentList.filter(
     (item) =>

@@ -258,6 +258,46 @@ export const TOOLS: ToolMeta[] = [
     keywords: ["recommendation letter generator", "reference letter template", "letter of recommendation maker", "free recommendation letter", "reference letter"],
     icon: "Award",
   },
+  {
+    slug: "free-invoice-generator",
+    category: "invoice",
+    title: "Free Online Invoice Generator",
+    short: "Invoice Generator",
+    description:
+      "Free online invoice generator. Fill in client details, add itemized line items, compute tax automatically, and download print-ready PDF invoices.",
+    keywords: ["free invoice generator", "online invoice generator", "invoice maker free", "pdf invoice generator", "invoice builder"],
+    icon: "Receipt",
+  },
+  {
+    slug: "free-resume-builder",
+    category: "resume",
+    title: "Free Online Resume Builder",
+    short: "Resume Builder",
+    description:
+      "Free online ATS resume builder. Enter your work history, skills, and education to generate and download HRXML-compliant single-column resumes.",
+    keywords: ["free resume builder", "online resume maker", "ats resume builder", "free cv builder", "resume generator"],
+    icon: "FileText",
+  },
+  {
+    slug: "pdf-to-word",
+    category: "pdf",
+    title: "PDF to Word Converter",
+    short: "PDF to Word",
+    description:
+      "Free online PDF to Word converter. Extract text and convert PDF documents into editable Word (.docx) format directly in your browser.",
+    keywords: ["pdf to word", "pdf to docx converter", "convert pdf to word free", "online pdf to word", "edit pdf in word"],
+    icon: "FileEdit",
+  },
+  {
+    slug: "word-to-pdf",
+    category: "pdf",
+    title: "Word to PDF Converter",
+    short: "Word to PDF",
+    description:
+      "Free online Word to PDF converter. Convert DOCX files and text documents into print-ready PDF format locally with zero server upload.",
+    keywords: ["word to pdf", "convert word to pdf free", "docx to pdf", "online word to pdf converter"],
+    icon: "FileOutput",
+  },
 ];
 
 // AI tools live in ./ai-tools (they run a server-side LLM prompt). They share

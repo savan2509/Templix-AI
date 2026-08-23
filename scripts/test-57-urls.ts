@@ -81,9 +81,8 @@ gsc57Urls.forEach((rawUrl, idx) => {
     });
 
     const canonical = (meta.alternates as any)?.canonical;
-    const languages = (meta.alternates as any)?.languages;
 
-    if (canonical && languages && languages.en && languages.de && languages.fr && languages.es && languages.ar) {
+    if (canonical && typeof canonical === "string" && canonical.startsWith("https://templix-ai.whitesparksoft.com/")) {
       passCount++;
     } else {
       console.log(`❌ Fail on URL #${idx + 1}: ${rawUrl}`);

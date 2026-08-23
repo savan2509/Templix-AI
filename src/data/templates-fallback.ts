@@ -22,9 +22,6 @@ import { businessPlansExtraTemplates } from "./templates/business-plans-extra";
 import { quotationsExtraTemplates } from "./templates/quotations-extra";
 
 // India-format documents — high-volume, low-competition local formats
-// (salary slip, relieving letter, rent receipt for HRA, GST delivery challan,
-// leave & license agreement, employment bond, etc.), filed under their existing
-// categories so they surface in the right listings.
 import { indiaLettersTemplates } from "./templates/india-letters";
 import { indiaInvoicesTemplates } from "./templates/india-invoices";
 import { indiaContractsTemplates } from "./templates/india-contracts";
@@ -51,6 +48,7 @@ import { proposalsExtra3Templates } from "./templates/proposals-extra3";
 import { lettersExtra3Templates } from "./templates/letters-extra3";
 import { reportsExtra3Templates } from "./templates/reports-extra3";
 import { businessPlansExtra3Templates } from "./templates/business-plans-extra3";
+import { expansionTemplates } from "./templates/expansion-templates";
 
 const rawFallbackTemplates: any[] = [
   ...invoicesTemplates,
@@ -91,6 +89,7 @@ const rawFallbackTemplates: any[] = [
   ...lettersExtra3Templates,
   ...reportsExtra3Templates,
   ...businessPlansExtra3Templates,
+  ...expansionTemplates,
 ];
 
 const seenTemplates = new Set<string>();
@@ -100,4 +99,3 @@ export const allFallbackTemplates: any[] = rawFallbackTemplates.filter((t) => {
   seenTemplates.add(key);
   return true;
 });
-

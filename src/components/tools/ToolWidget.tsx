@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { getDictionary, INTL_LOCALE, type Locale } from "@/lib/i18n";
-import { MergePdf, SplitPdf, JpgToPdf, PdfToJpg, ImageConverter, ResumeAtsChecker } from "./file-tools";
+import { MergePdf, SplitPdf, JpgToPdf, PdfToJpg, ImageConverter, ResumeAtsChecker, PdfToWord, WordToPdf } from "./file-tools";
 import {
   ProposalBuilder, PricingCalculator, ScopeGenerator, ContractGenerator, NdaGenerator,
   TermsGenerator, LetterGenerator, ResignationLetterGenerator, RecommendationLetterGenerator,
+  FreeInvoiceGenerator, FreeResumeBuilder,
 } from "./doc-tools";
 
 // Self-contained, client-side calculators. No network, no dependencies — all
@@ -392,6 +393,10 @@ const WIDGETS: Record<string, () => React.ReactElement> = {
   "letter-generator": LetterGenerator,
   "resignation-letter-generator": ResignationLetterGenerator,
   "recommendation-letter-generator": RecommendationLetterGenerator,
+  "free-invoice-generator": FreeInvoiceGenerator,
+  "free-resume-builder": FreeResumeBuilder,
+  "pdf-to-word": PdfToWord,
+  "word-to-pdf": WordToPdf,
 };
 
 export default function ToolWidget({ slug }: { slug: string }) {

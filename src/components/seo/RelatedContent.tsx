@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, FileText, BookOpen, Wrench, Briefcase, ExternalLink } from "lucide-react";
+import { ArrowRight, FileText, BookOpen, Wrench } from "lucide-react";
 import { RelatedItem } from "@/lib/seo/internal-linking";
 
 interface RelatedContentProps {

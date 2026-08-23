@@ -977,6 +977,200 @@ export const SLUG_SPECIFIC_DEFAULTS: Record<string, Record<string, string>> = {
     terminationClause: "30 days written notice by either party for material breach",
     governingLaw: "State of New York"
   },
+  "invoice-photographers": {
+    shootDate: "August 12, 2026",
+    shootLocation: "Pier 59 Studios, Studio B, New York, NY",
+    sessionFee: "$2,200.00",
+    licensingFee: "$1,800.00 (2-Year Worldwide Digital Usage)",
+    postProductionFee: "$950.00 (25 Master Color Retouched Assets)",
+    equipmentFee: "$450.00 (Profoto Lighting & Medium Format Kit)",
+    subtotal: "$5,400.00",
+    taxPercent: "8.875%",
+    taxAmount: "$479.25",
+    total: "$5,879.25",
+    paymentMethod: "Direct ACH Wire or Stripe",
+    licensingTerms: "Worldwide commercial web and social usage rights transfer upon receipt of full payment.",
+    paymentTerms: "50% deposit paid; balance Net 15"
+  },
+  "invoice-template-word": {
+    tax: "8%",
+    subtotal: "$4,250.00",
+    taxAmount: "$340.00",
+    total: "$4,590.00"
+  },
+  "invoice-template-excel": {
+    tax: "8%",
+    subtotal: "$4,250.00",
+    taxAmount: "$340.00",
+    total: "$4,590.00"
+  },
+  "invoice-template-google-sheets": {
+    tax: "8%",
+    subtotal: "$4,250.00",
+    taxAmount: "$340.00",
+    total: "$4,590.00"
+  },
+  "invoice-template-google-docs": {
+    tax: "8%",
+    subtotal: "$4,250.00",
+    taxAmount: "$340.00",
+    total: "$4,590.00"
+  },
+  "invoice-virtual-assistant": {
+    billingPeriod: "July 1 - July 31, 2026",
+    hourlyRate: "$45.00",
+    hoursLogged: "18",
+    retainerAmount: "$1,500.00 (Dedicated 30-Hour Base Retainer)",
+    additionalTasksAmount: "$810.00",
+    subtotal: "2310.00",
+    taxPercent: "0%",
+    taxAmount: "0.00",
+    total: "2310.00",
+    paymentMethod: "Bank Transfer / PayPal",
+    paymentTerms: "Due upon receipt"
+  },
+  "invoice-bookkeeper": {
+    reconciliationPeriod: "Q2 2026 (Apr - Jun)",
+    monthlyBookkeepingFee: "$850.00",
+    payrollProcessingFee: "$350.00",
+    taxPreparationFee: "$600.00",
+    subtotal: "1800.00",
+    taxPercent: "0%",
+    taxAmount: "0.00",
+    total: "1800.00",
+    paymentMethod: "ACH Direct Debit",
+    paymentTerms: "Net 15"
+  },
+  "invoice-commercial-shipping": {
+    exporterName: "Global Trade Logistics Corp",
+    exporterAddress: "100 Port Boulevard, Long Beach, CA 90802",
+    exporterTaxId: "US-EIN-99228811",
+    importerName: "EuroDistribution GmbH",
+    importerAddress: "Industriestrasse 45, 60311 Frankfurt, Germany",
+    importerTaxId: "DE-VAT-123456789",
+    countryOfOrigin: "United States (USA)",
+    countryOfDestination: "Germany (DEU)",
+    portOfLoading: "Port of Los Angeles (USLAX)",
+    portOfDischarge: "Port of Hamburg (DEHAM)",
+    incoterms: "CIF (Cost, Insurance and Freight)",
+    billOfLading: "BL-LAX-998822",
+    hsCode: "8471.60.00",
+    itemDescription: "Industrial High-Precision Optical Scanners (Model OS-400)",
+    quantityUnits: "50 Units",
+    unitPrice: "450.00",
+    totalDeclaredValue: "22500.00",
+    freightCharges: "1800.00",
+    insuranceFee: "450.00",
+    subtotal: "22500.00",
+    total: "24750.00",
+    authorizedSignature: "David Vance, Director of Export Compliance"
+  },
+  "resume-career-change": {
+    professionalSummary: "Strategic project manager transitioning to Full Stack Engineering. Combines 6+ years of agile scrum leadership with recent software certification in TypeScript, Next.js, and PostgreSQL to deliver high-performance web applications.",
+    transferableSkill1: "Agile Project Delivery: Led cross-functional teams of 12 engineers, increasing sprint velocity by 35%.",
+    transferableSkill2: "Full Stack Development: Built 4 full-stack applications using React, Next.js, and REST APIs.",
+    transferableSkill3: "Stakeholder Communication: Synthesized complex technical requirements for C-suite executive briefings.",
+    recentRole: "Technical Project Manager",
+    recentCompany: "Vanguard Tech Solutions",
+    recentDates: "2022 - 2026",
+    recentBullet1: "Managed end-to-end delivery of enterprise analytics portal serving 15,000+ daily active users.",
+    recentBullet2: "Automated QA release testing pipelines, reducing pre-release regression bugs by 40%.",
+    previousRole: "Operations Lead",
+    previousCompany: "Nexus Logistics",
+    previousDates: "2019 - 2022",
+    previousBullet1: "Optimized inventory database tracking systems, cutting operational overhead by $85,000 annually.",
+    educationDegree: "Full Stack Software Engineering Certificate & B.S. Business Management",
+    educationSchool: "General Assembly & UC Berkeley",
+    certifications: "AWS Certified Cloud Practitioner, Professional Scrum Master (PSM I)"
+  },
+  "simple-nda-agreement": {
+    partyAName: "Sarah Jenkins",
+    partyACompany: "Vanguard Innovation Labs",
+    partyBName: "Jessica Wong",
+    partyBCompany: "Apex Strategic Partners",
+    purposeOfDisclosure: "Evaluating joint venture partnership for enterprise SaaS software integration",
+    termYears: "3",
+    governingState: "Delaware",
+    effectiveDate: "August 1, 2026",
+    partyASignature: "Sarah Jenkins",
+    partyBSignature: "Jessica Wong"
+  },
+  "seo-service-contract": {
+    agencyName: "Apex Growth Marketing LLC",
+    agencyAddress: "200 Pine Street, Suite 500, San Francisco, CA 94104",
+    clientName: "Mark Thompson",
+    clientCompanyName: "E-Commerce Direct Inc.",
+    monthlyRetainer: "$3,500.00 / month",
+    scopeDeliverables: "Monthly comprehensive technical SEO audit, 6 keyword-targeted articles, schema markup optimization, and bi-weekly keyword rank tracking reports.",
+    reportingCadence: "Monthly executive presentation and real-time Looker Studio dashboard",
+    minimumTermMonths: "6",
+    startDate: "September 1, 2026",
+    agencySignature: "David Sterling, Agency Principal",
+    clientSignature: "Mark Thompson, Chief Marketing Officer"
+  },
+  "web-design-contract": {
+    designerName: "Alex Carter",
+    designerBusiness: "Carter Creative Studio",
+    clientName: "Rachel Adams",
+    clientCompany: "Peak Performance Fitness",
+    totalProjectFee: "$9,500.00",
+    depositAmount: "$3,000.00 upfront payment",
+    milestoneSchedule: "Deposit (Kickoff), 35% on Figma Wireframe & Prototype Approval, 35% on Next.js Production Deployment",
+    revisionRounds: "3 rounds of structured feedback per phase",
+    ipTransferTerms: "Full copyright and asset ownership transfers to Client upon receipt of final invoice payment.",
+    designerSignature: "Alex Carter",
+    clientSignature: "Rachel Adams"
+  },
+  "seo-proposal": {
+    agencyName: "Apex Growth Marketing LLC",
+    clientName: "Jessica Wong, VP of Marketing",
+    clientWebsite: "www.apexmarketinggroup.com",
+    executiveSummary: "A tailored search growth blueprint designed to capture high-intent non-brand organic search volume, remedy technical indexation bottlenecks, and outrank top 3 direct competitors within 6 months.",
+    technicalAuditFindings: "42 pages missing canonical tags, slow mobile core web vitals (LCP > 3.8s), and untapped cluster keywords in the enterprise software vertical.",
+    targetKeywords: "B2B SaaS tools, automated invoice generator, enterprise workflow software",
+    monthlyFee: "$3,500.00 / month (6-Month Commitment)",
+    projectedGrowth: "150% organic search traffic growth and 45+ new qualified monthly inbound demo requests",
+    agencyRepresentative: "David Sterling, Principal SEO Strategist"
+  },
+  "sponsorship-proposal": {
+    eventName: "TechInnovate Global Summit 2026",
+    eventDate: "October 14-16, 2026",
+    eventLocation: "Moscone Center, San Francisco, CA",
+    organizerName: "Global Tech Forums LLC",
+    audienceDemographics: "3,500+ attendees: 65% VP/C-level executives, 25% Senior Engineers, 10% Tech Investors",
+    tierGoldFee: "$25,000.00",
+    tierGoldBenefits: "Keynote speaking slot (20 min), 10x10 premium booth, prominent logo on all livestream video frames, and 10 VIP all-access passes.",
+    tierSilverFee: "$12,000.00",
+    tierSilverBenefits: "8x8 exhibition space, logo on attendee badges, brand inclusion in pre-conference newsletter (45k subscribers), and 5 passes.",
+    sponsorContact: "sponsors@techinnovatesummit.com | +1 (555) 449-8800"
+  },
+  "construction-bid-proposal": {
+    contractorName: "Apex Commercial Builders LLC",
+    licenseNumber: "CA-CSLB-998822-B",
+    clientName: "Pacific Real Estate Trust",
+    projectSiteAddress: "750 Montgomery Street, Floors 3-4, San Francisco, CA",
+    scopeOfWork: "Complete commercial tenant improvement: electrical rewiring, framing, drywall, acoustic ceiling installation, HVAC balancing, and commercial ADA restroom upgrades.",
+    materialsCost: "$142,500.00 (Lumber, drywall, electrical fixtures, commercial doors)",
+    laborCost: "$98,000.00 (Licensed electricians, carpenters, painters, project superintendent)",
+    permitsCost: "$14,500.00 (City plan review, building inspection permits, disposal fees)",
+    totalBidAmount: "$255,000.00 (Fixed Guaranteed Maximum Price)",
+    estimatedDuration: "14 Weeks from permit issuance",
+    warrantyTerms: "2-year complete warranty on craftsmanship and 10-year structural warranty on materials."
+  },
+  "quote-vs-invoice-estimate": {
+    quotationNumber: "QUO-2026-8812",
+    quotationDate: "August 10, 2026",
+    validUntilDate: "September 10, 2026 (30-Day Guarantee)",
+    vendorName: "Sterling Digital Solutions",
+    vendorAddress: "500 Howard Street, San Francisco, CA 94105",
+    clientName: "Jessica Wong, VP Operations",
+    clientAddress: "Apex Global Group, 100 Broadway, New York, NY",
+    scopeSummary: "This document represents a binding fixed-price quotation. Unlike a variable estimate, the quoted pricing is locked and guaranteed upon acceptance. An invoice will only be issued upon milestone delivery.",
+    itemizedQuote: "1. Brand Identity Redesign Sprint: $4,500.00\n2. Next.js App Router Headless Storefront: $8,000.00\n3. Technical SEO & Schema Implementation: $2,500.00",
+    estimatedTotal: "$15,000.00 (Guaranteed Fixed Quotation)",
+    validityTerms: "This price quotation is valid for 30 calendar days from issue date. Conversion to active project requires signed acceptance and standard 30% initial deposit.",
+    acceptanceSignature: "Jessica Wong, VP Operations"
+  },
   "consulting-services-contract": {
     consultantName: "Vanguard Strategic Consulting Group",
     clientName: "John Doe Services",
@@ -2122,7 +2316,6 @@ const OVERRIDES: Record<string, Record<string, string>> = {
     amountDue: "$8,640.00",
   },
   "freelance-agreement": {
-    freelancerAddress: "1088 Sansome Street, Studio 4B, San Francisco, CA 94111",
     freelancerName: "Alex Carter",
     businessName: "Carter Creative Studio",
   },
@@ -2588,9 +2781,15 @@ function deriveContactValues(
       ? `+91 ${String(90000 + (seed % 9999))} ${String(10000 + ((seed * 7) % 89999))}`
       : phoneFor(brand);
     // Templates that use companyAddress/companyPhone (rather than address/phone)
-    // must resolve too, or they render the literal field name.
+    // or persona-specific field names must resolve consistently to the exact same details.
     out.companyAddress = out.address;
     out.companyPhone = out.phone;
+    out.freelancerAddress = out.address;
+    out.freelancerEmail = out.email;
+    out.freelancerPhone = out.phone;
+    out.contractorAddress = out.address;
+    out.providerAddress = out.address;
+    out.businessAddress = out.address;
   }
   return out;
 }

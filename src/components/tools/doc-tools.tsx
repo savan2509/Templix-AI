@@ -549,6 +549,107 @@ ${g(v.title, "Your title")}`,
   }),
 };
 
+// ── Free Invoice Generator ───────────────────────────────────────────────────
+const FREE_INVOICE: GenConfig = {
+  fields: [
+    { name: "sellerName", label: "Your business / name", placeholder: "Acme Creative Studio" },
+    { name: "sellerAddress", label: "Your address / email / phone", placeholder: "123 Market St, San Francisco, CA | contact@acme.com" },
+    { name: "clientName", label: "Client name / company", placeholder: "Apex Global Inc." },
+    { name: "clientAddress", label: "Client address", placeholder: "500 Madison Ave, New York, NY" },
+    { name: "invNumber", label: "Invoice number", placeholder: "INV-2026-001" },
+    { name: "invDate", label: "Invoice date", type: "date" },
+    { name: "dueDate", label: "Payment due date", type: "date" },
+    { name: "item1", label: "Line item 1 description", full: true, placeholder: "Brand Strategy & UI/UX Design Sprint" },
+    { name: "rate1", label: "Item 1 amount ($)", placeholder: "3500.00" },
+    { name: "item2", label: "Line item 2 description (optional)", full: true, placeholder: "Frontend Next.js Implementation & QA" },
+    { name: "rate2", label: "Item 2 amount ($)", placeholder: "2500.00" },
+    { name: "taxPercent", label: "Tax rate (%)", placeholder: "8" },
+    { name: "terms", label: "Payment terms & banking details", full: true, type: "textarea", rows: 3, placeholder: "Net 30. Please remit payment via ACH or wire transfer to Account # 9876-54321." },
+  ],
+  build: (v) => {
+    const r1 = parseFloat(v.rate1 || "0") || 0;
+    const r2 = parseFloat(v.rate2 || "0") || 0;
+    const sub = r1 + r2;
+    const taxP = parseFloat(v.taxPercent || "0") || 0;
+    const taxVal = (sub * taxP) / 100;
+    const total = sub + taxVal;
+    return {
+      title: "Tax Invoice",
+      filename: `invoice-${v.invNumber || "draft"}`,
+      body:
+`INVOICE #${g(v.invNumber, "INV-2026-001")}
+Date: ${g(v.invDate, "Invoice Date")} | Due Date: ${g(v.dueDate, "Due Date")}
+
+FROM:
+${g(v.sellerName, "Your Business Name")}
+${g(v.sellerAddress, "Your Address & Contact")}
+
+BILLED TO:
+${g(v.clientName, "Client Name")}
+${g(v.clientAddress, "Client Address")}
+
+--------------------------------------------------------------------------------
+LINE ITEMS & SERVICES:
+1. ${g(v.item1, "Service item 1")}: $${r1.toFixed(2)}
+${v.item2 ? `2. ${v.item2}: $${r2.toFixed(2)}\n` : ""}
+--------------------------------------------------------------------------------
+Subtotal: $${sub.toFixed(2)}
+Tax (${taxP}%): $${taxVal.toFixed(2)}
+TOTAL BALANCE DUE: $${total.toFixed(2)}
+--------------------------------------------------------------------------------
+
+PAYMENT TERMS & INSTRUCTIONS:
+${g(v.terms, "Net 30. Payment instructions and wire transfer details.")}`,
+    };
+  },
+};
+
+// ── Free Resume Builder ───────────────────────────────────────────────────────
+const FREE_RESUME: GenConfig = {
+  fields: [
+    { name: "fullName", label: "Full Name", placeholder: "Alex Carter" },
+    { name: "jobTitle", label: "Target Job Title", placeholder: "Senior Software Engineer" },
+    { name: "contact", label: "Contact (Location | Phone | Email | LinkedIn)", full: true, placeholder: "San Francisco, CA | (555) 019-2834 | alex.carter@email.com | linkedin.com/in/alexcarter" },
+    { name: "summary", label: "Professional Summary", full: true, type: "textarea", rows: 3, placeholder: "Results-driven Software Engineer with 6+ years of experience designing scalable Next.js and Node.js architectures..." },
+    { name: "skills", label: "Technical & Core Skills (comma-separated)", full: true, type: "textarea", rows: 2, placeholder: "React, TypeScript, Next.js, PostgreSQL, Docker, AWS, GraphQL, CI/CD, System Architecture" },
+    { name: "role1", label: "Recent Role — Company (Dates)", full: true, placeholder: "Senior Full Stack Engineer — TechCorp Inc. (2023 - Present)" },
+    { name: "role1Bullets", label: "Recent Role Quantified Achievements", full: true, type: "textarea", rows: 4, placeholder: "• Architected high-throughput microservices reducing API latency by 45%.\n• Spearheaded migration to Next.js App Router, boosting organic SEO traffic by 120%." },
+    { name: "role2", label: "Previous Role — Company (Dates)", full: true, placeholder: "Software Engineer — Startup Labs (2021 - 2023)" },
+    { name: "role2Bullets", label: "Previous Role Quantified Achievements", full: true, type: "textarea", rows: 3, placeholder: "• Developed responsive React design systems adopted by 15 internal product squads.\n• Automated unit test suites increasing test coverage from 62% to 94%." },
+    { name: "education", label: "Education & Certifications", full: true, placeholder: "B.S. in Computer Science — University of California, Berkeley | AWS Certified Solutions Architect" },
+  ],
+  build: (v) => ({
+    title: `${v.fullName || "Resume"} — ATS Resume`,
+    filename: `resume-${(v.fullName || "document").toLowerCase().replace(/\s+/g, "-")}`,
+    body:
+`${g(v.fullName, "FULL NAME").toUpperCase()}
+${g(v.jobTitle, "Target Job Title")}
+${g(v.contact, "City, State | Phone | Email | LinkedIn")}
+
+================================================================================
+PROFESSIONAL SUMMARY
+================================================================================
+${g(v.summary, "Professional summary articulating your quantified track record and core expertise.")}
+
+================================================================================
+TECHNICAL COMPETENCIES
+================================================================================
+${g(v.skills, "Core skills, programming languages, and industry frameworks")}
+
+================================================================================
+PROFESSIONAL EXPERIENCE
+================================================================================
+${g(v.role1, "Role 1 — Company (Dates)")}
+${g(v.role1Bullets, "• Quantified accomplishment with metric results\n• Technical leadership and project deliverable")}
+
+${v.role2 ? `${v.role2}\n${g(v.role2Bullets, "• Quantified accomplishment with metric results")}\n` : ""}
+================================================================================
+EDUCATION & CERTIFICATIONS
+================================================================================
+${g(v.education, "Degree, Institution & Relevant Professional Certifications")}`,
+  }),
+};
+
 // ── exported widgets ─────────────────────────────────────────────────────────
 export const ProposalBuilder = () => <DocGenerator config={PROPOSAL} />;
 export const ScopeGenerator = () => <DocGenerator config={SCOPE} />;
@@ -558,3 +659,6 @@ export const TermsGenerator = () => <DocGenerator config={TERMS} />;
 export const LetterGenerator = () => <DocGenerator config={LETTER} />;
 export const ResignationLetterGenerator = () => <DocGenerator config={RESIGNATION} />;
 export const RecommendationLetterGenerator = () => <DocGenerator config={RECOMMENDATION} />;
+export const FreeInvoiceGenerator = () => <DocGenerator config={FREE_INVOICE} />;
+export const FreeResumeBuilder = () => <DocGenerator config={FREE_RESUME} />;
+

@@ -589,3 +589,157 @@ export function ResumeAtsChecker() {
     </Card>
   );
 }
+
+// ── 7. PDF to Word Converter ──────────────────────────────────────────────────
+export function PdfToWord() {
+  const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [extractedText, setExtractedText] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleProcess = async (f: File) => {
+    setFile(f);
+    setLoading(true);
+    setError(null);
+    try {
+      const pdfjs = await import("pdfjs-dist");
+      pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+      const data = await f.arrayBuffer();
+      const pdf = await pdfjs.getDocument({ data }).promise;
+      let textContent = "";
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textObj = await page.getTextContent();
+        const pageStrings = textObj.items.map((item: any) => item.str || "").join(" ");
+        textContent += `--- Page ${i} ---\n\n` + pageStrings + "\n\n";
+      }
+      setExtractedText(textContent.trim());
+    } catch (err: any) {
+      setError(err?.message || "Failed to extract text from PDF. The document may be scanned or password protected.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDownloadDocx = async () => {
+    if (!extractedText) return;
+    try {
+      const { Document, Packer, Paragraph, TextRun } = await import("docx");
+      const paragraphs = extractedText.split("\n\n").map((para) =>
+        new Paragraph({
+          children: [new TextRun({ text: para.replace(/\n/g, " "), font: "Calibri", size: 24 })],
+          spacing: { after: 200 },
+        })
+      );
+      const doc = new Document({ sections: [{ properties: {}, children: paragraphs }] });
+      const blob = await Packer.toBlob(doc);
+      download(blob as any, `${file?.name.replace(/\.pdf$/i, "") || "converted"}.docx`, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    } catch (err: any) {
+      setError("Failed to create Word document: " + err?.message);
+    }
+  };
+
+  return (
+    <Card>
+      {!file ? (
+        <DropZone accept=".pdf,application/pdf" hint="Drop a PDF here to convert to editable Word (.docx)" onFiles={(files) => files[0] && handleProcess(files[0])} />
+      ) : (
+        <div>
+          <div className="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex items-center gap-3">
+              <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <div>
+                <p className="text-sm font-bold text-zinc-900 dark:text-white">{file.name}</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">{(file.size / 1024).toFixed(1)} KB</p>
+              </div>
+            </div>
+            <button onClick={() => { setFile(null); setExtractedText(""); }} className="text-xs text-zinc-500 hover:text-red-500 font-semibold">Change File</button>
+          </div>
+          {loading ? (
+            <div className="py-12 flex flex-col items-center justify-center gap-3 text-zinc-500">
+              <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
+              <p className="text-sm font-medium">Extracting text from PDF...</p>
+            </div>
+          ) : (
+            <div className="mt-5 space-y-4">
+              {error && <p className="text-sm text-red-500 bg-red-50 dark:bg-red-950/50 p-3 rounded-xl">{error}</p>}
+              <textarea
+                value={extractedText}
+                onChange={(e) => setExtractedText(e.target.value)}
+                rows={8}
+                className="w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950 p-4 text-sm text-zinc-900 dark:text-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y font-mono"
+              />
+              <div className="flex flex-wrap items-center gap-3">
+                <button onClick={handleDownloadDocx} className={btnPrimary}>
+                  <Download className="h-4 w-4" /> Download Word (.docx)
+                </button>
+                <button onClick={() => navigator.clipboard.writeText(extractedText)} className="h-11 px-5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                  Copy Text
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </Card>
+  );
+}
+
+// ── 8. Word to PDF Converter ──────────────────────────────────────────────────
+export function WordToPdf() {
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [converting, setConverting] = useState(false);
+
+  const handleConvert = async () => {
+    if (!text.trim()) return;
+    setConverting(true);
+    try {
+      const doc = await PDFDocument.create();
+      const page = doc.addPage([595.28, 841.89]);
+      const { StandardFonts, rgb } = await import("pdf-lib");
+      const font = await doc.embedFont(StandardFonts.Helvetica);
+      const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+      let y = 780;
+
+      if (title.trim()) {
+        page.drawText(title.trim(), { x: 50, y, size: 16, font: bold, color: rgb(0.1, 0.1, 0.1) });
+        y -= 30;
+      }
+
+      const lines = text.split("\n");
+      for (const line of lines) {
+        if (y < 60) break;
+        page.drawText(line.substring(0, 80), { x: 50, y, size: 10, font, color: rgb(0.2, 0.2, 0.2) });
+        y -= 16;
+      }
+
+      const bytes = await doc.save();
+      download(bytes, `${(title || "document").toLowerCase().replace(/\s+/g, "-")}.pdf`, "application/pdf");
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setConverting(false);
+    }
+  };
+
+  return (
+    <Card>
+      <div className="space-y-4">
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">Document Title</label>
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Business Agreement or Memorandum" className={input} />
+        </div>
+        <div>
+          <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">Document Text / Paste from Word (.docx)</label>
+          <textarea value={text} onChange={(e) => setText(e.target.value)} rows={8} placeholder="Paste text here to convert into a clean vector PDF…" className="w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950 p-4 text-sm text-zinc-900 dark:text-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y" />
+        </div>
+        <button onClick={handleConvert} disabled={!text.trim() || converting} className={btnPrimary}>
+          {converting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+          Convert & Download PDF
+        </button>
+      </div>
+    </Card>
+  );
+}
+

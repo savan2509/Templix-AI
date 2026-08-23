@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site";
 import { buildCanonical } from "@/lib/canonical";
 import { STATIC_BLOG_POSTS } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
+import { STRATEGIC_KEYWORD_CLUSTERS } from "@/data/keywords";
 
 // Template category -> blog category, so a template's "related guides" are
 // topically relevant instead of a fixed list. Reports/business-plans have no
@@ -124,10 +125,28 @@ export class SEOEngine {
     const rawImage = data.image || "/og-default.jpg";
     const ogImage = rawImage.startsWith("http") ? rawImage : `${this.APP_URL}${rawImage}`;
 
+    // Resolve enriched strategic keyword matrix
+    let resolvedKeywords = data.keywords ? [...data.keywords] : [];
+    if (resolvedKeywords.length < 6) {
+      const slugLower = (slugPath || "").toLowerCase();
+      const catLower = (data.categorySlug || data.categoryName || "").toLowerCase();
+      for (const cluster of STRATEGIC_KEYWORD_CLUSTERS) {
+        if (
+          slugLower.includes(cluster.category) ||
+          catLower.includes(cluster.category) ||
+          (cluster.targetUrl && slugLower && cluster.targetUrl.toLowerCase().includes(slugLower))
+        ) {
+          resolvedKeywords.push(cluster.pillarKeyword, ...cluster.semanticLsiKeywords, ...cluster.longTailQueries);
+          break;
+        }
+      }
+    }
+    const finalKeywords = Array.from(new Set(resolvedKeywords));
+
     return {
       title: pageTitle,
       description: data.description,
-      keywords: data.keywords,
+      keywords: finalKeywords.length > 0 ? finalKeywords : undefined,
       alternates: {
         canonical: canonical,
         languages: Object.keys(languages).length > 0 ? languages : {
