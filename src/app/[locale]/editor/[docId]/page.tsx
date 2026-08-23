@@ -68,7 +68,7 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
             content: dbTemplate.content as any
           };
         }
-      } catch (err) {
+      } catch (_err) {
         console.warn("DB template load bypass in editor.");
       }
     }
@@ -95,7 +95,7 @@ export default async function EditorRoutePage({ params, searchParams }: PageProp
           // Document not found or doesn't belong to user
           redirect(`/${locale}/dashboard`);
         }
-      } catch (err) {
+      } catch (_err) {
         console.warn("DB load bypass in editor page.");
       }
     }

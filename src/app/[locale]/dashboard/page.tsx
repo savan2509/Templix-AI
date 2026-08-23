@@ -18,12 +18,7 @@ import {
   FileText,
   Plus,
   Trash2,
-  Download,
   Star,
-  Layers,
-  Sparkles,
-  ArrowRight,
-  TrendingUp,
 } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";

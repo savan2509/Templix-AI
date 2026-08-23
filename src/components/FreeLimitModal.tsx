@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Lock, Sparkles, CheckCircle2, ArrowRight, X, ShieldCheck, Zap, Layers } from "lucide-react";
+import { Lock, CheckCircle2, ArrowRight, X } from "lucide-react";
 import { FREE_TEMPLATE_LIMIT } from "@/hooks/useTemplateLimit";
 
 interface FreeLimitModalProps {

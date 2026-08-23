@@ -15,7 +15,6 @@ import {
   CheckCircle,
   Zap,
   HelpCircle,
-  Layers,
   FileText,
   Briefcase,
   LayoutGrid,

@@ -41,7 +41,6 @@ import {
   BookOpen,
   Home,
   Tag,
-  Share2,
   Sparkles,
   FileText,
   PenLine,

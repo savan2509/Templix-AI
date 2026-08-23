@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/lib/i18n";

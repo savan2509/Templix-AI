@@ -7,7 +7,7 @@ import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Sparkles, ArrowRight, LayoutGrid, Layers, ShieldCheck, Zap, Briefcase } from "lucide-react";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string }>;

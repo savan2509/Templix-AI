@@ -206,7 +206,7 @@ export default async function HomePage({ params }: PageProps) {
         });
       }
     }
-  } catch (err) {
+  } catch (_err) {
     console.warn("Home page database connection bypass, displaying initial seed fallbacks.");
   }
 
@@ -729,51 +729,6 @@ export default async function HomePage({ params }: PageProps) {
                   Outputs can be immediately exported to clean PDF or Microsoft Word (.docx) formats without watermarks or mandatory registration.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-        {/* Dedicated Featured & Launch Badges Showcase Section */}
-        <section className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/30">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-              Recognized &amp; Featured On
-            </span>
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-              <a
-                href="https://startupbase.io/products/templix-ai?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                aria-label="Launched on StartupBase"
-                className="transition-transform duration-300 hover:scale-105"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/badges/launched-on-sb.svg"
-                  alt="Launched on StartupBase"
-                  title="Launched on StartupBase"
-                  width={200}
-                  height={54}
-                  className="h-[52px] w-auto object-contain transition-opacity hover:opacity-90"
-                />
-              </a>
-
-              <a
-                href="https://smollaunch.com"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                aria-label="Featured on Smol Launch"
-                className="transition-transform duration-300 hover:scale-105"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/badges/smol-launch.svg"
-                  alt="templix-ai — Featured on Smol Launch"
-                  title="templix-ai — Featured on Smol Launch"
-                  width={220}
-                  height={54}
-                  className="h-[48px] w-auto object-contain transition-opacity hover:opacity-90"
-                />
-              </a>
             </div>
           </div>
         </section>

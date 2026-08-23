@@ -74,7 +74,7 @@ export default async function AdminPage({ params }: AdminProps) {
         }));
       }
     }
-  } catch (err) {
+  } catch (_err) {
     console.warn("DB load bypass in Admin Panel");
   }
 

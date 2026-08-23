@@ -4,11 +4,10 @@ import { SEOEngine } from "@/services/seo";
 import InfoPageShell from "@/components/InfoPageShell";
 import Schema from "@/components/seo/Schema";
 import SocialShare from "@/components/SocialShare";
-import { faqData, faqSchema } from "@/data/faq";
-import { getAllFaqTopics } from "@/data/faq-topics";
+import { faqSchema } from "@/data/faq";
 import { INDIVIDUAL_FAQS } from "@/data/faq-individual";
 import { getDictionary } from "@/lib/i18n";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 interface PageProps {
@@ -29,7 +28,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function FaqPage({ params }: PageProps) {
   const { locale } = await params;
   const t = getDictionary(locale).faqPage;
-  const topics = getAllFaqTopics();
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",

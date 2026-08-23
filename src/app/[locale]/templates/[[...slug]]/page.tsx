@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { db, isDbOnline } from "@/lib/db";
@@ -17,7 +16,6 @@ import {
   FileText,
   ArrowRight,
   Home,
-  Sparkles,
   AlertCircle,
   ChevronLeft,
   ChevronRight,
@@ -36,7 +34,7 @@ import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { allFallbackTemplates } from "@/data/templates-fallback";
 import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
-import { getProfessionContent, getProfessionsByCategory, PROFESSION_SLUGS } from "@/features/templates/profession-content";
+import { getProfessionContent, getProfessionsByCategory } from "@/features/templates/profession-content";
 import { getTemplateInsight } from "@/features/templates/template-insights";
 import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
 import { generateProductSchema } from "@/data/schemas/product";
@@ -377,7 +375,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             content: dbTemplate.content as any
           };
         }
-      } catch (err) {
+      } catch (_err) {
         console.warn("DB error fetching template detail, using mock fallback.");
       }
     }
@@ -771,7 +769,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
         }
       }
     }
-  } catch (err) {
+  } catch (_err) {
     console.warn("DB unavailable — rendering the in-code template catalog.");
   }
 

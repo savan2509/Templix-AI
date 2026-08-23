@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, ArrowRight, CheckCircle2, ChevronRight, PenTool, Download, Lock, MessageCircle, Sparkles, Loader2, Zap } from "lucide-react";
+import { FileText, ArrowRight, CheckCircle2, PenTool, Sparkles, Loader2, Zap } from "lucide-react";
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
 import { getDictionary } from "@/lib/i18n";

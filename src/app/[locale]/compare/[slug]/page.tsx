@@ -10,7 +10,7 @@ import { comparisonPosts } from "@/lib/blog/posts-comparisons";
 import { resolvePostImage } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
 import { siteConfig } from "@/config/site";
-import { ArrowLeft, Clock, Calendar, Scale, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Scale, Sparkles, ArrowRight } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SEOEngine } from "@/services/seo";
 import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ContactForm from "@/components/ContactForm";
-import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
 import { Mail, Phone } from "lucide-react";

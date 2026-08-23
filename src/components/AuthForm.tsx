@@ -86,7 +86,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
       cancelled = true;
       clearInterval(timer);
     };
-  }, [awaitingConfirm, supabase, email, password, router, locale]);
+  }, [awaitingConfirm, supabase, email, password, router, locale, dest]);
 
   // Google OAuth via Supabase. Redirects out to Google and comes back to
   // /api/auth/supabase/callback?code=…, which exchanges the code for a session.

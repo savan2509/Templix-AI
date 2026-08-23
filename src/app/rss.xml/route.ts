@@ -27,7 +27,7 @@ export async function GET() {
       });
       if (dbBlogs && dbBlogs.length > 0) blogs = dbBlogs;
     }
-  } catch (err) {
+  } catch (_err) {
     console.warn("DB Query bypass in RSS feed.");
   }
 

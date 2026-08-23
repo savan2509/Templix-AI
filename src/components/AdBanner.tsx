@@ -8,7 +8,7 @@ interface AdBannerProps {
 }
 
 export default function AdBanner({ position }: AdBannerProps) {
-  const [enabled, setEnabled] = useState(true);
+  const [enabled] = useState(true);
 
   // Read config flag settings from site settings if configured
   useEffect(() => {

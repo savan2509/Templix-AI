@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ShieldCheck, Award, Calendar, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Calendar, CheckCircle2 } from "lucide-react";
 import { logoAlt } from "@/lib/image-alt";
 
 interface AuthorBioProps {
@@ -10,7 +10,7 @@ interface AuthorBioProps {
   readTime?: number;
 }
 
-export default function AuthorBio({ publishedAt, updatedAt, category, readTime }: AuthorBioProps) {
+export default function AuthorBio({ publishedAt, updatedAt, readTime }: AuthorBioProps) {
   const displayDate = updatedAt || publishedAt || "2026-08-01";
   
   return (

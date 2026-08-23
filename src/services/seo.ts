@@ -126,7 +126,7 @@ export class SEOEngine {
     const ogImage = rawImage.startsWith("http") ? rawImage : `${this.APP_URL}${rawImage}`;
 
     // Resolve enriched strategic keyword matrix
-    let resolvedKeywords = data.keywords ? [...data.keywords] : [];
+    const resolvedKeywords = data.keywords ? [...data.keywords] : [];
     if (resolvedKeywords.length < 6) {
       const slugLower = (slugPath || "").toLowerCase();
       const catLower = (data.categorySlug || data.categoryName || "").toLowerCase();

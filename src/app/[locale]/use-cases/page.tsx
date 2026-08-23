@@ -2,9 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { siteConfig } from "@/config/site";
 import { buildCanonical } from "@/lib/canonical";
-import { Sparkles, FileText, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
 

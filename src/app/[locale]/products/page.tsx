@@ -6,7 +6,7 @@ import Schema from "@/components/seo/Schema";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Sparkles, ArrowRight, Layers, CheckCircle } from "lucide-react";
+import { Sparkles, ArrowRight, Layers } from "lucide-react";
 
 
 interface PageProps {

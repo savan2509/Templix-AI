@@ -26,9 +26,7 @@ import {
   HeartPulse,
   ArrowRight,
   Sparkles,
-  FileCheck,
   CheckCircle2,
-  Download,
   Edit3,
 } from "lucide-react";
 

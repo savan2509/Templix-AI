@@ -17,7 +17,6 @@ import {
   FileText,
   HelpCircle,
   Layers,
-  ChevronDown,
 } from "lucide-react";
 
 
@@ -75,7 +74,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: service.title,
-      itemListElement: service.features.map((f, i) => ({
+      itemListElement: service.features.map((f) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",

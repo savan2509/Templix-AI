@@ -15,17 +15,10 @@ import {
 import { getAiTool } from "@/data/ai-tools";
 import {
   Sparkles,
-  Zap,
-  Lock,
-  Download,
   CheckCircle2,
   ArrowRight,
   FileText,
   HelpCircle,
-  TrendingUp,
-  Layers,
-  Globe,
-  ShieldCheck,
   ChevronRight,
 } from "lucide-react";
 

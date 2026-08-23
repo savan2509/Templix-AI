@@ -8,7 +8,7 @@ import { comparisonPosts } from "@/lib/blog/posts-comparisons";
 import { resolvePostImage } from "@/lib/blog-data";
 import { SEOEngine } from "@/services/seo";
 import { siteConfig } from "@/config/site";
-import { ArrowRight, ArrowLeft, Scale, Sparkles, CheckCircle2, ShieldCheck, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Scale, Sparkles, CheckCircle2, ShieldCheck, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 
 function getPaginationRange(activePage: number, totalPages: number): (number | string)[] {
   if (totalPages <= 7) {
