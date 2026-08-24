@@ -417,6 +417,9 @@ export default function Footer() {
             <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer nofollow" aria-label="X / Twitter Profile" className="hover:text-sky-500 transition-colors">
               X (Twitter)
             </a>
+            <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener noreferrer nofollow" aria-label="Google Business Profile & Maps Location" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+              Google Maps
+            </a>
           </div>
 
           <div className="text-zinc-500 dark:text-zinc-400">

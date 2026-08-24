@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { db, isDbOnline } from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ import { CATEGORIES } from "@/constants";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { STATIC_BLOG_POSTS, resolvePostImage } from "@/lib/blog-data";
 import { allFallbackTemplates } from "@/data/templates-fallback";
+import { CATALOG_STATS } from "@/lib/catalog-stats";
 import {
   FileText,
   ArrowRight,
@@ -65,6 +67,9 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  if (locale !== "en") {
+    notFound();
+  }
   
   // Brand is appended by the root layout's `%s | Templix AI` template, so it
   // must NOT be included here (otherwise the brand appears twice in the title).
@@ -99,20 +104,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    keywords: [
-      "free invoice generator",
-      "free resume builder ats",
-      "ats resume template 2026",
-      "free contract generator",
-      "business proposal template free",
-      "ai document editor",
-      "pdf to word converter free",
-      "gst tax invoice format",
-      "independent contractor agreement",
-      "quote vs invoice vs estimate",
-      "online document maker no sign up",
-      "free templates download pdf word",
-    ],
     // Single-locale site: es/fr/de/ar are retired (308 → /en, see proxy.ts), so
     // the homepage canonicalizes to /en with no hreflang alternates. Emitting
     // language alternates here would advertise locale URLs that only redirect.
@@ -136,8 +127,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `${title} | Templix AI`,
       description,
-      site: "@savan2509",
-      creator: "@savan2509",
+      site: "@templixai",
+      creator: "@templixai",
       images: ["/og-default.jpg"],
     },
   };
@@ -145,6 +136,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
+  if (locale !== "en") {
+    notFound();
+  }
   const dict = getDictionary(locale);
   const t = dict.home;
   const c = dict.common;
@@ -424,7 +418,7 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
                 <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                  {t.pillar1Desc.replace("{count}", String(Math.floor(allFallbackTemplates.length / 10) * 10))}
+                  {t.pillar1Desc.replace("{count}", String(Math.floor(CATALOG_STATS.totalTemplates / 10) * 10))}
                 </p>
               </div>
 
@@ -523,7 +517,7 @@ export default async function HomePage({ params }: PageProps) {
                   {t.blogsHeading}
                 </h2>
                 <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-sm">
-                  {t.blogsSubtitle.replace("{count}", String(STATIC_BLOG_POSTS.length))}
+                  {t.blogsSubtitle.replace("{count}", String(CATALOG_STATS.totalBlogPosts))}
                 </p>
               </div>
               <Link

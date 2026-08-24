@@ -6,6 +6,7 @@ import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
 import { FileText, Sparkles, Download, ShieldCheck } from "lucide-react";
 import { PRODUCTION_URL } from "@/config/site";
+import { CATALOG_STATS } from "@/lib/catalog-stats";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -26,8 +27,13 @@ export default async function AboutPage({ params }: PageProps) {
   const { locale } = await params;
   const t = getDictionary(locale).about;
 
+  const dynamicValue1Title = t.value1Title.replace(
+    "{count}",
+    String(Math.floor(CATALOG_STATS.totalTemplates / 10) * 10)
+  );
+
   const values = [
-    { icon: FileText, title: t.value1Title, text: t.value1Text },
+    { icon: FileText, title: dynamicValue1Title, text: t.value1Text },
     { icon: Sparkles, title: t.value2Title, text: t.value2Text },
     { icon: Download, title: t.value3Title, text: t.value3Text },
     { icon: ShieldCheck, title: t.value4Title, text: t.value4Text },

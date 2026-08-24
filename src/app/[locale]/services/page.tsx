@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 
 
+import { CATALOG_STATS } from "@/lib/catalog-stats";
+
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
@@ -175,7 +177,7 @@ export default async function ServicesHubPage({ params }: PageProps) {
             Need Custom Document Templates or Specialized Formats?
           </h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Explore our library of 470+ customizable templates across invoices, resumes, contracts, proposals, and letters or use our free AI writing tools.
+            Explore our library of {CATALOG_STATS.totalTemplatesRounded} customizable templates across invoices, resumes, contracts, proposals, and letters or use our free AI writing tools.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link

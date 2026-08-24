@@ -189,8 +189,8 @@ export class SEOEngine {
       },
       twitter: {
         card: "summary_large_image",
-        site: "@savan2509",
-        creator: "@savan2509",
+        site: "@templixai",
+        creator: "@templixai",
         title: fullTitle,
         description: data.description,
         images: [ogImage],

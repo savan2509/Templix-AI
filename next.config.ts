@@ -140,6 +140,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/index.html",
+        destination: "/en",
+        permanent: true,
+      },
+      {
+        source: "/index.php",
+        destination: "/en",
+        permanent: true,
+      },
+      {
+        source: "/default.html",
+        destination: "/en",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [
           {

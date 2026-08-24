@@ -17,6 +17,7 @@ const geistSans = Geist({
   subsets: ["latin"],
   display: "swap",   // show text immediately with fallback font while custom font loads
   preload: true,
+  adjustFontFallback: false,
 });
 
 const geistMono = Geist_Mono({
@@ -24,6 +25,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   preload: false,    // mono is not used above-the-fold, defer it
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -32,19 +34,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "free invoice generator",
-    "free resume builder ats",
-    "ats resume template 2026",
-    "free contract generator",
-    "business proposal template free",
-    "ai document editor",
-    "pdf to word converter free",
-    "gst tax invoice format",
-    "independent contractor agreement",
-    "online document creator no sign up",
-    "freelance templates pdf word download",
-  ],
   metadataBase: new URL(siteConfig.url),
   robots: {
     index: true,
@@ -92,8 +81,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    site: "@savan2509",
-    creator: "@savan2509",
+    site: "@templixai",
+    creator: "@templixai",
     images: ["/og-default.jpg"],
   },
 };
@@ -176,12 +165,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        {/* Facebook Pixel — standard tracker for visitor retargeting */}
+        {/* Facebook Pixel — deferred initialization to eliminate main thread blocking & polyfill overhead */}
         <Script
           id="fb-pixel"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_FB_PIXEL_ID || "918237465019283"}');fbq('track','PageView');`,
+            __html: `(function(){var loaded=false;function initFb(){if(loaded)return;loaded=true;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_FB_PIXEL_ID || "918237465019283"}');fbq('track','PageView');}if('requestIdleCallback' in window){requestIdleCallback(function(){setTimeout(initFb,2500);});}else{setTimeout(initFb,3000);};['scroll','touchstart','mousemove','click','keydown'].forEach(function(e){window.addEventListener(e,initFb,{once:true,passive:true});});})();`,
           }}
         />
       </body>
