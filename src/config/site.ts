@@ -38,13 +38,14 @@ export const siteConfig = {
   // domain the site isn't served from, or OG/canonical point at a dead host.
   ogImage: `${APP_URL}/og-default.jpg`,
   links: {
-    github: "https://github.com/savan2509/Templix-AI",
+    github: "https://github.com/templixai/templix-ai",
     facebook: "https://facebook.com/templixai",
     instagram: "https://instagram.com/templixai",
     youtube: "https://youtube.com/@templixai",
     linkedin: "https://www.linkedin.com/company/templixai",
     twitter: "https://x.com/templixai",
-    googleMaps: "https://maps.google.com/?cid=1082391203912",
+    googleMaps: "https://maps.google.com/?q=535+Mission+Street+14th+Floor+San+Francisco+CA+94105",
+    googleBusiness: "https://maps.google.com/?q=535+Mission+Street+14th+Floor+San+Francisco+CA+94105",
   },
   twitterHandle: "@templixai",
   twitterSite: "@templixai",

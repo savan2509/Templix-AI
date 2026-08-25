@@ -204,12 +204,34 @@ export const CATEGORY_FAQS: Record<string, FAQItem[]> = {
         "Never apologise. Do not write \"although I am a fresher\". Replace every adjective about yourself with a verb about your work — what you built, for whom, and what changed as a result.",
     },
   ],
+  hub: [
+    {
+      question: "Which format should I choose: PDF or DOCX Word?",
+      answer:
+        "Choose PDF when sending final documents (invoices, proposals, signed contracts, or job applications) to clients and employers so formatting and typography never shift across devices. Choose Word (.docx) if your recipient explicitly requests an editable file or if you wish to archive an offline copy.",
+    },
+    {
+      question: "Are all templates on Templix AI free for commercial and client use?",
+      answer:
+        "Yes. All 490+ document templates across invoices, resumes, contracts, proposals, reports, and business letters are 100% free for commercial use. You retain full copyright ownership of all text and content you generate without watermarks or mandatory attribution.",
+    },
+    {
+      question: "How do fill-in fields and live customization work?",
+      answer:
+        "Every template features dynamic variable bindings (such as {{companyName}}, {{clientName}}, or {{total}}). When you customize a field in the sidebar or edit directly on the canvas, all corresponding instances across the document update instantly in real time.",
+    },
+    {
+      question: "Do I need to create an account or provide payment info to download?",
+      answer:
+        "No account, credit card, or email registration is required to customize and export documents. Everything executes directly inside your browser memory for maximum privacy and immediate drafting speed.",
+    },
+  ],
 };
 
-/** FAQs for a category page, falling back to null when we have none written. */
-export function getCategoryFaqs(categorySlug?: string | null): FAQItem[] | null {
-  if (!categorySlug) return null;
-  return CATEGORY_FAQS[categorySlug] ?? null;
+/** FAQs for a category or hub page, returning dedicated hub FAQs when categorySlug is not provided. */
+export function getCategoryFaqs(categorySlug?: string | null): FAQItem[] {
+  if (!categorySlug) return CATEGORY_FAQS.hub;
+  return CATEGORY_FAQS[categorySlug] ?? CATEGORY_FAQS.hub;
 }
 
 /** schema.org FAQPage for any list of Q&A pairs. */

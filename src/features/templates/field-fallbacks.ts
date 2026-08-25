@@ -444,7 +444,15 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
     return "Bachelor of Science";
   }
   if (/(metric|impact|achievement|result|growth|outcome|roi|built|delivered|won|generated|reduced|improved|score|rate|stats|rank|ranking|size|budget|value|gpa|participants|census|impressions|traffic|keywords|conversions|backlinks|demos|validity)/i.test(k)) {
-    return "+25% growth & key targets met";
+    const metrics = [
+      "+28% increase in operational efficiency",
+      "Managed $1.5M annual department budget",
+      "Reduced processing turnaround time by 35%",
+      "Exceeded quarterly KPI targets by 24%",
+      "Delivered 100% on-time project execution across 12 milestones",
+      "Boosted customer satisfaction ratings from 84% to 96%",
+    ];
+    return pick(metrics);
   }
   if (/(partya|partyone|employername|licensor|lender|contractor)/i.test(k)) {
     return brand;
@@ -453,12 +461,34 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
     return client;
   }
   if (/(philosophy|approach|process|style|focus|niche|theme|model|category|type|differentiated|governing)/i.test(k)) {
-    return "Standard operational & technical methodology";
+    return "Established operational & technical methodology";
   }
-  if (/(description|details|notes|overview|scope|spec|requirement|deliverable|deliverables|feature|action|solution|target|market)/i.test(k)) {
-    return `${subject} scope and key deliverables agreed between ${brand} and ${client}.`;
+  if (category === "resumes") {
+    if (/summary|profile|objective/i.test(k)) {
+      return `Accomplished ${subject} professional with demonstrated expertise in project execution, workflow optimization, and delivering measurable team outcomes.`;
+    }
+    if (/bullet|duty|duties|accomplish|experience/i.test(k)) {
+      const resumeBullets = [
+        `Spearheaded key ${subject.toLowerCase()} initiatives, collaborating with leadership to optimize deliverables.`,
+        `Streamlined core operating procedures, reducing cycle times while maintaining strict quality standards.`,
+        `Led cross-functional team coordination, ensuring timely milestone delivery and stakeholder satisfaction.`,
+      ];
+      return pick(resumeBullets);
+    }
+    if (/skill|competenc|expertise|strength/i.test(k)) {
+      return `Core ${subject} competencies, strategic planning, and performance analysis`;
+    }
   }
 
-  const humanized = key.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim().toLowerCase();
-  return `Standard ${humanized}`;
+  if (/(description|details|notes|overview|scope|spec|requirement|deliverable|deliverables|feature|action|solution|target|market)/i.test(k)) {
+    if (category === "contracts" || category === "proposals") {
+      return `${subject} scope and key deliverables agreed between ${brand} and ${client}.`;
+    }
+    return `Comprehensive ${subject.toLowerCase()} specifications and operational requirements.`;
+  }
+
+  const humanized = key.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim();
+  if (/summary/i.test(humanized)) return `Professional ${subject.toLowerCase()} summary and qualifications overview.`;
+  if (/bullet/i.test(humanized)) return `Key accomplishment and project milestone achieved for ${subject.toLowerCase()}.`;
+  return `${subject} ${humanized}`;
 }

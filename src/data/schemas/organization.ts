@@ -113,6 +113,12 @@ export const localBusinessSchema = {
   priceRange: "$0",
   currenciesAccepted: "USD",
   paymentAccepted: "Free",
+  hasMap: siteConfig.links.googleMaps,
+  sameAs: [
+    siteConfig.links.googleBusiness,
+    siteConfig.links.linkedin,
+    siteConfig.links.twitter,
+  ].filter(Boolean),
   address: {
     "@type": "PostalAddress",
     streetAddress: "535 Mission Street, 14th Floor",

@@ -638,8 +638,8 @@ export default async function HomePage({ params }: PageProps) {
 
               <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-sm">
-                    HR
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-xs">
+                    ATS
                   </div>
                   <div>
                     <p className="font-bold text-zinc-900 dark:text-white text-sm">ATS-Friendly Layouts</p>

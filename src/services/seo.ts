@@ -125,23 +125,18 @@ export class SEOEngine {
     const rawImage = data.image || "/og-default.jpg";
     const ogImage = rawImage.startsWith("http") ? rawImage : `${this.APP_URL}${rawImage}`;
 
-    // Resolve enriched strategic keyword matrix
+    // Resolve clean, strictly page-relevant keywords (no bloated stuffing)
     const resolvedKeywords = data.keywords ? [...data.keywords] : [];
-    if (resolvedKeywords.length < 6) {
-      const slugLower = (slugPath || "").toLowerCase();
+    if (resolvedKeywords.length === 0 && (data.categorySlug || data.categoryName)) {
       const catLower = (data.categorySlug || data.categoryName || "").toLowerCase();
       for (const cluster of STRATEGIC_KEYWORD_CLUSTERS) {
-        if (
-          slugLower.includes(cluster.category) ||
-          catLower.includes(cluster.category) ||
-          (cluster.targetUrl && slugLower && cluster.targetUrl.toLowerCase().includes(slugLower))
-        ) {
-          resolvedKeywords.push(cluster.pillarKeyword, ...cluster.semanticLsiKeywords, ...cluster.longTailQueries);
+        if (catLower === cluster.category.toLowerCase()) {
+          resolvedKeywords.push(cluster.pillarKeyword, ...cluster.semanticLsiKeywords.slice(0, 3));
           break;
         }
       }
     }
-    const finalKeywords = Array.from(new Set(resolvedKeywords));
+    const finalKeywords = Array.from(new Set(resolvedKeywords)).slice(0, 6);
 
     return {
       title: pageTitle,

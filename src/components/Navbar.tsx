@@ -309,29 +309,40 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu items */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3">
             {/* Templates dropdown */}
-            <div className="relative" ref={templatesRef}>
-              <button
-                onClick={() => setTemplatesOpen((v) => !v)}
-                aria-expanded={templatesOpen}
-                aria-haspopup="menu"
-                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+            <div className="relative flex items-center group/nav" ref={templatesRef}>
+              <Link
+                href={`/${currentLocale}/templates`}
+                className={`flex items-center py-1.5 pl-2 pr-0.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-l-md whitespace-nowrap shrink-0 ${
                   isTemplatesActive
-                    ? "text-blue-600 dark:text-blue-400"
+                    ? "text-blue-600 dark:text-blue-400 font-bold"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 <span className="whitespace-nowrap">{templatesLabelText}</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setTemplatesOpen((v) => !v)}
+                aria-label={`Open ${templatesLabelText} menu`}
+                aria-expanded={templatesOpen}
+                aria-haspopup="menu"
+                className={`py-1.5 pr-1 pl-0.5 rounded-r-md transition-colors ${
+                  isTemplatesActive
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-white"
+                }`}
+              >
                 <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${templatesOpen ? "rotate-180" : ""}`} />
-                {isTemplatesActive && (
-                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                )}
               </button>
+              {isTemplatesActive && (
+                <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400 pointer-events-none" />
+              )}
               {templatesOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 mt-2 w-64 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  className="absolute left-0 top-full mt-1 w-64 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                 >
                   {categoryItems.map((item) => (
                     <Link
@@ -363,27 +374,38 @@ export default function Navbar() {
             </div>
 
             {/* Tools dropdown */}
-            <div className="relative" ref={toolsRef}>
-              <button
-                onClick={() => setToolsOpen((v) => !v)}
-                aria-expanded={toolsOpen}
-                aria-haspopup="menu"
-                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+            <div className="relative flex items-center group/nav" ref={toolsRef}>
+              <Link
+                href={toolsHref}
+                className={`flex items-center py-1.5 pl-2 pr-0.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-l-md whitespace-nowrap shrink-0 ${
                   isToolsActive
-                    ? "text-blue-600 dark:text-blue-400"
+                    ? "text-blue-600 dark:text-blue-400 font-bold"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 <span className="whitespace-nowrap">{toolsLabelText}</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setToolsOpen((v) => !v)}
+                aria-label={`Open ${toolsLabelText} menu`}
+                aria-expanded={toolsOpen}
+                aria-haspopup="menu"
+                className={`py-1.5 pr-1 pl-0.5 rounded-r-md transition-colors ${
+                  isToolsActive
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-white"
+                }`}
+              >
                 <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${toolsOpen ? "rotate-180" : ""}`} />
-                {isToolsActive && (
-                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                )}
               </button>
+              {isToolsActive && (
+                <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400 pointer-events-none" />
+              )}
               {toolsOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 mt-2 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  className="absolute left-0 top-full mt-1 w-56 z-50 origin-top-left rounded-2xl border border-zinc-200/65 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                 >
                   {TOOL_CATEGORIES.map((cat) => {
                     const isAi = cat.key === "ai";
@@ -419,28 +441,39 @@ export default function Navbar() {
             </div>
 
             {/* AI Tools dropdown */}
-            <div className="relative" ref={aiToolsRef}>
-              <button
-                onClick={() => setAiToolsOpen((v) => !v)}
-                aria-expanded={aiToolsOpen}
-                aria-haspopup="menu"
-                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1 rounded-md whitespace-nowrap shrink-0 ${
+            <div className="relative flex items-center group/nav" ref={aiToolsRef}>
+              <Link
+                href={aiToolsHref}
+                className={`flex items-center gap-1 py-1.5 pl-2 pr-0.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-l-md whitespace-nowrap shrink-0 ${
                   isAiActive
-                    ? "text-violet-600 dark:text-violet-400"
+                    ? "text-violet-600 dark:text-violet-400 font-bold"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 <Sparkles className="h-3.5 w-3.5 text-violet-500 shrink-0" />
                 <span className="whitespace-nowrap">{aiToolsText}</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setAiToolsOpen((v) => !v)}
+                aria-label={`Open ${aiToolsText} menu`}
+                aria-expanded={aiToolsOpen}
+                aria-haspopup="menu"
+                className={`py-1.5 pr-1 pl-0.5 rounded-r-md transition-colors ${
+                  isAiActive
+                    ? "text-violet-600 dark:text-violet-400"
+                    : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-white"
+                }`}
+              >
                 <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${aiToolsOpen ? "rotate-180" : ""}`} />
-                {isAiActive && (
-                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400" />
-                )}
               </button>
+              {isAiActive && (
+                <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-violet-600 dark:bg-violet-400 pointer-events-none" />
+              )}
               {aiToolsOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 mt-2 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-violet-200/70 dark:border-violet-900/60 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
+                  className="absolute left-0 top-full mt-1 w-64 max-h-[70vh] overflow-y-auto z-50 origin-top-left rounded-2xl border border-violet-200/70 dark:border-violet-900/60 bg-white/95 dark:bg-zinc-900/95 p-1.5 shadow-xl backdrop-blur-md animate-in fade-in-50 slide-in-from-top-2 duration-200"
                 >
                   {aiTools.map((tl) => (
                     <Link
@@ -472,24 +505,35 @@ export default function Navbar() {
             </div>
 
             {/* Combined Explore Mega Dropdown (Services, Products, FAQ, Landing Pages, Use Cases & Comparisons) */}
-            <div className="relative" ref={exploreRef}>
-              <button
-                onClick={() => setExploreOpen((v) => !v)}
-                aria-expanded={exploreOpen}
-                aria-haspopup="menu"
-                className={`relative flex items-center gap-1 text-xs xl:text-sm font-semibold transition-all duration-200 py-1.5 px-1.5 rounded-md whitespace-nowrap shrink-0 ${
+            <div className="relative flex items-center group/nav" ref={exploreRef}>
+              <Link
+                href={`/${currentLocale}/category`}
+                className={`flex items-center gap-1 py-1.5 pl-2 pr-0.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-l-md whitespace-nowrap shrink-0 ${
                   isExploreActive
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
+                    ? "text-blue-600 dark:text-blue-400 font-bold bg-blue-50/50 dark:bg-blue-950/30"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 <LayoutGrid className="h-3.5 w-3.5 text-blue-500 shrink-0" />
                 <span className="whitespace-nowrap font-bold">Explore</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setExploreOpen((v) => !v)}
+                aria-label="Open Explore mega menu"
+                aria-expanded={exploreOpen}
+                aria-haspopup="menu"
+                className={`py-1.5 pr-1 pl-0.5 rounded-r-md transition-colors ${
+                  isExploreActive
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-white"
+                }`}
+              >
                 <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 shrink-0 ${exploreOpen ? "rotate-180" : ""}`} />
-                {isExploreActive && (
-                  <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400" />
-                )}
               </button>
+              {isExploreActive && (
+                <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-blue-600 dark:bg-blue-400 pointer-events-none" />
+              )}
               {exploreOpen && (
                 <div
                   role="menu"

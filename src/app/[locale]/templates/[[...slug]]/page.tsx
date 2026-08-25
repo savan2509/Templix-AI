@@ -391,14 +391,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   }
 
   // A 2nd-level+ path under a category that is neither a real template nor a
-  // bespoke profession landing page (e.g. /templates/reports/general/canada)
-  // is an unmapped filter variant. 301-redirect it to the clean category canonical
-  // URL to prevent Google Search Console "Alternative page with proper canonical tag"
-  // warnings and consolidate crawl budget.
+  // bespoke profession landing page (e.g. /templates/invoices/non-existent-template)
+  // must return a real HTTP 404 to avoid soft-404 detection in SEO crawlers.
   if (categorySlug && isKnownCategory && !activeTemplate && nicheSlug) {
     const isProfession = !!getProfessionContent(categorySlug, nicheSlug);
     if (!isProfession) {
-      permanentRedirect(`/${locale}/templates/${categorySlug}`);
+      notFound();
     }
   }
 
@@ -953,9 +951,10 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
           </div>
 
           {/* Screen-reader h2 before the grid so the outline goes h1 → h2 →
-              (sidebar + card h3s) with no skipped level. Placed before the grid
-              because the sidebar's own h3 would otherwise follow the h1 directly. */}
-          <h2 className="sr-only">{pageHeading}</h2>
+              (sidebar + card h3s) with no skipped level. */}
+          <h2 className="sr-only">
+            {categoryDisplayName ? `${categoryDisplayName} Catalog & Available Layouts` : "Document Template Catalog & Category Navigation"}
+          </h2>
 
           {/* Responsive Layout with Left Categories Sidebar on Desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">

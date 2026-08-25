@@ -128,7 +128,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://maps.google.com/?q=535+Mission+Street+14th+Floor+San+Francisco+CA+94105"
+                href={siteConfig.links.googleMaps}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"

@@ -26,7 +26,7 @@ function hashStr(s: string) {
   return h >>> 0;
 }
 
-const VARIANT_CATEGORIES = new Set(["proposals", "contracts", "invoices", "reports", "business-plans", "quotations", "letters", "resumes"]);
+const VARIANT_CATEGORIES = new Set(["proposals", "contracts", "invoices", "reports", "business-plans", "quotations", "letters"]);
 const LAYOUT_COUNT = 6;
 const HEADING_STYLE_COUNT = 3;
 
@@ -36,9 +36,12 @@ interface DocumentPaperProps {
 }
 
 export default function DocumentPaper({ template, values }: DocumentPaperProps) {
+  const isResume = template?.categorySlug === "resumes" || template?.categorySlug === "cover-letters";
   const baseVals = values ?? getTemplateValues(template);
-  // Ensure the letterhead company reflects this template's distinct brand.
-  const brand = baseVals.companyName || getTemplateBrand(template);
+  // Ensure the letterhead reflects this template's distinct brand / candidate persona.
+  const brand = isResume
+    ? (baseVals.fullName || baseVals.name || getTemplateBrand(template))
+    : (baseVals.companyName || getTemplateBrand(template));
   // Layer every known default UNDER the passed/field values so any variable used
   // in the body but absent from `content.fields` still resolves to a real sample
   // value (non-empty passed values win; unknown vars fall through to humanize).
@@ -46,23 +49,27 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
   for (const [k, v] of Object.entries(baseVals)) {
     if (v) vals[k] = v;
   }
-  vals.companyName = brand;
+  if (isResume) {
+    vals.fullName = brand;
+  } else {
+    vals.companyName = brand;
+  }
   const primary = template?.content?.styles?.primaryColor || "#2563eb";
   const secondary = template?.content?.styles?.secondaryColor || "#3b82f6";
   const footerText: string | undefined = template?.content?.layout?.footer;
   const docHeader: string | undefined = template?.content?.layout?.header;
   const blocks: any[] = template?.content?.editorState?.content ?? [];
 
-  // Pick a layout + heading style for the variant categories. Prefer an explicit
+  // Pick a layout + heading style for the variant categories (excluding resumes). Prefer an explicit
   // per-template assignment (baked into styles for an even spread); otherwise
   // derive deterministically from the slug hash.
-  const useVariants = VARIANT_CATEGORIES.has(template?.categorySlug);
+  const useVariants = !isResume && VARIANT_CATEGORIES.has(template?.categorySlug);
   const explicitLayout = template?.content?.styles?.layoutVariant;
   const explicitHeading = template?.content?.styles?.headingStyle;
   const h = hashStr(String(template?.slug || template?.id || ""));
   const layout = useVariants
     ? (typeof explicitLayout === "number" ? explicitLayout % LAYOUT_COUNT : h % LAYOUT_COUNT)
-    : -1;
+    : 0;
   const hstyle = useVariants
     ? (typeof explicitHeading === "number" ? explicitHeading % HEADING_STYLE_COUNT : Math.floor(h / LAYOUT_COUNT) % HEADING_STYLE_COUNT)
     : 0;
@@ -85,8 +92,12 @@ export default function DocumentPaper({ template, values }: DocumentPaperProps) 
     return result;
   };
 
-  const companyLine = renderText("{{companyName}}");
-  const addressLine = renderText("{{address}}");
+  const companyLine = isResume
+    ? renderText(vals.fullName || brand)
+    : renderText(vals.companyName || "{{companyName}}");
+  const addressLine = isResume
+    ? renderText(vals.location || vals.address || "San Francisco, CA")
+    : renderText("{{address}}");
   const emailLine = renderText("{{email}}");
   const phoneLine = renderText("{{phone}}");
   const initial = (companyLine.trim()[0] || "A").toUpperCase();
