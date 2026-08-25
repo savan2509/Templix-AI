@@ -31,24 +31,35 @@ export default function FAQ({ locale, items, heading }: Props) {
             return (
               <div
                 key={index}
-                className="border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 overflow-hidden shadow-sm"
+                className={`border rounded-xl bg-white dark:bg-zinc-900 overflow-hidden shadow-xs transition-all duration-300 ${
+                  isOpen
+                    ? "border-blue-300 dark:border-blue-800/80 shadow-md shadow-blue-500/5 ring-1 ring-blue-500/20"
+                    : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm"
+                }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-5 py-4 text-left font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  className="flex w-full items-center justify-between px-5 py-4 text-left font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50/80 dark:hover:bg-zinc-800/60 transition-all duration-200 cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-200 pr-2">{faq.question}</h3>
-                  <ChevronDown
-                    className={`h-5 w-5 shrink-0 ml-3 text-zinc-400 transform transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                  <h3 className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-100 pr-2 transition-colors">
+                    {faq.question}
+                  </h3>
+                  <div className={`p-1 rounded-full transition-all duration-300 ${isOpen ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180" : "text-zinc-400"}`}>
+                    <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-300" />
+                  </div>
                 </button>
-                {/* Answer always in the DOM (collapsed via CSS) so users and
-                    crawlers both see it and it matches the FAQPage schema. */}
-                <div className={`${isOpen ? "block" : "hidden"} px-5 pb-5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800 pt-3`}>
-                  {faq.answer}
+                {/* Smooth accordion content transition */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 pb-5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/80 pt-3.5">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
               </div>
             );

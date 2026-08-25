@@ -248,26 +248,27 @@ export default async function HomePage({ params }: PageProps) {
 
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-20 pb-16 lg:pt-28 lg:pb-24 bg-gradient-to-b from-blue-50/50 via-white to-white dark:from-zinc-900/30 dark:via-zinc-950 dark:to-zinc-950">
-          {/* Ambient Glows */}
-          <div className="absolute top-[-10%] left-1/2 -z-10 h-[600px] w-[1000px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.08),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.15),transparent_50%)]" />
-          <div className="absolute top-1/4 right-[10%] -z-10 h-[350px] w-[350px] rounded-full bg-blue-400/5 blur-[80px] dark:bg-blue-500/10" />
+          {/* Ambient Floating Glows */}
+          <div className="animate-float-slow absolute top-[-10%] left-1/2 -z-10 h-[600px] w-[1000px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.12),transparent_55%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.22),transparent_55%)] pointer-events-none" />
+          <div className="animate-float-delayed absolute top-1/4 right-[10%] -z-10 h-[350px] w-[350px] rounded-full bg-blue-400/10 blur-[90px] dark:bg-blue-500/15 pointer-events-none" />
+          <div className="animate-pulse-slow absolute top-1/3 left-[8%] -z-10 h-[280px] w-[280px] rounded-full bg-indigo-400/10 blur-[80px] dark:bg-indigo-500/10 pointer-events-none" />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-8">
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-600 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400 shadow-sm animate-fade-in">
-              <Sparkles className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-blue-200/80 bg-blue-50/80 text-xs font-semibold text-blue-600 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-400 shadow-xs animate-fade-down hover:scale-105 transition-transform duration-300">
+              <Sparkles className="h-3.5 w-3.5 animate-bounce-subtle text-blue-500" />
               <span>{t.heroBadge}</span>
             </div>
 
             {/* Main Brand Position Headline */}
             <div className="space-y-4 max-w-4xl mx-auto">
-              <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
+              <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl leading-[1.1] animate-fade-up stagger-1">
                 {t.heroTitleLine1}<br />
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
+                <span className="animate-gradient-shift bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
                   {t.heroTitleLine2}
                 </span>
               </h1>
-              <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed animate-fade-up stagger-2">
                 {t.heroSubtitle}
               </p>
             </div>
@@ -281,7 +282,7 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-12 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 mb-8 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-500" />
+              <TrendingUp className="h-5 w-5 text-blue-500 animate-bounce-subtle" />
               <span>{t.categoriesHeading}</span>
             </h2>
 
@@ -290,7 +291,7 @@ export default async function HomePage({ params }: PageProps) {
                 <Link
                   key={cat.slug}
                   href={`/${locale}/templates/${cat.slug}`}
-                  className="group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/70 dark:border-zinc-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
+                  className="hover-lift group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/80 dark:border-zinc-800 shadow-xs hover:shadow-xl hover:border-blue-400/40 dark:hover:border-blue-500/30 transition-all duration-300"
                 >
                   {/* Cover image */}
                   <div className="relative aspect-[3/2] w-full overflow-hidden">
@@ -300,21 +301,21 @@ export default async function HomePage({ params }: PageProps) {
                       title={`Free ${categoryName(cat.slug)} templates`}
                       fill
                       loading="lazy"
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
                     />
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
                   </div>
 
                   {/* Label area */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 className="block font-bold text-white text-xs leading-tight drop-shadow">
+                  <div className="absolute bottom-0 left-0 right-0 p-3.5">
+                    <h3 className="block font-bold text-white text-xs sm:text-sm leading-tight drop-shadow transition-transform duration-300 group-hover:translate-x-0.5">
                       {categoryName(cat.slug)}
                     </h3>
-                    <div className="flex items-center gap-1 text-[10px] text-white/70 mt-0.5 font-medium">
+                    <div className="flex items-center gap-1 text-[10px] text-white/80 mt-0.5 font-medium">
                       <span>{allFallbackTemplates.filter(ft => ft.categorySlug === cat.slug).length} {c.templatesLabel}</span>
-                      <ArrowRight className="h-2.5 w-2.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                      <ArrowRight className="h-2.5 w-2.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -338,10 +339,10 @@ export default async function HomePage({ params }: PageProps) {
               </div>
               <Link
                 href={`/${locale}/templates`}
-                className="shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                className="group shrink-0 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1 transition-colors"
               >
                 <span>{c.viewAll}</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </div>
 
@@ -349,7 +350,7 @@ export default async function HomePage({ params }: PageProps) {
               {templates.map((temp) => (
                 <div
                   key={temp.id}
-                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
+                  className="card-interactive group flex flex-col rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-xs"
                 >
                   {/* Thumbnail — mini of the live document preview so the cover
                       matches the detail page for every module */}
@@ -365,7 +366,7 @@ export default async function HomePage({ params }: PageProps) {
                           allFallbackTemplates.find((a) => a.slug === temp.slug)?.content,
                       }}
                     />
-                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-700 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
+                    <span className="animate-shimmer absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
                       {c.free}
                     </span>
                   </div>
@@ -373,10 +374,10 @@ export default async function HomePage({ params }: PageProps) {
                   {/* Card Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
-                      <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold">
+                      <span className="inline-block px-2.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold">
                         {c.categoryNames[temp.category.slug as keyof typeof c.categoryNames] ?? temp.category.name}
                       </span>
-                      <h3 className="font-bold text-zinc-900 dark:text-white text-lg">
+                      <h3 className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {temp.title}
                       </h3>
                       <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
@@ -386,11 +387,11 @@ export default async function HomePage({ params }: PageProps) {
 
                     <Link
                       href={`/${locale}/templates/${temp.category?.slug ? `${temp.category.slug}/` : ""}${temp.slug}`}
-                      className="w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-1 shadow-sm"
+                      className="btn-shimmer w-full h-11 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-sm transition-all flex items-center justify-center gap-1.5 shadow-sm"
                       aria-label={`Customize ${temp.title}`}
                     >
                       <span>{c.customizeTemplate} — {temp.title.split(" ")[0]}</span>
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -412,31 +413,31 @@ export default async function HomePage({ params }: PageProps) {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex items-center justify-center mx-auto shadow-sm">
-                  <FileText className="h-6 w-6" />
+              <div className="card-interactive group p-7 rounded-2xl bg-zinc-50/60 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/80 dark:border-zinc-800/80">
+                <div className="h-14 w-14 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex items-center justify-center mx-auto shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <FileText className="h-7 w-7" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar1Title}</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{t.pillar1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar1Desc.replace("{count}", String(Math.floor(CATALOG_STATS.totalTemplates / 10) * 10))}
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto shadow-sm">
-                  <Sparkles className="h-6 w-6" />
+              <div className="card-interactive group p-7 rounded-2xl bg-zinc-50/60 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/80 dark:border-zinc-800/80">
+                <div className="h-14 w-14 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                  <Sparkles className="h-7 w-7" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar2Title}</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{t.pillar2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar2Desc}
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/60 dark:border-zinc-800">
-                <div className="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300 flex items-center justify-center mx-auto shadow-sm">
-                  <Zap className="h-6 w-6" />
+              <div className="card-interactive group p-7 rounded-2xl bg-zinc-50/60 dark:bg-zinc-900/50 space-y-4 text-center border border-zinc-100/80 dark:border-zinc-800/80">
+                <div className="h-14 w-14 rounded-2xl bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300 flex items-center justify-center mx-auto shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <Zap className="h-7 w-7" />
                 </div>
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white">{t.pillar3Title}</h3>
+                <h3 className="font-bold text-lg text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{t.pillar3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                   {t.pillar3Desc}
                 </p>
@@ -449,7 +450,8 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900 border-t border-zinc-100 dark:border-zinc-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-xs">
+                <ShieldCheck className="h-3.5 w-3.5 animate-bounce-subtle text-emerald-600" />
                 {t.whyBadge}
               </span>
               <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
@@ -462,44 +464,44 @@ export default async function HomePage({ params }: PageProps) {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Feature 1 */}
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
+              <div className="card-interactive group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs space-y-4">
+                <div className="h-11 w-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why1Title}</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{t.why1Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why1Desc}
                 </p>
               </div>
 
               {/* Feature 2 */}
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 flex items-center justify-center">
+              <div className="card-interactive group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs space-y-4">
+                <div className="h-11 w-11 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why2Title}</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{t.why2Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why2Desc}
                 </p>
               </div>
 
               {/* Feature 2.5 (Zap/Speed) */}
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
+              <div className="card-interactive group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs space-y-4">
+                <div className="h-11 w-11 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <Zap className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why3Title}</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{t.why3Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why3Desc}
                 </p>
               </div>
 
               {/* Feature 3 */}
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm space-y-4 hover:shadow-md transition-all">
-                <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 flex items-center justify-center">
+              <div className="card-interactive group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-xs space-y-4">
+                <div className="h-11 w-11 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <FileText className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white">{t.why4Title}</h3>
+                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{t.why4Title}</h3>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why4Desc}
                 </p>
@@ -522,11 +524,11 @@ export default async function HomePage({ params }: PageProps) {
               </div>
               <Link
                 href={`/${locale}/blog`}
-                className="shrink-0 text-sm font-semibold text-blue-700 dark:text-blue-300 hover:underline flex items-center gap-1"
+                className="group shrink-0 text-sm font-semibold text-blue-700 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200 flex items-center gap-1 transition-colors"
                 aria-label="Explore All Document Guides and Articles"
               >
                 <span>{c.viewAllArticles}</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </div>
 
@@ -535,7 +537,7 @@ export default async function HomePage({ params }: PageProps) {
                 <Link
                   key={article.id}
                   href={`/${locale}/blog/${article.slug}`}
-                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:shadow-lg hover:border-blue-500/30 transition-all overflow-hidden"
+                  className="card-interactive group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden"
                 >
                   {/* Blog cover image */}
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -545,16 +547,16 @@ export default async function HomePage({ params }: PageProps) {
                       title={`${article.title} tutorial and guide blueprint`}
                       fill
                       loading="lazy"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                    <span className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white border border-white/30 backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white border border-white/30 backdrop-blur-md shadow-xs">
                       {article.category}
                     </span>
                   </div>
 
-                  <div className="p-6 space-y-2">
+                  <div className="p-6 space-y-2.5">
                     <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">
                       {new Date(article.createdAt).toLocaleDateString(INTL_LOCALE[locale as keyof typeof INTL_LOCALE] ?? "en-US", {
                         month: "long",
@@ -562,14 +564,14 @@ export default async function HomePage({ params }: PageProps) {
                         year: "numeric"
                       })}
                     </span>
-                    <h3 className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="font-bold text-zinc-900 dark:text-white text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                       {article.title}
                     </h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
                       {article.description}
                     </p>
                     <div className="pt-2 flex items-center gap-1 text-xs font-semibold text-blue-700 dark:text-blue-300">
-                      <span>Read Guide: {article.title}</span> <ArrowRight className="h-3.5 w-3.5 shrink-0" />
+                      <span>Read Guide</span> <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
                     </div>
                   </div>
                 </Link>
@@ -582,21 +584,21 @@ export default async function HomePage({ params }: PageProps) {
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center space-y-4 max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
-                <ShieldCheck className="h-4 w-4" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-800 dark:text-emerald-300 shadow-xs hover:scale-105 transition-transform duration-300">
+                <ShieldCheck className="h-4 w-4 animate-bounce-subtle text-emerald-600 dark:text-emerald-400" />
                 <span>Verified Editorial & Security Standards</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
                 {t.complianceHeading}
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800">{t.complianceContractLink}</a>{t.complianceText4}
+                {t.complianceText1}<a href={`/${locale}/templates/invoices`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800 dark:hover:text-blue-200 transition-colors">{t.complianceInvoiceLink}</a>{t.complianceText2}<a href={`/${locale}/templates/resumes`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800 dark:hover:text-blue-200 transition-colors">{t.complianceResumeLink}</a>{t.complianceText3}<a href={`/${locale}/templates/contracts`} className="text-blue-700 dark:text-blue-300 underline underline-offset-2 font-semibold hover:text-blue-800 dark:hover:text-blue-200 transition-colors">{t.complianceContractLink}</a>{t.complianceText4}
               </p>
             </div>
 
             {/* Editorial & Security Standards Pillars */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+              <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
                     LS
@@ -610,13 +612,14 @@ export default async function HomePage({ params }: PageProps) {
                   Commercial agreement blueprints and contract templates built following standard commercial formatting conventions and digital execution blocks.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-colors">
-                    Explore Standards &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="group inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-[11px] font-semibold text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/50 transition-all">
+                    <span>Explore Standards</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                   </Link>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+              <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-sm">
                     PS
@@ -630,13 +633,14 @@ export default async function HomePage({ params }: PageProps) {
                   Document state and PDF exports are processed directly inside your local web browser memory with zero remote storage of document text.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-colors">
-                    Privacy Architecture &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="group inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/50 transition-all">
+                    <span>Privacy Architecture</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                   </Link>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-sm">
+              <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-xs">
                     ATS
@@ -650,8 +654,9 @@ export default async function HomePage({ params }: PageProps) {
                   Single-column resume structures designed with standard section headers so automated Applicant Tracking Systems parse skills and experience cleanly.
                 </p>
                 <div className="pt-1">
-                  <Link href={`/${locale}/about#editorial-standards`} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-colors">
-                    ATS Guidelines &rarr;
+                  <Link href={`/${locale}/about#editorial-standards`} className="group inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/60 dark:hover:bg-violet-900/60 text-[11px] font-semibold text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-900/50 transition-all">
+                    <span>ATS Guidelines</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                   </Link>
                 </div>
               </div>
@@ -676,7 +681,7 @@ export default async function HomePage({ params }: PageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
                 <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                   1. Financial Accuracy & Tax Requirements
                 </h3>
@@ -688,7 +693,7 @@ export default async function HomePage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
                 <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                   2. Career Documentation & ATS Best Practices
                 </h3>
@@ -700,7 +705,7 @@ export default async function HomePage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
                 <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                   3. Commercial Agreements & Terms of Engagement
                 </h3>
@@ -712,7 +717,7 @@ export default async function HomePage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3">
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
                 <h3 className="font-bold text-zinc-900 dark:text-white text-base">
                   4. Privacy-By-Design Document Generation
                 </h3>

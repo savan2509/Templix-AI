@@ -198,7 +198,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             {/* AI Fill — describe the situation, Gemini fills every field */}
             <div className="rounded-xl border border-violet-200 dark:border-violet-900/60 bg-violet-50/60 dark:bg-violet-950/20 p-3 space-y-2">
               <label htmlFor="ai-fill" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
-                <Sparkles className="h-3.5 w-3.5" /> Fill with AI
+                <Sparkles className="h-3.5 w-3.5 animate-bounce-subtle" /> Fill with AI
               </label>
               <textarea
                 id="ai-fill"
@@ -211,7 +211,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               <button
                 onClick={handleAiFill}
                 disabled={aiLoading || !aiPrompt.trim()}
-                className="w-full h-9 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed hover:from-violet-700 hover:to-fuchsia-700 transition-all"
+                className="btn-shimmer w-full h-9 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed hover:from-violet-700 hover:to-fuchsia-700 transition-all shadow-xs active:scale-98 cursor-pointer"
               >
                 {aiLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Sparkles className="h-3.5 w-3.5" />}
                 {aiLoading ? "Generating…" : "Generate & fill the fields"}
@@ -239,11 +239,11 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
             <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 space-y-3">
               <button
                 onClick={handleCustomizeClick}
-                className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 flex items-center justify-center gap-1.5 transition-all hover:scale-[1.01]"
+                className="btn-shimmer w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/20 flex items-center justify-center gap-1.5 transition-all active:scale-98 cursor-pointer"
               >
                 <PenTool className="h-4 w-4" />
                 <span>{t.customizeInEditor}</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
               <p className="text-[10px] text-center text-zinc-400">
                 {canEdit === true

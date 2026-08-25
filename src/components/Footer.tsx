@@ -93,10 +93,10 @@ export default function Footer() {
             <div className="flex flex-col gap-2.5">
               <a
                 href="mailto:support@templix-ai.whitesparksoft.com"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-blue-700 shadow-sm transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
+                className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-blue-700 shadow-xs transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
                 aria-label="Send email to support@templix-ai.whitesparksoft.com"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
                   <Mail className="h-3.5 w-3.5" />
                 </span>
                 <span className="min-w-0 text-left">
@@ -111,10 +111,10 @@ export default function Footer() {
 
               <a
                 href="tel:+14158903882"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2 text-emerald-700 shadow-sm transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
+                className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3.5 py-2 text-emerald-700 shadow-xs transition-all hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-md dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/70"
                 aria-label="Call customer support at +1 (415) 890-3882"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
                   <Phone className="h-3.5 w-3.5" />
                 </span>
                 <span className="min-w-0 text-left">
@@ -131,10 +131,10 @@ export default function Footer() {
                 href={siteConfig.links.googleMaps}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-sm transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"
+                className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-xs transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"
                 aria-label="View Templix AI Headquarters on Google Maps"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white shadow-sm">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
                   <MapPin className="h-3.5 w-3.5" />
                 </span>
                 <span className="min-w-0 text-left">
@@ -203,7 +203,7 @@ export default function Footer() {
                 type="submit"
                 data-webmcp-submit="subscribe"
                 disabled={submitted || sending}
-                className="flex items-center justify-center gap-1 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-70 text-sm font-bold text-white shadow-md shadow-blue-500/10 hover:shadow-lg transition-all duration-200"
+                className="btn-shimmer flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-70 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 {sending ? (
                   <span>Sending…</span>
@@ -212,7 +212,7 @@ export default function Footer() {
                 ) : (
                   <>
                     <span>{t.join}</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                   </>
                 )}
               </button>
