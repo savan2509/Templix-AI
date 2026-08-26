@@ -40,7 +40,8 @@ export function generateOrganizationSchema() {
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        email: "support@templixai.com",
+        telephone: "+1-415-890-3882",
+        url: `${siteConfig.url}/en/contact`,
         availableLanguage: ["English"],
       },
     ],

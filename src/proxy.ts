@@ -56,11 +56,13 @@ export default async function proxy(req: NextRequest) {
 
   const { pathname } = req.nextUrl;
 
-  // Consolidate bare root `/` onto canonical locale `/en` (301 Moved Permanently)
+  // Rewrite bare root `/` onto canonical locale `/en` (HTTP 200 without redirect hops)
   if (pathname === "/") {
-    const baseUrl = isLocalhost ? req.url : PRODUCTION_URL;
-    const dest = new URL(`/en${req.nextUrl.search}`, baseUrl);
-    return NextResponse.redirect(dest, 301);
+    const url = req.nextUrl.clone();
+    url.pathname = "/en";
+    const rewriteResponse = NextResponse.rewrite(url);
+    rewriteResponse.headers.set("Link", `<${PRODUCTION_URL}/en>; rel="canonical"`);
+    return rewriteResponse;
   }
   let supabaseResponse = NextResponse.next({ request: req });
 
@@ -133,8 +135,10 @@ export default async function proxy(req: NextRequest) {
     "privacy", "terms", "faq", "login", "editor",
     "dashboard", "admin", "confirm", "reset", "auth",
     "services", "products", "category", "industries", "use-cases",
+    "sitemap",
     ...ALL_MASTER_LANDING_SLUGS
   ];
+
 
   // Helper to build clean search params (strips page=1 and empty page)
   const cleanSearch = (searchParams: URLSearchParams): string => {
@@ -217,3 +221,6 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml).*)",
   ],
 };
+
+export { proxy };
+

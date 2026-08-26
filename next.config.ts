@@ -83,8 +83,8 @@ const nextConfig: NextConfig = {
       "img-src 'self' data: blob: https://templix-ai.whitesparksoft.com https://cdn.templix.ai https://www.google-analytics.com https://www.googletagmanager.com",
       // Connections: self + Supabase + GA4 + Vercel analytics
       "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://va.vercel-scripts.com wss://*.supabase.co",
-      // Frames: block all (X-Frame-Options also set below)
-      "frame-src 'none'",
+      // Frames: self + Google Maps embed + GTM noscript
+      "frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com",
       // Objects: block all plugins
       "object-src 'none'",
       // Base URI: only self (prevents base tag injection)
@@ -119,18 +119,20 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
-        // Cache custom fonts for 1 year.
+        // Cache custom fonts for 1 year with edge CDN directive.
         source: "/fonts/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "CDN-Cache-Control", value: "public, max-age=31536000, immutable" },
           { key: "Expires", value: "Fri, 31 Dec 2030 23:59:59 GMT" },
         ],
       },
       {
-        // Cache public images, badges & icons on CDN for 1 year (immutable) with Expires header.
-        source: "/:path*.{jpg,jpeg,png,svg,webp,avif,gif,ico}",
+        // Cache public images, badges, icons, manifests & assets on CDN for 1 year (immutable).
+        source: "/:path*.{jpg,jpeg,png,svg,webp,avif,gif,ico,woff,woff2,ttf,eot,css,js,mjs,webmanifest}",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "CDN-Cache-Control", value: "public, max-age=31536000, immutable" },
           { key: "Expires", value: "Fri, 31 Dec 2030 23:59:59 GMT" },
         ],
       },

@@ -345,7 +345,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
         {/* ── Cover Image Panel ── */}
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-0 mb-2">
-          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
             <Image
               src={resolvePostImage(post)}
               // The article's own cover — the single most Google-Images-eligible
@@ -618,7 +618,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     href={`/${locale}/blog/${p.slug}`}
                     className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="relative h-36 w-full overflow-hidden">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden">
                       <Image
                         src={resolvePostImage(p)}
                         alt={`${p.title} — illustration`}

@@ -1,5 +1,27 @@
-# Domain Email Security & SPF Specification
-Domain: templix-ai.whitesparksoft.com
-SPF-Record: v=spf1 include:resend.com include:_spf.google.com ~all
-DMARC-Record: v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@whitesparksoft.com
-Authorized-Senders: no-reply@templix-ai.whitesparksoft.com
+# Domain Email Security, SPF, DKIM & DMARC Specification
+# Domain: templix-ai.whitesparksoft.com
+
+# 1. SPF TXT Record (Add to DNS Root / Host: @ or templix-ai.whitesparksoft.com)
+Type: TXT
+Name: @
+Value: v=spf1 include:resend.com include:_spf.google.com ~all
+TTL: 3600 (or Auto)
+
+# 2. DMARC TXT Record (Host: _dmarc or _dmarc.templix-ai.whitesparksoft.com)
+Type: TXT
+Name: _dmarc
+Value: v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@whitesparksoft.com; aspf=r
+TTL: 3600 (or Auto)
+
+# 3. Resend / Transactional Email DKIM CNAME Records
+# (Provided by your Resend / Mailgun dashboard when verifying domain)
+Type: CNAME
+Name: resend._domainkey
+Value: dkim.resend.com
+TTL: 3600
+
+# 4. Canonical www -> Apex CNAME Record
+Type: CNAME
+Name: www
+Value: templix-ai.whitesparksoft.com
+TTL: 3600 (or DNS only / Proxied via Cloudflare)

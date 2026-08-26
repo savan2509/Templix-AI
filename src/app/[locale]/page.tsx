@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "Templix AI",
       type: "website",
       locale: "en_US",
-      images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: "Templix AI" }],
+      images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: "Templix AI — Free Professional Document Templates & AI Editor" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -204,44 +204,9 @@ export default async function HomePage({ params }: PageProps) {
     console.warn("Home page database connection bypass, displaying initial seed fallbacks.");
   }
 
-  const homepageSoftwareSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Templix AI Document Workspace",
-    description: "Free AI-assisted document creation and template editor for invoices, resumes, contracts, proposals, and letters.",
-    url: `${SITE_URL}/${locale}`,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "All",
-    browserRequirements: "Requires JavaScript. Requires HTML5.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
-  const homepageCollectionSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Featured Document Templates & Blueprints",
-    numberOfItems: fallbackTemplates.length,
-    itemListElement: fallbackTemplates.map((t, idx) => ({
-      "@type": "ListItem",
-      position: idx + 1,
-      name: t.title,
-      url: `${SITE_URL}/${locale}/templates/${t.category.slug}/${t.slug}`,
-    })),
-  };
-
   return (
     <>
-      <Schema
-        data={[
-          faqSchema,
-          homepageSoftwareSchema,
-          homepageCollectionSchema,
-        ]}
-      />
+      <Schema data={faqSchema} />
       <Navbar />
 
       <main className="flex-1">
@@ -268,7 +233,7 @@ export default async function HomePage({ params }: PageProps) {
                   {t.heroTitleLine2}
                 </span>
               </h1>
-              <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed animate-fade-up stagger-2">
+              <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed animate-fade-up stagger-2">
                 {t.heroSubtitle}
               </p>
             </div>
@@ -291,7 +256,7 @@ export default async function HomePage({ params }: PageProps) {
                 <Link
                   key={cat.slug}
                   href={`/${locale}/templates/${cat.slug}`}
-                  className="hover-lift group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/80 dark:border-zinc-800 shadow-xs hover:shadow-xl hover:border-blue-400/40 dark:hover:border-blue-500/30 transition-all duration-300"
+                  className="cv-card hover-lift group relative flex flex-col rounded-2xl overflow-hidden border border-zinc-100/80 dark:border-zinc-800 shadow-xs hover:shadow-xl hover:border-blue-400/40 dark:hover:border-blue-500/30 transition-all duration-300"
                 >
                   {/* Cover image */}
                   <div className="relative aspect-[3/2] w-full overflow-hidden">
@@ -537,14 +502,14 @@ export default async function HomePage({ params }: PageProps) {
                 <Link
                   key={article.id}
                   href={`/${locale}/blog/${article.slug}`}
-                  className="card-interactive group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden"
+                  className="cv-card card-interactive group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden"
                 >
                   {/* Blog cover image */}
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
                     <Image
                       src={article.image}
-                      alt={`${article.title} tutorial and guide blueprint`}
-                      title={`${article.title} tutorial and guide blueprint`}
+                      alt={`${article.title} — Step-by-step guide and template blueprint`}
+                      title={`${article.title} — Step-by-step guide and template blueprint`}
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"

@@ -23,6 +23,14 @@ export default function CookieConsent() {
   const handleAcceptAll = () => {
     try {
       localStorage.setItem("templix-cookie-consent", "all");
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("consent", "update", {
+          analytics_storage: "granted",
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+        });
+      }
     } catch {}
     setIsVisible(false);
   };
@@ -30,6 +38,14 @@ export default function CookieConsent() {
   const handleAcceptEssential = () => {
     try {
       localStorage.setItem("templix-cookie-consent", "essential");
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("consent", "update", {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+        });
+      }
     } catch {}
     setIsVisible(false);
   };

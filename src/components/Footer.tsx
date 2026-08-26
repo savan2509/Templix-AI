@@ -15,6 +15,7 @@ import {
   Heart,
   CheckCircle2
 } from "lucide-react";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -91,23 +92,28 @@ export default function Footer() {
 
             {/* Direct contact & Phone links */}
             <div className="flex flex-col gap-2.5">
-              <a
-                href="mailto:support@templix-ai.whitesparksoft.com"
+              <ObfuscatedEmail
+                user="support"
+                domain="templix-ai.whitesparksoft.com"
                 className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-blue-700 shadow-xs transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
-                aria-label="Send email to support@templix-ai.whitesparksoft.com"
+                ariaLabel="Send email to customer support team"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
-                  <Mail className="h-3.5 w-3.5" />
-                </span>
-                <span className="min-w-0 text-left">
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
-                    Email Support
-                  </span>
-                  <span className="block truncate text-xs font-bold group-hover:underline">
-                    support@templix-ai.whitesparksoft.com
-                  </span>
-                </span>
-              </a>
+                {(emailText) => (
+                  <>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
+                      <Mail className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="min-w-0 text-left">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80 dark:text-blue-400/80">
+                        Email Support
+                      </span>
+                      <span className="block truncate text-xs font-bold group-hover:underline">
+                        {emailText}
+                      </span>
+                    </span>
+                  </>
+                )}
+              </ObfuscatedEmail>
 
               <a
                 href="tel:+14158903882"
@@ -139,7 +145,7 @@ export default function Footer() {
                 </span>
                 <span className="min-w-0 text-left">
                   <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                    Headquarters (Google Maps)
+                    Google Business Profile & HQ
                   </span>
                   <span className="block truncate text-xs font-medium text-zinc-700 dark:text-zinc-300 group-hover:underline">
                     535 Mission St, 14th Fl, San Francisco, CA
@@ -174,16 +180,24 @@ export default function Footer() {
               className="flex gap-2 max-w-md mt-2"
             >
               <div className="relative flex-1">
+                <label htmlFor="newsletter-email-input" className="sr-only">
+                  {t.emailPlaceholder}
+                </label>
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400 pointer-events-none" />
                 <input
+                  id="newsletter-email-input"
                   type="email"
                   name="email"
                   placeholder={t.emailPlaceholder}
                   aria-label={t.emailPlaceholder}
+                  aria-describedby={error ? "newsletter-error-msg" : undefined}
                   data-webmcp-input="email"
                   itemProp="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError(null);
+                  }}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                   required
                 />
@@ -217,6 +231,16 @@ export default function Footer() {
                 )}
               </button>
             </form>
+            {error && (
+              <p id="newsletter-error-msg" role="alert" className="text-xs font-semibold text-rose-600 dark:text-rose-400">
+                {error}
+              </p>
+            )}
+            {submitted && (
+              <p role="status" aria-live="polite" className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                {t.subscribed} Thank you for joining!
+              </p>
+            )}
             <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
               We respect your privacy. By subscribing you agree to our{" "}
               <Link href={`/${locale}/privacy`} className="underline hover:text-blue-600 dark:hover:text-blue-400">
@@ -387,6 +411,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/sitemap`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
+                  HTML Sitemap &amp; Directory
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/contact`} className="text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 transition-colors">
                   {t.contactSupport}
                 </Link>
@@ -418,7 +447,7 @@ export default function Footer() {
               X (Twitter)
             </a>
             <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener noreferrer nofollow" aria-label="Google Business Profile & Maps Location" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-              Google Maps
+              Google Business Profile
             </a>
           </div>
 

@@ -6,6 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
 import { Mail, Phone } from "lucide-react";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { PRODUCTION_URL } from "@/config/site";
 
 interface PageProps {
@@ -84,19 +85,24 @@ export default async function ContactPage({ params }: PageProps) {
         <ContactForm />
 
         <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-zinc-100 pt-5 dark:border-zinc-800">
-          <a
-            href="mailto:support@templix-ai.whitesparksoft.com"
+          <ObfuscatedEmail
+            user="support"
+            domain="templix-ai.whitesparksoft.com"
             className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors"
-            aria-label="Email support@templix-ai.whitesparksoft.com"
+            ariaLabel="Email customer support team directly"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
-              <Mail className="h-4 w-4" />
-            </span>
-            <div className="min-w-0 text-left">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
-              <span className="block truncate text-xs font-semibold">support@templix-ai.whitesparksoft.com</span>
-            </div>
-          </a>
+            {(emailText) => (
+              <>
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <div className="min-w-0 text-left">
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
+                  <span className="block truncate text-xs font-semibold">{emailText}</span>
+                </div>
+              </>
+            )}
+          </ObfuscatedEmail>
 
           <a
             href="tel:+14158903882"

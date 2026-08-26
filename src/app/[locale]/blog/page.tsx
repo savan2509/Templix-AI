@@ -340,7 +340,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
                     >
                       {/* Cover image */}
-                      <div className="relative h-44 w-full overflow-hidden">
+                      <div className="relative aspect-[16/9] w-full overflow-hidden">
                         <Image
                           src={resolvePostImage(post)}
                           alt={generateBlogAlt(post.title)}

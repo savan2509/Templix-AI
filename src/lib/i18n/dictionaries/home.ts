@@ -26,13 +26,13 @@ const en = {
   pillar3Desc:
     "Download your finished document as a polished, print-ready PDF or an editable MS Word file in one click.",
 
-  whyBadge: "100% Free & Open Access",
-  whyHeading: "Why Choose Templix AI for Free Business Templates",
+  whyBadge: "Open Access Document Studio",
+  whyHeading: "Why Choose Templix AI for Business Templates",
   whySubtitle:
-    "Templix AI provides premium document creation tools and free templates completely free of charge. No subscriptions, no hidden limits.",
-  why1Title: "100% Free Templates",
+    "Templix AI provides modern document creation tools and structured templates completely open to everyone. No subscriptions, no hidden limits.",
+  why1Title: "Zero Subscriptions or Paywalls",
   why1Desc:
-    "No billing forms, credit card prompts, or gated items. Simply open the app and begin customized layouts.",
+    "No billing forms, credit card prompts, or gated items. Simply open the app and begin customizing layouts.",
   why2Title: "Unlimited AI Document Tools",
   why2Desc:
     "Rewrite paragraphs, translate segments, correct syntax, and tailor tones with zero word limits or cost tiers.",

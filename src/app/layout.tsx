@@ -70,9 +70,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
+    shortcut: "/favicon.ico",
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
@@ -82,7 +84,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: siteConfig.name }],
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Templix AI — Free Professional Document Templates & AI Editor" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -113,6 +115,14 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Google Consent Mode v2 — initialize default privacy-safe state before any tag loads */}
+        <Script
+          id="google-consent-mode"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}var consent='denied';try{if(localStorage.getItem('templix-cookie-consent')==='all'){consent='granted';}}catch(e){}gtag('consent','default',{'analytics_storage':consent,'ad_storage':consent,'ad_user_data':consent,'ad_personalization':consent,'wait_for_update':500});})();`,
+          }}
+        />
         {/* Google Tag Manager — lazyOnload so it never blocks FCP, LCP, or initial crawl */}
         <Script
           id="gtm-script"

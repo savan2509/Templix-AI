@@ -66,9 +66,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/about", { changeFrequency: "monthly", priority: 0.5 }],
     ["/contact", { changeFrequency: "monthly", priority: 0.5 }],
     ["/faq", { changeFrequency: "monthly", priority: 0.5 }],
+    ["/sitemap", { changeFrequency: "daily", priority: 0.9 }],
     ["/privacy", { changeFrequency: "yearly", priority: 0.3 }],
     ["/terms", { changeFrequency: "yearly", priority: 0.3 }],
   ];
+
 
   // ── Deduplicated Template detail pages ──────────────────────────────────────
   const seenTemplates = new Set<string>();

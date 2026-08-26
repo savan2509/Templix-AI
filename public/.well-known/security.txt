@@ -1,0 +1,5 @@
+Contact: https://templix-ai.whitesparksoft.com/en/contact
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://templix-ai.whitesparksoft.com/.well-known/security.txt
+Policy: https://templix-ai.whitesparksoft.com/en/privacy
