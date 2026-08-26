@@ -36,7 +36,13 @@ import { siteConfig } from "@/config/site";
 import { getCategoryFaqs, faqPageSchema } from "@/data/faq-category";
 import { getProfessionContent, getProfessionsByCategory } from "@/features/templates/profession-content";
 import { getTemplateInsight } from "@/features/templates/template-insights";
-import { getTemplateCopy, getTemplateFaqs, getHubIntro, getCategoryDefinition } from "@/features/templates/template-content";
+import {
+  getTemplateCopy,
+  getTemplateFaqs,
+  getHubIntro,
+  getCategoryDefinition,
+  getCategorySeoKit,
+} from "@/features/templates/template-content";
 import { generateProductSchema } from "@/data/schemas/product";
 
 function getPaginationRange(activePage: number, totalPages: number): (number | string)[] {
@@ -203,6 +209,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   }
 
   // 2. Otherwise render category list metadata
+  const isTopLevelCategory = slug.length === 1 && CATEGORIES.some((c) => c.slug === slug[0]);
+  const dynamicCount = isTopLevelCategory
+    ? allFallbackTemplates.filter((t) => t.categorySlug === slug[0]).length
+    : 0;
+  const categorySeoKit = isTopLevelCategory ? getCategorySeoKit(slug[0], dynamicCount) : null;
+
   const category = slug[0] ? capitalize(slug[0]) : "";
   const niche = slug[1] ? capitalize(slug[1]) : "";
   const location = slug[2] ? slug[2].toUpperCase() : "";
@@ -219,7 +231,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const categoryAdjective = slug[0] ? (SINGULAR[slug[0]] || category.replace(/Templates?$/i, "").trim()) : "";
 
   let pageTitle = "Free Business Document Templates";
-  if (category) {
+  if (categorySeoKit) {
+    pageTitle = categorySeoKit.h1;
+  } else if (category) {
     const parts = [
       "Free",
       experience,
@@ -244,6 +258,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   // (unique copy, not a keyword-swap), so prefer those when this niche is one.
   const professionMeta = getProfessionContent(slug[0] || null, slug[1] || null);
   const metaTitle =
+    categorySeoKit?.titleTag.replace(/\s*\|\s*Templix AI$/i, "") ??
     professionMeta?.metaTitle ??
     ([withBoth, withNoSignup, withFormat, withYear].find((c) => c.length <= 47) ?? pageTitle);
 
@@ -260,7 +275,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     title: pageTitle,
     metaTitle,
     canonical,
-    description: professionMeta?.subtitle
+    description: categorySeoKit?.metaDescription
+      ?? professionMeta?.subtitle
       ?? `Download free ${pageTitle.replace(/^Free /, "").toLowerCase()}. Editable, print-ready layouts that export to PDF and Word — no sign-up and no watermark.`,
     slug: slugPath,
     locale,
@@ -547,7 +563,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
                   <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
                     {insight.heading}
                   </h2>
-                  {insight.paragraphs.map((para, i) => (
+                  {insight.paragraphs.map((para: string, i: number) => (
                     <p key={i} className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
                       {para}
                     </p>
@@ -713,6 +729,12 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
   const subdivisionName = subdivisionSlug ? capitalize(subdivisionSlug) : "";
   const experienceName = experienceSlug ? capitalize(experienceSlug) : "";
 
+  const isTopLevelCategory = !!(categorySlug && !nicheSlug && CATEGORIES.some((c) => c.slug === categorySlug));
+  const categoryFallbackCount = isTopLevelCategory
+    ? allFallbackTemplates.filter((t) => t.categorySlug === categorySlug).length
+    : 0;
+  const categorySeoKit = isTopLevelCategory ? getCategorySeoKit(categorySlug, categoryFallbackCount) : null;
+
   // Singular adjective per category so the H1 reads "Free Invoice Templates",
   // not the grammatically wrong "Free Invoices Templates".
   const SINGULAR_HEADING: Record<string, string> = {
@@ -721,7 +743,9 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
     quotations: "Quotation", "cover-letters": "Cover Letter",
   };
   let pageHeading = t.hubHeading;
-  if (categoryName) {
+  if (categorySeoKit) {
+    pageHeading = categorySeoKit.h1;
+  } else if (categoryName) {
     const adjective = (categorySlug && SINGULAR_HEADING[categorySlug]) || categoryName.replace(/Templates?$/i, "").trim();
     const parts = [
       t.freeWord,
@@ -946,7 +970,7 @@ export default async function TemplatesPage({ params, searchParams }: PageProps)
             <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-3xl">
               {/* Unique per category / niche / country so ~200 listing URLs no
                   longer share one boilerplate subtitle. Bare hub keeps t.hubSubtitle. */}
-              {profession?.subtitle || getHubIntro(categorySlug, nicheName, locationName) || t.hubSubtitle}
+              {profession?.subtitle || getHubIntro(categorySlug, nicheName, locationName, categoryFallbackCount) || t.hubSubtitle}
             </p>
           </div>
 

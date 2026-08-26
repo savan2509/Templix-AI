@@ -18,6 +18,7 @@ import {
   resolvePostImage,
   resolveImagePath,
 } from "@/lib/blog-data";
+import { comparisonPosts } from "@/lib/blog/posts-comparisons";
 import { SEOEngine } from "@/services/seo";
 import { getRelatedTemplates } from "@/lib/seo/internal-linking";
 import { generateBlogAlt } from "@/lib/image-alt";
@@ -45,6 +46,10 @@ import {
   FileText,
   PenLine,
   Wrench,
+  CheckCircle2,
+  ListChecks,
+  Zap,
+  GitCompare,
 } from "lucide-react";
 
 interface PageProps {
@@ -108,6 +113,79 @@ const CATEGORY_GRADIENT: Record<string, string> = {
   Letters:   "from-emerald-600 to-green-600",
   "AI Tools":"from-pink-600 to-rose-600",
   Guides:    "from-amber-500 to-yellow-500",
+};
+
+const CATEGORY_CHECKLISTS: Record<string, { title: string; subtitle: string; items: { label: string; desc: string }[] }> = {
+  Invoices: {
+    title: "2026 Invoice Compliance & Fast Settlement Checklist",
+    subtitle: "Verify these core line items before dispatching your billing documentation:",
+    items: [
+      { label: "Sequential & Distinct ID", desc: "Maintain structured, unbroken numbering (e.g. INV-2026-001) for clean tax audits." },
+      { label: "Direct Payment Rails & Pay Now Button", desc: "Embed Stripe, ACH, or instant wire links directly on the PDF for 1-click settlement." },
+      { label: "Itemized Tax & SAC/HSN Codes", desc: "Clearly isolate gross subtotal from applicable GST/VAT percentages and line deductions." },
+      { label: "Explicit Due Dates & Late Terms", desc: "State exact calendar deadlines and recurring late-interest policies upfront." },
+    ],
+  },
+  Resumes: {
+    title: "2026 ATS Parsing & Recruiter Review Checklist",
+    subtitle: "Ensure your career blueprint achieves 100% parseability across modern AI screening bots:",
+    items: [
+      { label: "Single-Column Linear Layout", desc: "Avoid multi-column tables, text boxes, and floating shapes that break ATS reading order." },
+      { label: "X-Y-Z Action Formula Bullets", desc: "Structure bullet points as 'Accomplished [X], as measured by [Y], by doing [Z]'." },
+      { label: "Value-Driven Professional Summary", desc: "Replace outdated objective statements with a 3-sentence summary of proven ROI." },
+      { label: "Standardized Clean Typography", desc: "Export in clean PDF or Word format using system-safe, clean typography." },
+    ],
+  },
+  Contracts: {
+    title: "2026 Legal Protection & Payment Guarantee Checklist",
+    subtitle: "Protect your intellectual property and guarantee payment before project kickoff:",
+    items: [
+      { label: "AI Confidentiality Clause", desc: "Ensure client proprietary assets are never fed into public LLM training datasets." },
+      { label: "IP Transfer on Final Settlement", desc: "Condition deliverable copyright transfers strictly upon 100% receipt of final payment." },
+      { label: "Deposit & Phased Milestone Gates", desc: "Mandate a 30% to 50% upfront deposit before commencing any project execution." },
+      { label: "Revision Limits & Kill Fees", desc: "Cap feedback cycles (e.g. 2 rounds) and specify out-of-scope compensation rates." },
+    ],
+  },
+  Proposals: {
+    title: "2026 Proposal Conversion & RFP Win Checklist",
+    subtitle: "Transform dense document pitches into high-converting visual sales narratives:",
+    items: [
+      { label: "Client-Centric Problem Framing", desc: "Mirror the client's exact operational friction points before presenting your solution." },
+      { label: "Visual Milestones & Timelines", desc: "Use structured phases and deliverables matrices rather than dense walls of text." },
+      { label: "Tiered Pricing Menu (3 Tiers)", desc: "Provide Core / Growth / Premium options to anchor value and increase deal size." },
+      { label: "1-Click Digital Signoff", desc: "Include clear acceptance terms, validity expiry window, and digital signature blocks." },
+    ],
+  },
+  Letters: {
+    title: "2026 Professional Correspondence Checklist",
+    subtitle: "Ensure your formal letters and applications stand out with authentic authority:",
+    items: [
+      { label: "Concise Half-Page Length", desc: "Keep cover letters and formal notes under 150-220 words for rapid mobile scanning." },
+      { label: "Authentic Human Voice", desc: "Avoid robotic AI boilerplate, monotonous sentences, and exaggerated flattery." },
+      { label: "Concrete Proof Metrics", desc: "Back career claims with quantifiable achievements and specific tooling expertise." },
+      { label: "Clear Next-Step Call to Action", desc: "Conclude with an explicit request for an introductory or strategic discussion." },
+    ],
+  },
+  "AI Tools": {
+    title: "2026 Privacy-First AI Document Checklist",
+    subtitle: "Protect confidential information while utilizing modern AI drafting speed:",
+    items: [
+      { label: "Client-Side Processing", desc: "Verify sensitive financial and career data is processed in local browser memory." },
+      { label: "Zero-Data Retention", desc: "Ensure models do not retain confidential drafts for training or public completion." },
+      { label: "Clean Export Capabilities", desc: "Support instant watermark-free exports to standard PDF and editable DOCX formats." },
+      { label: "GDPR & Privacy Compliance", desc: "Ensure explicit consent governance and transparent cookie policies." },
+    ],
+  },
+  Guides: {
+    title: "2026 Executive Documentation Standards Checklist",
+    subtitle: "Format business reports and operational guides for immediate stakeholder impact:",
+    items: [
+      { label: "Inverted Pyramid Structure", desc: "Front-load key findings and executive summaries on page 1 for 30-second reviews." },
+      { label: "Structured Tabular Data", desc: "Convert long explanatory paragraphs into clear, comparative data tables." },
+      { label: "Actionable Recommendations", desc: "End every section with concrete, assignable next steps and clear milestones." },
+      { label: "Compliance & Audit Timestamps", desc: "Maintain revision timestamps to ensure institutional compliance." },
+    ],
+  },
 };
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -174,6 +252,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
   };
   const targetCategory = categorySlugMap[post.category] || "invoices";
   const contextualTemplates = getRelatedTemplates(post.slug, targetCategory, 3);
+  const relatedComparisons = comparisonPosts
+    .filter((c) => c.category === post.category || c.category === "AI Tools")
+    .slice(0, 3);
 
 
   // Resolve links first, then add anchors — so the ids match what renders.
@@ -248,7 +329,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/${locale}` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/${locale}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: `${siteConfig.url}/${locale}/blog/${slug}` },
+      { "@type": "ListItem", position: 3, name: post.category, item: `${siteConfig.url}/${locale}/blog?category=${encodeURIComponent(post.category)}` },
+      { "@type": "ListItem", position: 4, name: post.title, item: `${siteConfig.url}/${locale}/blog/${slug}` },
     ],
   };
 
@@ -291,6 +373,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
               </Link>
               <span>/</span>
               <Link href={`/${locale}/blog`} className="hover:text-white transition-colors">{t.blogBreadcrumb}</Link>
+              <span>/</span>
+              <Link href={`/${locale}/blog?category=${encodeURIComponent(post.category)}`} className="hover:text-white transition-colors">{post.category}</Link>
               <span>/</span>
               <span className="text-white/90 truncate max-w-[200px]">{post.title}</span>
             </nav>
@@ -409,10 +493,44 @@ export default async function BlogArticlePage({ params }: PageProps) {
               </Link>
 
               {/* 2026 Freshness & Changelog Banner */}
-              <div className="mb-8 p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/30 flex items-start gap-3">
+              <div className="mb-6 p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/30 flex items-start gap-3">
                 <Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div className="text-xs leading-relaxed text-emerald-900 dark:text-emerald-200">
                   <span className="font-bold">2026 Standards &amp; Compliance Audit:</span> This guide was reviewed and updated on <strong>{formatDate((post as any).updatedAt ?? post.publishedAt, locale)}</strong> to ensure all tax formulas (GST/VAT), ATS algorithm guidelines, and document template downloads align with current legal and commercial requirements.
+                </div>
+              </div>
+
+              {/* Executive Summary & Key Takeaways (SEO Featured Snippet Magnet) */}
+              <div className="mb-8 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-6 space-y-4 shadow-xs">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-blue-800 dark:text-blue-300 font-bold text-sm">
+                    <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    <span>Executive Summary &amp; Key Takeaways</span>
+                  </div>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                    2026 Core Insights
+                  </span>
+                </div>
+                <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-medium">
+                  {post.metaDescription || post.description}
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 border-t border-blue-100 dark:border-blue-900/40 text-xs text-zinc-600 dark:text-zinc-400">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span>Industry &amp; Legal Compliance Verified</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span>Free Downloadable Templates Attached</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span>Step-by-Step Practical Blueprint</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span>Zero Data-Retention Local Privacy</span>
+                  </div>
                 </div>
               </div>
 
@@ -421,6 +539,42 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 className="prose-article"
                 dangerouslySetInnerHTML={{ __html: articleHtml }}
               />
+
+              {/* Category-Specific 2026 Best Practices & Quality Checklist */}
+              {CATEGORY_CHECKLISTS[post.category] && (
+                <section className="mt-12 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/40 space-y-5">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-lg">
+                      <ListChecks className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      <h2>{CATEGORY_CHECKLISTS[post.category].title}</h2>
+                    </div>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                      {CATEGORY_CHECKLISTS[post.category].subtitle}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {CATEGORY_CHECKLISTS[post.category].items.map((item, idx) => (
+                      <div
+                        key={item.label}
+                        className="p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 space-y-1.5 shadow-xs"
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-50 text-[11px] font-bold text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+                            {idx + 1}
+                          </span>
+                          <h3 className="text-xs font-bold text-zinc-900 dark:text-white">
+                            {item.label}
+                          </h3>
+                        </div>
+                        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed pl-7">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Generated FAQ — only for posts that don't already ship their own
                   FAQ section. The FAQPage schema above covers whichever set. */}
@@ -571,6 +725,26 @@ export default async function BlogArticlePage({ params }: PageProps) {
                       <Wrench className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-blue-500 transition-colors" />
                       {tool.short}
                       <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {/* Software & Platform Comparisons */}
+              {relatedComparisons.length > 0 && (
+                <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                    <GitCompare className="h-3.5 w-3.5 text-purple-500" />
+                    <span>Tool &amp; Software Comparisons</span>
+                  </h3>
+                  {relatedComparisons.map((comp) => (
+                    <Link
+                      key={comp.slug}
+                      href={`/${locale}/compare/${comp.slug}`}
+                      className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
+                    >
+                      <span className="truncate text-xs font-medium">{comp.title}</span>
+                      <ArrowRight className="h-3 w-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-purple-500 shrink-0" />
                     </Link>
                   ))}
                 </div>

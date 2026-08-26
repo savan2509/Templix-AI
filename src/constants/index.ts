@@ -17,7 +17,7 @@ export const CATEGORIES = [
     name: "Invoices",
     description: "Billing, receipts & payment requests",
     image: "/cat-invoices-cover.jpg",
-    count: 81,
+    count: 93,
     accent: "blue",
   },
   {
@@ -25,7 +25,7 @@ export const CATEGORIES = [
     name: "Resumes & CVs",
     description: "Job applications & career profiles",
     image: "/cat-resumes-cover.jpg",
-    count: 69,
+    count: 78,
     accent: "violet",
   },
   {
@@ -33,7 +33,7 @@ export const CATEGORIES = [
     name: "Contracts",
     description: "Agreements, NDAs & service terms",
     image: "/cat-contracts-cover.jpg",
-    count: 67,
+    count: 74,
     accent: "teal",
   },
   {
@@ -41,7 +41,7 @@ export const CATEGORIES = [
     name: "Proposals",
     description: "Business pitches & project scopes",
     image: "/cat-proposals-cover.jpg",
-    count: 57,
+    count: 63,
     accent: "orange",
   },
   {
@@ -49,7 +49,7 @@ export const CATEGORIES = [
     name: "Letters & Emails",
     description: "Cover letters, formal emails & memos",
     image: "/cat-letters-cover.jpg",
-    count: 62,
+    count: 67,
     accent: "emerald",
   },
   {
@@ -57,7 +57,7 @@ export const CATEGORIES = [
     name: "Reports",
     description: "Business, project & annual reports",
     image: "/cat-reports-cover.jpg",
-    count: 50,
+    count: 55,
     accent: "rose",
   },
   {
@@ -65,7 +65,7 @@ export const CATEGORIES = [
     name: "Business Plans",
     description: "Startup plans, strategy & financials",
     image: "/cat-business-plans-cover.jpg",
-    count: 48,
+    count: 53,
     accent: "amber",
   },
   {
@@ -73,7 +73,7 @@ export const CATEGORIES = [
     name: "Quotations",
     description: "Price quotes, estimates & bids",
     image: "/cat-quotations-cover.jpg",
-    count: 43,
+    count: 49,
     accent: "cyan",
   },
 ] as const;

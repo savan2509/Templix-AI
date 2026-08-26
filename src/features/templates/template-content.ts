@@ -619,8 +619,13 @@ export function getHubIntro(
   categorySlug: string | null | undefined,
   nicheName?: string,
   locationName?: string,
+  dynamicCount?: number,
 ): string {
   if (!categorySlug) return "";
+  if (!nicheName && !locationName) {
+    const seoKit = getCategorySeoKit(categorySlug, dynamicCount || 50);
+    if (seoKit) return seoKit.onPageIntro;
+  }
   const meta = HUB_DESC[categorySlug];
   if (!meta) return "";
   const niche = nicheName ? `${nicheName.toLowerCase()} ` : "";
@@ -633,4 +638,92 @@ export function getHubIntro(
     `Customize any of them online, then download as PDF or Word in minutes — ` +
     `no sign-up and no watermark.${loc}`
   );
+}
+
+export interface CategorySeoKit {
+  titleTag: string;
+  metaDescription: string;
+  h1: string;
+  onPageIntro: string;
+  primaryKeyword: string;
+  secondaryKeywords: string[];
+}
+
+export function getCategorySeoKit(categorySlug: string, count: number): CategorySeoKit | null {
+  switch (categorySlug) {
+    case "invoices":
+      return {
+        titleTag: `Free Invoice Templates (${count}+) | PDF & Word | Templix AI`,
+        metaDescription: `Choose from ${count} free invoice templates for freelancers & small businesses. Customize with AI, add tax details, and export to PDF or Word instantly.`,
+        h1: "Free Invoice Templates",
+        onPageIntro: `Create professional invoices in minutes. Choose from ${count} templates for freelancers, contractors, agencies, and small businesses — add your branding, tax details, and payment terms, then export to PDF or Word.`,
+        primaryKeyword: "free invoice template",
+        secondaryKeywords: ["free invoice generator", "gst tax invoice format", "invoice template pdf word", "freelancer invoice template"],
+      };
+    case "resumes":
+      return {
+        titleTag: `Free ATS Resume Templates (${count}+) | Templix AI`,
+        metaDescription: `Browse ${count} free, ATS-friendly resume and CV templates. Single-column layouts pass applicant tracking systems — customize with AI and export to PDF or Word.`,
+        h1: "Free Resume & CV Templates",
+        onPageIntro: `Land more interviews with an ATS-friendly resume. Browse ${count} single-column templates designed to parse cleanly through applicant tracking systems while still looking sharp to human recruiters.`,
+        primaryKeyword: "free resume template",
+        secondaryKeywords: ["ats resume template 2026", "free resume builder ats", "cv template free"],
+      };
+    case "contracts":
+      return {
+        titleTag: `Free Contract Templates (${count}+) | PDF & Word | Templix AI`,
+        metaDescription: `Download ${count} free contract templates, including freelance and independent contractor agreements. Customize clauses with AI and export print-ready PDF or Word.`,
+        h1: "Free Contract Templates",
+        onPageIntro: `Protect your business with a clear, professional contract. Choose from ${count} templates covering freelance agreements, NDAs, and independent contractor agreements, complete with standard clauses you can customize.`,
+        primaryKeyword: "free contract template",
+        secondaryKeywords: ["free contract generator", "independent contractor agreement", "freelance agreement template"],
+      };
+    case "proposals":
+      return {
+        titleTag: `Free Business Proposal Templates (${count}+) | Templix AI`,
+        metaDescription: `Explore ${count} free business proposal templates built to win clients. Customize scope, pricing, and timelines with AI, then export to PDF or Word — no sign-up.`,
+        h1: "Free Business Proposal Templates",
+        onPageIntro: `Win more clients with a proposal that's easy to say yes to. Pick from ${count} templates covering scope, timeline, and pricing — built to look professional and read clearly.`,
+        primaryKeyword: "business proposal template free",
+        secondaryKeywords: ["free proposal template", "project proposal template"],
+      };
+    case "letters":
+      return {
+        titleTag: `Free Letter & Email Templates (${count}+) | Templix AI`,
+        metaDescription: `${count} free templates for cover letters, resignation letters, offer letters, and more. Personalize with AI and export polished PDF or Word documents in minutes.`,
+        h1: "Free Letter & Email Templates",
+        onPageIntro: `From cover letters to resignation letters, find the right words fast. Browse ${count} templates for every professional letter and email you'll ever need to send.`,
+        primaryKeyword: "free letter template",
+        secondaryKeywords: ["cover letter template free", "resignation letter template", "offer letter template"],
+      };
+    case "reports":
+      return {
+        titleTag: `Free Business Report Templates (${count}+) | Templix AI`,
+        metaDescription: `Choose from ${count} free business report templates with clean, structured layouts. Customize with AI writing tools and export to PDF or Word instantly.`,
+        h1: "Free Business Report Templates",
+        onPageIntro: `Turn data into a report people actually read. Choose from ${count} clean, structured report templates built for clarity — executive summary first, details second.`,
+        primaryKeyword: "free business report template",
+        secondaryKeywords: ["business report format", "report writing template"],
+      };
+    case "business-plans":
+      return {
+        titleTag: `Free Business Plan Templates (${count}+) | Templix AI`,
+        metaDescription: `${count} free business plan templates, from lean one-pagers to full investor-ready plans. Customize online with AI and export to PDF or Word — completely free.`,
+        h1: "Free Business Plan Templates",
+        onPageIntro: `Plan your business with confidence. Choose from ${count} templates, from lean one-page plans for internal use to full investor-ready documents.`,
+        primaryKeyword: "free business plan template",
+        secondaryKeywords: ["one page business plan template", "lean business plan template"],
+      };
+    case "quotations":
+      return {
+        titleTag: `Free Quotation Templates (${count}+) | Templix AI`,
+        metaDescription: `Download ${count} free price quotation templates for freelancers and small businesses. Add validity dates and line items, customize with AI, export to PDF or Word.`,
+        h1: "Free Quotation Templates",
+        onPageIntro: `Send accurate, professional price quotes fast. Browse ${count} templates with built-in validity periods and line-item breakdowns to protect you from scope creep.`,
+        primaryKeyword: "free quotation template",
+        secondaryKeywords: ["quote vs invoice vs estimate", "price quote template"],
+      };
+    default:
+      return null;
+  }
 }

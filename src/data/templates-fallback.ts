@@ -49,6 +49,7 @@ import { lettersExtra3Templates } from "./templates/letters-extra3";
 import { reportsExtra3Templates } from "./templates/reports-extra3";
 import { businessPlansExtra3Templates } from "./templates/business-plans-extra3";
 import { expansionTemplates } from "./templates/expansion-templates";
+import { trending2026Templates } from "./templates/trending-2026-templates";
 
 const rawFallbackTemplates: any[] = [
   ...invoicesTemplates,
@@ -90,6 +91,7 @@ const rawFallbackTemplates: any[] = [
   ...reportsExtra3Templates,
   ...businessPlansExtra3Templates,
   ...expansionTemplates,
+  ...trending2026Templates,
 ];
 
 const seenTemplates = new Set<string>();

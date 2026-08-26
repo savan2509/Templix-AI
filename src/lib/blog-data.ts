@@ -21,6 +21,7 @@ import { bestOfPosts } from "./blog/posts-best-of";
 import { longTailPosts } from "./blog/posts-long-tail";
 import { expansionBlogPosts } from "./blog/posts-expansion";
 import { readyToWrite20Posts } from "./blog/posts-ready-to-write-20";
+import { trending2026Posts } from "./blog/posts-trending-2026";
 
 export interface BlogPost {
   id: string;
@@ -3342,6 +3343,8 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...expansionBlogPosts,
   // 20 High-Intent Trending Blog Posts (August 2026)
   ...readyToWrite20Posts,
+  // 20 Trending 2026 Strategy & Keyword Posts
+  ...trending2026Posts,
 ];
 
 // Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely

@@ -20,9 +20,7 @@ import {
   Wrench,
   Sparkles,
   BookOpen,
-  Layers,
   ArrowRight,
-  Briefcase,
   GitCompare,
   Building2,
   ShieldCheck,
@@ -124,7 +122,7 @@ export default async function SitemapPage({ params }: PageProps) {
               Blog &amp; Guides ({STATIC_BLOG_POSTS.length})
             </a>
             <a href="#products" className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200">
-              Products ({PRODUCTS_DATA.length})
+              Products &amp; Services ({PRODUCTS_DATA.length + SERVICES_DATA.length})
             </a>
             <a href="#use-cases" className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200">
               Use Cases ({ALL_USE_CASE_SLUGS.length})
@@ -288,12 +286,12 @@ export default async function SitemapPage({ params }: PageProps) {
             )}
           </section>
 
-          {/* Section 6: Products & Industry Solutions */}
+          {/* Section 6: Products, Services & Industry Solutions */}
           <section id="products" className="space-y-6 scroll-mt-24">
             <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-200 dark:border-zinc-800">
               <Building2 className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
               <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">
-                Industry Solutions &amp; Product Suites
+                Industry Solutions, Products &amp; AI Services
               </h2>
             </div>
 
@@ -314,6 +312,15 @@ export default async function SitemapPage({ params }: PageProps) {
                   className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-indigo-400 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20 text-xs font-semibold text-zinc-800 dark:text-zinc-200 transition-all truncate"
                 >
                   {prod.title}
+                </Link>
+              ))}
+              {SERVICES_DATA.map((srv) => (
+                <Link
+                  key={srv.slug}
+                  href={`/${locale}/services/${srv.slug}`}
+                  className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-indigo-400 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20 text-xs font-semibold text-zinc-800 dark:text-zinc-200 transition-all truncate"
+                >
+                  {srv.title}
                 </Link>
               ))}
             </div>
