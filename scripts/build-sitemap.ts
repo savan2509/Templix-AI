@@ -15,7 +15,11 @@ async function generate() {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlsXml}\n</urlset>\n`;
   
-  const outPath = path.join("d:/Templix-AI/public/sitemap.xml");
+  const outDir = path.join(process.cwd(), "public");
+  if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir, { recursive: true });
+  }
+  const outPath = path.join(outDir, "sitemap.xml");
   fs.writeFileSync(outPath, xml, "utf-8");
   console.log(`Successfully written ${items.length} URLs to ${outPath}`);
 }
