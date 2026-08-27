@@ -26,21 +26,14 @@ export default function ObfuscatedEmail({
     setMounted(true);
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.location.href = `mailto:${user}@${domain}`;
-  };
-
   const fullEmail = mounted ? `${user}@${domain}` : `${user} [at] ${domain}`;
 
   return (
     <a
-      href={mounted ? `mailto:${user}@${domain}` : "#"}
-      onClick={handleClick}
+      href={`mailto:${user}@${domain}`}
       className={className}
-      aria-label={ariaLabel || (mounted ? `Send email to ${fullEmail}` : "Send email to customer support")}
-      title={mounted ? fullEmail : undefined}
-      suppressHydrationWarning
+      aria-label={ariaLabel || `Send email to ${user}@${domain}`}
+      title={`${user}@${domain}`}
     >
       {typeof children === "function" ? (
         children(fullEmail)

@@ -14,7 +14,7 @@ import { PRODUCTS_DATA } from "@/data/products";
 import { INDUSTRIES_DATA } from "@/data/industries";
 import { siteConfig } from "@/config/site";
 
-type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
+export const dynamic = "force-static";
 
 /**
  * Automated Modular Sitemap Architecture
@@ -23,7 +23,7 @@ type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
  * Generates structured indexable URLs for templates, categories, tools,
  * use cases, industries, and blog guides with accurate lastmod and priority.
  */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const contentDate = new Date(siteConfig.contentUpdated);
 
@@ -37,16 +37,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     path: string,
     opts: {
       lastModified?: Date;
-      changeFrequency?: ChangeFrequency;
+      changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
       priority?: number;
       images?: string[];
     } = {}
   ): MetadataRoute.Sitemap[number] => ({
     url: `${baseUrl}/en${path}`,
-    lastModified: opts.lastModified ?? contentDate,
+    lastModified: (opts.lastModified ?? contentDate).toISOString(),
     changeFrequency: opts.changeFrequency ?? "weekly",
     priority: opts.priority ?? 0.6,
-    ...(opts.images && opts.images.length ? { images: opts.images } : {}),
   });
 
   // ── Static routes with hand-tuned crawl hints ───────────────────────────────

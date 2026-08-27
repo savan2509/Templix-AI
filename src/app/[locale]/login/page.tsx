@@ -7,7 +7,7 @@ import { getEnabledOAuthProviders } from "@/lib/supabase/providers";
 import AuthForm from "@/components/AuthForm";
 
 export const metadata: Metadata = {
-  title: "Sign In | Templix AI",
+  title: "Sign In",
   description: "Sign in or create a free account to save favorites, manage documents, and unlock all Templix AI template features.",
   robots: {
     index: false,

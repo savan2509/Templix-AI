@@ -1,4 +1,4 @@
-import sitemap from "../src/app/sitemap";
+import sitemap from "../src/config/sitemap-data";
 
 async function runSitemapTest() {
   console.log("🔍 Running Sitemap Audit & Validation Test...");

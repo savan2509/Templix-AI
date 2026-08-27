@@ -436,15 +436,24 @@ export default function Footer() {
           </div>
 
           {/* Social & Community Profiles */}
-          <div className="flex items-center gap-4 text-xs">
-            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer nofollow" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
-              GitHub
+          <div className="flex flex-wrap items-center gap-3.5 text-xs">
+            <a href={siteConfig.links.facebook} target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook Page" className="hover:text-blue-600 transition-colors">
+              Facebook
+            </a>
+            <a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer nofollow" aria-label="Instagram Profile" className="hover:text-pink-600 transition-colors">
+              Instagram
             </a>
             <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn Profile" className="hover:text-blue-700 transition-colors">
               LinkedIn
             </a>
             <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer nofollow" aria-label="X / Twitter Profile" className="hover:text-sky-500 transition-colors">
               X (Twitter)
+            </a>
+            <a href={siteConfig.links.youtube} target="_blank" rel="noopener noreferrer nofollow" aria-label="YouTube Channel" className="hover:text-red-600 transition-colors">
+              YouTube
+            </a>
+            <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer nofollow" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+              GitHub
             </a>
             <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener noreferrer nofollow" aria-label="Google Business Profile & Maps Location" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
               Google Business Profile

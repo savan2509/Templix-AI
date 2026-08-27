@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:sitemap": "tsx scripts/build-sitemap.ts",
+    "build": "tsx scripts/build-sitemap.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "validate:templates": "tsx scripts/validate-templates.ts",

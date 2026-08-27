@@ -117,7 +117,8 @@ export class SEOEngine {
     // The root layout applies a `%s | Templix AI` title template, so the document
     // <title> must NOT include the brand (otherwise it doubles). Open Graph and
     // Twitter titles are not templated, so we brand those explicitly.
-    const pageTitle = data.metaTitle || data.title;
+    const rawTitle = data.metaTitle || data.title || "";
+    const pageTitle = rawTitle.replace(/\s*[|\-]\s*Templix\s*AI.*$/i, "").trim() || rawTitle;
     const fullTitle = `${pageTitle} | Templix AI`;
 
     // Resolve the social image to an absolute URL (required by OG/Twitter),

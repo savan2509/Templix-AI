@@ -1,4 +1,4 @@
-import sitemap from "../src/app/sitemap";
+import sitemap from "../src/config/sitemap-data";
 
 async function verifySitemap() {
   console.log("=== SITEMAP VERIFICATION AUDIT ===");

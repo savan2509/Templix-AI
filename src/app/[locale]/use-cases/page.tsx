@@ -16,7 +16,7 @@ export async function generateMetadata({
   const url = buildCanonical(locale, "use-cases");
 
   return {
-    title: "Document Use Cases & AI Blueprint Directory | Templix AI",
+    title: "Document Use Cases & AI Blueprint Directory",
     description: "Browse 48+ tailored document use cases for resumes, invoices, proposals, legal contracts, and HR documents with free PDF exports.",
     alternates: {
       canonical: url,

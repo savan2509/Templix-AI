@@ -72,7 +72,10 @@ export default async function proxy(req: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.includes(".") ||
     pathname === "/favicon.ico" ||
-    pathname === "/ads.txt"
+    pathname === "/ads.txt" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt" ||
+    pathname === "/rss.xml"
   ) {
     return supabaseResponse;
   }
@@ -218,7 +221,7 @@ export default async function proxy(req: NextRequest) {
 export const config = {
   matcher: [
     // Run proxy on all paths except static files & system paths
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml).*)",
+    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml|ads.txt).*)",
   ],
 };
 

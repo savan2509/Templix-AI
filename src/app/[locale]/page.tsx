@@ -508,8 +508,8 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
                     <Image
                       src={article.image}
-                      alt={`${article.title} — Step-by-step guide and template blueprint`}
-                      title={`${article.title} — Step-by-step guide and template blueprint`}
+                      alt={`${article.title} — ${article.description.slice(0, 90)}`}
+                      title={article.title}
                       fill
                       loading="lazy"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"

@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Templix AI",
+  title: "Dashboard",
+  description: "Manage your saved documents, favorite templates, and account settings.",
   robots: {
     index: false,
     follow: false,

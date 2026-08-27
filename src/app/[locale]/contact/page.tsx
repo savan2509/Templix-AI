@@ -91,17 +91,13 @@ export default async function ContactPage({ params }: PageProps) {
             className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors"
             ariaLabel="Email customer support team directly"
           >
-            {(emailText) => (
-              <>
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
-                  <Mail className="h-4 w-4" />
-                </span>
-                <div className="min-w-0 text-left">
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
-                  <span className="block truncate text-xs font-semibold">{emailText}</span>
-                </div>
-              </>
-            )}
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
+              <Mail className="h-4 w-4" />
+            </span>
+            <div className="min-w-0 text-left">
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
+              <span className="block truncate text-xs font-semibold">support [at] templix-ai.whitesparksoft.com</span>
+            </div>
           </ObfuscatedEmail>
 
           <a
