@@ -18,7 +18,6 @@ import {
   Calendar,
   TrendingUp,
   Sparkles,
-  Tag,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -198,7 +197,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
               title="Templix AI Document Guides & Editorial Articles"
               fill
               sizes="(max-width: 768px) 100vw, 1280px"
-              quality={55}
+              quality={75}
               className="object-cover"
               priority
             />
@@ -299,7 +298,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                       {featured.title}
                     </h2>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-3">
-                      {featured.description}
+                      {featured.metaDescription || featured.description}
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
@@ -374,17 +373,8 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
 
                         {/* Description */}
                         <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-3 flex-1">
-                          {post.description}
+                          {post.metaDescription || post.description}
                         </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-1">
-                          {post.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
-                              <Tag className="h-2 w-2" />{tag}
-                            </span>
-                          ))}
-                        </div>
 
                         {/* Footer */}
                         <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
@@ -404,7 +394,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
                 {totalPages > 1 && (
                   <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-6">
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
-                      Showing <span className="font-semibold text-zinc-900 dark:text-white">{startIndex + 1}–{Math.min(endIndex, totalPosts)}</span> of <span className="font-semibold text-zinc-900 dark:text-white">{totalPosts}</span> articles
+                      Showing <span className="font-semibold text-zinc-900 dark:text-white">{startIndex + 1}–{Math.min(endIndex, totalPosts)}</span> of <span className="font-semibold text-zinc-900 dark:text-white">{filtered.length}</span> articles{category === "All" && featured ? " (+ 1 featured)" : ""}
                     </p>
 
                     <div className="flex items-center gap-1.5">
@@ -505,7 +495,7 @@ export default async function BlogListingPage({ params, searchParams }: PageProp
               {t.seoHeading}
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              {t.seoText1}<a href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoTemplatesLink}</a>{t.seoText2}<a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoWikiLink}</a>{t.seoText3}<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoLinkedInLink}</a>{t.seoText4}
+              {t.seoText1}<a href={`/${locale}/templates`} className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoTemplatesLink}</a>{t.seoText2}<a href="https://en.wikipedia.org/wiki/Invoice" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoWikiLink}</a>{t.seoText3}<a href="https://www.w3.org/standards/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{t.seoLinkedInLink}</a>{t.seoText4}
             </p>
           </div>
 

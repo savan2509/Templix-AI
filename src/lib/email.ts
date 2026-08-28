@@ -134,7 +134,7 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
       text:
         `Hi ${name},\n\n` +
         `Welcome to Templix AI! Your account is ready.\n\n` +
-        `Browse 200+ free templates: ${templates}\n` +
+        `Browse 530+ free templates: ${templates}\n` +
         `Go to your dashboard: ${dashboard}\n\n` +
         `Invoices, resumes, contracts, proposals and letters — free, no watermark.\n`,
       html: `<!DOCTYPE html>

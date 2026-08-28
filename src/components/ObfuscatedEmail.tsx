@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 interface ObfuscatedEmailProps {
   user?: string;
   domain?: string;
@@ -20,20 +18,14 @@ export default function ObfuscatedEmail({
   ariaLabel,
   children,
 }: ObfuscatedEmailProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const fullEmail = mounted ? `${user}@${domain}` : `${user} [at] ${domain}`;
+  const fullEmail = `${user}@${domain}`;
 
   return (
     <a
-      href={`mailto:${user}@${domain}`}
+      href={`mailto:${fullEmail}`}
       className={className}
-      aria-label={ariaLabel || `Send email to ${user}@${domain}`}
-      title={`${user}@${domain}`}
+      aria-label={ariaLabel || `Send email to ${fullEmail}`}
+      title={fullEmail}
     >
       {typeof children === "function" ? (
         children(fullEmail)
@@ -42,9 +34,8 @@ export default function ObfuscatedEmail({
       ) : label ? (
         <span>{label}</span>
       ) : (
-        <span suppressHydrationWarning>{fullEmail}</span>
+        <span>{fullEmail}</span>
       )}
     </a>
   );
 }
-

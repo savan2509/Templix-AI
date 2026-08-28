@@ -18,8 +18,27 @@ export default function FAQ({ locale, items, heading }: Props) {
   const t = getDictionary(locale).faqSection;
   const faqs = items && items.length > 0 ? items : faqData;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <section className="w-full py-16 bg-zinc-50 dark:bg-zinc-950/20 border-y border-zinc-200 dark:border-zinc-800 transition-colors">
+      {/* FAQPage JSON-LD Schema for Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-center tracking-tight text-zinc-900 dark:text-white mb-10">
           {heading ?? t.heading}

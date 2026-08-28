@@ -7,7 +7,7 @@ import ThemeProvider from "@/providers/theme-provider";
 import HtmlDirSync from "@/components/HtmlDirSync";
 import Schema from "@/components/seo/Schema";
 import CookieConsent from "@/components/CookieConsent";
-import { globalSchemas } from "@/data/schemas/organization";
+import { globalSchemas, localBusinessSchema } from "@/data/schemas/organization";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -170,7 +170,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <HtmlDirSync />
         {/* Global JSON-LD: Organization, Person, LocalBusiness & WebSite schemas */}
-        <Schema data={globalSchemas} />
+        <Schema data={[globalSchemas, localBusinessSchema]} />
         <AuthProvider>
           <ThemeProvider defaultTheme="system">
             {children}

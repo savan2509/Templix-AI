@@ -157,7 +157,7 @@ export default async function HomePage({ params }: PageProps) {
     id: p.id,
     slug: p.slug,
     title: p.title,
-    description: p.description,
+    description: p.metaDescription || p.description,
     image: resolvePostImage(p),
     category: p.category,
     createdAt: new Date(p.publishedAt),

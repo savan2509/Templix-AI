@@ -38,7 +38,7 @@ const en = {
   // ── Listing page: CTA banner ──
   ctaHeading: "Ready to Create Your Document?",
   ctaText:
-    "Browse 200+ free professional templates. Customize online with our AI editor and download as PDF or Word — instantly, no account needed.",
+    "Browse 530+ free professional templates. Customize online with our AI editor and download as PDF or Word — instantly, no account needed.",
   ctaInvoiceTemplates: "Invoice Templates →",
 
   // ── Listing page: SEO block ──
@@ -49,8 +49,8 @@ const en = {
   seoText2:
     ", you benefit from built-in standard variables. For standard guidelines on writing and invoicing compliance, consult the ",
   seoWikiLink: "Wikipedia Invoice Definition",
-  seoText3: ", or check professional networking best practices via ",
-  seoLinkedInLink: "LinkedIn Guides",
+  seoText3: ", or explore global document formatting specifications via ",
+  seoLinkedInLink: "W3C Document Standards",
   seoText4: ".",
 
   // ── Article page ──
@@ -147,7 +147,7 @@ const es: Shape = {
 
   ctaHeading: "¿Listo para crear tu documento?",
   ctaText:
-    "Explora más de 200 plantillas profesionales gratuitas. Personalízalas en línea con nuestro editor de IA y descárgalas en PDF o Word, al instante y sin necesidad de cuenta.",
+    "Explora más de 530 plantillas profesionales gratuitas. Personalízalas en línea con nuestro editor de IA y descárgalas en PDF o Word, al instante y sin necesidad de cuenta.",
   ctaInvoiceTemplates: "Plantillas de facturas →",
 
   seoHeading: "Directorios y referencias de redacción profesional",
@@ -158,8 +158,8 @@ const es: Shape = {
     ", te beneficias de variables estándar integradas. Para conocer las pautas estándar sobre redacción y cumplimiento de facturación, consulta la ",
   seoWikiLink: "definición de factura en Wikipedia",
   seoText3:
-    " o revisa las mejores prácticas de redes profesionales a través de ",
-  seoLinkedInLink: "las guías de LinkedIn",
+    " o explora las especificaciones globales de formato documental a través de ",
+  seoLinkedInLink: "los estándares de documentos del W3C",
   seoText4: ".",
 
   blogBreadcrumb: "Blog",
@@ -249,7 +249,7 @@ const de: Shape = {
 
   ctaHeading: "Bereit, dein Dokument zu erstellen?",
   ctaText:
-    "Durchstöbere über 200 kostenlose professionelle Vorlagen. Passe sie online mit unserem KI-Editor an und lade sie sofort als PDF oder Word herunter – ohne Konto.",
+    "Durchstöbere über 530 kostenlose professionelle Vorlagen. Passe sie online mit unserem KI-Editor an und lade sie sofort als PDF oder Word herunter – ohne Konto.",
   ctaInvoiceTemplates: "Rechnungsvorlagen →",
 
   seoHeading: "Verzeichnisse und Referenzen für professionelles Schreiben",
@@ -260,8 +260,8 @@ const de: Shape = {
     " nutzt, profitierst du von integrierten Standardvariablen. Für allgemeine Richtlinien zum Schreiben und zur Rechnungskonformität konsultiere die ",
   seoWikiLink: "Wikipedia-Definition von Rechnung",
   seoText3:
-    " oder informiere dich über bewährte Praktiken zum beruflichen Networking über ",
-  seoLinkedInLink: "die LinkedIn-Ratgeber",
+    " oder informiere dich über weltweite Dokumentenstandards über ",
+  seoLinkedInLink: "die W3C-Dokumentenstandards",
   seoText4: ".",
 
   blogBreadcrumb: "Blog",
@@ -351,7 +351,7 @@ const fr: Shape = {
 
   ctaHeading: "Prêt à créer votre document ?",
   ctaText:
-    "Parcourez plus de 200 modèles professionnels gratuits. Personnalisez-les en ligne avec notre éditeur IA et téléchargez-les en PDF ou Word, instantanément et sans compte.",
+    "Parcourez plus de 530 modèles professionnels gratuits. Personnalisez-les en ligne avec notre éditeur IA et téléchargez-les en PDF ou Word, instantanément et sans compte.",
   ctaInvoiceTemplates: "Modèles de factures →",
 
   seoHeading: "Répertoires et références de rédaction professionnelle",
@@ -362,8 +362,8 @@ const fr: Shape = {
     ", vous bénéficiez de variables standard intégrées. Pour les directives standard sur la rédaction et la conformité de facturation, consultez la ",
   seoWikiLink: "définition de facture sur Wikipédia",
   seoText3:
-    ", ou découvrez les bonnes pratiques de réseautage professionnel via ",
-  seoLinkedInLink: "les guides LinkedIn",
+    ", ou découvrez les spécifications documentaires mondiales via ",
+  seoLinkedInLink: "les normes documentaires du W3C",
   seoText4: ".",
 
   blogBreadcrumb: "Blog",
@@ -453,7 +453,7 @@ const ar: Shape = {
 
   ctaHeading: "هل أنت مستعد لإنشاء مستندك؟",
   ctaText:
-    "تصفح أكثر من 200 قالبًا احترافيًا مجانيًا. خصصها عبر الإنترنت باستخدام محرر الذكاء الاصطناعي وحمّلها بصيغة PDF أو Word فورًا وبدون حساب.",
+    "تصفح أكثر من 530 قالبًا احترافيًا مجانيًا. خصصها عبر الإنترنت باستخدام محرر الذكاء الاصطناعي وحمّلها بصيغة PDF أو Word فورًا وبدون حساب.",
   ctaInvoiceTemplates: "قوالب الفواتير →",
 
   seoHeading: "أدلة ومراجع الكتابة الاحترافية",
@@ -463,8 +463,8 @@ const ar: Shape = {
   seoText2:
     " لدينا، تستفيد من متغيرات قياسية مدمجة. للاطلاع على الإرشادات القياسية حول الكتابة والامتثال في الفوترة، راجع ",
   seoWikiLink: "تعريف الفاتورة في ويكيبيديا",
-  seoText3: "، أو تعرف على أفضل ممارسات التواصل المهني عبر ",
-  seoLinkedInLink: "أدلة LinkedIn",
+  seoText3: "، أو تعرف على معايير تنسيق المستندات العالمية عبر ",
+  seoLinkedInLink: "معايير W3C للمستندات",
   seoText4: ".",
 
   blogBreadcrumb: "المدونة",
