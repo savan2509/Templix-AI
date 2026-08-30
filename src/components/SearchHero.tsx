@@ -40,11 +40,11 @@ export default function SearchHero({ locale }: { locale: string }) {
         itemType="https://schema.org/SearchAction"
         className="relative group"
       >
-        <div className="relative flex items-center transition-all duration-300">
+        <div className="relative flex items-center p-1.5 sm:p-2 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/95 dark:bg-zinc-900/95 text-zinc-900 dark:text-zinc-50 shadow-lg shadow-zinc-200/50 dark:shadow-2xl dark:shadow-black/50 hover:border-zinc-300 dark:hover:border-zinc-700 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/40 dark:focus-within:ring-blue-400/30 transition-all duration-200 backdrop-blur-md">
           <label htmlFor="template-search-hero-input" className="sr-only">
             {t.placeholder}
           </label>
-          <Search className="absolute left-4 h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 transition-colors duration-200" />
+          <Search className="ml-3 sm:ml-4 h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 shrink-0 transition-colors duration-200" />
           <input
             id="template-search-hero-input"
             type="text"
@@ -55,13 +55,27 @@ export default function SearchHero({ locale }: { locale: string }) {
             aria-label={t.placeholder}
             data-webmcp-input="query"
             itemProp="query-input"
-            className="w-full h-14 pl-12 pr-32 rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 text-zinc-900 dark:text-zinc-50 shadow-lg shadow-zinc-100/80 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500/80 focus:border-blue-500/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all text-base focus:shadow-xl focus:shadow-blue-500/10 backdrop-blur-sm"
+            autoComplete="off"
+            className="flex-1 bg-transparent border-0 px-3 sm:px-4 py-2 sm:py-2.5 text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-none focus:ring-0 text-sm sm:text-base min-w-0"
           />
+          {query.trim().length > 0 && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear search query"
+              className="p-1.5 mr-1 rounded-full text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              <span className="sr-only">Clear</span>
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
           <button
             type="submit"
             aria-label={t.search}
             data-webmcp-submit="search"
-            className="btn-shimmer absolute right-2 top-2 h-10 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm transition-all flex items-center gap-1.5 shadow-md shadow-blue-500/20 active:scale-95"
+            className="shrink-0 h-10 sm:h-11 px-5 sm:px-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm transition-all duration-200 flex items-center gap-1.5 shadow-md shadow-blue-500/25 active:scale-95 cursor-pointer"
           >
             <Sparkles className="h-3.5 w-3.5 animate-bounce-subtle" />
             <span>{t.search}</span>

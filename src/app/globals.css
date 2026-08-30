@@ -398,15 +398,23 @@ body {
 }
 
 /* ─── Mobile Performance & LCP Instant Paint Optimization ─────────────────── */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .animate-fade-up,
   .animate-fade-down,
+  .animate-fade-in,
   .stagger-1,
   .stagger-2,
-  .stagger-3 {
+  .stagger-3,
+  .stagger-4,
+  .stagger-5 {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+  .animate-float-slow,
+  .animate-float-delayed,
+  .animate-pulse-slow {
+    display: none !important;
   }
 }
 

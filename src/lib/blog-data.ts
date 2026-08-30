@@ -22,6 +22,7 @@ import { longTailPosts } from "./blog/posts-long-tail";
 import { expansionBlogPosts } from "./blog/posts-expansion";
 import { readyToWrite20Posts } from "./blog/posts-ready-to-write-20";
 import { trending2026Posts } from "./blog/posts-trending-2026";
+import { batch2New20Posts } from "./blog/posts-batch2-new20";
 
 export interface BlogPost {
   id: string;
@@ -3345,6 +3346,8 @@ Milestone: 40,000 USD MRR and 85% 6-month retention by Q4 2027.</code></pre>
   ...readyToWrite20Posts,
   // 20 Trending 2026 Strategy & Keyword Posts
   ...trending2026Posts,
+  // 20 High-Intent Trending Blog Posts (Batch 2)
+  ...batch2New20Posts,
 ];
 
 // Automatically filter out future-dated blog posts so unreleased articles don't surface prematurely
@@ -3432,6 +3435,26 @@ const KNOWN_IMAGES = new Set([
   "/blog/blog-thank-you-interview.jpg",
   "/blog/blog-two-weeks-notice-letter.jpg",
   "/blog/blog-work-order-vs-po.jpg",
+  "/blog/blog-invoice-template-excel.jpg",
+  "/blog/blog-invoice-template-for-virtual-assistants.jpg",
+  "/blog/blog-commercial-invoice-template.jpg",
+  "/blog/blog-how-to-add-sales-tax-to-invoice.jpg",
+  "/blog/blog-freelance-invoice-template.jpg",
+  "/blog/blog-federal-resume-format.jpg",
+  "/blog/blog-career-change-resume.jpg",
+  "/blog/blog-resume-for-first-job-no-experience.jpg",
+  "/blog/blog-healthcare-resume-ats.jpg",
+  "/blog/blog-resume-vs-cv-difference.jpg",
+  "/blog/blog-freelance-contract-checklist.jpg",
+  "/blog/blog-web-design-contract-template.jpg",
+  "/blog/blog-simple-nda-template-free.jpg",
+  "/blog/blog-contract-termination-clause.jpg",
+  "/blog/blog-consulting-proposal-template.jpg",
+  "/blog/blog-sponsorship-proposal-template.jpg",
+  "/blog/blog-quote-vs-invoice-vs-estimate.jpg",
+  "/blog/blog-construction-bid-proposal.jpg",
+  "/blog/blog-PDF-to-Word-converter-free.jpg",
+  "/blog/blog-online-document-maker-no-sign-up.jpg",
 ]);
 
 /** Per-category AI-generated covers — always present in /public/blog/ */

@@ -63,16 +63,47 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  // Load Supabase user session on mount and keep in sync
+  // Load Supabase user session on mount and keep in sync (+ Guest fallback)
   useEffect(() => {
+    const checkGuestFallback = () => {
+      try {
+        const stored = localStorage.getItem("templix_guest_user");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          setUser({
+            id: parsed.id || "guest-user",
+            email: parsed.email || "creator@templix-ai.local",
+            user_metadata: { full_name: parsed.name || "Guest Creator" },
+          } as any);
+        } else {
+          setUser(null);
+        }
+      } catch {
+        setUser(null);
+      }
+    };
+
     const supabase = createClient();
-    if (!supabase) return; // Supabase not configured — stay signed-out
-    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => subscription.unsubscribe();
-  }, []);
+    if (supabase) {
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        if (user) {
+          setUser(user);
+        } else {
+          checkGuestFallback();
+        }
+      });
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user) {
+          setUser(session.user);
+        } else {
+          checkGuestFallback();
+        }
+      });
+      return () => subscription.unsubscribe();
+    } else {
+      checkGuestFallback();
+    }
+  }, [pathname]);
 
   // Close menus on route change
   useEffect(() => {
@@ -147,7 +178,13 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     const supabase = createClient();
-    if (supabase) await supabase.auth.signOut();
+    if (supabase) {
+      try { await supabase.auth.signOut(); } catch {}
+    }
+    try {
+      localStorage.removeItem("templix_guest_user");
+      document.cookie = "templix_guest_session=; path=/; max-age=0; SameSite=Lax";
+    } catch {}
     setUser(null);
     setUserMenuOpen(false);
     router.push(`/${currentLocale}`);

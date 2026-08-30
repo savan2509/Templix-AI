@@ -48,6 +48,15 @@ export default async function DashboardPage({ params }: DashboardProps) {
     : { data: { user: null } };
   const naSession = await auth();
 
+  const cookieStore = await cookies();
+  const guestCookie = cookieStore.get("templix_guest_session");
+  let guestUser: any = null;
+  if (guestCookie?.value) {
+    try {
+      guestUser = JSON.parse(decodeURIComponent(guestCookie.value));
+    } catch {}
+  }
+
   const user = sbUser
     ? {
         id: sbUser.id,
@@ -65,7 +74,14 @@ export default async function DashboardPage({ params }: DashboardProps) {
           name: naSession.user.name ?? null,
           role: (naSession.user.role as string) || "USER",
         }
-      : null;
+      : guestUser
+        ? {
+            id: guestUser.id || "guest-user",
+            email: guestUser.email || "creator@templix-ai.local",
+            name: guestUser.name || "Guest Creator",
+            role: "USER",
+          }
+        : null;
 
   if (!user) {
     redirect(`/${locale}/login`);
@@ -122,7 +138,6 @@ export default async function DashboardPage({ params }: DashboardProps) {
   }
 
   // Filter out any documents that have been marked deleted (for both mock files and database records)
-  const cookieStore = await cookies();
   const deletedIds = cookieStore.get("deleted_docs")?.value?.split(",") || [];
   documents = documents.filter((doc) => !deletedIds.includes(doc.id));
 

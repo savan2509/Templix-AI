@@ -133,25 +133,42 @@ export default function Footer() {
                 </span>
               </a>
 
-              <a
-                href={siteConfig.links.googleMaps}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-xs transition-all hover:border-zinc-400 hover:bg-zinc-100 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70"
-                aria-label="View Templix AI Headquarters on Google Maps"
-              >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
-                  <MapPin className="h-3.5 w-3.5" />
-                </span>
-                <span className="min-w-0 text-left">
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                    Google Business Profile & HQ
+              <div className="space-y-2">
+                <a
+                  href={siteConfig.links.googleBusiness}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover-lift group inline-flex w-full items-center gap-2.5 rounded-xl border border-zinc-200 bg-zinc-50/70 px-3.5 py-2 text-zinc-700 shadow-xs transition-all hover:border-blue-400 hover:bg-blue-50/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300 dark:hover:border-blue-600 dark:hover:bg-zinc-900/70"
+                  aria-label="View Templix AI Google Business Profile & Maps Location"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
+                    <MapPin className="h-3.5 w-3.5" />
                   </span>
-                  <span className="block truncate text-xs font-medium text-zinc-700 dark:text-zinc-300 group-hover:underline">
-                    535 Mission St, 14th Fl, San Francisco, CA
+                  <span className="min-w-0 text-left">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                      Google Business Profile &amp; HQ
+                    </span>
+                    <span className="block truncate text-xs font-semibold text-zinc-800 dark:text-zinc-200 group-hover:underline">
+                      535 Mission St, 14th Fl, San Francisco, CA
+                    </span>
                   </span>
-                </span>
-              </a>
+                </a>
+
+                {/* Google Maps Location Embed for Local SEO & Verification */}
+                <div className="w-full h-36 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs mt-2">
+                  <iframe
+                    title="Templix AI Headquarters Google Maps Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0182582845625!2d-122.3995!3d37.7897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064d799d555%3A0x1082391203912!2s535%20Mission%20St%2C%20San%20Francisco%2C%20CA%2094105!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 

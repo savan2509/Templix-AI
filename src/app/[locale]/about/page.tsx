@@ -147,6 +147,76 @@ export default async function AboutPage({ params }: PageProps) {
           </div>
         </div>
 
+        {/* Our Team & Editorial Review Board (E-E-A-T) */}
+        <div id="our-team">
+          <Section heading="Editorial Board & Document Specialists">
+            <p className="mb-6">
+              Every template, guide, and financial formula published on Templix AI is created and audited by a specialized team of document architects, tax consultants, and career specialists:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
+                    ER
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Elena Rostova, J.D.</h4>
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">Lead Commercial Document Specialist</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed pt-1">
+                  Specializes in commercial service agreements, non-disclosure terms, and standard business contracts. Oversees legal structure auditing across our contract catalog.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-sm">
+                    MC
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Marcus Chen, CPA</h4>
+                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Financial &amp; Tax Compliance Lead</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed pt-1">
+                  Expert in VAT, GST, line-item reconciliation, and invoicing structures. Ensures all financial calculation formulas reconcile accurately across currency and tax formats.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-sm">
+                    AP
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">Aria Patel, M.S. HR</h4>
+                    <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">Career Consultant &amp; ATS Architect</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed pt-1">
+                  Focuses on recruitment systems, Applicant Tracking System parsers (Taleo, Greenhouse, Workday), and single-column resume design standards.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 font-bold text-sm">
+                    DM
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-900 dark:text-white">David Miller</h4>
+                    <p className="text-xs text-amber-600 dark:text-amber-400 font-semibold">Principal AI &amp; Privacy Engineer</p>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed pt-1">
+                  Architects browser-local document processing pipelines and client-side PDF compilation, guaranteeing that private user figures never leave the client device.
+                </p>
+              </div>
+            </div>
+          </Section>
+        </div>
+
         <Section heading={t.getStartedHeading}>
           <p>
             {t.getStartedPre}{" "}

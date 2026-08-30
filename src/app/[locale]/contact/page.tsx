@@ -95,8 +95,8 @@ export default async function ContactPage({ params }: PageProps) {
               <Mail className="h-4 w-4" />
             </span>
             <div className="min-w-0 text-left">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email</span>
-              <span className="block truncate text-xs font-semibold">support@templix-ai.whitesparksoft.com</span>
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email Desk</span>
+              <span className="block truncate text-xs font-semibold">support&#64;templix-ai.whitesparksoft.com</span>
             </div>
           </ObfuscatedEmail>
 

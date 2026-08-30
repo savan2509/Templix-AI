@@ -10,6 +10,7 @@ import FAQ from "@/components/FAQ";
 import TemplateThumbnail from "@/components/TemplateThumbnail";
 import Schema from "@/components/seo/Schema";
 import { faqSchema } from "@/data/faq";
+import SocialShare from "@/components/SocialShare";
 import { CATEGORIES } from "@/constants";
 import { getDictionary, INTL_LOCALE } from "@/lib/i18n";
 import { STATIC_BLOG_POSTS, resolvePostImage } from "@/lib/blog-data";
@@ -275,9 +276,9 @@ export default async function HomePage({ params }: PageProps) {
 
                   {/* Label area */}
                   <div className="absolute bottom-0 left-0 right-0 p-3.5">
-                    <h3 className="block font-bold text-white text-xs sm:text-sm leading-tight drop-shadow transition-transform duration-300 group-hover:translate-x-0.5">
+                    <p className="block font-bold text-white text-xs sm:text-sm leading-tight drop-shadow transition-transform duration-300 group-hover:translate-x-0.5">
                       {categoryName(cat.slug)}
-                    </h3>
+                    </p>
                     <div className="flex items-center gap-1 text-[10px] text-white/80 mt-0.5 font-medium">
                       <span>{allFallbackTemplates.filter(ft => ft.categorySlug === cat.slug).length} {c.templatesLabel}</span>
                       <ArrowRight className="h-2.5 w-2.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
@@ -320,17 +321,27 @@ export default async function HomePage({ params }: PageProps) {
                   {/* Thumbnail — mini of the live document preview so the cover
                       matches the detail page for every module */}
                   <div className="cv-card aspect-[4/5] w-full border-b border-zinc-100 dark:border-zinc-800 relative overflow-hidden group-hover:opacity-95 transition-opacity" aria-hidden="true">
-                    <TemplateThumbnail
-                      template={{
-                        slug: temp.slug,
-                        categorySlug: temp.category?.slug,
-                        title: temp.title,
-                        categoryName: temp.category?.name,
-                        content:
-                          (temp as any).content ??
-                          allFallbackTemplates.find((a) => a.slug === temp.slug)?.content,
-                      }}
-                    />
+                    {(() => {
+                      const fullContent = (temp as any).content ?? allFallbackTemplates.find((a) => a.slug === temp.slug)?.content;
+                      const streamlinedContent = fullContent ? {
+                        ...fullContent,
+                        editorState: fullContent.editorState ? {
+                          type: fullContent.editorState.type,
+                          content: (fullContent.editorState.content || []).slice(0, 8),
+                        } : undefined,
+                      } : undefined;
+                      return (
+                        <TemplateThumbnail
+                          template={{
+                            slug: temp.slug,
+                            categorySlug: temp.category?.slug,
+                            title: temp.title,
+                            categoryName: temp.category?.name,
+                            content: streamlinedContent,
+                          }}
+                        />
+                      );
+                    })()}
                     <span className="animate-shimmer absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 text-white font-bold text-[9px] uppercase tracking-wider shadow-sm z-10">
                       {c.free}
                     </span>
@@ -433,7 +444,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-11 w-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{t.why1Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{t.why1Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why1Desc}
                 </p>
@@ -444,7 +455,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-11 w-11 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{t.why2Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{t.why2Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why2Desc}
                 </p>
@@ -455,7 +466,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-11 w-11 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <Zap className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{t.why3Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{t.why3Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why3Desc}
                 </p>
@@ -466,7 +477,7 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="h-11 w-11 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
                   <FileText className="h-5 w-5" />
                 </div>
-                <h3 className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{t.why4Title}</h3>
+                <p className="font-bold text-base text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{t.why4Title}</p>
                 <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">
                   {t.why4Desc}
                 </p>
@@ -693,6 +704,26 @@ export default async function HomePage({ params }: PageProps) {
                   Outputs can be immediately exported to clean PDF or Microsoft Word (.docx) formats without watermarks or mandatory registration.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Community & Sharing Bar */}
+        <section className="py-8 bg-zinc-50/70 dark:bg-zinc-900/30 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left space-y-1">
+              <p className="font-bold text-sm text-zinc-900 dark:text-white">
+                Share Templix AI with Your Network
+              </p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                Help fellow freelancers, job seekers, and founders create free professional documents with zero paywalls.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <SocialShare
+                title="Templix AI — 100% Free Professional Document Templates & AI Editor"
+                url={`${SITE_URL}/${locale}`}
+              />
             </div>
           </div>
         </section>

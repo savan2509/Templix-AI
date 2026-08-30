@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, ArrowRight, CheckCircle2, PenTool, Sparkles, Loader2, Zap } from "lucide-react";
+import { FileText, ArrowRight, CheckCircle2, PenTool, Sparkles, Loader2 } from "lucide-react";
 import DocumentPaper from "./DocumentPaper";
 import { getTemplateValues } from "@/features/templates/sample-values";
 import { getDictionary } from "@/lib/i18n";
@@ -10,8 +10,6 @@ import { createClient } from "@/lib/supabase/client";
 import { aiFillTemplateAction } from "@/features/tools/ai-actions";
 import SocialShare from "./SocialShare";
 import { siteConfig } from "@/config/site";
-import { useTemplateLimit, FREE_TEMPLATE_LIMIT } from "@/hooks/useTemplateLimit";
-import FreeLimitModal from "./FreeLimitModal";
 
 interface TemplateContent {
   title: string;
@@ -91,18 +89,6 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
     };
   }, []);
 
-  // Free template usage limit hook for guest users
-  const {
-    usedCount,
-    remaining,
-    isLimitReached,
-    registerTemplateUsage,
-    hasUsedTemplate,
-  } = useTemplateLimit();
-
-  const [showFreeLimitModal, setShowFreeLimitModal] = useState(false);
-  const [pendingEditorUrl, setPendingEditorUrl] = useState("");
-
   const handleInputChange = (field: string, val: string) => {
     setFieldValues((prev) => ({ ...prev, [field]: val }));
   };
@@ -136,23 +122,6 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
       params.set(`field_${k}`, v);
     });
     const editorUrl = `/${locale}/editor/new?${params.toString()}`;
-    setPendingEditorUrl(editorUrl);
-
-    // 1. If signed in, allow unlimited creations!
-    if (canEdit === true) {
-      router.push(editorUrl);
-      return;
-    }
-
-    // 2. Guest user: check 5 free templates limit!
-    const allowed = registerTemplateUsage(template.slug);
-    if (!allowed) {
-      // Limit reached -> open compulsory login modal popup!
-      setShowFreeLimitModal(true);
-      return;
-    }
-
-    // Allowed (under 5 free creations or already unlocked) -> open editor!
     router.push(editorUrl);
   };
 
@@ -174,23 +143,15 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               </p>
             </div>
 
-            {/* Guest Free Allowance Badge */}
+            {/* Free Instant Guest Access Badge */}
             {canEdit !== true && (
-              <div className={`p-3 rounded-xl border flex items-center justify-between text-xs transition-colors ${
-                isLimitReached && !hasUsedTemplate(template.slug)
-                  ? "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-900/60 text-amber-800 dark:text-amber-200"
-                  : "bg-blue-50/60 dark:bg-blue-950/30 border-blue-100 dark:border-blue-900/40 text-blue-800 dark:text-blue-200"
-              }`}>
+              <div className="p-3 rounded-xl border flex items-center justify-between text-xs bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-200/80 dark:border-emerald-900/40 text-emerald-800 dark:text-emerald-200">
                 <div className="flex items-center gap-2 font-medium">
-                  <Zap className="h-4 w-4 text-amber-500 shrink-0 animate-pulse" />
-                  <span>
-                    {isLimitReached && !hasUsedTemplate(template.slug)
-                      ? `Guest Allowance Reached (${FREE_TEMPLATE_LIMIT}/${FREE_TEMPLATE_LIMIT} Used)`
-                      : `Guest Access: ${usedCount}/${FREE_TEMPLATE_LIMIT} Free Documents Created`}
-                  </span>
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span>Instant Guest Access (100% Free)</span>
                 </div>
-                <span className="font-bold text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-zinc-800 shadow-xs border border-zinc-200 dark:border-zinc-700">
-                  {remaining > 0 ? `${remaining} Free Left` : "Sign In Required"}
+                <span className="font-bold text-[11px] px-2.5 py-0.5 rounded-md bg-white dark:bg-zinc-800 shadow-xs border border-zinc-200 dark:border-zinc-700 text-emerald-700 dark:text-emerald-300">
+                  No Sign-Up Needed
                 </span>
               </div>
             )}
@@ -248,7 +209,7 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
               <p className="text-[10px] text-center text-zinc-400">
                 {canEdit === true
                   ? "Unlimited free document creations enabled for your account"
-                  : `Guests get ${FREE_TEMPLATE_LIMIT} free document creations before signing in`}
+                  : "100% Free instant document drafting & PDF/Word exports — no sign-up required"}
               </p>
 
               {/* Social Share Component */}
@@ -293,15 +254,6 @@ export default function TemplateDetailView({ locale, template }: TemplateDetailV
           </div>
         </div>
       </div>
-
-      {/* Compulsory Login Required Modal Popup */}
-      <FreeLimitModal
-        isOpen={showFreeLimitModal}
-        onClose={() => setShowFreeLimitModal(false)}
-        locale={locale}
-        nextUrl={pendingEditorUrl}
-        templateTitle={template.title}
-      />
     </>
   );
 }

@@ -61,9 +61,9 @@ export default function FAQ({ locale, items, heading }: Props) {
                   className="flex w-full items-center justify-between px-5 py-4 text-left font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50/80 dark:hover:bg-zinc-800/60 transition-all duration-200 cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-100 pr-2 transition-colors">
+                  <span className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-100 pr-2 transition-colors">
                     {faq.question}
-                  </h3>
+                  </span>
                   <div className={`p-1 rounded-full transition-all duration-300 ${isOpen ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180" : "text-zinc-400"}`}>
                     <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-300" />
                   </div>

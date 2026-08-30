@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Heart } from "lucide-react";
 
@@ -16,32 +15,61 @@ interface Props {
 // Requires Supabase auth — redirects to login if not signed in.
 export default function FavoriteButton({
   templateSlug,
-  locale,
+  locale: _locale,
   initialFavorited = false,
   size = "md",
 }: Props) {
-  const router = useRouter();
   const supabase = createClient();
   const [favorited, setFavorited] = useState(initialFavorited);
   const [loading, setLoading] = useState(false);
 
-  // Keep in sync when the server-rendered value changes (e.g. after navigation).
+  // Keep in sync when the server-rendered value changes or check local storage
   useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("templix_local_favorites") || "[]");
+      if (stored.includes(templateSlug)) {
+        setFavorited(true);
+        return;
+      }
+    } catch {}
     setFavorited(initialFavorited);
-  }, [initialFavorited]);
+  }, [initialFavorited, templateSlug]);
 
   const handleToggle = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // Check auth first (Supabase not configured → send to login)
-    if (!supabase) {
-      router.push(`/${locale}/login`);
+    // Check if guest user session is active
+    const isGuest = typeof window !== "undefined" && Boolean(localStorage.getItem("templix_guest_user"));
+
+    // If Supabase not configured or guest user, use client-side favorites
+    if (!supabase || isGuest) {
+      try {
+        const stored = JSON.parse(localStorage.getItem("templix_local_favorites") || "[]");
+        let updated: string[];
+        if (stored.includes(templateSlug)) {
+          updated = stored.filter((s: string) => s !== templateSlug);
+          setFavorited(false);
+        } else {
+          updated = [...stored, templateSlug];
+          setFavorited(true);
+        }
+        localStorage.setItem("templix_local_favorites", JSON.stringify(updated));
+      } catch {}
       return;
     }
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-      router.push(`/${locale}/login`);
+      // Auto-favorite in local storage and allow immediate bookmarking
+      try {
+        const stored = JSON.parse(localStorage.getItem("templix_local_favorites") || "[]");
+        const updated = stored.includes(templateSlug)
+          ? stored.filter((s: string) => s !== templateSlug)
+          : [...stored, templateSlug];
+        localStorage.setItem("templix_local_favorites", JSON.stringify(updated));
+        setFavorited(updated.includes(templateSlug));
+      } catch {}
       return;
     }
 
@@ -56,7 +84,7 @@ export default function FavoriteButton({
       if (!res.ok) throw new Error(data.error);
       setFavorited(data.favorited);
     } catch {
-      // Silently fail — UI stays consistent
+      // Silently keep local state consistent
     } finally {
       setLoading(false);
     }

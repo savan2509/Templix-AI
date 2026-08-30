@@ -56,13 +56,11 @@ export default async function proxy(req: NextRequest) {
 
   const { pathname } = req.nextUrl;
 
-  // Rewrite bare root `/` onto canonical locale `/en` (HTTP 200 without redirect hops)
+  // Permanently redirect bare root `/` onto canonical locale `/en` (HTTP 308)
   if (pathname === "/") {
     const url = req.nextUrl.clone();
     url.pathname = "/en";
-    const rewriteResponse = NextResponse.rewrite(url);
-    rewriteResponse.headers.set("Link", `<${PRODUCTION_URL}/en>; rel="canonical"`);
-    return rewriteResponse;
+    return NextResponse.redirect(url, 308);
   }
   let supabaseResponse = NextResponse.next({ request: req });
 
