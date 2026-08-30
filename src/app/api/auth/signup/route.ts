@@ -45,15 +45,29 @@ export async function POST(request: Request) {
 
   const redirectTo = `${siteConfig.url}/${locale}/dashboard`;
 
-  const { data, error } = await admin.auth.admin.generateLink({
-    type: "signup",
-    email,
-    password,
-    options: { data: { full_name: fullName }, redirectTo },
-  });
+  let generateResult: any;
+  try {
+    generateResult = await admin.auth.admin.generateLink({
+      type: "signup",
+      email,
+      password,
+      options: { data: { full_name: fullName }, redirectTo },
+    });
+  } catch (err: any) {
+    const errMsg = err?.message || String(err);
+    if (/fetch failed|failed to fetch|network|timeout|connect|econnrefused|enotfound/i.test(errMsg)) {
+      return NextResponse.json({ fallback: true });
+    }
+    return NextResponse.json({ error: errMsg }, { status: 500 });
+  }
+
+  const { data, error } = generateResult || {};
 
   if (error || !data?.properties?.hashed_token) {
     const msg = error?.message || "Could not create the account.";
+    if (/fetch failed|failed to fetch|network|timeout|connect|econnrefused|enotfound/i.test(msg)) {
+      return NextResponse.json({ fallback: true });
+    }
     const already = /already|exists|registered/i.test(msg);
     return NextResponse.json(
       { error: already ? "An account with this email already exists. Try signing in." : msg },

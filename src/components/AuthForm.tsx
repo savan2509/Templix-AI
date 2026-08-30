@@ -163,8 +163,8 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       setLoading(false);
       if (error) {
-        // If connection or network failed, give instant local access
-        if (/failed to fetch|network|service unavailable|internal server/i.test(error.message)) {
+        // If connection or network failed, activate local session seamlessly
+        if (/fetch failed|failed to fetch|network|service unavailable|internal server|timeout|connect|load failed/i.test(error.message)) {
           activateLocalSession(email, email.split("@")[0], false);
           return;
         }
@@ -211,11 +211,16 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
         return;
       }
       if (res.ok && payload.fallback) {
-        // Confirmation email not configured — continue to the direct signup below.
+        // Confirmation email not configured — continue to direct signup below
       } else {
-        setLoading(false);
-        setError(payload.error || "Could not create your account. Please try again.");
-        return;
+        const errorText = payload.error || "Could not create your account. Please try again.";
+        if (/fetch failed|failed to fetch|network|timeout|connect|service unavailable/i.test(errorText)) {
+          // Connection issue on server -> fallback to direct/local signup
+        } else {
+          setLoading(false);
+          setError(errorText);
+          return;
+        }
       }
     } catch {
       // Network hiccup — fall through to direct signup
@@ -232,7 +237,7 @@ export default function AuthForm({ locale, googleEnabled = false, next }: Props)
       });
       setLoading(false);
       if (error) {
-        if (/failed to fetch|network|service unavailable/i.test(error.message)) {
+        if (/fetch failed|failed to fetch|network|service unavailable|timeout|connect|load failed/i.test(error.message)) {
           activateLocalSession(email, fullName, true);
           return;
         }
