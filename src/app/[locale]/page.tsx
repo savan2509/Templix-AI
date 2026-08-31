@@ -23,6 +23,8 @@ import {
   Sparkles,
   ShieldCheck,
   Zap,
+  Scale,
+  FileCheck,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
@@ -90,13 +92,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ar: "قوالب مجانية: فواتير وسير ذاتية وعقود",
   };
   
-  // Kept under 160 characters so the snippet isn't truncated in search results.
+  // Kept strictly under 155 characters to avoid SERP truncation while highlighting no sign-up.
   const descriptions = {
-    en: "Create and download free invoices, resumes, contracts, proposals and letters in minutes. Customize online with AI and export to PDF or Word — no sign-up.",
-    es: "Crea y descarga facturas, currículums, contratos, propuestas y cartas gratis en minutos. Personaliza online con IA y exporta a PDF o Word, sin registro.",
-    de: "Kostenlose Rechnungen, Lebensläufe, Verträge, Angebote und Briefe in Minuten erstellen. Online mit KI anpassen und als PDF oder Word exportieren.",
-    fr: "Créez et téléchargez gratuitement factures, CV, contrats, propositions et lettres en minutes. Personnalisez avec l'IA, exportez en PDF ou Word.",
-    ar: "أنشئ ونزّل فواتير وسِيَرًا ذاتية وعقودًا ومقترحات ورسائل مجانية في دقائق. عدّلها عبر الإنترنت بمساعدة الذكاء الاصطناعي وصدّرها بصيغة PDF أو Word.",
+    en: "Create free invoices, resumes, contracts and proposals in minutes. Customize online with AI and export to PDF or Word — 100% free with no sign-up.",
+    es: "Crea facturas, currículums y contratos gratis en minutos. Personaliza con IA y exporta a PDF o Word — 100% gratis y sin registro.",
+    de: "Kostenlose Rechnungen, Lebensläufe und Verträge in Minuten erstellen. Mit KI anpassen und als PDF oder Word exportieren — ohne Registrierung.",
+    fr: "Créez factures, CV et contrats gratuits en quelques minutes. Personnalisez avec l'IA et exportez en PDF ou Word — sans inscription.",
+    ar: "أنشئ فواتير وسير ذاتية وعقود مجانية في دقائق. عدّلها بالذكاء الاصطناعي وصدّرها إلى PDF أو Word — بدون تسجيل.",
   };
 
   const title = titles[locale as keyof typeof titles] || titles.en;
@@ -576,8 +578,8 @@ export default async function HomePage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
               <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-sm">
-                    LS
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 shadow-xs">
+                    <Scale className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-bold text-zinc-900 dark:text-white text-sm">Commercial Legal Structure</p>
@@ -597,8 +599,8 @@ export default async function HomePage({ params }: PageProps) {
 
               <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-sm">
-                    PS
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 shadow-xs">
+                    <ShieldCheck className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-bold text-zinc-900 dark:text-white text-sm">Privacy-First Architecture</p>
@@ -618,8 +620,8 @@ export default async function HomePage({ params }: PageProps) {
 
               <div className="card-interactive rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 space-y-3 shadow-xs">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 font-bold text-xs">
-                    ATS
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300 shadow-xs">
+                    <FileCheck className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-bold text-zinc-900 dark:text-white text-sm">ATS-Friendly Layouts</p>

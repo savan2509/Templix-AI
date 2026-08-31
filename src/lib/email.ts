@@ -7,20 +7,20 @@ import { siteConfig } from "@/config/site";
 // it (or forward it) on the domain, or override ADMIN_NOTIFICATION_EMAIL in the
 // environment to a real inbox, or contact-form and sign-up mail will be lost.
 export const ADMIN_NOTIFICATION_EMAIL =
-  process.env.ADMIN_NOTIFICATION_EMAIL || "support@templix-ai.whitesparksoft.com";
+  process.env.ADMIN_NOTIFICATION_EMAIL || "whitesparktechnologies@gmail.com";
 
 // SMTP transport built from the same EMAIL_SERVER_* env used by the magic-link
 // provider, so a single mail configuration powers every outbound email.
 function buildTransport() {
   const host = process.env.EMAIL_SERVER_HOST || "smtp.gmail.com";
   const port = parseInt(process.env.EMAIL_SERVER_PORT || "587", 10);
-  const user = process.env.EMAIL_SERVER_USER;
+  const user = process.env.EMAIL_SERVER_USER || "whitesparktechnologies@gmail.com";
   const pass = process.env.EMAIL_SERVER_PASSWORD;
   return {
     host,
     port,
     secure: port === 465, // 465 = implicit TLS, 587 = STARTTLS
-    auth: user ? { user, pass } : undefined,
+    auth: user && pass ? { user, pass } : undefined,
   };
 }
 
@@ -42,7 +42,7 @@ export async function sendNewUserAdminEmail(user: NewUserInfo): Promise<void> {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
 
   const name = (user.name && user.name.trim()) || user.email.split("@")[0];
   const provider = user.provider || "email";
@@ -119,7 +119,7 @@ export async function sendWelcomeEmail(user: NewUserInfo): Promise<void> {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
   const name = (user.name && user.name.trim()) || user.email.split("@")[0];
   const dashboard = `${siteConfig.url}/en/dashboard`;
   const templates = `${siteConfig.url}/en/templates`;
@@ -188,7 +188,7 @@ export async function sendSignupVerificationEmail(input: {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
   const name = (input.name && input.name.trim()) || input.email.split("@")[0];
   const { confirmUrl } = input;
 
@@ -272,7 +272,7 @@ export async function sendContactMessageEmail(input: {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
   const subject = (input.subject || "").trim() || "New contact form message";
   const phone = (input.phone || "").trim();
   const esc = (s: string) =>
@@ -314,7 +314,7 @@ export async function sendNewsletterSignupEmail(subscriber: string): Promise<voi
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
   const when = new Date().toUTCString();
   const esc = (s: string) => s.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -351,7 +351,7 @@ export async function sendPasswordResetEmail(input: {
   const from =
     process.env.EMAIL_FROM ||
     process.env.EMAIL_SERVER_USER ||
-    "no-reply@templix-ai.whitesparksoft.com";
+    "whitesparktechnologies@gmail.com";
   const name = input.email.split("@")[0];
   const { resetUrl } = input;
 

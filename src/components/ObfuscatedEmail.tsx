@@ -19,43 +19,35 @@ interface ObfuscatedEmailProps {
  * - Dynamically constructs mailto link only after client hydration or user interaction.
  */
 export default function ObfuscatedEmail({
-  user = "support",
-  domain = "templix-ai.whitesparksoft.com",
+  user = "whitesparktechnologies",
+  domain = "gmail.com",
   className = "",
   label,
   ariaLabel,
   children,
 }: ObfuscatedEmailProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const emailAddress = `${user}@${domain}`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const address = `${user}@${domain}`;
-    window.location.href = `mailto:${address}`;
-    e.preventDefault();
+    window.location.href = `mailto:${emailAddress}`;
   };
-
-  const displayEmail = mounted ? `${user}@${domain}` : `${user} [at] ${domain}`;
 
   return (
     <a
-      href={mounted ? `mailto:${user}@${domain}` : "#"}
+      href={`mailto:${emailAddress}`}
       onClick={handleClick}
       className={className}
-      aria-label={ariaLabel || (mounted ? `Send email to support` : "Contact support")}
-      title="Click to send email"
+      aria-label={ariaLabel || `Send email to ${emailAddress}`}
+      title="Click to send email via mailto:"
     >
       {typeof children === "function" ? (
-        children(displayEmail)
+        children(emailAddress)
       ) : children ? (
         children
       ) : label ? (
         <span>{label}</span>
       ) : (
-        <span>{displayEmail}</span>
+        <span>{emailAddress}</span>
       )}
     </a>
   );

@@ -65,7 +65,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s6Heading}>
         <p>
           {t.s6Body}{" "}
-          <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
+          <ObfuscatedEmail user="whitesparktechnologies" domain="gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
         </p>
       </Section>
 
@@ -76,7 +76,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <Section heading={t.s8Heading}>
         <p>
           {t.s8Body}{" "}
-          <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
+          <ObfuscatedEmail user="whitesparktechnologies" domain="gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />.
         </p>
       </Section>
     </InfoPageShell>

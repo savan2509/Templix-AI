@@ -93,10 +93,10 @@ export default function Footer() {
             {/* Direct contact & Phone links */}
             <div className="flex flex-col gap-2.5">
               <ObfuscatedEmail
-                user="support"
-                domain="templix-ai.whitesparksoft.com"
+                user="whitesparktechnologies"
+                domain="gmail.com"
                 className="hover-lift group inline-flex items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-blue-700 shadow-xs transition-all hover:border-blue-400 hover:bg-blue-100 hover:shadow-md dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:border-blue-700 dark:hover:bg-blue-950/70"
-                ariaLabel="Send email to customer support team"
+                ariaLabel="Send email to customer support team at whitesparktechnologies@gmail.com"
               >
                 {(emailText) => (
                   <>
@@ -472,7 +472,7 @@ export default function Footer() {
             <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer nofollow" aria-label="GitHub Repository" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
               GitHub
             </a>
-            <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener noreferrer nofollow" aria-label="Google Business Profile & Maps Location" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <a href={siteConfig.links.googleBusiness} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile & Maps Location" className="hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold transition-colors">
               Google Business Profile
             </a>
           </div>

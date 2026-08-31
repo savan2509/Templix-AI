@@ -5,9 +5,9 @@ import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import ContactForm from "@/components/ContactForm";
 import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
-import { PRODUCTION_URL } from "@/config/site";
+import { PRODUCTION_URL, siteConfig } from "@/config/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -86,17 +86,17 @@ export default async function ContactPage({ params }: PageProps) {
 
         <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-zinc-100 pt-5 dark:border-zinc-800">
           <ObfuscatedEmail
-            user="support"
-            domain="templix-ai.whitesparksoft.com"
+            user="whitesparktechnologies"
+            domain="gmail.com"
             className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors"
-            ariaLabel="Email customer support team directly"
+            ariaLabel="Email customer support team directly at whitesparktechnologies@gmail.com"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
               <Mail className="h-4 w-4" />
             </span>
             <div className="min-w-0 text-left">
               <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email Desk</span>
-              <span className="block truncate text-xs font-semibold">support&#64;templix-ai.whitesparksoft.com</span>
+              <span className="block truncate text-xs font-semibold">whitesparktechnologies&#64;gmail.com</span>
             </div>
           </ObfuscatedEmail>
 
@@ -133,6 +133,27 @@ export default async function ContactPage({ params }: PageProps) {
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full"
           />
+        </div>
+        <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-600 text-white">
+              <MapPin className="h-4 w-4" />
+            </span>
+            <div>
+              <p className="text-xs font-bold text-zinc-900 dark:text-white">535 Mission Street, 14th Floor, San Francisco, CA 94105</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">Templix AI Global Operations Center</p>
+            </div>
+          </div>
+          <a
+            href={siteConfig.links.googleBusiness}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-colors shadow-xs"
+            aria-label="Open Templix AI Google Business Profile in Google Maps"
+          >
+            <span>View on Google Maps</span>
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         </div>
       </Section>
 

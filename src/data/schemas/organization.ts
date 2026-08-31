@@ -21,7 +21,7 @@ export const localBusinessSchema = {
   image: `${BASE}/icon-512.png`,
   url: `${BASE}/en/contact`,
   telephone: "+1-415-890-3882",
-  email: "support@templix-ai.whitesparksoft.com",
+  email: "whitesparktechnologies@gmail.com",
   priceRange: "$0",
   hasMap: siteConfig.links.googleMaps,
   address: {
@@ -84,12 +84,12 @@ export const globalSchemas = {
       description:
         "Templix AI is a free online document creation platform providing professional templates for invoices, resumes, contracts, and proposals.",
       telephone: "+1-415-890-3882",
-      email: "support@templix-ai.whitesparksoft.com",
+      email: "whitesparktechnologies@gmail.com",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
         telephone: "+1-415-890-3882",
-        email: "support@templix-ai.whitesparksoft.com",
+        email: "whitesparktechnologies@gmail.com",
         url: `${BASE}/en/contact`,
         availableLanguage: ["English"],
       },

@@ -71,7 +71,7 @@ export default async function TermsPage({ params }: PageProps) {
       <Section heading={t.s9Heading}>
         <p>
           {t.s9Before}
-          <ObfuscatedEmail user="support" domain="templix-ai.whitesparksoft.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />{t.s9After}
+          <ObfuscatedEmail user="whitesparktechnologies" domain="gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold" />{t.s9After}
         </p>
       </Section>
     </InfoPageShell>

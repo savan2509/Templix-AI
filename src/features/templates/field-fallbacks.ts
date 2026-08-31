@@ -332,7 +332,7 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
   if (key === "deliverables") {
     const themed = Object.keys(DELIVERABLES_BY_SUBJECT).find((k) => slug.includes(k));
     if (themed) return DELIVERABLES_BY_SUBJECT[themed];
-    return `Agreed ${subject.toLowerCase() || "project"} deliverables, confirmed in writing before work begins`;
+    return `completed design assets, source code repository, documentation, and technical handover files`;
   }
   if (key === "projectDescription") {
     return `${subject} work for ${client}`;
