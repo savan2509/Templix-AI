@@ -182,14 +182,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        {/* Facebook Pixel — deferred initialization to eliminate main thread blocking & polyfill overhead */}
-        <Script
-          id="fb-pixel"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var loaded=false;function initFb(){if(loaded)return;loaded=true;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_FB_PIXEL_ID || "918237465019283"}');fbq('track','PageView');}if('requestIdleCallback' in window){requestIdleCallback(function(){setTimeout(initFb,2500);});}else{setTimeout(initFb,3000);};['scroll','touchstart','mousemove','click','keydown'].forEach(function(e){window.addEventListener(e,initFb,{once:true,passive:true});});})();`,
-          }}
-        />
+        {/* Facebook Pixel — deferred initialization when configured */}
+        {process.env.NEXT_PUBLIC_FB_PIXEL_ID && (
+          <Script
+            id="fb-pixel"
+            strategy="lazyOnload"
+            dangerouslySetInnerHTML={{
+              __html: `(function(){var loaded=false;function initFb(){if(loaded)return;loaded=true;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');fbq('track','PageView');}if('requestIdleCallback' in window){requestIdleCallback(function(){setTimeout(initFb,2500);});}else{setTimeout(initFb,3000);};['scroll','touchstart','mousemove','click','keydown'].forEach(function(e){window.addEventListener(e,initFb,{once:true,passive:true});});})();`,
+            }}
+          />
+        )}
       </body>
     </html>
   );

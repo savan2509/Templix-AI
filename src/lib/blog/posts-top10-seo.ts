@@ -166,7 +166,7 @@ export const top10SeoPosts: BlogPost[] = [
 </table>
 
 <h2>Explore the Full Library</h2>
-<p>Access our complete catalog of over 490+ free blueprints in the <a href="/en/templates">Templix AI Document Library</a> to draft, edit, and export your business paperwork in minutes.</p>
+<p>Access our complete catalog of over 530+ free blueprints in the <a href="/en/templates">Templix AI Document Library</a> to draft, edit, and export your business paperwork in minutes.</p>
 `,
   },
 

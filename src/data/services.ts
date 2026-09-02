@@ -47,7 +47,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Instant PDF Compilation", desc: "Client-side PDF compilation renders pixel-perfect documents ready for instant printing or emailing.", icon: "FileText" },
     ],
     howItWorks: [
-      { step: 1, title: "Select Document Type", desc: "Choose from 490+ templates spanning invoices, resumes, contracts, proposals, and letters." },
+      { step: 1, title: "Select Document Type", desc: "Choose from 530+ templates spanning invoices, resumes, contracts, proposals, reports, and letters." },
       { step: 2, title: "Customize & Fill Details", desc: "Use fill-in prompts or edit text directly in the interactive rich-text browser editor." },
       { step: 3, title: "Enhance with AI", desc: "Use the AI assistant to refine tone, check grammar, or summarize section points." },
       { step: 4, title: "Export to PDF / Word", desc: "Download print-ready PDF or editable Word (.docx) files instantly with zero watermark." },

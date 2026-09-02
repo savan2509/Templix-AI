@@ -23,7 +23,8 @@ export const localBusinessSchema = {
   telephone: "+1-415-890-3882",
   email: "whitesparktechnologies@gmail.com",
   priceRange: "$0",
-  hasMap: siteConfig.links.googleMaps,
+  hasMap: siteConfig.links.googleBusiness,
+  map: siteConfig.links.googleMaps,
   address: {
     "@type": "PostalAddress",
     streetAddress: "535 Mission Street, 14th Floor",
@@ -54,13 +55,14 @@ export const localBusinessSchema = {
     },
   ],
   sameAs: [
+    siteConfig.links.googleBusiness,
+    siteConfig.links.googleMaps,
     siteConfig.links.facebook,
     siteConfig.links.instagram,
     siteConfig.links.twitter,
     siteConfig.links.linkedin,
     siteConfig.links.youtube,
     siteConfig.links.github,
-    siteConfig.links.googleBusiness,
   ].filter(Boolean),
 };
 
@@ -84,12 +86,12 @@ export const globalSchemas = {
       description:
         "Templix AI is a free online document creation platform providing professional templates for invoices, resumes, contracts, and proposals.",
       telephone: "+1-415-890-3882",
-      email: "whitesparktechnologies@gmail.com",
+      email: siteConfig.supportEmail || "support@templixai.com",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
         telephone: "+1-415-890-3882",
-        email: "whitesparktechnologies@gmail.com",
+        email: siteConfig.supportEmail || "support@templixai.com",
         url: `${BASE}/en/contact`,
         availableLanguage: ["English"],
       },
@@ -102,13 +104,14 @@ export const globalSchemas = {
         addressCountry: "US",
       },
       sameAs: [
+        siteConfig.links.googleBusiness,
+        siteConfig.links.googleMaps,
         siteConfig.links.facebook,
         siteConfig.links.instagram,
         siteConfig.links.twitter,
         siteConfig.links.linkedin,
         siteConfig.links.youtube,
         siteConfig.links.github,
-        siteConfig.links.googleBusiness,
       ].filter(Boolean),
     },
     localBusinessSchema,

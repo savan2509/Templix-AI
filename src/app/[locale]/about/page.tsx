@@ -5,7 +5,7 @@ import InfoPageShell, { Section } from "@/components/InfoPageShell";
 import Schema from "@/components/seo/Schema";
 import { getDictionary } from "@/lib/i18n";
 import { FileText, Sparkles, Download, ShieldCheck } from "lucide-react";
-import { PRODUCTION_URL } from "@/config/site";
+import { PRODUCTION_URL, siteConfig } from "@/config/site";
 import { CATALOG_STATS } from "@/lib/catalog-stats";
 
 interface PageProps {
@@ -50,6 +50,7 @@ export default async function AboutPage({ params }: PageProps) {
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/about`,
             telephone: "+1-415-890-3882",
+            email: siteConfig.supportEmail || "support@templixai.com",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
@@ -59,7 +60,14 @@ export default async function AboutPage({ params }: PageProps) {
               postalCode: "94105",
               addressCountry: "US"
             },
-            hasMap: "https://maps.google.com/?cid=1082391203912",
+            hasMap: siteConfig.links.googleBusiness,
+            map: siteConfig.links.googleMaps,
+            sameAs: [
+              siteConfig.links.googleBusiness,
+              siteConfig.links.googleMaps,
+              siteConfig.links.linkedin,
+              siteConfig.links.twitter,
+            ].filter(Boolean),
             openingHoursSpecification: {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],

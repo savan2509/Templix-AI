@@ -49,6 +49,7 @@ export const siteConfig = {
   },
   twitterHandle: "@templixai",
   twitterSite: "@templixai",
+  supportEmail: "support@templixai.com",
   locales: ["en", "es", "de", "fr", "ar"],
   defaultLocale: "en",
   themeColor: "#2563eb",

@@ -241,6 +241,51 @@ const DOMAIN_VALUES: Record<string, string> = {
   vehicleMakeModel: "2019 Maruti Suzuki Ciaz VXi",
   manufactureYear: "2019",
   saleAmountWords: "Six lakh forty thousand rupees only",
+
+  // ── Quotation domain tokens ───────────────────────────────────────────────
+  catererName: "Grand Banquet & Artisan Catering Co.",
+  catererAddress: "742 Evergreen Terrace, Suite 400, Chicago, IL 60611",
+  catererCompany: "Grand Banquet Hospitality Group",
+  guestCount: "120",
+  menuTier: "Platinum 3-Course Plated Banquet",
+  perPlateRate: "$85.00 / plate",
+  barServiceFee: "$1,850.00",
+  serviceGratuity: "$650.00 (18%)",
+  depositTerms: "50% deposit upon booking; balance due 7 days prior to event date.",
+  
+  mspName: "Apex Managed Cloud & IT Solutions",
+  mspAddress: "100 Innovation Way, Suite 800, Austin, TX 78701",
+  serverCount: "18 virtual servers / 65 workstations",
+  monthlyRetainer: "$3,450.00 / month",
+  
+  installerName: "SunPeak Solar & Renewable Solutions",
+  installerAddress: "4500 Clean Energy Blvd, Phoenix, AZ 85034",
+  systemCapacityKw: "10.4",
+  hardwareCost: "$14,800.00",
+  installationLabor: "$6,800.00",
+  federalTaxCredit: "$6,480.00 (30% Federal Clean Energy ITC)",
+  netCost: "$15,120.00",
+  propertyAddress: "1428 Elm Ridge Road, Denver, CO 80206",
+
+  // ── Business plan domain tokens ───────────────────────────────────────────
+  grossMargins: "68% – 74%",
+  profitMargin: "24.5% EBITDA",
+  revenueModel: "Subscription SaaS (Monthly & Annual Tiers) & Enterprise Custom Licensing",
+  capital: "$750,000 Initial Seed Capital",
+  fundingRequired: "$1,200,000 Growth Capital",
+  year3TargetArr: "$5.4M ARR",
+  targetArr: "$4.8M ARR",
+  tam: "$18.5 Billion Total Addressable Market",
+  sam: "$4.2 Billion Serviceable Available Market",
+  som: "$850 Million Serviceable Obtainable Market",
+  equipmentAndFitOut: "$95,000 commercial equipment, facility fit-out & staging",
+  equipmentBudget: "$85,000 commercial training & strength equipment fit-out",
+
+  // ── Report domain tokens ──────────────────────────────────────────────────
+  discrepancyRate: "0.38% SKU variance",
+  deadStockValue: "$18,400 obsolete inventory",
+  completionRate: "94.6% cohort completion",
+  cohortSize: "64 participants across 4 cohorts",
 };
 
 /**
@@ -259,6 +304,12 @@ export const CONTEXT_SENSITIVE_FIELDS = new Set([
   "royaltyRate",
   "guestCount",
   "ownerName",
+  "warrantyTerms",
+  "warranty",
+  "grossMargins",
+  "revenueModel",
+  "capital",
+  "equipmentAndFitOut",
 ]);
 
 const DEGREE_BY_PROFESSION: Record<string, string> = {
@@ -319,13 +370,31 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
       ? ctx.values.fullName
       : pick(PERSONAS);
 
-  // ── 0a. Fields whose global default is written for the wrong profession ───
+  // ── 0a. Hand-written domain values ────────────────────────────────────────
+  if (DOMAIN_VALUES[key]) return DOMAIN_VALUES[key];
+
+  // ── 0b. Context-sensitive warranty alignment ──────────────────────────────
+  if (key === "warrantyTerms" || key === "warranty" || key === "warrantyPeriod") {
+    if (slug.includes("solar") || slug.includes("roofing")) {
+      return "25-Year Manufacturer Equipment & 10-Year Workmanship Warranty";
+    }
+    if (slug.includes("auto") || slug.includes("vehicle") || slug.includes("car")) {
+      return "12-month / 12,000-mile limited dealer warranty";
+    }
+    if (slug.includes("construction") || slug.includes("renovation") || slug.includes("contractor")) {
+      return "2-year structural and workmanship warranty";
+    }
+    if (slug.includes("hvac") || slug.includes("plumbing") || slug.includes("electrical")) {
+      return "1-year warranty on parts and labor";
+    }
+    return "1-year standard service warranty on all completed deliverables";
+  }
+
+  // ── 0c. Fields whose global default is written for the wrong profession ───
   if (key === "degree") {
     const prof = slug.replace(/^(resume|cv)-/, "");
     return (
       DEGREE_BY_PROFESSION[prof] ??
-      // Never guess a field of study we don't know — an unqualified degree is
-      // always safe, a wrong one ("Computer Science" on a chef CV) is not.
       `Bachelor's degree, ${pick(SCHOOLS)}`
     );
   }
@@ -343,9 +412,6 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
   if (key === "serviceDescription") {
     return `Professional ${subject.toLowerCase()} services provided by ${brand} for ${client}`;
   }
-
-  // ── 0b. Hand-written domain values (one template each) ────────────────────
-  if (DOMAIN_VALUES[key]) return DOMAIN_VALUES[key];
 
   // ── 1. Structural keys — derived from what this document actually is ───────
   switch (key) {
@@ -386,8 +452,7 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
     case "contactInfo":
       return `${ctx.values.email || ctx.values.companyEmail || "hello@example.com"} · ${ctx.values.phone || "+1 (555) 204-8811"}`;
 
-    // Résumé work history — profession-aware so an electrician never shows a
-    // software title (the root of the "B.S. in Computer Science on a chef CV" bug).
+    // Résumé work history
     case "jobTitle1":
       return category === "resumes" ? `Senior ${subject}` : `Senior ${subject} Specialist`;
     case "jobTitle2":
@@ -408,15 +473,46 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
 
   const k = key.toLowerCase();
 
+  // ── 2. Precise Type & Semantic Category Handlers (Never output raw field names) ──
+  
+  // Addresses & Geographic Locations
+  if (/(address|street|location|city|venue|siteaddress|propertyaddress)$/i.test(k) || k.endsWith("address")) {
+    return `535 Mission Street, Suite 1400, ${pick(CITIES)}`;
+  }
+
+  // Names (Company / Persona / Provider / Client)
+  if (/(name|company|provider|caterer|installer|contractor|technician|consultant|founder|owner|author|manager)$/i.test(k)) {
+    if (/(company|studio|group|agency|firm|ltd|corp|solutions|services|enterprises)/i.test(k) || k.includes("company") || k.includes("business")) {
+      return pick(EMPLOYERS);
+    }
+    return pick(PERSONAS);
+  }
+
+  // Margins / Percentages / Rates
+  if (/(margin|margins|percent|percentage|taxrate|discountrate|interestrate)$/i.test(k)) {
+    return pick(["68%", "72%", "24.5%", "15%", "8%"]);
+  }
+  if (/(hourlyrate|dayrate|billable|laborrate)$/i.test(k) || (k.endsWith("rate") && !k.includes("tax") && !k.includes("margin") && !k.includes("discount"))) {
+    return pick(["$85/hour", "$120/hour", "$145/hour"]);
+  }
+
+  // Dates & Timestamps
   if (/(^|[a-z])date$|^date[A-Z]|deadline|expiry|expiration/i.test(key)) return date;
-  if (/(fee|cost|price|amount|balance|deposit|surcharge|ask|revenue|salary|funding|investment|valuation|subtotal|total)$/i.test(key)) {
+
+  // Currency, Cost & Revenue Totals
+  if (/(fee|cost|price|amount|balance|deposit|surcharge|ask|revenue|salary|funding|investment|valuation|subtotal|total|arr|mrr|budget|spend|capex|opex|capital)$/i.test(key)) {
+    if (/(arr|mrr|valuation|funding|capital)/i.test(k)) {
+      return pick(["$4.8M ARR", "$750,000 Initial Capital", "$1.2M Growth Funding", "$12.5M Valuation"]);
+    }
     const amounts = ["$1,250.00", "$2,400.00", "$4,800.00", "$7,500.00", "$12,000.00", "$18,500.00"];
     return pick(amounts);
   }
-  if (/(rate)$/i.test(key)) return pick(["$85/hour", "$120/hour", "8%", "12%"]);
-  if (/(hours|duration|length|period|cycle|months|days)$/i.test(key)) return pick(["4 hours", "8 hours", "30 days", "12 months"]);
-  if (/(count|quantity|qty|units|sessions|rounds|revisions)$/i.test(key)) return String(2 + (seed % 10));
 
+  // Durations & Counts
+  if (/(hours|duration|length|period|cycle|months|days)$/i.test(key)) return pick(["4 hours", "8 hours", "30 days", "12 months"]);
+  if (/(count|quantity|qty|units|sessions|rounds|revisions|headcount|attendees|participants|cohorts)$/i.test(key)) return String(2 + (seed % 10));
+
+  // URLs & Social Links
   if (/(url|link|profile|website|dribbble|behance|github|leetcode|linkedin|portfolio)/i.test(k)) {
     if (/github/i.test(k)) return "https://github.com/alex-morgan";
     if (/linkedin/i.test(k)) return "https://linkedin.com/in/alex-morgan";
@@ -425,44 +521,29 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
     if (/leetcode/i.test(k)) return "https://leetcode.com/alex-morgan";
     return "https://example.com/portfolio";
   }
+
+  // Certifications & Tooling
   if (/(cert|certification|license|shrm|sphr|pmp|scrum|sixsigma|cba|cpa|emr)/i.test(k)) {
     return "Professional Certification";
   }
   if (/(tools|systems|software|skills|expertise|frameworks|libraries|packages|methods|platforms|languages|competenc)/i.test(k)) {
     return "Industry standard tools & methods";
   }
-  if (/(employer|company|hospital|unit|school|university|institution|college|firm|agency)/i.test(k)) {
-    return pick(EMPLOYERS);
-  }
+
+  // Titles / Roles
   if (/(title|role|position|designation|specialty|specialization)/i.test(k)) {
     return `Senior ${subject} Specialist`;
   }
-  if (/(date|dates|tenure|year|period|shift)/i.test(k)) {
-    return "2022 – Present";
+
+  // Business Model / Strategy
+  if (/(revenuemodel|businessmodel|pricingstrategy|monetization)/i.test(k)) {
+    return "Tiered Subscription Licensing & Enterprise Service Contracts";
   }
-  if (/(major|degree|concentration|field)/i.test(k)) {
-    return "Bachelor of Science";
+  if (/(tam|sam|som|marketpotential|marketsize)/i.test(k)) {
+    return "$14.5 Billion Total Addressable Market (TAM)";
   }
-  if (/(metric|impact|achievement|result|growth|outcome|roi|built|delivered|won|generated|reduced|improved|score|rate|stats|rank|ranking|size|budget|value|gpa|participants|census|impressions|traffic|keywords|conversions|backlinks|demos|validity)/i.test(k)) {
-    const metrics = [
-      "+28% increase in operational efficiency",
-      "Managed $1.5M annual department budget",
-      "Reduced processing turnaround time by 35%",
-      "Exceeded quarterly KPI targets by 24%",
-      "Delivered 100% on-time project execution across 12 milestones",
-      "Boosted customer satisfaction ratings from 84% to 96%",
-    ];
-    return pick(metrics);
-  }
-  if (/(partya|partyone|employername|licensor|lender|contractor)/i.test(k)) {
-    return brand;
-  }
-  if (/(partyb|partytwo|clientname|licensee|borrower|subcontractor)/i.test(k)) {
-    return client;
-  }
-  if (/(philosophy|approach|process|style|focus|niche|theme|model|category|type|differentiated|governing)/i.test(k)) {
-    return "Established operational & technical methodology";
-  }
+
+  // Metrics for Resumes & Reports
   if (category === "resumes") {
     if (/summary|profile|objective/i.test(k)) {
       return `Accomplished ${subject} professional with demonstrated expertise in project execution, workflow optimization, and delivering measurable team outcomes.`;
@@ -480,15 +561,18 @@ export function deriveFallbackValue(key: string, template: any, ctx: FallbackCtx
     }
   }
 
+  // Descriptions & Scopes
   if (/(description|details|notes|overview|scope|spec|requirement|deliverable|deliverables|feature|action|solution|target|market)/i.test(k)) {
-    if (category === "contracts" || category === "proposals") {
-      return `${subject} scope and key deliverables agreed between ${brand} and ${client}.`;
+    if (category === "contracts" || category === "proposals" || category === "quotations") {
+      return `${subject} scope and agreed project specifications between ${brand} and ${client}.`;
     }
     return `Comprehensive ${subject.toLowerCase()} specifications and operational requirements.`;
   }
 
+  // Humanized fallback that is safe and clean (never appends raw field key token)
   const humanized = key.replace(/([A-Z])/g, " $1").replace(/[_-]+/g, " ").trim();
   if (/summary/i.test(humanized)) return `Professional ${subject.toLowerCase()} summary and qualifications overview.`;
   if (/bullet/i.test(humanized)) return `Key accomplishment and project milestone achieved for ${subject.toLowerCase()}.`;
-  return `${subject} ${humanized}`;
+  return `Standard ${humanized.toLowerCase()} specification`;
 }
+

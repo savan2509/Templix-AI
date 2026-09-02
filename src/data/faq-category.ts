@@ -213,7 +213,7 @@ export const CATEGORY_FAQS: Record<string, FAQItem[]> = {
     {
       question: "Are all templates on Templix AI free for commercial and client use?",
       answer:
-        "Yes. All 490+ document templates across invoices, resumes, contracts, proposals, reports, and business letters are 100% free for commercial use. You retain full copyright ownership of all text and content you generate without watermarks or mandatory attribution.",
+        "Yes. All 530+ document templates across invoices, resumes, contracts, proposals, reports, and business letters are 100% free for commercial use. You retain full copyright ownership of all text and content you generate without watermarks or mandatory attribution.",
     },
     {
       question: "How do fill-in fields and live customization work?",

@@ -15,8 +15,8 @@ interface ObfuscatedEmailProps {
  * ObfuscatedEmail
  *
  * Protects email addresses from spam harvesters and web scrapers.
- * - Server HTML does not contain plaintext email or raw mailto: link.
- * - Dynamically constructs mailto link only after client hydration or user interaction.
+ * - Dynamically constructs the mailto: href and interactive link on client mount.
+ * - Fallback text renders gracefully across SSR and hydrated DOM.
  */
 export default function ObfuscatedEmail({
   user = "whitesparktechnologies",
@@ -26,15 +26,22 @@ export default function ObfuscatedEmail({
   ariaLabel,
   children,
 }: ObfuscatedEmailProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const emailAddress = `${user}@${domain}`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     window.location.href = `mailto:${emailAddress}`;
   };
 
   return (
     <a
-      href={`mailto:${emailAddress}`}
+      href={mounted ? `mailto:${emailAddress}` : "#"}
       onClick={handleClick}
       className={className}
       aria-label={ariaLabel || `Send email to ${emailAddress}`}
@@ -52,3 +59,4 @@ export default function ObfuscatedEmail({
     </a>
   );
 }
+

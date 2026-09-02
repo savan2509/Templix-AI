@@ -39,6 +39,7 @@ export default async function ContactPage({ params }: PageProps) {
             image: `${PRODUCTION_URL}/icon-512.png`,
             url: `${PRODUCTION_URL}/${locale}/contact`,
             telephone: "+1-415-890-3882",
+            email: siteConfig.supportEmail || "support@templixai.com",
             priceRange: "$0",
             address: {
               "@type": "PostalAddress",
@@ -48,7 +49,14 @@ export default async function ContactPage({ params }: PageProps) {
               postalCode: "94105",
               addressCountry: "US"
             },
-            hasMap: "https://maps.google.com/?cid=1082391203912",
+            hasMap: siteConfig.links.googleBusiness,
+            map: siteConfig.links.googleMaps,
+            sameAs: [
+              siteConfig.links.googleBusiness,
+              siteConfig.links.googleMaps,
+              siteConfig.links.linkedin,
+              siteConfig.links.twitter,
+            ].filter(Boolean),
             openingHoursSpecification: {
               "@type": "OpeningHoursSpecification",
               dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -86,17 +94,17 @@ export default async function ContactPage({ params }: PageProps) {
 
         <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-zinc-100 pt-5 dark:border-zinc-800">
           <ObfuscatedEmail
-            user="whitesparktechnologies"
-            domain="gmail.com"
+            user="support"
+            domain="templixai.com"
             className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors"
-            ariaLabel="Email customer support team directly at whitesparktechnologies@gmail.com"
+            ariaLabel="Email customer support team directly at support@templixai.com"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shrink-0">
               <Mail className="h-4 w-4" />
             </span>
             <div className="min-w-0 text-left">
               <span className="block text-[10px] font-bold uppercase tracking-wider text-blue-500/80">Direct Email Desk</span>
-              <span className="block truncate text-xs font-semibold">whitesparktechnologies&#64;gmail.com</span>
+              <span className="block truncate text-xs font-semibold">support&#64;templixai.com</span>
             </div>
           </ObfuscatedEmail>
 

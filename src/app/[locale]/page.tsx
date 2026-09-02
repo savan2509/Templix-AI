@@ -646,64 +646,64 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Comprehensive Document Blueprint & Formatting Guide — Boosts Text-to-Code Ratio */}
-        <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
-            <div className="max-w-3xl space-y-3">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                Comprehensive Document Blueprint & Creation Guide
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Creating clear, legally compliant, and ATS-friendly business documentation is vital for professional communication, client trust, and career growth. Below are the key structural standards, tax compliance requirements, and document writing practices embedded within Templix AI templates.
-              </p>
+        {/* Document Quality Standards & Blueprint Overview */}
+        <section className="py-14 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="max-w-2xl space-y-2">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                  Built to Professional Drafting Standards
+                </h2>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                  Every template across our 530+ catalog is engineered for instant client trust, ATS compliance, and tax calculation precision.
+                </p>
+              </div>
+              <Link
+                href={`/${locale}/about#editorial-standards`}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                View our complete editorial &amp; compliance standards <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
-                  1. Financial Accuracy & Tax Requirements
-                </h3>
-                <p>
-                  Every commercial billing record requires clear identifiers: sequential invoice numbers, exact line-item breakdowns, tax rate designations (such as GST, VAT, or local sales taxes), and unambiguous payment windows (Net 15, Net 30).
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-5 space-y-2 shadow-xs">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-sm">
+                  <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                  <h3>1. Tax &amp; Invoicing Precision</h3>
+                </div>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Providing complete remittance details and banking coordinates reduces payment friction and simplifies financial bookkeeping.
+                  Built-in formula reconciliation for GST, VAT, and sales taxes with automated line-item subtotals and Net payment terms.
                 </p>
               </div>
 
-              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
-                  2. Career Documentation & ATS Best Practices
-                </h3>
-                <p>
-                  Modern Applicant Tracking Systems parse CVs using standardized heading tokens (Experience, Education, Skills) and linear single-column layouts.
-                </p>
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-5 space-y-2 shadow-xs">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-sm">
+                  <FileCheck className="h-4 w-4 text-violet-600 dark:text-violet-400" />
+                  <h3>2. ATS-Friendly Resumes</h3>
+                </div>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Framing achievements with quantifiable outcomes gives hiring teams verifiable evidence of domain competence while ensuring parsers index your data accurately.
+                  Single-column semantic heading hierarchy designed to pass Applicant Tracking Systems (Taleo, Greenhouse, Workday) with 0 formatting drops.
                 </p>
               </div>
 
-              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
-                  3. Commercial Agreements & Terms of Engagement
-                </h3>
-                <p>
-                  Agreements protect all participating parties when they clearly define milestones, scope boundaries, intellectual property ownership, confidentiality, and termination terms.
-                </p>
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-5 space-y-2 shadow-xs">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-sm">
+                  <Scale className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                  <h3>3. Commercial Contracts</h3>
+                </div>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Standardized commercial drafting conventions ensure mutual understanding and provide a solid reference point for project delivery.
+                  Standardized commercial agreement clauses covering deliverables, payment milestones, IP transfer, and termination conditions.
                 </p>
               </div>
 
-              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-6 space-y-3 shadow-xs">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-base">
-                  4. Privacy-By-Design Document Generation
-                </h3>
-                <p>
-                  Templix AI renders documents and compiles PDF exports locally within your web browser. Confidential figures and personal information remain on your device.
-                </p>
+              <div className="card-interactive rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/40 dark:bg-zinc-900/30 p-5 space-y-2 shadow-xs">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-sm">
+                  <ShieldCheck className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                  <h3>4. Privacy-First Drafting</h3>
+                </div>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Outputs can be immediately exported to clean PDF or Microsoft Word (.docx) formats without watermarks or mandatory registration.
+                  Local browser rendering and direct client-side PDF/Word export guarantees your confidential figures never leave your device.
                 </p>
               </div>
             </div>
