@@ -75,8 +75,6 @@ export default async function proxy(req: NextRequest) {
     return NextResponse.redirect(dest, 301);
   }
 
-  const { pathname } = req.nextUrl;
-
   // Permanently redirect bare root `/` onto canonical locale `/en` (HTTP 308)
   if (pathname === "/") {
     const url = req.nextUrl.clone();
