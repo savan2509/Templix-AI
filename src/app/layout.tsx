@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "productivity",
   verification: {
-    google: "jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE",
+    google: ["jj_Pz_gmxSmTBC-Rq3wqBJtb6Yn3vaPnJ3dN8XyrDgE", "e2d077f4003b9b20"],
   },
   icons: {
     icon: [

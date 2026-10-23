@@ -23,6 +23,27 @@ const defaultLocale = "en";
 const PLATFORM_ALIAS = /\.(vercel\.app|netlify\.app|onrender\.com)$/i;
 
 export default async function proxy(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // ── Verification & static files passthrough: NEVER redirect off-domain ──────
+  // Search engines (Google Search Console, Bing, etc.) verify domain ownership on the
+  // exact host being verified (e.g. templix-ai.vercel.app). Verification files and
+  // well-known endpoints must never be redirected to another domain or stripped of extension.
+  if (
+    pathname.startsWith("/google") ||
+    pathname.endsWith(".html") ||
+    pathname.startsWith("/.well-known") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname === "/ads.txt" ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/rss.xml" ||
+    pathname === "/favicon.ico"
+  ) {
+    return NextResponse.next();
+  }
+
   // ── Consolidate platform aliases, www subdomains, and HTTP onto production domain (301) ──
   const hostHeader = (req.headers.get("host") || "").toLowerCase();
   const forwardedHost = (req.headers.get("x-forwarded-host") || "").toLowerCase();
@@ -219,7 +240,7 @@ export default async function proxy(req: NextRequest) {
 export const config = {
   matcher: [
     // Run proxy on all paths except static files & system paths
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml|ads.txt).*)",
+    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|rss.xml|ads.txt|google[a-z0-9]+\\.html).*)",
   ],
 };
 
